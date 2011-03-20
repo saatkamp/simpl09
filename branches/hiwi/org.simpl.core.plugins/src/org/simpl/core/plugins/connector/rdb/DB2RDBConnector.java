@@ -1,4 +1,4 @@
-package org.simpl.core.plugins.datasource.rdb;
+package org.simpl.core.plugins.connector.rdb;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -12,8 +12,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.SIMPLCore;
+import org.simpl.core.plugins.connector.ConnectorPlugin;
 import org.simpl.core.plugins.dataformat.relational.RDBResult;
-import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.simpl.resource.management.client.DataSource;
 
@@ -21,9 +21,9 @@ import commonj.sdo.DataObject;
 
 /**
  * <b>Purpose:</b>Implements all methods of the {@link IDatasourceService} interface for
- * supporting the PostgreSQL relational database.<br>
- * <b>Description:</b>dsAddress = //MyDbComputerNameOrIP:3306/myDatabaseName, for example
- * //localhost:3306/simplDB.<br>
+ * supporting the IBM DB2 relational database.<br>
+ * <b>Description:</b>dsAddress = //server:port/database or //server/database, for example
+ * //localhost:50000/testdb.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
@@ -33,18 +33,17 @@ import commonj.sdo.DataObject;
  *          $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class PostgreSQLRDBDataSourceService extends
-    DataSourceServicePlugin<List<String>, RDBResult> {
-  static Logger logger = Logger.getLogger(PostgreSQLRDBDataSourceService.class);
+public class DB2RDBConnector extends ConnectorPlugin<List<String>, RDBResult> {
+  static Logger logger = Logger.getLogger(DB2RDBConnector.class);
 
   /**
    * Initialize the plug-in.
    */
-  public PostgreSQLRDBDataSourceService() {
+  public DB2RDBConnector() {
     this.setType("Database");
     this.setMetaDataSchemaType("tDatabaseMetaData");
-    this.addSubtype("PostgreSQL");
-    this.addLanguage("PostgreSQL", "SQL/XML");
+    this.addSubtype("DB2");
+    this.addLanguage("DB2", "SQL");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -53,9 +52,9 @@ public class PostgreSQLRDBDataSourceService extends
   @Override
   public boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException {
-    if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
-      PostgreSQLRDBDataSourceService.logger.debug("boolean executeStatement("
-          + dataSource.getAddress() + ", " + statement + ") executed.");
+    if (DB2RDBConnector.logger.isDebugEnabled()) {
+      DB2RDBConnector.logger.debug("boolean executeStatement(" + dataSource.getAddress()
+          + ", " + statement + ") executed.");
     }
 
     boolean success = false;
@@ -65,13 +64,12 @@ public class PostgreSQLRDBDataSourceService extends
     try {
       Statement stat = conn.createStatement();
       stat.execute(statement);
-      stat.close();
       conn.commit();
       success = true;
+      stat.close();
     } catch (Throwable e) {
-      PostgreSQLRDBDataSourceService.logger.error("exception executing the statement: "
-          + statement, e);
-      PostgreSQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
+      DB2RDBConnector.logger.error("exception executing the statement: " + statement, e);
+      DB2RDBConnector.logger.debug("Connection will be rolled back.");
 
       try {
         conn.rollback();
@@ -81,24 +79,22 @@ public class PostgreSQLRDBDataSourceService extends
       }
     }
 
-    PostgreSQLRDBDataSourceService.logger.info("Statement \"" + statement + "\" send to "
+    DB2RDBConnector.logger.info("Statement '" + statement + "' sent to "
         + dataSource.getAddress() + ".");
     closeConnection(conn);
-
     return success;
   }
 
   @Override
   public RDBResult retrieveData(DataSource dataSource, String statement)
       throws ConnectionException {
-    if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
-      PostgreSQLRDBDataSourceService.logger.debug("DataObject retrieveData("
-          + dataSource.getAddress() + ", " + statement + ") executed.");
+    if (DB2RDBConnector.logger.isDebugEnabled()) {
+      DB2RDBConnector.logger.debug("DataObject retrieveData(" + dataSource.getAddress()
+          + ", " + statement + ") executed.");
     }
 
     Connection connection = openConnection(dataSource.getAddress(), dataSource
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
-
     Statement connStatement = null;
     ResultSet resultSet = null;
     RDBResult rdbResult = null;
@@ -126,8 +122,8 @@ public class PostgreSQLRDBDataSourceService extends
       }
     }
 
-    PostgreSQLRDBDataSourceService.logger.info("Statement \"" + statement
-        + "\" executed on " + dataSource.getAddress() + ".");
+    DB2RDBConnector.logger.info("Statement \"" + statement + "\" executed on "
+        + dataSource.getAddress() + ".");
 
     return rdbResult;
   }
@@ -141,9 +137,9 @@ public class PostgreSQLRDBDataSourceService extends
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
     Statement connStatement = null;
 
-    if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
-      PostgreSQLRDBDataSourceService.logger.debug("boolean writeBack("
-          + dataSource.getAddress() + ", DataObject) executed.");
+    if (DB2RDBConnector.logger.isDebugEnabled()) {
+      DB2RDBConnector.logger.debug("boolean writeBack(" + dataSource.getAddress()
+          + ", DataObject) executed.");
     }
 
     try {
@@ -153,9 +149,8 @@ public class PostgreSQLRDBDataSourceService extends
         if (statement.startsWith("UPDATE")) {
           connStatement.executeUpdate(statement);
 
-          PostgreSQLRDBDataSourceService.logger.info("Statement \"" + statement + "\" "
-              + "executed on " + dataSource.getAddress()
-              + (success ? " was successful" : " failed"));
+          DB2RDBConnector.logger.info("Statement \"" + statement + "\" " + "executed on "
+              + dataSource.getAddress() + (success ? " was successful" : " failed"));
         }
       }
 
@@ -167,7 +162,7 @@ public class PostgreSQLRDBDataSourceService extends
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
-      PostgreSQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
+      DB2RDBConnector.logger.debug("Connection will be rolled back.");
 
       try {
         connection.rollback();
@@ -197,9 +192,9 @@ public class PostgreSQLRDBDataSourceService extends
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
     Statement connStatement = null;
 
-    if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
-      PostgreSQLRDBDataSourceService.logger.debug("boolean writeData("
-          + dataSource.getAddress() + ", DataObject) executed.");
+    if (DB2RDBConnector.logger.isDebugEnabled()) {
+      DB2RDBConnector.logger.debug("boolean writeData(" + dataSource.getAddress()
+          + ", DataObject) executed.");
     }
 
     if (statements != null && !statements.isEmpty()) {
@@ -214,9 +209,14 @@ public class PostgreSQLRDBDataSourceService extends
                   + target + " (");
             }
 
+            if (DB2RDBConnector.logger.isDebugEnabled()) {
+              DB2RDBConnector.logger.debug("execute statement '"
+                  + dataSource.getAddress() + "' on " + dataSource.getAddress() + ".");
+            }
+
             connStatement.executeUpdate(statement);
 
-            PostgreSQLRDBDataSourceService.logger.info("Statement \"" + statement + "\" "
+            DB2RDBConnector.logger.info("Statement \"" + statement + "\" "
                 + "executed on " + dataSource.getAddress()
                 + (success ? " was successful" : " failed"));
           }
@@ -230,7 +230,7 @@ public class PostgreSQLRDBDataSourceService extends
       } catch (SQLException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
-        PostgreSQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
+        DB2RDBConnector.logger.debug("Connection will be rolled back.");
 
         try {
           connection.rollback();
@@ -239,6 +239,8 @@ public class PostgreSQLRDBDataSourceService extends
           e1.printStackTrace();
         }
       }
+    } else {
+      DB2RDBConnector.logger.debug("No insert statements found.");
     }
 
     closeConnection(connection);
@@ -251,39 +253,53 @@ public class PostgreSQLRDBDataSourceService extends
       throws ConnectionException {
     boolean success = false;
 
-    if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
-      PostgreSQLRDBDataSourceService.logger.debug("DataObject depositData("
-          + dataSource.getAddress() + ", " + statement + ") executed.");
+    if (DB2RDBConnector.logger.isDebugEnabled()) {
+      DB2RDBConnector.logger.debug("DataObject depositData(" + dataSource.getAddress()
+          + ", " + statement + ") executed.");
     }
 
-    // Beispiel: CREATE TABLE TAB SELECT n FROM foo;
+    // Beispiel: CREATE TABLE TAB AS (SELECT * FROM T1 WITH NO DATA);
     // Dies erzeugt aus den Query-Daten eine Neue Tabelle TAB mit den
     // gequerieten Daten.
     StringBuilder createTableStatement = new StringBuilder();
     createTableStatement.append("CREATE TABLE");
     createTableStatement.append(" ");
     createTableStatement.append(target);
-    createTableStatement.append(" AS ");
+    createTableStatement.append(" AS (");
     createTableStatement.append(statement);
+    createTableStatement.append(" ");
+    createTableStatement.append(") WITH NO DATA");
+
+    StringBuilder insertStatement = new StringBuilder();
+    insertStatement.append("INSERT INTO");
+    insertStatement.append(" ");
+    insertStatement.append(target);
+    insertStatement.append(" ");
+    insertStatement.append(statement);
 
     Connection conn = openConnection(dataSource.getAddress(), dataSource
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
 
     try {
       Statement createState = conn.createStatement();
+      Statement insertState = conn.createStatement();
 
       // Neue Tabelle aus dem Query erzeugen
       createState.execute(createTableStatement.toString());
 
+      // Query-Daten in die neue Tabelle einfügen
+      insertState.execute(insertStatement.toString());
+
       conn.commit();
       createState.close();
+      insertState.close();
       closeConnection(conn);
 
       success = true;
     } catch (Throwable e) {
-      PostgreSQLRDBDataSourceService.logger.error("exception executing the statement: "
+      DB2RDBConnector.logger.error("exception executing the statement: "
           + createTableStatement.toString(), e);
-      PostgreSQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
+      DB2RDBConnector.logger.debug("Connection will be rolled back.");
 
       try {
         conn.rollback();
@@ -293,8 +309,8 @@ public class PostgreSQLRDBDataSourceService extends
       }
     }
 
-    PostgreSQLRDBDataSourceService.logger.info("Statement \""
-        + createTableStatement.toString() + "\" " + "executed on "
+    DB2RDBConnector.logger.info("Statement \"" + createTableStatement.toString() + "\" "
+        + "& \"" + insertStatement.toString() + "\" " + "executed on "
         + dataSource.getAddress());
 
     return success;
@@ -358,11 +374,6 @@ public class PostgreSQLRDBDataSourceService extends
       throws ConnectionException {
     boolean createdTarget = false;
 
-    if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
-      PostgreSQLRDBDataSourceService.logger.debug("createTarget '" + target + "' on '"
-          + dataSource.getAddress() + "'.");
-    }
-
     // test if target already exists
     try {
       createdTarget = SIMPLCore.getInstance().dataSourceService()
@@ -391,6 +402,10 @@ public class PostgreSQLRDBDataSourceService extends
 
         createTargetStatement += columns.get(i).getString("name") + " "
             + this.getColumnType(columns.get(i).getString("name"), tableMetaData);
+
+        if (primaryKeys.contains(columns.get(i).getString("name"))) {
+          createTargetStatement += " NOT NULL ";
+        }
       }
 
       // add primary keys
@@ -451,8 +466,8 @@ public class PostgreSQLRDBDataSourceService extends
         columnType = columnTypeObject.getString(0);
 
         // remove length from certain column types because it is not supported by
-        // postgreSQL
-        if (columnType.toLowerCase().contains("int")) {
+        // db2
+        if (columnType.toLowerCase().contains("integer")) {
           columnType = columnType.replaceAll("\\([0-9]*\\)", "");
         }
 
@@ -474,17 +489,17 @@ public class PostgreSQLRDBDataSourceService extends
    */
   private Connection openConnection(String dsAddress, String user, String password)
       throws ConnectionException {
-    if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
-      PostgreSQLRDBDataSourceService.logger.debug("Connection openConnection("
-          + dsAddress + ") executed.");
+    if (DB2RDBConnector.logger.isDebugEnabled()) {
+      DB2RDBConnector.logger.debug("Connection openConnection(" + dsAddress
+          + ") executed.");
     }
 
-    Connection connect = null;
+    java.sql.Connection connect = null;
 
     try {
-      Class.forName("org.postgresql.Driver");
+      Class.forName("com.ibm.db2.jcc.DB2Driver");
       StringBuilder uri = new StringBuilder();
-      uri.append("jdbc:postgresql://");
+      uri.append("jdbc:db2://");
       uri.append(dsAddress);
 
       try {
@@ -492,17 +507,16 @@ public class PostgreSQLRDBDataSourceService extends
         connect.setAutoCommit(false);
       } catch (SQLException e) {
         // TODO Auto-generated catch block
-        PostgreSQLRDBDataSourceService.logger.fatal(
-            "exception during establishing connection to: " + uri.toString(), e);
+        DB2RDBConnector.logger.fatal("exception during establishing connection to: "
+            + uri.toString(), e);
       }
 
-      PostgreSQLRDBDataSourceService.logger.info("Connection opened on " + dsAddress
-          + ".");
+      DB2RDBConnector.logger.info("Connection opened on " + dsAddress + ".");
+
       return connect;
     } catch (ClassNotFoundException e) {
       // TODO Auto-generated catch block
-      PostgreSQLRDBDataSourceService.logger.fatal(
-          "exception during loading the JDBC driver", e);
+      DB2RDBConnector.logger.fatal("exception during loading the JDBC driver", e);
     }
 
     return connect;
@@ -513,26 +527,27 @@ public class PostgreSQLRDBDataSourceService extends
    * 
    * @param connection
    * @return
+   * @throws ConnectionException
    */
-  private boolean closeConnection(Connection connection) {
+  private boolean closeConnection(Connection connection) throws ConnectionException {
     boolean success = false;
 
     try {
       (connection).close();
       success = true;
-      if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
-        PostgreSQLRDBDataSourceService.logger
-            .debug("boolean closeConnection() executed successfully.");
+
+      if (DB2RDBConnector.logger.isDebugEnabled()) {
+        DB2RDBConnector.logger.debug("boolean closeConnection() executed successfully.");
       }
-      PostgreSQLRDBDataSourceService.logger.info("Connection closed.");
+
+      DB2RDBConnector.logger.info("Connection closed.");
     } catch (SQLException e) {
       // TODO Auto-generated catch block
-      if (PostgreSQLRDBDataSourceService.logger.isDebugEnabled()) {
-        PostgreSQLRDBDataSourceService.logger.error(
-            "boolean closeConnection() executed with failures.", e);
+      if (DB2RDBConnector.logger.isDebugEnabled()) {
+        DB2RDBConnector.logger.error("boolean closeConnection() executed with failures.",
+            e);
       }
     }
-
     return success;
   }
 }

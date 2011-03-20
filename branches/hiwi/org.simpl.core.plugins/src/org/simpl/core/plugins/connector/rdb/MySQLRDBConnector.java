@@ -1,4 +1,4 @@
-package org.simpl.core.plugins.datasource.rdb;
+package org.simpl.core.plugins.connector.rdb;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -12,8 +12,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.SIMPLCore;
+import org.simpl.core.plugins.connector.ConnectorPlugin;
 import org.simpl.core.plugins.dataformat.relational.RDBResult;
-import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.simpl.resource.management.client.DataSource;
 
@@ -33,14 +33,13 @@ import commonj.sdo.DataObject;
  *          $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class MySQLRDBDataSourceService extends
-    DataSourceServicePlugin<List<String>, RDBResult> {
-  static Logger logger = Logger.getLogger(MySQLRDBDataSourceService.class);
+public class MySQLRDBConnector extends ConnectorPlugin<List<String>, RDBResult> {
+  static Logger logger = Logger.getLogger(MySQLRDBConnector.class);
 
   /**
    * Initialize the plug-in.
    */
-  public MySQLRDBDataSourceService() {
+  public MySQLRDBConnector() {
     this.setType("Database");
     this.setMetaDataSchemaType("tDatabaseMetaData");
     this.addSubtype("MySQL");
@@ -53,8 +52,8 @@ public class MySQLRDBDataSourceService extends
   @Override
   public boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException {
-    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-      MySQLRDBDataSourceService.logger.debug("boolean executeStatement("
+    if (MySQLRDBConnector.logger.isDebugEnabled()) {
+      MySQLRDBConnector.logger.debug("boolean executeStatement("
           + dataSource.getAddress() + ", " + statement + ") executed.");
     }
 
@@ -69,9 +68,9 @@ public class MySQLRDBDataSourceService extends
       conn.commit();
       success = true;
     } catch (Throwable e) {
-      MySQLRDBDataSourceService.logger.error("exception executing the statement: "
-          + statement, e);
-      MySQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
+      MySQLRDBConnector.logger
+          .error("exception executing the statement: " + statement, e);
+      MySQLRDBConnector.logger.debug("Connection will be rolled back.");
 
       try {
         conn.rollback();
@@ -81,7 +80,7 @@ public class MySQLRDBDataSourceService extends
       }
     }
 
-    MySQLRDBDataSourceService.logger.info("Statement \"" + statement + "\" send to "
+    MySQLRDBConnector.logger.info("Statement \"" + statement + "\" send to "
         + dataSource.getAddress() + ".");
     closeConnection(conn);
 
@@ -91,9 +90,9 @@ public class MySQLRDBDataSourceService extends
   @Override
   public RDBResult retrieveData(DataSource dataSource, String statement)
       throws ConnectionException {
-    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-      MySQLRDBDataSourceService.logger.debug("DataObject retrieveData("
-          + dataSource.getAddress() + ", " + statement + ") executed.");
+    if (MySQLRDBConnector.logger.isDebugEnabled()) {
+      MySQLRDBConnector.logger.debug("DataObject retrieveData(" + dataSource.getAddress()
+          + ", " + statement + ") executed.");
     }
 
     Connection connection = openConnection(dataSource.getAddress(), dataSource
@@ -125,7 +124,7 @@ public class MySQLRDBDataSourceService extends
       }
     }
 
-    MySQLRDBDataSourceService.logger.info("Statement \"" + statement + "\" executed on "
+    MySQLRDBConnector.logger.info("Statement \"" + statement + "\" executed on "
         + dataSource.getAddress() + ".");
 
     return rdbResult;
@@ -140,9 +139,9 @@ public class MySQLRDBDataSourceService extends
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
     Statement connStatement = null;
 
-    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-      MySQLRDBDataSourceService.logger.debug("boolean writeBack("
-          + dataSource.getAddress() + ", DataObject) executed.");
+    if (MySQLRDBConnector.logger.isDebugEnabled()) {
+      MySQLRDBConnector.logger.debug("boolean writeBack(" + dataSource.getAddress()
+          + ", DataObject) executed.");
     }
 
     try {
@@ -152,7 +151,7 @@ public class MySQLRDBDataSourceService extends
         if (statement.startsWith("UPDATE")) {
           connStatement.executeUpdate(statement);
 
-          MySQLRDBDataSourceService.logger.info("Statement \"" + statement + "\" "
+          MySQLRDBConnector.logger.info("Statement \"" + statement + "\" "
               + "executed on " + dataSource.getAddress()
               + (success ? " was successful" : " failed"));
         }
@@ -166,7 +165,7 @@ public class MySQLRDBDataSourceService extends
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
-      MySQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
+      MySQLRDBConnector.logger.debug("Connection will be rolled back.");
 
       try {
         connection.rollback();
@@ -196,9 +195,9 @@ public class MySQLRDBDataSourceService extends
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
     Statement connStatement = null;
 
-    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-      MySQLRDBDataSourceService.logger.debug("boolean writeData("
-          + dataSource.getAddress() + ", DataObject) executed.");
+    if (MySQLRDBConnector.logger.isDebugEnabled()) {
+      MySQLRDBConnector.logger.debug("boolean writeData(" + dataSource.getAddress()
+          + ", DataObject) executed.");
     }
 
     if (statements != null && !statements.isEmpty()) {
@@ -215,7 +214,7 @@ public class MySQLRDBDataSourceService extends
 
             connStatement.executeUpdate(statement);
 
-            MySQLRDBDataSourceService.logger.info("Statement \"" + statement + "\" "
+            MySQLRDBConnector.logger.info("Statement \"" + statement + "\" "
                 + "executed on " + dataSource.getAddress()
                 + (success ? " was successful" : " failed"));
           }
@@ -229,7 +228,7 @@ public class MySQLRDBDataSourceService extends
       } catch (SQLException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
-        MySQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
+        MySQLRDBConnector.logger.debug("Connection will be rolled back.");
 
         try {
           connection.rollback();
@@ -250,9 +249,9 @@ public class MySQLRDBDataSourceService extends
       throws ConnectionException {
     boolean success = false;
 
-    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-      MySQLRDBDataSourceService.logger.debug("DataObject depositData("
-          + dataSource.getAddress() + ", " + statement + ") executed.");
+    if (MySQLRDBConnector.logger.isDebugEnabled()) {
+      MySQLRDBConnector.logger.debug("DataObject depositData(" + dataSource.getAddress()
+          + ", " + statement + ") executed.");
     }
 
     // Beispiel: CREATE TABLE TAB SELECT n FROM foo;
@@ -280,9 +279,9 @@ public class MySQLRDBDataSourceService extends
 
       success = true;
     } catch (Throwable e) {
-      MySQLRDBDataSourceService.logger.error("exception executing the statement: "
+      MySQLRDBConnector.logger.error("exception executing the statement: "
           + createTableStatement.toString(), e);
-      MySQLRDBDataSourceService.logger.debug("Connection will be rolled back.");
+      MySQLRDBConnector.logger.debug("Connection will be rolled back.");
 
       try {
         conn.rollback();
@@ -292,9 +291,8 @@ public class MySQLRDBDataSourceService extends
       }
     }
 
-    MySQLRDBDataSourceService.logger.info("Statement \""
-        + createTableStatement.toString() + "\" " + "executed on "
-        + dataSource.getAddress());
+    MySQLRDBConnector.logger.info("Statement \"" + createTableStatement.toString()
+        + "\" " + "executed on " + dataSource.getAddress());
 
     return success;
   }
@@ -357,15 +355,15 @@ public class MySQLRDBDataSourceService extends
       throws ConnectionException {
     boolean createdTarget = false;
 
-    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-      MySQLRDBDataSourceService.logger.debug("createTarget '" + target + "' on '"
+    if (MySQLRDBConnector.logger.isDebugEnabled()) {
+      MySQLRDBConnector.logger.debug("createTarget '" + target + "' on '"
           + dataSource.getAddress() + "'.");
     }
 
     // test if target already exists
     try {
-      createdTarget = SIMPLCore.getInstance().dataSourceService().executeStatement(
-          dataSource, "SELECT * FROM " + target);
+      createdTarget = SIMPLCore.getInstance().dataSourceService()
+          .executeStatement(dataSource, "SELECT * FROM " + target);
     } catch (Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -387,7 +385,7 @@ public class MySQLRDBDataSourceService extends
         if (i > 0) {
           createTargetStatement += ",";
         }
-        
+
         createTargetStatement += columns.get(i).getString("name") + " "
             + this.getColumnType(columns.get(i).getString("name"), tableMetaData);
       }
@@ -467,8 +465,8 @@ public class MySQLRDBDataSourceService extends
    */
   private Connection openConnection(String dsAddress, String user, String password)
       throws ConnectionException {
-    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-      MySQLRDBDataSourceService.logger.debug("Connection openConnection(" + dsAddress
+    if (MySQLRDBConnector.logger.isDebugEnabled()) {
+      MySQLRDBConnector.logger.debug("Connection openConnection(" + dsAddress
           + ") executed.");
     }
 
@@ -485,16 +483,15 @@ public class MySQLRDBDataSourceService extends
         connect.setAutoCommit(false);
       } catch (SQLException e) {
         // TODO Auto-generated catch block
-        MySQLRDBDataSourceService.logger.fatal(
-            "exception during establishing connection to: " + uri.toString(), e);
+        MySQLRDBConnector.logger.fatal("exception during establishing connection to: "
+            + uri.toString(), e);
       }
 
-      MySQLRDBDataSourceService.logger.info("Connection opened on " + dsAddress + ".");
+      MySQLRDBConnector.logger.info("Connection opened on " + dsAddress + ".");
       return connect;
     } catch (ClassNotFoundException e) {
       // TODO Auto-generated catch block
-      MySQLRDBDataSourceService.logger.fatal("exception during loading the JDBC driver",
-          e);
+      MySQLRDBConnector.logger.fatal("exception during loading the JDBC driver", e);
     }
 
     return connect;
@@ -512,15 +509,15 @@ public class MySQLRDBDataSourceService extends
     try {
       (connection).close();
       success = true;
-      if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-        MySQLRDBDataSourceService.logger
+      if (MySQLRDBConnector.logger.isDebugEnabled()) {
+        MySQLRDBConnector.logger
             .debug("boolean closeConnection() executed successfully.");
       }
-      MySQLRDBDataSourceService.logger.info("Connection closed.");
+      MySQLRDBConnector.logger.info("Connection closed.");
     } catch (SQLException e) {
       // TODO Auto-generated catch block
-      if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-        MySQLRDBDataSourceService.logger.error(
+      if (MySQLRDBConnector.logger.isDebugEnabled()) {
+        MySQLRDBConnector.logger.error(
             "boolean closeConnection() executed with failures.", e);
       }
     }

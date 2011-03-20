@@ -6,7 +6,7 @@ import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.apache.ode.simpl.ea.util.SDOUtils;
 import org.simpl.core.SIMPLCore;
-import org.simpl.core.services.datasource.DataSourceService;
+import org.simpl.core.connector.Connector;
 import org.simpl.resource.management.client.DataSource;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
@@ -32,7 +32,7 @@ public class RetrieveDataActivity extends DataManagementActivity {
 
 		DataSource ds = getDataSource(getActivityName(), getDsAddress());
 
-		DataSourceService<DataObject, DataObject> datasourceService = SIMPLCore
+		Connector<DataObject, DataObject> datasourceService = SIMPLCore
 				.getInstance().dataSourceService();
 
 		try {

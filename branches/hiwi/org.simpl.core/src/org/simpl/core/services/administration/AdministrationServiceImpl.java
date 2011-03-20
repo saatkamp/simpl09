@@ -10,9 +10,9 @@ import java.util.LinkedHashMap;
 
 import org.apache.ode.simpl.events.listener.AuditingParameters;
 import org.simpl.core.SIMPLResourceManagement;
-import org.simpl.core.services.dataformat.DataFormatProvider;
-import org.simpl.core.services.dataformat.converter.DataFormatConverterProvider;
-import org.simpl.core.services.datasource.DataSourceServiceProvider;
+import org.simpl.core.connector.ConnectorProvider;
+import org.simpl.core.converter.ConverterProvider;
+import org.simpl.core.dataformat.DataFormatProvider;
 
 /**
  * <b>Purpose:</b><br>
@@ -66,9 +66,9 @@ public class AdministrationServiceImpl implements AdministrationService {
         SIMPLResourceManagement.getInstance().reload();
         
         // update plugins
-        DataSourceServiceProvider.loadPlugins();
+        ConnectorProvider.loadPlugins();
         DataFormatProvider.loadPlugins();
-        DataFormatConverterProvider.loadPlugins();
+        ConverterProvider.loadPlugins();
       }
     } catch (Throwable e) {
       e.printStackTrace();

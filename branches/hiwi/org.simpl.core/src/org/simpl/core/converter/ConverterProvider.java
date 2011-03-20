@@ -1,4 +1,4 @@
-package org.simpl.core.services.dataformat.converter;
+package org.simpl.core.converter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.Set;
 
 import org.simpl.core.SIMPLResourceManagement;
-import org.simpl.core.plugins.dataformat.converter.DataFormatConverterPlugin;
-import org.simpl.core.services.datasource.DataSourceService;
+import org.simpl.core.connector.Connector;
+import org.simpl.core.plugins.converter.ConverterPlugin;
 
 /**
- * <b>Purpose:</b>Provides access to the data format converter services that are created
- * from data format converter plug-ins.<br>
- * <b>Description:</b>Instances of data format converter services are retrieved by the
- * data format converter supported data formats.<br>
+ * <b>Purpose:</b>Provides access to the converters that are loaded from converter
+ * plug-ins.<br>
+ * <b>Description:</b>Converter instances can be retrieved by the converter supported data
+ * formats, using the {@link #getInstance(String, String)}. <br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
@@ -25,33 +25,33 @@ import org.simpl.core.services.datasource.DataSourceService;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class DataFormatConverterProvider {
+public class ConverterProvider {
   /**
-   * Maps the supported data formats to a supported data format converter plugin instance.
+   * Maps the supported data formats to a converter plug-in instance.
    */
-  private static HashMap<List<String>, DataFormatConverterPlugin> dataFormatConverter = new HashMap<List<String>, DataFormatConverterPlugin>();
+  private static HashMap<List<String>, ConverterPlugin> dataFormatConverter = new HashMap<List<String>, ConverterPlugin>();
 
   /**
-   * Initialize all data format converter plugins.
+   * Initially load the converter plug-ins.
    */
   static {
-    DataFormatConverterProvider.loadPlugins();
+    ConverterProvider.loadPlugins();
   }
 
   /**
-   * Returns the data format converter instance that supports the given data formats.
+   * Returns a converter instance that supports the given data formats.
    * 
    * @param fromDataFormat
    * @param toDataFormat
    * @return
    */
-  public static DataFormatConverter getInstance(String fromDataFormat, String toDataFormat) {
-    DataFormatConverter converter = null;
-    Set<List<String>> formats = DataFormatConverterProvider.dataFormatConverter.keySet();
+  public static Converter getInstance(String fromDataFormat, String toDataFormat) {
+    Converter converter = null;
+    Set<List<String>> formats = ConverterProvider.dataFormatConverter.keySet();
 
     for (List<String> list : formats) {
       if (list.contains(fromDataFormat) && list.contains(toDataFormat)) {
-        converter = DataFormatConverterProvider.dataFormatConverter.get(list);
+        converter = ConverterProvider.dataFormatConverter.get(list);
       }
     }
 
@@ -59,17 +59,17 @@ public class DataFormatConverterProvider {
   }
 
   /**
-   * Returns a list of data format types that support the given data source service and
-   * can be converted from the given data format type.
+   * Returns a list of data format types to which the given connector can convert the
+   * given data format to.
    * 
    * @param dataSourceService
    * @return
    */
   @SuppressWarnings({ "rawtypes" })
   public static List<String> getSupportedConvertDataFormatTypes(
-      DataSourceService dataSourceService, String dataFormatType) {
+      Connector dataSourceService, String dataFormatType) {
     List<String> supportedConvertDataFormats = new ArrayList<String>();
-    DataFormatConverterPlugin dataFormatConverter = null;
+    ConverterPlugin dataFormatConverter = null;
 
     HashMap<String, ArrayList<String>> dataFormatConverterMapping = SIMPLResourceManagement
         .getInstance().getDataFormatConverterMapping();
@@ -80,7 +80,7 @@ public class DataFormatConverterProvider {
 
       try {
         if (dataSourceServiceClassNames.contains(dataSourceService.getClass().getName())) {
-          dataFormatConverter = (DataFormatConverterPlugin) Class.forName(
+          dataFormatConverter = (ConverterPlugin) Class.forName(
               dataFormatConverterClassName).newInstance();
 
           if (dataFormatConverter.getFromDataFormat().getType().equals(dataFormatType)) {
@@ -108,25 +108,25 @@ public class DataFormatConverterProvider {
   }
 
   /**
-   * Loads instances of the data format converter plug-ins and retrieves information about
-   * their supported data source type and subtype.
+   * Loads the converter plug-ins.
    */
   public static void loadPlugins() {
-    List<String> plugins = SIMPLResourceManagement.getInstance().getDataFormatConverterPlugins();
+    List<String> plugins = SIMPLResourceManagement.getInstance()
+        .getDataFormatConverterPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
-    DataFormatConverterPlugin dataFormatConverterInstance;
+    ConverterPlugin dataFormatConverterInstance;
     String toDataFormat = null;
     String fromDataFormat = null;
 
     while (pluginIterator.hasNext()) {
       try {
-        dataFormatConverterInstance = (DataFormatConverterPlugin) Class.forName(
+        dataFormatConverterInstance = (ConverterPlugin) Class.forName(
             pluginIterator.next()).newInstance();
 
         toDataFormat = dataFormatConverterInstance.getToDataFormat().getType();
         fromDataFormat = dataFormatConverterInstance.getFromDataFormat().getType();
 
-        DataFormatConverterProvider.dataFormatConverter.put(
+        ConverterProvider.dataFormatConverter.put(
             Arrays.asList(toDataFormat, fromDataFormat), dataFormatConverterInstance);
       } catch (InstantiationException e) {
         // TODO Auto-generated catch block

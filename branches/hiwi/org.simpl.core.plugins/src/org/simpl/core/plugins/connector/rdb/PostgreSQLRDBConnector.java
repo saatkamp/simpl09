@@ -1,4 +1,4 @@
-package org.simpl.core.plugins.datasource.rdb;
+package org.simpl.core.plugins.connector.rdb;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -12,8 +12,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.SIMPLCore;
+import org.simpl.core.plugins.connector.ConnectorPlugin;
 import org.simpl.core.plugins.dataformat.relational.RDBResult;
-import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.simpl.resource.management.client.DataSource;
 
@@ -21,9 +21,9 @@ import commonj.sdo.DataObject;
 
 /**
  * <b>Purpose:</b>Implements all methods of the {@link IDatasourceService} interface for
- * supporting the Apache Derby relational database in Client-Server mode.<br>
- * <b>Description:</b>dsAddress = Full path to embedded Derby database, for example:
- * C:\databases\myDB.<br>
+ * supporting the PostgreSQL relational database.<br>
+ * <b>Description:</b>dsAddress = //MyDbComputerNameOrIP:3306/myDatabaseName, for example
+ * //localhost:3306/simplDB.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
@@ -33,18 +33,17 @@ import commonj.sdo.DataObject;
  *          $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class DerbyRDBDataSourceService extends
-    DataSourceServicePlugin<List<String>, RDBResult> {
-  static Logger logger = Logger.getLogger(DerbyRDBDataSourceService.class);
+public class PostgreSQLRDBConnector extends ConnectorPlugin<List<String>, RDBResult> {
+  static Logger logger = Logger.getLogger(PostgreSQLRDBConnector.class);
 
   /**
    * Initialize the plug-in.
    */
-  public DerbyRDBDataSourceService() {
+  public PostgreSQLRDBConnector() {
     this.setType("Database");
     this.setMetaDataSchemaType("tDatabaseMetaData");
-    this.addSubtype("Derby");
-    this.addLanguage("Derby", "SQL");
+    this.addSubtype("PostgreSQL");
+    this.addLanguage("PostgreSQL", "SQL/XML");
 
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
@@ -53,8 +52,8 @@ public class DerbyRDBDataSourceService extends
   @Override
   public boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException {
-    if (DerbyRDBDataSourceService.logger.isDebugEnabled()) {
-      DerbyRDBDataSourceService.logger.debug("boolean executeStatement("
+    if (PostgreSQLRDBConnector.logger.isDebugEnabled()) {
+      PostgreSQLRDBConnector.logger.debug("boolean executeStatement("
           + dataSource.getAddress() + ", " + statement + ") executed.");
     }
 
@@ -65,13 +64,13 @@ public class DerbyRDBDataSourceService extends
     try {
       Statement stat = conn.createStatement();
       stat.execute(statement);
+      stat.close();
       conn.commit();
       success = true;
-      stat.close();
     } catch (Throwable e) {
-      DerbyRDBDataSourceService.logger.error("exception executing the statement: "
+      PostgreSQLRDBConnector.logger.error("exception executing the statement: "
           + statement, e);
-      DerbyRDBDataSourceService.logger.debug("Connection will be rolled back.");
+      PostgreSQLRDBConnector.logger.debug("Connection will be rolled back.");
 
       try {
         conn.rollback();
@@ -81,7 +80,7 @@ public class DerbyRDBDataSourceService extends
       }
     }
 
-    DerbyRDBDataSourceService.logger.info("Statement \"" + statement + "\" send to "
+    PostgreSQLRDBConnector.logger.info("Statement \"" + statement + "\" send to "
         + dataSource.getAddress() + ".");
     closeConnection(conn);
 
@@ -91,13 +90,14 @@ public class DerbyRDBDataSourceService extends
   @Override
   public RDBResult retrieveData(DataSource dataSource, String statement)
       throws ConnectionException {
-    if (DerbyRDBDataSourceService.logger.isDebugEnabled()) {
-      DerbyRDBDataSourceService.logger.debug("DataObject retrieveData("
+    if (PostgreSQLRDBConnector.logger.isDebugEnabled()) {
+      PostgreSQLRDBConnector.logger.debug("DataObject retrieveData("
           + dataSource.getAddress() + ", " + statement + ") executed.");
     }
 
     Connection connection = openConnection(dataSource.getAddress(), dataSource
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
+
     Statement connStatement = null;
     ResultSet resultSet = null;
     RDBResult rdbResult = null;
@@ -125,7 +125,7 @@ public class DerbyRDBDataSourceService extends
       }
     }
 
-    DerbyRDBDataSourceService.logger.info("Statement \"" + statement + "\" executed on "
+    PostgreSQLRDBConnector.logger.info("Statement \"" + statement + "\" executed on "
         + dataSource.getAddress() + ".");
 
     return rdbResult;
@@ -140,9 +140,9 @@ public class DerbyRDBDataSourceService extends
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
     Statement connStatement = null;
 
-    if (DerbyRDBDataSourceService.logger.isDebugEnabled()) {
-      DerbyRDBDataSourceService.logger.debug("boolean writeBack("
-          + dataSource.getAddress() + ", DataObject) executed.");
+    if (PostgreSQLRDBConnector.logger.isDebugEnabled()) {
+      PostgreSQLRDBConnector.logger.debug("boolean writeBack(" + dataSource.getAddress()
+          + ", DataObject) executed.");
     }
 
     try {
@@ -152,7 +152,7 @@ public class DerbyRDBDataSourceService extends
         if (statement.startsWith("UPDATE")) {
           connStatement.executeUpdate(statement);
 
-          DerbyRDBDataSourceService.logger.info("Statement \"" + statement + "\" "
+          PostgreSQLRDBConnector.logger.info("Statement \"" + statement + "\" "
               + "executed on " + dataSource.getAddress()
               + (success ? " was successful" : " failed"));
         }
@@ -166,7 +166,7 @@ public class DerbyRDBDataSourceService extends
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
-      DerbyRDBDataSourceService.logger.debug("Connection will be rolled back.");
+      PostgreSQLRDBConnector.logger.debug("Connection will be rolled back.");
 
       try {
         connection.rollback();
@@ -196,9 +196,9 @@ public class DerbyRDBDataSourceService extends
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
     Statement connStatement = null;
 
-    if (DerbyRDBDataSourceService.logger.isDebugEnabled()) {
-      DerbyRDBDataSourceService.logger.debug("boolean writeData("
-          + dataSource.getAddress() + ", DataObject) executed.");
+    if (PostgreSQLRDBConnector.logger.isDebugEnabled()) {
+      PostgreSQLRDBConnector.logger.debug("boolean writeData(" + dataSource.getAddress()
+          + ", DataObject) executed.");
     }
 
     if (statements != null && !statements.isEmpty()) {
@@ -207,7 +207,7 @@ public class DerbyRDBDataSourceService extends
 
         for (String statement : statements) {
           if (statement.startsWith("INSERT")) {
-            // replace dataObject's implizit schema.table name with target
+            // replace dataObject's including schema.table name with target name
             if (target != null) {
               statement = statement.replaceAll("INSERT INTO .*?\\(", "INSERT INTO "
                   + target + " (");
@@ -215,7 +215,7 @@ public class DerbyRDBDataSourceService extends
 
             connStatement.executeUpdate(statement);
 
-            DerbyRDBDataSourceService.logger.info("Statement \"" + statement + "\" "
+            PostgreSQLRDBConnector.logger.info("Statement \"" + statement + "\" "
                 + "executed on " + dataSource.getAddress()
                 + (success ? " was successful" : " failed"));
           }
@@ -229,7 +229,7 @@ public class DerbyRDBDataSourceService extends
       } catch (SQLException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
-        DerbyRDBDataSourceService.logger.debug("Connection will be rolled back.");
+        PostgreSQLRDBConnector.logger.debug("Connection will be rolled back.");
 
         try {
           connection.rollback();
@@ -250,15 +250,12 @@ public class DerbyRDBDataSourceService extends
       throws ConnectionException {
     boolean success = false;
 
-    if (DerbyRDBDataSourceService.logger.isDebugEnabled()) {
-      DerbyRDBDataSourceService.logger.debug("DataObject depositData("
+    if (PostgreSQLRDBConnector.logger.isDebugEnabled()) {
+      PostgreSQLRDBConnector.logger.debug("DataObject depositData("
           + dataSource.getAddress() + ", " + statement + ") executed.");
     }
 
-    // TODO Nochmal überprüfen, ob das für Client-Server Derby auch gilt
-    // Hier wird ein seit SQL2003 exisiterender erweiterter CREATE TABLE Befehl
-    // genutzt.
-    // Beispiel: CREATE TABLE TAB AS SELECT * FROM T1 WITH DATA;
+    // Beispiel: CREATE TABLE TAB SELECT n FROM foo;
     // Dies erzeugt aus den Query-Daten eine Neue Tabelle TAB mit den
     // gequerieten Daten.
     StringBuilder createTableStatement = new StringBuilder();
@@ -267,39 +264,26 @@ public class DerbyRDBDataSourceService extends
     createTableStatement.append(target);
     createTableStatement.append(" AS ");
     createTableStatement.append(statement);
-    createTableStatement.append(" ");
-    createTableStatement.append("WITH NO DATA");
-
-    StringBuilder insertStatement = new StringBuilder();
-    insertStatement.append("INSERT INTO");
-    insertStatement.append(" ");
-    insertStatement.append(target);
-    insertStatement.append(" ");
-    insertStatement.append(statement);
 
     Connection conn = openConnection(dataSource.getAddress(), dataSource
         .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
 
     try {
       Statement createState = conn.createStatement();
-      Statement insertState = conn.createStatement();
 
       // Neue Tabelle aus dem Query erzeugen
       createState.execute(createTableStatement.toString());
 
-      // Query-Daten in die neue Tabelle einfügen
-      insertState.execute(insertStatement.toString());
-
       conn.commit();
       createState.close();
-      insertState.close();
       closeConnection(conn);
 
       success = true;
     } catch (Throwable e) {
-      DerbyRDBDataSourceService.logger.error("exception executing the statement: "
+      PostgreSQLRDBConnector.logger.error("exception executing the statement: "
           + createTableStatement.toString(), e);
-      DerbyRDBDataSourceService.logger.debug("Connection will be rolled back.");
+      PostgreSQLRDBConnector.logger.debug("Connection will be rolled back.");
+
       try {
         conn.rollback();
       } catch (SQLException e1) {
@@ -308,8 +292,7 @@ public class DerbyRDBDataSourceService extends
       }
     }
 
-    DerbyRDBDataSourceService.logger.info("Statement \""
-        + createTableStatement.toString() + "\" " + "& \"" + insertStatement.toString()
+    PostgreSQLRDBConnector.logger.info("Statement \"" + createTableStatement.toString()
         + "\" " + "executed on " + dataSource.getAddress());
 
     return success;
@@ -373,15 +356,15 @@ public class DerbyRDBDataSourceService extends
       throws ConnectionException {
     boolean createdTarget = false;
 
-    if (MySQLRDBDataSourceService.logger.isDebugEnabled()) {
-      MySQLRDBDataSourceService.logger.debug("createTarget '" + target + "' on '"
+    if (PostgreSQLRDBConnector.logger.isDebugEnabled()) {
+      PostgreSQLRDBConnector.logger.debug("createTarget '" + target + "' on '"
           + dataSource.getAddress() + "'.");
     }
 
     // test if target already exists
     try {
-      createdTarget = SIMPLCore.getInstance().dataSourceService().executeStatement(
-          dataSource, "SELECT * FROM " + target);
+      createdTarget = SIMPLCore.getInstance().dataSourceService()
+          .executeStatement(dataSource, "SELECT * FROM " + target);
     } catch (Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -403,7 +386,7 @@ public class DerbyRDBDataSourceService extends
         if (i > 0) {
           createTargetStatement += ",";
         }
-        
+
         createTargetStatement += columns.get(i).getString("name") + " "
             + this.getColumnType(columns.get(i).getString("name"), tableMetaData);
       }
@@ -465,6 +448,12 @@ public class DerbyRDBDataSourceService extends
       if (columnTypeObject.getString("columnName").equals(column)) {
         columnType = columnTypeObject.getString(0);
 
+        // remove length from certain column types because it is not supported by
+        // postgreSQL
+        if (columnType.toLowerCase().contains("int")) {
+          columnType = columnType.replaceAll("\\([0-9]*\\)", "");
+        }
+
         break;
       }
     }
@@ -483,18 +472,17 @@ public class DerbyRDBDataSourceService extends
    */
   private Connection openConnection(String dsAddress, String user, String password)
       throws ConnectionException {
-    if (DerbyRDBDataSourceService.logger.isDebugEnabled()) {
-      DerbyRDBDataSourceService.logger.debug("Connection openConnection(" + dsAddress
+    if (PostgreSQLRDBConnector.logger.isDebugEnabled()) {
+      PostgreSQLRDBConnector.logger.debug("Connection openConnection(" + dsAddress
           + ") executed.");
     }
 
     Connection connect = null;
 
     try {
-      Class.forName("org.apache.derby.jdbc.ClientDriver");
+      Class.forName("org.postgresql.Driver");
       StringBuilder uri = new StringBuilder();
-      // jdbc:derby:sampleDB", "dba", "password");
-      uri.append("jdbc:derby://");
+      uri.append("jdbc:postgresql://");
       uri.append(dsAddress);
 
       try {
@@ -502,17 +490,15 @@ public class DerbyRDBDataSourceService extends
         connect.setAutoCommit(false);
       } catch (SQLException e) {
         // TODO Auto-generated catch block
-        DerbyRDBDataSourceService.logger.fatal(
+        PostgreSQLRDBConnector.logger.fatal(
             "exception during establishing connection to: " + uri.toString(), e);
       }
 
-      DerbyRDBDataSourceService.logger.info("Connection opened on " + dsAddress + ".");
-
+      PostgreSQLRDBConnector.logger.info("Connection opened on " + dsAddress + ".");
       return connect;
     } catch (ClassNotFoundException e) {
       // TODO Auto-generated catch block
-      DerbyRDBDataSourceService.logger.fatal("exception during loading the JDBC driver",
-          e);
+      PostgreSQLRDBConnector.logger.fatal("exception during loading the JDBC driver", e);
     }
 
     return connect;
@@ -523,25 +509,22 @@ public class DerbyRDBDataSourceService extends
    * 
    * @param connection
    * @return
-   * @throws ConnectionException
    */
-  private boolean closeConnection(Connection connection) throws ConnectionException {
+  private boolean closeConnection(Connection connection) {
     boolean success = false;
 
     try {
       (connection).close();
       success = true;
-
-      if (DerbyRDBDataSourceService.logger.isDebugEnabled()) {
-        DerbyRDBDataSourceService.logger
+      if (PostgreSQLRDBConnector.logger.isDebugEnabled()) {
+        PostgreSQLRDBConnector.logger
             .debug("boolean closeConnection() executed successfully.");
       }
-
-      DerbyRDBDataSourceService.logger.info("Connection closed.");
+      PostgreSQLRDBConnector.logger.info("Connection closed.");
     } catch (SQLException e) {
       // TODO Auto-generated catch block
-      if (DerbyRDBDataSourceService.logger.isDebugEnabled()) {
-        DerbyRDBDataSourceService.logger.error(
+      if (PostgreSQLRDBConnector.logger.isDebugEnabled()) {
+        PostgreSQLRDBConnector.logger.error(
             "boolean closeConnection() executed with failures.", e);
       }
     }

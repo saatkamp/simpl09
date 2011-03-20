@@ -1,16 +1,15 @@
-package org.simpl.core.plugins.dataformat.converter;
+package org.simpl.core.plugins.converter;
 
-import org.simpl.core.services.dataformat.DataFormat;
-import org.simpl.core.services.dataformat.DataFormatProvider;
-import org.simpl.core.services.dataformat.converter.DataFormatConverter;
-import org.simpl.core.services.datasource.DataSourceService;
+import org.simpl.core.connector.Connector;
+import org.simpl.core.converter.Converter;
+import org.simpl.core.dataformat.DataFormat;
+import org.simpl.core.dataformat.DataFormatProvider;
 
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b>This abstract class is used to create data format converter plug-ins
- * that can be created for data source services to understand data formats from other data
- * sources.<br>
+ * <b>Purpose:</b>This abstract class is used to create converter plug-ins that are
+ * created for connectors to understand data formats from other data sources.<br>
  * <b>Description:</b>Converts between two SDO data formats.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
@@ -21,7 +20,7 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public abstract class DataFormatConverterPlugin implements DataFormatConverter {
+public abstract class ConverterPlugin implements Converter {
   /**
    * The data format type to convert from.
    */
@@ -70,7 +69,7 @@ public abstract class DataFormatConverterPlugin implements DataFormatConverter {
    */
   @Override
   public DataObject convert(DataObject dataObject,
-      DataSourceService<Object, Object> dataSourceService) {
+      Connector<Object, Object> dataSourceService) {
     DataObject convertedSDO = null;
 
     if (dataObject.getString("dataFormatType").equals(this.getToDataFormat().getType())) {

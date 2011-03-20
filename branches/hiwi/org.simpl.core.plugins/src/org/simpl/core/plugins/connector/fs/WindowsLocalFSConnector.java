@@ -1,4 +1,4 @@
-package org.simpl.core.plugins.datasource.fs;
+package org.simpl.core.plugins.connector.fs;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,9 +10,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.simpl.core.plugins.connector.ConnectorPlugin;
 import org.simpl.core.plugins.dataformat.relational.CSVResult;
-import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
-import org.simpl.core.plugins.datasource.rdb.DB2RDBDataSourceService;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.simpl.resource.management.client.DataSource;
 
@@ -31,8 +30,8 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<File, CSVResult> {
-  static Logger logger = Logger.getLogger(DB2RDBDataSourceService.class);
+public class WindowsLocalFSConnector extends ConnectorPlugin<File, CSVResult> {
+  static Logger logger = Logger.getLogger(WindowsLocalFSConnector.class);
 
   /**
    * Runtime to execute commands on the file system.
@@ -42,7 +41,7 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<Fil
   /**
    * Initialize the plug-in.
    */
-  public WindowsLocalFSDataSourceService() {
+  public WindowsLocalFSConnector() {
     this.setType("Filesystem");
     this.setMetaDataSchemaType("tFilesystemMetaData");
     this.addSubtype("Windows Local");
@@ -61,8 +60,8 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<Fil
   public boolean executeStatement(DataSource dataSource, String statement)
       throws ConnectionException {
 
-    if (WindowsLocalFSDataSourceService.logger.isDebugEnabled()) {
-      WindowsLocalFSDataSourceService.logger.debug("boolean executeStatement("
+    if (WindowsLocalFSConnector.logger.isDebugEnabled()) {
+      WindowsLocalFSConnector.logger.debug("boolean executeStatement("
           + dataSource.getAddress() + ", " + statement + ") executed.");
     }
 
@@ -85,14 +84,15 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<Fil
    * java.lang.String)
    */
   @Override
-  public CSVResult retrieveData(DataSource dataSource, String file) throws ConnectionException {
+  public CSVResult retrieveData(DataSource dataSource, String file)
+      throws ConnectionException {
     CSVResult result = new CSVResult();
-    
-    if (WindowsLocalFSDataSourceService.logger.isDebugEnabled()) {
-      WindowsLocalFSDataSourceService.logger.debug("DataObject retrieveData("
+
+    if (WindowsLocalFSConnector.logger.isDebugEnabled()) {
+      WindowsLocalFSConnector.logger.debug("DataObject retrieveData("
           + dataSource.getAddress() + ", " + file + ") executed.");
     }
-    
+
     result.setDataSource(dataSource);
     result.setFile(new File(file));
 
@@ -106,9 +106,9 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<Fil
    */
   @Override
   public boolean writeBack(DataSource dataSource, File file) throws ConnectionException {
-    if (WindowsLocalFSDataSourceService.logger.isDebugEnabled()) {
-      WindowsLocalFSDataSourceService.logger.debug("boolean writeBack("
-          + dataSource.getAddress() + ", " + file + ") executed.");
+    if (WindowsLocalFSConnector.logger.isDebugEnabled()) {
+      WindowsLocalFSConnector.logger.debug("boolean writeBack(" + dataSource.getAddress()
+          + ", " + file + ") executed.");
     }
 
     return file.exists();
@@ -126,10 +126,9 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<Fil
     File targetFile = null;
     String dir = null;
 
-    if (WindowsLocalFSDataSourceService.logger.isDebugEnabled()) {
-      WindowsLocalFSDataSourceService.logger.debug("boolean writeData("
-          + dataSource.getAddress() + ", " + dataFile.getName() + ", " + target
-          + ") executed.");
+    if (WindowsLocalFSConnector.logger.isDebugEnabled()) {
+      WindowsLocalFSConnector.logger.debug("boolean writeData(" + dataSource.getAddress()
+          + ", " + dataFile.getName() + ", " + target + ") executed.");
     }
 
     if (!dataSource.getAddress().equals("")) {
@@ -152,8 +151,8 @@ public class WindowsLocalFSDataSourceService extends DataSourceServicePlugin<Fil
       throws ConnectionException {
     String[] envp = new String[] { "cmd", "/c", "start", "copy" };
 
-    if (WindowsLocalFSDataSourceService.logger.isDebugEnabled()) {
-      WindowsLocalFSDataSourceService.logger.debug("DataObject depositData("
+    if (WindowsLocalFSConnector.logger.isDebugEnabled()) {
+      WindowsLocalFSConnector.logger.debug("DataObject depositData("
           + dataSource.getAddress() + ", " + file + "," + targetFile + ") executed.");
     }
 

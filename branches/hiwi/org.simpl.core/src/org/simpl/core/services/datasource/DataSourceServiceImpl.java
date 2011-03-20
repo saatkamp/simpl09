@@ -3,9 +3,11 @@ package org.simpl.core.services.datasource;
 import java.io.InputStream;
 import java.util.List;
 
-import org.simpl.core.plugins.datasource.DataSourceServicePlugin;
-import org.simpl.core.services.dataformat.DataFormatProvider;
-import org.simpl.core.services.dataformat.converter.DataFormatConverterProvider;
+import org.simpl.core.connector.Connector;
+import org.simpl.core.connector.ConnectorProvider;
+import org.simpl.core.converter.ConverterProvider;
+import org.simpl.core.dataformat.DataFormatProvider;
+import org.simpl.core.plugins.connector.ConnectorPlugin;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.simpl.core.services.discovery.DiscoveryService;
 import org.simpl.core.services.discovery.DiscoveryServiceImpl;
@@ -14,12 +16,12 @@ import org.simpl.resource.management.client.DataSource;
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b>Implementation of a common data source service that unites all data
- * source service plug-ins.<br>
- * <b>Description:</b>Receives all requests to data source services and forward them to one of the
- * data source service instances that are provided by data source service plugins.<br>
- * The given data on write back is tested to match the given data source's data format and
- * if necessary converts the data with a data format converter.<br>
+ * <b>Purpose:</b>Implementation of a common data source service that unites all connector
+ * plug-ins.<br>
+ * <b>Description:</b>Receives all connector requests and forwards them to the connector
+ * instances that are provided by the connector plug-ins.<br>
+ * The given data on write back is tested to match the given connector's data format and
+ * if necessary converts the data with an appropriate converter.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
@@ -29,9 +31,9 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class DataSourceServiceImpl implements DataSourceService<DataObject, DataObject> {
+public class DataSourceServiceImpl implements Connector<DataObject, DataObject> {
   DiscoveryService discoveryService = new DiscoveryServiceImpl();
-  
+
   /*
    * (non-Javadoc)
    * @see
@@ -42,11 +44,11 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   public synchronized boolean depositData(DataSource dataSource, String statement,
       String target) throws ConnectionException {
     boolean success = false;
-    DataSourceService<Object, Object> dataSourceService;
-    
+    Connector<Object, Object> dataSourceService;
+
     try {
       if (this.isDataSourceComplete(dataSource)) {
-        dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+        dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
         success = dataSourceService.depositData(dataSource, statement, target);
@@ -65,16 +67,17 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * .services.datasource.DataSource, java.lang.String)
    */
   @Override
-  public synchronized boolean executeStatement(DataSource dataSource, String statement) throws ConnectionException {
+  public synchronized boolean executeStatement(DataSource dataSource, String statement)
+      throws ConnectionException {
     boolean success = false;
 
-    DataSourceService<Object, Object> dataSourceService = null;
+    Connector<Object, Object> dataSourceService = null;
 
     try {
       // execute statement
       if (this.isDataSourceComplete(dataSource)) {
         // get data source service instance
-        dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+        dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
         // execute statement
@@ -98,13 +101,13 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       throws ConnectionException {
     DataObject retrievedData = null;
     Object data = null;
-    DataSourceService<Object, Object> dataSourceService = null;
+    Connector<Object, Object> dataSourceService = null;
 
     try {
       // retrieve data
       if (this.isDataSourceComplete(dataSource)) {
         // get data source service instance
-        dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+        dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
         // retrieve data
@@ -135,13 +138,13 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       throws ConnectionException {
     boolean success = false;
 
-    DataSourceService<Object, Object> dataSourceService = null;
+    Connector<Object, Object> dataSourceService = null;
     Object writeData = null;
 
     try {
       if (this.isDataSourceComplete(dataSource)) {
         // get data source service instance
-        dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+        dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
         writeData = DataFormatProvider.getInstance(
@@ -170,13 +173,13 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       String target) throws ConnectionException {
     boolean success = false;
 
-    DataSourceService<Object, Object> dataSourceService = null;
+    Connector<Object, Object> dataSourceService = null;
     Object writeData = null;
 
     try {
       if (this.isDataSourceComplete(dataSource)) {
         // get data source service instance
-        dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+        dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
         // format data
@@ -204,12 +207,12 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   public DataObject getMetaData(DataSource dataSource, String filter)
       throws ConnectionException {
     DataObject data = null;
-    DataSourceService<Object, Object> dataSourceService;
+    Connector<Object, Object> dataSourceService;
 
     try {
       if (this.isDataSourceComplete(dataSource)) {
         // get data source service instance
-        dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+        dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
         // get meta data
@@ -232,11 +235,11 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
   public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
       throws ConnectionException {
     boolean success = false;
-    DataSourceService<Object, Object> dataSourceService = null;
+    Connector<Object, Object> dataSourceService = null;
 
     try {
       // get data source service instance
-      dataSourceService = DataSourceServiceProvider.getInstance(dataSource.getType(),
+      dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
       // create target
@@ -256,9 +259,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    */
   @SuppressWarnings({ "rawtypes" })
   public InputStream getMetaDataSchemaFile(DataSource dataSource) {
-    InputStream inputStream = ((DataSourceServicePlugin) DataSourceServiceProvider
-        .getInstance(dataSource.getType(), dataSource.getSubType()))
-        .getMetaDataSchemaFile();
+    InputStream inputStream = ((ConnectorPlugin) ConnectorProvider.getInstance(
+        dataSource.getType(), dataSource.getSubType())).getMetaDataSchemaFile();
 
     return inputStream;
   }
@@ -280,7 +282,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * @throws ConnectionException
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  private Object formatWriteDataAndCreateTarget(DataSourceService dataSourceService,
+  private Object formatWriteDataAndCreateTarget(Connector dataSourceService,
       DataObject data, DataSource dataSource, String target) throws ConnectionException {
     Object writeData = null;
 
@@ -296,7 +298,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
       // turn the SDO to the data type of the data source
       writeData = DataFormatProvider.getInstance(dataFormatType).fromSDO(data);
     } else {
-      supportedConvertDataFormatTypes = DataFormatConverterProvider
+      supportedConvertDataFormatTypes = ConverterProvider
           .getSupportedConvertDataFormatTypes(dataSourceService, dataFormatType);
 
       // cycle through the types that the data format can be converted to
@@ -305,7 +307,7 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
         if (DataFormatProvider.getSupportedDataFormatTypes(dataSourceService).contains(
             supportedConvertDataFormatType)) {
           // convert from the given data format to the supported data format
-          convertedData = DataFormatConverterProvider.getInstance(dataFormatType,
+          convertedData = ConverterProvider.getInstance(dataFormatType,
               supportedConvertDataFormatType).convert(data, dataSourceService);
 
           // turn the converted SDO to the data type of the data source
@@ -344,8 +346,8 @@ public class DataSourceServiceImpl implements DataSourceService<DataObject, Data
    * @return
    */
   @SuppressWarnings({ "rawtypes" })
-  private DataObject formatRetrievedData(DataSourceService dataSourceService,
-      Object data, String dataFormatType) {
+  private DataObject formatRetrievedData(Connector dataSourceService, Object data,
+      String dataFormatType) {
     DataObject retrieveDataSDO = null;
     List<String> supportedDataFormatTypes = null;
 

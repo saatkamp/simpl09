@@ -8,7 +8,7 @@ import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.apache.ode.simpl.ea.util.StatementUtils;
 import org.simpl.core.SIMPLCore;
-import org.simpl.core.services.datasource.DataSourceService;
+import org.simpl.core.connector.Connector;
 import org.simpl.resource.management.client.DataSource;
 import org.w3c.dom.Element;
 
@@ -64,7 +64,7 @@ public class TransferDataActivity extends DataManagementActivity {
 		DataSource dsFrom = getDataSource(getActivityName(), getDsAddress());
 		DataSource dsTo = getDataSource(getActivityName(), targetDsAddress);
 		
-		DataSourceService<DataObject, DataObject> datasourceService = SIMPLCore
+		Connector<DataObject, DataObject> datasourceService = SIMPLCore
 				.getInstance().dataSourceService();
 
 		try {

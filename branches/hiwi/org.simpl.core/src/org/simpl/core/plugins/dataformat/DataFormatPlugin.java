@@ -3,7 +3,7 @@ package org.simpl.core.plugins.dataformat;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.simpl.core.services.dataformat.DataFormat;
+import org.simpl.core.dataformat.DataFormat;
 
 import commonj.sdo.DataObject;
 import commonj.sdo.helper.DataFactory;
@@ -11,15 +11,16 @@ import commonj.sdo.helper.XSDHelper;
 
 /**
  * <b>Purpose:</b>This abstract class is used to create data format plug-ins for the SIMPL
- * Core, that can be used by data source plug-ins to work with a defined data format.<br>
- * <b>Description:</b>A data format plug-in is used to map outgoing data of a format to a
- * Service Data Object (SDO) and to transform incoming data as SDO back to the format.<br>
+ * Core, that are be used by connectors to work with a defined data format.<br>
+ * <b>Description:</b>A data format plug-in is used to convert an outgoing data type to a
+ * Service Data Object (SDO) and to transform an incoming SDO back to an incoming data
+ * type.<br>
  * It has a type for identification and needs a XML schema that defines the data format
- * structure, that is used to create a SDO based on a root schema element type. Type,
+ * structure that is used to create a SDO based on a root schema element type. Type,
  * schema file and schema element type must be set in the plugin's constructor. <br>
- * The root schema type must have an attribute called <b>type</b>, that is set
- * automatically, for other services being able to recognize the underlying format of a
- * passed SDO.<br>
+ * The root schema type must have an attribute called <b>type</b> that is set
+ * automatically for other services being able to recognize the underlying data format of
+ * a passed SDO.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>

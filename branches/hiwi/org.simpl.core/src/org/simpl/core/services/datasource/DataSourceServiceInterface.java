@@ -12,8 +12,8 @@ import org.simpl.resource.management.client.LateBinding;
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b>Interface to access the common data source service implementation,
- * providing late binding of data sources and the resolution of logical data source
+ * <b>Purpose:</b>Interface to access the common data source service implementation and
+ * provides late binding of data sources and the resolution of logical data source
  * descriptors (LDSD).<br>
  * <b>Description:</b> If the given data source is not fully specified and late binding
  * information is given, the discovery service is consulted to find a matching full
@@ -23,7 +23,8 @@ import commonj.sdo.DataObject;
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id$<br>
+ * @version $Id: DataSourceServiceInterface.java 1780 2011-03-19 16:38:36Z
+ *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class DataSourceServiceInterface {

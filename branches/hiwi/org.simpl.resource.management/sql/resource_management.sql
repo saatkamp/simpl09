@@ -341,7 +341,7 @@ VALUES
 INSERT INTO connectors
 (id, name, implementation, properties_description, converter_dataformat_id)
 VALUES
-(1, 'DB2RDBDataSourceService', 'org.simpl.core.plugins.datasource.rdb.DB2RDBDataSourceService', '<?xml version="1.0" encoding="UTF-8"?>
+(1, 'DB2RDBConnector', 'org.simpl.core.plugins.connector.rdb.DB2RDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
 <properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Database</type>
   <subType>DB2</subType>
@@ -352,7 +352,7 @@ VALUES
 INSERT INTO connectors
 (id, name, implementation, properties_description, converter_dataformat_id)
 VALUES
-(2, 'DerbyRDBDataSourceService', 'org.simpl.core.plugins.datasource.rdb.DerbyRDBDataSourceService', '<?xml version="1.0" encoding="UTF-8"?>
+(2, 'DerbyRDBConnector', 'org.simpl.core.plugins.connector.rdb.DerbyRDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
 <properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Database</type>
   <subType>Derby</subType>
@@ -363,7 +363,7 @@ VALUES
 INSERT INTO connectors
 (id, name, implementation, properties_description, converter_dataformat_id)
 VALUES
-(3, 'EmbDerbyRDBDataSourceService', 'org.simpl.core.plugins.datasource.rdb.EmbDerbyRDBDataSourceService', '<?xml version="1.0" encoding="UTF-8"?>
+(3, 'EmbDerbyRDBConnector', 'org.simpl.core.plugins.connector.rdb.EmbDerbyRDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
 <properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Database</type>
   <subType>EmbeddedDerby</subType>
@@ -374,7 +374,7 @@ VALUES
 INSERT INTO connectors
 (id, name, implementation, properties_description, converter_dataformat_id)
 VALUES
-(4, 'MySQLRDBDataSourceService', 'org.simpl.core.plugins.datasource.rdb.MySQLRDBDataSourceService', '<?xml version="1.0" encoding="UTF-8"?>
+(4, 'MySQLRDBConnector', 'org.simpl.core.plugins.connector.rdb.MySQLRDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
 <properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Database</type>
   <subType>MySQL</subType>
@@ -385,7 +385,7 @@ VALUES
 INSERT INTO connectors
 (id, name, implementation, properties_description, converter_dataformat_id)
 VALUES
-(5, 'PostgreSQLRDBDataSourceService', 'org.simpl.core.plugins.datasource.rdb.PostgreSQLRDBDataSourceService', '<?xml version="1.0" encoding="UTF-8"?>
+(5, 'PostgreSQLRDBConnector', 'org.simpl.core.plugins.connector.rdb.PostgreSQLRDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
 <properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Database</type>
   <subType>PostgreSQL</subType>
@@ -396,7 +396,7 @@ VALUES
 INSERT INTO connectors
 (id, name, implementation, properties_description, converter_dataformat_id)
 VALUES
-(6, 'WindowsLocalFSDataSourceService', 'org.simpl.core.plugins.datasource.fs.WindowsLocalFSDataSourceService', '<?xml version="1.0" encoding="UTF-8"?>
+(6, 'WindowsLocalFSConnector', 'org.simpl.core.plugins.connector.fs.WindowsLocalFSConnector', '<?xml version="1.0" encoding="UTF-8"?>
 <properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Filesystem</type>
   <subType>Windows Local</subType>
@@ -407,7 +407,7 @@ VALUES
 INSERT INTO converters
 (id, name, implementation, connector_dataformat_id, workflow_dataformat_id)
 VALUES
-(1, 'CSVtoRDBDataFormatConverter', 'org.simpl.core.plugins.dataformat.converter.CSVtoRDBDataFormatConverter', 1, 2);
+(1, 'CSVtoRDBConverter', 'org.simpl.core.plugins.converter.CSVtoRDBConverter', 1, 2);
 
 INSERT INTO datasources
 (
