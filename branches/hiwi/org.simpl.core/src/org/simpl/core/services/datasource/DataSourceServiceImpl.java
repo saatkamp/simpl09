@@ -101,22 +101,22 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
       throws ConnectionException {
     DataObject retrievedData = null;
     Object data = null;
-    Connector<Object, Object> dataSourceService = null;
+    Connector<Object, Object> connector = null;
 
     try {
       // retrieve data
       if (this.isDataSourceComplete(dataSource)) {
         // get data source service instance
-        dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
+        connector = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
         // retrieve data
-        data = dataSourceService.retrieveData(dataSource, statement);
+        data = connector.retrieveData(dataSource, statement);
       }
 
       // format data to SDO
       if (data != null) {
-        retrievedData = formatRetrievedData(dataSourceService, data, dataSource
+        retrievedData = formatRetrievedData(connector, data, dataSource
             .getConnector().getConverterDataFormat().getName());
       }
     } catch (Exception e) {
@@ -274,7 +274,7 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
    * data format is not supported. Also creates a target on the data source to be able to
    * write the data.
    * 
-   * @param dataSourceService
+   * @param connector
    * @param data
    * @param dataSource
    * @param target
@@ -282,7 +282,7 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
    * @throws ConnectionException
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  private Object formatWriteDataAndCreateTarget(Connector dataSourceService,
+  private Object formatWriteDataAndCreateTarget(Connector connector,
       DataObject data, DataSource dataSource, String target) throws ConnectionException {
     Object writeData = null;
 
@@ -290,7 +290,7 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
     DataObject convertedData = null;
     String dataFormatType = data.getString("dataFormatType");
     List<String> supportedDataFormatTypes = DataFormatProvider
-        .getSupportedDataFormatTypes(dataSourceService);
+        .getSupportedDataFormatTypes(connector);
     List<String> supportedConvertDataFormatTypes = null;
 
     // check if data format type is supported by the data source service
@@ -299,16 +299,16 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
       writeData = DataFormatProvider.getInstance(dataFormatType).fromSDO(data);
     } else {
       supportedConvertDataFormatTypes = ConverterProvider
-          .getSupportedConvertDataFormatTypes(dataSourceService, dataFormatType);
+          .getSupportedConvertDataFormatTypes(connector, dataFormatType);
 
       // cycle through the types that the data format can be converted to
       for (String supportedConvertDataFormatType : supportedConvertDataFormatTypes) {
         // check if one of the types is supported by the data source service
-        if (DataFormatProvider.getSupportedDataFormatTypes(dataSourceService).contains(
+        if (DataFormatProvider.getSupportedDataFormatTypes(connector).contains(
             supportedConvertDataFormatType)) {
           // convert from the given data format to the supported data format
           convertedData = ConverterProvider.getInstance(dataFormatType,
-              supportedConvertDataFormatType).convert(data, dataSourceService);
+              supportedConvertDataFormatType).convert(data, connector);
 
           // turn the converted SDO to the data type of the data source
           writeData = DataFormatProvider.getInstance(supportedConvertDataFormatType)
@@ -322,9 +322,9 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
     // create target
     if (writeData != null) {
       if (convertedData != null) {
-        createdTarget = dataSourceService.createTarget(dataSource, convertedData, target);
+        createdTarget = connector.createTarget(dataSource, convertedData, target);
       } else {
-        createdTarget = dataSourceService.createTarget(dataSource, data, target);
+        createdTarget = connector.createTarget(dataSource, data, target);
       }
 
       // write data
@@ -340,19 +340,19 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
    * Turns the retrieved data into SDO using a data format that is supported by the data
    * source service.
    * 
-   * @param dataSourceService
+   * @param connector
    * @param data
-   * @param dataormatType
+   * @param dataFormatType
    * @return
    */
   @SuppressWarnings({ "rawtypes" })
-  private DataObject formatRetrievedData(Connector dataSourceService, Object data,
+  private DataObject formatRetrievedData(Connector connector, Object data,
       String dataFormatType) {
     DataObject retrieveDataSDO = null;
     List<String> supportedDataFormatTypes = null;
 
     supportedDataFormatTypes = DataFormatProvider
-        .getSupportedDataFormatTypes(dataSourceService);
+        .getSupportedDataFormatTypes(connector);
 
     for (String supportedDataFormatType : supportedDataFormatTypes) {
       if (supportedDataFormatType.equals(dataFormatType)) {

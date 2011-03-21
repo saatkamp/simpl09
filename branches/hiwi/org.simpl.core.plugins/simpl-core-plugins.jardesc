@@ -11,13 +11,11 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.datasource.fs"/>
-        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataformat.converter"/>
-        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.connector.fs"/>
         <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.connector.rdb"/>
         <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.converter"/>
         <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;au.com.bytecode.opencsv"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataformat.file"/>
         <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataformat.relational"/>
-        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.datasource.rdb"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.connector.fs"/>
     </selectedElements>
 </jardesc>

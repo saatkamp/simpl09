@@ -338,6 +338,29 @@ VALUES
     </xsd:complexType>
 </xsd:schema>');
 
+INSERT INTO dataformats
+(id, name, implementation, xml_schema)
+VALUES
+(3, 'RandomFileDataFormat', 'org.simpl.core.plugins.dataformat.file.RandomFileDataFormat', '<?xml version="1.0" standalone="yes"?>
+<xsd:schema targetNamespace="http://org.simpl.core/plugins/dataformat/file/RandomFileDataFormat" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://org.simpl.core/plugins/dataformat/file/RandomFileDataFormat" xmlns:Q1="http://org.simpl.core/services/datasource/metadata/DataSourceMetaData">
+    <xsd:annotation>
+      <xsd:documentation></xsd:documentation></xsd:annotation>
+    <xsd:complexType name="tRandomFileDataFormat">
+      <xsd:sequence>
+        <xsd:element name="file" type="tFile" maxOccurs="unbounded"
+          minOccurs="0">
+        </xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="dataFormatType" type="xsd:string"></xsd:attribute>
+        <xsd:attribute name="folder" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+    <xsd:element name="RandomFileDataFormat" type="tRandomFileDataFormat"></xsd:element>
+    <xsd:complexType name="tFile">
+      <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+      <xsd:attribute name="content" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+</xsd:schema>');
+
 INSERT INTO connectors
 (id, name, implementation, properties_description, converter_dataformat_id)
 VALUES
@@ -401,13 +424,19 @@ VALUES
   <type>Filesystem</type>
   <subType>Windows Local</subType>
   <language>Shell</language>
-  <dataFormatName>CSVDataFormat</dataFormatName>
-</properties_description>', 2);
+  <dataFormatName>RandomFileDataFormat</dataFormatName>
+</properties_description>', 3);
 
 INSERT INTO converters
 (id, name, implementation, connector_dataformat_id, workflow_dataformat_id)
 VALUES
 (1, 'CSVtoRDBConverter', 'org.simpl.core.plugins.converter.CSVtoRDBConverter', 1, 2);
+
+INSERT INTO converters
+(id, name, implementation, connector_dataformat_id, workflow_dataformat_id)
+VALUES
+(2, 'RandomFiletoRDBDataFormatConverter', 'org.simpl.core.plugins.converter.RandomFiletoRDBDataFormatConverter', 3, 1);
+
 
 INSERT INTO datasources
 (
@@ -425,7 +454,7 @@ VALUES
   , ''
   , 'C:\\'
   , NULL
-  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Filesystem</type><subType>Windows Local</subType><language>Shell</language><dataFormatName>CSVDataFormat</dataFormatName></connector_properties_description>'
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Filesystem</type><subType>Windows Local</subType><language>Shell</language><dataFormatName>RandomFileDataFormat</dataFormatName></connector_properties_description>'
 );
 
 INSERT INTO datasources
