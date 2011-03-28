@@ -896,7 +896,6 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 	}
 
 	private void findAndSetVariable(String text) {
-
 		text = text.trim();
 		EObject model = getInput();
 
@@ -931,8 +930,8 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 	private void updateInputVariableWidgets() {
 		Variable inputVar = activity.getDataVariable();
 
-		if (inputVar != null) {
-			inputVariableText.setText(inputVar.getName());
+		if (inputVar != null && inputVariableText != null) {
+		  inputVariableText.setText(inputVar.getName());
 
 			// Figure out the type of the variable XSDTypeDefinition.
 			fInputVariableFilter.clear();
@@ -941,7 +940,11 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 				fInputVariableFilter.setType((XSDTypeDefinition) type);
 			}
 		} else {
-			inputVariableText.setText(EMPTY_STRING);
+		  if (inputVariableText != null) {
+		    inputVariableText.setText(EMPTY_STRING);
+		  }
+		  
+		  fInputVariableFilter.clear();
 		}
 	}
 }
