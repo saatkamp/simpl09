@@ -16,11 +16,10 @@ import org.simpl.resource.management.client.DataSource;
  * 
  */
 public class DeploymentInfos {
-
 	static Logger logger = Logger.getLogger(DeploymentInfos.class);
-
+	
 	/**
-	 * Queries the data source of a activity from a data source registry and/or
+	 * Returns the data source of an activity from resource management and/or
 	 * the deployment descriptor.
 	 * 
 	 * @param activityName of the activity.
@@ -37,24 +36,7 @@ public class DeploymentInfos {
 					dataSourceName);
 		} else {
 			// Query the data source from the deployment-descriptor
-
-			// If we have a activity-policy mapping, we have a
-			// late binding data source with policy.
-			// If no such mapping exists, we use the logical name
-			// which is specified in the activity address field
-			if (DeploymentUtils.getInstance().getDataSourceOfActivity(
-					activityName) != null) {
-				data = DeploymentUtils.getInstance().getDataSourceOfActivity(
-						activityName);
-				DataSource backupDs = DeploymentUtils.getInstance()
-						.getDataSourceByName(dataSourceName);
-				if (backupDs != null) {
-					data = DeploymentUtils.getInstance().merge(data, backupDs);
-				}
-			} else {
-				data = DeploymentUtils.getInstance().getDataSourceByName(
-						dataSourceName);
-			}
+      data = DeploymentUtils.getInstance().getDataSourceByName(dataSourceName);      
 		}
 
 		if (logger.isDebugEnabled()) {

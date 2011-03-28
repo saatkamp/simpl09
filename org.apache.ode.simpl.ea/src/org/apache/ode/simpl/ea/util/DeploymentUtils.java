@@ -20,12 +20,10 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
+import org.simpl.core.SIMPLResourceManagement;
 import org.simpl.resource.management.client.Authentication;
 import org.simpl.resource.management.client.DataSource;
-import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.LateBinding;
-import org.simpl.resource.management.client.ResourceManagement;
-import org.simpl.resource.management.client.ResourceManagementService;
 import org.simpl.resource.management.client.Strategy;
 
 /**
@@ -74,7 +72,7 @@ public class DeploymentUtils {
   /**
    * This list holds all data source information of the deployment descriptor.
    */
-  private List<DataSource> dataSourceElements = new ArrayList<DataSource>();
+  private List<DataSource> ddDataSources = new ArrayList<DataSource>();
 
   /**
    * This map holds all yet queried data sources and their names (with "rm:" prefix) of
@@ -126,7 +124,7 @@ public class DeploymentUtils {
    * @param processName
    */
   private void reInit(String deployDir, String processName) {
-    dataSourceElements.clear();
+    ddDataSources.clear();
     activityMappings.clear();
 
     init(deployDir, processName);
@@ -141,64 +139,6 @@ public class DeploymentUtils {
   }
 
   /**
-   * Queries a data source from the resource management just on demand. That means that the
-   * data source is queried just before it is used from the activity. So we will save a
-   * lot of time and performance.
-   */
-  public DataSource getResourceManagementDataSourceByName(String dataSourceName) {
-    DataSource resultDataSource = null;
-
-    if (rmDataSourceElements.containsKey(dataSourceName)) {
-
-      resultDataSource = rmDataSourceElements.get(dataSourceName);
-
-    } else {
-      String nameWOprefix = dataSourceName.split(":")[1];
-
-      ResourceManagement resourceManagement = new ResourceManagementService()
-          .getResourceManagementPort();
-
-      try {
-        resultDataSource = this.convertWebServiceClientDataSource(resourceManagement
-            .getDataSourceByName(nameWOprefix));
-        resultDataSource.setName(dataSourceName); // set name with prefix
-      } catch (Exception_Exception e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-
-      // Add the queried data source to the map
-      rmDataSourceElements.put(dataSourceName, resultDataSource);
-
-      if (logger.isDebugEnabled()) {
-        logger.debug("Name of ds: " + resultDataSource.getName());
-      }
-      if (logger.isDebugEnabled()) {
-        logger.debug("Address of ds: " + resultDataSource.getAddress());
-      }
-      if (logger.isDebugEnabled()) {
-        logger.debug("Type of ds: " + resultDataSource.getType());
-      }
-      if (logger.isDebugEnabled()) {
-        logger.debug("Subtype of ds: " + resultDataSource.getSubType());
-      }
-      if (logger.isDebugEnabled()) {
-        logger.debug("UserName of ds: " + resultDataSource.getAuthentication().getUser());
-      }
-      if (logger.isDebugEnabled()) {
-        logger.debug("Password of ds: "
-            + resultDataSource.getAuthentication().getPassword());
-      }
-      if (logger.isDebugEnabled()) {
-        logger.debug("Format of ds: " + resultDataSource.getConnector().getConverterDataFormat().getName());
-
-      }
-    }
-
-    return resultDataSource;
-  }
-
-  /**
    * Read the deployment descriptor at the given path and fill all maps with the
    * corresponding data.
    * 
@@ -208,31 +148,31 @@ public class DeploymentUtils {
   @SuppressWarnings({ "rawtypes" })
   private void readDeploymentDescriptor(String path, String process) {
     File deploy = new File(path);
-
+  
     if (logger.isDebugEnabled()) {
       logger.debug("Path to the DD: " + path);
     }
-
+  
     if (deploy.exists()) {
       SAXBuilder builder = new SAXBuilder();
       Document doc;
       try {
         InputStream inputStream = new FileInputStream(deploy);
-
+  
         doc = builder.build(inputStream);
-
+  
         Element root = doc.getRootElement();
-
+  
         List processes = root.getChildren(EL_PROCESS, DD_NAMESPACE);
-
+  
         for (Object processObj : processes) {
           Element processElement = (Element) processObj;
           if (processElement.getAttributeValue(AT_NAME).contains(process)) {
-
+  
             // TODO: Read the attached Resource Management address
             //PROCESS_RM_ADDRESS = ((Element) processElement)
             //    .getAttributeValue(AT_ATTACHED_RM_ADDRESS);
-
+  
             // Read the auditing mode to set to the SIMPL Event Listener
             if (((Element) processElement).getChild(EL_AUDITING_MODE, DD_NAMESPACE) != null) {
               AUDITING_MODE = Boolean.valueOf(((Element) processElement).getChild(
@@ -240,7 +180,7 @@ public class DeploymentUtils {
             } else {
               AUDITING_MODE = false;
             }
-
+  
             List datasourceElements = processElement.getChildren(EL_DATASOURCE,
                 DD_NAMESPACE);
             for (Object data : datasourceElements) {
@@ -275,7 +215,7 @@ public class DeploymentUtils {
               if (logger.isDebugEnabled()) {
                 logger.debug("Format of ds: " + format);
               }
-
+  
               DataSource dataSource = new DataSource();
               
               dataSource.setName(name);
@@ -288,9 +228,9 @@ public class DeploymentUtils {
               dataSource.setAuthentication(auth);
               dataSource.getConnector().getConverterDataFormat().setName(format);
               
-              dataSourceElements.add(dataSource);
+              ddDataSources.add(dataSource);
             }
-
+  
             List mappingElements = processElement.getChildren(EL_MAPPING, DD_NAMESPACE);
             for (Object map : mappingElements) {
               // Now we query all the required late binding
@@ -302,26 +242,24 @@ public class DeploymentUtils {
               if (!strat.isEmpty()) {
                 strategy = Strategy.valueOf(strat);
               }
-
+  
               Element policy = ((Element) map).getChild(EL_POLICY, DD_NAMESPACE);
               String policyData = ((Element) policy)
                   .getAttributeValue(AT_MAPPING_POLICY_DATA);
-
+  
               if (logger.isDebugEnabled()) {
                 logger.debug("Policy of ds: " + policyData);
               }
-
-              DataSource newDs = new DataSource();
+  
               LateBinding lateBinding = new LateBinding();
               lateBinding.setPolicy(policyData);
               lateBinding.setStrategy(strategy);
               
-              activityMappings.put(activity, newDs);
               lateBindingMappings.put(activity, lateBinding);
             }
           }
         }
-
+  
       } catch (JDOMException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
@@ -336,23 +274,66 @@ public class DeploymentUtils {
   }
 
   /**
-   * Returns the DataSource which is mapped to the given activity name.
+   * Queries a data source from the resource management just on demand. That means that the
+   * data source is queried just before it is used from the activity. So we will save a
+   * lot of time and performance.
+   */
+  public DataSource getResourceManagementDataSourceByName(String dataSourceName) {
+    DataSource resultDataSource = null;
+
+    if (rmDataSourceElements.containsKey(dataSourceName)) {
+      resultDataSource = rmDataSourceElements.get(dataSourceName);
+    } else {
+      String nameWOprefix = dataSourceName.split(":")[1];
+
+      resultDataSource = SIMPLResourceManagement.getInstance().getDataSourceByName(nameWOprefix);
+      resultDataSource.setName(dataSourceName); // set name with prefix
+
+      // Add the queried data source to the map
+      rmDataSourceElements.put(dataSourceName, resultDataSource);
+
+      if (logger.isDebugEnabled()) {
+        logger.debug("Name of ds: " + resultDataSource.getName());
+      }
+      if (logger.isDebugEnabled()) {
+        logger.debug("Address of ds: " + resultDataSource.getAddress());
+      }
+      if (logger.isDebugEnabled()) {
+        logger.debug("Type of ds: " + resultDataSource.getType());
+      }
+      if (logger.isDebugEnabled()) {
+        logger.debug("Subtype of ds: " + resultDataSource.getSubType());
+      }
+      if (logger.isDebugEnabled()) {
+        logger.debug("UserName of ds: " + resultDataSource.getAuthentication().getUser());
+      }
+      if (logger.isDebugEnabled()) {
+        logger.debug("Password of ds: "
+            + resultDataSource.getAuthentication().getPassword());
+      }
+      if (logger.isDebugEnabled()) {
+        logger.debug("Format of ds: " + resultDataSource.getConnector().getConverterDataFormat().getName());
+
+      }
+    }
+
+    return resultDataSource;
+  }
+
+  /**
+   * Returns the late binding information of an activity.
    * 
    * @param activityName
    * @return
    */
-  public DataSource getDataSourceOfActivity(String activityName) {
-    DataSource data = null;
-
-    data = this.activityMappings.get(activityName);
-
-    return data;
+  public LateBinding getLateBindingOfActivity(String activityName) {
+    return lateBindingMappings.get(activityName);
   }
 
   public DataSource getDataSourceByName(String name) {
     boolean found = false;
 
-    Iterator<DataSource> iterator = this.dataSourceElements.iterator();
+    Iterator<DataSource> iterator = this.ddDataSources.iterator();
     DataSource data = null;
 
     while (!found && iterator.hasNext()) {
@@ -365,64 +346,5 @@ public class DeploymentUtils {
     }
 
     return data;
-  }
-
-  /**
-   * This method merges a late binding data source and a static data source. A late
-   * binding data source has only a policy and a strategy. The static data source has a
-   * name, address, type, subtype, language and authentication information for a static
-   * binding of the data source.
-   * 
-   * @param lateBindingDs
-   * @param staticDs
-   * @return
-   */
-  public DataSource merge(DataSource lateBindingDs, DataSource staticDs) {
-    DataSource result = new DataSource();
-
-    result.setName(staticDs.getName());
-    result.setAddress(staticDs.getAddress());
-    result.setType(staticDs.getType());
-    result.setSubType(staticDs.getSubType());
-    result.getConnector().getConverterDataFormat().setName(staticDs.getConnector().getConverterDataFormat().getName());
-    result.setAuthentication(staticDs.getAuthentication());
-    // TODO: LateBinding
-    //result.setLateBinding(lateBindingDs.getLateBinding());
-
-    return result;
-  }
-
-  /**
-   * Converts a data source object received from the simpl core web service client to a
-   * simpl core data source object.
-   * 
-   * @param dataSource
-   * @return
-   */
-  public DataSource convertWebServiceClientDataSource(DataSource dataSource) {
-    DataSource convertedDataSource = new DataSource();
-
-    convertedDataSource.setAddress(dataSource.getAddress());
-    convertedDataSource.getConnector().getConverterDataFormat().setName(dataSource.getConnector().getConverterDataFormat().getName());
-    convertedDataSource.setLanguage(dataSource.getLanguage());
-    convertedDataSource.setType(dataSource.getType());
-    convertedDataSource.setSubType(dataSource.getSubType());
-    convertedDataSource.getAuthentication().setUser(
-        dataSource.getAuthentication().getUser());
-    convertedDataSource.getAuthentication().setPassword(
-        dataSource.getAuthentication().getPassword());
-// TODO: LateBinding
-//    convertedDataSource.getLateBinding().setPolicy(
-//        dataSource.getLateBinding().getPolicy());
-//    convertedDataSource.getLateBinding().setResourceManagementAddress(
-//        dataSource.getLateBinding().getResourceManagementAddress());
-//
-//    if (dataSource.getLateBinding().getStrategy() != null
-//        && dataSource.getLateBinding().getStrategy()
-//            .equals(org.simpl.core.webservices.client.Strategy.FIRST_FIND)) {
-//      convertedDataSource.getLateBinding().setStrategy(Strategy.FIRST_FIND);
-//    }
-//    
-    return convertedDataSource;
   }
 }

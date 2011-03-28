@@ -5,8 +5,10 @@ import java.util.List;
 import org.apache.ode.bpel.rtrep.common.extension.AbstractSyncExtensionOperation;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.simpl.ea.util.DeploymentInfos;
+import org.apache.ode.simpl.ea.util.DeploymentUtils;
 import org.apache.ode.simpl.ea.util.StatementUtils;
 import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.client.LateBinding;
 import org.w3c.dom.Element;
 
 import commonj.sdo.DataObject;
@@ -56,6 +58,16 @@ public abstract class DataManagementActivity extends
 		return DeploymentInfos.getActivityDataSource(activityName, dataSourceName);
 	}
 
+	/**
+	 * Returns the late binding information of an activity.
+	 * 
+	 * @param activityName
+	 * @return
+	 */
+  public LateBinding getLateBinding(String activityName) {
+    return DeploymentUtils.getInstance().getLateBindingOfActivity(activityName);
+  }
+	
 	/**
 	 * Getter for the activity name attribute.
 	 * 

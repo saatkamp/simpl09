@@ -16,8 +16,9 @@ import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.simpl.core.SIMPLCore;
-import org.simpl.core.connector.Connector;
+import org.simpl.core.services.datasource.DataSourceServiceInterface;
 import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.client.LateBinding;
 import org.simpl.resource.management.client.ResourceManagementClient;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
@@ -41,12 +42,13 @@ public class WriteDataBackActivity extends DataManagementActivity {
     String writeTarget = element.getAttribute("writeTarget");
     Attr dataVarAttr = element.getAttributeNode("dataVariable");
     String dataVariableName = dataVarAttr.getValue();
-    
+
     DataSource ds = getDataSource(getActivityName(), getDsAddress());
-
-    Connector<DataObject, DataObject> datasourceService = SIMPLCore.getInstance()
-        .dataSourceService();
-
+    LateBinding lb = getLateBinding(getActivityName());
+    
+    DataSourceServiceInterface datasourceService = SIMPLCore.getInstance()
+        .dataSourceServiceInterface();
+    
     try {
       Node value = null;
       Variable variable = context.getVisibleVariables().get(dataVariableName);
@@ -65,7 +67,8 @@ public class WriteDataBackActivity extends DataManagementActivity {
       String xmlValue = stringWriter.getBuffer().toString();
 
       // retrieve the schema file and define it for SDO
-      String schema = ResourceManagementClient.getService().getDataFormatSchema(ds.getConnector().getConverterDataFormat().getName());
+      String schema = ResourceManagementClient.getService().getDataFormatSchema(
+          ds.getConnector().getConverterDataFormat().getName());
       InputStream schemaInputStream = new ByteArrayInputStream(schema.getBytes());
       XSDHelper.INSTANCE.define(schemaInputStream, null);
 
@@ -75,9 +78,9 @@ public class WriteDataBackActivity extends DataManagementActivity {
 
       // write data back
       if (writeTarget != null) {
-        this.successfulExecution = datasourceService.writeData(ds, sdo, writeTarget);
+        this.successfulExecution = datasourceService.writeData(ds, sdo, writeTarget, lb);
       } else {
-        this.successfulExecution = datasourceService.writeBack(ds, sdo);
+        this.successfulExecution = datasourceService.writeBack(ds, sdo, lb);
       }
 
       if (!this.successfulExecution) {
@@ -87,8 +90,7 @@ public class WriteDataBackActivity extends DataManagementActivity {
         event.setActivityType("WriteDataBackActivity");
         event.setScopeName(context.getOActivity().getParent().name);
         event.setScopeId(0L);
-        event.setScopeDeclerationId(context.getOActivity().getParent()
-            .getId());
+        event.setScopeDeclerationId(context.getOActivity().getParent().getId());
         context.getInternalInstance().sendEvent(event);
         context.completeWithFault(new Throwable("SIMPL Exception"));
       }
