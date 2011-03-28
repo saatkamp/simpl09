@@ -72,7 +72,7 @@ public class ConverterProvider {
     ConverterPlugin dataFormatConverter = null;
 
     HashMap<String, ArrayList<String>> dataFormatConverterMapping = SIMPLResourceManagement
-        .getInstance().getDataFormatConverterMapping();
+        .getInstance().getConverterMapping();
 
     for (String dataFormatConverterClassName : dataFormatConverterMapping.keySet()) {
       List<String> dataSourceServiceClassNames = dataFormatConverterMapping
@@ -112,7 +112,7 @@ public class ConverterProvider {
    */
   public static void loadPlugins() {
     List<String> plugins = SIMPLResourceManagement.getInstance()
-        .getDataFormatConverterPlugins();
+        .getConverterPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
     ConverterPlugin dataFormatConverterInstance;
     String toDataFormat = null;

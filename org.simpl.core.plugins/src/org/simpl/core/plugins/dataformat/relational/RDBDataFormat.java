@@ -35,12 +35,20 @@ import commonj.sdo.DataObject;
  */
 public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
   static Logger logger = Logger.getLogger(RDBDataFormat.class);
-
+  List<String> quotedDataTypes = new ArrayList<String>();
+  
   public RDBDataFormat() {
     this.setType("RDBDataFormat");
     this.setSchemaFile("RelationalDataFormat.xsd");
     this.setSchemaType("tRelationalDataFormat");
 
+    quotedDataTypes.add("VARCHAR");
+    quotedDataTypes.add("TEXT");
+    quotedDataTypes.add("LONGTEXT");
+    quotedDataTypes.add("MEDIUMTEXT");
+    quotedDataTypes.add("CLOB");
+    quotedDataTypes.add("BLOB");
+    
     // Set up a simple configuration that logs on the console.
     PropertyConfigurator.configure("log4j.properties");
   }
@@ -168,11 +176,13 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
         columns = row.getList("column");
 
         for (DataObject column : columns) {
-          if (this.getColumnType(column.getString("name"), tableMetaData).startsWith(
-              "VARCHAR")) {
-            quote = "'";
-          } else {
-            quote = "";
+          quote = "";
+          
+          for (String quotedDataType : quotedDataTypes) {
+            if (this.getColumnType(column.getString("name"), tableMetaData).startsWith(quotedDataType)) {
+              quote = "'";
+              break;
+            }
           }
 
           if (tableMetaData.getString("schema").equals("")) {
@@ -302,11 +312,11 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     insertColumns += " VALUES (";
 
     for (int i = 0; i < columns.size(); i++) {
-      if (this.getColumnType(columns.get(i).getString("name"), tableMetaData).startsWith(
-          "VARCHAR")) {
-        quote = "'";
-      } else {
-        quote = "";
+      for (String quotedDataType : quotedDataTypes) {
+        if (this.getColumnType(columns.get(i).getString("name"), tableMetaData).startsWith(quotedDataType)) {
+          quote = "'";
+          break;
+        }
       }
 
       insertColumns += quote + columns.get(i).getString("value") + quote;

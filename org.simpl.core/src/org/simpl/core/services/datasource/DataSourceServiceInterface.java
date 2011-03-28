@@ -178,7 +178,9 @@ public class DataSourceServiceInterface {
   }
 
   /**
-   * Checks if a given data source has late binding information.
+   * Checks if a given data source has valid late binding information.
+   * 
+   * TODO: check policy validity
    * 
    * @param dataSource
    * @return

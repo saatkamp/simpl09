@@ -17,14 +17,10 @@ import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
 
 /**
- * <b>Purpose:</b>Offers data from the SIMPL Resource Management about plugins that can be
- * used with the SIMPL Core.<br>
+ * <b>Purpose:</b>Offers data from the SIMPL Resource Management about plug-ins that can
+ * be used with the SIMPL Core.<br>
  * <b>Description:</b>Uses ResourceManagementClient to talk to the resource management web
- * service interface. The SIMPL Core knows data source service plug-ins, data format
- * plug-ins and data converter-plugins, while the resource management speaks of data
- * source connector and data converter plug-ins. This is because the resource management
- * was developed at a later point of time. As the resource management holds the same
- * information, the data is just mapped to the needed SIMPL Core plugin information.<br>
+ * service interface.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
@@ -36,9 +32,9 @@ import org.simpl.resource.management.client.ResourceManagementClient;
  */
 public class SIMPLResourceManagement {
   /**
-   * List of registered data source service plug-ins.
+   * List of registered connector plug-ins.
    */
-  private List<String> dataSourceServicePlugins = new ArrayList<String>();
+  private List<String> connectorPlugins = new ArrayList<String>();
 
   /**
    * List of registered data format plug-ins.
@@ -46,19 +42,19 @@ public class SIMPLResourceManagement {
   private List<String> dataFormatPlugins = new ArrayList<String>();
 
   /**
-   * List of registered data format converter plug-ins.
+   * List of registered converter plug-ins.
    */
-  private List<String> dataFormatConverterPlugins = new ArrayList<String>();
+  private List<String> converterPlugins = new ArrayList<String>();
 
   /**
-   * Maps data formats to the data source services that can use it.
+   * Maps data formats to the connectors that can use it.
    */
   private HashMap<String, ArrayList<String>> dataFormatMapping = new HashMap<String, ArrayList<String>>();
 
   /**
-   * Maps data format converter to the data source services that can use it.
+   * Maps converter to the connectors that can use it.
    */
-  private HashMap<String, ArrayList<String>> dataFormatConverterMapping = new HashMap<String, ArrayList<String>>();
+  private HashMap<String, ArrayList<String>> converterMapping = new HashMap<String, ArrayList<String>>();
 
   /**
    * SIMPLResourceManagement singleton instance.
@@ -87,13 +83,13 @@ public class SIMPLResourceManagement {
   }
 
   /**
-   * Returns a list of registered DataSourcePlugins. The list contains full qualified
-   * names of DataSourcePlugin classes.
+   * Returns a list of registered ConnectorPlugins. The list contains full qualified names
+   * of ConnectorPlugin classes.
    * 
-   * @return List of DataSourcePlugins
+   * @return List of ConnectorPlugins
    */
-  public List<String> getDataSourceServicePlugins() {
-    return dataSourceServicePlugins;
+  public List<String> getConnectorPlugins() {
+    return connectorPlugins;
   }
 
   /**
@@ -107,17 +103,17 @@ public class SIMPLResourceManagement {
   }
 
   /**
-   * Returns a list of registered DataFormatPlugins. The list contains full qualified
-   * names of DataFormatPlugin classes.
+   * Returns a list of registered ConverterPlugins. The list contains full qualified names
+   * of ConverterPlugin classes.
    * 
-   * @return List of DataFormatPlugins
+   * @return List of ConverterPlugins
    */
-  public List<String> getDataFormatConverterPlugins() {
-    return dataFormatConverterPlugins;
+  public List<String> getConverterPlugins() {
+    return converterPlugins;
   }
 
   /**
-   * Returns a map of data formats and their supported data source services, key and
+   * Returns a map of data formats and their supported connectors, key and
    * values are full qualified class names.
    * 
    * @return data format mapping
@@ -127,13 +123,13 @@ public class SIMPLResourceManagement {
   }
 
   /**
-   * Returns a map of data format converters and their supported data source services, key
-   * and values are full qualified class names.
+   * Returns a map of converters and their supported connectors, key and values are full
+   * qualified class names.
    * 
    * @return data format converter mapping
    */
-  public HashMap<String, ArrayList<String>> getDataFormatConverterMapping() {
-    return dataFormatConverterMapping;
+  public HashMap<String, ArrayList<String>> getConverterMapping() {
+    return converterMapping;
   }
 
   /**
@@ -171,20 +167,21 @@ public class SIMPLResourceManagement {
 
     return dataSources;
   }
-  
+
   /**
    * Reloads the data from the Resource Management.
    */
   public void reload() {
     ConnectorList connectors = new ConnectorList();
-    ConverterList dataConverters = new ConverterList();
+    ConverterList converters = new ConverterList();
     String resourceManagementAddress = null;
-    
+
     // retrieve the resource management address from the internal embedded derby simplDB
-    LinkedHashMap<String, String> settings = SIMPLCore.getInstance().administrationService()
+    LinkedHashMap<String, String> settings = SIMPLCore.getInstance()
+        .administrationService()
         .loadSettings("RESOURCEMANAGEMENT", "SETTINGS", "lastSaved");
     resourceManagementAddress = settings.get("ADDRESS");
-
+    
     try {
       if (resourceManagementAddress != null) {
         resourceManagement = ResourceManagementClient
@@ -192,10 +189,10 @@ public class SIMPLResourceManagement {
 
         if (resourceManagement != null) {
           connectors = resourceManagement.getAllConnectors();
-          dataConverters = resourceManagement.getAllConverters();
+          converters = resourceManagement.getAllConverters();
         } else {
           connectors = new ConnectorList();
-          dataConverters = new ConverterList();
+          converters = new ConverterList();
         }
       }
     } catch (Exception e) {
@@ -204,49 +201,48 @@ public class SIMPLResourceManagement {
     }
 
     if (connectors.getConnector().size() > 0) {
-      for (Connector dataSourceConnector : connectors.getConnector()) {
-        // retrieve data source service plug-ins
-        this.dataSourceServicePlugins.add(dataSourceConnector.getImplementation());
+      for (Connector connector : connectors.getConnector()) {
+        // retrieve connector plug-ins
+        this.connectorPlugins.add(connector.getImplementation());
 
         // retrieve data format plug-ins
-        if (!this.dataFormatPlugins.contains(dataSourceConnector.getConverterDataFormat()
+        if (!this.dataFormatPlugins.contains(connector.getConverterDataFormat()
             .getImplementation())) {
-          this.dataFormatPlugins.add(dataSourceConnector.getConverterDataFormat()
+          this.dataFormatPlugins.add(connector.getConverterDataFormat()
               .getImplementation());
         }
 
         // retrieve data format mapping
-        if (this.dataFormatMapping.containsKey(dataSourceConnector
+        if (this.dataFormatMapping.containsKey(connector
             .getConverterDataFormat().getImplementation())) {
           this.dataFormatMapping.get(
-              dataSourceConnector.getConverterDataFormat().getImplementation()).add(
-              dataSourceConnector.getImplementation());
+              connector.getConverterDataFormat().getImplementation()).add(
+              connector.getImplementation());
         } else {
           this.dataFormatMapping.put(
-              dataSourceConnector.getConverterDataFormat().getImplementation(),
+              connector.getConverterDataFormat().getImplementation(),
               new ArrayList<String>(
-                  Arrays.asList(dataSourceConnector.getImplementation())));
+                  Arrays.asList(connector.getImplementation())));
         }
       }
     }
 
-    // retrieve data format converter plug-ins
-    if (dataConverters.getConverter().size() > 0) {
-      for (Converter dataConverter : dataConverters.getConverter()) {
-        this.dataFormatConverterPlugins.add(dataConverter.getImplementation());
+    // retrieve converter plug-ins
+    if (converters.getConverter().size() > 0) {
+      for (Converter converter : converters.getConverter()) {
+        this.converterPlugins.add(converter.getImplementation());
 
-        // retrieve data format converter mapping
+        // retrieve converter mapping
         for (Connector connector : connectors.getConnector()) {
           if (connector.getConverterDataFormat().getImplementation()
-              .equals(dataConverter.getConnectorDataFormat().getImplementation())
+              .equals(converter.getConnectorDataFormat().getImplementation())
               || connector.getConverterDataFormat().getImplementation()
-                  .equals(dataConverter.getWorkflowDataFormat().getImplementation())) {
-            if (this.dataFormatConverterMapping.containsKey(dataConverter
-                .getImplementation())) {
-              this.dataFormatConverterMapping.get(dataConverter.getImplementation()).add(
+                  .equals(converter.getWorkflowDataFormat().getImplementation())) {
+            if (this.converterMapping.containsKey(converter.getImplementation())) {
+              this.converterMapping.get(converter.getImplementation()).add(
                   connector.getImplementation());
             } else {
-              this.dataFormatConverterMapping.put(dataConverter.getImplementation(),
+              this.converterMapping.put(converter.getImplementation(),
                   new ArrayList<String>(Arrays.asList(connector.getImplementation())));
             }
           }

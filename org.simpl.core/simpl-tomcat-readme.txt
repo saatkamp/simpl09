@@ -1,3 +1,5 @@
+SIMPL Tomcat Deployment Package v1.0.0
+
 = Content =
 SIMPL Core
 SIMPL Core Web Services

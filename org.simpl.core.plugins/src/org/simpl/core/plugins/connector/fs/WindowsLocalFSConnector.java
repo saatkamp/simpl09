@@ -11,7 +11,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.plugins.connector.ConnectorPlugin;
-import org.simpl.core.plugins.dataformat.relational.CSVResult;
+import org.simpl.core.plugins.dataformat.file.RandomFile;
 import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.simpl.resource.management.client.DataSource;
 
@@ -20,7 +20,7 @@ import commonj.sdo.DataObject;
 /**
  * <b>Purpose:</b>Provides access to a windows file system data source.<br>
  * <b>Description:</b>Statements (commands) are executed on the windows command shell and
- * existing commands used to realize the data source service functions.<br>
+ * existing commands are used to realize the data source service functions.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
@@ -30,7 +30,7 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class WindowsLocalFSConnector extends ConnectorPlugin<File, CSVResult> {
+public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
   static Logger logger = Logger.getLogger(WindowsLocalFSConnector.class);
 
   /**
@@ -84,17 +84,23 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, CSVResult> {
    * java.lang.String)
    */
   @Override
-  public CSVResult retrieveData(DataSource dataSource, String file)
+  public RandomFile retrieveData(DataSource dataSource, String file)
       throws ConnectionException {
-    CSVResult result = new CSVResult();
-
+    RandomFile result = new RandomFile();
+    String dir = "";
+    
     if (WindowsLocalFSConnector.logger.isDebugEnabled()) {
       WindowsLocalFSConnector.logger.debug("DataObject retrieveData("
           + dataSource.getAddress() + ", " + file + ") executed.");
     }
 
+
+    if (!dataSource.getAddress().equals("")) {
+      dir = dataSource.getAddress() + File.separator;
+    }
+    
     result.setDataSource(dataSource);
-    result.setFile(new File(file));
+    result.setFile(new File(dir + file));
 
     return result;
   }
@@ -124,7 +130,7 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, CSVResult> {
   public boolean writeData(DataSource dataSource, File dataFile, String target)
       throws ConnectionException {
     File targetFile = null;
-    String dir = null;
+    String dir = "";
 
     if (WindowsLocalFSConnector.logger.isDebugEnabled()) {
       WindowsLocalFSConnector.logger.debug("boolean writeData(" + dataSource.getAddress()
@@ -137,7 +143,7 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, CSVResult> {
 
     targetFile = new File(dir + target);
     dataFile.renameTo(targetFile);
-
+    
     return targetFile.exists();
   }
 

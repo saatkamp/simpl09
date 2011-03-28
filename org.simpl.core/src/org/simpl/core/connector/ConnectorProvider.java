@@ -69,7 +69,7 @@ public class ConnectorProvider {
   @SuppressWarnings("unchecked")
   public static void loadPlugins() {
     List<String> plugins = SIMPLResourceManagement.getInstance()
-        .getDataSourceServicePlugins();
+        .getConnectorPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
     ConnectorPlugin<Object, Object> dataSourceServiceInstance = null;
     String dataSourceType = null;

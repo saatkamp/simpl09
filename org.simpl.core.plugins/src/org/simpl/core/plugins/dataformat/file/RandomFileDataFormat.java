@@ -4,17 +4,17 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.plugins.dataformat.DataFormatPlugin;
-import org.simpl.core.plugins.dataformat.relational.CSVResult;
 
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b>Used to create a SDO from every file (also unstructured once) and vice
+ * <b>Purpose:</b>Used to create a SDO from one or more files from a folder (also unstructured once) and vice
  * versa.<br>
  * <b>Description:</b>This is just a very simple implementation which handles the data of
  * a file as a string.<br>
@@ -23,10 +23,10 @@ import commonj.sdo.DataObject;
  * <b>Company:</b>SIMPL<br>
  * 
  * @author hahnml<br>
- * @version $Id:$<br>
+ * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class RandomFileDataFormat extends DataFormatPlugin<CSVResult, File> {
+public class RandomFileDataFormat extends DataFormatPlugin<RandomFile, File> {
   static Logger logger = Logger.getLogger(RandomFileDataFormat.class);
 
   /**
@@ -45,29 +45,29 @@ public class RandomFileDataFormat extends DataFormatPlugin<CSVResult, File> {
    * (non-Javadoc)
    * @see org.simpl.core.services.dataformat.DataFormatService#getSDO(java.lang .Object )
    */
-  public DataObject toSDO(CSVResult result) {
+  public DataObject toSDO(RandomFile result) {
     DataObject sdo = this.getSDO();
     File file = result.getFile();
 
     if (RandomFileDataFormat.logger.isDebugEnabled()) {
       RandomFileDataFormat.logger.debug("Convert data from 'File' to 'DataObject'.");
     }
-
+    
     File[] directoryFiles = null;
 
     try {
       if (file.isDirectory()) {
-        sdo.setString("folder", file.getName());
-
+        sdo.setString("folder", file.getAbsolutePath());
+        
         // Returns only files, sub directories will be ignored
         directoryFiles = file.listFiles(new FileFilter() {
-
           @Override
           public boolean accept(File pathname) {
             return pathname.isFile();
           }
         });
       } else {
+        sdo.setString("folder", file.getAbsolutePath().replace("\\" + file.getName(), ""));
         directoryFiles = new File[1];
         directoryFiles[0] = file;
       }
@@ -77,8 +77,7 @@ public class RandomFileDataFormat extends DataFormatPlugin<CSVResult, File> {
 
         fileSDO.setString("name", current.getName());
 
-        // Read the entire contents of the file and save it in a
-        // string
+        // Read the entire content of the file into a string
         String content = FileUtils.readFileToString(current);
 
         fileSDO.setString("content", content);
@@ -105,25 +104,29 @@ public class RandomFileDataFormat extends DataFormatPlugin<CSVResult, File> {
   public File fromSDO(DataObject data) {
     // TODO: Check if the temporary files are deleted, else there
     // could be a huge amount of temporary data.
-    File folder = createTempDir(data.getString("folder"));
+    File folder = null;
+    
+    if (!data.getString("folder").equals("")) {
+      folder = createTempDir(data.getString("folder"));
+    } else {
+      folder = createTempDir(UUID.randomUUID().toString());
+    }
+    
     folder.deleteOnExit();
 
     if (RandomFileDataFormat.logger.isDebugEnabled()) {
       RandomFileDataFormat.logger.debug("Convert data from 'DataObject' to 'File'.");
+      RandomFileDataFormat.logger.debug("Created temporary folder: " + folder);
     }
 
     try {
       List<DataObject> files = data.getList("file");
 
       for (DataObject fileSDO : files) {
-
         File file = new File(folder, fileSDO.getString("name"));
-
         String content = fileSDO.getString("content");
-
         FileUtils.writeStringToFile(file, content);
       }
-
     } catch (IOException e) {
       logger.error("Exception during transformation from data object to file", e);
     }
@@ -161,6 +164,7 @@ public class RandomFileDataFormat extends DataFormatPlugin<CSVResult, File> {
     } else {
       logger.error("Failed to create temp dir named " + newTempDir.getAbsolutePath());
     }
+
     return null;
   }
 
@@ -183,5 +187,4 @@ public class RandomFileDataFormat extends DataFormatPlugin<CSVResult, File> {
   //
   // return fileOrDir.delete();
   // }
-
 }
