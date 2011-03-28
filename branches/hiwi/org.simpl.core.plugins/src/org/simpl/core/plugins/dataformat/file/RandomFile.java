@@ -1,12 +1,12 @@
-package org.simpl.core.plugins.dataformat.relational;
+package org.simpl.core.plugins.dataformat.file;
 
 import java.io.File;
 
 import org.simpl.resource.management.client.DataSource;
 
 /**
- * <b>Purpose:</b>Used by CSVDataFormat to hold the file object and meta data like the
- * data source the file was retrieved from.<br>
+ * <b>Purpose:</b>Used by RandomFileDataFormat and CSVDataFormat to hold a file or folder
+ * and meta data like the data source the file was retrieved from.<br>
  * <b>Description:</b>The meta data is used to give additional information about the
  * retrieved data besides the actual data.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
@@ -17,7 +17,7 @@ import org.simpl.resource.management.client.DataSource;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class CSVResult {
+public class RandomFile {
   private File file = null;
   private DataSource dataSource = null;
 

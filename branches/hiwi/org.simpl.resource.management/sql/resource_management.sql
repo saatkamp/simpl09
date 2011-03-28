@@ -435,7 +435,7 @@ VALUES
 INSERT INTO converters
 (id, name, implementation, connector_dataformat_id, workflow_dataformat_id)
 VALUES
-(2, 'RandomFiletoRDBDataFormatConverter', 'org.simpl.core.plugins.converter.RandomFiletoRDBDataFormatConverter', 3, 1);
+(2, 'RandomFiletoRDBConverter', 'org.simpl.core.plugins.converter.RandomFiletoRDBConverter', 3, 1);
 
 
 INSERT INTO datasources
@@ -452,7 +452,7 @@ VALUES
   'Windows Local'
   , ''
   , ''
-  , 'C:\\'
+  , ''
   , NULL
   , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Filesystem</type><subType>Windows Local</subType><language>Shell</language><dataFormatName>RandomFileDataFormat</dataFormatName></connector_properties_description>'
 );

@@ -40,12 +40,12 @@ xcopy "%1\simplDB\*.*" "%2\simplDB\" /E
 xcopy "%1\simplDB\*.*" "%2\bin\simplDB\" /E
 copy "%2\..\log4j.properties" "%2"
 copy "%2\..\log4j.properties" "%2\bin"
-copy "%2\..\simpl-tomcat-readme.txt" "%2\readme.txt"
+copy "%2\..\simpl-tomcat-readme.txt" "%2"
 
 @echo off
 REM create simpl-tomcat.zip in %2
 @echo on
-"%3" a -r "%2\simpl-tomcat.zip" "%2\conf" "%2\common" "%2\lib" "%2\webapps" "%2\simplDB" "%2\log4j.properties" "%2\readme.txt"
+"%3" a -r "%2\simpl-tomcat.zip" "%2\conf" "%2\common" "%2\lib" "%2\webapps" "%2\simplDB" "%2\log4j.properties" "%2\simpl-tomcat-readme.txt"
 
 @echo off
 REM clean %2
@@ -57,7 +57,7 @@ del "%2\lib" /s /q
 del "%2\webapps" /s /q
 del "%2\simplDB" /s /q
 del "%2\log4j.properties"
-del "%2\readme.txt"
+del "%2\simpl-tomcat-readme.txt"
 
 rd "%2\bin" /s /q
 rd "%2\conf" /s /q

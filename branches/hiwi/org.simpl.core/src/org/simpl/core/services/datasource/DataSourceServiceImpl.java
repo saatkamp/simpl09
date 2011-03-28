@@ -18,7 +18,7 @@ import commonj.sdo.DataObject;
 /**
  * <b>Purpose:</b>Implementation of a common data source service that unites all connector
  * plug-ins.<br>
- * <b>Description:</b>Receives all connector requests and forwards them to the connector
+ * <b>Description:</b>Receives all service requests and forwards them to the connector
  * instances that are provided by the connector plug-ins.<br>
  * The given data on write back is tested to match the given connector's data format and
  * if necessary converts the data with an appropriate converter.<br>
@@ -37,8 +37,8 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
   /*
    * (non-Javadoc)
    * @see
-   * org.simpl.core.services.datasource.DataSourceService#depositData(org.simpl.core.services
-   * .datasource.DataSource, java.lang.String, java.lang.String)
+   * org.simpl.core.connector.Connector#depositData(org.simpl.resource.management.client
+   * .DataSource, java.lang.String, java.lang.String)
    */
   @Override
   public synchronized boolean depositData(DataSource dataSource, String statement,
@@ -63,8 +63,8 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
   /*
    * (non-Javadoc)
    * @see
-   * org.simpl.core.services.datasource.DataSourceService#executeStatement(org.simpl.core
-   * .services.datasource.DataSource, java.lang.String)
+   * org.simpl.core.connector.Connector#executeStatement(org.simpl.resource.management
+   * .client.DataSource, java.lang.String)
    */
   @Override
   public synchronized boolean executeStatement(DataSource dataSource, String statement)
@@ -93,8 +93,8 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
   /*
    * (non-Javadoc)
    * @see
-   * org.simpl.core.services.datasource.DataSourceService#retrieveData(org.simpl.core.
-   * services.datasource.DataSource, java.lang.String)
+   * org.simpl.core.connector.Connector#retrieveData(org.simpl.resource.management.client
+   * .DataSource, java.lang.String)
    */
   @Override
   public synchronized DataObject retrieveData(DataSource dataSource, String statement)
@@ -106,18 +106,17 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
     try {
       // retrieve data
       if (this.isDataSourceComplete(dataSource)) {
-        // get data source service instance
+        // get connector instance
         connector = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
-        // retrieve data
         data = connector.retrieveData(dataSource, statement);
       }
 
       // format data to SDO
       if (data != null) {
-        retrievedData = formatRetrievedData(connector, data, dataSource
-            .getConnector().getConverterDataFormat().getName());
+        retrievedData = formatRetrievedData(connector, data, dataSource.getConnector()
+            .getConverterDataFormat().getName());
       }
     } catch (Exception e) {
       e.printStackTrace();
@@ -130,8 +129,8 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
   /*
    * (non-Javadoc)
    * @see
-   * org.simpl.core.services.datasource.DataSourceService#writeBack(org.simpl.core.services
-   * .datasource.DataSource, commonj.sdo.DataObject)
+   * org.simpl.core.connector.Connector#writeBack(org.simpl.resource.management.client
+   * .DataSource, commonj.sdo.DataObject)
    */
   @Override
   public synchronized boolean writeBack(DataSource dataSource, DataObject data)
@@ -165,8 +164,8 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
   /*
    * (non-Javadoc)
    * @see
-   * org.simpl.core.services.datasource.DataSourceService#writeData(org.simpl.core.services
-   * .datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
+   * org.simpl.core.connector.Connector#writeData(org.simpl.resource.management.client
+   * .DataSource, commonj.sdo.DataObject, java.lang.String)
    */
   @Override
   public synchronized boolean writeData(DataSource dataSource, DataObject data,
@@ -178,7 +177,7 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
 
     try {
       if (this.isDataSourceComplete(dataSource)) {
-        // get data source service instance
+        // get connector instance
         dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
@@ -200,8 +199,8 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
   /*
    * (non-Javadoc)
    * @see
-   * org.simpl.core.services.datasource.DataSourceService#getMetaData(org.simpl.core.services
-   * .datasource.DataSource, java.lang.String)
+   * org.simpl.core.connector.Connector#getMetaData(org.simpl.resource.management.client
+   * .DataSource, java.lang.String)
    */
   @Override
   public DataObject getMetaData(DataSource dataSource, String filter)
@@ -228,8 +227,8 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
   /*
    * (non-Javadoc)
    * @see
-   * org.simpl.core.services.datasource.DataSourceService#createTarget(org.simpl.core.
-   * services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
+   * org.simpl.core.connector.Connector#createTarget(org.simpl.resource.management.client
+   * .DataSource, commonj.sdo.DataObject, java.lang.String)
    */
   @Override
   public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
@@ -282,8 +281,8 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
    * @throws ConnectionException
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
-  private Object formatWriteDataAndCreateTarget(Connector connector,
-      DataObject data, DataSource dataSource, String target) throws ConnectionException {
+  private Object formatWriteDataAndCreateTarget(Connector connector, DataObject data,
+      DataSource dataSource, String target) throws ConnectionException {
     Object writeData = null;
 
     boolean createdTarget;
@@ -351,8 +350,7 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
     DataObject retrieveDataSDO = null;
     List<String> supportedDataFormatTypes = null;
 
-    supportedDataFormatTypes = DataFormatProvider
-        .getSupportedDataFormatTypes(connector);
+    supportedDataFormatTypes = DataFormatProvider.getSupportedDataFormatTypes(connector);
 
     for (String supportedDataFormatType : supportedDataFormatTypes) {
       if (supportedDataFormatType.equals(dataFormatType)) {
