@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.simpl.core.SIMPLResourceManagement;
+import org.simpl.core.clients.RMClient;
 import org.simpl.core.connector.Connector;
 import org.simpl.core.plugins.dataformat.DataFormatPlugin;
 
@@ -64,7 +64,7 @@ public class DataFormatProvider {
   @SuppressWarnings({ "rawtypes" })
   public static List<String> getSupportedDataFormatTypes(Connector connector) {
     List<String> dataFormats = new ArrayList<String>();
-    HashMap<String, ArrayList<String>> dataFormatMapping = SIMPLResourceManagement
+    HashMap<String, ArrayList<String>> dataFormatMapping = RMClient
         .getInstance().getDataFormatMapping();
 
     for (String dataFormatClassName : dataFormatMapping.keySet()) {
@@ -94,7 +94,7 @@ public class DataFormatProvider {
    */
   @SuppressWarnings({ "unchecked", "rawtypes" })
   public static void loadPlugins() {
-    List<String> plugins = SIMPLResourceManagement.getInstance().getDataFormatPlugins();
+    List<String> plugins = RMClient.getInstance().getDataFormatPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
     DataFormatPlugin<Object, Object> dataFormatServiceInstance;
     String dataFormatType = null;

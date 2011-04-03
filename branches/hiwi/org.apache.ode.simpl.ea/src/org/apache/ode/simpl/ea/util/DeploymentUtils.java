@@ -20,7 +20,7 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
-import org.simpl.core.SIMPLResourceManagement;
+import org.simpl.core.clients.RMClient;
 import org.simpl.resource.management.client.Authentication;
 import org.simpl.resource.management.client.DataSource;
 import org.simpl.resource.management.client.LateBinding;
@@ -286,7 +286,7 @@ public class DeploymentUtils {
     } else {
       String nameWOprefix = dataSourceName.split(":")[1];
 
-      resultDataSource = SIMPLResourceManagement.getInstance().getDataSourceByName(nameWOprefix);
+      resultDataSource = RMClient.getInstance().getDataSourceByName(nameWOprefix);
       resultDataSource.setName(dataSourceName); // set name with prefix
 
       // Add the queried data source to the map

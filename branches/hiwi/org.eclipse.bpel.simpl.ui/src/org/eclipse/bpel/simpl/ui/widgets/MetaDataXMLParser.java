@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.eclipse.simpl.communication.SIMPLCoreService;
+import org.eclipse.simpl.communication.SIMPLCoreWebService;
 import org.eclipse.simpl.communication.SIMPLCoreCommunication;
 import org.simpl.resource.management.client.DataSource;
 import org.w3c.dom.Document;
@@ -59,7 +59,7 @@ public class MetaDataXMLParser {
 	public ArrayList<DBTable> loadTablesFromDB(DataSource dataSource) {
 
 		// ++++++++++++++++++++++++SDO Parsing++++++++++++++++++++++++
-		SIMPLCoreService simplCore = SIMPLCoreCommunication.getInstance();
+		SIMPLCoreWebService simplCore = SIMPLCoreCommunication.getInstance();
 		try {
 
 			String metaDataString = simplCore.getMetaData(dataSource, "");
@@ -146,7 +146,7 @@ public class MetaDataXMLParser {
 	public void loadFileSystemElementsFromDB(DataSource dataSource) {
 
 		// ++++++++++++++++++++++++DSO Parsing++++++++++++++++++++++++
-		SIMPLCoreService simplCore = SIMPLCoreCommunication.getInstance();
+		SIMPLCoreWebService simplCore = SIMPLCoreCommunication.getInstance();
 		try {
 
 			String metaDataString = simplCore.getMetaData(dataSource, "");
@@ -269,7 +269,7 @@ public class MetaDataXMLParser {
 	 */
 	public ArrayList<DBSchema> loadSchemasFromDB(DataSource dataSource) {
 		// ++++++++++++++++++++++++SDO Parsing++++++++++++++++++++++++
-		SIMPLCoreService simplCore = SIMPLCoreCommunication.getInstance();
+		SIMPLCoreWebService simplCore = SIMPLCoreCommunication.getInstance();
 		try {
 
 			String metaDataString = simplCore.getMetaData(dataSource, "");

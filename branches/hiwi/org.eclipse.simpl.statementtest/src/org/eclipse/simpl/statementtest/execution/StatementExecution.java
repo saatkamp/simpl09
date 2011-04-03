@@ -1,7 +1,7 @@
 package org.eclipse.simpl.statementtest.execution;
 
 import org.eclipse.simpl.statementtest.model.StatementTest;
-import org.simpl.core.webservices.client.DatasourceService;
+import org.simpl.core.webservices.client.SIMPLCoreService;
 
 /**
  * TODO <b>Purpose:</b><br>
@@ -23,17 +23,17 @@ public abstract class StatementExecution {
   protected StatementTest statementTest = null;
 
   /**
-   * Instance of the data source service.
+   * Instance of the SIMPL Core web service.
    */
-  protected DatasourceService dataSourceService = null;
+  protected SIMPLCoreService simplCoreService = null;
 
   /**
    * Constructor.
    */
   public StatementExecution(StatementTest statementTest,
-      DatasourceService dataSourceService) {
+      SIMPLCoreService dataSourceService) {
     this.statementTest = statementTest;
-    this.dataSourceService = dataSourceService;
+    this.simplCoreService = dataSourceService;
   }
 
   /**

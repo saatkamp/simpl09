@@ -16,26 +16,26 @@ import java.net.URL;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class DatasourceServiceClient {
+public class SIMPLCoreServiceClient {
   static String serviceAddress = null;
 
-  private static DatasourceService service = null;
+  private static SIMPLCoreService service = null;
 
-  public static DatasourceService getService() {
+  public static SIMPLCoreService getService() {
     if (service == null && isAvailable()) {
-      service = new DatasourceService_Service().getDatasourceServicePort();
+      service = new SIMPLCoreService_Service().getSIMPLCoreServicePort();
     }
 
     return service;
   }
 
-  public static DatasourceService getService(String address) {
+  public static SIMPLCoreService getService(String address) {
     if (address != null) {
       serviceAddress = address;
     }
     
     if (isAvailable()) {
-      service = new DatasourceService_Service().getDatasourceServicePort();
+      service = new SIMPLCoreService_Service().getSIMPLCoreServicePort();
     } else {
       service = null;
     }

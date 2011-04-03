@@ -1,6 +1,6 @@
 package org.simpl.core.connector;
 
-import org.simpl.core.services.datasource.exceptions.ConnectionException;
+import org.simpl.core.exceptions.ConnectionException;
 import org.simpl.resource.management.client.DataSource;
 
 import commonj.sdo.DataObject;
@@ -33,7 +33,7 @@ public interface Connector<S, T> {
    *         otherwise
    * @throws ConnectionException
    */
-  public boolean executeStatement(DataSource dataSource, String statement)
+  public boolean issueCommand(DataSource dataSource, String statement)
       throws ConnectionException;
 
   /**
@@ -48,24 +48,14 @@ public interface Connector<S, T> {
       throws ConnectionException;
 
   /**
-   * Writes back data that was retrieved by {@link #retrieveData(DataSource, String)}.
-   * 
-   * @param dataSource
-   * @param data
-   * @return <i>true</i> if the data was successfully written back, <i>false</i> otherwise
-   * @throws ConnectionException
-   */
-  public boolean writeBack(DataSource dataSource, S data) throws ConnectionException;
-
-  /**
-   * Writes new data to the data source.
+   * Writes data to the data source.
    * 
    * @param dataSource
    * @param data
    * @param target
    * @return <i>true</i> if the data was successfully written, <i>false</i> otherwise
    */
-  public boolean writeData(DataSource dataSource, S data, String target)
+  public boolean writeDataBack(DataSource dataSource, S data, String target)
       throws ConnectionException;
 
   /**
@@ -78,7 +68,7 @@ public interface Connector<S, T> {
    * @return <i>true</i> if the data was successfully deposit, <i>false</i> otherwise
    * @throws ConnectionException
    */
-  public boolean depositData(DataSource dataSource, String statement, String target)
+  public boolean queryData(DataSource dataSource, String statement, String target)
       throws ConnectionException;
 
   /**
@@ -96,7 +86,7 @@ public interface Connector<S, T> {
 
   /**
    * Creates a new target (e.g. a database table) that is used to write new data as
-   * required for {@link #depositData(DataSource, String, String)} and
+   * required for {@link #queryData(DataSource, String, String)} and
    * {@link #writeData(DataSource, Object, String)}.
    * 
    * @param dataSource

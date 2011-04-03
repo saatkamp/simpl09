@@ -1,4 +1,4 @@
-package org.simpl.core.services.discovery;
+package org.simpl.core.discovery;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 import org.apache.neethi.Policy;
 import org.apache.neethi.PolicyEngine;
 import org.apache.neethi.util.PolicyComparator;
-import org.simpl.core.SIMPLResourceManagement;
+import org.simpl.core.clients.RMClient;
 import org.simpl.resource.management.client.DataSource;
 import org.simpl.resource.management.client.LateBinding;
 
@@ -54,7 +54,7 @@ public class DiscoveryServiceImpl implements DiscoveryService {
       case FIRST_FIND:
         List<DataSource> dataSources = null;
 
-        dataSources = SIMPLResourceManagement.getInstance().getAllDataSources().getDataSource();
+        dataSources = RMClient.getInstance().getAllDataSources().getDataSource();
 
         // retrieve all data sources and compare the policy to its properties description policy
         for (DataSource possibleDataSource : dataSources) {

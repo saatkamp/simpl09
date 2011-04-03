@@ -1,7 +1,7 @@
 /*
  * 
  */
-package org.simpl.core.services.connection;
+package org.simpl.core.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

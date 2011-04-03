@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.simpl.core.SIMPLResourceManagement;
+import org.simpl.core.clients.RMClient;
 import org.simpl.core.plugins.connector.ConnectorPlugin;
 
 /**
@@ -68,7 +68,7 @@ public class ConnectorProvider {
    */
   @SuppressWarnings("unchecked")
   public static void loadPlugins() {
-    List<String> plugins = SIMPLResourceManagement.getInstance()
+    List<String> plugins = RMClient.getInstance()
         .getConnectorPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
     ConnectorPlugin<Object, Object> dataSourceServiceInstance = null;

@@ -11,16 +11,15 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.simpl.core.SIMPLCore;
+import org.simpl.core.exceptions.ConnectionException;
 import org.simpl.core.plugins.connector.ConnectorPlugin;
 import org.simpl.core.plugins.dataformat.relational.RDBResult;
-import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.simpl.resource.management.client.DataSource;
 
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b>Implements all methods of the {@link IDatasourceService} interface for
+ * <b>Purpose:</b>Implements all methods of the {@link Connector} interface for
  * supporting the Apache Derby relational database in Client-Server mode.<br>
  * <b>Description:</b>dsAddress = Full path to embedded Derby database, for example:
  * C:\databases\myDB.<br>
@@ -50,7 +49,7 @@ public class DerbyRDBConnector extends ConnectorPlugin<List<String>, RDBResult> 
   }
 
   @Override
-  public boolean executeStatement(DataSource dataSource, String statement)
+  public boolean issueCommand(DataSource dataSource, String statement)
       throws ConnectionException {
     if (DerbyRDBConnector.logger.isDebugEnabled()) {
       DerbyRDBConnector.logger.debug("boolean executeStatement("
@@ -131,64 +130,8 @@ public class DerbyRDBConnector extends ConnectorPlugin<List<String>, RDBResult> 
   }
 
   @Override
-  public boolean writeBack(DataSource dataSource, List<String> statements)
-      throws ConnectionException {
-    boolean success = false;
-
-    Connection connection = openConnection(dataSource.getAddress(), dataSource
-        .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
-    Statement connStatement = null;
-
-    if (DerbyRDBConnector.logger.isDebugEnabled()) {
-      DerbyRDBConnector.logger.debug("boolean writeBack(" + dataSource.getAddress()
-          + ", DataObject) executed.");
-    }
-
-    try {
-      connStatement = connection.createStatement();
-
-      for (String statement : statements) {
-        if (statement.startsWith("UPDATE")) {
-          connStatement.executeUpdate(statement);
-
-          DerbyRDBConnector.logger.info("Statement \"" + statement + "\" "
-              + "executed on " + dataSource.getAddress()
-              + (success ? " was successful" : " failed"));
-        }
-      }
-
-      // all statements executed without SQLException
-      success = true;
-
-      connStatement.close();
-      connection.commit();
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-      DerbyRDBConnector.logger.debug("Connection will be rolled back.");
-
-      try {
-        connection.rollback();
-      } catch (SQLException e1) {
-        // TODO Auto-generated catch block
-        e1.printStackTrace();
-      }
-    }
-
-    closeConnection(connection);
-
-    return success;
-  }
-
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.datasource.DataSourceService#writeData(org.simpl.core.services
-   * .datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
-   */
-  @Override
-  public boolean writeData(DataSource dataSource, List<String> statements, String target)
-      throws ConnectionException {
+  public boolean writeDataBack(DataSource dataSource, List<String> statements,
+      String target) throws ConnectionException {
     boolean success = false;
 
     Connection connection = openConnection(dataSource.getAddress(), dataSource
@@ -205,18 +148,26 @@ public class DerbyRDBConnector extends ConnectorPlugin<List<String>, RDBResult> 
         connStatement = connection.createStatement();
 
         for (String statement : statements) {
-          if (statement.startsWith("INSERT")) {
-            // replace dataObject's implizit schema.table name with target
-            if (target != null) {
+          if (target == null || target.equals("")) {
+            if (statement.startsWith("UPDATE")) {
+              connStatement.executeUpdate(statement);
+
+              DerbyRDBConnector.logger.info("Statement \"" + statement + "\" "
+                  + "executed on " + dataSource.getAddress()
+                  + (success ? " was successful" : " failed"));
+            }
+          } else {
+            if (statement.startsWith("INSERT")) {
+              // replace dataObject's implizit schema.table name with target
               statement = statement.replaceAll("INSERT INTO .*?\\(", "INSERT INTO "
                   + target + " (");
+
+              connStatement.executeUpdate(statement);
+
+              DerbyRDBConnector.logger.info("Statement \"" + statement + "\" "
+                  + "executed on " + dataSource.getAddress()
+                  + (success ? " was successful" : " failed"));
             }
-
-            connStatement.executeUpdate(statement);
-
-            DerbyRDBConnector.logger.info("Statement \"" + statement + "\" "
-                + "executed on " + dataSource.getAddress()
-                + (success ? " was successful" : " failed"));
           }
         }
 
@@ -245,7 +196,7 @@ public class DerbyRDBConnector extends ConnectorPlugin<List<String>, RDBResult> 
   }
 
   @Override
-  public boolean depositData(DataSource dataSource, String statement, String target)
+  public boolean queryData(DataSource dataSource, String statement, String target)
       throws ConnectionException {
     boolean success = false;
 
@@ -314,10 +265,6 @@ public class DerbyRDBConnector extends ConnectorPlugin<List<String>, RDBResult> 
     return success;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
-   */
   @Override
   public DataObject getMetaData(DataSource dataSource, String filter)
       throws ConnectionException {
@@ -360,12 +307,6 @@ public class DerbyRDBConnector extends ConnectorPlugin<List<String>, RDBResult> 
     return metaDataObject;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.datasource.DataSourceService#createTarget(org.simpl.core.
-   * services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
-   */
   @SuppressWarnings("unchecked")
   @Override
   public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
@@ -379,8 +320,7 @@ public class DerbyRDBConnector extends ConnectorPlugin<List<String>, RDBResult> 
 
     // test if target already exists
     try {
-      createdTarget = SIMPLCore.getInstance().dataSourceService()
-          .executeStatement(dataSource, "SELECT * FROM " + target);
+      createdTarget = this.issueCommand(dataSource, "SELECT * FROM " + target);
     } catch (Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -423,7 +363,7 @@ public class DerbyRDBConnector extends ConnectorPlugin<List<String>, RDBResult> 
       }
 
       createTargetStatement += ")";
-      createdTarget = this.executeStatement(dataSource, createTargetStatement);
+      createdTarget = this.issueCommand(dataSource, createTargetStatement);
     }
 
     return createdTarget;

@@ -1,9 +1,9 @@
-package org.simpl.core.services.datasource.exceptions;
+package org.simpl.core.exceptions;
 
 /**
- * <b>Purpose:</b>Database connection exception.<br>
- * <b>Description: This exception is thrown whenever an error during a connection to a
- * data source occurs.</b><br>
+ * <b>Purpose:</b>Database data exception.<br>
+ * <b>Description: This exception is thrown whenever an error during processing a
+ * statement or processing its referenced data occurs from which can not be recovered.</b><br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
@@ -14,21 +14,21 @@ package org.simpl.core.services.datasource.exceptions;
  * @link http://code.google.com/p/simpl09/
  */
 @SuppressWarnings("serial")
-public class ConnectionException extends Exception {
+public class DataException extends Exception {
 
-  public ConnectionException() {
+  public DataException() {
     super();
   }
 
-  public ConnectionException(String msg, Throwable cause) {
+  public DataException(String msg, Throwable cause) {
     super(msg, cause);
   }
 
-  public ConnectionException(String msg) {
+  public DataException(String msg) {
     super(msg);
   }
 
-  public ConnectionException(Throwable cause) {
+  public DataException(Throwable cause) {
     super(cause);
   }
 

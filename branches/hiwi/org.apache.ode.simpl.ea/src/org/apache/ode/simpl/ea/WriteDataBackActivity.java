@@ -15,8 +15,8 @@ import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
-import org.simpl.core.SIMPLCore;
-import org.simpl.core.services.datasource.DataSourceServiceInterface;
+import org.simpl.core.SIMPLCoreInterface;
+import org.simpl.core.services.SIMPLCoreService;
 import org.simpl.resource.management.client.DataSource;
 import org.simpl.resource.management.client.LateBinding;
 import org.simpl.resource.management.client.ResourceManagementClient;
@@ -45,10 +45,9 @@ public class WriteDataBackActivity extends DataManagementActivity {
 
     DataSource ds = getDataSource(getActivityName(), getDsAddress());
     LateBinding lb = getLateBinding(getActivityName());
-    
-    DataSourceServiceInterface datasourceService = SIMPLCore.getInstance()
-        .dataSourceServiceInterface();
-    
+
+    SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
+
     try {
       Node value = null;
       Variable variable = context.getVisibleVariables().get(dataVariableName);
@@ -77,11 +76,7 @@ public class WriteDataBackActivity extends DataManagementActivity {
       DataObject sdo = xmlDoc.getRootObject();
 
       // write data back
-      if (writeTarget != null) {
-        this.successfulExecution = datasourceService.writeData(ds, sdo, writeTarget, lb);
-      } else {
-        this.successfulExecution = datasourceService.writeBack(ds, sdo, lb);
-      }
+      this.successfulExecution = simplCoreService.writeDataBack(ds, sdo, writeTarget, lb);
 
       if (!this.successfulExecution) {
         ActivityFailureEvent event = new ActivityFailureEvent();

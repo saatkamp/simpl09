@@ -7,8 +7,8 @@ import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.apache.ode.simpl.ea.util.StatementUtils;
-import org.simpl.core.SIMPLCore;
-import org.simpl.core.services.datasource.DataSourceServiceInterface;
+import org.simpl.core.SIMPLCoreInterface;
+import org.simpl.core.services.SIMPLCoreService;
 import org.simpl.resource.management.client.DataSource;
 import org.simpl.resource.management.client.LateBinding;
 import org.w3c.dom.Element;
@@ -49,13 +49,12 @@ public class QueryDataActivity extends DataManagementActivity {
 
     DataSource ds = getDataSource(getActivityName(), getDsAddress());
     LateBinding lb = getLateBinding(getActivityName());
-    
-    DataSourceServiceInterface datasourceService = SIMPLCore.getInstance()
-        .dataSourceServiceInterface();
-    
+
+    SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
+
     try {
       if (!queryTarget.equals("")) {
-        this.successfulExecution = datasourceService.depositData(ds,
+        this.successfulExecution = simplCoreService.queryData(ds,
             getDsStatement(context), queryTarget, lb);
       }
 

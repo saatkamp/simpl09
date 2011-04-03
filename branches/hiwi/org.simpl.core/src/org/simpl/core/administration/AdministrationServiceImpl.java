@@ -1,4 +1,4 @@
-package org.simpl.core.services.administration;
+package org.simpl.core.administration;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.LinkedHashMap;
 
 import org.apache.ode.simpl.events.listener.AuditingParameters;
-import org.simpl.core.SIMPLResourceManagement;
+import org.simpl.core.clients.RMClient;
 import org.simpl.core.connector.ConnectorProvider;
 import org.simpl.core.converter.ConverterProvider;
 import org.simpl.core.dataformat.DataFormatProvider;
@@ -26,7 +26,7 @@ import org.simpl.core.dataformat.DataFormatProvider;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class AdministrationServiceImpl implements AdministrationService {
+public class AdministrationServiceImpl implements AdministrationServiceInterface {
   private static final String DATABASE_NAME = "simplDB";
 
   public boolean saveSettings(String schema, String table, String settingName,
@@ -60,10 +60,10 @@ public class AdministrationServiceImpl implements AdministrationService {
       conn.close();
       success = true;
 
-      // reload the data from resource management because it may have changed
+      // reload the data from resource management, because it may have changed
       if (schema.equals("ResourceManagement")) {
         System.out.println("REALOAD RESOURCE MANAGEMENT DATA");
-        SIMPLResourceManagement.getInstance().reload();
+        RMClient.getInstance().reload();
         
         // update plugins
         ConnectorProvider.loadPlugins();

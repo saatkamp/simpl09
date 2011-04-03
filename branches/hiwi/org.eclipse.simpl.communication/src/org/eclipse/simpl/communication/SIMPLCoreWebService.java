@@ -5,22 +5,22 @@ import java.net.URLConnection;
 import java.util.LinkedHashMap;
 
 import org.simpl.core.helpers.Parameter;
-import org.simpl.core.webservices.client.AdministrationService;
-import org.simpl.core.webservices.client.AdministrationServiceClient;
-import org.simpl.core.webservices.client.DatasourceService;
-import org.simpl.core.webservices.client.DatasourceServiceClient;
 import org.simpl.core.webservices.client.Exception_Exception;
+import org.simpl.core.webservices.client.SIMPLCoreAdministrationService;
+import org.simpl.core.webservices.client.SIMPLCoreAdministrationServiceClient;
+import org.simpl.core.webservices.client.SIMPLCoreService;
+import org.simpl.core.webservices.client.SIMPLCoreServiceClient;
 import org.simpl.resource.management.client.DataSource;
 
 /**
- * SIMPL Core Service that gives access to all SIMPL Core web services.
+ * Class that gives access to all SIMPL Core web services.
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
  */
 @SuppressWarnings("unchecked")
-public class SIMPLCoreService {
-  AdministrationService administrationService = null;
-  DatasourceService datasourceService = null;
+public class SIMPLCoreWebService {
+  SIMPLCoreAdministrationService simplCoreAdministrationService = null;
+  SIMPLCoreService simplCoreService = null;
 
   private final static String DSS_WSDL_ADDRESS = CommunicationPlugIn.getDefault()
       .getPreferenceStore().getString("SIMPL_CORE_DSS_ADDRESS");
@@ -28,26 +28,27 @@ public class SIMPLCoreService {
   private final static String AS_WSDL_ADDRESS = CommunicationPlugIn.getDefault()
       .getPreferenceStore().getString("SIMPL_CORE_AS_ADDRESS");
 
-  public DatasourceService getDatasourceService() {
-    if (datasourceService == null) {
-      datasourceService = DatasourceServiceClient.getService(DSS_WSDL_ADDRESS);
+  public SIMPLCoreService getSIMPLCoreService() {
+    if (simplCoreService == null) {
+      simplCoreService = SIMPLCoreServiceClient.getService(DSS_WSDL_ADDRESS);
     }
-    return datasourceService;
+    return simplCoreService;
   }
 
-  public AdministrationService getAdministrationService() {
-    if (administrationService == null) {
-      administrationService = AdministrationServiceClient.getService(AS_WSDL_ADDRESS);
+  public SIMPLCoreAdministrationService getSIMPLCoreAdministrationService() {
+    if (simplCoreAdministrationService == null) {
+      simplCoreAdministrationService = SIMPLCoreAdministrationServiceClient
+          .getService(AS_WSDL_ADDRESS);
     }
-    return administrationService;
+    return simplCoreAdministrationService;
   }
 
   public boolean save(String schema, String table, String settingName,
       LinkedHashMap<String, String> settings) {
     boolean success = false;
 
-    if (getAdministrationService() != null) {
-      success = getAdministrationService().saveSettings(schema, table, settingName,
+    if (getSIMPLCoreAdministrationService() != null) {
+      success = getSIMPLCoreAdministrationService().saveSettings(schema, table, settingName,
           Parameter.serialize(settings));
     }
 
@@ -58,9 +59,9 @@ public class SIMPLCoreService {
       String settingName) {
     LinkedHashMap<String, String> settings = null;
 
-    if (getAdministrationService() != null) {
+    if (getSIMPLCoreAdministrationService() != null) {
       settings = (LinkedHashMap<String, String>) Parameter
-          .deserialize(getAdministrationService()
+          .deserialize(getSIMPLCoreAdministrationService()
               .loadSettings(schema, table, settingName));
     }
 
@@ -71,8 +72,8 @@ public class SIMPLCoreService {
       throws Exception_Exception {
     String metaData = null;
 
-    if (getDatasourceService() != null) {
-      metaData = getDatasourceService().getMetaData(dataSource, filter);
+    if (getSIMPLCoreService() != null) {
+      metaData = getSIMPLCoreService().getMetaData(dataSource, filter);
     }
 
     return metaData;
@@ -81,7 +82,7 @@ public class SIMPLCoreService {
   public boolean isSIMPLCoreAvailable() {
     boolean isAvailable = false;
     URL url;
-    
+
     try {
       url = new URL(DSS_WSDL_ADDRESS);
       URLConnection connection = url.openConnection();
@@ -95,11 +96,11 @@ public class SIMPLCoreService {
 
   public String getResourceManagementAddress() {
     LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
-    
-    if (getAdministrationService() != null) {
+
+    if (getSIMPLCoreAdministrationService() != null) {
       settings = this.load("RESOURCEMANAGEMENT", "SETTINGS", "lastSaved");
     }
-    
+
     return settings.get("ADDRESS");
   }
 }

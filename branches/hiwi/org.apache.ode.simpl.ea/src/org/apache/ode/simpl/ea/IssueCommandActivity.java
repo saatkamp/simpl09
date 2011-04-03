@@ -3,8 +3,8 @@ package org.apache.ode.simpl.ea;
 import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
-import org.simpl.core.SIMPLCore;
-import org.simpl.core.services.datasource.DataSourceServiceInterface;
+import org.simpl.core.SIMPLCoreInterface;
+import org.simpl.core.services.SIMPLCoreService;
 import org.simpl.resource.management.client.DataSource;
 import org.simpl.resource.management.client.LateBinding;
 import org.w3c.dom.Element;
@@ -22,11 +22,10 @@ public class IssueCommandActivity extends DataManagementActivity {
     DataSource ds = getDataSource(getActivityName(), getDsAddress());
     LateBinding lb = getLateBinding(getActivityName());
 
-    DataSourceServiceInterface datasourceService = SIMPLCore.getInstance()
-        .dataSourceServiceInterface();
+    SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 
     try {
-      this.successfulExecution = datasourceService.executeStatement(ds,
+      this.successfulExecution = simplCoreService.issueCommand(ds,
           getDsStatement(context), lb);
 
       if (!this.successfulExecution) {

@@ -14,9 +14,9 @@ import javax.jws.soap.SOAPBinding;
  * Generated source version: 2.1
  * 
  */
-@WebService(name = "AdministrationService", targetNamespace = "http://webservices.core.simpl.org/")
+@WebService(name = "SIMPLCoreAdministrationService", targetNamespace = "http://webservices.core.simpl.org/")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
-public interface AdministrationService {
+public interface SIMPLCoreAdministrationService {
 
 
     /**
