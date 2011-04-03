@@ -11,8 +11,8 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
 import org.apache.commons.io.IOUtils;
-import org.simpl.core.SIMPLCore;
 import org.simpl.core.helpers.Parameter;
+import org.simpl.core.services.SIMPLCoreService;
 import org.simpl.resource.management.client.DataSource;
 import org.simpl.resource.management.client.LateBinding;
 
@@ -21,7 +21,7 @@ import commonj.sdo.helper.XMLDocument;
 import commonj.sdo.helper.XMLHelper;
 
 /**
- * <b>Purpose:</b>Web Service to access the SIMPL core data source service.<br>
+ * <b>Purpose:</b>Web Service to access the SIMPL core.<br>
  * <b>Description:</b><br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
@@ -31,44 +31,47 @@ import commonj.sdo.helper.XMLHelper;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-@WebService(name = "DatasourceService")
+@WebService(name = "SIMPLCoreService")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
-public class Datasource {
+public class SIMPLCore {
   // Output stream to write SDO to XML string
   ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-  @WebMethod(action = "executeStatementByDataSourceObject")
-  public boolean executeStatementByDataSourceObject(@WebParam(name = "dataSource") DataSource dataSource,
+  @WebMethod(action = "issueCommandByDataSourceObject")
+  public boolean issueCommandByDataSourceObject(
+      @WebParam(name = "dataSource") DataSource dataSource,
       @WebParam(name = "statement") String statement,
       @WebParam(name = "lateBinding") LateBinding lateBinding) throws Exception {
     boolean success = false;
 
-    success = SIMPLCore.getInstance().dataSourceServiceInterface()
-        .executeStatement(dataSource, statement, lateBinding);
+    success = SIMPLCoreService.getInstance().getService()
+        .issueCommand(dataSource, statement, lateBinding);
 
     return success;
   }
 
   @WebMethod(action = "executeStatementByDataSourceDescriptor")
-  public boolean executeStatementByDataSourceDescriptor(@WebParam(name = "dataSourceDescriptor") String dataSourceDescriptor,
+  public boolean issueCommandByDataSourceDescriptor(
+      @WebParam(name = "dataSourceDescriptor") String dataSourceDescriptor,
       @WebParam(name = "statement") String statement,
       @WebParam(name = "lateBinding") LateBinding lateBinding) throws Exception {
     boolean success = false;
 
-    success = SIMPLCore.getInstance().dataSourceServiceInterface()
-        .executeStatement(dataSourceDescriptor, statement, lateBinding);
+    success = SIMPLCoreService.getInstance().getService()
+        .issueCommand(dataSourceDescriptor, statement, lateBinding);
 
     return success;
   }
-  
+
   @WebMethod(action = "retrieveDataByDataSourceObject")
-  public String retrieveDataByDataSourceObject(@WebParam(name = "dataSource") DataSource dataSource,
+  public String retrieveDataByDataSourceObject(
+      @WebParam(name = "dataSource") DataSource dataSource,
       @WebParam(name = "statement") String statement,
       @WebParam(name = "lateBinding") LateBinding lateBinding) throws Exception {
     DataObject dataObject = null;
     String data = null;
 
-    dataObject = SIMPLCore.getInstance().dataSourceServiceInterface()
+    dataObject = SIMPLCoreService.getInstance().getService()
         .retrieveData(dataSource, statement, lateBinding);
 
     if (dataObject != null) {
@@ -89,13 +92,14 @@ public class Datasource {
   }
 
   @WebMethod(action = "retrieveDataByDataSourceDescriptor")
-  public String retrieveDataByDataSourceDescriptor(@WebParam(name = "dataSource") String dataSourceDescriptor,
+  public String retrieveDataByDataSourceDescriptor(
+      @WebParam(name = "dataSource") String dataSourceDescriptor,
       @WebParam(name = "statement") String statement,
       @WebParam(name = "lateBinding") LateBinding lateBinding) throws Exception {
     DataObject dataObject = null;
     String data = null;
 
-    dataObject = SIMPLCore.getInstance().dataSourceServiceInterface()
+    dataObject = SIMPLCoreService.getInstance().getService()
         .retrieveData(dataSourceDescriptor, statement, lateBinding);
 
     if (dataObject != null) {
@@ -114,37 +118,10 @@ public class Datasource {
 
     return data;
   }
-  
-  @WebMethod(action = "writeBackByDataSourceObject")
-  public boolean writeBackByDataSourceObject(@WebParam(name = "dataSource") DataSource dataSource,
-      @WebParam(name = "dataObject") String data,
-      @WebParam(name = "lateBinding") LateBinding lateBinding) throws Exception {
-    boolean success = false;
-    DataObject dataObject = null;
 
-    dataObject = (DataObject) Parameter.deserialize(data);
-    success = SIMPLCore.getInstance().dataSourceServiceInterface()
-        .writeBack(dataSource, dataObject, lateBinding);
-
-    return success;
-  }
-
-  @WebMethod(action = "writeBackByDataSourceDescriptor")
-  public boolean writeBackByDataSourceDescriptor(@WebParam(name = "dataSourceDescriptor") String dataSourceDescriptor,
-      @WebParam(name = "dataObject") String data,
-      @WebParam(name = "lateBinding") LateBinding lateBinding) throws Exception {
-    boolean success = false;
-    DataObject dataObject = null;
-
-    dataObject = (DataObject) Parameter.deserialize(data);
-    success = SIMPLCore.getInstance().dataSourceServiceInterface()
-        .writeBack(dataSourceDescriptor, dataObject, lateBinding);
-
-    return success;
-  }
-  
-  @WebMethod(action = "writeDataByDataSourceObjectObject")
-  public boolean writeDataByDataSourceObject(@WebParam(name = "dataSource") DataSource dataSource,
+  @WebMethod(action = "writeDataBackByDataSourceObjectObject")
+  public boolean writeDataBackByDataSourceObject(
+      @WebParam(name = "dataSource") DataSource dataSource,
       @WebParam(name = "dataObject") String data,
       @WebParam(name = "target") String target,
       @WebParam(name = "lateBinding") LateBinding lateBinding) throws Exception {
@@ -152,14 +129,15 @@ public class Datasource {
     DataObject dataObject = null;
 
     dataObject = (DataObject) Parameter.deserialize(data);
-    success = SIMPLCore.getInstance().dataSourceServiceInterface()
-        .writeData(dataSource, dataObject, target, lateBinding);
+    success = SIMPLCoreService.getInstance().getService()
+        .writeDataBack(dataSource, dataObject, target, lateBinding);
 
     return success;
   }
 
-  @WebMethod(action = "writeDataByDataSourceDescriptor")
-  public boolean writeDataByDataSourceDescriptor(@WebParam(name = "dataSourceDescriptor") String dataSourceDescriptor,
+  @WebMethod(action = "writeDataBackByDataSourceDescriptor")
+  public boolean writeDataBackByDataSourceDescriptor(
+      @WebParam(name = "dataSourceDescriptor") String dataSourceDescriptor,
       @WebParam(name = "dataObject") String data,
       @WebParam(name = "target") String target,
       @WebParam(name = "lateBinding") LateBinding lateBinding) throws Exception {
@@ -167,34 +145,36 @@ public class Datasource {
     DataObject dataObject = null;
 
     dataObject = (DataObject) Parameter.deserialize(data);
-    success = SIMPLCore.getInstance().dataSourceServiceInterface()
-        .writeData(dataSourceDescriptor, dataObject, target, lateBinding);
+    success = SIMPLCoreService.getInstance().getService()
+        .writeDataBack(dataSourceDescriptor, dataObject, target, lateBinding);
 
     return success;
   }
-  
-  @WebMethod(action = "depositDataByDataSourceObject")
-  public boolean depositDataByDataSourceObject(@WebParam(name = "dataSource") DataSource dataSource,
+
+  @WebMethod(action = "queryDataByDataSourceObject")
+  public boolean queryDataByDataSourceObject(
+      @WebParam(name = "dataSource") DataSource dataSource,
       @WebParam(name = "statement") String statement,
       @WebParam(name = "target") String target,
       @WebParam(name = "lateBinding") LateBinding lateBinding) throws Exception {
     boolean success = false;
 
-    success = SIMPLCore.getInstance().dataSourceServiceInterface()
-        .depositData(dataSource, statement, target, lateBinding);
+    success = SIMPLCoreService.getInstance().getService()
+        .queryData(dataSource, statement, target, lateBinding);
 
     return success;
   }
-  
-  @WebMethod(action = "depositDataByDataSourceDescriptor")
-  public boolean depositDataByDataSourceDescriptor(@WebParam(name = "dataSourceDescriptor") String dataSourceDescriptor,
+
+  @WebMethod(action = "queryDataByDataSourceDescriptor")
+  public boolean queryDataByDataSourceDescriptor(
+      @WebParam(name = "dataSourceDescriptor") String dataSourceDescriptor,
       @WebParam(name = "statement") String statement,
       @WebParam(name = "target") String target,
       @WebParam(name = "lateBinding") LateBinding lateBinding) throws Exception {
     boolean success = false;
 
-    success = SIMPLCore.getInstance().dataSourceServiceInterface()
-        .depositData(dataSourceDescriptor, statement, target, lateBinding);
+    success = SIMPLCoreService.getInstance().getService()
+        .queryData(dataSourceDescriptor, statement, target, lateBinding);
 
     return success;
   }
@@ -205,7 +185,7 @@ public class Datasource {
     DataObject dataObject = null;
     String metaData = null;
 
-    dataObject = SIMPLCore.getInstance().dataSourceServiceInterface()
+    dataObject = SIMPLCoreService.getInstance().getService()
         .getMetaData(dataSource, filter);
 
     try {
@@ -230,7 +210,7 @@ public class Datasource {
     String metaDataSchema = "";
     StringWriter writer = new StringWriter();
 
-    inputStream = SIMPLCore.getInstance().dataSourceServiceInterface()
+    inputStream = SIMPLCoreService.getInstance().getService()
         .getMetaDataSchemaFile(dataSource);
 
     // convert inputStream to String

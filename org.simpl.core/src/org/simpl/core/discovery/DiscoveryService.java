@@ -1,4 +1,4 @@
-package org.simpl.core.services.discovery;
+package org.simpl.core.discovery;
 
 import org.simpl.resource.management.client.DataSource;
 import org.simpl.resource.management.client.LateBinding;

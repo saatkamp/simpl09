@@ -16,26 +16,26 @@ import java.net.URL;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class AdministrationServiceClient {
+public class SIMPLCoreAdministrationServiceClient {
   static String serviceAddress = null;
 
-  private static AdministrationService service = null;
+  private static SIMPLCoreAdministrationService service = null;
 
-  public static AdministrationService getService() {
+  public static SIMPLCoreAdministrationService getService() {
     if (service == null && isAvailable()) {
-      service = new AdministrationService_Service().getAdministrationServicePort();
+      service = new SIMPLCoreAdministrationService_Service().getSIMPLCoreAdministrationServicePort();
     }
 
     return service;
   }
 
-  public static AdministrationService getService(String address) {
+  public static SIMPLCoreAdministrationService getService(String address) {
     if (address != null) {
       serviceAddress = address;
     }
     
     if (isAvailable()) {
-      service = new AdministrationService_Service().getAdministrationServicePort();
+      service = new SIMPLCoreAdministrationService_Service().getSIMPLCoreAdministrationServicePort();
     } else {
       service = null;
     }

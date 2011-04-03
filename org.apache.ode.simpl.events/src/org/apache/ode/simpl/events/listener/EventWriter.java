@@ -6,9 +6,9 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ode.bpel.pmapi.TEventInfo;
-import org.simpl.core.SIMPLCore;
 import org.simpl.core.dataformat.DataFormatProvider;
-import org.simpl.core.services.datasource.exceptions.ConnectionException;
+import org.simpl.core.exceptions.ConnectionException;
+import org.simpl.core.services.SIMPLCoreService;
 
 import commonj.sdo.DataObject;
 
@@ -85,8 +85,8 @@ public class EventWriter {
 		logger.debug("Event SDO table list size: " + dataObject.getList("table").size());
 		
 		try {
-			SIMPLCore.getInstance().dataSourceService().writeData(AuditingParameters.getInstance().getDataSource(),
-					dataObject, "AUDITING_TABLE");
+			SIMPLCoreService.getInstance().getService().writeDataBack(AuditingParameters.getInstance().getDataSource(),
+					dataObject, "AUDITING_TABLE", null);
 		} catch (ConnectionException e) {
 			e.printStackTrace();
 		}

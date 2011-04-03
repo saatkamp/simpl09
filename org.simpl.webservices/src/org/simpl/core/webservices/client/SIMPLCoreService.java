@@ -18,12 +18,12 @@ import org.simpl.resource.management.client.LateBinding;
  * Generated source version: 2.1
  * 
  */
-@WebService(name = "DatasourceService", targetNamespace = "http://webservices.core.simpl.org/")
+@WebService(name = "SIMPLCoreService", targetNamespace = "http://webservices.core.simpl.org/")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 @XmlSeeAlso({
     ObjectFactory.class
 })
-public interface DatasourceService {
+public interface SIMPLCoreService {
 
 
     /**
@@ -53,9 +53,9 @@ public interface DatasourceService {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "executeStatementByDataSourceObject")
+    @WebMethod(action = "issueCommandByDataSourceObject")
     @WebResult(partName = "return")
-    public boolean executeStatementByDataSourceObject(
+    public boolean issueCommandByDataSourceObject(
         @WebParam(name = "dataSource", partName = "dataSource")
         DataSource dataSource,
         @WebParam(name = "statement", partName = "statement")
@@ -76,7 +76,7 @@ public interface DatasourceService {
      */
     @WebMethod(action = "executeStatementByDataSourceDescriptor")
     @WebResult(partName = "return")
-    public boolean executeStatementByDataSourceDescriptor(
+    public boolean issueCommandByDataSourceDescriptor(
         @WebParam(name = "dataSourceDescriptor", partName = "dataSourceDescriptor")
         String dataSourceDescriptor,
         @WebParam(name = "statement", partName = "statement")
@@ -132,57 +132,15 @@ public interface DatasourceService {
      * 
      * @param dataSource
      * @param lateBinding
-     * @param dataObject
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "writeBackByDataSourceObject")
-    @WebResult(partName = "return")
-    public boolean writeBackByDataSourceObject(
-        @WebParam(name = "dataSource", partName = "dataSource")
-        DataSource dataSource,
-        @WebParam(name = "dataObject", partName = "dataObject")
-        String dataObject,
-        @WebParam(name = "lateBinding", partName = "lateBinding")
-        LateBinding lateBinding)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param lateBinding
-     * @param dataObject
-     * @param dataSourceDescriptor
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "writeBackByDataSourceDescriptor")
-    @WebResult(partName = "return")
-    public boolean writeBackByDataSourceDescriptor(
-        @WebParam(name = "dataSourceDescriptor", partName = "dataSourceDescriptor")
-        String dataSourceDescriptor,
-        @WebParam(name = "dataObject", partName = "dataObject")
-        String dataObject,
-        @WebParam(name = "lateBinding", partName = "lateBinding")
-        LateBinding lateBinding)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param dataSource
-     * @param lateBinding
      * @param target
      * @param dataObject
      * @return
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "writeDataByDataSourceObjectObject")
+    @WebMethod(action = "writeDataBackByDataSourceObjectObject")
     @WebResult(partName = "return")
-    public boolean writeDataByDataSourceObject(
+    public boolean writeDataBackByDataSourceObject(
         @WebParam(name = "dataSource", partName = "dataSource")
         DataSource dataSource,
         @WebParam(name = "dataObject", partName = "dataObject")
@@ -204,9 +162,9 @@ public interface DatasourceService {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "writeDataByDataSourceDescriptor")
+    @WebMethod(action = "writeDataBackByDataSourceDescriptor")
     @WebResult(partName = "return")
-    public boolean writeDataByDataSourceDescriptor(
+    public boolean writeDataBackByDataSourceDescriptor(
         @WebParam(name = "dataSourceDescriptor", partName = "dataSourceDescriptor")
         String dataSourceDescriptor,
         @WebParam(name = "dataObject", partName = "dataObject")
@@ -228,9 +186,9 @@ public interface DatasourceService {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "depositDataByDataSourceObject")
+    @WebMethod(action = "queryDataByDataSourceObject")
     @WebResult(partName = "return")
-    public boolean depositDataByDataSourceObject(
+    public boolean queryDataByDataSourceObject(
         @WebParam(name = "dataSource", partName = "dataSource")
         DataSource dataSource,
         @WebParam(name = "statement", partName = "statement")
@@ -252,9 +210,9 @@ public interface DatasourceService {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "depositDataByDataSourceDescriptor")
+    @WebMethod(action = "queryDataByDataSourceDescriptor")
     @WebResult(partName = "return")
-    public boolean depositDataByDataSourceDescriptor(
+    public boolean queryDataByDataSourceDescriptor(
         @WebParam(name = "dataSourceDescriptor", partName = "dataSourceDescriptor")
         String dataSourceDescriptor,
         @WebParam(name = "statement", partName = "statement")

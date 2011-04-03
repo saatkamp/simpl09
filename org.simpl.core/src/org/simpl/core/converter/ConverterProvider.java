@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.simpl.core.SIMPLResourceManagement;
+import org.simpl.core.clients.RMClient;
 import org.simpl.core.connector.Connector;
 import org.simpl.core.plugins.converter.ConverterPlugin;
 
@@ -71,7 +71,7 @@ public class ConverterProvider {
     List<String> supportedConvertDataFormats = new ArrayList<String>();
     ConverterPlugin dataFormatConverter = null;
 
-    HashMap<String, ArrayList<String>> dataFormatConverterMapping = SIMPLResourceManagement
+    HashMap<String, ArrayList<String>> dataFormatConverterMapping = RMClient
         .getInstance().getConverterMapping();
 
     for (String dataFormatConverterClassName : dataFormatConverterMapping.keySet()) {
@@ -111,7 +111,7 @@ public class ConverterProvider {
    * Loads the converter plug-ins.
    */
   public static void loadPlugins() {
-    List<String> plugins = SIMPLResourceManagement.getInstance()
+    List<String> plugins = RMClient.getInstance()
         .getConverterPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
     ConverterPlugin dataFormatConverterInstance;

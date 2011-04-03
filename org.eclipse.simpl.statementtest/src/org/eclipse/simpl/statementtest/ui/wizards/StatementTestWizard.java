@@ -32,8 +32,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PartInitException;
-import org.simpl.core.webservices.client.DatasourceService;
-import org.simpl.core.webservices.client.DatasourceServiceClient;
+import org.simpl.core.webservices.client.SIMPLCoreService;
+import org.simpl.core.webservices.client.SIMPLCoreServiceClient;
 import org.simpl.resource.management.client.Connector;
 import org.simpl.resource.management.client.DataFormat;
 import org.simpl.resource.management.client.DataSource;
@@ -65,9 +65,9 @@ public class StatementTestWizard extends Wizard {
   private StatementTestWizardPage statementScreeningPage;
 
   /**
-   * Instance of the data source service.
+   * Instance of the SIMPL Core web service.
    */
-  DatasourceService dataSourceService = null;
+  SIMPLCoreService simplCoreService = null;
 
   /**
    * The statement test.
@@ -166,7 +166,7 @@ public class StatementTestWizard extends Wizard {
       // initialize the data source service client
       while (retry) {
         try {
-          this.dataSourceService = DatasourceServiceClient.getService(CommunicationPlugIn
+          this.simplCoreService = SIMPLCoreServiceClient.getService(CommunicationPlugIn
               .getDefault().getPreferenceStore().getString("SIMPL_CORE_DSS_ADDRESS"));
           isSimplCoreAvailable = true;
           retry = false;
@@ -237,9 +237,9 @@ public class StatementTestWizard extends Wizard {
    */
   private void executeActivityStatement() {
     DatabaseStatementExecution databaseActivityExecution = new DatabaseStatementExecution(
-        this.statementTest, this.dataSourceService);
+        this.statementTest, this.simplCoreService);
     FilesystemStatementExecution filesystemActivityExecution = new FilesystemStatementExecution(
-        this.statementTest, this.dataSourceService);
+        this.statementTest, this.simplCoreService);
     String activityType = statementTest.getActivityName();
     String dataSourceType = statementTest.getDataSource().getType();
 

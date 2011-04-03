@@ -1,14 +1,14 @@
 First time setup:
-1) Go to External Tools Configuration "wsimport DatasourceService" and adapt the path under "Location:" and the url to the web service under "Arguments:".
+1) Go to External Tools Configuration "wsimport SIMPLCoreService" and adapt the path under "Location:" and the url to the web service under "Arguments:".
 2) Go to External Tools Configuration "distribute simpl-webservices-client.jar" and adapt the path under "Working Directory:".
 3) Open the "distribute-simpl-core-webservices-client-jar.bat" in text editor and adapt the paths.
 4) Open the "simpl-core-webservices-client.jardesc" in text editor and adapt the jar path.
 
 Generate the client:
-1) Launch the SIMPL Web Services (Tomcat)
-2) Select the org.simpl.core.webservices.Datasource.java file and run the "wsimport DatasourceService" external tool.
+1) Launch the SIMPL Core Web Services (start Tomcat)
+2) Select the org.simpl.core.webservices.Datasource.java file and run the "wsimport SIMPLCoreService" external tool.
 3) Delete all files under org.simpl.core.webservices that are not under version control (SVN)
 4) Correct the errors in the other files in importing unknown classes from "org.simpl.resource.management.client"
-5) SVN Revert the DatasourceService_Service.java
+5) SVN Revert the SIMPLCoreService_Service.java
 6) Create the client jar file by using the simpl-core-webservices-client.jardesc
 7) Run the "distribute simpl-core-webservices-client.jar" external tool to distribute the client among the projects.

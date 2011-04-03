@@ -10,7 +10,7 @@ import org.eclipse.simpl.statementtest.model.StatementTest;
 import org.eclipse.simpl.statementtest.model.results.CreateTableResult;
 import org.eclipse.simpl.statementtest.model.results.RelationalResult;
 import org.eclipse.simpl.statementtest.utils.StringUtils;
-import org.simpl.core.webservices.client.DatasourceService;
+import org.simpl.core.webservices.client.SIMPLCoreService;
 import org.simpl.resource.management.client.LateBinding;
 
 /**
@@ -27,11 +27,11 @@ import org.simpl.resource.management.client.LateBinding;
 public class DatabaseStatementExecution extends StatementExecution {
   /**
    * @param statementTest
-   * @param dataSourceService
+   * @param simplCoreService
    */
   public DatabaseStatementExecution(StatementTest statementTest,
-      DatasourceService dataSourceService) {
-    super(statementTest, dataSourceService);
+      SIMPLCoreService simplCoreService) {
+    super(statementTest, simplCoreService);
   }
 
   @Override
@@ -344,7 +344,7 @@ public class DatabaseStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      boolean result = this.dataSourceService.executeStatementByDataSourceObject(
+      boolean result = this.simplCoreService.issueCommandByDataSourceObject(
           this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), new LateBinding());
       statementTest.setExecuted(result);
 
@@ -372,7 +372,7 @@ public class DatabaseStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      String result = this.dataSourceService.retrieveDataByDataSourceObject(
+      String result = this.simplCoreService.retrieveDataByDataSourceObject(
           this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), new LateBinding());
 
       if (result != null && !result.equals("")) {
@@ -426,7 +426,7 @@ public class DatabaseStatementExecution extends StatementExecution {
     try {
       this.statementTest.log("Retrieve result before: " + execStatement);
 
-      resultBefore = this.dataSourceService.retrieveDataByDataSourceObject(
+      resultBefore = this.simplCoreService.retrieveDataByDataSourceObject(
           this.statementTest.getDataSource(), execStatement, new LateBinding());
 
       // set table name (for drop activity)
@@ -455,7 +455,7 @@ public class DatabaseStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      boolean result = dataSourceService.executeStatementByDataSourceObject(
+      boolean result = simplCoreService.issueCommandByDataSourceObject(
           this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), new LateBinding());
       statementTest.setExecuted(result);
 
@@ -486,7 +486,7 @@ public class DatabaseStatementExecution extends StatementExecution {
       // retrieve result after
       try {
         statementTest.log("Retrieve result after: " + execStatement);
-        resultAfter = this.dataSourceService.retrieveDataByDataSourceObject(
+        resultAfter = this.simplCoreService.retrieveDataByDataSourceObject(
             this.statementTest.getDataSource(), execStatement, new LateBinding());
 
         if (resultAfter != null && !resultAfter.equals("")) {

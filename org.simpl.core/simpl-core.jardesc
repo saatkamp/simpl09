@@ -11,23 +11,21 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.connection"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.administration"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.helpers"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.plugins.dataformat.converter"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.discovery"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.dataformat.converter"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.connector"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.plugins.converter"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.clients"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.datasource"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.dataformat"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.datasource.exceptions"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.administration"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.metadata"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.dataformat"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.plugins.datasource"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.converter"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.datasource.metadata"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.discovery"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.exceptions"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.plugins.dataformat"/>
+        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.connection"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.plugins.connector"/>
     </selectedElements>
 </jardesc>

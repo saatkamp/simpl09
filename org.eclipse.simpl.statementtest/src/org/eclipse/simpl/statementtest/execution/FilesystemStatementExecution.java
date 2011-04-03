@@ -2,7 +2,7 @@ package org.eclipse.simpl.statementtest.execution;
 
 import org.eclipse.simpl.statementtest.model.StatementTest;
 import org.eclipse.simpl.statementtest.model.results.RelationalResult;
-import org.simpl.core.webservices.client.DatasourceService;
+import org.simpl.core.webservices.client.SIMPLCoreService;
 import org.simpl.resource.management.client.LateBinding;
 
 /**
@@ -19,11 +19,11 @@ import org.simpl.resource.management.client.LateBinding;
 public class FilesystemStatementExecution extends StatementExecution {
   /**
    * @param statementTest
-   * @param dataSourceService
+   * @param simplCoreService
    */
   public FilesystemStatementExecution(StatementTest statementTest,
-      DatasourceService dataSourceService) {
-    super(statementTest, dataSourceService);
+      SIMPLCoreService simplCoreService) {
+    super(statementTest, simplCoreService);
   }
 
   @Override
@@ -32,7 +32,7 @@ public class FilesystemStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      String result = this.dataSourceService.retrieveDataByDataSourceObject(
+      String result = this.simplCoreService.retrieveDataByDataSourceObject(
           this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), null);
 
       if (result != null && !result.equals("")) {
@@ -64,7 +64,7 @@ public class FilesystemStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      successed = this.dataSourceService.executeStatementByDataSourceObject(
+      successed = this.simplCoreService.issueCommandByDataSourceObject(
           this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), new LateBinding());
 
       if (successed) {

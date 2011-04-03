@@ -1,4 +1,4 @@
-package org.simpl.core.services.datasource;
+package org.simpl.core;
 
 import java.io.InputStream;
 import java.util.List;
@@ -7,17 +7,16 @@ import org.simpl.core.connector.Connector;
 import org.simpl.core.connector.ConnectorProvider;
 import org.simpl.core.converter.ConverterProvider;
 import org.simpl.core.dataformat.DataFormatProvider;
+import org.simpl.core.discovery.DiscoveryService;
+import org.simpl.core.discovery.DiscoveryServiceImpl;
+import org.simpl.core.exceptions.ConnectionException;
 import org.simpl.core.plugins.connector.ConnectorPlugin;
-import org.simpl.core.services.datasource.exceptions.ConnectionException;
-import org.simpl.core.services.discovery.DiscoveryService;
-import org.simpl.core.services.discovery.DiscoveryServiceImpl;
 import org.simpl.resource.management.client.DataSource;
 
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b>Implementation of a common data source service that unites all connector
- * plug-ins.<br>
+ * <b>Purpose:</b>Implementation of the SIMPL Core that unites all connector plug-ins.<br>
  * <b>Description:</b>Receives all service requests and forwards them to the connector
  * instances that are provided by the connector plug-ins.<br>
  * The given data on write back is tested to match the given connector's data format and
@@ -31,7 +30,7 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class DataSourceServiceImpl implements Connector<DataObject, DataObject> {
+public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
   DiscoveryService discoveryService = new DiscoveryServiceImpl();
 
   /*
@@ -41,7 +40,7 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
    * .DataSource, java.lang.String, java.lang.String)
    */
   @Override
-  public synchronized boolean depositData(DataSource dataSource, String statement,
+  public synchronized boolean queryData(DataSource dataSource, String statement,
       String target) throws ConnectionException {
     boolean success = false;
     Connector<Object, Object> dataSourceService;
@@ -51,7 +50,7 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
         dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
-        success = dataSourceService.depositData(dataSource, statement, target);
+        success = dataSourceService.queryData(dataSource, statement, target);
       }
     } catch (Exception e) {
       throw new ConnectionException(e.getCause());
@@ -67,7 +66,7 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
    * .client.DataSource, java.lang.String)
    */
   @Override
-  public synchronized boolean executeStatement(DataSource dataSource, String statement)
+  public synchronized boolean issueCommand(DataSource dataSource, String statement)
       throws ConnectionException {
     boolean success = false;
 
@@ -81,7 +80,7 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
             dataSource.getSubType());
 
         // execute statement
-        success = dataSourceService.executeStatement(dataSource, statement);
+        success = dataSourceService.issueCommand(dataSource, statement);
       }
     } catch (Exception e) {
       throw new ConnectionException(e.getCause());
@@ -129,46 +128,11 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
   /*
    * (non-Javadoc)
    * @see
-   * org.simpl.core.connector.Connector#writeBack(org.simpl.resource.management.client
-   * .DataSource, commonj.sdo.DataObject)
-   */
-  @Override
-  public synchronized boolean writeBack(DataSource dataSource, DataObject data)
-      throws ConnectionException {
-    boolean success = false;
-
-    Connector<Object, Object> dataSourceService = null;
-    Object writeData = null;
-
-    try {
-      if (this.isDataSourceComplete(dataSource)) {
-        // get data source service instance
-        dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
-            dataSource.getSubType());
-
-        writeData = DataFormatProvider.getInstance(
-            dataSource.getConnector().getConverterDataFormat().getName()).fromSDO(data);
-
-        // write data
-        if (writeData != null) {
-          success = dataSourceService.writeBack(dataSource, writeData);
-        }
-      }
-    } catch (Exception e) {
-      throw new ConnectionException(e.getCause());
-    }
-
-    return success;
-  }
-
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.connector.Connector#writeData(org.simpl.resource.management.client
+   * org.simpl.core.connector.Connector#writeDataBack(org.simpl.resource.management.client
    * .DataSource, commonj.sdo.DataObject, java.lang.String)
    */
   @Override
-  public synchronized boolean writeData(DataSource dataSource, DataObject data,
+  public synchronized boolean writeDataBack(DataSource dataSource, DataObject data,
       String target) throws ConnectionException {
     boolean success = false;
 
@@ -181,12 +145,18 @@ public class DataSourceServiceImpl implements Connector<DataObject, DataObject> 
         dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
-        // format data
-        writeData = formatWriteDataAndCreateTarget(dataSourceService, data, dataSource,
-            target);
+        if (target != null && !target.equals("")) {
+          // format and write back data
+          writeData = formatWriteDataAndCreateTarget(dataSourceService, data, dataSource,
+              target);
+        } else {
+          // write back data
+          writeData = DataFormatProvider.getInstance(
+              dataSource.getConnector().getConverterDataFormat().getName()).fromSDO(data);
+        }
 
         if (writeData != null) {
-          success = dataSourceService.writeData(dataSource, writeData, target);
+          success = dataSourceService.writeDataBack(dataSource, writeData, target);
         }
       }
     } catch (Exception e) {

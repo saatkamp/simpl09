@@ -11,16 +11,15 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.simpl.core.SIMPLCore;
+import org.simpl.core.exceptions.ConnectionException;
 import org.simpl.core.plugins.connector.ConnectorPlugin;
 import org.simpl.core.plugins.dataformat.relational.RDBResult;
-import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.simpl.resource.management.client.DataSource;
 
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b>Implements all methods of the {@link IDatasourceService} interface for
+ * <b>Purpose:</b>Implements all methods of the {@link Connector} interface for
  * supporting the PostgreSQL relational database.<br>
  * <b>Description:</b>dsAddress = //MyDbComputerNameOrIP:3306/myDatabaseName, for example
  * //localhost:3306/simplDB.<br>
@@ -50,7 +49,7 @@ public class PostgreSQLRDBConnector extends ConnectorPlugin<List<String>, RDBRes
   }
 
   @Override
-  public boolean executeStatement(DataSource dataSource, String statement)
+  public boolean issueCommand(DataSource dataSource, String statement)
       throws ConnectionException {
     if (PostgreSQLRDBConnector.logger.isDebugEnabled()) {
       PostgreSQLRDBConnector.logger.debug("boolean executeStatement("
@@ -132,64 +131,8 @@ public class PostgreSQLRDBConnector extends ConnectorPlugin<List<String>, RDBRes
   }
 
   @Override
-  public boolean writeBack(DataSource dataSource, List<String> statements)
-      throws ConnectionException {
-    boolean success = false;
-
-    Connection connection = openConnection(dataSource.getAddress(), dataSource
-        .getAuthentication().getUser(), dataSource.getAuthentication().getPassword());
-    Statement connStatement = null;
-
-    if (PostgreSQLRDBConnector.logger.isDebugEnabled()) {
-      PostgreSQLRDBConnector.logger.debug("boolean writeBack(" + dataSource.getAddress()
-          + ", DataObject) executed.");
-    }
-
-    try {
-      connStatement = connection.createStatement();
-
-      for (String statement : statements) {
-        if (statement.startsWith("UPDATE")) {
-          connStatement.executeUpdate(statement);
-
-          PostgreSQLRDBConnector.logger.info("Statement \"" + statement + "\" "
-              + "executed on " + dataSource.getAddress()
-              + (success ? " was successful" : " failed"));
-        }
-      }
-
-      // all statements executed without SQLException
-      success = true;
-
-      connStatement.close();
-      connection.commit();
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-      PostgreSQLRDBConnector.logger.debug("Connection will be rolled back.");
-
-      try {
-        connection.rollback();
-      } catch (SQLException e1) {
-        // TODO Auto-generated catch block
-        e1.printStackTrace();
-      }
-    }
-
-    closeConnection(connection);
-
-    return success;
-  }
-
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.datasource.DataSourceService#writeData(org.simpl.core.services
-   * .datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
-   */
-  @Override
-  public boolean writeData(DataSource dataSource, List<String> statements, String target)
-      throws ConnectionException {
+  public boolean writeDataBack(DataSource dataSource, List<String> statements,
+      String target) throws ConnectionException {
     boolean success = false;
 
     Connection connection = openConnection(dataSource.getAddress(), dataSource
@@ -206,18 +149,26 @@ public class PostgreSQLRDBConnector extends ConnectorPlugin<List<String>, RDBRes
         connStatement = connection.createStatement();
 
         for (String statement : statements) {
-          if (statement.startsWith("INSERT")) {
-            // replace dataObject's including schema.table name with target name
-            if (target != null) {
+          if (target == null || target.equals("")) {
+            if (statement.startsWith("UPDATE")) {
+              connStatement.executeUpdate(statement);
+
+              PostgreSQLRDBConnector.logger.info("Statement \"" + statement + "\" "
+                  + "executed on " + dataSource.getAddress()
+                  + (success ? " was successful" : " failed"));
+            }
+          } else {
+            if (statement.startsWith("INSERT")) {
+              // replace dataObject's including schema.table name with target name
               statement = statement.replaceAll("INSERT INTO .*?\\(", "INSERT INTO "
                   + target + " (");
+
+              connStatement.executeUpdate(statement);
+
+              PostgreSQLRDBConnector.logger.info("Statement \"" + statement + "\" "
+                  + "executed on " + dataSource.getAddress()
+                  + (success ? " was successful" : " failed"));
             }
-
-            connStatement.executeUpdate(statement);
-
-            PostgreSQLRDBConnector.logger.info("Statement \"" + statement + "\" "
-                + "executed on " + dataSource.getAddress()
-                + (success ? " was successful" : " failed"));
           }
         }
 
@@ -246,7 +197,7 @@ public class PostgreSQLRDBConnector extends ConnectorPlugin<List<String>, RDBRes
   }
 
   @Override
-  public boolean depositData(DataSource dataSource, String statement, String target)
+  public boolean queryData(DataSource dataSource, String statement, String target)
       throws ConnectionException {
     boolean success = false;
 
@@ -298,10 +249,6 @@ public class PostgreSQLRDBConnector extends ConnectorPlugin<List<String>, RDBRes
     return success;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
-   */
   @Override
   public DataObject getMetaData(DataSource dataSource, String filter)
       throws ConnectionException {
@@ -363,8 +310,7 @@ public class PostgreSQLRDBConnector extends ConnectorPlugin<List<String>, RDBRes
 
     // test if target already exists
     try {
-      createdTarget = SIMPLCore.getInstance().dataSourceService()
-          .executeStatement(dataSource, "SELECT * FROM " + target);
+      createdTarget = this.issueCommand(dataSource, "SELECT * FROM " + target);
     } catch (Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -407,7 +353,7 @@ public class PostgreSQLRDBConnector extends ConnectorPlugin<List<String>, RDBRes
       }
 
       createTargetStatement += ")";
-      createdTarget = this.executeStatement(dataSource, createTargetStatement);
+      createdTarget = this.issueCommand(dataSource, createTargetStatement);
     }
 
     return createdTarget;

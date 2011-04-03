@@ -1,4 +1,4 @@
-package org.simpl.core;
+package org.simpl.core.clients;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.simpl.core.services.SIMPLCoreAdministrationService;
 import org.simpl.resource.management.client.Connector;
 import org.simpl.resource.management.client.ConnectorList;
 import org.simpl.resource.management.client.Converter;
@@ -17,8 +18,8 @@ import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
 
 /**
- * <b>Purpose:</b>Offers data from the SIMPL Resource Management about plug-ins that can
- * be used with the SIMPL Core.<br>
+ * <b>Purpose:</b>Provides access to and holds data from the SIMPL Resource Management web
+ * service about plug-ins that can be used with the SIMPL Core.<br>
  * <b>Description:</b>Uses ResourceManagementClient to talk to the resource management web
  * service interface.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
@@ -30,7 +31,7 @@ import org.simpl.resource.management.client.ResourceManagementClient;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class SIMPLResourceManagement {
+public class RMClient {
   /**
    * List of registered connector plug-ins.
    */
@@ -57,29 +58,29 @@ public class SIMPLResourceManagement {
   private HashMap<String, ArrayList<String>> converterMapping = new HashMap<String, ArrayList<String>>();
 
   /**
-   * SIMPLResourceManagement singleton instance.
-   */
-  private static final SIMPLResourceManagement instance = new SIMPLResourceManagement();
-
-  /**
-   * The resource management as web service
+   * The resource management web service.
    */
   private ResourceManagement resourceManagement = null;
 
   /**
+   * ResourceManagement singleton instance.
+   */
+  private static final RMClient instance = new RMClient();
+
+  /**
    * Initialize data.
    */
-  private SIMPLResourceManagement() {
+  private RMClient() {
     this.reload();
   }
 
   /**
-   * Returns the {@link SIMPLResourceManagement} singleton instance.
+   * Returns the {@link RMClient} singleton instance.
    * 
    * @return
    */
-  public static SIMPLResourceManagement getInstance() {
-    return SIMPLResourceManagement.instance;
+  public static RMClient getInstance() {
+    return RMClient.instance;
   }
 
   /**
@@ -113,8 +114,8 @@ public class SIMPLResourceManagement {
   }
 
   /**
-   * Returns a map of data formats and their supported connectors, key and
-   * values are full qualified class names.
+   * Returns a map of data formats and their supported connectors, key and values are full
+   * qualified class names.
    * 
    * @return data format mapping
    */
@@ -177,11 +178,10 @@ public class SIMPLResourceManagement {
     String resourceManagementAddress = null;
 
     // retrieve the resource management address from the internal embedded derby simplDB
-    LinkedHashMap<String, String> settings = SIMPLCore.getInstance()
-        .administrationService()
-        .loadSettings("RESOURCEMANAGEMENT", "SETTINGS", "lastSaved");
+    LinkedHashMap<String, String> settings = SIMPLCoreAdministrationService.getInstance()
+        .getService().loadSettings("RESOURCEMANAGEMENT", "SETTINGS", "lastSaved");
     resourceManagementAddress = settings.get("ADDRESS");
-    
+
     try {
       if (resourceManagementAddress != null) {
         resourceManagement = ResourceManagementClient
@@ -213,16 +213,15 @@ public class SIMPLResourceManagement {
         }
 
         // retrieve data format mapping
-        if (this.dataFormatMapping.containsKey(connector
-            .getConverterDataFormat().getImplementation())) {
+        if (this.dataFormatMapping.containsKey(connector.getConverterDataFormat()
+            .getImplementation())) {
           this.dataFormatMapping.get(
               connector.getConverterDataFormat().getImplementation()).add(
               connector.getImplementation());
         } else {
-          this.dataFormatMapping.put(
-              connector.getConverterDataFormat().getImplementation(),
-              new ArrayList<String>(
-                  Arrays.asList(connector.getImplementation())));
+          this.dataFormatMapping.put(connector.getConverterDataFormat()
+              .getImplementation(),
+              new ArrayList<String>(Arrays.asList(connector.getImplementation())));
         }
       }
     }

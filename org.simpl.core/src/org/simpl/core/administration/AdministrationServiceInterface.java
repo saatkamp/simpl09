@@ -1,4 +1,4 @@
-package org.simpl.core.services.administration;
+package org.simpl.core.administration;
 
 import java.util.LinkedHashMap;
 
@@ -14,7 +14,7 @@ import java.util.LinkedHashMap;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public interface AdministrationService {
+public interface AdministrationServiceInterface {
   public boolean saveSettings(String schema, String table, String settingName,
       LinkedHashMap<String, String> settings);
 

@@ -10,9 +10,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.simpl.core.exceptions.ConnectionException;
 import org.simpl.core.plugins.connector.ConnectorPlugin;
 import org.simpl.core.plugins.dataformat.file.RandomFile;
-import org.simpl.core.services.datasource.exceptions.ConnectionException;
 import org.simpl.resource.management.client.DataSource;
 
 import commonj.sdo.DataObject;
@@ -51,13 +51,8 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
     PropertyConfigurator.configure("log4j.properties");
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#defineData(java.lang.String,
-   * java.lang.String)
-   */
   @Override
-  public boolean executeStatement(DataSource dataSource, String statement)
+  public boolean issueCommand(DataSource dataSource, String statement)
       throws ConnectionException {
 
     if (WindowsLocalFSConnector.logger.isDebugEnabled()) {
@@ -78,56 +73,29 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
     return true;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#retrieveData(java.lang.String,
-   * java.lang.String)
-   */
   @Override
   public RandomFile retrieveData(DataSource dataSource, String file)
       throws ConnectionException {
     RandomFile result = new RandomFile();
     String dir = "";
-    
+
     if (WindowsLocalFSConnector.logger.isDebugEnabled()) {
       WindowsLocalFSConnector.logger.debug("DataObject retrieveData("
           + dataSource.getAddress() + ", " + file + ") executed.");
     }
 
-
     if (!dataSource.getAddress().equals("")) {
       dir = dataSource.getAddress() + File.separator;
     }
-    
+
     result.setDataSource(dataSource);
     result.setFile(new File(dir + file));
 
     return result;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#writeBack(java.lang.String,
-   * commonj.sdo.DataObject)
-   */
   @Override
-  public boolean writeBack(DataSource dataSource, File file) throws ConnectionException {
-    if (WindowsLocalFSConnector.logger.isDebugEnabled()) {
-      WindowsLocalFSConnector.logger.debug("boolean writeBack(" + dataSource.getAddress()
-          + ", " + file + ") executed.");
-    }
-
-    return file.exists();
-  }
-
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.datasource.DataSourceService#writeData(org.simpl.core.services
-   * .datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
-   */
-  @Override
-  public boolean writeData(DataSource dataSource, File dataFile, String target)
+  public boolean writeDataBack(DataSource dataSource, File dataFile, String target)
       throws ConnectionException {
     File targetFile = null;
     String dir = "";
@@ -141,19 +109,18 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
       dir = dataSource.getAddress() + File.separator;
     }
 
-    targetFile = new File(dir + target);
-    dataFile.renameTo(targetFile);
+    if (target != null && !target.equals("")) {
+      targetFile = new File(dir + target);
+      dataFile.renameTo(targetFile);
+    } else {
+      targetFile = dataFile;
+    }
     
     return targetFile.exists();
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#depositData(java.lang.String,
-   * java.lang.String, java.lang.String)
-   */
   @Override
-  public boolean depositData(DataSource dataSource, String file, String targetFile)
+  public boolean queryData(DataSource dataSource, String file, String targetFile)
       throws ConnectionException {
     String[] envp = new String[] { "cmd", "/c", "start", "copy" };
 
@@ -174,10 +141,6 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
     return true;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.simpl.core.datasource.DatasourceService#getMetaData(java.lang.String)
-   */
   @Override
   public DataObject getMetaData(DataSource source, String filter)
       throws ConnectionException {
@@ -272,12 +235,6 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
     return metaDataObject;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.datasource.DataSourceService#createTarget(org.simpl.core.
-   * services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
-   */
   @Override
   public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
       throws ConnectionException {
