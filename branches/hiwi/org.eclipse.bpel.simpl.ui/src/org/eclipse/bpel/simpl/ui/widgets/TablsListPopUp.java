@@ -29,7 +29,7 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.data.DataSource;
 
 
 // TODO: Auto-generated Javadoc

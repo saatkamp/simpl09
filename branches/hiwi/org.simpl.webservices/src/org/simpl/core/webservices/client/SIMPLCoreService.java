@@ -8,8 +8,8 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-import org.simpl.resource.management.client.DataSource;
-import org.simpl.resource.management.client.LateBinding;
+import org.simpl.resource.management.data.DataSource;
+import org.simpl.resource.management.data.LateBinding;
 
 
 /**

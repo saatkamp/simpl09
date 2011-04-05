@@ -3,7 +3,7 @@ package org.eclipse.simpl.resource.management.view;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
-import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.data.DataSource;
 
 public class ResourceManagementLabelProvider extends LabelProvider implements
 		ITableLabelProvider {

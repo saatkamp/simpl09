@@ -18,7 +18,6 @@
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.connector"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.plugins.converter"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.clients"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services.datasource"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.administration"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.metadata"/>
         <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.dataformat"/>

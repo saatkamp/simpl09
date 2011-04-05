@@ -6,8 +6,8 @@ import org.simpl.core.clients.RMClient;
 import org.simpl.core.discovery.DiscoveryService;
 import org.simpl.core.discovery.DiscoveryServiceImpl;
 import org.simpl.core.exceptions.ConnectionException;
-import org.simpl.resource.management.client.DataSource;
-import org.simpl.resource.management.client.LateBinding;
+import org.simpl.resource.management.data.DataSource;
+import org.simpl.resource.management.data.LateBinding;
 
 import commonj.sdo.DataObject;
 

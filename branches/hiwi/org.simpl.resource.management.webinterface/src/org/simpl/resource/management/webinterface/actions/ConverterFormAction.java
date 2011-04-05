@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.simpl.resource.management.client.Converter;
-import org.simpl.resource.management.client.DataFormat;
 import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
+import org.simpl.resource.management.data.Converter;
+import org.simpl.resource.management.data.DataFormat;
 import org.simpl.resource.management.webinterface.FormMetaData;
 import org.simpl.resource.management.webinterface.MultipartForm;
 import org.simpl.resource.management.webinterface.RMWebConfig;

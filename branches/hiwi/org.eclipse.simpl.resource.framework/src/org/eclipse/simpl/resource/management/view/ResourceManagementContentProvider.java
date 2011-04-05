@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
-import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.data.DataSource;
 
 public class ResourceManagementContentProvider implements IStructuredContentProvider {
 	@Override

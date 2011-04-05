@@ -9,8 +9,8 @@ import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.apache.ode.simpl.ea.util.StatementUtils;
 import org.simpl.core.SIMPLCoreInterface;
 import org.simpl.core.services.SIMPLCoreService;
-import org.simpl.resource.management.client.DataSource;
-import org.simpl.resource.management.client.LateBinding;
+import org.simpl.resource.management.data.DataSource;
+import org.simpl.resource.management.data.LateBinding;
 import org.w3c.dom.Element;
 
 import commonj.sdo.DataObject;

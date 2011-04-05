@@ -11,7 +11,7 @@ import org.eclipse.simpl.statementtest.model.results.CreateTableResult;
 import org.eclipse.simpl.statementtest.model.results.RelationalResult;
 import org.eclipse.simpl.statementtest.utils.StringUtils;
 import org.simpl.core.webservices.client.SIMPLCoreService;
-import org.simpl.resource.management.client.LateBinding;
+import org.simpl.resource.management.data.LateBinding;
 
 /**
  * TODO <b>Purpose:</b><br>

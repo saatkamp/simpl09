@@ -6,11 +6,11 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-import org.simpl.resource.management.client.Authentication;
-import org.simpl.resource.management.client.Connector;
-import org.simpl.resource.management.client.DataFormat;
-import org.simpl.resource.management.client.DataSource;
-import org.simpl.resource.management.client.LateBinding;
+import org.simpl.resource.management.data.Authentication;
+import org.simpl.resource.management.data.Connector;
+import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataSource;
+import org.simpl.resource.management.data.LateBinding;
 
 
 /**
@@ -40,27 +40,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataSource }
-     * 
-     */
-    public DataSource createDataSource() {
-        return new DataSource();
-    }
-
-    /**
-     * Create an instance of {@link Authentication }
-     * 
-     */
-    public Authentication createAuthentication() {
-        return new Authentication();
-    }
-
-    /**
      * Create an instance of {@link Connector }
      * 
      */
     public Connector createConnector() {
         return new Connector();
+    }
+
+    /**
+     * Create an instance of {@link LateBinding }
+     * 
+     */
+    public LateBinding createLateBinding() {
+        return new LateBinding();
     }
 
     /**
@@ -72,11 +64,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LateBinding }
+     * Create an instance of {@link Authentication }
      * 
      */
-    public LateBinding createLateBinding() {
-        return new LateBinding();
+    public Authentication createAuthentication() {
+        return new Authentication();
+    }
+
+    /**
+     * Create an instance of {@link DataSource }
+     * 
+     */
+    public DataSource createDataSource() {
+        return new DataSource();
     }
 
     /**

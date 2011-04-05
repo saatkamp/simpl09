@@ -2,7 +2,7 @@ package org.simpl.core.plugins.dataformat.file;
 
 import java.io.File;
 
-import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.data.DataSource;
 
 /**
  * <b>Purpose:</b>Used by RandomFileDataFormat and CSVDataFormat to hold a file or folder

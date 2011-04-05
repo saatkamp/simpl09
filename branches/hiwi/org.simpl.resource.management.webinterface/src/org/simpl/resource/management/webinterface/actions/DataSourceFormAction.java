@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.simpl.resource.management.client.Authentication;
-import org.simpl.resource.management.client.Connector;
-import org.simpl.resource.management.client.DataFormat;
-import org.simpl.resource.management.client.DataSource;
 import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
+import org.simpl.resource.management.data.Authentication;
+import org.simpl.resource.management.data.Connector;
+import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.webinterface.FormMetaData;
 import org.simpl.resource.management.webinterface.MultipartForm;
 import org.simpl.resource.management.webinterface.RMWebConfig;

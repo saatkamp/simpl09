@@ -17,9 +17,9 @@ import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.simpl.core.SIMPLCoreInterface;
 import org.simpl.core.services.SIMPLCoreService;
-import org.simpl.resource.management.client.DataSource;
-import org.simpl.resource.management.client.LateBinding;
-import org.simpl.resource.management.client.ResourceManagementClient;
+import org.simpl.resource.management.ResourceManagement;
+import org.simpl.resource.management.data.DataSource;
+import org.simpl.resource.management.data.LateBinding;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -66,7 +66,8 @@ public class WriteDataBackActivity extends DataManagementActivity {
       String xmlValue = stringWriter.getBuffer().toString();
 
       // retrieve the schema file and define it for SDO
-      String schema = ResourceManagementClient.getService().getDataFormatSchema(
+      ResourceManagement rm = new ResourceManagement();
+      String schema = rm.getDataFormatSchema(
           ds.getConnector().getConverterDataFormat().getName());
       InputStream schemaInputStream = new ByteArrayInputStream(schema.getBytes());
       XSDHelper.INSTANCE.define(schemaInputStream, null);

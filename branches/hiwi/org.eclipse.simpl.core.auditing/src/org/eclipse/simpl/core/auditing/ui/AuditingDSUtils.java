@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.eclipse.simpl.communication.ResourceManagementCommunication;
 import org.eclipse.simpl.communication.SIMPLCoreCommunication;
-import org.simpl.resource.management.client.Authentication;
-import org.simpl.resource.management.client.Connector;
-import org.simpl.resource.management.client.DataFormat;
-import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.data.Authentication;
+import org.simpl.resource.management.data.Connector;
+import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataSource;
 
 /**
  * <b>Purpose:</b> <br>

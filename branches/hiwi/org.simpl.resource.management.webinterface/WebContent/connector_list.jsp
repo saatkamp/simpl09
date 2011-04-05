@@ -2,6 +2,7 @@
 <%@page import="java.io.PrintWriter"%>
 <%@page import="org.simpl.resource.management.webinterface.*"%>
 <%@page import="org.simpl.resource.management.client.*"%>
+<%@page import="org.simpl.resource.management.data.*"%>
 <%
   PrintWriter output = response.getWriter();
   ResourceManagement resourceManagement = ResourceManagementClient
@@ -16,7 +17,7 @@
 
 <body>
 <%
-  List<Connector> connectors = resourceManagement.getAllConnectors().getConnector();
+  List<Connector> connectors = resourceManagement.getAllConnectors().getConnectors();
 %>
 <h2>SIMPL Resource Management - Connector Management</h2>
 <a href="index.jsp">Home</a> &gt; Connector Management

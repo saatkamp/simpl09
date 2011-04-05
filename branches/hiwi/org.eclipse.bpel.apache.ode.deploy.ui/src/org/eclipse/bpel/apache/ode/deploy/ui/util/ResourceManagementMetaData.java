@@ -21,9 +21,9 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
 import org.eclipse.simpl.communication.CommunicationPlugIn;
 import org.eclipse.simpl.communication.ResourceManagementCommunication;
 import org.eclipse.simpl.communication.ResourceManagementService;
-import org.simpl.resource.management.client.Connector;
-import org.simpl.resource.management.client.DataFormat;
-import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.data.Connector;
+import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataSource;
 
 public class ResourceManagementMetaData {
 

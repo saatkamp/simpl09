@@ -34,9 +34,9 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PartInitException;
 import org.simpl.core.webservices.client.SIMPLCoreService;
 import org.simpl.core.webservices.client.SIMPLCoreServiceClient;
-import org.simpl.resource.management.client.Connector;
-import org.simpl.resource.management.client.DataFormat;
-import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.data.Connector;
+import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataSource;
 
 /**
  * <b>Purpose:</b>Wizard to create a new statement test.<br>

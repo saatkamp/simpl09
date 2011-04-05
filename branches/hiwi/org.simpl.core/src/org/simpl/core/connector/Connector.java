@@ -1,7 +1,7 @@
 package org.simpl.core.connector;
 
 import org.simpl.core.exceptions.ConnectionException;
-import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.data.DataSource;
 
 import commonj.sdo.DataObject;
 

@@ -5,8 +5,8 @@ import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.simpl.core.SIMPLCoreInterface;
 import org.simpl.core.services.SIMPLCoreService;
-import org.simpl.resource.management.client.DataSource;
-import org.simpl.resource.management.client.LateBinding;
+import org.simpl.resource.management.data.DataSource;
+import org.simpl.resource.management.data.LateBinding;
 import org.w3c.dom.Element;
 
 public class IssueCommandActivity extends DataManagementActivity {

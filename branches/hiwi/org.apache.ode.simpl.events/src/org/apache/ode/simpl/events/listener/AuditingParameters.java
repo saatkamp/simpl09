@@ -3,10 +3,10 @@ package org.apache.ode.simpl.events.listener;
 import java.util.HashMap;
 
 import org.simpl.core.services.SIMPLCoreAdministrationService;
-import org.simpl.resource.management.client.Authentication;
-import org.simpl.resource.management.client.Connector;
-import org.simpl.resource.management.client.DataFormat;
-import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.data.Authentication;
+import org.simpl.resource.management.data.Connector;
+import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataSource;
 
 public class AuditingParameters {
 

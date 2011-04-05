@@ -2,6 +2,7 @@
 <%@page import="java.io.PrintWriter"%>
 <%@page import="org.simpl.resource.management.webinterface.*"%>
 <%@page import="org.simpl.resource.management.client.*"%>
+<%@page import="org.simpl.resource.management.data.*"%>
 <%
   PrintWriter output = response.getWriter();
   ResourceManagement resourceManagement = ResourceManagementClient
@@ -16,7 +17,7 @@
 
 <body>
 <%
-  List<Converter> converters = resourceManagement.getAllConverters().getConverter();
+  List<Converter> converters = resourceManagement.getAllConverters().getConverters();
 %>
 <h2>SIMPL Resource Management - Converter Management</h2>
 <a href="index.jsp">Home</a> &gt; Converter Management

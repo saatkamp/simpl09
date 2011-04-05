@@ -12,9 +12,6 @@ import commonj.sdo.helper.XMLHelper;
 public class DataSourceService {
   PostgreSQLRDBDataSourceService service = new PostgreSQLRDBDataSourceService();
 
-  // Output stream to write SDO to XML string
-  ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-
   public boolean executeStatement(DataSource dataSource, String statement)
       throws Exception {
     boolean success = false;
@@ -29,10 +26,13 @@ public class DataSourceService {
     String data = null;
     RDBDataFormat dataFormat = new RDBDataFormat();
     RDBResult rdbResult = service.retrieveData(dataSource, statement);
-
+    
+    // Output stream to write SDO to XML string
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    
     dataObject = dataFormat.toSDO(rdbResult);
 
-    if (dataObject != null) {
+    if (dataObject != null) {      
       try {
         XMLDocument xmlDocument = XMLHelper.INSTANCE.createDocument(dataObject,
             "commonj.sdo", "dataObject");
@@ -45,7 +45,8 @@ public class DataSourceService {
     }
 
     data = new String(outputStream.toByteArray());
-
+    outputStream.close();
+    
     return data;
   }
 }

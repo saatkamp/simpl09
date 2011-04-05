@@ -11,8 +11,8 @@ import org.apache.neethi.Policy;
 import org.apache.neethi.PolicyEngine;
 import org.apache.neethi.util.PolicyComparator;
 import org.simpl.core.clients.RMClient;
-import org.simpl.resource.management.client.DataSource;
-import org.simpl.resource.management.client.LateBinding;
+import org.simpl.resource.management.data.DataSource;
+import org.simpl.resource.management.data.LateBinding;
 
 /**
  * <b>Purpose:</b>Implementation of the strategy service.<br>
@@ -54,7 +54,7 @@ public class DiscoveryServiceImpl implements DiscoveryService {
       case FIRST_FIND:
         List<DataSource> dataSources = null;
 
-        dataSources = RMClient.getInstance().getAllDataSources().getDataSource();
+        dataSources = RMClient.getInstance().getAllDataSources().getDataSources();
 
         // retrieve all data sources and compare the policy to its properties description policy
         for (DataSource possibleDataSource : dataSources) {

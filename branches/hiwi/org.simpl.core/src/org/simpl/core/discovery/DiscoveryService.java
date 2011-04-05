@@ -1,7 +1,7 @@
 package org.simpl.core.discovery;
 
-import org.simpl.resource.management.client.DataSource;
-import org.simpl.resource.management.client.LateBinding;
+import org.simpl.resource.management.data.DataSource;
+import org.simpl.resource.management.data.LateBinding;
 
 /**
  * <b>Purpose:</b> TODO: Defines the functions of the strategy service.<br>

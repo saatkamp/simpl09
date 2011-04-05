@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.eclipse.simpl.communication.SIMPLCoreWebService;
 import org.eclipse.simpl.communication.SIMPLCoreCommunication;
-import org.simpl.resource.management.client.DataSource;
+import org.eclipse.simpl.communication.SIMPLCoreWebService;
+import org.simpl.resource.management.data.DataSource;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
