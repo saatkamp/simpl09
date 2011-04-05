@@ -12,7 +12,7 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
-import org.simpl.resource.management.client.StringList;
+import org.simpl.resource.management.data.StringList;
 import org.xml.sax.InputSource;
 
 /**

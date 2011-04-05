@@ -14,7 +14,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.data.DataSource;
 
 public class AuditingGeneralComposite extends AAdminConsoleComposite {
 	// Global hinterlegte Keys der Einstellungen
@@ -120,7 +120,7 @@ public class AuditingGeneralComposite extends AAdminConsoleComposite {
 		auditingLabel.setText("Activate or deactivate the Auditing:");
 		auditingCheckBox = new Button(comp, SWT.CHECK);
 		auditingCheckBox.setText(this.bMode);
-		if (this.bMode.contains("active")) {
+		if (this.bMode.equals("active")) {
 			auditingCheckBox.setSelection(true);
 		} else {
 			auditingCheckBox.setSelection(false);

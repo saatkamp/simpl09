@@ -12,7 +12,7 @@
 package org.eclipse.bpel.simpl.ui.extensions;
 
 import org.eclipse.swt.widgets.Composite;
-import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.data.DataSource;
 
 
 // TODO: Auto-generated Javadoc

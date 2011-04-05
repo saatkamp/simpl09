@@ -3,11 +3,11 @@ package org.eclipse.simpl.communication;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.simpl.resource.management.client.DataSource;
-import org.simpl.resource.management.client.DataSourceList;
 import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
+import org.simpl.resource.management.data.DataSource;
+import org.simpl.resource.management.data.DataSourceList;
 
 /**
  * Resource Management web service access.
@@ -54,7 +54,7 @@ public class ResourceManagementService {
     try {
       if (this.getService() != null) {
         dataSourceList = this.getService().getAllDataSources();
-        dataSources = dataSourceList.getDataSource();
+        dataSources = dataSourceList.getDataSources();
       }
     } catch (Exception_Exception e) {
       // TODO Auto-generated catch block
@@ -73,7 +73,7 @@ public class ResourceManagementService {
         dataSources = this.getService().getAllDataSources();
       }
 
-      for (DataSource source : dataSources.getDataSource()) {
+      for (DataSource source : dataSources.getDataSources()) {
         dataSourceNames.add(source.getName());
       }
     } catch (Exception_Exception e) {

@@ -22,6 +22,10 @@ public class LateBinding {
   private String policy;
   private Strategy strategy;
 
+  public LateBinding() {
+    
+  }
+  
   /**
    * @return the policy
    */
@@ -56,9 +60,9 @@ public class LateBinding {
   public String toString() {
     String string = "";
 
-    string += "LateBinding {\r\n";
-    string += "  policy: " + this.policy + "\r\n";
-    string += "  strategy: " + this.strategy + "\r\n";
+    string += "\r\nLateBinding {\r\n";
+    string += "\tpolicy: " + this.policy + "\r\n";
+    string += "\tstrategy: " + this.strategy + "\r\n";
     string += "}";
 
     return string;

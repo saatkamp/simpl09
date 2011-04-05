@@ -13,8 +13,8 @@ import javax.jws.soap.SOAPBinding;
 import org.apache.commons.io.IOUtils;
 import org.simpl.core.helpers.Parameter;
 import org.simpl.core.services.SIMPLCoreService;
-import org.simpl.resource.management.client.DataSource;
-import org.simpl.resource.management.client.LateBinding;
+import org.simpl.resource.management.data.DataSource;
+import org.simpl.resource.management.data.LateBinding;
 
 import commonj.sdo.DataObject;
 import commonj.sdo.helper.XMLDocument;

@@ -48,7 +48,7 @@ public class ConnectorProvider {
     List<ConnectorPlugin<Object, Object>> dataSourceServicePlugins = ConnectorProvider.dataSourceServices
         .get(dsType);
     List<String> dataSourcePluginSubtypes = null;
-
+    
     // search for a plugin that supports the given subtype
     for (ConnectorPlugin<Object, Object> dataSourcePluginInstance : dataSourceServicePlugins) {
       dataSourcePluginSubtypes = dataSourcePluginInstance.getSubtypes();

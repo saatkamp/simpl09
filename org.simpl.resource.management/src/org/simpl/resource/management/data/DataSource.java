@@ -37,6 +37,10 @@ public class DataSource {
   private Authentication authentication = new Authentication();
   private Connector connector = new Connector();
 
+  public DataSource() {
+    
+  }
+  
   /**
    * @return the id
    */
@@ -191,17 +195,17 @@ public class DataSource {
   public String toString() {
     String string = "";
 
-    string += "DataSource {\r\n";
-    string += "  id: " + this.id + ",\r\n";
-    string += "  name: " + this.name + ",\r\n";
-    string += "  address: " + this.address + ",\r\n";
-    string += "  type: " + this.type + ",\r\n";
-    string += "  subtype: " + this.subType + ",\r\n";
-    string += "  language: " + this.language + ",\r\n";
-    string += "  propertiesDescription: " + this.propertiesDescription + ",\r\n";
-    string += "  connectorPropertiesDescription: " + this.connectorPropertiesDescription
+    string += "\r\nDataSource {\r\n";
+    string += "\tid: " + this.id + ",\r\n";
+    string += "\tname: " + this.name + ",\r\n";
+    string += "\taddress: " + this.address + ",\r\n";
+    string += "\ttype: " + this.type + ",\r\n";
+    string += "\tsubtype: " + this.subType + ",\r\n";
+    string += "\tlanguage: " + this.language + ",\r\n";
+    string += "\tpropertiesDescription: " + this.propertiesDescription + ",\r\n";
+    string += "\tconnectorPropertiesDescription: " + this.connectorPropertiesDescription
         + ",\r\n";
-    string += "  connector: " + this.connector + "\r\n";
+    string += "\tconnector: " + this.connector + "\r\n";
     string += "}";
 
     return string;

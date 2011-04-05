@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Exception", namespace = "http://webservices.core.simpl.org/", propOrder = {
+@XmlType(name = "Exception", propOrder = {
     "message"
 })
 public class Exception {

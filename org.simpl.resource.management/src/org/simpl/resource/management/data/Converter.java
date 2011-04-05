@@ -26,6 +26,10 @@ public class Converter {
   private DataFormat connectorDataFormat = new DataFormat();
   private DataFormat workflowDataFormat = new DataFormat();
 
+  public Converter() {
+    
+  }
+  
   /**
    * @return the id
    */
@@ -104,12 +108,12 @@ public class Converter {
   @Override
   public String toString() {
     String string = "";
-    string += "Converter {\r\n";
-    string += "  id: " + this.id + ",\r\n";
-    string += "  name: " + this.name + ",\r\n";
-    string += "  implementation: " + this.name + ",\r\n";
-    string += "  connectorDataformat: " + this.connectorDataFormat + ",\r\n";
-    string += "  workflowDataformat: " + this.workflowDataFormat + "\r\n";
+    string += "\r\nConverter {\r\n";
+    string += "\tid: " + this.id + ",\r\n";
+    string += "\tname: " + this.name + ",\r\n";
+    string += "\timplementation: " + this.name + ",\r\n";
+    string += "\tconnectorDataformat: " + this.connectorDataFormat + ",\r\n";
+    string += "\tworkflowDataformat: " + this.workflowDataFormat + "\r\n";
     string += "}";
 
     return string;

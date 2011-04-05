@@ -6,6 +6,18 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+import org.simpl.resource.management.data.Authentication;
+import org.simpl.resource.management.data.Connector;
+import org.simpl.resource.management.data.ConnectorList;
+import org.simpl.resource.management.data.Converter;
+import org.simpl.resource.management.data.ConverterList;
+import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataFormatList;
+import org.simpl.resource.management.data.DataSource;
+import org.simpl.resource.management.data.DataSourceList;
+import org.simpl.resource.management.data.LateBinding;
+import org.simpl.resource.management.data.StringList;
+
 
 /**
  * This object contains factory methods for each 

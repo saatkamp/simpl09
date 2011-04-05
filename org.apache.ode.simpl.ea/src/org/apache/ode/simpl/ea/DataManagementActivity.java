@@ -7,8 +7,8 @@ import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.simpl.ea.util.DeploymentInfos;
 import org.apache.ode.simpl.ea.util.DeploymentUtils;
 import org.apache.ode.simpl.ea.util.StatementUtils;
-import org.simpl.resource.management.client.DataSource;
-import org.simpl.resource.management.client.LateBinding;
+import org.simpl.resource.management.data.DataSource;
+import org.simpl.resource.management.data.LateBinding;
 import org.w3c.dom.Element;
 
 import commonj.sdo.DataObject;

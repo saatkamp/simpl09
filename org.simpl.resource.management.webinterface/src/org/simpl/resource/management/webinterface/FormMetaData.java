@@ -3,10 +3,10 @@ package org.simpl.resource.management.webinterface;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import org.simpl.resource.management.client.DataFormat;
-import org.simpl.resource.management.client.DataFormatList;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
+import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataFormatList;
 
 /**
  * <b>Purpose: Offers elements for web forms with data from the Resource Management.</b><br>
@@ -126,7 +126,7 @@ public class FormMetaData {
       
       DataFormatList dataFormats = resourceManagement.getAllDataFormats();
       
-      for (DataFormat dataFormat : dataFormats.getDataFormat()) {
+      for (DataFormat dataFormat : dataFormats.getDataFormats()) {
         if (!this.dataFormats.contains(dataFormat.getName())) {
           this.dataFormats.add(dataFormat.getName());
         }

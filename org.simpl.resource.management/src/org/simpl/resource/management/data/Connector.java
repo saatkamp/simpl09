@@ -28,7 +28,11 @@ public class Connector {
   private String language;
   private String propertiesDescription;
   private DataFormat converterDataFormat = new DataFormat();
-
+  
+  public Connector() {
+    
+  }
+  
   /**
    * @return the id
    */
@@ -153,12 +157,12 @@ public class Connector {
   public String toString() {
     String string = "";
 
-    string += "Connector {\r\n";
-    string += "  id: " + this.id + ",\r\n";
-    string += "  name: " + this.name + ",\r\n";
-    string += "  implementation: " + this.implementation + ",\r\n";
-    string += "  propertiesDescription: " + this.propertiesDescription + ",\r\n";
-    string += "  converterDataFormat: " + this.converterDataFormat + "\r\n";
+    string += "\r\nConnector {\r\n";
+    string += "\tid: " + this.id + ",\r\n";
+    string += "\tname: " + this.name + ",\r\n";
+    string += "\timplementation: " + this.implementation + ",\r\n";
+    string += "\tpropertiesDescription: " + this.propertiesDescription + ",\r\n";
+    string += "\tconverterDataFormat: " + this.converterDataFormat + "\r\n";
     string += "}";
 
     return string;

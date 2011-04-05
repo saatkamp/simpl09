@@ -11,7 +11,7 @@ import org.simpl.core.discovery.DiscoveryService;
 import org.simpl.core.discovery.DiscoveryServiceImpl;
 import org.simpl.core.exceptions.ConnectionException;
 import org.simpl.core.plugins.connector.ConnectorPlugin;
-import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.data.DataSource;
 
 import commonj.sdo.DataObject;
 
@@ -108,7 +108,7 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
         // get connector instance
         connector = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
-
+        
         data = connector.retrieveData(dataSource, statement);
       }
 

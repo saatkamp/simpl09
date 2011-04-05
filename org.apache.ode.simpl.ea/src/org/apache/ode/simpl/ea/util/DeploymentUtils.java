@@ -21,10 +21,10 @@ import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
 import org.simpl.core.clients.RMClient;
-import org.simpl.resource.management.client.Authentication;
-import org.simpl.resource.management.client.DataSource;
-import org.simpl.resource.management.client.LateBinding;
-import org.simpl.resource.management.client.Strategy;
+import org.simpl.resource.management.data.Authentication;
+import org.simpl.resource.management.data.DataSource;
+import org.simpl.resource.management.data.LateBinding;
+import org.simpl.resource.management.data.Strategy;
 
 /**
  * <b>Purpose:</b> <br>

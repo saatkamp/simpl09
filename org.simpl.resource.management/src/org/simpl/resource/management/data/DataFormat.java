@@ -24,6 +24,10 @@ public class DataFormat {
   private String implementation;
   private String xmlSchema;
 
+  public DataFormat() {
+    
+  }
+  
   /**
    * @return the id
    */
@@ -88,11 +92,11 @@ public class DataFormat {
   public String toString() {
     String string = "";
 
-    string += "DataFormat {\r\n";
-    string += "  id: " + this.id + ",\r\n";
-    string += "  name: " + this.name + ",\r\n";
-    string += "  implementation: " + this.implementation + ",\r\n";
-    string += "  xmlSchema: " + this.xmlSchema + ",\r\n";
+    string += "\r\nDataFormat {\r\n";
+    string += "\tid: " + this.id + ",\r\n";
+    string += "\tname: " + this.name + ",\r\n";
+    string += "\timplementation: " + this.implementation + ",\r\n";
+    string += "\txmlSchema: " + this.xmlSchema + ",\r\n";
     string += "}";
 
     return string;

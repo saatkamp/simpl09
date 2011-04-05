@@ -15,7 +15,8 @@ Export-Package: org.eclipse.simpl.communication;
    org.osgi.framework",
  org.eclipse.simpl.communication.preferences;uses:="org.eclipse.jface.preference,org.eclipse.ui",
  org.simpl.core.webservices.client,
- org.simpl.resource.management.client
+ org.simpl.resource.management.client,
+ org.simpl.resource.management.data
 Bundle-ClassPath: .,
  lib/simpl-core-webservices-client.jar,
  lib/simpl-resource-management-client.jar

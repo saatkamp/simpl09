@@ -10,7 +10,7 @@ import org.simpl.core.webservices.client.SIMPLCoreAdministrationService;
 import org.simpl.core.webservices.client.SIMPLCoreAdministrationServiceClient;
 import org.simpl.core.webservices.client.SIMPLCoreService;
 import org.simpl.core.webservices.client.SIMPLCoreServiceClient;
-import org.simpl.resource.management.client.DataSource;
+import org.simpl.resource.management.data.DataSource;
 
 /**
  * Class that gives access to all SIMPL Core web services.
