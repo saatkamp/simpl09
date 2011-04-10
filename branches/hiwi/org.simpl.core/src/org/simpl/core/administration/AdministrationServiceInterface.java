@@ -10,8 +10,7 @@ import java.util.LinkedHashMap;
  * <b>Company:</b>SIMPL<br>
  * 
  * @author hahnml
- * @version $Id: DatasourceServicePlugin.java 904 2010-02-22 11:23:43Z
- *          michael.schneidt@arcor.de $<br>
+ * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
 public interface AdministrationServiceInterface {

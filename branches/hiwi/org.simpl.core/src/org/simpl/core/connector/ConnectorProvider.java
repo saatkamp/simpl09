@@ -18,15 +18,14 @@ import org.simpl.core.plugins.connector.ConnectorPlugin;
  * <b>Company:</b> SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id: DatasourceServiceProvider.java 973 2010-03-17 15:40:40Z
- *          michael.schneidt@arcor.de $<br>
+ * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class ConnectorProvider {
   /**
    * Maps the connector types to a list of supporting connector instances.
    */
-  private static HashMap<String, List<ConnectorPlugin<Object, Object>>> dataSourceServices = new HashMap<String, List<ConnectorPlugin<Object, Object>>>();
+  private static HashMap<String, List<ConnectorPlugin<Object, Object>>> connectors = new HashMap<String, List<ConnectorPlugin<Object, Object>>>();
 
   /**
    * Initially load the connector plug-ins.
@@ -44,23 +43,23 @@ public class ConnectorProvider {
    * @return
    */
   public static Connector<Object, Object> getInstance(String dsType, String dsSubtype) {
-    ConnectorPlugin<Object, Object> dataSourceServiceInstance = null;
-    List<ConnectorPlugin<Object, Object>> dataSourceServicePlugins = ConnectorProvider.dataSourceServices
+    ConnectorPlugin<Object, Object> connectorInstance = null;
+    List<ConnectorPlugin<Object, Object>> connectorPlugins = ConnectorProvider.connectors
         .get(dsType);
     List<String> dataSourcePluginSubtypes = null;
     
     // search for a plugin that supports the given subtype
-    for (ConnectorPlugin<Object, Object> dataSourcePluginInstance : dataSourceServicePlugins) {
+    for (ConnectorPlugin<Object, Object> dataSourcePluginInstance : connectorPlugins) {
       dataSourcePluginSubtypes = dataSourcePluginInstance.getSubtypes();
 
       for (String subtype : dataSourcePluginSubtypes) {
         if (subtype.equals(dsSubtype)) {
-          dataSourceServiceInstance = dataSourcePluginInstance;
+          connectorInstance = dataSourcePluginInstance;
         }
       }
     }
 
-    return dataSourceServiceInstance;
+    return connectorInstance;
   }
 
   /**
@@ -71,23 +70,23 @@ public class ConnectorProvider {
     List<String> plugins = RMClient.getInstance()
         .getConnectorPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
-    ConnectorPlugin<Object, Object> dataSourceServiceInstance = null;
+    ConnectorPlugin<Object, Object> connectorInstance = null;
     String dataSourceType = null;
 
     while (pluginIterator.hasNext()) {
       try {
-        dataSourceServiceInstance = (ConnectorPlugin<Object, Object>) Class.forName(
+        connectorInstance = (ConnectorPlugin<Object, Object>) Class.forName(
             pluginIterator.next()).newInstance();
-        dataSourceType = dataSourceServiceInstance.getType();
+        dataSourceType = connectorInstance.getType();
 
-        if (ConnectorProvider.dataSourceServices.containsKey(dataSourceType)) {
-          ConnectorProvider.dataSourceServices.get(dataSourceType).add(
-              dataSourceServiceInstance);
+        if (ConnectorProvider.connectors.containsKey(dataSourceType)) {
+          ConnectorProvider.connectors.get(dataSourceType).add(
+              connectorInstance);
         } else {
-          List<ConnectorPlugin<Object, Object>> dataSourceServicePluginList = new ArrayList<ConnectorPlugin<Object, Object>>();
-          dataSourceServicePluginList.add(dataSourceServiceInstance);
-          ConnectorProvider.dataSourceServices.put(dataSourceType,
-              dataSourceServicePluginList);
+          List<ConnectorPlugin<Object, Object>> connectorPluginList = new ArrayList<ConnectorPlugin<Object, Object>>();
+          connectorPluginList.add(connectorInstance);
+          ConnectorProvider.connectors.put(dataSourceType,
+              connectorPluginList);
         }
       } catch (InstantiationException e) {
         // TODO Auto-generated catch block
@@ -108,7 +107,7 @@ public class ConnectorProvider {
    * @return
    */
   public static List<String> getTypes() {
-    return new ArrayList<String>(ConnectorProvider.dataSourceServices.keySet());
+    return new ArrayList<String>(ConnectorProvider.connectors.keySet());
   }
 
   /**
@@ -120,9 +119,9 @@ public class ConnectorProvider {
   public static List<String> getSubTypes(String dsType) {
     List<String> dataSourceSubtypes = new ArrayList<String>();
 
-    for (ConnectorPlugin<Object, Object> dataSourceServicePlugin : ConnectorProvider.dataSourceServices
+    for (ConnectorPlugin<Object, Object> connectorPlugin : ConnectorProvider.connectors
         .get(dsType)) {
-      for (Object dataSourceSubtype : dataSourceServicePlugin.getSubtypes()) {
+      for (Object dataSourceSubtype : connectorPlugin.getSubtypes()) {
         if (!dataSourceSubtypes.contains(dataSourceSubtype)) {
           dataSourceSubtypes.add((String) dataSourceSubtype);
         }
@@ -141,11 +140,11 @@ public class ConnectorProvider {
   public static List<String> getLanguages(String dsSubtype) {
     List<String> dataSourceLanguages = new ArrayList<String>();
 
-    for (String dataSourceType : ConnectorProvider.dataSourceServices.keySet()) {
-      for (ConnectorPlugin<Object, Object> dataSourceServicePlugin : ConnectorProvider.dataSourceServices
+    for (String dataSourceType : ConnectorProvider.connectors.keySet()) {
+      for (ConnectorPlugin<Object, Object> connectorPlugin : ConnectorProvider.connectors
           .get(dataSourceType)) {
-        if (dataSourceServicePlugin.getLanguages().containsKey(dsSubtype)) {
-          for (String language : dataSourceServicePlugin.getLanguages().get(dsSubtype)) {
+        if (connectorPlugin.getLanguages().containsKey(dsSubtype)) {
+          for (String language : connectorPlugin.getLanguages().get(dsSubtype)) {
             if (!dataSourceLanguages.contains(language)) {
               dataSourceLanguages.add(language);
             }

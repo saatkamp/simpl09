@@ -62,12 +62,12 @@ public class ConverterProvider {
    * Returns a list of data format types to which the given connector can convert the
    * given data format to.
    * 
-   * @param dataSourceService
+   * @param connector
    * @return
    */
   @SuppressWarnings({ "rawtypes" })
   public static List<String> getSupportedConvertDataFormatTypes(
-      Connector dataSourceService, String dataFormatType) {
+      Connector connector, String dataFormatType) {
     List<String> supportedConvertDataFormats = new ArrayList<String>();
     ConverterPlugin dataFormatConverter = null;
 
@@ -75,11 +75,11 @@ public class ConverterProvider {
         .getInstance().getConverterMapping();
 
     for (String dataFormatConverterClassName : dataFormatConverterMapping.keySet()) {
-      List<String> dataSourceServiceClassNames = dataFormatConverterMapping
+      List<String> connectorClassNames = dataFormatConverterMapping
           .get(dataFormatConverterClassName);
 
       try {
-        if (dataSourceServiceClassNames.contains(dataSourceService.getClass().getName())) {
+        if (connectorClassNames.contains(connector.getClass().getName())) {
           dataFormatConverter = (ConverterPlugin) Class.forName(
               dataFormatConverterClassName).newInstance();
 

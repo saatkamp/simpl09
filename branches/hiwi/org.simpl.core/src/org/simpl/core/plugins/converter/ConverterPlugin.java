@@ -61,22 +61,16 @@ public abstract class ConverterPlugin implements Converter {
     this.toDataFormatType = toDataFormat;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.dataformat.converter.DataFormatConverter#convert(commonj.
-   * sdo.DataObject, org.simpl.core.services.datasource.DataSourceService)
-   */
   @Override
   public DataObject convert(DataObject dataObject,
-      Connector<Object, Object> dataSourceService) {
+      Connector<Object, Object> connector) {
     DataObject convertedSDO = null;
 
     if (dataObject.getString("dataFormatType").equals(this.getToDataFormat().getType())) {
-      convertedSDO = this.convertFrom(dataObject, dataSourceService);
+      convertedSDO = this.convertFrom(dataObject, connector);
     } else if (dataObject.getString("dataFormatType").equals(
         this.getFromDataFormat().getType())) {
-      convertedSDO = this.convertTo(dataObject, dataSourceService);
+      convertedSDO = this.convertTo(dataObject, connector);
     }
 
     return convertedSDO;
