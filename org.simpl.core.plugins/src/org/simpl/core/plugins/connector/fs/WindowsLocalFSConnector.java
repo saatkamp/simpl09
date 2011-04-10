@@ -101,7 +101,7 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
     String dir = "";
 
     if (WindowsLocalFSConnector.logger.isDebugEnabled()) {
-      WindowsLocalFSConnector.logger.debug("boolean writeData(" + dataSource.getAddress()
+      WindowsLocalFSConnector.logger.debug("boolean writeDataBack(" + dataSource.getAddress()
           + ", " + dataFile.getName() + ", " + target + ") executed.");
     }
 
@@ -125,7 +125,7 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
     String[] envp = new String[] { "cmd", "/c", "start", "copy" };
 
     if (WindowsLocalFSConnector.logger.isDebugEnabled()) {
-      WindowsLocalFSConnector.logger.debug("DataObject depositData("
+      WindowsLocalFSConnector.logger.debug("DataObject queryData("
           + dataSource.getAddress() + ", " + file + "," + targetFile + ") executed.");
     }
 

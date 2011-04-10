@@ -22,8 +22,7 @@ import commonj.sdo.DataObject;
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id: DataSourceServiceInterface.java 1780 2011-03-19 16:38:36Z
- *          michael.schneidt@arcor.de $<br>
+ * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class SIMPLCoreInterface {

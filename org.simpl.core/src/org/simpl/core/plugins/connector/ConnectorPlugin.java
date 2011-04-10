@@ -29,8 +29,7 @@ import commonj.sdo.helper.XSDHelper;
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi
- * @version $Id: DatasourceServicePlugin.java 904 2010-02-22 11:23:43Z
- *          michael.schneidt@arcor.de $<br>
+ * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
 public abstract class ConnectorPlugin<S, T> implements Connector<S, T> {
@@ -177,7 +176,7 @@ public abstract class ConnectorPlugin<S, T> implements Connector<S, T> {
     // Load the default schema file
     if (inputStream == null) {
       inputStream = getClass().getResourceAsStream(
-          "/org/simpl/core/services/datasource/metadata/" + metaDataSchemaFile);
+          "/org/simpl/core/metadata/" + metaDataSchemaFile);
     }
 
     if (inputStream == null) {
@@ -193,7 +192,7 @@ public abstract class ConnectorPlugin<S, T> implements Connector<S, T> {
     }
 
     metaDataObject = DataFactory.INSTANCE.create(
-        "http://org.simpl.core/services/datasource/metadata/DataSourceMetaData",
+        "http://org.simpl.core/metadata/DataSourceMetaData",
         this.metaDataSchemaType);
 
     return metaDataObject;

@@ -14,8 +14,7 @@ import commonj.sdo.DataObject;
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi
- * @version $Id: DataSourceService.java 1122 2010-04-18 14:48:40Z
- *          michael.schneidt@arcor.de $<br>
+ * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  * 
  * @param <S>

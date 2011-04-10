@@ -19,8 +19,7 @@ import org.simpl.core.plugins.dataformat.DataFormatPlugin;
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id: DatasourceServiceProvider.java 892 2010-02-18 14:21:37Z
- *          michael.schneidt@arcor.de $<br>
+ * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class DataFormatProvider {

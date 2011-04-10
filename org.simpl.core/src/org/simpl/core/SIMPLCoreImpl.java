@@ -26,8 +26,7 @@ import commonj.sdo.DataObject;
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id: DataSourceServiceImpl.java 1224 2010-04-28 14:17:34Z
- *          michael.schneidt@arcor.de $<br>
+ * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
@@ -43,14 +42,14 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
   public synchronized boolean queryData(DataSource dataSource, String statement,
       String target) throws ConnectionException {
     boolean success = false;
-    Connector<Object, Object> dataSourceService;
+    Connector<Object, Object> connector;
 
     try {
       if (this.isDataSourceComplete(dataSource)) {
-        dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
+        connector = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
-        success = dataSourceService.queryData(dataSource, statement, target);
+        success = connector.queryData(dataSource, statement, target);
       }
     } catch (Exception e) {
       throw new ConnectionException(e.getCause());
@@ -70,17 +69,17 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
       throws ConnectionException {
     boolean success = false;
 
-    Connector<Object, Object> dataSourceService = null;
+    Connector<Object, Object> connector = null;
 
     try {
       // execute statement
       if (this.isDataSourceComplete(dataSource)) {
         // get data source service instance
-        dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
+        connector = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
         // execute statement
-        success = dataSourceService.issueCommand(dataSource, statement);
+        success = connector.issueCommand(dataSource, statement);
       }
     } catch (Exception e) {
       throw new ConnectionException(e.getCause());
@@ -136,18 +135,18 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
       String target) throws ConnectionException {
     boolean success = false;
 
-    Connector<Object, Object> dataSourceService = null;
+    Connector<Object, Object> connector = null;
     Object writeData = null;
 
     try {
       if (this.isDataSourceComplete(dataSource)) {
         // get connector instance
-        dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
+        connector = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
         if (target != null && !target.equals("")) {
           // format and write back data
-          writeData = formatWriteDataAndCreateTarget(dataSourceService, data, dataSource,
+          writeData = formatWriteDataAndCreateTarget(connector, data, dataSource,
               target);
         } else {
           // write back data
@@ -156,7 +155,7 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
         }
 
         if (writeData != null) {
-          success = dataSourceService.writeDataBack(dataSource, writeData, target);
+          success = connector.writeDataBack(dataSource, writeData, target);
         }
       }
     } catch (Exception e) {
@@ -176,16 +175,16 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
   public DataObject getMetaData(DataSource dataSource, String filter)
       throws ConnectionException {
     DataObject data = null;
-    Connector<Object, Object> dataSourceService;
+    Connector<Object, Object> connector;
 
     try {
       if (this.isDataSourceComplete(dataSource)) {
-        // get data source service instance
-        dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
+        // get connector instance
+        connector = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
         // get meta data
-        data = dataSourceService.getMetaData(dataSource, filter);
+        data = connector.getMetaData(dataSource, filter);
       }
     } catch (Exception e) {
       throw new ConnectionException(e.getCause());
@@ -204,15 +203,15 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
   public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
       throws ConnectionException {
     boolean success = false;
-    Connector<Object, Object> dataSourceService = null;
+    Connector<Object, Object> connector = null;
 
     try {
       // get data source service instance
-      dataSourceService = ConnectorProvider.getInstance(dataSource.getType(),
+      connector = ConnectorProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
       // create target
-      success = dataSourceService.createTarget(dataSource, dataObject, target);
+      success = connector.createTarget(dataSource, dataObject, target);
     } catch (Exception e) {
       throw new ConnectionException(e.getCause());
     }

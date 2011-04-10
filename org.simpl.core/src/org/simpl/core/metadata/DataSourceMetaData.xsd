@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsd:schema targetNamespace="http://org.simpl.core/services/datasource/metadata/DataSourceMetaData" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://org.simpl.core/services/datasource/metadata/DataSourceMetaData">
+<xsd:schema targetNamespace="http://org.simpl.core/metadata/DataSourceMetaData" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://org.simpl.core/metadata/DataSourceMetaData">
     <xsd:annotation>
     	<xsd:documentation>This schema file defines the default meta data structure of some common data source types and is used by the simpl core to put meta data information into service data objects (SDO). Each datas ource service plugin can define its own meta data schema file.</xsd:documentation></xsd:annotation>
     <xsd:complexType name="tColumn">
