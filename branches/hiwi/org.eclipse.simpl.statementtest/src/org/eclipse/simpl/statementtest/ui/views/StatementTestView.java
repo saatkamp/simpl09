@@ -7,6 +7,7 @@ import org.eclipse.simpl.statementtest.StatementTestPlugin;
 import org.eclipse.simpl.statementtest.model.StatementTest;
 import org.eclipse.simpl.statementtest.model.results.CreateTableResult;
 import org.eclipse.simpl.statementtest.model.results.RelationalResult;
+import org.eclipse.simpl.statementtest.model.results.XmlResult;
 import org.eclipse.simpl.statementtest.model.variables.ContainerVariable;
 import org.eclipse.simpl.statementtest.model.variables.ParameterVariable;
 import org.eclipse.swt.SWT;
@@ -52,9 +53,15 @@ public class StatementTestView extends ViewPart {
   // composite for the statistics
   Composite statisticComposite = null;
 
-  // composite for a result table (label+table)
+  // composite for the result table (label+table)
   Composite tableComposite = null;
 
+  // composite for the log
+  Composite parameterComposite = null;
+  
+  // composite for the log
+  Composite logComposite = null;
+  
   // statistic label
   Label whiteValueLabel = null;
   Label redValueLabel = null;
@@ -76,11 +83,12 @@ public class StatementTestView extends ViewPart {
 
   Table resultTable = null;
   Table originalTable = null;
-
   Table parameterTable = null;
   TableColumn parameterTableColumn = null;
+
   Text parameterTextField = null;
   Text logTextField = null;
+  Text resultTextField = null;
 
   GridData gridData = null;
 
@@ -121,27 +129,16 @@ public class StatementTestView extends ViewPart {
     resultTabItem.setControl(resultComposite);
 
     // parameter tab item
-    parameterTable = new Table(tabFolder, SWT.BORDER);
-    parameterTable.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-    parameterTable.setEnabled(false);
-    parameterTable.setLinesVisible(true);
-    parameterTable.setHeaderVisible(true);
-    parameterTableColumn = new TableColumn(parameterTable, SWT.LEFT);
-    parameterTableColumn.setText("Variable");
-    parameterTableColumn.setWidth(150);
-    parameterTableColumn = new TableColumn(parameterTable, SWT.LEFT);
-    parameterTableColumn.setText("Value");
-    parameterTableColumn.setWidth(300);
+    this.buildParameterComposite(null);
     parameterTabItem = new TabItem(tabFolder, SWT.NONE);
     parameterTabItem.setText("Parameters");
-    parameterTabItem.setControl(parameterTable);
+    parameterTabItem.setControl(parameterComposite);
 
     // log tab item
-    logTextField = new Text(tabFolder, SWT.WRAP | SWT.BORDER | SWT.V_SCROLL);
-    logTextField.setEditable(false);
+    this.buildLogComposite();    
     logTabItem = new TabItem(tabFolder, SWT.NONE);
     logTabItem.setText("Log");
-    logTabItem.setControl(logTextField);
+    logTabItem.setControl(logComposite);
   }
 
   /*
@@ -200,7 +197,7 @@ public class StatementTestView extends ViewPart {
 
     if (statementTest.getParameterVariables().size() > 0
         || statementTest.getContainerVariables().size() > 0) {
-      this.buildParameterTable(statementTest);
+      this.buildParameterComposite(statementTest);
     } else {
       this.clearParameterTable();
     }
@@ -515,10 +512,70 @@ public class StatementTestView extends ViewPart {
   }
 
   /**
+   * Builds the result tables.
+   * 
+   * @param statementTest
+   */
+  private void buildResultTables(StatementTest statementTest) {
+    if (statementTest.getResult() instanceof RelationalResult
+        && statementTest.getComparativeResult() == null) {
+      this.buildRDBResultTable((RelationalResult) statementTest.getResult(),
+          this.resultTable);
+    } else if (statementTest.getResult() instanceof RelationalResult
+        && statementTest.getComparativeResult() instanceof RelationalResult) {
+      this.buildRDBResultComparativeTable((RelationalResult) statementTest.getResult(),
+          (RelationalResult) statementTest.getComparativeResult(), this.resultTable);
+  
+      if (statementTest.isEnhancedResult()) {
+        this.buildRDBResultComparativeTable(
+            (RelationalResult) statementTest.getComparativeResult(),
+            (RelationalResult) statementTest.getResult(), this.originalTable);
+      }
+    } else if (statementTest.getResult() instanceof CreateTableResult) {
+      this.buildCreateTableResultTable(((CreateTableResult) statementTest.getResult()));
+    }
+  
+    // activity specific gui changes
+    if (statementTest.getActivityName().equals("CreateActivity")) {
+      if (statementTest.getResult() != null) {
+        resultTableLabel.setText("Created Table: "
+            + ((CreateTableResult) statementTest.getResult()).getTable());
+      } else {
+        resultTableLabel.setText("Created Table:");
+      }
+    } else if (statementTest.getActivityName().equals("DropActivity")) {
+      resultTableLabel.setText("Dropped Table: "
+          + ((RelationalResult) statementTest.getComparativeResult()).getTable());
+    }
+  }
+
+  /**
    * Builds the resultComposite within the tabFolder.
    */
   private void buildResultComposite(StatementTest statementTest) {
-    if (!statementTestResultComposites.containsKey(statementTest)) {
+    if (statementTest == null || statementTest.getResult() instanceof XmlResult) {
+      resultComposite = new Composite(tabFolder, SWT.NONE);
+      resultComposite.setLayout(new GridLayout(1, true));
+      resultComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+
+      resultTextField = new Text(resultComposite, SWT.WRAP | SWT.BORDER | SWT.V_SCROLL);
+      resultTextField.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+      resultTextField.setEditable(false);
+      resultTextField.setEnabled(false);
+      
+      if (statementTest != null) {
+        resultTextField.setText(statementTest.getResult().toString());
+        resultTextField.setEnabled(true);
+        resultTextField.setBackground(resultTextField.getDisplay().getSystemColor(SWT.COLOR_WHITE));
+        
+        statementTestResultComposites.put(statementTest, resultComposite);
+
+        // show the new result composite
+        if (resultTabItem != null) {
+          resultTabItem.setControl(resultComposite);
+        }
+      }
+    } else if (!statementTestResultComposites.containsKey(statementTest)) {
       // result composite with tables and statistics
       resultComposite = new Composite(tabFolder, SWT.NONE);
       resultComposite.setLayout(new GridLayout(2, true));
@@ -528,7 +585,7 @@ public class StatementTestView extends ViewPart {
       tableComposite = new Composite(resultComposite, SWT.NONE);
       tableComposite.setLayout(new GridLayout(1, true));
 
-      if (statementTest == null || !statementTest.isEnhancedResult()) {
+      if (!statementTest.isEnhancedResult()) {
         // span over original table column
         tableComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
       } else {
@@ -546,7 +603,7 @@ public class StatementTestView extends ViewPart {
       resultTable.setLinesVisible(true);
       resultTable.setHeaderVisible(true);
 
-      if (statementTest != null && statementTest.isEnhancedResult()) {
+      if (statementTest.isEnhancedResult()) {
         tableComposite = new Composite(resultComposite, SWT.NONE);
         tableComposite.setLayout(new GridLayout(1, true));
         tableComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
@@ -605,6 +662,45 @@ public class StatementTestView extends ViewPart {
     }
   }
 
+  /**
+   * Builds the logComposite.
+   */
+  private void buildLogComposite() {
+    logComposite = new Composite(tabFolder, SWT.NONE);
+    logComposite.setLayout(new GridLayout(1, true));
+    logComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+    logTextField = new Text(logComposite, SWT.WRAP | SWT.BORDER | SWT.V_SCROLL);
+    logTextField.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+    logTextField.setEditable(false);
+    logTextField.setEnabled(false);
+  }
+  
+  /**
+   * Builds the parameterComposite.
+   * 
+   * @param statementTest
+   */
+  private void buildParameterComposite(StatementTest statementTest) {
+    parameterComposite = new Composite(tabFolder, SWT.NONE);
+    parameterComposite.setLayout(new GridLayout(1, true));
+    
+    parameterTable = new Table(parameterComposite, SWT.BORDER);
+    parameterTable.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+    parameterTable.setEnabled(false);
+    parameterTable.setLinesVisible(true);
+    parameterTable.setHeaderVisible(true);
+    parameterTableColumn = new TableColumn(parameterTable, SWT.LEFT);
+    parameterTableColumn.setText("Variable");
+    parameterTableColumn.setWidth(150);
+    parameterTableColumn = new TableColumn(parameterTable, SWT.LEFT);
+    parameterTableColumn.setText("Value");
+    parameterTableColumn.setWidth(300);
+    
+    if (statementTest != null) {
+      this.buildParameterTable(statementTest);
+    }
+  }
+  
   /**
    * Builds the statisticComposite within the resultComposite.
    */
@@ -688,44 +784,6 @@ public class StatementTestView extends ViewPart {
     primaryKeyTextLabel = new Label(statisticComposite, SWT.NONE);
     primaryKeyTextLabel.setText("Primary Key");
     primaryKeyTextLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
-  }
-
-  /**
-   * Builds the result tables.
-   * 
-   * @param statementTest
-   */
-  private void buildResultTables(StatementTest statementTest) {
-    if (statementTest.getResult() instanceof RelationalResult
-        && statementTest.getComparativeResult() == null) {
-      this.buildRDBResultTable((RelationalResult) statementTest.getResult(),
-          this.resultTable);
-    } else if (statementTest.getResult() instanceof RelationalResult
-        && statementTest.getComparativeResult() instanceof RelationalResult) {
-      this.buildRDBResultComparativeTable((RelationalResult) statementTest.getResult(),
-          (RelationalResult) statementTest.getComparativeResult(), this.resultTable);
-
-      if (statementTest.isEnhancedResult()) {
-        this.buildRDBResultComparativeTable(
-            (RelationalResult) statementTest.getComparativeResult(),
-            (RelationalResult) statementTest.getResult(), this.originalTable);
-      }
-    } else if (statementTest.getResult() instanceof CreateTableResult) {
-      this.buildCreateTableResultTable(((CreateTableResult) statementTest.getResult()));
-    }
-
-    // activity specific gui changes
-    if (statementTest.getActivityName().equals("CreateActivity")) {
-      if (statementTest.getResult() != null) {
-        resultTableLabel.setText("Created Table: "
-            + ((CreateTableResult) statementTest.getResult()).getTable());
-      } else {
-        resultTableLabel.setText("Created Table:");
-      }
-    } else if (statementTest.getActivityName().equals("DropActivity")) {
-      resultTableLabel.setText("Dropped Table: "
-          + ((RelationalResult) statementTest.getComparativeResult()).getTable());
-    }
   }
 
   /**
