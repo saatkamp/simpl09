@@ -2,6 +2,7 @@ package org.eclipse.simpl.statementtest.execution;
 
 import org.eclipse.simpl.statementtest.model.StatementTest;
 import org.eclipse.simpl.statementtest.model.results.RelationalResult;
+import org.eclipse.simpl.statementtest.model.results.XmlResult;
 import org.simpl.core.webservices.client.SIMPLCoreService;
 import org.simpl.resource.management.data.LateBinding;
 
@@ -33,14 +34,21 @@ public class FilesystemStatementExecution extends StatementExecution {
           + this.statementTest.getGeneratedStatement());
 
       String result = this.simplCoreService.retrieveDataByDataSourceObject(
-          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), null);
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(),
+          new LateBinding());
 
       if (result != null && !result.equals("")) {
         statementTest.setExecuted(true);
-        statementTest.setResult(new RelationalResult(result));
-        this.statementTest.log("Retrieved "
-            + ((RelationalResult) this.statementTest.getResult()).getRowCount()
-            + " tuple.");
+
+        if (result.contains("dataFormatType=\"CSVDataFormat\"")) {
+          statementTest.setResult(new RelationalResult(result));
+          this.statementTest.log("Retrieved "
+              + ((RelationalResult) this.statementTest.getResult()).getRowCount()
+              + " tuple.");
+        } else {
+          statementTest.setResult(new XmlResult(result));
+          this.statementTest.log("Retrieved file content.");          
+        }
       } else {
         this.statementTest.log("Failed to retrieve result.");
 
@@ -65,7 +73,8 @@ public class FilesystemStatementExecution extends StatementExecution {
           + this.statementTest.getGeneratedStatement());
 
       successed = this.simplCoreService.issueCommandByDataSourceObject(
-          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(), new LateBinding());
+          this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(),
+          new LateBinding());
 
       if (successed) {
         statementTest.setExecuted(true);
