@@ -29,7 +29,7 @@ public class ConverterProvider {
   /**
    * Maps the supported data formats to a converter plug-in instance.
    */
-  private static HashMap<List<String>, ConverterPlugin> dataFormatConverter = new HashMap<List<String>, ConverterPlugin>();
+  private static HashMap<List<String>, ConverterPlugin> converters = new HashMap<List<String>, ConverterPlugin>();
 
   /**
    * Initially load the converter plug-ins.
@@ -47,11 +47,11 @@ public class ConverterProvider {
    */
   public static Converter getInstance(String fromDataFormat, String toDataFormat) {
     Converter converter = null;
-    Set<List<String>> formats = ConverterProvider.dataFormatConverter.keySet();
+    Set<List<String>> formats = ConverterProvider.converters.keySet();
 
     for (List<String> list : formats) {
       if (list.contains(fromDataFormat) && list.contains(toDataFormat)) {
-        converter = ConverterProvider.dataFormatConverter.get(list);
+        converter = ConverterProvider.converters.get(list);
       }
     }
 
@@ -66,10 +66,10 @@ public class ConverterProvider {
    * @return
    */
   @SuppressWarnings({ "rawtypes" })
-  public static List<String> getSupportedConvertDataFormatTypes(
-      Connector connector, String dataFormatType) {
+  public static List<String> getSupportedConvertDataFormatTypes(Connector connector,
+      String dataFormatType) {
     List<String> supportedConvertDataFormats = new ArrayList<String>();
-    ConverterPlugin dataFormatConverter = null;
+    ConverterPlugin converter = null;
 
     HashMap<String, ArrayList<String>> dataFormatConverterMapping = RMClient
         .getInstance().getConverterMapping();
@@ -80,16 +80,18 @@ public class ConverterProvider {
 
       try {
         if (connectorClassNames.contains(connector.getClass().getName())) {
-          dataFormatConverter = (ConverterPlugin) Class.forName(
-              dataFormatConverterClassName).newInstance();
+          converter = (ConverterPlugin) Class.forName(dataFormatConverterClassName)
+              .newInstance();
 
-          if (dataFormatConverter.getFromDataFormat().getType().equals(dataFormatType)) {
-            supportedConvertDataFormats.add(dataFormatConverter.getToDataFormat()
-                .getType());
-          } else if (dataFormatConverter.getToDataFormat().getType()
-              .equals(dataFormatType)) {
-            supportedConvertDataFormats.add(dataFormatConverter.getFromDataFormat()
-                .getType());
+          // there may be converters that support data formats that are not used by any connectors,
+          // and thus are not loaded resulting in their instances beeing null.
+          if (converter.getFromDataFormat() != null
+              && converter.getToDataFormat() != null) {
+            if (converter.getFromDataFormat().getType().equals(dataFormatType)) {
+              supportedConvertDataFormats.add(converter.getToDataFormat().getType());
+            } else if (converter.getToDataFormat().getType().equals(dataFormatType)) {
+              supportedConvertDataFormats.add(converter.getFromDataFormat().getType());
+            }
           }
         }
       } catch (InstantiationException e) {
@@ -111,23 +113,25 @@ public class ConverterProvider {
    * Loads the converter plug-ins.
    */
   public static void loadPlugins() {
-    List<String> plugins = RMClient.getInstance()
-        .getConverterPlugins();
+    List<String> plugins = RMClient.getInstance().getConverterPlugins();
     Iterator<String> pluginIterator = plugins.iterator();
-    ConverterPlugin dataFormatConverterInstance;
+    ConverterPlugin converterInstance;
     String toDataFormat = null;
     String fromDataFormat = null;
 
     while (pluginIterator.hasNext()) {
       try {
-        dataFormatConverterInstance = (ConverterPlugin) Class.forName(
-            pluginIterator.next()).newInstance();
+        converterInstance = (ConverterPlugin) Class.forName(pluginIterator.next())
+            .newInstance();
 
-        toDataFormat = dataFormatConverterInstance.getToDataFormat().getType();
-        fromDataFormat = dataFormatConverterInstance.getFromDataFormat().getType();
+        if (converterInstance.getToDataFormat() != null
+            && converterInstance.getFromDataFormat() != null) {
+          toDataFormat = converterInstance.getToDataFormat().getType();
+          fromDataFormat = converterInstance.getFromDataFormat().getType();
 
-        ConverterProvider.dataFormatConverter.put(
-            Arrays.asList(toDataFormat, fromDataFormat), dataFormatConverterInstance);
+          ConverterProvider.converters.put(Arrays.asList(toDataFormat, fromDataFormat),
+              converterInstance);
+        }
       } catch (InstantiationException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
