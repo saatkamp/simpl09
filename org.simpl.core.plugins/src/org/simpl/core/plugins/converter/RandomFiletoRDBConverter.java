@@ -9,6 +9,7 @@ import org.simpl.core.plugins.connector.rdb.DB2RDBConnector;
 import org.simpl.core.plugins.connector.rdb.DerbyRDBConnector;
 import org.simpl.core.plugins.connector.rdb.EmbDerbyRDBConnector;
 import org.simpl.core.plugins.connector.rdb.MySQLRDBConnector;
+import org.simpl.core.plugins.connector.rdb.PostgreSQLRDBConnector;
 
 import commonj.sdo.DataObject;
 import commonj.sdo.helper.XMLHelper;
@@ -190,6 +191,8 @@ public class RandomFiletoRDBConverter extends ConverterPlugin {
         return sqlType = "LONGTEXT";
       } else if (connector instanceof DB2RDBConnector) {
         return sqlType = "CLOB";
+      } else if (connector instanceof PostgreSQLRDBConnector) {
+        return sqlType = "BYTEA";
       } else {
         return sqlType = "BLOB";
       }

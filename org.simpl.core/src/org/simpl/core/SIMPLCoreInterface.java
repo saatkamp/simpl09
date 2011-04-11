@@ -146,14 +146,14 @@ public class SIMPLCoreInterface {
    * @return
    */
   private boolean lateBindingIsValid(LateBinding lateBinding) {
-    boolean hasLateBindingInformation = false;
+    boolean isValid = false;
 
     if (lateBinding != null && lateBinding.getPolicy() != null
         && lateBinding.getStrategy() != null) {
-      hasLateBindingInformation = true;
+      isValid = true;
     }
 
-    return hasLateBindingInformation;
+    return isValid;
   }
 
   /**
