@@ -144,9 +144,9 @@ public class RandomFiletoRDBConverter extends ConverterPlugin {
           .getString("name"));
 
       for (DataObject rdbColumn : rdbColumns) {
-        if (rdbColumn.getString("name").equals("NAME")) {
+        if (rdbColumn.getString("name").toLowerCase().equals("name")) {
           fileSDO.set("name", rdbColumn.getString(0));
-        } else if (rdbColumn.getString("name").equals("CONTENT")) {
+        } else if (rdbColumn.getString("name").toLowerCase().equals("content")) {
           fileSDO.set("content", rdbColumn.getString(0));
         }
       }
