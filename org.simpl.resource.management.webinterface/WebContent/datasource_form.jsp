@@ -24,13 +24,12 @@
   String address = "";
   String type = "";
   String subtype = "";
-  String policy = "";
   String username = "";
   String key = "";
   String password = "";
   String language = "";
   String dataformat = "";
-  String propertiesDescription = "";
+  String properties = "";
   String connectorProperties = "";
   
   DataSource dataSource = null;
@@ -60,7 +59,7 @@
       address = dataSource.getAddress();
       type = dataSource.getType();
       subtype = dataSource.getSubType();
-      propertiesDescription = dataSource.getPropertiesDescription();
+      properties = dataSource.getPropertiesDescription();
       username = dataSource.getAuthentication().getUser();
       password = dataSource.getAuthentication().getPassword();
       language = dataSource.getLanguage();
@@ -117,7 +116,7 @@
   <tr>
     <td><label>Properties Description</label></td>
     <td>
-      <textarea name="propertiesDescriptionData" cols="77" rows="10"><%=policy%></textarea>
+      <textarea name="propertiesDescriptionData" cols="77" rows="10"><%=properties%></textarea>
       <br/>
       <input name="propertiesDescription" type="file" size="100"/>
     </td>
