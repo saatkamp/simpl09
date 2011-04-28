@@ -15,7 +15,7 @@ import org.simpl.resource.management.data.DataFormat;
 import org.simpl.resource.management.data.DataSource;
 
 /**
- * <b>Purpose:</b><br>
+ * <b>Purpose:</b>Config file for the Resource Management.<br>
  * <b>Description:</b><br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
@@ -32,7 +32,7 @@ public class ResourceManagementConfig {
   private static final String CONFIG_FILE_NAME = "simpl-resource-management-config.xml";
 
   /**
-   * Config file location from Apache Tomcat \webapps.
+   * Config file location from Apache Tomcat \.
    */
   private static final String CONFIG_FILE_LOCATION_1 = System.getProperty("user.dir")
       + "\\webapps\\axis2\\WEB-INF\\conf\\" + ResourceManagementConfig.CONFIG_FILE_NAME;
