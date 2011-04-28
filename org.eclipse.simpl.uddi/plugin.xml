@@ -45,15 +45,5 @@
          </command>
       </menuContribution>
    </extension>
-   <extension
-         point="org.eclipse.simpl.core.adminConsoleItem">
-      <adminConsoleItem
-            label="ResourceManagement">
-         <adminConsoleItem
-               composite="org.eclipse.simpl.resource.management.adminconsole.ResourceManagementSettingsComposite"
-               label="Settings">
-         </adminConsoleItem>
-      </adminConsoleItem>
-   </extension>
 
 </plugin>

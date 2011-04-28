@@ -30,6 +30,7 @@ public class CommunicationPlugIn extends AbstractUIPlugin {
 		
 		plugin.getPreferenceStore().setDefault("SIMPL_CORE_DSS_ADDRESS", "http://localhost:8080/ode/processes/SIMPLCoreService.SIMPLCoreServicePort?wsdl");
 		plugin.getPreferenceStore().setDefault("SIMPL_CORE_AS_ADDRESS", "http://localhost:8080/ode/processes/SIMPLCoreAdministrationService.SIMPLCoreAdministrationServicePort?wsdl");
+		plugin.getPreferenceStore().setDefault("SIMPL_RESOURCE_MANAGEMENT_ADDRESS", "http://localhost:8080/axis2/services/ResourceManagementService.ResourceManagementPort?wsdl");
 	}
 
 	/*

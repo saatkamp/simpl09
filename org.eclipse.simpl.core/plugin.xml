@@ -105,5 +105,22 @@
             class="org.eclipse.simpl.core.ui.preferences.PreferenceInitializer">
       </initializer>
    </extension>
+   <extension
+         point="org.eclipse.simpl.core.adminConsoleItem">
+      <adminConsoleItem
+            label="ResourceManagement">
+         <adminConsoleItem
+               composite="org.eclipse.simpl.core.adminconsole.ResourceManagementSettingsComposite"
+               label="Settings">
+         </adminConsoleItem>
+      </adminConsoleItem>
+      <adminConsoleItem
+            label="ResourceDiscovery">
+         <adminConsoleItem
+               composite="org.eclipse.simpl.core.adminconsole.ResourceDiscoverySettingsComposite"
+               label="Settings">
+         </adminConsoleItem>
+      </adminConsoleItem>
+   </extension>
 
 </plugin>
