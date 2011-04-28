@@ -48,8 +48,8 @@ public class SIMPLCoreWebService {
     boolean success = false;
 
     if (getSIMPLCoreAdministrationService() != null) {
-      success = getSIMPLCoreAdministrationService().saveSettings(schema, table, settingName,
-          Parameter.serialize(settings));
+      success = getSIMPLCoreAdministrationService().saveSettings(schema, table,
+          settingName, Parameter.serialize(settings));
     }
 
     return success;
@@ -61,8 +61,8 @@ public class SIMPLCoreWebService {
 
     if (getSIMPLCoreAdministrationService() != null) {
       settings = (LinkedHashMap<String, String>) Parameter
-          .deserialize(getSIMPLCoreAdministrationService()
-              .loadSettings(schema, table, settingName));
+          .deserialize(getSIMPLCoreAdministrationService().loadSettings(schema, table,
+              settingName));
     }
 
     return settings;
@@ -92,15 +92,5 @@ public class SIMPLCoreWebService {
       isAvailable = false;
     }
     return isAvailable;
-  }
-
-  public String getResourceManagementAddress() {
-    LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
-
-    if (getSIMPLCoreAdministrationService() != null) {
-      settings = this.load("RESOURCEMANAGEMENT", "SETTINGS", "lastSaved");
-    }
-
-    return settings.get("ADDRESS");
   }
 }
