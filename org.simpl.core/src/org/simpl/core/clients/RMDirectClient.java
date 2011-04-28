@@ -58,7 +58,7 @@ public class RMDirectClient {
   private ResourceManagement resourceManagement = new ResourceManagement();
 
   /**
-   * ResourceManagement singleton instance.
+   * RMDirectClient singleton instance.
    */
   private static final RMDirectClient instance = new RMDirectClient();
 
@@ -170,19 +170,8 @@ public class RMDirectClient {
   public void reload() {
     ConnectorList connectors = new ConnectorList();
     ConverterList converters = new ConverterList();
-    // String resourceManagementAddress = null;
-
-    // retrieve the resource management address from the internal embedded derby simplDB
-    // LinkedHashMap<String, String> settings =
-    // SIMPLCoreAdministrationService.getInstance()
-    // .getService().loadSettings("RESOURCEMANAGEMENT", "SETTINGS", "lastSaved");
-    // resourceManagementAddress = settings.get("ADDRESS");
 
     try {
-      // if (resourceManagementAddress != null) {
-      // resourceManagement = ResourceManagementClient
-      // .getService(resourceManagementAddress);
-
       if (resourceManagement != null) {
         connectors = resourceManagement.getAllConnectors();
         converters = resourceManagement.getAllConverters();
@@ -190,7 +179,6 @@ public class RMDirectClient {
         connectors = new ConnectorList();
         converters = new ConverterList();
       }
-      // }
     } catch (Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

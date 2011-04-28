@@ -25,7 +25,7 @@ public class RMClient {
   private static boolean usingWebService = false;
 
   /**
-   * Singleton instance.
+   * RMClient singleton instance.
    */
   private static final RMClient instance = new RMClient();
 

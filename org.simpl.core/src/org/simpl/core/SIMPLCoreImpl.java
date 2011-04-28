@@ -7,8 +7,6 @@ import org.simpl.core.connector.Connector;
 import org.simpl.core.connector.ConnectorProvider;
 import org.simpl.core.converter.ConverterProvider;
 import org.simpl.core.dataformat.DataFormatProvider;
-import org.simpl.core.discovery.DiscoveryService;
-import org.simpl.core.discovery.DiscoveryServiceImpl;
 import org.simpl.core.exceptions.ConnectionException;
 import org.simpl.core.plugins.connector.ConnectorPlugin;
 import org.simpl.resource.management.data.DataSource;
@@ -30,8 +28,6 @@ import commonj.sdo.DataObject;
  * @link http://code.google.com/p/simpl09/
  */
 public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
-  DiscoveryService discoveryService = new DiscoveryServiceImpl();
-
   /*
    * (non-Javadoc)
    * @see
