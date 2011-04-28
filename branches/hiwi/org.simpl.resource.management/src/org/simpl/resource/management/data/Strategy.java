@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
  * @link http://code.google.com/p/simpl09/
  */
 @XmlType(name = "strategy")
-@XmlEnum(String.class)
+@XmlEnum
 public enum Strategy {
   FIRST_FIND;
 

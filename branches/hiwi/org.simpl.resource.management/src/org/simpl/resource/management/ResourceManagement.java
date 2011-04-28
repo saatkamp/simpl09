@@ -38,7 +38,7 @@ import org.xml.sax.InputSource;
 
 /**
  * <b>Purpose:</b>The Resource Management stores data sources and other resources for the
- * SIMPL framework. This class represents the resource management and its web service
+ * SIMPL framework. This class represents the resource management and the web service
  * interface.<br>
  * <b>Description:</b>The resources are stored in a PostgreSQL database that is actually
  * accessed via an additionally deployed SIMPL Core data source web service. The
