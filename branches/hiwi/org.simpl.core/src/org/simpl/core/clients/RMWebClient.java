@@ -64,7 +64,7 @@ public class RMWebClient {
   private ResourceManagement resourceManagement = null;
 
   /**
-   * ResourceManagement singleton instance.
+   * RMWebClient singleton instance.
    */
   private static final RMWebClient instance = new RMWebClient();
 

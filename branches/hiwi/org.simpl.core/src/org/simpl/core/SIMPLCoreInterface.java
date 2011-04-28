@@ -2,9 +2,8 @@ package org.simpl.core;
 
 import java.io.InputStream;
 
+import org.simpl.core.clients.RDClient;
 import org.simpl.core.clients.RMClient;
-import org.simpl.core.discovery.DiscoveryService;
-import org.simpl.core.discovery.DiscoveryServiceImpl;
 import org.simpl.core.exceptions.ConnectionException;
 import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.LateBinding;
@@ -27,7 +26,7 @@ import commonj.sdo.DataObject;
  */
 public class SIMPLCoreInterface {
   SIMPLCoreImpl simplCore = new SIMPLCoreImpl();
-  DiscoveryService discoveryService = new DiscoveryServiceImpl();
+  RDClient resourceDiscovery = new RDClient();
 
   public boolean issueCommand(DataSource dataSource, String statement,
       LateBinding lateBinding) throws ConnectionException {
@@ -35,7 +34,7 @@ public class SIMPLCoreInterface {
 
     // late binding
     if (this.lateBindingIsValid(lateBinding)) {
-      dataSource = this.discoveryService.findDataSource(lateBinding);
+      dataSource = this.resourceDiscovery.findDataSource(lateBinding);
     }
 
     // execute statement
@@ -57,7 +56,7 @@ public class SIMPLCoreInterface {
 
     // late binding
     if (this.lateBindingIsValid(lateBinding)) {
-      dataSource = this.discoveryService.findDataSource(lateBinding);
+      dataSource = this.resourceDiscovery.findDataSource(lateBinding);
     }
 
     // deposit data
@@ -79,7 +78,7 @@ public class SIMPLCoreInterface {
 
     // late binding
     if (this.lateBindingIsValid(lateBinding)) {
-      dataSource = this.discoveryService.findDataSource(lateBinding);
+      dataSource = this.resourceDiscovery.findDataSource(lateBinding);
     }
 
     // retrieve data
@@ -101,7 +100,7 @@ public class SIMPLCoreInterface {
 
     // late binding
     if (this.lateBindingIsValid(lateBinding)) {
-      dataSource = this.discoveryService.findDataSource(lateBinding);
+      dataSource = this.resourceDiscovery.findDataSource(lateBinding);
     }
 
     success = simplCore.writeDataBack(dataSource, data, target);
