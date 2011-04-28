@@ -1,4 +1,4 @@
-package org.eclipse.simpl.resource.management.adminconsole;
+package org.eclipse.simpl.core.adminconsole;
 
 import java.util.LinkedHashMap;
 
@@ -59,7 +59,7 @@ public class ResourceManagementSettingsComposite extends AAdminConsoleComposite 
     gridData.verticalAlignment = GridData.CENTER;
 
     addressLabel = new Label(comp, SWT.NONE);
-    addressLabel.setText("Address of the Resource Management:");
+    addressLabel.setText("Address of the Resource Management web service:");
     addressText = new Text(comp, SWT.BORDER);
     addressText.setLayoutData(gridData);
     addressText.setText(this.bAddress);
@@ -74,7 +74,7 @@ public class ResourceManagementSettingsComposite extends AAdminConsoleComposite 
     modeLabel.setText("Activate or deactivate using the web service:");
     modeCheckBox = new Button(comp, SWT.CHECK);
     modeCheckBox.setText(this.bMode);
-System.out.println("LOADED COMPOSITE " + bMode);
+
     if (this.bMode.equals("active")) {
       modeCheckBox.setSelection(true);
     } else {

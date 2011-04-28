@@ -15,8 +15,6 @@ import org.simpl.resource.management.data.DataSourceList;
  * @author Michael Schneidt
  */
 public class ResourceManagementService {
-  ResourceManagement service = null;
-
   public DataSource findDataSourceById(String id) {
     DataSource dataSource = null;
 
@@ -127,8 +125,7 @@ public class ResourceManagementService {
     List<String> dataFormats = new ArrayList<String>();
 
     try {
-      dataFormats = this.getService().getSupportedDataFormatTypes(dataSource)
-          .getItems();
+      dataFormats = this.getService().getSupportedDataFormatTypes(dataSource).getItems();
     } catch (Exception_Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -136,7 +133,7 @@ public class ResourceManagementService {
 
     return dataFormats;
   }
-  
+
   public List<String> getSupportedConvertDataFormats(DataSource dataSource) {
     List<String> dataFormats = new ArrayList<String>();
 
@@ -152,9 +149,9 @@ public class ResourceManagementService {
   }
 
   public ResourceManagement getService() {
-    service = ResourceManagementClient.getService(SIMPLCoreCommunication.getInstance()
-        .getResourceManagementAddress());
+    String address = CommunicationPlugIn.getDefault().getPreferenceStore()
+        .getString("SIMPL_RESOURCE_MANAGEMENT_ADDRESS");
 
-    return service;
+    return ResourceManagementClient.getService(address);
   }
 }

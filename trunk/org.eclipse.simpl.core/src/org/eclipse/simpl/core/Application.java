@@ -75,10 +75,10 @@ public class Application {
 			for (String subItem : treeSubItems) {
 				// Alle Composite-Klassen, die zur Verfügung stehen werden zu
 				// Beginn instanziert.
-				compClass = getCompClass(subItem);
+				compClass = getCompClass(treeIt.getName(), subItem);
 				// Initiales Laden aller gespeicherten Werte
 				compClass.loadSettings(treeIt.getName(), subItem);
-				classes.put(subItem, compClass);
+				classes.put(treeIt.getName() + subItem, compClass);
 			}
 		}
 		this.compositeClasses = classes;
@@ -92,6 +92,7 @@ public class Application {
 			for (IConfigurationElement e : config) {
 				final String name = e.getAttribute("label");
 				final String position = e.getAttribute("position");
+				
 				if (position != null) {
 					int pos = Integer.parseInt(position) - 1;
 					treeItems.add(new Tuple(name, pos));
@@ -104,7 +105,6 @@ public class Application {
 		}
 
 		// Sortieren die Liste nach Positionsangaben aufsteigend
-
 		return sortTupleList(treeItems);
 	}
 
@@ -114,7 +114,7 @@ public class Application {
 			IConfigurationElement[] config = Platform.getExtensionRegistry()
 					.getConfigurationElementsFor(AC_ITEM_ID);
 			for (IConfigurationElement e : config) {
-				if (e.getAttribute("label").contains(treeItem)) {
+				if (e.getAttribute("label").equals(treeItem)) {
 					for (IConfigurationElement sub : e.getChildren()) {
 						treeSubItems.add(sub.getAttribute("label"));
 					}
@@ -126,23 +126,23 @@ public class Application {
 		return treeSubItems;
 	}
 
-	private AAdminConsoleComposite getCompClass(String treeItem) {
+	private AAdminConsoleComposite getCompClass(String treeItem, String subItem) {
 		AAdminConsoleComposite compositeClass = null;
 
 		for (IConfigurationElement e : nodes) {
 			// 
 			if (e.getAttribute("composite") != null
-					&& e.getAttribute("label").contains(treeItem)) {
-				System.out.println("Knoten_Name: " + e.getName());
-				System.out.println("Attribut_Composite: "
-						+ e.getAttribute("composite"));
+			    && ((IConfigurationElement)e.getParent()).getAttribute("label").equals(treeItem)
+					&& e.getAttribute("label").equals(subItem)) {
+				//System.out.println("Knoten_Name: " + e.getName());
+				//System.out.println("Attribut_Composite: "
+				//		+ e.getAttribute("composite"));
 				try {
 					final Object o = e.createExecutableExtension("composite");
 					if (o instanceof AAdminConsoleComposite) {
 						compositeClass = (((AAdminConsoleComposite) o));
-						System.out.println("Target: "
-								+ e.getAttribute("composite"));
-						;
+					//System.out.println("Target: "
+					//			+ e.getAttribute("composite"));
 					}
 				} catch (Exception ex) {
 					System.out.println(ex.getMessage());
