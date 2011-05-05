@@ -1,5 +1,6 @@
 package org.simpl.resource.management.webinterface;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -46,11 +47,13 @@ public class RMWebConfig {
     // determine path to the rmweb-config.xml
     ClassLoader loader = Thread.currentThread().getContextClassLoader();
     String configFilePath = loader.getResource(
-        RMWebConfig.class.getName().replace('.', '/') + ".class").getPath();
+        RMWebConfig.class.getName().replace('.', File.separatorChar) + ".class").getPath();
 
-    configFilePath = configFilePath.substring(1, configFilePath.indexOf("WEB-INF") + 7)
-        + "/conf/";
+    configFilePath = configFilePath.substring(0, configFilePath.indexOf("WEB-INF") + 7)
+        + File.separator + "conf" + File.separator;
 
+    System.out.println("Loading '" + configFilePath + CONFIG_FILE_NAME + "'.");
+    
     try {
       in = new FileInputStream(configFilePath + CONFIG_FILE_NAME);
     } catch (FileNotFoundException e) {
