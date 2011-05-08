@@ -706,7 +706,9 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 		kindText.setText(this.activity.getDsKind());
 
 		// Setzen die Sprache
-		languageText.setText(activity.getDsLanguage());
+		if (languageText != null) {
+		  languageText.setText(activity.getDsLanguage());
+		}
 	}
 
 	/*

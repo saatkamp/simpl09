@@ -198,11 +198,13 @@ public class DataSourceUtils {
 
     List<DataSource> dataSources = ResourceManagementCommunication.getInstance().getDataSources();
 
-    for (DataSource dat : dataSources) {
-      dataSourceNames.add(DataSourceUtils.RESOURCE_MANAGEMENT_PREFIX + ":"
-          + dat.getName());
+    if (dataSources != null) {
+      for (DataSource dat : dataSources) {
+        dataSourceNames.add(DataSourceUtils.RESOURCE_MANAGEMENT_PREFIX + ":"
+            + dat.getName());
+      }
     }
-
+    
     return dataSourceNames;
   }
 

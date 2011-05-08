@@ -3,6 +3,8 @@ package org.eclipse.simpl.communication;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Display;
 import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
@@ -48,11 +50,18 @@ public class ResourceManagementService {
   public List<DataSource> getDataSources() {
     List<DataSource> dataSources = null;
     DataSourceList dataSourceList = null;
-
+    ResourceManagement resourceManagementService = this.getService();
+    
     try {
-      if (this.getService() != null) {
-        dataSourceList = this.getService().getAllDataSources();
+      if (resourceManagementService != null) {
+        dataSourceList = resourceManagementService.getAllDataSources();
         dataSources = dataSourceList.getDataSources();
+      } else {
+        MessageDialog
+        .openInformation(
+            Display.getCurrent().getActiveShell(),
+            "Resource Management is not available.",
+            "Could not load resources.");
       }
     } catch (Exception_Exception e) {
       // TODO Auto-generated catch block
