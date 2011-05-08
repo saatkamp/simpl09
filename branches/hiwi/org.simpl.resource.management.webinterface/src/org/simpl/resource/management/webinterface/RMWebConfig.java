@@ -52,7 +52,7 @@ public class RMWebConfig {
     configFilePath = configFilePath.substring(0, configFilePath.indexOf("WEB-INF") + 7)
         + File.separator + "conf" + File.separator;
 
-    System.out.println("Loading '" + configFilePath + CONFIG_FILE_NAME + "'.");
+    System.out.println("Loading " + CONFIG_FILE_NAME + " from '" + configFilePath + CONFIG_FILE_NAME + "'.");
     
     try {
       in = new FileInputStream(configFilePath + CONFIG_FILE_NAME);
