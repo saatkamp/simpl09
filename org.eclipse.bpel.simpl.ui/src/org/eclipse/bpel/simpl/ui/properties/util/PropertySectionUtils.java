@@ -224,8 +224,10 @@ public class PropertySectionUtils {
 
     List<DataSource> dataSources = ResourceManagementCommunication.getInstance().getDataSources();
 
-    for (DataSource dat : dataSources) {
-      dataSourceNames.add(RM_PREFIX + ":" + dat.getName());
+    if (dataSources != null) {
+      for (DataSource dat : dataSources) {
+        dataSourceNames.add(RM_PREFIX + ":" + dat.getName());
+      }
     }
 
     return dataSourceNames;
