@@ -31,13 +31,13 @@ public class ResourceDiscoveryConfig {
    * Config file location from Apache Tomcat \.
    */
   private static final String CONFIG_FILE_LOCATION_1 = System.getProperty("user.dir")
-      + "\\webapps\\axis2\\WEB-INF\\conf\\" + ResourceDiscoveryConfig.CONFIG_FILE_NAME;
+      + "/webapps/axis2/WEB-INF/conf/" + ResourceDiscoveryConfig.CONFIG_FILE_NAME;
 
   /**
    * Config file location from Apache Tomcat \bin.
    */
   private static final String CONFIG_FILE_LOCATION_2 = System.getProperty("user.dir")
-      + "\\..\\webapps\\axis2\\WEB-INF\\conf\\"
+      + "/../webapps/axis2/WEB-INF/conf/"
       + ResourceDiscoveryConfig.CONFIG_FILE_NAME;
 
   /**
@@ -57,12 +57,15 @@ public class ResourceDiscoveryConfig {
     SAXBuilder saxBuilder = new SAXBuilder();
 
     try {
+      System.out.println("Loading " + CONFIG_FILE_NAME + " from '" + ResourceDiscoveryConfig.CONFIG_FILE_LOCATION_1 + "'.");
       in = new FileInputStream(ResourceDiscoveryConfig.CONFIG_FILE_LOCATION_1);
     } catch (FileNotFoundException e) {
       try {
+        System.out.println("Loading " + CONFIG_FILE_NAME + " from '" + ResourceDiscoveryConfig.CONFIG_FILE_LOCATION_2 + "'.");
         in = new FileInputStream(ResourceDiscoveryConfig.CONFIG_FILE_LOCATION_2);
       } catch (FileNotFoundException e1) {
         try {
+          System.out.println("Loading " + CONFIG_FILE_NAME + " from '" + ResourceDiscoveryConfig.CONFIG_FILE_NAME + "'.");
           in = new FileInputStream(ResourceDiscoveryConfig.CONFIG_FILE_NAME);
         } catch (FileNotFoundException e2) {
           // TODO Auto-generated catch block
