@@ -15,6 +15,7 @@ import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
+import org.apache.ode.simpl.ea.util.DataSourceUtils;
 import org.simpl.core.SIMPLCoreInterface;
 import org.simpl.core.services.SIMPLCoreService;
 import org.simpl.resource.management.ResourceManagement;
@@ -43,8 +44,8 @@ public class WriteDataBackActivity extends DataManagementActivity {
     Attr dataVarAttr = element.getAttributeNode("dataVariable");
     String dataVariableName = dataVarAttr.getValue();
 
-    DataSource ds = getDataSource(getActivityName(), getDsAddress());
-    LateBinding lb = getLateBinding(getActivityName());
+    DataSource ds = DataSourceUtils.getDataSource(context, getDsIdentifier());
+    LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
 
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 

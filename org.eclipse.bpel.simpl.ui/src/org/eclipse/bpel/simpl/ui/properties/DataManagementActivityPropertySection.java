@@ -3,7 +3,7 @@ package org.eclipse.bpel.simpl.ui.properties;
 import java.io.File;
 
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
+import org.eclipse.bpel.simpl.ui.command.SetDsIdentifierCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
@@ -57,8 +57,8 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 	TablsListPopUp tabelsPopWindowBPELVariables;
 	private Label typeLabel = null;
 	private Text typeText = null;
-	private Label dataSourceAddressLabel = null;
-	private CCombo dataSourceAddressCombo = null;
+	private Label dataSourceIdentifierLabel = null;
+	private CCombo dataSourceIdentifierCombo = null;
 	private Label kindLabel = null;
 	private Text kindText = null;
 	//private Button openEditorButton = null;
@@ -106,7 +106,7 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 		}
 
 		// Setzen die Datenquellenadresse
-		dataSourceAddressCombo.setText(activity.getDsAddress());
+		dataSourceIdentifierCombo.setText(activity.getDsIdentifier());
 		// Setzen die Sprache
 		languageText.setText(activity.getDsLanguage());
 	}
@@ -173,11 +173,11 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 		kindLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		createKindCombo();
-		dataSourceAddressLabel = new Label(composite, SWT.NONE);
-		dataSourceAddressCombo = new CCombo(composite, SWT.BORDER);
-		dataSourceAddressCombo.setLayoutData(gridData12);
+		dataSourceIdentifierLabel = new Label(composite, SWT.NONE);
+		dataSourceIdentifierCombo = new CCombo(composite, SWT.BORDER);
+		dataSourceIdentifierCombo.setLayoutData(gridData12);
 		// Änderungen im Modell speichern
-		dataSourceAddressCombo.addSelectionListener(new SelectionListener() {
+		dataSourceIdentifierCombo.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				widgetSelected(e);
@@ -186,26 +186,30 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				getCommandFramework().execute(
-						new SetDsAddressCommand(activity,
-								dataSourceAddressCombo.getText()));
+						new SetDsIdentifierCommand(activity,
+								dataSourceIdentifierCombo.getText()));
 
 				DataSource dataSource = getDataSource();
 				if (dataSource != null) {
 					typeText.setText(dataSource.getType());
 					kindText.setText(dataSource.getSubType());
 					languageText.setText(dataSource.getLanguage());
-				}
+				} else {
+          typeText.setText("");
+          kindText.setText("");
+          languageText.setText("");         
+        }
 			}
 		});
-		dataSourceAddressCombo.setItems(PropertySectionUtils
-				.getAllDataSourceNames(getProcess()));
+		dataSourceIdentifierCombo.setItems(PropertySectionUtils
+				.getAllDataSourceIdentifiers(getProcess()));
 
-		dataSourceAddressLabel.setText("Data source name:");
-		dataSourceAddressCombo.setEditable(false);
-		dataSourceAddressCombo.setBackground(Display.getCurrent()
+		dataSourceIdentifierLabel.setText("Data source:");
+		dataSourceIdentifierCombo.setEditable(false);
+		dataSourceIdentifierCombo.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
-		dataSourceAddressLabel.setLayoutData(gridData31);
-		dataSourceAddressLabel.setBackground(Display.getCurrent()
+		dataSourceIdentifierLabel.setLayoutData(gridData31);
+		dataSourceIdentifierLabel.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
 		languageLabel = new Label(composite, SWT.NONE);
 		languageText = new Text(composite, SWT.BORDER);
@@ -255,7 +259,7 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 			public void widgetSelected(SelectionEvent arg0) {
 				MetaDataXMLParser metaDataXMLParser_Objekt=new MetaDataXMLParser();
 				ArrayList<DBTable> listOfTables= metaDataXMLParser_Objekt.loadTablesFromDB(
-						PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText()));
+						PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceIdentifierCombo.getText()));
 				if (getModel() instanceof TransferActivity) {
 					// The fromSource DataManagementActivity of the transfer
 					// activity needs a query statement editor
@@ -697,7 +701,7 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 		}
 
 		// Setzen die Datenquellenadresse
-		dataSourceAddressCombo.setText(activity.getDsAddress());
+		dataSourceIdentifierCombo.setText(activity.getDsIdentifier());
 
 		// Wert aus Modell setzen
 		typeText.setText(this.activity.getDsType());
@@ -760,7 +764,7 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 	 */
 	@Override
 	public DataSource getDataSource() {
-		return PropertySectionUtils.findDataSourceByName(getProcess(),
-				dataSourceAddressCombo.getText());
+		return PropertySectionUtils.findDataSourceByIdentifier(getProcess(),
+				dataSourceIdentifierCombo.getText());
 	}
 }

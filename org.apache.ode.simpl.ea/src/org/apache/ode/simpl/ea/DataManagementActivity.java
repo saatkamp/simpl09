@@ -4,11 +4,7 @@ import java.util.List;
 
 import org.apache.ode.bpel.rtrep.common.extension.AbstractSyncExtensionOperation;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
-import org.apache.ode.simpl.ea.util.DeploymentInfos;
-import org.apache.ode.simpl.ea.util.DeploymentUtils;
 import org.apache.ode.simpl.ea.util.StatementUtils;
-import org.simpl.resource.management.data.DataSource;
-import org.simpl.resource.management.data.LateBinding;
 import org.w3c.dom.Element;
 
 import commonj.sdo.DataObject;
@@ -19,14 +15,13 @@ public abstract class DataManagementActivity extends
 		AbstractSyncExtensionOperation {
 
 	private String dsStatement;
-	private String dsAddress;
+	private String dsIdentifier;
 	private String dsType;
 	private String dsSubType;
 	private String dsLanguage;
 	private String activityName;
 	public boolean successfulExecution;
 	
-	private static String deployDir = "";
 	private static String processName = "";
 
 	/**
@@ -37,36 +32,14 @@ public abstract class DataManagementActivity extends
 	 */
 	protected void loadSIMPLAttributes(ExtensionContext context, Element element) {
 		this.dsStatement = element.getAttribute("dsStatement").toString();
-		this.dsAddress = element.getAttribute("dsAddress").toString();
+		this.dsIdentifier = element.getAttribute("dsIdentifier").toString();
 		this.dsType = element.getAttribute("dsType").toString();
 		this.dsSubType = element.getAttribute("dsKind").toString();
 		this.dsLanguage = element.getAttribute("dsLanguage").toString();
 		this.activityName = element.getAttribute("name").toString();
 		
 		DataManagementActivity.setProcessName(context.getOActivity().getOwner().getName());
-		DataManagementActivity.setDeployDir(context.getDUDir().getPath() + "deploy.xml");
 	}
-
-	/**
-	 * Returns the DataSource object on which the given activity points.
-	 * 
-	 * @param activityName of which the data source should get.
-	 * @param dataSourceName of the queried data source.
-	 * @return The DataSource object which matches to the given parameters.
-	 */
-	public DataSource getDataSource(String activityName, String dataSourceName) {
-		return DeploymentInfos.getActivityDataSource(activityName, dataSourceName);
-	}
-
-	/**
-	 * Returns the late binding information of an activity.
-	 * 
-	 * @param activityName
-	 * @return
-	 */
-  public LateBinding getLateBinding(String activityName) {
-    return DeploymentUtils.getInstance().getLateBindingOfActivity(activityName);
-  }
 	
 	/**
 	 * Getter for the activity name attribute.
@@ -82,12 +55,12 @@ public abstract class DataManagementActivity extends
 	}
 
 	/**
-	 * Getter for the activity data source address attribute.
+	 * Getter for the activity data source id attribute.
 	 * 
-	 * @return address of the activity data source.
+	 * @return id of the activity data source.
 	 */
-	public String getDsAddress() {
-		return dsAddress;
+	public String getDsIdentifier() {
+		return dsIdentifier;
 	}
 
 	/**
@@ -118,30 +91,12 @@ public abstract class DataManagementActivity extends
 	}
 
 	/**
-	 * Getter for the path of the deployment directory.
-	 * 
-	 * @return path to the deployment directory of the process.
-	 */
-	public static String getDeployDir() {
-		return deployDir;
-	}
-
-	/**
 	 * Getter for the current process name.
 	 * 
 	 * @return current processed process name.
 	 */
 	public static String getProcessName() {
 		return processName;
-	}
-
-	/**
-	 * Setter for the path of the deployment directory.
-	 * 
-	 * @param deployDir to set.
-	 */
-	public static void setDeployDir(String deployDir) {
-		DataManagementActivity.deployDir = deployDir;
 	}
 
 	/**

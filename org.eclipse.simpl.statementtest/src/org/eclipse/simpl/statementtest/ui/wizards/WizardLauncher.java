@@ -6,6 +6,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.simpl.statementtest.types.DMActivityTypes;
 import org.eclipse.simpl.statementtest.types.DataSourceTypes;
+import org.eclipse.simpl.statementtest.utils.DataSourceUtils;
 import org.eclipse.simpl.statementtest.utils.IssueRecognition;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
@@ -30,7 +31,11 @@ public class WizardLauncher {
     String issue = null;
 
     // data source type filtering with message dialogs
-    if (dmActivity.getDsType().equals(DataSourceTypes.DATABASE)
+    if (DataSourceUtils.findDataSourceByName(process, dmActivity.getDsIdentifier()) == null) 
+    {
+      MessageDialog.openInformation(window.getShell(), "Activity has no valid data source.",
+      "The data source of the activity couldn't be resolved.");
+    } else if (dmActivity.getDsType().equals(DataSourceTypes.DATABASE)
         || dmActivity.getDsType().equals(DataSourceTypes.FILESYSTEM)
         || dmActivity.getDsType().equals("")) {
       statementTestWizard = new StatementTestWizard(dmActivity, process);

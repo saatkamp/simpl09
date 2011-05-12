@@ -76,8 +76,8 @@ public class SIMPLHoverHelper implements IHoverHelper {
 			panel.add(label);
 			String annotation[] = {
 					ModelPackage.eINSTANCE
-							.getDataManagementActivity_DsAddress().getName(),
-					dm.getDsAddress(),
+							.getDataManagementActivity_DsIdentifier().getName(),
+					dm.getDsIdentifier(),
 					ModelPackage.eINSTANCE.getDataManagementActivity_DsType()
 							.getName(),
 					dm.getDsType(),

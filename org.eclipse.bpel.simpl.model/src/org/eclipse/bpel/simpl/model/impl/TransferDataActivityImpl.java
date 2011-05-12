@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl#getTargetDsAddress <em>Target Ds Address</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl#getTargetDsIdentifier <em>Target Ds Identifier</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl#getTargetDsType <em>Target Ds Type</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl#getTargetDsKind <em>Target Ds Kind</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl#getTargetDsLanguage <em>Target Ds Language</em>}</li>
@@ -36,24 +36,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 @SuppressWarnings("restriction")
 public class TransferDataActivityImpl extends DataManagementActivityImpl implements TransferDataActivity {
   /**
-   * The default value of the '{@link #getTargetDsAddress() <em>Target Ds Address</em>}' attribute.
+   * The default value of the '{@link #getTargetDsIdentifier() <em>Target Ds Identifier</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTargetDsAddress()
+   * @see #getTargetDsIdentifier()
    * @generated
    * @ordered
    */
-  protected static final String TARGET_DS_ADDRESS_EDEFAULT = "address";
+  protected static final String TARGET_DS_IDENTIFIER_EDEFAULT = "identifier";
 
   /**
-   * The cached value of the '{@link #getTargetDsAddress() <em>Target Ds Address</em>}' attribute.
+   * The cached value of the '{@link #getTargetDsIdentifier() <em>Target Ds Identifier</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTargetDsAddress()
+   * @see #getTargetDsIdentifier()
    * @generated
    * @ordered
    */
-  protected String targetDsAddress = TARGET_DS_ADDRESS_EDEFAULT;
+  protected String targetDsIdentifier = TARGET_DS_IDENTIFIER_EDEFAULT;
 
   /**
    * The default value of the '{@link #getTargetDsType() <em>Target Ds Type</em>}' attribute.
@@ -159,8 +159,8 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTargetDsAddress() {
-    return targetDsAddress;
+  public String getTargetDsIdentifier() {
+    return targetDsIdentifier;
   }
 
   /**
@@ -168,16 +168,16 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTargetDsAddress(String newTargetDsAddress) {
-    String oldTargetDsAddress = targetDsAddress;
+  public void setTargetDsIdentifier(String newTargetDsIdentifier) {
+    String oldTargetDsIdentifier = targetDsIdentifier;
     if (!isReconciling) {
       ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
-          .getTransferDataActivity_TargetDsAddress().getName(),
-          newTargetDsAddress == null ? null : newTargetDsAddress);
+          .getTransferDataActivity_TargetDsIdentifier().getName(),
+          newTargetDsIdentifier == null ? null : newTargetDsIdentifier);
     }
-    targetDsAddress = newTargetDsAddress;
+    targetDsIdentifier = newTargetDsIdentifier;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_ADDRESS, oldTargetDsAddress, targetDsAddress));
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER, oldTargetDsIdentifier, targetDsIdentifier));
   }
 
   /**
@@ -252,7 +252,7 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
       ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
           .getTransferDataActivity_TargetDsLanguage().getName(),
           newTargetDsLanguage == null ? null : newTargetDsLanguage);
-    }    
+    }
     targetDsLanguage = newTargetDsLanguage;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_LANGUAGE, oldTargetDsLanguage, targetDsLanguage));
@@ -292,8 +292,8 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_ADDRESS:
-        return getTargetDsAddress();
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER:
+        return getTargetDsIdentifier();
       case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE:
         return getTargetDsType();
       case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_KIND:
@@ -314,8 +314,8 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_ADDRESS:
-        setTargetDsAddress((String)newValue);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER:
+        setTargetDsIdentifier((String)newValue);
         return;
       case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE:
         setTargetDsType((String)newValue);
@@ -341,8 +341,8 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_ADDRESS:
-        setTargetDsAddress(TARGET_DS_ADDRESS_EDEFAULT);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER:
+        setTargetDsIdentifier(TARGET_DS_IDENTIFIER_EDEFAULT);
         return;
       case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE:
         setTargetDsType(TARGET_DS_TYPE_EDEFAULT);
@@ -368,8 +368,8 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_ADDRESS:
-        return TARGET_DS_ADDRESS_EDEFAULT == null ? targetDsAddress != null : !TARGET_DS_ADDRESS_EDEFAULT.equals(targetDsAddress);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER:
+        return TARGET_DS_IDENTIFIER_EDEFAULT == null ? targetDsIdentifier != null : !TARGET_DS_IDENTIFIER_EDEFAULT.equals(targetDsIdentifier);
       case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE:
         return TARGET_DS_TYPE_EDEFAULT == null ? targetDsType != null : !TARGET_DS_TYPE_EDEFAULT.equals(targetDsType);
       case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_KIND:
@@ -392,8 +392,8 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (targetDsAddress: ");
-    result.append(targetDsAddress);
+    result.append(" (targetDsIdentifier: ");
+    result.append(targetDsIdentifier);
     result.append(", targetDsType: ");
     result.append(targetDsType);
     result.append(", targetDsKind: ");

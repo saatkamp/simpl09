@@ -112,11 +112,11 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 						((QueryDataActivity) activity).getDsType());
 			}
 
-			if (((QueryDataActivity) activity).getDsAddress() != null) {
+			if (((QueryDataActivity) activity).getDsIdentifier() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsAddress().getName();
+						.getDataManagementActivity_DsIdentifier().getName();
 				activityElement.setAttribute(attName,
-						((QueryDataActivity) activity).getDsAddress());
+						((QueryDataActivity) activity).getDsIdentifier());
 			}
 
 			if (((QueryDataActivity) activity).getDsLanguage() != null) {
@@ -171,11 +171,11 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 						((IssueCommandActivity) activity).getDsType());
 			}
 
-			if (((IssueCommandActivity) activity).getDsAddress() != null) {
+			if (((IssueCommandActivity) activity).getDsIdentifier() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsAddress().getName();
+						.getDataManagementActivity_DsIdentifier().getName();
 				activityElement.setAttribute(attName,
-						((IssueCommandActivity) activity).getDsAddress());
+						((IssueCommandActivity) activity).getDsIdentifier());
 			}
 
 			if (((IssueCommandActivity) activity).getDsLanguage() != null) {
@@ -223,11 +223,11 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 						((RetrieveDataActivity) activity).getDsType());
 			}
 
-			if (((RetrieveDataActivity) activity).getDsAddress() != null) {
+			if (((RetrieveDataActivity) activity).getDsIdentifier() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsAddress().getName();
+						.getDataManagementActivity_DsIdentifier().getName();
 				activityElement.setAttribute(attName,
-						((RetrieveDataActivity) activity).getDsAddress());
+						((RetrieveDataActivity) activity).getDsIdentifier());
 			}
 
 			if (((RetrieveDataActivity) activity).getDsLanguage() != null) {
@@ -283,11 +283,11 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
             ((WriteDataBackActivity) activity).getDsType());
       }
 
-      if (((WriteDataBackActivity) activity).getDsAddress() != null) {
+      if (((WriteDataBackActivity) activity).getDsIdentifier() != null) {
         String attName = ModelPackage.eINSTANCE
-            .getDataManagementActivity_DsAddress().getName();
+            .getDataManagementActivity_DsIdentifier().getName();
         activityElement.setAttribute(attName,
-            ((WriteDataBackActivity) activity).getDsAddress());
+            ((WriteDataBackActivity) activity).getDsIdentifier());
       }
 
       if (((WriteDataBackActivity) activity).getDsLanguage() != null) {
@@ -351,11 +351,11 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 						((TransferDataActivity) activity).getDsType());
 			}
 
-			if (((TransferDataActivity) activity).getDsAddress() != null) {
+			if (((TransferDataActivity) activity).getDsIdentifier() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsAddress().getName();
+						.getDataManagementActivity_DsIdentifier().getName();
 				activityElement.setAttribute(attName,
-						((TransferDataActivity) activity).getDsAddress());
+						((TransferDataActivity) activity).getDsIdentifier());
 			}
 
 			if (((TransferDataActivity) activity).getDsLanguage() != null) {
@@ -379,11 +379,11 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 						((TransferDataActivity) activity).getTargetDsKind());
 			}
 			
-			if (((TransferDataActivity) activity).getTargetDsAddress() != null) {
+			if (((TransferDataActivity) activity).getTargetDsIdentifier() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getTransferDataActivity_TargetDsAddress().getName();
+						.getTransferDataActivity_TargetDsIdentifier().getName();
 				activityElement.setAttribute(attName,
-						((TransferDataActivity) activity).getTargetDsAddress());
+						((TransferDataActivity) activity).getTargetDsIdentifier());
 			}
 			
 			if (((TransferDataActivity) activity).getTargetDsLanguage() != null) {

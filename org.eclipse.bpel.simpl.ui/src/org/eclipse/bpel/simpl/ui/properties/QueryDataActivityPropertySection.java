@@ -14,7 +14,7 @@ package org.eclipse.bpel.simpl.ui.properties;
 import java.io.File;
 
 import org.eclipse.bpel.simpl.model.QueryDataActivity;
-import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
+import org.eclipse.bpel.simpl.ui.command.SetDsIdentifierCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
@@ -62,8 +62,8 @@ public class QueryDataActivityPropertySection extends ADataManagementActivityPro
 	private Label statementLabel = null;
 	//private Text statementText = null;
 	private Button showStatementCheckBox = null;
-	private Label dataSourceAddressLabel = null;
-	private CCombo dataSourceAddressCombo = null;
+	private Label dataSourceIdentifierLabel = null;
+	private CCombo dataSourceIdentifierCombo = null;
 	private Label kindLabel = null;
 	private Text kindText = null;
 	private Button openEditorButton = null;
@@ -111,7 +111,7 @@ public class QueryDataActivityPropertySection extends ADataManagementActivityPro
 		}
 		
 		// Setzen die Datenquellenadresse
-		dataSourceAddressCombo.setText(activity.getDsAddress());
+		dataSourceIdentifierCombo.setText(activity.getDsIdentifier());
 		// Setzen die Zieleinheit des Queries.
 		queryTargetCombo.setText(!activity.getQueryTarget().equals("target") ? activity.getQueryTarget() : "");
 		// Setzen die Sprache
@@ -185,11 +185,11 @@ public class QueryDataActivityPropertySection extends ADataManagementActivityPro
 		kindLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		createKindCombo();
-		dataSourceAddressLabel = new Label(composite, SWT.NONE);
-		dataSourceAddressCombo = new CCombo(composite, SWT.BORDER);
-		dataSourceAddressCombo.setLayoutData(gridData12);
+		dataSourceIdentifierLabel = new Label(composite, SWT.NONE);
+		dataSourceIdentifierCombo = new CCombo(composite, SWT.BORDER);
+		dataSourceIdentifierCombo.setLayoutData(gridData12);
 		// Änderungen im Modell speichern
-		dataSourceAddressCombo.addSelectionListener(new SelectionListener() {
+		dataSourceIdentifierCombo.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				widgetSelected(e);
@@ -198,25 +198,29 @@ public class QueryDataActivityPropertySection extends ADataManagementActivityPro
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				getCommandFramework().execute(
-						new SetDsAddressCommand(getModel(),
-								dataSourceAddressCombo.getText()));
+						new SetDsIdentifierCommand(getModel(),
+								dataSourceIdentifierCombo.getText()));
 
 				DataSource dataSource = getDataSource();
 				if (dataSource != null){
 					typeText.setText(dataSource.getType());
 					kindText.setText(dataSource.getSubType());
 					languageText.setText(dataSource.getLanguage());
-				}
+				} else {
+          typeText.setText("");
+          kindText.setText("");
+          languageText.setText("");         
+        }
 			}
 		});
-		dataSourceAddressCombo.setItems(PropertySectionUtils.getAllDataSourceNames(getProcess()));
+		dataSourceIdentifierCombo.setItems(PropertySectionUtils.getAllDataSourceIdentifiers(getProcess()));
 		
-		dataSourceAddressLabel.setText("Data source name:");
-		dataSourceAddressCombo.setEditable(false);
-		dataSourceAddressCombo.setBackground(Display.getCurrent()
+		dataSourceIdentifierLabel.setText("Data source:");
+		dataSourceIdentifierCombo.setEditable(false);
+		dataSourceIdentifierCombo.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
-		dataSourceAddressLabel.setLayoutData(gridData31);
-		dataSourceAddressLabel.setBackground(Display.getCurrent()
+		dataSourceIdentifierLabel.setLayoutData(gridData31);
+		dataSourceIdentifierLabel.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
 		languageLabel = new Label(composite, SWT.NONE);
 		languageText = new Text(composite, SWT.BORDER);
@@ -280,7 +284,7 @@ public class QueryDataActivityPropertySection extends ADataManagementActivityPro
 			public void widgetSelected(SelectionEvent arg0) {
 				MetaDataXMLParser metaDataXMLParser_Objekt=new MetaDataXMLParser();
 				ArrayList<DBTable> listOfTables= metaDataXMLParser_Objekt.loadTablesFromDB(
-						PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceAddressCombo.getText()));
+						PropertySectionUtils.findDataSourceByName(getProcess(), dataSourceIdentifierCombo.getText()));
 //				System.out.println("\r checkpoint \r");
 				openStatementEditor(ModelPackage.eINSTANCE.getQueryActivity()
 						.getInstanceClassName(), activity.getDsLanguage(), activity.getName());
@@ -734,7 +738,7 @@ public class QueryDataActivityPropertySection extends ADataManagementActivityPro
 	@Override
 	public DataSource getDataSource() {
 		return PropertySectionUtils
-		.findDataSourceByName(getProcess(),
-				dataSourceAddressCombo.getText());
+		.findDataSourceByIdentifier(getProcess(),
+				dataSourceIdentifierCombo.getText());
 	}
 }

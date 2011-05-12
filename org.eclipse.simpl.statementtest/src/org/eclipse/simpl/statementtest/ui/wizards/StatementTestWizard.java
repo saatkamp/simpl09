@@ -94,7 +94,7 @@ public class StatementTestWizard extends Wizard {
     
     connector.setConverterDataFormat(dataFormat);
     activityDataSource.setConnector(connector);
-    activityDataSource.setAddress(activity.getDsAddress());
+    activityDataSource.setAddress(activity.getDsIdentifier());
     activityDataSource.setType(activity.getDsType());
     activityDataSource.setSubType(activity.getDsKind());
     activityDataSource.setLanguage(activity.getDsLanguage());
@@ -106,7 +106,7 @@ public class StatementTestWizard extends Wizard {
     // set variables
     List<String> parameterVariableNames = VariableUtils
         .getParameterVariablesFromStatement(activity.getDsStatement(), process);
-    List<String> containerVariablenames = VariableUtils
+    List<String> containerVariableNames = VariableUtils
         .getContainerVariablesFromStatement(activity.getDsStatement(), process);
 
     for (String variableName : parameterVariableNames) {
@@ -115,7 +115,7 @@ public class StatementTestWizard extends Wizard {
       this.statementTest.getParameterVariables().put(variable, parameterVariable);
     }
 
-    for (String variableName : containerVariablenames) {
+    for (String variableName : containerVariableNames) {
       Variable variable = VariableUtils.getVariableByName(variableName, process);
       ContainerVariable containerVariable = new ContainerVariable(variable);
       this.statementTest.getContainerVariables().put(variable, containerVariable);

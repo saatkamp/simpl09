@@ -6,6 +6,7 @@ import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
+import org.apache.ode.simpl.ea.util.DataSourceUtils;
 import org.apache.ode.simpl.ea.util.StatementUtils;
 import org.simpl.core.SIMPLCoreInterface;
 import org.simpl.core.services.SIMPLCoreService;
@@ -47,8 +48,8 @@ public class QueryDataActivity extends DataManagementActivity {
           queryTarget));
     }
 
-    DataSource ds = getDataSource(getActivityName(), getDsAddress());
-    LateBinding lb = getLateBinding(getActivityName());
+    DataSource ds = DataSourceUtils.getDataSource(context, getDsIdentifier());
+    LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
 
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 

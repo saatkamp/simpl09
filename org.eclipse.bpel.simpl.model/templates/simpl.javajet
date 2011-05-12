@@ -3,7 +3,6 @@
 <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.example.org/simpl"
   xmlns:simpl="http://www.example.org/simpl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-  <xsd:element name="queryDataActivity" type="simpl:QueryDataActivityType" />
 
   <xsd:complexType name="DataManagementActivityType">
     <xsd:attribute name="name" type="xsd:string" use="optional" />
@@ -12,7 +11,7 @@
     <xsd:attribute name="dsLanguage" type="xsd:string"></xsd:attribute>
     <xsd:attribute name="dsStatement" type="xsd:string"
       use="optional" />
-    <xsd:attribute name="dsAddress" type="xsd:string"
+    <xsd:attribute name="dsIdentifier" type="xsd:string"
       use="optional" />
   </xsd:complexType>
 
@@ -36,13 +35,7 @@
     </xsd:complexContent>
   </xsd:complexType>
 
-  <xsd:element name="issueCommandActivity"
-    type="simpl:DataManagementActivityType">
-  </xsd:element>
 
-  <xsd:element name="retrieveDataActivity"
-    type="simpl:RetrieveDataActivityType">
-  </xsd:element>
   
   <xsd:simpleType name="BPELVariableName">
         <xsd:restriction base="xsd:NCName">
@@ -66,12 +59,8 @@
 
   </xsd:complexType>
 
-  <xsd:element name="containerReference" type="simpl:ContainerReferenceType"></xsd:element>
 
 
-  <xsd:element name="writeDataBackActivity"
-    type="simpl:WriteDataBackActivityType">
-  </xsd:element>
 
   <xsd:complexType name="WriteDataBackActivityType">
     <xsd:complexContent>
@@ -83,4 +72,20 @@
         <xsd:attribute name="writeTarget" type="xsd:string"></xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
-  </xsd:complexType></xsd:schema>
+  </xsd:complexType>
+  <xsd:complexType name="LogicalDataSourceDescriptorType">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string"></xsd:element>
+      <xsd:element name="requirements" type="xsd:string"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:element name="containerReference"
+    type="simpl:ContainerReferenceType">
+  </xsd:element>
+
+  <xsd:element name="logicalDataSourceDescriptor"
+    type="simpl:LogicalDataSourceDescriptorType">
+  </xsd:element>
+</xsd:schema>

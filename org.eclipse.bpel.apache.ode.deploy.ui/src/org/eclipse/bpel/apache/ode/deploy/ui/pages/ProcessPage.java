@@ -24,8 +24,6 @@ import javax.xml.namespace.QName;
 
 import org.eclipse.bpel.apache.ode.deploy.model.dd.GenerateType;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType;
-import org.eclipse.bpel.apache.ode.deploy.model.dd.TActivityMapping;
-import org.eclipse.bpel.apache.ode.deploy.model.dd.TDatasource;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TInvoke;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProcessEvents;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.TProvide;
@@ -35,10 +33,6 @@ import org.eclipse.bpel.apache.ode.deploy.model.dd.ddFactory;
 import org.eclipse.bpel.apache.ode.deploy.model.dd.ddPackage;
 import org.eclipse.bpel.apache.ode.deploy.ui.Activator;
 import org.eclipse.bpel.apache.ode.deploy.ui.editors.ODEDeployMultiPageEditor;
-import org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs.AddDataSourceDialog;
-import org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs.AddMappingDialog;
-import org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs.EditDataSourceDialog;
-import org.eclipse.bpel.apache.ode.deploy.ui.pages.dialogs.EditMappingDialog;
 import org.eclipse.bpel.apache.ode.deploy.ui.util.DeployUtils;
 import org.eclipse.bpel.model.PartnerLink;
 import org.eclipse.bpel.model.PartnerLinks;
@@ -75,10 +69,8 @@ import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.ICellModifier;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.OwnerDrawLabelProvider;
@@ -90,7 +82,6 @@ import org.eclipse.simpl.resource.management.ResourceManagementPlugIn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
@@ -306,19 +297,6 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 				domain.getCommandStack().execute(setAuditingActiveCommand);
 			}
 		});
-
-		String dataSourceDescription = "The table contains data sources which are used in the process."
-				+ " Specify a name, the address, the username and the password of each data source to use them in the process.";
-
-		createDataSourceSection(form.getBody(), processType, managedForm,
-				"Data source specification", dataSourceDescription);
-
-		String activityMappingDescription = "The table contains mappings between SIMPL"
-				+ " DataManagement Activities and Policies to support late binding or to"
-				+ " map the activities with the above specified data sources.";
-
-		createActivityMappingSection(form.getBody(), processType, managedForm,
-				"Activity-Data source mapping", activityMappingDescription);
 
 		form.reflow(true);
 	}
@@ -719,342 +697,6 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 		for (int i = 0, n = table.getColumnCount(); i < n; i++) {
 			table.getColumn(i).pack();
 		}
-	}
-
-	private void createDataSourceSection(Composite fClient,
-			ProcessType current, final IManagedForm managedForm, String title,
-			String description) {
-		// Set column names
-		String[] columnNames = new String[] { "Name", "Address", "Type",
-				"Subtype", "Language", "Data format", "User name", "Password" };
-		int[] bounds = { 75, 175, 50, 50, 50, 50, 50, 50 };
-
-		Section section = toolkit.createSection(fClient, Section.TWISTIE
-				| Section.EXPANDED | Section.DESCRIPTION | Section.TITLE_BAR);
-		section.setText(title);
-		section.setDescription(description);
-		section.marginHeight = 5;
-
-		Composite client = toolkit.createComposite(section, SWT.WRAP);
-		GridLayout layout = new GridLayout();
-		layout.marginWidth = 2;
-		layout.marginHeight = 2;
-		client.setLayout(layout);
-		final Table table = toolkit.createTable(client, SWT.SINGLE | SWT.BORDER
-				| SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION
-				| SWT.HIDE_SELECTION);
-
-		GridData gd = new GridData(GridData.FILL_BOTH);
-		table.setLayoutData(gd);
-		toolkit.paintBordersFor(client);
-
-		section.setClient(client);
-		final SectionPart spart = new SectionPart(section);
-		managedForm.addPart(spart);
-
-		final TableViewer viewer = new TableViewer(table);
-
-		for (int i = 0; i < columnNames.length; i++) {
-			final TableViewerColumn viewerColumn = new TableViewerColumn(
-					viewer, SWT.NONE);
-			final TableColumn column = viewerColumn.getColumn();
-
-			column.setText(columnNames[i]);
-			column.setWidth(bounds[i]);
-			column.setResizable(true);
-			column.setMoveable(true);
-		}
-		table.setHeaderVisible(true);
-		table.setLinesVisible(true);
-
-		viewer.setContentProvider(new DataSourceContentProvider());
-		viewer.setLabelProvider(new DataSourceLabelProvider());
-
-		viewer.setInput(processType.getDatasources());
-
-		Composite buttonComp = toolkit.createComposite(client, SWT.WRAP);
-		GridLayout bLayout = new GridLayout();
-		layout.marginWidth = 2;
-		layout.marginHeight = 2;
-		layout.numColumns = 3;
-		buttonComp.setLayout(bLayout);
-
-		final Button btnNew = toolkit.createButton(buttonComp, "New", SWT.PUSH);
-		btnNew.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				widgetSelected(e);
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				AddDataSourceDialog dialog = new AddDataSourceDialog(Display
-						.getDefault().getActiveShell(), processType);
-				dialog.open();
-				if (dialog.getDatasource().getDataSourceName() != null) {
-					Command addDataSourceCommand = AddCommand.create(domain,
-							processType, ddPackage.eINSTANCE
-									.getProcessType_Datasources(), dialog
-									.getDatasource());
-					domain.getCommandStack().execute(addDataSourceCommand);
-
-					// Updating the display in the view
-					viewer.refresh();
-				}
-			}
-		});
-		final Button btnEdit = toolkit.createButton(buttonComp, "Edit",
-				SWT.PUSH);
-		btnEdit.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				widgetSelected(e);
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				ISelection selection = viewer.getSelection();
-				if (selection != null
-						&& selection instanceof IStructuredSelection) {
-					IStructuredSelection sel = (IStructuredSelection) selection;
-
-					if (sel.size() == 1) {
-						TDatasource datasource = (TDatasource) sel
-								.getFirstElement();
-
-						EditDataSourceDialog dialog = new EditDataSourceDialog(
-								Display.getDefault().getActiveShell(),
-								datasource, processType);
-						dialog.open();
-
-						if (dialog.getDatasource().getDataSourceName() != null){
-							Command removeDataSourceCommand = RemoveCommand.create(
-									domain, processType, ddPackage.eINSTANCE
-											.getProcessType_Datasources(),
-									datasource);
-							domain.getCommandStack().execute(
-									removeDataSourceCommand);
-							
-							Command addDataSourceCommand = AddCommand.create(
-									domain, processType, ddPackage.eINSTANCE
-											.getProcessType_Datasources(), dialog
-											.getDatasource());
-							domain.getCommandStack().execute(addDataSourceCommand);
-						}
-					}
-					// Updating the display in the view
-					viewer.refresh();
-				}
-			}
-		});
-		final Button btnDelete = toolkit.createButton(buttonComp, "Remove",
-				SWT.PUSH);
-		btnDelete.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				widgetSelected(e);
-			}
-
-			@SuppressWarnings("unchecked")
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				ISelection selection = viewer.getSelection();
-				if (selection != null
-						&& selection instanceof IStructuredSelection) {
-					IStructuredSelection sel = (IStructuredSelection) selection;
-					for (Iterator<TDatasource> iterator = sel.iterator(); iterator
-							.hasNext();) {
-						TDatasource datasource = iterator.next();
-
-						Command removeDataSourceCommand = RemoveCommand.create(
-								domain, processType, ddPackage.eINSTANCE
-										.getProcessType_Datasources(),
-								datasource);
-						domain.getCommandStack().execute(
-								removeDataSourceCommand);
-					}
-
-					viewer.refresh();
-				}
-			}
-		});
-	}
-
-	private void createActivityMappingSection(Composite fClient,
-			ProcessType current, final IManagedForm managedForm, String title,
-			String description) {
-		// Save the current ProcessType object in a final copy to
-		// work with it in the inner classes (SelectionListener)
-		final ProcessType pt = current;
-
-		// Set column names
-		String[] columnNames = new String[] { "Activity",
-				"Policy (local path)", "Strategy" };
-		int[] bounds = { 150, 250, 100 };
-
-		Section section = toolkit.createSection(fClient, Section.TWISTIE
-				| Section.EXPANDED | Section.DESCRIPTION | Section.TITLE_BAR);
-		section.setText(title);
-		section.setDescription(description);
-		section.marginHeight = 5;
-
-		Composite client = toolkit.createComposite(section, SWT.WRAP);
-		GridLayout layout = new GridLayout();
-		layout.marginWidth = 2;
-		layout.marginHeight = 2;
-		client.setLayout(layout);
-		final Table table = toolkit.createTable(client, SWT.SINGLE | SWT.BORDER
-				| SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION
-				| SWT.HIDE_SELECTION);
-
-		GridData gd = new GridData(GridData.FILL_BOTH);
-		table.setLayoutData(gd);
-		toolkit.paintBordersFor(client);
-
-		section.setClient(client);
-		final SectionPart spart = new SectionPart(section);
-		managedForm.addPart(spart);
-
-		final TableViewer viewer = new TableViewer(table);
-
-		for (int i = 0; i < columnNames.length; i++) {
-			final TableViewerColumn viewerColumn = new TableViewerColumn(
-					viewer, SWT.NONE);
-			final TableColumn column = viewerColumn.getColumn();
-
-			column.setText(columnNames[i]);
-			column.setWidth(bounds[i]);
-			column.setResizable(true);
-			column.setMoveable(true);
-		}
-		table.setHeaderVisible(true);
-		table.setLinesVisible(true);
-
-		viewer.setContentProvider(new MappingContentProvider());
-		viewer.setLabelProvider(new MappingLabelProvider());
-
-		viewer.setInput(processType.getActivityMappings());
-
-		Composite buttonComp = toolkit.createComposite(client, SWT.WRAP);
-		GridLayout bLayout = new GridLayout();
-		layout.marginWidth = 2;
-		layout.marginHeight = 2;
-		layout.numColumns = 3;
-		buttonComp.setLayout(bLayout);
-
-		final Button btnNew = toolkit.createButton(buttonComp, "New", SWT.PUSH);
-		btnNew.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				widgetSelected(e);
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				AddMappingDialog dialog = new AddMappingDialog(Display
-						.getDefault().getActiveShell(), pt);
-				dialog.open();
-				if (dialog.getMapping() != null) {
-					Command addMappingCommand = AddCommand.create(domain,
-							processType, ddPackage.eINSTANCE
-									.getProcessType_ActivityMappings(), dialog
-									.getMapping());
-					domain.getCommandStack().execute(addMappingCommand);
-
-					// Updating the display in the view
-					viewer.refresh();
-				}
-			}
-		});
-		final Button btnEdit = toolkit.createButton(buttonComp, "Edit",
-				SWT.PUSH);
-		btnEdit.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				widgetSelected(e);
-			}
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				ISelection selection = viewer.getSelection();
-				if (selection != null
-						&& selection instanceof IStructuredSelection) {
-					IStructuredSelection sel = (IStructuredSelection) selection;
-
-					if (sel.size() == 1) {
-						TActivityMapping mapping = (TActivityMapping) sel
-								.getFirstElement();
-
-						Command removeMappingCommand = RemoveCommand.create(
-								domain, processType, ddPackage.eINSTANCE
-										.getProcessType_ActivityMappings(),
-								mapping);
-						domain.getCommandStack().execute(removeMappingCommand);
-
-						EditMappingDialog dialog = new EditMappingDialog(
-								Display.getDefault().getActiveShell(), pt,
-								mapping);
-						dialog.open();
-
-						Command addMappingCommand = AddCommand.create(domain,
-								processType, ddPackage.eINSTANCE
-										.getProcessType_ActivityMappings(),
-								dialog.getMapping());
-						domain.getCommandStack().execute(addMappingCommand);
-					}
-					// Updating the display in the view
-					viewer.refresh();
-				}
-			}
-		});
-		final Button btnDelete = toolkit.createButton(buttonComp, "Remove",
-				SWT.PUSH);
-		btnDelete.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				widgetSelected(e);
-			}
-
-			@SuppressWarnings("unchecked")
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				ISelection selection = viewer.getSelection();
-				if (selection != null
-						&& selection instanceof IStructuredSelection) {
-					IStructuredSelection sel = (IStructuredSelection) selection;
-					for (Iterator<TActivityMapping> iterator = sel.iterator(); iterator
-							.hasNext();) {
-						TActivityMapping mapping = iterator.next();
-
-						Command removeMappingCommand = RemoveCommand.create(
-								domain, processType, ddPackage.eINSTANCE
-										.getProcessType_ActivityMappings(),
-								mapping);
-						domain.getCommandStack().execute(removeMappingCommand);
-					}
-
-					viewer.refresh();
-				}
-			}
-		});
 	}
 
 	class PortTypeLabelProvider extends LabelProvider implements
