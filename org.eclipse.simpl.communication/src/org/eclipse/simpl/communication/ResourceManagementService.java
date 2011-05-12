@@ -1,6 +1,7 @@
 package org.eclipse.simpl.communication;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -9,7 +10,6 @@ import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
 import org.simpl.resource.management.data.DataSource;
-import org.simpl.resource.management.data.DataSourceList;
 
 /**
  * Resource Management web service access.
@@ -17,78 +17,61 @@ import org.simpl.resource.management.data.DataSourceList;
  * @author Michael Schneidt
  */
 public class ResourceManagementService {
-  public DataSource findDataSourceById(String id) {
-    DataSource dataSource = null;
+  HashMap<String, DataSource> dataSourcesMap = new HashMap<String, DataSource>();
+
+  ResourceManagementService() {
+    List<DataSource> dataSources = null;
+    ResourceManagement resourceManagementService = this.getService();
 
     try {
-      if (this.getService() != null) {
-        dataSource = this.getService().getDataSourceById(Integer.parseInt(id));
+      if (resourceManagementService != null) {
+        dataSources = resourceManagementService.getAllDataSources().getDataSources();
+      } else {
+        MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
+            "Resource Management is not available.", "Could not load resources.");
       }
     } catch (Exception_Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
 
-    return dataSource;
+    if (dataSources != null) {
+      for (DataSource dataSource : dataSources) {
+        dataSourcesMap.put(dataSource.getName(), dataSource);
+      }
+    }
+  }
+
+  public DataSource findDataSourceById(String id) {
+    DataSource result = null;
+    
+    for (DataSource dataSource : this.getDataSources()) {
+      if (dataSource.getId().equals(id)) {
+        result = dataSource;
+      }
+    }
+
+    return result;
   }
 
   public DataSource findDataSourceByName(String name) {
-    DataSource dataSource = null;
-
-    try {
-      if (this.getService() != null) {
-        dataSource = this.getService().getDataSourceByName(name);
+    DataSource result = null;
+    
+    for (DataSource dataSource : this.getDataSources()) {
+      if (dataSource.getName().equals(name)) {
+        result = dataSource;
       }
-    } catch (Exception_Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
     }
 
-    return dataSource;
+    return result;
   }
 
   public List<DataSource> getDataSources() {
-    List<DataSource> dataSources = null;
-    DataSourceList dataSourceList = null;
-    ResourceManagement resourceManagementService = this.getService();
-    
-    try {
-      if (resourceManagementService != null) {
-        dataSourceList = resourceManagementService.getAllDataSources();
-        dataSources = dataSourceList.getDataSources();
-      } else {
-        MessageDialog
-        .openInformation(
-            Display.getCurrent().getActiveShell(),
-            "Resource Management is not available.",
-            "Could not load resources.");
-      }
-    } catch (Exception_Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-
-    return dataSources;
+    return new ArrayList<DataSource>(dataSourcesMap.values());
   }
 
   public List<String> getDataSourceNames() {
-    DataSourceList dataSources = null;
-    List<String> dataSourceNames = new ArrayList<String>();
-
-    try {
-      if (this.getService() != null) {
-        dataSources = this.getService().getAllDataSources();
-      }
-
-      for (DataSource source : dataSources.getDataSources()) {
-        dataSourceNames.add(source.getName());
-      }
-    } catch (Exception_Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-
-    return dataSourceNames;
+    return new ArrayList<String>(dataSourcesMap.keySet());
   }
 
   public List<String> getDataSourceLanguages(String subType) {

@@ -9,8 +9,14 @@ public class ResourceManagementCommunication {
   private static ResourceManagementService resourceManagement = null;
 
   public static ResourceManagementService getInstance() {
-    resourceManagement = new ResourceManagementService();
+    if (resourceManagement == null) {
+      resourceManagement = new ResourceManagementService();
+    }
     
     return resourceManagement;
+  }
+  
+  public static void reload() {
+    resourceManagement = new ResourceManagementService();
   }
 }
