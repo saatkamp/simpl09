@@ -34,7 +34,11 @@ public class SIMPLCoreInterface {
 
     // late binding
     if (this.lateBindingIsValid(lateBinding)) {
-      dataSource = this.resourceDiscovery.findDataSource(lateBinding);
+      DataSource lateBoundDataSource = this.resourceDiscovery.findDataSource(lateBinding);
+      
+      if (lateBoundDataSource.getName() != null) {
+        dataSource = lateBoundDataSource;
+      }
     }
 
     // execute statement
@@ -56,7 +60,11 @@ public class SIMPLCoreInterface {
 
     // late binding
     if (this.lateBindingIsValid(lateBinding)) {
-      dataSource = this.resourceDiscovery.findDataSource(lateBinding);
+      DataSource lateBoundDataSource = this.resourceDiscovery.findDataSource(lateBinding);
+      
+      if (lateBoundDataSource.getName() != null) {
+        dataSource = lateBoundDataSource;
+      }
     }
 
     // deposit data
@@ -78,7 +86,11 @@ public class SIMPLCoreInterface {
 
     // late binding
     if (this.lateBindingIsValid(lateBinding)) {
-      dataSource = this.resourceDiscovery.findDataSource(lateBinding);
+      DataSource lateBoundDataSource = this.resourceDiscovery.findDataSource(lateBinding);
+      
+      if (lateBoundDataSource.getName() != null) {
+        dataSource = lateBoundDataSource;
+      }
     }
 
     // retrieve data
@@ -100,7 +112,11 @@ public class SIMPLCoreInterface {
 
     // late binding
     if (this.lateBindingIsValid(lateBinding)) {
-      dataSource = this.resourceDiscovery.findDataSource(lateBinding);
+      DataSource lateBoundDataSource = this.resourceDiscovery.findDataSource(lateBinding);
+      
+      if (lateBoundDataSource.getName() != null) {
+        dataSource = lateBoundDataSource;
+      }
     }
 
     success = simplCore.writeDataBack(dataSource, data, target);
@@ -139,7 +155,7 @@ public class SIMPLCoreInterface {
   /**
    * Checks if a given data source has valid late binding information.
    * 
-   * TODO: check policy validity
+   * TODO: perhaps check policy validity
    * 
    * @param dataSource
    * @return

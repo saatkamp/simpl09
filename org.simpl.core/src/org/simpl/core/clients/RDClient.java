@@ -47,9 +47,9 @@ public class RDClient {
   }
 
   public DataSource findDataSource(LateBinding lateBinding) {
-    if (isUsingWebService()) {System.out.println("WEB");
+    if (isUsingWebService()) {
       return RDWebClient.getInstance().findDataSource(lateBinding);
-    } else {System.out.println("DIRECT");
+    } else {
       return RDDirectClient.getInstance().findDataSource(lateBinding);
     }
   }
