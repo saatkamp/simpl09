@@ -1,11 +1,9 @@
 package org.eclipse.bpel.simpl.ui.properties.util;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -19,14 +17,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.simpl.communication.ResourceManagementCommunication;
 import org.eclipse.simpl.communication.SIMPLCoreCommunication;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-import org.jdom.Namespace;
-import org.jdom.input.SAXBuilder;
-import org.simpl.resource.management.data.Authentication;
-import org.simpl.resource.management.data.Connector;
-import org.simpl.resource.management.data.DataFormat;
 import org.simpl.resource.management.data.DataSource;
 
 /**
@@ -42,20 +32,6 @@ import org.simpl.resource.management.data.DataSource;
  * 
  */
 public class PropertySectionUtils {
-
-  private static final String EL_PROCESS = "process";
-  private static final String EL_DATASOURCE = "datasources";
-
-  private static final String AT_NAME = "name";
-  private static final String AT_DATA_SOURCE_NAME = "dataSourceName";
-  private static final String AT_DATA_SOURCE_ADDRESS = "address";
-  private static final String AT_DATA_SOURCE_TYPE = "type";
-  private static final String AT_DATA_SOURCE_SUBTYPE = "subtype";
-  private static final String AT_DATA_SOURCE_LANG = "language";
-  private static final String AT_DATA_SOURCE_USERNAME = "userName";
-  private static final String AT_DATA_SOURCE_PASSWORD = "password";
-  private static String AT_DATA_FORMAT = "format";
-
   /**
    * Die BPEL Datei des Prozesses
    */
@@ -77,148 +53,19 @@ public class PropertySectionUtils {
    */
   private static String absolutWorkspacePath = "";
 
-  private final static Namespace DD_NAMESPACE = Namespace
-      .getNamespace("http://www.apache.org/ode/schemas/dd/2007/03");
-
   private static final String RM_PREFIX = "rm";
 
-  private static final String DD_PREFIX = "dd";
-
-  @SuppressWarnings("rawtypes")
-  private static DataSource findDeploymentDescriptorDatasourceByName(Process process,
-      String dsName) {
-    DataSource datasource = new DataSource();
-    
-    bpelFile = BPELUtil.getBPELFile(process);
-
-    bpelPath = bpelFile.getFullPath();
-
-    projectPath = bpelPath.removeFileExtension().removeLastSegments(1);
-
-    absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation()
-        .toOSString();
-
-    File deploy = new File(absolutWorkspacePath + projectPath.toOSString()
-        + System.getProperty("file.separator") + "deploy.xml");
-
-    if (deploy.exists()) {
-      SAXBuilder builder = new SAXBuilder();
-      Document doc;
-      try {
-        InputStream inputStream = new FileInputStream(deploy);
-
-        doc = builder.build(inputStream);
-
-        Element root = doc.getRootElement();
-
-        List processes = root.getChildren(EL_PROCESS, DD_NAMESPACE);
-
-        for (Object processObj : processes) {
-          Element processElement = (Element) processObj;
-          if (processElement.getAttributeValue(AT_NAME).contains(process.getName())) {
-            List datasourceElements = processElement.getChildren(EL_DATASOURCE,
-                DD_NAMESPACE);
-            for (Object data : datasourceElements) {
-              String name = ((Element) data).getAttributeValue(AT_DATA_SOURCE_NAME);
-              if (name.equals(dsName)) {
-                Connector connector = new Connector();
-                DataFormat dataFormat = new DataFormat();
-                
-                datasource.setName(name);
-                datasource.setAddress(((Element) data)
-                    .getAttributeValue(AT_DATA_SOURCE_ADDRESS));
-                datasource.setType(((Element) data)
-                    .getAttributeValue(AT_DATA_SOURCE_TYPE));
-                datasource.setSubType(((Element) data)
-                    .getAttributeValue(AT_DATA_SOURCE_SUBTYPE));
-                datasource.setLanguage(((Element) data)
-                    .getAttributeValue(AT_DATA_SOURCE_LANG));
-                
-                dataFormat.setName(((Element) data).getAttributeValue(AT_DATA_FORMAT));
-                connector.setConverterDataFormat(dataFormat);
-                datasource.setConnector(connector);
-                
-                Authentication authent = new Authentication();
-                authent.setUser(((Element) data)
-                    .getAttributeValue(AT_DATA_SOURCE_USERNAME));
-                authent.setPassword(((Element) data)
-                    .getAttributeValue(AT_DATA_SOURCE_PASSWORD));                
-                datasource.setAuthentication(authent);
-              }
-            }
-          }
-        }
-
-      } catch (JDOMException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } catch (FileNotFoundException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } catch (IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-    }
-
-    return datasource;
-  }
-
-  @SuppressWarnings("rawtypes")
-  private static List<String> getDeploymentDescriptorDatasourceNames(Process process) {
+  public static String[] getAllDataSourceIdentifiers(Process process) {
     List<String> datasources = new ArrayList<String>();
 
-    bpelFile = BPELUtil.getBPELFile(process);
+    // TODO: Uncommented because rm: identifiers are not supported anymore
+    //datasources.addAll(getRMDatasourceNames());
+    datasources.addAll(VariableUtils.getUseableVariables(process, VariableUtils.DESCRIPTOR_VAR));
 
-    bpelPath = bpelFile.getFullPath();
-
-    projectPath = bpelPath.removeFileExtension().removeLastSegments(1);
-
-    absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation()
-        .toOSString();
-
-    File deploy = new File(absolutWorkspacePath + projectPath.toOSString()
-        + System.getProperty("file.separator") + "deploy.xml");
-
-    if (deploy.exists()) {
-      SAXBuilder builder = new SAXBuilder();
-      Document doc;
-      try {
-        InputStream inputStream = new FileInputStream(deploy);
-
-        doc = builder.build(inputStream);
-
-        Element root = doc.getRootElement();
-
-        List processes = root.getChildren(EL_PROCESS, DD_NAMESPACE);
-
-        for (Object processObj : processes) {
-          Element processElement = (Element) processObj;
-          if (processElement.getAttributeValue(AT_NAME).contains(process.getName())) {
-            List datasourceElements = processElement.getChildren(EL_DATASOURCE,
-                DD_NAMESPACE);
-            for (Object data : datasourceElements) {
-              String name = ((Element) data).getAttributeValue(AT_DATA_SOURCE_NAME);
-              datasources.add(DD_PREFIX + ":" + name);
-            }
-          }
-        }
-
-      } catch (JDOMException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } catch (FileNotFoundException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } catch (IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-    }
-
-    return datasources;
+    return datasources.toArray(new String[0]);
   }
 
+  @SuppressWarnings("unused")
   private static List<String> getRMDatasourceNames() {
     List<String> dataSourceNames = new ArrayList<String>();
 
@@ -232,28 +79,24 @@ public class PropertySectionUtils {
 
     return dataSourceNames;
   }
-
-  public static String[] getAllDataSourceNames(Process process) {
-    List<String> datasources = new ArrayList<String>();
-
-    datasources.addAll(getDeploymentDescriptorDatasourceNames(process));
-    datasources.addAll(getRMDatasourceNames());
-
-    return datasources.toArray(new String[0]);
-  }
-
-  public static DataSource findDataSourceByName(Process process, String nameWithPrefix) {
-    DataSource data = null;
+  
+  public static DataSource findDataSourceByIdentifier(Process process, String nameWithPrefix) {
+    DataSource dataSource = null;
 
     String[] name = nameWithPrefix.split(":");
-    if (name[0].equals(DD_PREFIX)) {
-      data = findDeploymentDescriptorDatasourceByName(process, name[1]);
+    
+    if (name[0].equals(RM_PREFIX)) {
+      dataSource = ResourceManagementCommunication.getInstance().findDataSourceByName(name[1]);
     } else {
-      if (name[0].equals(RM_PREFIX)) {
-        data = ResourceManagementCommunication.getInstance().findDataSourceByName(name[1]);
-      }
+      String dataSourceName = VariableUtils.getDescriptorElementValue(process, nameWithPrefix, "name");
+      dataSource = ResourceManagementCommunication.getInstance().findDataSourceByName(dataSourceName);
     }
-    return data;
+    
+    if (dataSource.getName() == null) {
+      dataSource = null;
+    }
+
+    return dataSource;
   }
 
   public static void downloadSchema(DataSource dataSource, Process process) {

@@ -214,6 +214,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
   }
 
 	/**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDataManagementActivity_DsIdentifier() {
+    return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(0);
+  }
+
+
+  /**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 * 
 	 * @return the data management activity_ ds statement
@@ -275,16 +285,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
   }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the data management activity_ ds address
-	 * @generated
-	 */
-	public EAttribute getDataManagementActivity_DsAddress() {
-    return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(0);
-  }
-
-	/**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -339,7 +339,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTransferDataActivity_TargetDsAddress() {
+  public EAttribute getTransferDataActivity_TargetDsIdentifier() {
     return (EAttribute)transferDataActivityEClass.getEStructuralFeatures().get(0);
   }
 
@@ -435,7 +435,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
     // Create classes and their features
     dataManagementActivityEClass = createEClass(DATA_MANAGEMENT_ACTIVITY);
-    createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS);
+    createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER);
     createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_TYPE);
     createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_KIND);
     createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT);
@@ -454,7 +454,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
     createEAttribute(writeDataBackActivityEClass, WRITE_DATA_BACK_ACTIVITY__WRITE_TARGET);
 
     transferDataActivityEClass = createEClass(TRANSFER_DATA_ACTIVITY);
-    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_ADDRESS);
+    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER);
     createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE);
     createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_KIND);
     createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_LANGUAGE);
@@ -501,7 +501,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
     // Initialize classes and features; add operations and parameters
     initEClass(dataManagementActivityEClass, DataManagementActivity.class, "DataManagementActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDataManagementActivity_DsAddress(), ecorePackage.getEString(), "dsAddress", "address", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDataManagementActivity_DsIdentifier(), ecorePackage.getEString(), "dsIdentifier", "identifier", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDataManagementActivity_DsType(), ecorePackage.getEString(), "dsType", "type", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDataManagementActivity_DsKind(), ecorePackage.getEString(), "dsKind", "subtype", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDataManagementActivity_DsStatement(), ecorePackage.getEString(), "dsStatement", "statement", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -520,7 +520,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
     initEAttribute(getWriteDataBackActivity_WriteTarget(), ecorePackage.getEString(), "writeTarget", "target", 0, 1, WriteDataBackActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(transferDataActivityEClass, TransferDataActivity.class, "TransferDataActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTransferDataActivity_TargetDsAddress(), ecorePackage.getEString(), "targetDsAddress", "address", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTransferDataActivity_TargetDsIdentifier(), ecorePackage.getEString(), "targetDsIdentifier", "identifier", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTransferDataActivity_TargetDsType(), ecorePackage.getEString(), "targetDsType", "type", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTransferDataActivity_TargetDsKind(), ecorePackage.getEString(), "targetDsKind", "kind", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTransferDataActivity_TargetDsLanguage(), ecorePackage.getEString(), "targetDsLanguage", "language", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

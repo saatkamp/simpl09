@@ -38,8 +38,8 @@ public class TransferDataActivityPropertySection extends
 	private Label typeLabel = null;
 	private Text typeText = null;
 
-	private Label dataSourceAddressLabel = null;
-	private CCombo dataSourceAddressCombo = null;
+	private Label dataSourceIdentifierLabel = null;
+	private CCombo dataSourceIdentifierCombo = null;
 	private Label kindLabel = null;
 	private Text kindText = null;
 	private Label languageLabel = null;
@@ -70,7 +70,7 @@ public class TransferDataActivityPropertySection extends
 		createWidgets(parent);
 
 		// Setzen die Datenquellenadresse
-		dataSourceAddressCombo.setText(transferDataActivity.getTargetDsAddress());
+		dataSourceIdentifierCombo.setText(transferDataActivity.getTargetDsIdentifier());
 		writeTargetCombo.setText(transferDataActivity.getTargetDsContainer());
 		// Setzen die Sprache
 		languageText.setText(transferDataActivity.getTargetDsLanguage());
@@ -142,11 +142,11 @@ public class TransferDataActivityPropertySection extends
 		kindLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		createKindCombo();
-		dataSourceAddressLabel = new Label(composite, SWT.NONE);
-		dataSourceAddressCombo = new CCombo(composite, SWT.BORDER);
-		dataSourceAddressCombo.setLayoutData(gridData12);
+		dataSourceIdentifierLabel = new Label(composite, SWT.NONE);
+		dataSourceIdentifierCombo = new CCombo(composite, SWT.BORDER);
+		dataSourceIdentifierCombo.setLayoutData(gridData12);
 		// Änderungen im Modell speichern
-		dataSourceAddressCombo.addSelectionListener(new SelectionListener() {
+		dataSourceIdentifierCombo.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				widgetSelected(e);
@@ -155,29 +155,34 @@ public class TransferDataActivityPropertySection extends
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				getCommandFramework().execute(
-						new SetCommand(transferDataActivity, dataSourceAddressCombo
+						new SetCommand(transferDataActivity, dataSourceIdentifierCombo
 								.getText(), ModelPackage.eINSTANCE
-								.getTransferDataActivity_TargetDsAddress()));
+								.getTransferDataActivity_TargetDsIdentifier()));
 
 				DataSource dataSource = PropertySectionUtils
-						.findDataSourceByName(getProcess(),
-								dataSourceAddressCombo.getText());
+						.findDataSourceByIdentifier(getProcess(),
+								dataSourceIdentifierCombo.getText());
+				
 				if (dataSource != null) {
 					typeText.setText(dataSource.getType());
 					kindText.setText(dataSource.getSubType());
 					languageText.setText(dataSource.getLanguage());
+				} else {
+          typeText.setText("");
+          kindText.setText("");
+          languageText.setText("");				  
 				}
 			}
 		});
-		dataSourceAddressCombo.setItems(PropertySectionUtils
-				.getAllDataSourceNames(getProcess()));
+		dataSourceIdentifierCombo.setItems(PropertySectionUtils
+				.getAllDataSourceIdentifiers(getProcess()));
 
-		dataSourceAddressLabel.setText("Data source name:");
-		dataSourceAddressCombo.setEditable(false);
-		dataSourceAddressCombo.setBackground(Display.getCurrent()
+		dataSourceIdentifierLabel.setText("Data source:");
+		dataSourceIdentifierCombo.setEditable(false);
+		dataSourceIdentifierCombo.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
-		dataSourceAddressLabel.setLayoutData(gridData31);
-		dataSourceAddressLabel.setBackground(Display.getCurrent()
+		dataSourceIdentifierLabel.setLayoutData(gridData31);
+		dataSourceIdentifierLabel.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
 		languageLabel = new Label(composite, SWT.NONE);
 		languageText = new Text(composite, SWT.BORDER);
@@ -341,7 +346,7 @@ public class TransferDataActivityPropertySection extends
 	 */
 	@Override
 	public DataSource getDataSource() {
-		return PropertySectionUtils.findDataSourceByName(getProcess(),
-				dataSourceAddressCombo.getText());
+		return PropertySectionUtils.findDataSourceByIdentifier(getProcess(),
+				dataSourceIdentifierCombo.getText());
 	}
 }

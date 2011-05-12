@@ -1,5 +1,5 @@
 /**
- * <b>Purpose:</b> Implements a new {@link SetCommand} to set the address of the datasource in the model of a {@link DataManagementActivity} subclass.<br>
+ * <b>Purpose:</b> Implements a new {@link SetCommand} to set the identifier of the datasource in the model of a {@link DataManagementActivity} subclass.<br>
  * <b>Description:</b> <br>
  * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
@@ -21,19 +21,19 @@ import org.eclipse.emf.ecore.EObject;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class SetDsAddressCommand.
+ * The Class SetDsIdentifierCommand.
  */
-public class SetDsAddressCommand extends SetCommand {
+public class SetDsIdentifierCommand extends SetCommand {
 
 	/**
-	 * Instantiates a new SetDsAddressCommand.
+	 * Instantiates a new SetDsIdentifierCommand.
 	 * 
 	 * @param aTarget
 	 *            the target element
 	 * @param aValue
 	 *            the value to set
 	 */
-	public SetDsAddressCommand(EObject aTarget, Object aValue) {
+	public SetDsIdentifierCommand(EObject aTarget, Object aValue) {
 		super(aTarget, aValue);
 	}
 
@@ -43,26 +43,26 @@ public class SetDsAddressCommand extends SetCommand {
 	@Override
 	public Object get() {
 		if (fTarget instanceof QueryDataActivity){
-			return ((QueryDataActivity) fTarget).getDsAddress();
+			return ((QueryDataActivity) fTarget).getDsIdentifier();
 		}
 		
 		if (fTarget instanceof IssueCommandActivity){
-			return ((IssueCommandActivity) fTarget).getDsAddress();
+			return ((IssueCommandActivity) fTarget).getDsIdentifier();
 		}
 		
 		if (fTarget instanceof RetrieveDataActivity){
-			return ((RetrieveDataActivity) fTarget).getDsAddress();
+			return ((RetrieveDataActivity) fTarget).getDsIdentifier();
 		}
 
     if (fTarget instanceof WriteDataBackActivity){
-      return ((WriteDataBackActivity) fTarget).getDsAddress();
+      return ((WriteDataBackActivity) fTarget).getDsIdentifier();
     }
 		
 		if (fTarget instanceof DataManagementActivity){
-			return ((DataManagementActivity) fTarget).getDsAddress();
+			return ((DataManagementActivity) fTarget).getDsIdentifier();
 		}
 		
-		throw new IllegalArgumentException("This model object has no address to get");
+		throw new IllegalArgumentException("This model object has no identifier to get");
 	}
 
 	/* (non-Javadoc)
@@ -71,19 +71,19 @@ public class SetDsAddressCommand extends SetCommand {
 	@Override
 	public void set(Object o) {
 		if (fTarget instanceof QueryDataActivity) {
-			((QueryDataActivity) fTarget).setDsAddress((String) o);
+			((QueryDataActivity) fTarget).setDsIdentifier((String) o);
 			
 		} else if (fTarget instanceof IssueCommandActivity) {
-			((IssueCommandActivity) fTarget).setDsAddress((String) o);
+			((IssueCommandActivity) fTarget).setDsIdentifier((String) o);
 		} else if (fTarget instanceof RetrieveDataActivity) {
-      ((RetrieveDataActivity) fTarget).setDsAddress((String) o);
+      ((RetrieveDataActivity) fTarget).setDsIdentifier((String) o);
     }  else if (fTarget instanceof WriteDataBackActivity) {
-			((WriteDataBackActivity) fTarget).setDsAddress((String) o);
+			((WriteDataBackActivity) fTarget).setDsIdentifier((String) o);
 		} else if (fTarget instanceof DataManagementActivity) {
-			((DataManagementActivity) fTarget).setDsAddress((String) o);
+			((DataManagementActivity) fTarget).setDsIdentifier((String) o);
 		} else {
 			throw new IllegalArgumentException(
-					"This model object has no address to set");
+					"This model object has no identifier to set");
 		}
 	}
 	

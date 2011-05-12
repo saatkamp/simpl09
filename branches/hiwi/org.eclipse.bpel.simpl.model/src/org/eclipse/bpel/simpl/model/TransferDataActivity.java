@@ -19,7 +19,7 @@ package org.eclipse.bpel.simpl.model;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsAddress <em>Target Ds Address</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsIdentifier <em>Target Ds Identifier</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsType <em>Target Ds Type</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsKind <em>Target Ds Kind</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsLanguage <em>Target Ds Language</em>}</li>
@@ -33,31 +33,31 @@ package org.eclipse.bpel.simpl.model;
  */
 public interface TransferDataActivity extends DataManagementActivity {
   /**
-   * Returns the value of the '<em><b>Target Ds Address</b></em>' attribute.
-   * The default value is <code>"address"</code>.
+   * Returns the value of the '<em><b>Target Ds Identifier</b></em>' attribute.
+   * The default value is <code>"identifier"</code>.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Target Ds Address</em>' attribute isn't clear,
+   * If the meaning of the '<em>Target Ds Identifier</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Target Ds Address</em>' attribute.
-   * @see #setTargetDsAddress(String)
-   * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferDataActivity_TargetDsAddress()
-   * @model default="address"
+   * @return the value of the '<em>Target Ds Identifier</em>' attribute.
+   * @see #setTargetDsIdentifier(String)
+   * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferDataActivity_TargetDsIdentifier()
+   * @model default="identifier"
    * @generated
    */
-  String getTargetDsAddress();
+  String getTargetDsIdentifier();
 
   /**
-   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsAddress <em>Target Ds Address</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsIdentifier <em>Target Ds Identifier</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Target Ds Address</em>' attribute.
-   * @see #getTargetDsAddress()
+   * @param value the new value of the '<em>Target Ds Identifier</em>' attribute.
+   * @see #getTargetDsIdentifier()
    * @generated
    */
-  void setTargetDsAddress(String value);
+  void setTargetDsIdentifier(String value);
 
   /**
    * Returns the value of the '<em><b>Target Ds Type</b></em>' attribute.

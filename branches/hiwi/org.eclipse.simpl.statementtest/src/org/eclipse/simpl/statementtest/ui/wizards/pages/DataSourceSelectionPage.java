@@ -1,21 +1,11 @@
 package org.eclipse.simpl.statementtest.ui.wizards.pages;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.NotEnabledException;
-import org.eclipse.core.commands.NotHandledException;
-import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.simpl.statementtest.StatementTestPlugin;
 import org.eclipse.simpl.statementtest.model.StatementTest;
-import org.eclipse.simpl.statementtest.types.DataSourceTypes;
 import org.eclipse.simpl.statementtest.ui.wizards.StatementTestWizard;
 import org.eclipse.simpl.statementtest.utils.DataSourceUtils;
 import org.eclipse.simpl.statementtest.utils.IssueRecognition;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
@@ -23,7 +13,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
@@ -31,8 +20,6 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.handlers.IHandlerService;
 import org.simpl.resource.management.data.DataSource;
 
 /**
@@ -90,30 +77,9 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
     // next page is not available until data source selection
     this.setPageComplete(false);
 
-    // data source retrieval from deployment descriptor and resource management
-    dataSources = DataSourceUtils.getAllDataSourceNames(statementTest.getProcess()
-        .getName());
-
-    List<String> filteredDataSources = new ArrayList<String>();
-
-    // filter data sources by type
-    for (int i = 0; i < dataSources.length; i++) {
-      String dataSourceType = DataSourceUtils.findDataSourceByName(
-          statementTest.getProcess().getName(), dataSources[i]).getType();
-
-      // filter data sources of the same type as the data source set in the
-      // activity
-      if (dataSourceType.equals(statementTest.getDataSource().getType())) {
-        filteredDataSources.add(dataSources[i]);
-        // if no data source is selected in the activity
-      } else if (statementTest.getDataSource().getType().equals("")
-          && (dataSourceType.equals(DataSourceTypes.DATABASE) || dataSourceType
-              .equals(DataSourceTypes.FILESYSTEM))) {
-        filteredDataSources.add(dataSources[i]);
-      }
-    }
-
-    dataSources = filteredDataSources.toArray(new String[filteredDataSources.size()]);
+    // data source retrieval
+    dataSources = DataSourceUtils.getAllDataSourceNames(statementTest.getProcess());
+    dataSources = DataSourceUtils.filterDataSourceNamesByType(statementTest.getProcess(), dataSources, statementTest.getDataSource().getType());
 
     // layout
     this.pageComposite.setLayout(new GridLayout(3, false));
@@ -144,8 +110,7 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
         setPageComplete(true);
 
         // set selected data source object
-        selectedDataSource = DataSourceUtils.findDataSourceByName(statementTest
-            .getProcess().getName(), selectedValue);
+        selectedDataSource = DataSourceUtils.findDataSourceByName(statementTest.getProcess(), selectedValue);
 
         // recognize the issue of the statement
         issue = IssueRecognition.getInstance().recognizeIssue(
@@ -192,42 +157,22 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
     toolBar = new ToolBar(this.pageComposite, SWT.FLAT);
     toolBar.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
 
-    refreshImage = new Image(Display.getDefault(), StatementTestPlugin
-        .getImageDescriptor(REFRESH_ICON).getImageData());
-    refreshItem = new ToolItem(toolBar, SWT.NONE);
-    refreshItem.setImage(refreshImage);
-    refreshItem.setToolTipText(DataSourceSelectionPage.REFRESH_ITEM_TOOLTIP);
-    refreshItem.addSelectionListener(new SelectionAdapter() {
-      @Override
-      public void widgetSelected(SelectionEvent e) {
-        IHandlerService handlerService = (IHandlerService) PlatformUI.getWorkbench()
-            .getService(IHandlerService.class);
-
-        try {
-          // TODO: der command aktualisiert nicht, da der Aufruf hier von einem anderen
-          // GUI
-          // Kontext kommt.
-          handlerService.executeCommand(
-              "org.eclipse.simpl.resource.management.refreshCommand", null);
-          dataSources = DataSourceUtils.getAllDataSourceNames(statementTest.getProcess()
-              .getName());
-        } catch (ExecutionException e1) {
-          // TODO Auto-generated catch block
-          e1.printStackTrace();
-        } catch (NotDefinedException e1) {
-          // TODO Auto-generated catch block
-          e1.printStackTrace();
-        } catch (NotEnabledException e1) {
-          // TODO Auto-generated catch block
-          e1.printStackTrace();
-        } catch (NotHandledException e1) {
-          // TODO Auto-generated catch block
-          e1.printStackTrace();
-        }
-      }
-    });
-
-    refreshItem.setEnabled(false);
+//    refreshImage = new Image(Display.getDefault(), StatementTestPlugin
+//        .getImageDescriptor(REFRESH_ICON).getImageData());
+//    refreshItem = new ToolItem(toolBar, SWT.NONE);
+//    refreshItem.setImage(refreshImage);
+//    refreshItem.setToolTipText(DataSourceSelectionPage.REFRESH_ITEM_TOOLTIP);
+//    refreshItem.addSelectionListener(new SelectionAdapter() {
+//      @Override
+//      public void widgetSelected(SelectionEvent e) {
+//        DataSourceUtils.refresh();
+//        dataSources = DataSourceUtils.getAllDataSourceNames(statementTest.getProcess());
+//        dataSources = DataSourceUtils.filterDataSourceNamesByType(statementTest.getProcess(), dataSources, statementTest.getDataSource().getType());
+//        combo.setItems(dataSources);
+//      }
+//    });
+//
+//    refreshItem.setEnabled(false);
 
     // table
     table = new Table(this.pageComposite, SWT.BORDER | SWT.HIDE_SELECTION);
@@ -245,7 +190,7 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
 
     // select the data source of the activity
     for (int i = 0; i < dataSources.length; i++) {
-      if (dataSources[i].equals(this.statementTest.getActivity().getDsAddress())) {
+      if (dataSources[i].equals(this.statementTest.getActivity().getDsIdentifier())) {
         combo.select(i);
 
         // fire combo selection event to initialize the table

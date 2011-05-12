@@ -3,6 +3,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.simpl.communication.ResourceManagementCommunication;
 import org.eclipse.simpl.core.Application;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
@@ -18,15 +19,20 @@ public class SimplReloadDataHandler extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-
+    success = true;
+	  
 		try {
 			org.eclipse.simpl.core.Application.getInstance().initApplication();
 			Application.getInstance().setDataLoaded(true);
-			
-			success = true;
 		} catch (Exception e) {
 			success = false;
 		}
+
+    try {
+      ResourceManagementCommunication.reload();
+    } catch (Exception e) {
+      success = false;
+    }
 		
 		final IHandlerService handlerService = (IHandlerService) PlatformUI
         .getWorkbench().getService(IHandlerService.class);
@@ -53,5 +59,4 @@ public class SimplReloadDataHandler extends AbstractHandler {
 		
 		return null;
 	}
-
 }

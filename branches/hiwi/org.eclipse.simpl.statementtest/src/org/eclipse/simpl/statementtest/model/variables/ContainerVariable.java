@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.bpel.model.Variable;
+import org.eclipse.xsd.XSDElementDeclaration;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 
@@ -40,13 +41,17 @@ public class ContainerVariable extends AbstractVariable {
   public ContainerVariable(Variable variable) {
     super(variable);
 
-    // use the schema type instead of variable type
-    if (variable.getXSDElement() != null) {
-      this.type = variable.getXSDElement().getQName();
-    }
+    XSDElementDeclaration xsd = variable.getXSDElement();
+    NodeList typeNodes = null;
 
-    NodeList typeNodes = variable.getXSDElement().getTypeDefinition().getElement()
-        .getChildNodes();
+    // use the schema type instead of variable type
+    if (xsd != null) {
+      this.type = xsd.getQName();
+      typeNodes = xsd.getTypeDefinition().getElement().getChildNodes();
+    } else {
+      System.out.println("Container variable XML schema (XSD) not found.");
+      return;
+    }
 
     // read string pattern attribute
     for (int i = 0; i < typeNodes.getLength(); i++) {

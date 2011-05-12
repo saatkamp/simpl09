@@ -6,6 +6,7 @@ import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
+import org.apache.ode.simpl.ea.util.DataSourceUtils;
 import org.apache.ode.simpl.ea.util.StatementUtils;
 import org.simpl.core.SIMPLCoreInterface;
 import org.simpl.core.services.SIMPLCoreService;
@@ -37,7 +38,7 @@ public class TransferDataActivity extends DataManagementActivity {
     loadSIMPLAttributes(context, element);
 
     // Load all specific attribute values from the TransferActivity.
-    String targetDsAddress = element.getAttribute("targetDsAddress");
+    String targetDsIdentifier = element.getAttribute("targetDsIdentifier");
     String targetDsContainer = element.getAttribute("targetDsContainer");
 
     if (targetDsContainer.contains("[") || targetDsContainer.contains("#")) {
@@ -61,14 +62,14 @@ public class TransferDataActivity extends DataManagementActivity {
           variables, targetDsContainer));
     }
 
-    DataSource dsFrom = getDataSource(getActivityName(), getDsAddress());
-    DataSource dsTo = getDataSource(getActivityName(), targetDsAddress);
-    LateBinding lb = getLateBinding(getActivityName());
+    DataSource dsFrom = DataSourceUtils.getDataSource(context, getDsIdentifier());
+    DataSource dsTo = DataSourceUtils.getDataSource(context, targetDsIdentifier);
+    LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
 
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 
     try {
-      if (!targetDsAddress.equals("") || !targetDsContainer.equals("")) {
+      if (!targetDsIdentifier.equals("") || !targetDsContainer.equals("")) {
         DataObject dataObject = simplCoreService.retrieveData(dsFrom,
             getDsStatement(context), lb);
 

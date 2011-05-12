@@ -150,15 +150,15 @@ public interface ModelPackage extends EPackage {
 	int DATA_MANAGEMENT_ACTIVITY__SOURCES = BPELPackage.EXTENSION_ACTIVITY__SOURCES;
 
 	/**
-   * The feature id for the '<em><b>Ds Address</b></em>' attribute.
+   * The feature id for the '<em><b>Ds Identifier</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 0;
+  int DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 0;
 
-	/**
+  /**
    * The feature id for the '<em><b>Ds Type</b></em>' attribute.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -286,13 +286,13 @@ public interface ModelPackage extends EPackage {
   int QUERY_DATA_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
 
   /**
-   * The feature id for the '<em><b>Ds Address</b></em>' attribute.
+   * The feature id for the '<em><b>Ds Identifier</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int QUERY_DATA_ACTIVITY__DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS;
+  int QUERY_DATA_ACTIVITY__DS_IDENTIFIER = DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER;
 
   /**
    * The feature id for the '<em><b>Ds Type</b></em>' attribute.
@@ -431,13 +431,13 @@ public interface ModelPackage extends EPackage {
   int ISSUE_COMMAND_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
 
   /**
-   * The feature id for the '<em><b>Ds Address</b></em>' attribute.
+   * The feature id for the '<em><b>Ds Identifier</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ISSUE_COMMAND_ACTIVITY__DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS;
+  int ISSUE_COMMAND_ACTIVITY__DS_IDENTIFIER = DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER;
 
   /**
    * The feature id for the '<em><b>Ds Type</b></em>' attribute.
@@ -577,15 +577,15 @@ public interface ModelPackage extends EPackage {
 	int RETRIEVE_DATA_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
 
 	/**
-   * The feature id for the '<em><b>Ds Address</b></em>' attribute.
+   * The feature id for the '<em><b>Ds Identifier</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int RETRIEVE_DATA_ACTIVITY__DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS;
+  int RETRIEVE_DATA_ACTIVITY__DS_IDENTIFIER = DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER;
 
-	/**
+  /**
    * The feature id for the '<em><b>Ds Type</b></em>' attribute.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -712,13 +712,13 @@ public interface ModelPackage extends EPackage {
   int WRITE_DATA_BACK_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
 
   /**
-   * The feature id for the '<em><b>Ds Address</b></em>' attribute.
+   * The feature id for the '<em><b>Ds Identifier</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WRITE_DATA_BACK_ACTIVITY__DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS;
+  int WRITE_DATA_BACK_ACTIVITY__DS_IDENTIFIER = DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER;
 
   /**
    * The feature id for the '<em><b>Ds Type</b></em>' attribute.
@@ -867,13 +867,13 @@ public interface ModelPackage extends EPackage {
   int TRANSFER_DATA_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
 
   /**
-   * The feature id for the '<em><b>Ds Address</b></em>' attribute.
+   * The feature id for the '<em><b>Ds Identifier</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRANSFER_DATA_ACTIVITY__DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS;
+  int TRANSFER_DATA_ACTIVITY__DS_IDENTIFIER = DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER;
 
   /**
    * The feature id for the '<em><b>Ds Type</b></em>' attribute.
@@ -912,13 +912,13 @@ public interface ModelPackage extends EPackage {
   int TRANSFER_DATA_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
 
   /**
-   * The feature id for the '<em><b>Target Ds Address</b></em>' attribute.
+   * The feature id for the '<em><b>Target Ds Identifier</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRANSFER_DATA_ACTIVITY__TARGET_DS_ADDRESS = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
+  int TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Target Ds Type</b></em>' attribute.
@@ -976,6 +976,17 @@ public interface ModelPackage extends EPackage {
 	EClass getDataManagementActivity();
 
 	/**
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsIdentifier <em>Ds Identifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Ds Identifier</em>'.
+   * @see org.eclipse.bpel.simpl.model.DataManagementActivity#getDsIdentifier()
+   * @see #getDataManagementActivity()
+   * @generated
+   */
+  EAttribute getDataManagementActivity_DsIdentifier();
+
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsStatement <em>Ds Statement</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Ds Statement</em>'.
@@ -1037,16 +1048,6 @@ public interface ModelPackage extends EPackage {
 	EAttribute getDataManagementActivity_DsType();
 
 	/**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsAddress <em>Ds Address</em>}'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Ds Address</em>'.
-   * @see org.eclipse.bpel.simpl.model.DataManagementActivity#getDsAddress()
-   * @see #getDataManagementActivity()
-   * @generated
-   */
-	EAttribute getDataManagementActivity_DsAddress();
-
-	/**
    * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.IssueCommandActivity <em>Issue Command Activity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1099,15 +1100,15 @@ public interface ModelPackage extends EPackage {
   EClass getTransferDataActivity();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsAddress <em>Target Ds Address</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsIdentifier <em>Target Ds Identifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Target Ds Address</em>'.
-   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsAddress()
+   * @return the meta object for the attribute '<em>Target Ds Identifier</em>'.
+   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsIdentifier()
    * @see #getTransferDataActivity()
    * @generated
    */
-  EAttribute getTransferDataActivity_TargetDsAddress();
+  EAttribute getTransferDataActivity_TargetDsIdentifier();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsType <em>Target Ds Type</em>}'.
@@ -1207,6 +1208,14 @@ public interface ModelPackage extends EPackage {
 		EClass DATA_MANAGEMENT_ACTIVITY = eINSTANCE.getDataManagementActivity();
 
 		/**
+     * The meta object literal for the '<em><b>Ds Identifier</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER = eINSTANCE.getDataManagementActivity_DsIdentifier();
+
+    /**
      * The meta object literal for the '<em><b>Ds Statement</b></em>' attribute feature.
      * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1257,14 +1266,6 @@ public interface ModelPackage extends EPackage {
 		EAttribute DATA_MANAGEMENT_ACTIVITY__DS_TYPE = eINSTANCE.getDataManagementActivity_DsType();
 
 		/**
-     * The meta object literal for the '<em><b>Ds Address</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS = eINSTANCE.getDataManagementActivity_DsAddress();
-
-		/**
      * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.IssueCommandActivityImpl <em>Issue Command Activity</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1311,12 +1312,12 @@ public interface ModelPackage extends EPackage {
     EClass TRANSFER_DATA_ACTIVITY = eINSTANCE.getTransferDataActivity();
 
     /**
-     * The meta object literal for the '<em><b>Target Ds Address</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Target Ds Identifier</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRANSFER_DATA_ACTIVITY__TARGET_DS_ADDRESS = eINSTANCE.getTransferDataActivity_TargetDsAddress();
+    EAttribute TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER = eINSTANCE.getTransferDataActivity_TargetDsIdentifier();
 
     /**
      * The meta object literal for the '<em><b>Target Ds Type</b></em>' attribute feature.

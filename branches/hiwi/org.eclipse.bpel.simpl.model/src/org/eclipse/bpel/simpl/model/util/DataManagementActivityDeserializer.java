@@ -183,8 +183,8 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
           .getName();
       String attTargetType = ModelPackage.eINSTANCE.getTransferDataActivity_TargetDsType()
           .getName();
-      String attTargetAddress = ModelPackage.eINSTANCE
-          .getTransferDataActivity_TargetDsAddress().getName();
+      String attTargetIdentifier = ModelPackage.eINSTANCE
+          .getTransferDataActivity_TargetDsIdentifier().getName();
       String attTargetLanguage = ModelPackage.eINSTANCE
           .getTransferDataActivity_TargetDsLanguage().getName();
 
@@ -201,9 +201,9 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
         activity.setTargetDsType(transferDataActivityElement.getAttribute(attTargetType));
       }
 
-      if (transferDataActivityElement.getAttribute(attTargetAddress) != null) {
-        activity.setTargetDsAddress(transferDataActivityElement
-            .getAttribute(attTargetAddress));
+      if (transferDataActivityElement.getAttribute(attTargetIdentifier) != null) {
+        activity.setTargetDsIdentifier(transferDataActivityElement
+            .getAttribute(attTargetIdentifier));
       }
 
       if (transferDataActivityElement.getAttribute(attTargetLanguage) != null) {
@@ -230,7 +230,7 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
         .getName();
     String attKind = ModelPackage.eINSTANCE.getDataManagementActivity_DsKind().getName();
     String attType = ModelPackage.eINSTANCE.getDataManagementActivity_DsType().getName();
-    String attAddress = ModelPackage.eINSTANCE.getDataManagementActivity_DsAddress()
+    String attIdentifier = ModelPackage.eINSTANCE.getDataManagementActivity_DsIdentifier()
         .getName();
     String attLanguage = ModelPackage.eINSTANCE.getDataManagementActivity_DsLanguage()
         .getName();
@@ -247,8 +247,8 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
       activity.setDsType(((Element) node).getAttribute(attType));
     }
 
-    if (((Element) node).getAttribute(attAddress) != null) {
-      activity.setDsAddress(((Element) node).getAttribute(attAddress));
+    if (((Element) node).getAttribute(attIdentifier) != null) {
+      activity.setDsIdentifier(((Element) node).getAttribute(attIdentifier));
     }
 
     if (((Element) node).getAttribute(attLanguage) != null) {

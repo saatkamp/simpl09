@@ -11,6 +11,7 @@
  */
 package org.eclipse.bpel.simpl.model.impl;
 
+import org.eclipse.bpel.simpl.model.*;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelFactory;

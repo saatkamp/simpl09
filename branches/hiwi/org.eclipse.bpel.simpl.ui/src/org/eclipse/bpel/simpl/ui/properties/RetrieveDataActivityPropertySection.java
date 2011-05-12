@@ -17,7 +17,7 @@ import org.eclipse.bpel.common.ui.assist.FieldAssistAdapter;
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
 import org.eclipse.bpel.simpl.ui.command.SetDataVariableCommand;
-import org.eclipse.bpel.simpl.ui.command.SetDsAddressCommand;
+import org.eclipse.bpel.simpl.ui.command.SetDsIdentifierCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
@@ -83,8 +83,8 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 	TablsListPopUp tabelsPopWindowBPELVariables;
 	private Label typeLabel = null;
 	private Text typeText = null;
-	private Label dataSourceAddressLabel = null;
-	private CCombo dataSourceAddressCombo = null;
+	private Label dataSourceIdentifierLabel = null;
+	private CCombo dataSourceIdentifierCombo = null;
 	private Label kindLabel = null;
 	private Text kindText = null;
 	//private Button openEditorButton = null;
@@ -136,7 +136,7 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 		}
 
 		// Setzen die Datenquellenadresse
-		dataSourceAddressCombo.setText(activity.getDsAddress());
+		dataSourceIdentifierCombo.setText(activity.getDsIdentifier());
 		// Setzen die Sprache
 		languageText.setText(activity.getDsLanguage());
 	}
@@ -207,11 +207,11 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 		kindLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		createKindCombo();
-		dataSourceAddressLabel = new Label(composite, SWT.NONE);
-		dataSourceAddressCombo = new CCombo(composite, SWT.BORDER);
-		dataSourceAddressCombo.setLayoutData(gridData12);
+		dataSourceIdentifierLabel = new Label(composite, SWT.NONE);
+		dataSourceIdentifierCombo = new CCombo(composite, SWT.BORDER);
+		dataSourceIdentifierCombo.setLayoutData(gridData12);
 		// Änderungen im Modell speichern
-		dataSourceAddressCombo.addSelectionListener(new SelectionListener() {
+		dataSourceIdentifierCombo.addSelectionListener(new SelectionListener() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				widgetSelected(e);
@@ -220,8 +220,8 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				getCommandFramework().execute(
-						new SetDsAddressCommand(getModel(),
-								dataSourceAddressCombo.getText()));
+						new SetDsIdentifierCommand(getModel(),
+								dataSourceIdentifierCombo.getText()));
 
 				DataSource dataSource = getDataSource();
 				if (dataSource != null) {
@@ -229,19 +229,24 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 					kindText.setText(dataSource.getSubType());
 					languageText.setText(dataSource.getLanguage());
 					
+					// download the data source data format XSD schema from the Resource Management
 					PropertySectionUtils.downloadSchema(dataSource, getProcess());
-				}
+				} else {
+          typeText.setText("");
+          kindText.setText("");
+          languageText.setText("");         
+        }
 			}
 		});
-		dataSourceAddressCombo.setItems(PropertySectionUtils
-				.getAllDataSourceNames(getProcess()));
+		dataSourceIdentifierCombo.setItems(PropertySectionUtils
+				.getAllDataSourceIdentifiers(getProcess()));
 
-		dataSourceAddressLabel.setText("Data source name:");
-		dataSourceAddressCombo.setEditable(false);
-		dataSourceAddressCombo.setBackground(Display.getCurrent()
+		dataSourceIdentifierLabel.setText("Data source:");
+		dataSourceIdentifierCombo.setEditable(false);
+		dataSourceIdentifierCombo.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
-		dataSourceAddressLabel.setLayoutData(gridData31);
-		dataSourceAddressLabel.setBackground(Display.getCurrent()
+		dataSourceIdentifierLabel.setLayoutData(gridData31);
+		dataSourceIdentifierLabel.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
 		languageLabel = new Label(composite, SWT.NONE);
 		languageText = new Text(composite, SWT.BORDER);
@@ -292,7 +297,7 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 				ArrayList<DBTable> listOfTables = metaDataXMLParser_Objekt
 						.loadTablesFromDB(PropertySectionUtils
 								.findDataSourceByName(getProcess(),
-										dataSourceAddressCombo.getText()));
+										dataSourceIdentifierCombo.getText()));
 
 				openStatementEditor(ModelPackage.eINSTANCE
 						.getRetrieveDataActivity().getInstanceClassName(),
@@ -760,8 +765,8 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 	 */
 	@Override
 	public DataSource getDataSource() {
-		return PropertySectionUtils.findDataSourceByName(getProcess(),
-				dataSourceAddressCombo.getText());
+		return PropertySectionUtils.findDataSourceByIdentifier(getProcess(),
+				dataSourceIdentifierCombo.getText());
 	}
 
 	private IControlContentAdapter fTextContentAdapter = new TextContentAdapter() {

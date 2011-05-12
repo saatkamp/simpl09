@@ -25,7 +25,7 @@ import org.eclipse.bpel.model.ExtensionActivity;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsAddress <em>Ds Address</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsIdentifier <em>Ds Identifier</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsType <em>Ds Type</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsKind <em>Ds Kind</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsStatement <em>Ds Statement</em>}</li>
@@ -40,6 +40,33 @@ import org.eclipse.bpel.model.ExtensionActivity;
 public interface DataManagementActivity extends ExtensionActivity {
 
 	/**
+   * Returns the value of the '<em><b>Ds Identifier</b></em>' attribute.
+   * The default value is <code>"identifier"</code>.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Ds Identifier</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Ds Identifier</em>' attribute.
+   * @see #setDsIdentifier(String)
+   * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsIdentifier()
+   * @model default="identifier"
+   * @generated
+   */
+  String getDsIdentifier();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsIdentifier <em>Ds Identifier</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Ds Identifier</em>' attribute.
+   * @see #getDsIdentifier()
+   * @generated
+   */
+  void setDsIdentifier(String value);
+
+  /**
    * Returns the value of the '<em><b>Ds Statement</b></em>' attribute.
    * The default value is <code>"statement"</code>.
    * <!-- begin-user-doc -->
@@ -152,32 +179,5 @@ public interface DataManagementActivity extends ExtensionActivity {
 	 * @generated
 	 */
 	void setDsType(String value);
-
-	/**
-   * Returns the value of the '<em><b>Ds Address</b></em>' attribute.
-   * The default value is <code>"address"</code>.
-   * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Ds Address</em>' attribute isn't clear, there
-	 * really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Ds Address</em>' attribute.
-   * @see #setDsAddress(String)
-   * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsAddress()
-   * @model default="address"
-   * @generated
-   */
-	String getDsAddress();
-
-	/**
-   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsAddress <em>Ds Address</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-   * @param value the new value of the '<em>Ds Address</em>' attribute.
-   * @see #getDsAddress()
-   * @generated
-   */
-	void setDsAddress(String value);
 
 } // DataManagementActivity
