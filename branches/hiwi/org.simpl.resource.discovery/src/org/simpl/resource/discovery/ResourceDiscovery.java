@@ -48,9 +48,6 @@ public class ResourceDiscovery {
     URL policyURL = null;
     DataSource resultDataSource = new DataSource();
 
-    resultDataSource.setName(lateBinding.getStrategy().value());
-    resultDataSource.setAddress(lateBinding.getPolicy());
-    
     if (policyExists) {
       policyObj = PolicyEngine.getPolicy(new ByteArrayInputStream(lateBinding.getPolicy()
           .getBytes()));

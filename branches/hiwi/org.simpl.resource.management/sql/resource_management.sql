@@ -487,7 +487,7 @@ INSERT INTO datasources
 )
 VALUES
 (
-  'DB2  TESTDAT'
+  'DB2 TESTDAT'
   , 'hiwi'
   , 'hiwi'
   , 'localhost:50000/TESTDAT'
