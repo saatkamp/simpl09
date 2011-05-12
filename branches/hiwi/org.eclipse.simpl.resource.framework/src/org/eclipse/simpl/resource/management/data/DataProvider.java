@@ -77,6 +77,7 @@ public class DataProvider {
 
     List<DataSource> dataSources = null;
 
+    ResourceManagementCommunication.reload();    
     dataSources = ResourceManagementCommunication.getInstance().getDataSources();
 
     if (dataSources != null) {
