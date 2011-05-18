@@ -86,7 +86,11 @@ public class VariableUtils {
       
       while (iterator.hasNext() && !found) {
         schema = iterator.next();
-        targetNameSpace = schema.getTargetNamespace();
+        
+        if (schema != null) {
+          targetNameSpace = schema.getTargetNamespace();
+        }
+        
         if (targetNameSpace != null && targetNameSpace.equals(SIMPL_NAMESPACE)) {
           found = true;
         }
@@ -126,11 +130,17 @@ public class VariableUtils {
     List<XSDSchema> schemas = ModelHelper.getSchemas(process, false);
     Iterator<XSDSchema> iterator = schemas.iterator();
     XSDSchema schema = null;
+    String targetNameSpace = null;
     boolean found = false;
 
     while (iterator.hasNext() && !found) {
       schema = iterator.next();
-      if (schema.getTargetNamespace().equals(SIMPL_NAMESPACE)) {
+      
+      if (schema != null) {
+        targetNameSpace = schema.getTargetNamespace();
+      }
+      
+      if (targetNameSpace != null && targetNameSpace.equals(SIMPL_NAMESPACE)) {
         found = true;
       }
     }
@@ -165,11 +175,17 @@ public class VariableUtils {
     List<XSDSchema> schemas = ModelHelper.getSchemas(process, false);
     Iterator<XSDSchema> iterator = schemas.iterator();
     XSDSchema schema = null;
+    String targetNameSpace = null;
     boolean found = false;
 
     while (iterator.hasNext() && !found) {
       schema = iterator.next();
-      if (schema.getTargetNamespace().equals(SIMPL_NAMESPACE)) {
+      
+      if (schema != null) {
+        targetNameSpace = schema.getTargetNamespace();
+      }
+      
+      if (targetNameSpace != null && targetNameSpace.equals(SIMPL_NAMESPACE)) {
         found = true;
       }
     }
@@ -180,7 +196,7 @@ public class VariableUtils {
       // Query all variables with LogicalDataSourceDescriptorType
       Variable[] vars = ModelHelper.getVariablesOfType(process, contType.getName());
       for (Variable var : vars) {
-        if (var.getName().equals(variableName)) {
+        if (var.getName().equals(variableName) && var.getFrom() != null) {
           String literal = var.getFrom().getLiteral();
           Pattern pattern = Pattern.compile("\\<.*?" + variableElement + "\\>(.*?)</.*?"
               + variableElement + ">");
