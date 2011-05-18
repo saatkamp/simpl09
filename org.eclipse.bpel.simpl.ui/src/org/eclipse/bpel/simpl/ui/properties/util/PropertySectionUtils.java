@@ -83,16 +83,10 @@ public class PropertySectionUtils {
   public static DataSource findDataSourceByIdentifier(Process process, String nameWithPrefix) {
     DataSource dataSource = null;
 
-    String[] name = nameWithPrefix.split(":");
+    String dataSourceName = VariableUtils.getDescriptorElementValue(process, nameWithPrefix, "name");
+    dataSource = ResourceManagementCommunication.getInstance().findDataSourceByName(dataSourceName);
     
-    if (name[0].equals(RM_PREFIX)) {
-      dataSource = ResourceManagementCommunication.getInstance().findDataSourceByName(name[1]);
-    } else {
-      String dataSourceName = VariableUtils.getDescriptorElementValue(process, nameWithPrefix, "name");
-      dataSource = ResourceManagementCommunication.getInstance().findDataSourceByName(dataSourceName);
-    }
-    
-    if (dataSource.getName() == null) {
+    if (dataSource != null && dataSource.getName() == null) {
       dataSource = null;
     }
 
