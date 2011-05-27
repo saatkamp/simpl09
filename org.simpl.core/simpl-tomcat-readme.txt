@@ -1,4 +1,4 @@
-SIMPL Tomcat Deployment Package v1.0.0
+SIMPL Tomcat Deployment Package v1.0.2
 
 = Content =
 SIMPL Core
@@ -9,6 +9,7 @@ SIMPL RRS (Reference Resolution System)
 SIMPL RRS Transformation Service
 SIMPL Resource Management
 SIMPL Resource Management Web Interface
+SIMPL Resource Discovery
 
 = Requirements =
 Apache Tomcat 5.5/6.0 (http://tomcat.apache.org/)
@@ -31,7 +32,7 @@ The user for Apache Tomcat and thus the Resource Management Web Interface is "ad
 
 = Links =
 SIMPL Core Web Services: http://localhost:8080/ode/services/listServices
-SIMPL RRS and Resource Management Web Services: http://localhost:8080/axis2/services/listServices
+SIMPL RRS, Resource Management and Resource Discovery Web Services: http://localhost:8080/axis2/services/listServices
 SIMPL Resource Management Web Interface: http://localhost:8080/rmweb
 
 = Problems =

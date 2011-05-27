@@ -690,7 +690,11 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 		// Setzen die im Editor ausgewählte Aktivität als Input.
 		setInput(getPart(), getBPELEditor().getSelection());
 
-		this.activity = getModel();
+		try {
+		  this.activity = getModel();
+		} catch (ClassCastException e) {
+		  return;
+		}
 
 		if (activity.getDsStatement() == null) {
 			// Setzen das Statement
