@@ -54,10 +54,16 @@ public class VariableUtils {
       Iterator<XSDSchema> iterator = schemas.iterator();
       XSDSchema schema = null;
       boolean found = false;
-
+      String targetNameSpace = null;
+      
       while (iterator.hasNext() && !found) {
         schema = iterator.next();
-        if (schema.getTargetNamespace().equals(SIMPL_NAMESPACE)) {
+        
+        if (schema != null) {
+          targetNameSpace = schema.getTargetNamespace();
+        }
+        
+        if (targetNameSpace != null && schema.getTargetNamespace().equals(SIMPL_NAMESPACE)) {
           found = true;
         }
       }

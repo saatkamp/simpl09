@@ -49,10 +49,16 @@ public class VariableUtils {
     Iterator<XSDSchema> iterator = schemas.iterator();
     XSDSchema schema = null;
     boolean found = false;
-
+    String targetNameSpace = null;
+    
     while (iterator.hasNext() && !found) {
       schema = iterator.next();
-      if (schema.getTargetNamespace().equals(VariableUtils.SIMPL_NAMESPACE)) {
+      
+      if (schema != null) {
+        targetNameSpace = schema.getTargetNamespace();
+      }
+      
+      if (targetNameSpace != null && targetNameSpace.equals(VariableUtils.SIMPL_NAMESPACE)) {
         found = true;
       }
     }
@@ -120,17 +126,23 @@ public class VariableUtils {
   @SuppressWarnings("unchecked")
   public static List<String> getDescriptorVariablesFromProcess(Process process) {
     List<String> variableNames = new ArrayList<String>();
-    
+
     // Query all variables with the simpl:LogicalDataSourceDescriptorType
     // xmlns:simpl "http://www.example.org/simpl"
     List<XSDSchema> schemas = ModelHelper.getSchemas(process, false);
     Iterator<XSDSchema> iterator = schemas.iterator();
     XSDSchema schema = null;
     boolean found = false;
-
+    String targetNameSpace = null;
+    
     while (iterator.hasNext() && !found) {
       schema = iterator.next();
-      if (schema.getTargetNamespace().equals(SIMPL_NAMESPACE)) {
+
+      if (schema != null) {
+        targetNameSpace = schema.getTargetNamespace();
+      }
+
+      if (targetNameSpace != null && targetNameSpace.equals(SIMPL_NAMESPACE)) {
         found = true;
       }
     }
@@ -144,10 +156,10 @@ public class VariableUtils {
         variableNames.add(var.getName());
       }
     }
-    
+
     return variableNames;
   }
-  
+
   /**
    * Returns a variable from the process by name.
    * 
@@ -173,7 +185,7 @@ public class VariableUtils {
 
     return variable;
   }
-  
+
   /**
    * Returns the value of a descriptor variable element.
    * 
@@ -193,10 +205,16 @@ public class VariableUtils {
     Iterator<XSDSchema> iterator = schemas.iterator();
     XSDSchema schema = null;
     boolean found = false;
+    String targetNameSpace = null;
 
     while (iterator.hasNext() && !found) {
       schema = iterator.next();
-      if (schema.getTargetNamespace().equals(SIMPL_NAMESPACE)) {
+
+      if (schema != null) {
+        targetNameSpace = schema.getTargetNamespace();
+      }
+
+      if (targetNameSpace != null && targetNameSpace.equals(SIMPL_NAMESPACE)) {
         found = true;
       }
     }
@@ -210,10 +228,10 @@ public class VariableUtils {
         if (var.getName().equals(variableName)) {
           if (var.getFrom() != null && var.getFrom().getLiteral() != null) {
             String literal = var.getFrom().getLiteral();
-            Pattern pattern = Pattern.compile("\\<.*?" + variableElement + "\\>(.*?)</.*?"
-                + variableElement + ">");
+            Pattern pattern = Pattern.compile("\\<.*?" + variableElement
+                + "\\>(.*?)</.*?" + variableElement + ">");
             Matcher matcher = pattern.matcher(literal);
-            
+
             if (matcher.find()) {
               value = matcher.group(1);
             }
