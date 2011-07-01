@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.5.1  Built on : Oct 19, 2009 (10:59:00 EDT) -->
+<serviceGroup>
+    <service name="WebServiceDataService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="web.service.data.WebServiceDataServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">web.service.data.WebServiceDataServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="addData" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://data.service.web/">
+            <actionMapping>addData</actionMapping>
+            <outputActionMapping>http://data.service.web/WebServiceData/addDataResponse</outputActionMapping>
+        </operation>
+        <operation name="createTables" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://data.service.web/">
+            <actionMapping>createTables</actionMapping>
+            <outputActionMapping>http://data.service.web/WebServiceData/createTablesResponse</outputActionMapping>
+        </operation>
+        <operation name="getData" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://data.service.web/">
+            <actionMapping>getData</actionMapping>
+            <outputActionMapping>http://data.service.web/WebServiceData/getDataResponse</outputActionMapping>
+        </operation>
+        <operation name="updateData" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://data.service.web/">
+            <actionMapping>updateData</actionMapping>
+            <outputActionMapping>http://data.service.web/WebServiceData/updateDataResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

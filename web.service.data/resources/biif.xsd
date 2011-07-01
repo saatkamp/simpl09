@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:biif="http://www.dwarf.uni-stuttgart.de/BIIF/" xmlns:nex="http://www.nexml.org/1.0" xmlns:phylo="http://www.phyloxml.org" attributeFormDefault="unqualified" elementFormDefault="unqualified" nex:schemaLocation="http://www.nexml.org/1.0                                 http://www.nexml.org/nexml/xsd/nexml.xsd" phylo:schemaLocation="http://www.phyloxml.org                                   http://www.phyloxml.org/phyloxml.xsd" targetNamespace="http://www.dwarf.uni-stuttgart.de/BIIF/">
+    <xsd:element name="biif" type="biif:biifType"/>
+    <xsd:complexType name="biifType">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="author" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="date" type="xsd:date"/>
+            <xsd:element minOccurs="0" name="creator" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="description" type="xsd:string"/>
+            <xsd:choice minOccurs="0">
+                <xsd:element name="seqset" type="biif:sequenceSet"/>
+                <xsd:element name="aln" type="biif:alignmentSet"/>
+                <xsd:element name="error" type="xsd:string"/>
+            </xsd:choice>
+            <xsd:element minOccurs="0" name="data" type="biif:dataType"/>
+            <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="bioSequenceType">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="header" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="description" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="lsid" type="biif:lsidType"/>
+            <xsd:element minOccurs="0" name="source" type="biif:sourceType"/>
+            <xsd:choice>
+                <xsd:element name="aa" type="biif:aaAlnType"/>
+                <xsd:element name="dna" type="biif:dnaAlnType"/>
+                <xsd:element name="rna" type="biif:rnaAlnType"/>
+            </xsd:choice>
+            <xsd:element minOccurs="0" name="annotation" type="biif:annotationType"/>
+            <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="sequenceSet">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="seq" type="biif:bioSequenceType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="alignmentSet">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="2" name="seq" type="biif:bioSequenceType"/>
+            <xsd:element minOccurs="0" name="similarity" type="biif:similarityAlnType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType mixed="true" name="dataType">
+        <xsd:attribute name="mime-type" type="xsd:string" use="required"/>
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+        <xsd:attribute name="format" type="biif:formatType" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="sourceType">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="database" type="biif:databaseType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="databaseType">
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+        <xsd:attribute name="href" type="xsd:string" use="optional"/>
+        <xsd:attribute name="version" type="xsd:string" use="optional"/>
+        <xsd:attribute name="resource" type="xsd:string" use="optional"/>
+    </xsd:complexType>
+    <xsd:complexType name="annotationType">
+        <xsd:choice maxOccurs="unbounded">
+            <xsd:element name="position" type="biif:pointAnnotationType"/>
+            <xsd:element name="region" type="biif:regionAnnotationType"/>
+            <xsd:element name="pair" type="biif:pairAnnotationType"/>
+        </xsd:choice>
+        <xsd:attribute default="no" name="countGaps" type="biif:binaryChoiceType" use="optional"/>
+    </xsd:complexType>
+    <xsd:complexType name="pointAnnotationType">
+        <xsd:attribute name="pos" type="xsd:integer" use="required"/>
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="regionAnnotationType">
+        <xsd:attribute name="start" type="xsd:integer" use="required"/>
+        <xsd:attribute name="stop" type="xsd:integer" use="required"/>
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="pairAnnotationType">
+        <xsd:attribute name="pos1" type="xsd:integer" use="required"/>
+        <xsd:attribute name="pos2" type="xsd:integer" use="required"/>
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:simpleType name="lsidType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="urn:lsid:(.)+:(.)+:(.)+(:(.)+)?"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="formatType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="hex|text|base64"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="binaryChoiceType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="yes|no"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="aaAlnType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[ABCDEFGHIKLMNPQRSTVWXYZU -]+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="dnaAlnType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[ACGTX -]+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="rnaAlnType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[ACGUX -]+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="similarityAlnType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[.:* ]+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

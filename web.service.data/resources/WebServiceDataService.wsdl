@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="WebServiceDataService" targetNamespace="http://data.service.web/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:biif="http://www.dwarf.uni-stuttgart.de/BIIF/" xmlns:tns="http://data.service.web/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://www.dwarf.uni-stuttgart.de/BIIF/" schemaLocation="biif.xsd"/>
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import namespace="http://data.service.web/" schemaLocation="WebServiceDataService_schema2.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="createTables">
+  </message>
+  <message name="createTablesResponse">
+    <part name="return" type="xsd:boolean">
+    </part>
+  </message>
+  <message name="getDataResponse">
+    <part name="biif" type="biif:biifType">
+    </part>
+  </message>
+  <message name="updateData">
+    <part name="id" type="xsd:int">
+    </part>
+    <part name="size" type="xsd:int">
+    </part>
+    <part name="data" type="xsd:string">
+    </part>
+  </message>
+  <message name="updateDataResponse">
+    <part name="return" type="xsd:boolean">
+    </part>
+  </message>
+  <message name="addData">
+    <part name="size" type="xsd:int">
+    </part>
+    <part name="data" type="xsd:string">
+    </part>
+  </message>
+  <message name="addDataResponse">
+    <part name="return" type="xsd:boolean">
+    </part>
+  </message>
+  <message name="getData">
+    <part name="size" type="xsd:int">
+    </part>
+  </message>
+  <portType name="WebServiceData">
+    <operation name="getData">
+      <input message="tns:getData">
+    </input>
+      <output message="tns:getDataResponse">
+    </output>
+    </operation>
+    <operation name="addData" parameterOrder="size data">
+      <input message="tns:addData">
+    </input>
+      <output message="tns:addDataResponse">
+    </output>
+    </operation>
+    <operation name="updateData" parameterOrder="id size data">
+      <input message="tns:updateData">
+    </input>
+      <output message="tns:updateDataResponse">
+    </output>
+    </operation>
+    <operation name="createTables">
+      <input message="tns:createTables">
+    </input>
+      <output message="tns:createTablesResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="WebServiceDataPortBinding" type="tns:WebServiceData">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getData">
+      <soap:operation soapAction="getData"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://data.service.web/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://data.service.web/"/>
+      </output>
+    </operation>
+    <operation name="addData">
+      <soap:operation soapAction="addData"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://data.service.web/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://data.service.web/"/>
+      </output>
+    </operation>
+    <operation name="updateData">
+      <soap:operation soapAction="updateData"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://data.service.web/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://data.service.web/"/>
+      </output>
+    </operation>
+    <operation name="createTables">
+      <soap:operation soapAction="createTables"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://data.service.web/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://data.service.web/"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="WebServiceDataService">
+    <port name="WebServiceDataPort" binding="tns:WebServiceDataPortBinding">
+      <soap:address location="http://localhost:8080/axis2/services/WebServiceDataService.WebServiceDataPort/"/>
+    </port>
+  </service>
+</definitions>
