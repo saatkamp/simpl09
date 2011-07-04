@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebServiceData xmlns:p="http://web.service.data" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://web.service.data schemas/web-service-data-config.xsd ">
+  <DataSource>
+    <name>Local PostgreSQL 8.4</name>
+    <address>localhost:5432/postgres</address>
+    <type>Database</type>
+    <subType>PostgreSQL</subType>
+    <dataFormat>RDBDataFormat</dataFormat>
+    <Authentication>
+      <user>postgres</user>
+      <password>postgres</password>
+    </Authentication>
+  </DataSource>
+</WebServiceData>
