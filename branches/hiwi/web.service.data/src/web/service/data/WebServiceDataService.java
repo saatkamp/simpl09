@@ -2,26 +2,13 @@ package web.service.data;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.List;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.FactoryConfigurationError;
 import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
-import org.xml.sax.InputSource;
 
 import web.service.data.db.DataSource;
 import web.service.data.db.DataSourceService;
@@ -171,40 +158,46 @@ public class WebServiceDataService {
    * @throws java.lang.Exception
    * @throws Exception
    */
-  @SuppressWarnings("unchecked")
   private BiifType getDataFromResult(String result) throws FactoryConfigurationError,
       java.lang.Exception {
     BiifType biifType = null;
+    String marshalledData = result;
+    
+    // fix encoding issue
+    marshalledData = marshalledData.replace("\\015\\012", "");
+    XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(
+        new ByteArrayInputStream(marshalledData.getBytes()));
 
-    Document configDoc = null;
-    Element root = null;
-    List<Element> rows = null;
-    SAXBuilder saxBuilder = new SAXBuilder();
+    biifType = BiifType.Factory.parse(reader);
 
-    // transform the document to a list of data source objects
-    configDoc = saxBuilder.build(new InputSource(new StringReader(result)));
-    root = configDoc.getRootElement();
-    rows = root.getChild("table").getChildren("row");
-
-    for (Element row : rows) {
-      List<Element> columns = row.getChildren("column");
-
-      for (Element column : columns) {
-        if (column.getAttribute("name").getValue().equals("data")) {
-          String marshalledData = column.getValue();
-
-          // fix encoding issue
-          marshalledData = marshalledData.replace("\\015\\012", "");
-
-          XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(
-              new ByteArrayInputStream(marshalledData.getBytes()));
-
-          biifType = BiifType.Factory.parse(reader);
-
-          break;
-        }
-      }
-    }
+    // Document configDoc = null;
+    // Element root = null;
+    // List<Element> rows = null;
+    // SAXBuilder saxBuilder = new SAXBuilder();
+    //
+    // // transform the document to a list of data source objects
+    // configDoc = saxBuilder.build(new InputSource(new StringReader(result)));
+    // root = configDoc.getRootElement();
+    // rows = root.getChild("table").getChildren("row");
+    //
+    // for (Element row : rows) {
+    // List<Element> columns = row.getChildren("column");
+    //
+    // for (Element column : columns) {
+    // if (column.getAttribute("name").getValue().equals("data")) {
+    // String marshalledData = column.getValue();
+    //
+    // // fix encoding issue
+    // marshalledData = marshalledData.replace("\\015\\012", "");
+    // XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(
+    // new ByteArrayInputStream(marshalledData.getBytes()));
+    //
+    // biifType = BiifType.Factory.parse(reader);
+    //
+    // break;
+    // }
+    // }
+    // }
 
     return biifType;
   }
