@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.simpl.core.connector.Connector;
 import org.simpl.core.connector.ConnectorProvider;
-import org.simpl.core.converter.ConverterProvider;
-import org.simpl.core.dataformat.DataFormatProvider;
+import org.simpl.core.dataconverter.DataConverterProvider;
+import org.simpl.core.datatransformation.DataTransformationServiceProvider;
 import org.simpl.core.exceptions.ConnectionException;
 import org.simpl.core.plugins.connector.ConnectorPlugin;
 import org.simpl.resource.management.data.DataSource;
@@ -96,7 +96,7 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
     DataObject retrievedData = null;
     Object data = null;
     Connector<Object, Object> connector = null;
-
+    
     try {
       // retrieve data
       if (this.isDataSourceComplete(dataSource)) {
@@ -110,7 +110,7 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
       // format data to SDO
       if (data != null) {
         retrievedData = formatRetrievedData(connector, data, dataSource.getConnector()
-            .getConverterDataFormat().getName());
+            .getDataConverter().getDataFormat());
       }
     } catch (Exception e) {
       e.printStackTrace();
@@ -146,8 +146,8 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
               target);
         } else {
           // write back data
-          writeData = DataFormatProvider.getInstance(
-              dataSource.getConnector().getConverterDataFormat().getName()).fromSDO(data);
+          writeData = DataConverterProvider.getInstance(
+              dataSource.getConnector().getDataConverter().getDataFormat()).fromSDO(data);
         }
 
         if (writeData != null) {
@@ -252,30 +252,30 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
 
     boolean createdTarget;
     DataObject convertedData = null;
-    String dataFormatType = data.getString("dataFormatType");
-    List<String> supportedDataFormatTypes = DataFormatProvider
-        .getSupportedDataFormatTypes(connector);
-    List<String> supportedConvertDataFormatTypes = null;
+    String dataFormat = data.getString("dataFormat");
+    List<String> supportedDataFormats = DataConverterProvider
+        .getSupportedDataFormats(connector);
+    List<String> supportedConvertDataFormats = null;
 
-    // check if data format type is supported by the data source service
-    if (supportedDataFormatTypes.contains(dataFormatType)) {
+    // check if data format is supported by the data source service
+    if (supportedDataFormats.contains(dataFormat)) {
       // turn the SDO to the data type of the data source
-      writeData = DataFormatProvider.getInstance(dataFormatType).fromSDO(data);
+      writeData = DataConverterProvider.getInstance(dataFormat).fromSDO(data);
     } else {
-      supportedConvertDataFormatTypes = ConverterProvider
-          .getSupportedConvertDataFormatTypes(connector, dataFormatType);
+      supportedConvertDataFormats = DataTransformationServiceProvider
+          .getSupportedConvertDataFormats(connector, dataFormat);
 
-      // cycle through the types that the data format can be converted to
-      for (String supportedConvertDataFormatType : supportedConvertDataFormatTypes) {
-        // check if one of the types is supported by the data source service
-        if (DataFormatProvider.getSupportedDataFormatTypes(connector).contains(
-            supportedConvertDataFormatType)) {
+      // cycle through the data formats that can be converted to
+      for (String supportedConvertDataFormat : supportedConvertDataFormats) {
+        // check if one of the data formats is supported by the data source service
+        if (DataConverterProvider.getSupportedDataFormats(connector).contains(
+            supportedConvertDataFormat)) {
           // convert from the given data format to the supported data format
-          convertedData = ConverterProvider.getInstance(dataFormatType,
-              supportedConvertDataFormatType).convert(data, connector);
+          convertedData = DataTransformationServiceProvider.getInstance(dataFormat,
+              supportedConvertDataFormat).convert(data, connector);
 
           // turn the converted SDO to the data type of the data source
-          writeData = DataFormatProvider.getInstance(supportedConvertDataFormatType)
+          writeData = DataConverterProvider.getInstance(supportedConvertDataFormat)
               .fromSDO(convertedData);
 
           break;
@@ -306,20 +306,20 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
    * 
    * @param connector
    * @param data
-   * @param dataFormatType
+   * @param dataFormat
    * @return
    */
   @SuppressWarnings({ "rawtypes" })
   private DataObject formatRetrievedData(Connector connector, Object data,
-      String dataFormatType) {
+      String dataFormat) {
     DataObject retrieveDataSDO = null;
-    List<String> supportedDataFormatTypes = null;
+    List<String> supportedDataFormats = null;
 
-    supportedDataFormatTypes = DataFormatProvider.getSupportedDataFormatTypes(connector);
+    supportedDataFormats = DataConverterProvider.getSupportedDataFormats(connector);
 
-    for (String supportedDataFormatType : supportedDataFormatTypes) {
-      if (supportedDataFormatType.equals(dataFormatType)) {
-        retrieveDataSDO = DataFormatProvider.getInstance(supportedDataFormatType).toSDO(
+    for (String supportedDataFormat : supportedDataFormats) {
+      if (supportedDataFormat.equals(dataFormat)) {
+        retrieveDataSDO = DataConverterProvider.getInstance(supportedDataFormat).toSDO(
             data);
       }
     }
@@ -337,7 +337,7 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
 
     complete = dataSource != null && dataSource.getAddress() != null
         && dataSource.getType() != null && dataSource.getSubType() != null
-        && dataSource.getConnector().getConverterDataFormat().getName() != null;
+        && dataSource.getConnector().getDataConverter().getDataFormat() != null;
 
     return complete;
   }

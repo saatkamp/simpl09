@@ -14,7 +14,6 @@ import org.apache.neethi.Policy;
 import org.apache.neethi.PolicyEngine;
 import org.apache.neethi.util.PolicyComparator;
 import org.simpl.resource.management.ResourceManagement;
-import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagementClient;
 import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.LateBinding;
@@ -63,7 +62,7 @@ public class ResourceDiscovery {
             org.simpl.resource.management.client.ResourceManagement resourceManagement = ResourceManagementClient
                 .getService(address);
             dataSources = resourceManagement.getAllDataSources().getDataSources();
-          } catch (Exception_Exception e1) {
+          } catch (Exception e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
           }

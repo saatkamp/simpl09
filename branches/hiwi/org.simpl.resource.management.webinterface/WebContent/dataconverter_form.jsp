@@ -21,11 +21,11 @@
 <%
   String id = "";
   String name = "";
+  String dataformat = "";
   String implementation = "";
-  String connectorDataFormat = "";
-  String workflowDataFormat = "";
+  String xmlSchema = "";
   
-  Converter converter = null;
+  DataConverter dataConverter = null;
   String param = null;
   HashMap<String, String> parameters = new HashMap<String, String>();
 
@@ -41,23 +41,23 @@
     }
   }
 
-  if (parameters.get("converterListSubmit") != null
-      && parameters.get("converterListSubmit").equals("Edit") && parameters.get("id") != null) {
-    converter = resourceManagement.getConverterById(Integer.valueOf(parameters.get("id")));
+  if (parameters.get("dataConverterListSubmit") != null
+      && parameters.get("dataConverterListSubmit").equals("Edit") && parameters.get("id") != null) {
+    dataConverter = resourceManagement.getDataConverterById(Integer.valueOf(parameters.get("id")));
 
-    if (converter != null) {
-      id = converter.getId();
-      name = converter.getName();
-      implementation = converter.getImplementation();
-      connectorDataFormat = converter.getConnectorDataFormat().getName();
-      workflowDataFormat = converter.getWorkflowDataFormat().getName();
+    if (dataConverter != null) {
+      id = dataConverter.getId();
+      name = dataConverter.getName();
+      dataformat = dataConverter.getDataFormat();
+      implementation = dataConverter.getImplementation();
+      xmlSchema = dataConverter.getXmlSchema();
     }
   }
 %>
-<h2>SIMPL Resource Management - Converter Editing</h2>
-<a href="index.jsp">Home</a> &gt; <a href="converter_list.jsp">Converter Management</a> &gt; Converter Editing
+<h2>SIMPL Resource Management - Data Converter Editing</h2>
+<a href="index.jsp">Home</a> &gt; <a href="dataconverter_list.jsp">Data Converter Management</a> &gt; Data Converter Editing
 <br/><br/>
-<form name="converterForm" action="ConverterFormAction" method="post" enctype="multipart/form-data">
+<form name="dataconverterForm" action="DataConverterFormAction" method="post" enctype="multipart/form-data">
 <table cellspacing="3" cellpadding="3" style="border: 1px solid;">
   <tr>
     <td><label>Name</label></td>
@@ -65,26 +65,30 @@
   </tr>
 
   <tr>
+    <td><label>Data Format</label></td>
+    <td><input name="dataformat" type="text" value="<%=dataformat%>" size="100" /></td>
+  </tr>
+
+  <tr>
     <td><label>Implementation</label></td>
     <td><input name="implementation" type="text" value="<%=implementation%>" size="100" /></td>
   </tr>
-
+  
   <tr>
-    <td><label>Connector Data Format</label></td>
-    <td><%=FormMetaData.getInstance().getDataFormatSelect("connectorDataFormat", connectorDataFormat)%></td>
-  </tr>
-
-  <tr>
-    <td><label>Workflow Data Format</label></td>
-    <td><%=FormMetaData.getInstance().getDataFormatSelect("workflowDataFormat", workflowDataFormat)%></td>
-  </tr>
- 
+    <td><label>XML Schema</label></td>
+    <td>
+      <textarea name="xmlSchemaData" cols="77" rows="10"><%=xmlSchema%></textarea>
+      <textarea name="oldXmlSchemaData" cols="0" rows="0" style="height:0px;width:0px;position:absolute;top:0px;left:0px;visibility:hidden"><%=xmlSchema%></textarea>
+      <br/>
+      <input name="xmlSchema" type="file" size="100"/>
+    </td>
+  </tr> 
 </table>
 
 <br/>
 <input type="hidden" name="id" value="<%=id%>" />
-<input type="submit" name="converterFormSubmit" value="Save" />
-<input type="submit" name="converterFormSubmit" value="Cancel"/>
+<input type="submit" name="dataConverterFormSubmit" value="Save" />
+<input type="submit" name="dataConverterFormSubmit" value="Cancel"/>
 </form>
 
 <br/>

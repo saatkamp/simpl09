@@ -12,14 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
-import org.simpl.resource.management.data.Converter;
-import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.webinterface.FormMetaData;
 import org.simpl.resource.management.webinterface.MultipartForm;
 import org.simpl.resource.management.webinterface.RMWebConfig;
 
 /**
- * <b>Purpose:</b>Receiver for actions from the converter_form.jsp. <br>
+ * <b>Purpose:</b>Receiver for actions from the dataconverter_form.jsp. <br>
  * <b>Description:</b><br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
@@ -30,11 +29,11 @@ import org.simpl.resource.management.webinterface.RMWebConfig;
  * @link http://code.google.com/p/simpl09/
  */
 @SuppressWarnings("serial")
-public class ConverterFormAction extends HttpServlet {
+public class DataConverterFormAction extends HttpServlet {
   private ResourceManagement resourceManagementService = ResourceManagementClient
       .getService(RMWebConfig.getInstance().getResourceManagementAddress());
 
-  public ConverterFormAction() {
+  public DataConverterFormAction() {
     super();
   }
 
@@ -46,37 +45,37 @@ public class ConverterFormAction extends HttpServlet {
       throws ServletException, IOException {
     HashMap<String, String> parameters = MultipartForm.getParameters(request);
     
-    if (parameters.get("converterFormSubmit").equals("Save") && parameters.get("id").equals("")) {
-      if (this.save(parameters)) {
-        response.sendRedirect("converter_list.jsp?message=Successfully created converter");
+    if (parameters.get("dataConverterFormSubmit").equals("Save") && parameters.get("id").equals("")) {
+      if (this.add(parameters)) {
+        response.sendRedirect("dataconverter_list.jsp?message=Successfully created data converter");
         FormMetaData.refresh();
       } else {
-        response.sendRedirect("converter_list.jsp?message=Failed to create converter");
+        response.sendRedirect("dataconverter_list.jsp?message=Failed to create data converter");
       }
-    } else if (parameters.get("converterFormSubmit").equals("Save")) {
+    } else if (parameters.get("dataConverterFormSubmit").equals("Save")) {
       if (this.update(parameters)) {
-        response.sendRedirect("converter_list.jsp?message=Successfully updated converter");
+        response.sendRedirect("dataconverter_list.jsp?message=Successfully updated data converter");
         FormMetaData.refresh();
       } else {
-        response.sendRedirect("converter_list.jsp?message=Failed to update converter");
+        response.sendRedirect("dataconverter_list.jsp?message=Failed to update data converter");
       }
-    } else if (parameters.get("converterFormSubmit").equals("Cancel")) {
-      response.sendRedirect("converter_list.jsp");
+    } else if (parameters.get("dataConverterFormSubmit").equals("Cancel")) {
+      response.sendRedirect("dataconverter_list.jsp");
     }
   }
 
   /**
-   * Adds a new converter
+   * Adds a new data converter.
    * 
    * @param parameters
    * @return
    */
-  private boolean save(HashMap<String, String> parameters) {
+  private boolean add(HashMap<String, String> parameters) {
     boolean success = false;
-    Converter newConverter = parametersToConverter(parameters);
+    DataConverter newDataConverter = parametersToDataConverter(parameters);
 
     try {
-      success = resourceManagementService.addConverter(newConverter);
+      success = resourceManagementService.addDataConverter(newDataConverter);
     } catch (Exception_Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -86,17 +85,17 @@ public class ConverterFormAction extends HttpServlet {
   }
 
   /**
-   * Updates a data source.
+   * Updates a data converter.
    * 
    * @param parameters
    * @return
    */
   private boolean update(HashMap<String, String> parameters) {
     boolean success = false;
-    Converter converter = parametersToConverter(parameters);
+    DataConverter dataConverter = parametersToDataConverter(parameters);
 
     try {
-      success = resourceManagementService.updateConverter(converter);
+      success = resourceManagementService.updateDataConverter(dataConverter);
     } catch (Exception_Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -106,25 +105,27 @@ public class ConverterFormAction extends HttpServlet {
   }
 
   /**
-   * Creates a converter object from form parameters.
+   * Creates a data converter object from form parameters.
    * 
    * @param parameters
    * @return
    */
-  private Converter parametersToConverter(HashMap<String, String> parameters) {
-    Converter converter = new Converter();
-    DataFormat connectorDataFormat = new DataFormat();
-    DataFormat workflowDataFormat = new DataFormat();
+  private DataConverter parametersToDataConverter(HashMap<String, String> parameters) {
+    DataConverter dataConverter = new DataConverter();
+
+    // initialize data converter
+    dataConverter.setId(parameters.get("id"));
+    dataConverter.setName(parameters.get("name"));
+    dataConverter.setDataFormat(parameters.get("dataformat"));
+    dataConverter.setImplementation(parameters.get("implementation"));
+  
+    // use existing xml schema data if no file is chosen
+    if (!parameters.get("xmlSchema").equals("")) {
+      dataConverter.setXmlSchema(parameters.get("xmlSchema").replace("'", "\\'"));
+    } else {
+      dataConverter.setXmlSchema(parameters.get("xmlSchemaData").replace("'", "\\'"));
+    }
     
-    // initialize converter
-    converter.setId(parameters.get("id"));
-    converter.setName(parameters.get("name"));
-    converter.setImplementation(parameters.get("implementation"));
-    connectorDataFormat.setName(parameters.get("connectorDataFormat"));
-    workflowDataFormat.setName(parameters.get("workflowDataFormat"));   
-    converter.setConnectorDataFormat(connectorDataFormat);
-    converter.setWorkflowDataFormat(workflowDataFormat);
-    
-    return converter;
+    return dataConverter;
   }
 }

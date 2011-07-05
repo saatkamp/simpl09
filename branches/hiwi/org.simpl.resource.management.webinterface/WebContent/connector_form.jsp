@@ -56,7 +56,7 @@
       subtype = connector.getSubType();
       language = connector.getLanguage();
       properties = connector.getPropertiesDescription();
-      dataformat = connector.getConverterDataFormat().getName();
+      dataformat = connector.getDataConverter().getDataFormat();
     }
   }
 %>

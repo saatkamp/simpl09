@@ -5,8 +5,8 @@ import java.util.HashSet;
 
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
-import org.simpl.resource.management.data.DataFormat;
-import org.simpl.resource.management.data.DataFormatList;
+import org.simpl.resource.management.data.DataConverter;
+import org.simpl.resource.management.data.DataConverterList;
 
 /**
  * <b>Purpose: Offers elements for web forms with data from the Resource Management.</b><br>
@@ -52,7 +52,7 @@ public class FormMetaData {
    * @throws Exception
    */
   public String getDataFormatSelect(String name, String selectedItem) throws Exception {
-    this.retrieveDataFormats();
+    this.retrieveDataConverters();
 
     String select = this
         .createSelectElement(name, selectedItem, this.dataFormats);
@@ -120,15 +120,15 @@ public class FormMetaData {
    * 
    * @throws Exception
    */
-  private void retrieveDataFormats() throws Exception {
+  private void retrieveDataConverters() throws Exception {
     if (this.dataFormats == null) {
       this.dataFormats = new ArrayList<String>();
       
-      DataFormatList dataFormats = resourceManagement.getAllDataFormats();
+      DataConverterList dataConverters = resourceManagement.getAllDataConverters();
       
-      for (DataFormat dataFormat : dataFormats.getDataFormats()) {
-        if (!this.dataFormats.contains(dataFormat.getName())) {
-          this.dataFormats.add(dataFormat.getName());
+      for (DataConverter dataConverter : dataConverters.getDataConverters()) {
+        if (!this.dataFormats.contains(dataConverter.getDataFormat())) {
+          this.dataFormats.add(dataConverter.getDataFormat());
         }
       }
     }

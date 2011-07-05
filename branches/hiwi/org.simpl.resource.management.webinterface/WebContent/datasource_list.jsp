@@ -48,7 +48,7 @@
           <td><%=!source.getType().equals("") ? source.getType() : ""%></td>
           <td><%=!source.getSubType().equals("") ? source.getSubType() : ""%></td>
           <td><%=!source.getLanguage().equals("") ? source.getLanguage() : ""%></td>
-          <td><%=!source.getConnector().getConverterDataFormat().getName().equals("") ? source.getConnector().getConverterDataFormat().getName() : ""%></td>
+          <td><%=!source.getConnector().getDataConverter().getDataFormat().equals("") ? source.getConnector().getDataConverter().getDataFormat() : ""%></td>
           <td><%=!source.getAuthentication().getUser().equals("") ? source.getAuthentication().getUser() : ""%></td>
           <td><%=!source.getAuthentication().getPassword().equals("") ? source.getAuthentication().getPassword().replaceAll(".", "*") : ""%></td>
           <td><%=!source.getPropertiesDescription().equals("")%></td>
@@ -58,14 +58,14 @@
       <% } %>
     </table>
   <% } else { %>
-    No data sources available, please create a data source.
+    No data sources are available, please create a data source.
     <br/>
   <% } %>
   <br/>
   <input type="submit" name="dataSourceListSubmit" value="New" />
   <% if (dataSources.size() > 0) { %>
     <input type="submit" name="dataSourceListSubmit" value="Edit" "/>
-    <input type="submit" name="dataSourceListSubmit" value="Delete" onclick="return confirm('Are you sure to delete the data source?')" />
+    <input type="submit" name="dataSourceListSubmit" value="Delete" onclick="return confirm('Are you sure you want to delete the data source?')" />
   <% } %>
 </form>
   

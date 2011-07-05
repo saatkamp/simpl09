@@ -5,7 +5,7 @@
         <xsd:element name="type" type="xsd:string"></xsd:element>
         <xsd:element name="subType" type="xsd:string"></xsd:element>
         <xsd:element name="language" type="xsd:string"></xsd:element>
-        <xsd:element name="dataFormatName" type="xsd:string"></xsd:element>
+        <xsd:element name="dataFormat" type="xsd:string"></xsd:element>
       </xsd:sequence>
     </xsd:complexType>
 

@@ -10,12 +10,12 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 import org.simpl.resource.management.data.Connector;
 import org.simpl.resource.management.data.ConnectorList;
-import org.simpl.resource.management.data.Converter;
-import org.simpl.resource.management.data.ConverterList;
-import org.simpl.resource.management.data.DataFormat;
-import org.simpl.resource.management.data.DataFormatList;
+import org.simpl.resource.management.data.DataConverter;
+import org.simpl.resource.management.data.DataConverterList;
 import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.DataSourceList;
+import org.simpl.resource.management.data.DataTransformationService;
+import org.simpl.resource.management.data.DataTransformationServiceList;
 import org.simpl.resource.management.data.LateBinding;
 import org.simpl.resource.management.data.Strategy;
 import org.simpl.resource.management.data.StringList;
@@ -69,26 +69,11 @@ public interface ResourceManagement {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "addConverter")
+    @WebMethod(action = "deleteDataConverter")
     @WebResult(partName = "return")
-    public boolean addConverter(
+    public boolean deleteDataConverter(
         @WebParam(name = "arg0", partName = "arg0")
-        Converter arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "updateConverter")
-    @WebResult(partName = "return")
-    public boolean updateConverter(
-        @WebParam(name = "arg0", partName = "arg0")
-        Converter arg0)
+        int arg0)
         throws Exception_Exception
     ;
 
@@ -114,11 +99,41 @@ public interface ResourceManagement {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "deleteConverter")
+    @WebMethod(action = "deleteDataTransformationService")
     @WebResult(partName = "return")
-    public boolean deleteConverter(
+    public boolean deleteDataTransformationService(
         @WebParam(name = "arg0", partName = "arg0")
         int arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "addDataTransformationService")
+    @WebResult(partName = "return")
+    public boolean addDataTransformationService(
+        @WebParam(name = "arg0", partName = "arg0")
+        DataTransformationService arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "updateDataTransformationService")
+    @WebResult(partName = "return")
+    public boolean updateDataTransformationService(
+        @WebParam(name = "arg0", partName = "arg0")
+        DataTransformationService arg0)
         throws Exception_Exception
     ;
 
@@ -146,6 +161,36 @@ public interface ResourceManagement {
     public boolean deleteConnector(
         @WebParam(name = "arg0", partName = "arg0")
         int arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "addDataConverter")
+    @WebResult(partName = "return")
+    public boolean addDataConverter(
+        @WebParam(name = "arg0", partName = "arg0")
+        DataConverter arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "updateDataConverter")
+    @WebResult(partName = "return")
+    public boolean updateDataConverter(
+        @WebParam(name = "arg0", partName = "arg0")
+        DataConverter arg0)
         throws Exception_Exception
     ;
 
@@ -288,12 +333,27 @@ public interface ResourceManagement {
      * 
      * @param id
      * @return
-     *     returns org.simpl.resource.management.client.Converter
+     *     returns org.simpl.resource.management.client.DataConverter
      * @throws Exception_Exception
      */
-    @WebMethod(action = "getConverterById")
+    @WebMethod(action = "getDataConverterById")
     @WebResult(partName = "return")
-    public Converter getConverterById(
+    public DataConverter getDataConverterById(
+        @WebParam(name = "id", partName = "id")
+        int id)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns org.simpl.resource.management.client.DataTransformationService
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getDataTransformationServiceById")
+    @WebResult(partName = "return")
+    public DataTransformationService getDataTransformationServiceById(
         @WebParam(name = "id", partName = "id")
         int id)
         throws Exception_Exception
@@ -314,24 +374,24 @@ public interface ResourceManagement {
     /**
      * 
      * @return
-     *     returns org.simpl.resource.management.client.DataFormatList
+     *     returns org.simpl.resource.management.client.DataConverterList
      * @throws Exception_Exception
      */
-    @WebMethod(action = "getAllDataFormats")
+    @WebMethod(action = "getAllDataConverters")
     @WebResult(partName = "return")
-    public DataFormatList getAllDataFormats()
+    public DataConverterList getAllDataConverters()
         throws Exception_Exception
     ;
 
     /**
      * 
      * @return
-     *     returns org.simpl.resource.management.client.ConverterList
+     *     returns org.simpl.resource.management.client.DataTransformationServiceList
      * @throws Exception_Exception
      */
-    @WebMethod(action = "getAllConverters")
+    @WebMethod(action = "getAllDataTransformationServices")
     @WebResult(partName = "return")
-    public ConverterList getAllConverters()
+    public DataTransformationServiceList getAllDataTransformationServices()
         throws Exception_Exception
     ;
 
@@ -426,9 +486,9 @@ public interface ResourceManagement {
      *     returns org.simpl.resource.management.client.StringList
      * @throws Exception_Exception
      */
-    @WebMethod(action = "getSupportedDataFormatTypes")
+    @WebMethod(action = "getSupportedDataFormats")
     @WebResult(partName = "return")
-    public StringList getSupportedDataFormatTypes(
+    public StringList getSupportedDataFormats(
         @WebParam(name = "arg0", partName = "arg0")
         DataSource arg0)
         throws Exception_Exception
@@ -441,56 +501,11 @@ public interface ResourceManagement {
      *     returns org.simpl.resource.management.client.StringList
      * @throws Exception_Exception
      */
-    @WebMethod(action = "getSupportedConvertDataFormatTypes")
+    @WebMethod(action = "getSupportedConvertDataFormats")
     @WebResult(partName = "return")
-    public StringList getSupportedConvertDataFormatTypes(
+    public StringList getSupportedConvertDataFormats(
         @WebParam(name = "arg0", partName = "arg0")
         DataSource arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "addDataFormat")
-    @WebResult(partName = "return")
-    public boolean addDataFormat(
-        @WebParam(name = "arg0", partName = "arg0")
-        DataFormat arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "updateDataFormat")
-    @WebResult(partName = "return")
-    public boolean updateDataFormat(
-        @WebParam(name = "arg0", partName = "arg0")
-        DataFormat arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "deleteDataFormat")
-    @WebResult(partName = "return")
-    public boolean deleteDataFormat(
-        @WebParam(name = "arg0", partName = "arg0")
-        int arg0)
         throws Exception_Exception
     ;
 

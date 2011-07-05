@@ -8,7 +8,7 @@ import javax.xml.namespace.QName;
 
 import org.simpl.resource.management.data.Authentication;
 import org.simpl.resource.management.data.Connector;
-import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.LateBinding;
 
@@ -40,14 +40,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Connector }
-     * 
-     */
-    public Connector createConnector() {
-        return new Connector();
-    }
-
-    /**
      * Create an instance of {@link LateBinding }
      * 
      */
@@ -56,11 +48,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataFormat }
+     * Create an instance of {@link Exception }
      * 
      */
-    public DataFormat createDataFormat() {
-        return new DataFormat();
+    public Exception createException() {
+        return new Exception();
     }
 
     /**
@@ -72,19 +64,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DataConverter }
+     * 
+     */
+    public DataConverter createDataConverter() {
+        return new DataConverter();
+    }
+
+    /**
+     * Create an instance of {@link Connector }
+     * 
+     */
+    public Connector createConnector() {
+        return new Connector();
+    }
+
+    /**
      * Create an instance of {@link DataSource }
      * 
      */
     public DataSource createDataSource() {
         return new DataSource();
-    }
-
-    /**
-     * Create an instance of {@link Exception }
-     * 
-     */
-    public Exception createException() {
-        return new Exception();
     }
 
     /**

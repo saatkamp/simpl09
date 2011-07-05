@@ -1,11 +1,11 @@
-package org.simpl.core.dataformat;
+package org.simpl.core.dataconverter;
 
 import commonj.sdo.DataObject;
 
 /**
- * <b>Purpose:</b>Defines the methods that a data format plug-in must implement to work
+ * <b>Purpose:</b>Defines the methods that a data converter plug-in must implement to work
  * with a connector.<br>
- * <b>Description:</b>The data format plug-in can convert am arbitrary data type to and
+ * <b>Description:</b>The data converter plug-in can convert am arbitrary data type to and
  * from SDO that is defined by a XML schema file.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
@@ -20,7 +20,7 @@ import commonj.sdo.DataObject;
  *          data type which can be created from a SDO
  * @link http://code.google.com/p/simpl09/
  */
-public interface DataFormat<S, T> {
+public interface DataConverter<S, T> {
   /**
    * Creates a DataObject from the given <S> data type.
    * 
@@ -44,12 +44,12 @@ public interface DataFormat<S, T> {
   public T fromSDO(DataObject data);
 
   /**
-   * @return Empty SDO created from the data format XML schema.
+   * @return Empty SDO created from the data converter XML schema.
    */
   public DataObject getSDO();
 
   /**
-   * @return The supported data format type.
+   * @return The data converter data format.
    */
-  public String getType();
+  public String getDataFormat();
 }

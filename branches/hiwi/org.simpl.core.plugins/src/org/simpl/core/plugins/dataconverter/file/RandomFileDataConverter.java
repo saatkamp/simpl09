@@ -1,4 +1,4 @@
-package org.simpl.core.plugins.dataformat.file;
+package org.simpl.core.plugins.dataconverter.file;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -9,7 +9,7 @@ import java.util.UUID;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.simpl.core.plugins.dataformat.DataFormatPlugin;
+import org.simpl.core.plugins.dataconverter.DataConverterPlugin;
 
 import commonj.sdo.DataObject;
 
@@ -26,14 +26,14 @@ import commonj.sdo.DataObject;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class RandomFileDataFormat extends DataFormatPlugin<RandomFile, File> {
-  static Logger logger = Logger.getLogger(RandomFileDataFormat.class);
+public class RandomFileDataConverter extends DataConverterPlugin<RandomFile, File> {
+  static Logger logger = Logger.getLogger(RandomFileDataConverter.class);
 
   /**
    * Initialize the plug-in.
    */
-  public RandomFileDataFormat() {
-    this.setType("RandomFileDataFormat");
+  public RandomFileDataConverter() {
+    this.setDataFormat("RandomFileDataFormat");
     this.setSchemaFile("RandomFileDataFormat.xsd");
     this.setSchemaType("tRandomFileDataFormat");
 
@@ -49,8 +49,8 @@ public class RandomFileDataFormat extends DataFormatPlugin<RandomFile, File> {
     DataObject sdo = this.getSDO();
     File file = result.getFile();
 
-    if (RandomFileDataFormat.logger.isDebugEnabled()) {
-      RandomFileDataFormat.logger.debug("Convert data from 'File' to 'DataObject'.");
+    if (RandomFileDataConverter.logger.isDebugEnabled()) {
+      RandomFileDataConverter.logger.debug("Convert data from 'File' to 'DataObject'.");
     }
     
     File[] directoryFiles = null;
@@ -114,9 +114,9 @@ public class RandomFileDataFormat extends DataFormatPlugin<RandomFile, File> {
     
     folder.deleteOnExit();
 
-    if (RandomFileDataFormat.logger.isDebugEnabled()) {
-      RandomFileDataFormat.logger.debug("Convert data from 'DataObject' to 'File'.");
-      RandomFileDataFormat.logger.debug("Created temporary folder: " + folder);
+    if (RandomFileDataConverter.logger.isDebugEnabled()) {
+      RandomFileDataConverter.logger.debug("Convert data from 'DataObject' to 'File'.");
+      RandomFileDataConverter.logger.debug("Created temporary folder: " + folder);
     }
 
     try {

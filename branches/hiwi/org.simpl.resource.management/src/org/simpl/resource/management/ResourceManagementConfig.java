@@ -11,7 +11,7 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.simpl.resource.management.data.Authentication;
 import org.simpl.resource.management.data.Connector;
-import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataSource;
 
 /**
@@ -102,7 +102,7 @@ public class ResourceManagementConfig {
   public DataSource getDataSource() {
     DataSource dataSource = new DataSource();
     Connector connector = new Connector();
-    DataFormat converterDataFormat = new DataFormat();
+    DataConverter dataConverter = new DataConverter();
     Authentication authentication = new Authentication();
 
     authentication.setUser(dataSourceElement.getChild("Authentication").getChildText(
@@ -115,9 +115,9 @@ public class ResourceManagementConfig {
     dataSource.setType(dataSourceElement.getChildText("type"));
     dataSource.setSubType(dataSourceElement.getChildText("subType"));
     
-    converterDataFormat.setName(dataSourceElement.getChildText("dataFormat"));
+    dataConverter.setDataFormat(dataSourceElement.getChildText("dataFormat"));
     
-    connector.setConverterDataFormat(converterDataFormat);
+    connector.setDataConverter(dataConverter);
     dataSource.setAuthentication(authentication);
     dataSource.setConnector(connector);
     

@@ -31,6 +31,7 @@
         <td>Implementation</td>
         <td>Data Format</td>
         <td>Properties (XML)</td>
+        <td>Assigned Data Converter</td>
       </tr>
       
       <% for (Connector connector : connectors) { %>
@@ -38,20 +39,21 @@
           <td><input type="radio" name="id" value="<%=connector.getId()%>"></input></td>
           <td><%=!connector.getName().equals("") ? connector.getName() : ""%></td>
           <td><%=!connector.getImplementation().equals("") ? connector.getImplementation() : ""%></td>
-          <td><%=!connector.getConverterDataFormat().getName().equals("") ? connector.getConverterDataFormat().getName() : ""%></td>
+          <td><%=!connector.getDataConverter().getDataFormat().equals("") ? connector.getDataConverter().getDataFormat() : ""%></td>
           <td><%=!connector.getPropertiesDescription().equals("")%></td>
+          <td><%=connector.getDataConverter().getName()%></td>
         </tr>
       <% } %>
     </table>
   <% } else { %>
-    No connectors available, please create a connector.
+    No connectors are available, please create a connector.
     <br/>
   <% } %>
   <br/>
   <input type="submit" name="connectorListSubmit" value="New" />
   <% if (connectors.size() > 0) { %>
     <input type="submit" name="connectorListSubmit" value="Edit" "/>
-    <input type="submit" name="connectorListSubmit" value="Delete" onclick="return confirm('Are you sure to delete the connector?')" />
+    <input type="submit" name="connectorListSubmit" value="Delete" onclick="return confirm('Are you sure you want to delete the connector?')" />
   <% } %>
 </form>
   

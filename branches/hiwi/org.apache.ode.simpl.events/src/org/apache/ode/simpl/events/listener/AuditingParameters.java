@@ -5,7 +5,7 @@ import java.util.HashMap;
 import org.simpl.core.services.SIMPLCoreAdministrationService;
 import org.simpl.resource.management.data.Authentication;
 import org.simpl.resource.management.data.Connector;
-import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataSource;
 
 public class AuditingParameters {
@@ -60,15 +60,15 @@ public class AuditingParameters {
     if (!this.settings.isEmpty() && !this.settings.equals(this.lastSettings)) {
       DataSource data = new DataSource();
       Connector connector = new Connector();
-      DataFormat dataFormat = new DataFormat();
+      DataConverter dataConverter = new DataConverter();
       Authentication authentication = new Authentication();
 
       data.setAddress(this.settings.get(AUDITING_DS_ADDRESS));
       data.setType(this.settings.get(DS_TYPE));
       data.setSubType(this.settings.get(DS_SUBTYPE));
-      dataFormat.setName(this.settings.get(DS_FORMAT));
+      dataConverter.setName(this.settings.get(DS_FORMAT));
 
-      connector.setConverterDataFormat(dataFormat);
+      connector.setDataConverter(dataConverter);
       data.setConnector(connector);
 
       authentication.setUser(this.settings.get(DS_USER));

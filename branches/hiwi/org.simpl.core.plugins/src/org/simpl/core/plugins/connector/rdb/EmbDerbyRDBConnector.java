@@ -14,7 +14,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.connection.JDCConnectionDriver;
 import org.simpl.core.exceptions.ConnectionException;
 import org.simpl.core.plugins.connector.ConnectorPlugin;
-import org.simpl.core.plugins.dataformat.relational.RDBResult;
+import org.simpl.core.plugins.dataconverter.relational.RDBResult;
 import org.simpl.resource.management.data.Connector;
 import org.simpl.resource.management.data.DataSource;
 

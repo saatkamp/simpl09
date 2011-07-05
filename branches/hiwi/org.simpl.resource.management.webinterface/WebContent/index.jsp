@@ -20,7 +20,9 @@
   <br/>
   <a href="connector_list.jsp">Connector Management</a>
   <br/>
-  <a href="converter_list.jsp">Converter Management</a>
+  <a href="dataconverter_list.jsp">Data Converter Management</a>
+  <br/>
+  <a href="datatransformationservice_list.jsp">Data Transformation Service Management</a>
   <br/>
   <br/>
   <a href="install.jsp">Installation</a>

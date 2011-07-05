@@ -1,4 +1,4 @@
-package org.simpl.core.plugins.dataformat.relational;
+package org.simpl.core.plugins.dataconverter.relational;
 
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;

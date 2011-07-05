@@ -43,7 +43,7 @@ public class InstallAction extends HttpServlet {
       if (resourceManagementService.createResourceManagementTables()) {
         response.sendRedirect("install.jsp?message=Successfully created tables");
       } else {
-        response.sendRedirect("install.jsp?message=Failed to create tables");
+        response.sendRedirect("install.jsp?message=Failed to create tables (existing tables were deleted!)");
       }
     } catch (Exception_Exception e) {
       // TODO Auto-generated catch block

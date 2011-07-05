@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 
 import org.simpl.resource.management.data.Authentication;
 import org.simpl.resource.management.data.Connector;
-import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.LateBinding;
 
@@ -60,11 +60,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataFormat }
+     * Create an instance of {@link DataConverter }
      * 
      */
-    public DataFormat createDataFormat() {
-        return new DataFormat();
+    public DataConverter createDataConverter() {
+        return new DataConverter();
     }
 
     /**

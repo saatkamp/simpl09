@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.exceptions.ConnectionException;
 import org.simpl.core.plugins.connector.ConnectorPlugin;
-import org.simpl.core.plugins.dataformat.relational.RDBResult;
+import org.simpl.core.plugins.dataconverter.relational.RDBResult;
 import org.simpl.resource.management.data.Connector;
 import org.simpl.resource.management.data.DataSource;
 
@@ -29,8 +29,7 @@ import commonj.sdo.DataObject;
  * <b>Company:</b>SIMPL<br>
  * 
  * @author hahnml<br>
- * @version $Id: DB2RDBDataSource.java 1014 2010-03-29 09:16:08Z michael.schneidt@arcor.de
- *          $<br>
+ * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class MySQLRDBConnector extends ConnectorPlugin<List<String>, RDBResult> {

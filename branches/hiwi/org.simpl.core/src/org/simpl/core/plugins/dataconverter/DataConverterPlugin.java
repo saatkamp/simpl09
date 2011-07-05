@@ -1,24 +1,24 @@
-package org.simpl.core.plugins.dataformat;
+package org.simpl.core.plugins.dataconverter;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.simpl.core.dataformat.DataFormat;
+import org.simpl.core.dataconverter.DataConverter;
 
 import commonj.sdo.DataObject;
 import commonj.sdo.helper.DataFactory;
 import commonj.sdo.helper.XSDHelper;
 
 /**
- * <b>Purpose:</b>This abstract class is used to create data format plug-ins for the SIMPL
- * Core, that are be used by connectors to work with a defined data format.<br>
- * <b>Description:</b>A data format plug-in is used to convert an outgoing data type to a
- * Service Data Object (SDO) and to transform an incoming SDO back to an incoming data
+ * <b>Purpose:</b>This abstract class is used to create data converter plug-ins for the
+ * SIMPL Core, that are be used by connectors to work with a defined data format.<br>
+ * <b>Description:</b>A data converter plug-in is used to convert an outgoing data type to
+ * a Service Data Object (SDO) and to transform an incoming SDO back to an incoming data
  * type.<br>
- * It has a type for identification and needs a XML schema that defines the data format
- * structure that is used to create a SDO based on a root schema element type. Type,
- * schema file and schema element type must be set in the plugin's constructor. <br>
- * The root schema type must have an attribute called <b>type</b> that is set
+ * It has a data format name for identification and needs a XML schema that defines the
+ * data format structure that is used to create a SDO based on a root schema element type.
+ * Type, schema file and schema element type must be set in the plugin's constructor. <br>
+ * The root schema type must have the attribute <b>dataFormat</b> that is set
  * automatically for other services being able to recognize the underlying data format of
  * a passed SDO.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
@@ -26,15 +26,14 @@ import commonj.sdo.helper.XSDHelper;
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi
- * @version $Id: DataFormatPlugin.java 1006 2010-03-24 17:52:54Z michael.schneidt@arcor.de
- *          $<br>
+ * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
+public abstract class DataConverterPlugin<S, T> implements DataConverter<S, T> {
   /**
-   * Type of the supported data format (CSV, XML, ...).
+   * The supported data format (CSV, XML, ...).
    */
-  private String type = "";
+  private String dataFormat = "";
 
   /**
    * Name of the data format schema file.
@@ -69,12 +68,12 @@ public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
       e.printStackTrace();
     }
 
-    dataObject = DataFactory.INSTANCE.create("http://org.simpl.core/plugins/dataformat/"
+    dataObject = DataFactory.INSTANCE.create("http://org.simpl.core/plugins/dataconverter/dataformat/"
         + this.schemaFile.replace(".xsd", ""), this.schemaType);
 
-    // write the data format type to the data object if possible
+    // write the data format to the data object if possible
     try {
-      dataObject.setString("dataFormatType", this.type);
+      dataObject.setString("dataFormat", this.dataFormat);
     } catch (IllegalArgumentException e) {
       // type was not set, because the schema does not declare this attribute
     }
@@ -83,18 +82,18 @@ public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
   }
 
   /**
-   * Sets the supported data format type.
+   * Sets the supported data format.
    * 
-   * @param dfType
+   * @param dataFormat
    */
-  public void setType(String dfType) {
-    this.type = dfType;
+  public void setDataFormat(String dataFormat) {
+    this.dataFormat = dataFormat;
   }
 
   /**
    * Sets the element type that is defined in the data format schema file.
    * 
-   * @param type
+   * @param dataFormat
    */
   public void setSchemaType(String dfSchemaType) {
     this.schemaType = dfSchemaType;
@@ -128,7 +127,7 @@ public abstract class DataFormatPlugin<S, T> implements DataFormat<S, T> {
   /**
    * @return The supported data format type.
    */
-  public String getType() {
-    return this.type;
+  public String getDataFormat() {
+    return this.dataFormat;
   }
 }

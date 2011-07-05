@@ -1,4 +1,4 @@
-package org.simpl.core.plugins.dataformat.relational;
+package org.simpl.core.plugins.dataconverter.relational;
 
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.simpl.core.plugins.dataformat.DataFormatPlugin;
+import org.simpl.core.plugins.dataconverter.DataConverterPlugin;
 
 import commonj.sdo.DataObject;
 
@@ -33,12 +33,12 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
-  static Logger logger = Logger.getLogger(RDBDataFormat.class);
+public class RDBDataConverter extends DataConverterPlugin<RDBResult, List<String>> {
+  static Logger logger = Logger.getLogger(RDBDataConverter.class);
   List<String> quotedDataTypes = new ArrayList<String>();
   
-  public RDBDataFormat() {
-    this.setType("RDBDataFormat");
+  public RDBDataConverter() {
+    this.setDataFormat("RDBDataFormat");
     this.setSchemaFile("RelationalDataFormat.xsd");
     this.setSchemaType("tRelationalDataFormat");
 
@@ -74,8 +74,8 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     List<String> primaryKeyList = new ArrayList<String>();
     boolean isSetTableMetaData = false;
 
-    if (RDBDataFormat.logger.isDebugEnabled()) {
-      RDBDataFormat.logger.debug("Convert data from 'RDBResult' to 'DataObject'.");
+    if (RDBDataConverter.logger.isDebugEnabled()) {
+      RDBDataConverter.logger.debug("Convert data from 'RDBResult' to 'DataObject'.");
     }
 
     // add data format meta data
@@ -161,8 +161,8 @@ public class RDBDataFormat extends DataFormatPlugin<RDBResult, List<String>> {
     String statement = "";
     String tableSchema = "";
 
-    if (RDBDataFormat.logger.isDebugEnabled()) {
-      RDBDataFormat.logger.debug("Convert data from 'DataObject' to 'List<String>'.");
+    if (RDBDataConverter.logger.isDebugEnabled()) {
+      RDBDataConverter.logger.debug("Convert data from 'DataObject' to 'List<String>'.");
     }
 
     for (DataObject table : tables) {

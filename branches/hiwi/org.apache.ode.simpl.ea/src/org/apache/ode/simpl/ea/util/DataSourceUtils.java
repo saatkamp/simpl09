@@ -64,7 +64,7 @@ public class DataSourceUtils {
       logger.debug("UserName of ds: " + dataSource.getAuthentication().getUser());
       logger.debug("Password of ds: " + dataSource.getAuthentication().getPassword());
       logger.debug("Format of ds: "
-          + dataSource.getConnector().getConverterDataFormat().getName());
+          + dataSource.getConnector().getDataConverter().getDataFormat());
     }
 
     return dataSource;
@@ -161,8 +161,7 @@ public class DataSourceUtils {
       }
       if (logger.isDebugEnabled()) {
         logger.debug("Format of ds: "
-            + resultDataSource.getConnector().getConverterDataFormat().getName());
-
+            + resultDataSource.getConnector().getDataConverter().getDataFormat());
       }
     }
 
