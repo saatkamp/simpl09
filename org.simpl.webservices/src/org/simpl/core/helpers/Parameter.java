@@ -47,7 +47,7 @@ public class Parameter {
   public static Object deserialize(String data) {
     ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(data.getBytes());
     Object deserialized = null;
-
+    
     XMLDecoder decoder = new XMLDecoder(byteArrayInputStream);
     deserialized = decoder.readObject();
     decoder.close();

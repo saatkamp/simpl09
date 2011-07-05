@@ -35,17 +35,31 @@
   </servlet>
 
   <servlet>
-    <description>ConverterListAction</description>
-    <display-name>ConverterListAction</display-name>
-    <servlet-name>ConverterListAction</servlet-name>
-    <servlet-class>org.simpl.resource.management.webinterface.actions.ConverterListAction</servlet-class>
+    <description>DataConverterListAction</description>
+    <display-name>DataConverterListAction</display-name>
+    <servlet-name>DataConverterListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataConverterListAction</servlet-class>
   </servlet>
 
   <servlet>
-    <description>ConverterFormAction</description>
-    <display-name>ConverterFormAction</display-name>
-    <servlet-name>ConverterFormAction</servlet-name>
-    <servlet-class>org.simpl.resource.management.webinterface.actions.ConverterFormAction</servlet-class>
+    <description>DataConverterFormAction</description>
+    <display-name>DataConverterFormAction</display-name>
+    <servlet-name>DataConverterFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataConverterFormAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>DataTransformationServiceListAction</description>
+    <display-name>DataTransformationServiceListAction</display-name>
+    <servlet-name>DataTransformationServiceListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataTransformationServiceListAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>DataTransformationServiceFormAction</description>
+    <display-name>DataTransformationServiceFormAction</display-name>
+    <servlet-name>DataTransformationServiceFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataTransformationServiceFormAction</servlet-class>
   </servlet>
 
   <servlet>
@@ -76,13 +90,23 @@
   </servlet-mapping>
 
   <servlet-mapping>
-    <servlet-name>ConverterListAction</servlet-name>
-    <url-pattern>/ConverterListAction</url-pattern>
+    <servlet-name>DataConverterListAction</servlet-name>
+    <url-pattern>/DataConverterListAction</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>
-    <servlet-name>ConverterFormAction</servlet-name>
-    <url-pattern>/ConverterFormAction</url-pattern>
+    <servlet-name>DataConverterFormAction</servlet-name>
+    <url-pattern>/DataConverterFormAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DataTransformationServiceListAction</servlet-name>
+    <url-pattern>/DataTransformationServiceListAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>DataTransformationServiceFormAction</servlet-name>
+    <url-pattern>/DataTransformationServiceFormAction</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>

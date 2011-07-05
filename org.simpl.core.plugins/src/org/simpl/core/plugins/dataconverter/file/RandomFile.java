@@ -1,4 +1,4 @@
-package org.simpl.core.plugins.dataformat.file;
+package org.simpl.core.plugins.dataconverter.file;
 
 import java.io.File;
 

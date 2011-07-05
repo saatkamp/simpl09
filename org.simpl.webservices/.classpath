@@ -2,8 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_CORE"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/APACHE_ODE"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_RESOURCE_MANAGEMENT"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.simpl.resource.management"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.simpl.core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.simpl.core.plugins"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

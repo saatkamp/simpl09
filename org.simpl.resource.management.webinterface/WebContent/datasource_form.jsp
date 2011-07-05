@@ -63,7 +63,7 @@
       username = dataSource.getAuthentication().getUser();
       password = dataSource.getAuthentication().getPassword();
       language = dataSource.getLanguage();
-      dataformat = dataSource.getConnector().getConverterDataFormat().getName();
+      dataformat = dataSource.getConnector().getDataConverter().getDataFormat();
       connectorProperties = dataSource.getConnectorPropertiesDescription();
     }
   }

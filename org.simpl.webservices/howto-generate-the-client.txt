@@ -7,8 +7,8 @@ First time setup:
 Generate the client:
 1) Launch the SIMPL Core Web Services (start Tomcat)
 2) Select the org.simpl.core.webservices.Datasource.java file and run the "wsimport SIMPLCoreService" external tool.
-3) Delete all files under org.simpl.core.webservices that are not under version control (SVN)
-4) Correct the errors in the other files in importing unknown classes from "org.simpl.resource.management.client"
+3) Delete all files under org.simpl.core.webservices.client that are not under version control (SVN)
+4) Correct the errors in the other files in importing unknown classes from "org.simpl.resource.management.data"
 5) SVN Revert the SIMPLCoreService_Service.java
 6) Create the client jar file by using the simpl-core-webservices-client.jardesc
 7) Run the "distribute simpl-core-webservices-client.jar" external tool to distribute the client among the projects.

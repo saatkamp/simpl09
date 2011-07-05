@@ -1,4 +1,4 @@
-package org.simpl.core.plugins.dataformat.relational;
+package org.simpl.core.plugins.dataconverter.relational;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,8 +12,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.plugins.connector.rdb.DB2RDBConnector;
-import org.simpl.core.plugins.dataformat.DataFormatPlugin;
-import org.simpl.core.plugins.dataformat.file.RandomFile;
+import org.simpl.core.plugins.dataconverter.DataConverterPlugin;
+import org.simpl.core.plugins.dataconverter.file.RandomFile;
 
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
@@ -32,14 +32,14 @@ import commonj.sdo.DataObject;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class CSVDataFormat extends DataFormatPlugin<RandomFile, File> {
+public class CSVDataConverter extends DataConverterPlugin<RandomFile, File> {
   static Logger logger = Logger.getLogger(DB2RDBConnector.class);
 
   /**
    * Initialize the plug-in.
    */
-  public CSVDataFormat() {
-    this.setType("CSVDataFormat");
+  public CSVDataConverter() {
+    this.setDataFormat("CSVDataFormat");
     this.setSchemaFile("RelationalDataFormat.xsd");
     this.setSchemaType("tRelationalDataFormat");
 
@@ -63,8 +63,8 @@ public class CSVDataFormat extends DataFormatPlugin<RandomFile, File> {
     DataObject rowObject;
     DataObject columnObject;
 
-    if (CSVDataFormat.logger.isDebugEnabled()) {
-      CSVDataFormat.logger.debug("Convert data from 'CSVResult' to 'DataObject'.");
+    if (CSVDataConverter.logger.isDebugEnabled()) {
+      CSVDataConverter.logger.debug("Convert data from 'CSVResult' to 'DataObject'.");
     }
 
     try {
@@ -138,8 +138,8 @@ public class CSVDataFormat extends DataFormatPlugin<RandomFile, File> {
     // char escapeChar = data.getChar("escapeChar");
     // boolean strictQuotes = data.getBoolean("strictQuotes");
 
-    if (CSVDataFormat.logger.isDebugEnabled()) {
-      CSVDataFormat.logger.debug("Convert data from 'DataObject' to 'File'.");
+    if (CSVDataConverter.logger.isDebugEnabled()) {
+      CSVDataConverter.logger.debug("Convert data from 'DataObject' to 'File'.");
     }
 
     try {

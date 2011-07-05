@@ -11,8 +11,8 @@ import java.util.LinkedHashMap;
 import org.apache.ode.simpl.events.listener.AuditingParameters;
 import org.simpl.core.clients.RMClient;
 import org.simpl.core.connector.ConnectorProvider;
-import org.simpl.core.converter.ConverterProvider;
-import org.simpl.core.dataformat.DataFormatProvider;
+import org.simpl.core.dataconverter.DataConverterProvider;
+import org.simpl.core.datatransformation.DataTransformationServiceProvider;
 
 /**
  * <b>Purpose:</b><br>
@@ -66,8 +66,8 @@ public class AdministrationServiceImpl implements AdministrationServiceInterface
         
         // update plugins
         ConnectorProvider.loadPlugins();
-        DataFormatProvider.loadPlugins();
-        ConverterProvider.loadPlugins();
+        DataConverterProvider.loadPlugins();
+        DataTransformationServiceProvider.loadServices();
       }
     } catch (Throwable e) {
       e.printStackTrace();

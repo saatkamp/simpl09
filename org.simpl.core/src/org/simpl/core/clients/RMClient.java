@@ -65,11 +65,11 @@ public class RMClient {
     }
   }
 
-  public List<String> getConverterPlugins() {
+  public List<String> getDataTransformationServices() {
     if (isUsingWebService()) {
-      return RMWebClient.getInstance().getConverterPlugins();
+      return RMWebClient.getInstance().getDataTransformationServices();
     } else {
-      return RMDirectClient.getInstance().getConverterPlugins();
+      return RMDirectClient.getInstance().getDataTransformationServices();
     }
   }
 
@@ -81,19 +81,19 @@ public class RMClient {
     }
   }
 
-  public HashMap<String, ArrayList<String>> getConverterMapping() {
+  public HashMap<String, ArrayList<String>> getDataTransformationServiceMapping() {
     if (isUsingWebService()) {
-      return RMWebClient.getInstance().getConverterMapping();
+      return RMWebClient.getInstance().getDataTransformationServiceMapping();
     } else {
-      return RMDirectClient.getInstance().getConverterMapping();
+      return RMDirectClient.getInstance().getDataTransformationServiceMapping();
     }
   }
 
-  public DataSource getDataSourceByName(String dataSourceDescriptor) {
+  public DataSource getDataSourceByName(String dataSourceName) {
     if (isUsingWebService()) {
-      return RMWebClient.getInstance().getDataSourceByName(dataSourceDescriptor);
+      return RMWebClient.getInstance().getDataSourceByName(dataSourceName);
     } else {
-      return RMDirectClient.getInstance().getDataSourceByName(dataSourceDescriptor);
+      return RMDirectClient.getInstance().getDataSourceByName(dataSourceName);
     }
   }
 

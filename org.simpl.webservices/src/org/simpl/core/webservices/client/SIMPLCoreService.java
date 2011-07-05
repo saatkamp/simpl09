@@ -53,9 +53,9 @@ public interface SIMPLCoreService {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "issueCommandByDataSourceObject")
+    @WebMethod(action = "issueCommandByDataSource")
     @WebResult(partName = "return")
-    public boolean issueCommandByDataSourceObject(
+    public boolean issueCommandByDataSource(
         @WebParam(name = "dataSource", partName = "dataSource")
         DataSource dataSource,
         @WebParam(name = "statement", partName = "statement")
@@ -69,16 +69,16 @@ public interface SIMPLCoreService {
      * 
      * @param statement
      * @param lateBinding
-     * @param dataSourceDescriptor
+     * @param dataSourceName
      * @return
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "executeStatementByDataSourceDescriptor")
+    @WebMethod(action = "executeStatementByDataSourceName")
     @WebResult(partName = "return")
-    public boolean issueCommandByDataSourceDescriptor(
-        @WebParam(name = "dataSourceDescriptor", partName = "dataSourceDescriptor")
-        String dataSourceDescriptor,
+    public boolean issueCommandByDataSourceName(
+        @WebParam(name = "dataSourceName", partName = "dataSourceName")
+        String dataSourceName,
         @WebParam(name = "statement", partName = "statement")
         String statement,
         @WebParam(name = "lateBinding", partName = "lateBinding")
@@ -95,9 +95,9 @@ public interface SIMPLCoreService {
      *     returns java.lang.String
      * @throws Exception_Exception
      */
-    @WebMethod(action = "retrieveDataByDataSourceObject")
+    @WebMethod(action = "retrieveDataByDataSource")
     @WebResult(partName = "return")
-    public String retrieveDataByDataSourceObject(
+    public String retrieveDataByDataSource(
         @WebParam(name = "dataSource", partName = "dataSource")
         DataSource dataSource,
         @WebParam(name = "statement", partName = "statement")
@@ -110,17 +110,17 @@ public interface SIMPLCoreService {
     /**
      * 
      * @param statement
-     * @param dataSource
      * @param lateBinding
+     * @param dataSourceName
      * @return
      *     returns java.lang.String
      * @throws Exception_Exception
      */
-    @WebMethod(action = "retrieveDataByDataSourceDescriptor")
+    @WebMethod(action = "retrieveDataByDataSourceName")
     @WebResult(partName = "return")
-    public String retrieveDataByDataSourceDescriptor(
-        @WebParam(name = "dataSource", partName = "dataSource")
-        String dataSource,
+    public String retrieveDataByDataSourceName(
+        @WebParam(name = "dataSourceName", partName = "dataSourceName")
+        String dataSourceName,
         @WebParam(name = "statement", partName = "statement")
         String statement,
         @WebParam(name = "lateBinding", partName = "lateBinding")
@@ -138,9 +138,9 @@ public interface SIMPLCoreService {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "writeDataBackByDataSourceObjectObject")
+    @WebMethod(action = "writeDataBackByDataSource")
     @WebResult(partName = "return")
-    public boolean writeDataBackByDataSourceObject(
+    public boolean writeDataBackByDataSource(
         @WebParam(name = "dataSource", partName = "dataSource")
         DataSource dataSource,
         @WebParam(name = "dataObject", partName = "dataObject")
@@ -156,17 +156,17 @@ public interface SIMPLCoreService {
      * 
      * @param lateBinding
      * @param target
+     * @param dataSourceName
      * @param dataObject
-     * @param dataSourceDescriptor
      * @return
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "writeDataBackByDataSourceDescriptor")
+    @WebMethod(action = "writeDataBackByDataSourceName")
     @WebResult(partName = "return")
-    public boolean writeDataBackByDataSourceDescriptor(
-        @WebParam(name = "dataSourceDescriptor", partName = "dataSourceDescriptor")
-        String dataSourceDescriptor,
+    public boolean writeDataBackByDataSourceName(
+        @WebParam(name = "dataSourceName", partName = "dataSourceName")
+        String dataSourceName,
         @WebParam(name = "dataObject", partName = "dataObject")
         String dataObject,
         @WebParam(name = "target", partName = "target")
@@ -186,9 +186,9 @@ public interface SIMPLCoreService {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "queryDataByDataSourceObject")
+    @WebMethod(action = "queryDataByDataSource")
     @WebResult(partName = "return")
-    public boolean queryDataByDataSourceObject(
+    public boolean queryDataByDataSource(
         @WebParam(name = "dataSource", partName = "dataSource")
         DataSource dataSource,
         @WebParam(name = "statement", partName = "statement")
@@ -205,16 +205,16 @@ public interface SIMPLCoreService {
      * @param statement
      * @param lateBinding
      * @param target
-     * @param dataSourceDescriptor
+     * @param dataSourceName
      * @return
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "queryDataByDataSourceDescriptor")
+    @WebMethod(action = "queryDataByDataSourceName")
     @WebResult(partName = "return")
-    public boolean queryDataByDataSourceDescriptor(
-        @WebParam(name = "dataSourceDescriptor", partName = "dataSourceDescriptor")
-        String dataSourceDescriptor,
+    public boolean queryDataByDataSourceName(
+        @WebParam(name = "dataSourceName", partName = "dataSourceName")
+        String dataSourceName,
         @WebParam(name = "statement", partName = "statement")
         String statement,
         @WebParam(name = "target", partName = "target")

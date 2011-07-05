@@ -47,9 +47,9 @@ public class SIMPLCoreInterface {
     return success;
   }
 
-  public boolean issueCommand(String dataSourceDescriptor, String statement,
+  public boolean issueCommand(String dataSourceName, String statement,
       LateBinding lateBinding) throws ConnectionException {
-    DataSource dataSource = resolveDataSourceDescriptor(dataSourceDescriptor);
+    DataSource dataSource = resolveDataSource(dataSourceName);
 
     return this.issueCommand(dataSource, statement, lateBinding);
   }
@@ -73,9 +73,9 @@ public class SIMPLCoreInterface {
     return success;
   }
 
-  public boolean queryData(String dataSourceDescriptor, String statement, String target,
+  public boolean queryData(String dataSourceName, String statement, String target,
       LateBinding lateBinding) throws ConnectionException {
-    DataSource dataSource = resolveDataSourceDescriptor(dataSourceDescriptor);
+    DataSource dataSource = resolveDataSource(dataSourceName);
 
     return this.queryData(dataSource, statement, target, lateBinding);
   }
@@ -99,9 +99,9 @@ public class SIMPLCoreInterface {
     return retrievedData;
   }
 
-  public DataObject retrieveData(String dataSourceDescriptor, String statement,
+  public DataObject retrieveData(String dataSourceName, String statement,
       LateBinding lateBinding) throws ConnectionException {
-    DataSource dataSource = resolveDataSourceDescriptor(dataSourceDescriptor);
+    DataSource dataSource = resolveDataSource(dataSourceName);
 
     return this.retrieveData(dataSource, statement, lateBinding);
   }
@@ -124,9 +124,9 @@ public class SIMPLCoreInterface {
     return success;
   }
 
-  public boolean writeDataBack(String dataSourceDescriptor, DataObject data,
+  public boolean writeDataBack(String dataSourceName, DataObject data,
       String target, LateBinding lateBinding) throws ConnectionException {
-    DataSource dataSource = resolveDataSourceDescriptor(dataSourceDescriptor);
+    DataSource dataSource = resolveDataSource(dataSourceName);
 
     return this.writeDataBack(dataSource, data, target, lateBinding);
   }
@@ -141,9 +141,9 @@ public class SIMPLCoreInterface {
     return data;
   }
 
-  public DataObject getMetaData(String dataSourceDescriptor, String filter)
+  public DataObject getMetaData(String dataSourceName, String filter)
       throws ConnectionException {
-    DataSource dataSource = resolveDataSourceDescriptor(dataSourceDescriptor);
+    DataSource dataSource = resolveDataSource(dataSourceName);
 
     return this.getMetaData(dataSource, filter);
   }
@@ -172,16 +172,16 @@ public class SIMPLCoreInterface {
   }
 
   /**
-   * Resolves the data source descriptor.
+   * Resolves the data source from its name.
    * 
-   * @param dataSourceDescriptor
+   * @param dataSourceName
    * @return
    */
-  private DataSource resolveDataSourceDescriptor(String dataSourceDescriptor) {
+  private DataSource resolveDataSource(String dataSourceName) {
     DataSource dataSource = null;
 
     dataSource = RMClient.getInstance().getDataSourceByName(
-        dataSourceDescriptor);
+        dataSourceName);
 
     return dataSource;
   }

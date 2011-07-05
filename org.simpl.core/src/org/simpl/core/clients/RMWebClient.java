@@ -12,10 +12,10 @@ import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
 import org.simpl.resource.management.data.Connector;
 import org.simpl.resource.management.data.ConnectorList;
-import org.simpl.resource.management.data.Converter;
-import org.simpl.resource.management.data.ConverterList;
 import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.DataSourceList;
+import org.simpl.resource.management.data.DataTransformationService;
+import org.simpl.resource.management.data.DataTransformationServiceList;
 
 /**
  * <b>Purpose:</b>Provides access to and holds data from the SIMPL Resource Management
@@ -44,9 +44,9 @@ public class RMWebClient {
   private List<String> dataFormatPlugins = new ArrayList<String>();
 
   /**
-   * List of registered converter plug-ins.
+   * List of registered data transformation services.
    */
-  private List<String> converterPlugins = new ArrayList<String>();
+  private List<String> dataTransformationServices = new ArrayList<String>();
 
   /**
    * Maps data formats to the connectors that can use it.
@@ -54,9 +54,9 @@ public class RMWebClient {
   private HashMap<String, ArrayList<String>> dataFormatMapping = new HashMap<String, ArrayList<String>>();
 
   /**
-   * Maps converter to the connectors that can use it.
+   * Maps data transformation services to the connectors that can use it.
    */
-  private HashMap<String, ArrayList<String>> converterMapping = new HashMap<String, ArrayList<String>>();
+  private HashMap<String, ArrayList<String>> dataTransformationServiceMapping = new HashMap<String, ArrayList<String>>();
 
   /**
    * The resource management web service.
@@ -105,13 +105,13 @@ public class RMWebClient {
   }
 
   /**
-   * Returns a list of registered ConverterPlugins. The list contains full qualified names
-   * of ConverterPlugin classes.
+   * Returns a list of registered DataTransformationServices. The list contains full qualified names
+   * of DataTransformationService classes.
    * 
-   * @return List of ConverterPlugins
+   * @return List of DataTransformationServices
    */
-  public List<String> getConverterPlugins() {
-    return converterPlugins;
+  public List<String> getDataTransformationServices() {
+    return dataTransformationServices;
   }
 
   /**
@@ -125,25 +125,25 @@ public class RMWebClient {
   }
 
   /**
-   * Returns a map of converters and their supported connectors, key and values are full
+   * Returns a map of data transformation services and their supported connectors, key and values are full
    * qualified class names.
    * 
-   * @return data format converter mapping
+   * @return data transformation service mapping
    */
-  public HashMap<String, ArrayList<String>> getConverterMapping() {
-    return converterMapping;
+  public HashMap<String, ArrayList<String>> getDataTransformationServiceMapping() {
+    return dataTransformationServiceMapping;
   }
 
   /**
-   * Returns a data source by its data source descriptor.
+   * Returns a data source by its name.
    * 
    * @return
    */
-  public DataSource getDataSourceByName(String dataSourceDescriptor) {
+  public DataSource getDataSourceByName(String dataSourceName) {
     DataSource dataSource = null;
 
     try {
-      dataSource = this.resourceManagement.getDataSourceByName(dataSourceDescriptor);
+      dataSource = this.resourceManagement.getDataSourceByName(dataSourceName);
     } catch (Exception_Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -175,7 +175,7 @@ public class RMWebClient {
    */
   public void reload() {
     ConnectorList connectors = new ConnectorList();
-    ConverterList converters = new ConverterList();
+    DataTransformationServiceList dataTransformationServices = new DataTransformationServiceList();
     String resourceManagementAddress = null;
 
     // retrieve the resource management address from the internal embedded derby simplDB
@@ -190,10 +190,10 @@ public class RMWebClient {
 
         if (resourceManagement != null) {
           connectors = resourceManagement.getAllConnectors();
-          converters = resourceManagement.getAllConverters();
+          dataTransformationServices = resourceManagement.getAllDataTransformationServices();
         } else {
           connectors = new ConnectorList();
-          converters = new ConverterList();
+          dataTransformationServices = new DataTransformationServiceList();
         }
       }
     } catch (Exception e) {
@@ -207,20 +207,20 @@ public class RMWebClient {
         this.connectorPlugins.add(connector.getImplementation());
 
         // retrieve data format plug-ins
-        if (!this.dataFormatPlugins.contains(connector.getConverterDataFormat()
+        if (!this.dataFormatPlugins.contains(connector.getDataConverter()
             .getImplementation())) {
-          this.dataFormatPlugins.add(connector.getConverterDataFormat()
+          this.dataFormatPlugins.add(connector.getDataConverter()
               .getImplementation());
         }
 
         // retrieve data format mapping
-        if (this.dataFormatMapping.containsKey(connector.getConverterDataFormat()
+        if (this.dataFormatMapping.containsKey(connector.getDataConverter()
             .getImplementation())) {
           this.dataFormatMapping.get(
-              connector.getConverterDataFormat().getImplementation()).add(
+              connector.getDataConverter().getImplementation()).add(
               connector.getImplementation());
         } else {
-          this.dataFormatMapping.put(connector.getConverterDataFormat()
+          this.dataFormatMapping.put(connector.getDataConverter()
               .getImplementation(),
               new ArrayList<String>(Arrays.asList(connector.getImplementation())));
         }
@@ -228,21 +228,21 @@ public class RMWebClient {
     }
 
     // retrieve converter plug-ins
-    if (converters.getConverters().size() > 0) {
-      for (Converter converter : converters.getConverters()) {
-        this.converterPlugins.add(converter.getImplementation());
+    if (dataTransformationServices.getDataTransformationServices().size() > 0) {
+      for (DataTransformationService dataTransformationService : dataTransformationServices.getDataTransformationServices()) {
+        this.dataTransformationServices.add(dataTransformationService.getImplementation());
 
-        // retrieve converter mapping
+        // retrieve data transformation service mapping
         for (Connector connector : connectors.getConnectors()) {
-          if (connector.getConverterDataFormat().getImplementation()
-              .equals(converter.getConnectorDataFormat().getImplementation())
-              || connector.getConverterDataFormat().getImplementation()
-                  .equals(converter.getWorkflowDataFormat().getImplementation())) {
-            if (this.converterMapping.containsKey(converter.getImplementation())) {
-              this.converterMapping.get(converter.getImplementation()).add(
+          if (connector.getDataConverter().getImplementation()
+              .equals(dataTransformationService.getConnectorDataConverter().getImplementation())
+              || connector.getDataConverter().getImplementation()
+                  .equals(dataTransformationService.getWorkflowDataConverter().getImplementation())) {
+            if (this.dataTransformationServiceMapping.containsKey(dataTransformationService.getImplementation())) {
+              this.dataTransformationServiceMapping.get(dataTransformationService.getImplementation()).add(
                   connector.getImplementation());
             } else {
-              this.converterMapping.put(converter.getImplementation(),
+              this.dataTransformationServiceMapping.put(dataTransformationService.getImplementation(),
                   new ArrayList<String>(Arrays.asList(connector.getImplementation())));
             }
           }

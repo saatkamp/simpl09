@@ -14,7 +14,7 @@ import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
 import org.simpl.resource.management.data.Authentication;
 import org.simpl.resource.management.data.Connector;
-import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.webinterface.FormMetaData;
 import org.simpl.resource.management.webinterface.MultipartForm;
@@ -116,7 +116,7 @@ public class DataSourceFormAction extends HttpServlet {
   private DataSource parametersToDataSource(HashMap<String, String> parameters) {
     DataSource dataSource = new DataSource();
     Connector connector = new Connector();
-    DataFormat converterDataFormat = new DataFormat();
+    DataConverter dataConverter = new DataConverter();
     
     // initialize authentication and late binding
     Authentication auth = new Authentication();
@@ -151,8 +151,8 @@ public class DataSourceFormAction extends HttpServlet {
     dataSource.setSubType(parameters.get("subtype"));
     dataSource.setLanguage(parameters.get("language"));
     
-    converterDataFormat.setName(parameters.get("dataformat"));
-    connector.setConverterDataFormat(converterDataFormat);
+    dataConverter.setDataFormat(parameters.get("dataformat"));
+    connector.setDataConverter(dataConverter);
     
     dataSource.setConnector(connector);
     dataSource.setAuthentication(auth);

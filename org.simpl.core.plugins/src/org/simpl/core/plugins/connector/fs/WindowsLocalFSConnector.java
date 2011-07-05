@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.exceptions.ConnectionException;
 import org.simpl.core.plugins.connector.ConnectorPlugin;
-import org.simpl.core.plugins.dataformat.file.RandomFile;
+import org.simpl.core.plugins.dataconverter.file.RandomFile;
 import org.simpl.resource.management.data.DataSource;
 
 import commonj.sdo.DataObject;
@@ -97,12 +97,14 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
   @Override
   public boolean writeDataBack(DataSource dataSource, File dataFile, String target)
       throws ConnectionException {
+    boolean successful = false;
     File targetFile = null;
     String dir = "";
 
     if (WindowsLocalFSConnector.logger.isDebugEnabled()) {
-      WindowsLocalFSConnector.logger.debug("boolean writeDataBack(" + dataSource.getAddress()
-          + ", " + dataFile.getName() + ", " + target + ") executed.");
+      WindowsLocalFSConnector.logger.debug("boolean writeDataBack("
+          + dataSource.getAddress() + ", " + dataFile.getName() + ", " + target
+          + ") executed.");
     }
 
     if (!dataSource.getAddress().equals("")) {
@@ -111,12 +113,58 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
 
     if (target != null && !target.equals("")) {
       targetFile = new File(dir + target);
-      dataFile.renameTo(targetFile);
-    } else {
-      targetFile = dataFile;
+
+      // file -> file
+      if (dataFile.isFile() && targetFile.isFile()) {
+        // check if target file exists
+        if (!targetFile.exists()) {
+          // move file to the target
+          successful = dataFile.renameTo(targetFile);
+        }
+      }
+
+      // file -> directory
+      if (dataFile.isFile() && targetFile.isDirectory()) {
+        targetFile = new File(targetFile.getAbsolutePath(), dataFile.getName());
+
+        // check if file exists in target directory
+        if (!targetFile.exists()) {
+          // move file to the target
+          successful = dataFile.renameTo(targetFile);
+        }
+      }
+
+      // directory -> directory
+      if (dataFile.isDirectory() && targetFile.isDirectory()) {
+        boolean filesExistOnTarget = false;
+
+        // check if directory files exist in target directory
+        for (File file : dataFile.listFiles()) {
+          if (!file.isDirectory()) {
+            File checkFile = new File(targetFile.getAbsolutePath(), file.getName());
+
+            if (!checkFile.isDirectory() && checkFile.exists()) {
+              filesExistOnTarget = true;
+            }
+          }
+        }
+
+        if (!filesExistOnTarget) {
+          successful = true;
+
+          for (File file : dataFile.listFiles()) {
+            if (!file.isDirectory()) {
+              File checkFile = new File(targetFile.getAbsolutePath(), file.getName());
+
+              // move file to the target
+              successful = successful && file.renameTo(checkFile);
+            }
+          }
+        }
+      }
     }
-    
-    return targetFile.exists();
+
+    return successful;
   }
 
   @Override
@@ -261,7 +309,6 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
 
     while ((line = processReader.readLine()) != null) {
       output.add(line);
-      // System.out.println(line);
     }
 
     try {

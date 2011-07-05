@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "connector", propOrder = { "id", "name", "implementation", "type",
-    "subType", "language", "propertiesDescription", "converterDataFormat" })
+    "subType", "language", "propertiesDescription", "dataConverter" })
 public class Connector {
   private String id;
   private String name;
@@ -27,7 +27,7 @@ public class Connector {
   private String subType;
   private String language;
   private String propertiesDescription;
-  private DataFormat converterDataFormat = new DataFormat();
+  private DataConverter dataConverter = new DataConverter();
   
   public Connector() {
     
@@ -139,18 +139,18 @@ public class Connector {
   }
 
   /**
-   * @return the converterDataFormat
+   * @return the dataConverter
    */
-  public DataFormat getConverterDataFormat() {
-    return converterDataFormat;
+  public DataConverter getDataConverter() {
+    return dataConverter;
   }
 
   /**
-   * @param converterDataFormat
-   *          the converterDataFormat to set
+   * @param dataConverter
+   *          the dataConverter to set
    */
-  public void setConverterDataFormat(DataFormat converterDataFormat) {
-    this.converterDataFormat = converterDataFormat;
+  public void setDataConverter(DataConverter dataConverter) {
+    this.dataConverter = dataConverter;
   }
 
   @Override
@@ -162,7 +162,7 @@ public class Connector {
     string += "\tname: " + this.name + ",\r\n";
     string += "\timplementation: " + this.implementation + ",\r\n";
     string += "\tpropertiesDescription: " + this.propertiesDescription + ",\r\n";
-    string += "\tconverterDataFormat: " + this.converterDataFormat + "\r\n";
+    string += "\tdataConverter: " + this.dataConverter + "\r\n";
     string += "}";
 
     return string;

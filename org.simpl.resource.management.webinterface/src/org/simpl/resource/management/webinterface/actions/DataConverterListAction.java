@@ -15,7 +15,7 @@ import org.simpl.resource.management.client.ResourceManagementClient;
 import org.simpl.resource.management.webinterface.RMWebConfig;
 
 /**
- * <b>Purpose:</b>Receiver for actions from the converter_list.jsp. <br>
+ * <b>Purpose:</b>Receiver for actions from the dataconverter_list.jsp. <br>
  * <b>Description:</b><br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
@@ -26,11 +26,11 @@ import org.simpl.resource.management.webinterface.RMWebConfig;
  * @link http://code.google.com/p/simpl09/
  */
 @SuppressWarnings("serial")
-public class ConverterListAction extends HttpServlet {
+public class DataConverterListAction extends HttpServlet {
   private ResourceManagement resourceManagementService = ResourceManagementClient
       .getService(RMWebConfig.getInstance().getResourceManagementAddress());
 
-  public ConverterListAction() {
+  public DataConverterListAction() {
     super();
   }
 
@@ -43,23 +43,23 @@ public class ConverterListAction extends HttpServlet {
     RequestDispatcher dispatcher = null;
     String nextJSP = null;
     
-    if (request.getParameter("converterListSubmit").equals("Delete")) {
+    if (request.getParameter("dataConverterListSubmit").equals("Delete")) {
       if (this.delete(request)) {
-        response.sendRedirect("converter_list.jsp?message=Successfully deleted converter");
+        response.sendRedirect("dataconverter_list.jsp?message=Successfully deleted data converter");
       } else {
-        response.sendRedirect("converter_list.jsp?message=Failed to delete converter");
+        response.sendRedirect("dataconverter_list.jsp?message=Failed to delete data converter");
       }
-    } else if (request.getParameter("converterListSubmit").equals("Edit")) {
+    } else if (request.getParameter("dataConverterListSubmit").equals("Edit")) {
       if (request.getParameter("id") == null) {
-        nextJSP = "/converter_list.jsp?message=Please select a converter";
+        nextJSP = "/dataconverter_list.jsp?message=Please select a data converter";
       } else {
-        nextJSP = "/converter_form.jsp";
+        nextJSP = "/dataconverter_form.jsp";
       }
 
       dispatcher = this.getServletContext().getRequestDispatcher(nextJSP);
       dispatcher.forward(request, response);
-    } else if (request.getParameter("converterListSubmit").equals("New")) {
-      nextJSP = "/converter_form.jsp";
+    } else if (request.getParameter("dataConverterListSubmit").equals("New")) {
+      nextJSP = "/dataconverter_form.jsp";
       
       dispatcher = this.getServletContext().getRequestDispatcher(nextJSP);
       dispatcher.forward(request, response);
@@ -70,7 +70,7 @@ public class ConverterListAction extends HttpServlet {
     boolean success = false;
 
     try {
-      success = resourceManagementService.deleteConverter(Integer.valueOf(request
+      success = resourceManagementService.deleteDataConverter(Integer.valueOf(request
           .getParameter("id")));
     } catch (Exception_Exception e) {
       e.printStackTrace();
