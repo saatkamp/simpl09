@@ -21,7 +21,11 @@
 <%
   String id = "";
   String name = "";
-  String dataformat = "";
+  String inputDataType = "";
+  String outputDataType = "";
+  String workflowDataFormat = "";
+  String directionOutputWorkflow = "";
+  String directionWorkflowInput = "";
   String implementation = "";
   String xmlSchema = "";
   
@@ -48,7 +52,11 @@
     if (dataConverter != null) {
       id = dataConverter.getId();
       name = dataConverter.getName();
-      dataformat = dataConverter.getDataFormat();
+      inputDataType = dataConverter.getInputDataType();
+      outputDataType = dataConverter.getOutputDataType();
+      workflowDataFormat = dataConverter.getWorkflowDataFormat();
+      directionOutputWorkflow = dataConverter.getDirectionOutputWorkflow();
+      directionWorkflowInput = dataConverter.getDirectionWorkflowInput();
       implementation = dataConverter.getImplementation();
       xmlSchema = dataConverter.getXmlSchema();
     }
@@ -65,8 +73,28 @@
   </tr>
 
   <tr>
-    <td><label>Data Format</label></td>
-    <td><input name="dataformat" type="text" value="<%=dataformat%>" size="100" /></td>
+    <td><label>Input Data Type</label></td>
+    <td><input name="inputDataType" type="text" value="<%=inputDataType%>" size="100" /></td>
+  </tr>
+  
+  <tr>
+    <td><label>Output Data Type</label></td>
+    <td><input name="outputDataType" type="text" value="<%=outputDataType%>" size="100" /></td>
+  </tr>
+  
+  <tr>
+    <td><label>Workflow Data Format</label></td>
+    <td><input name="workflowDataFormat" type="text" value="<%=workflowDataFormat%>" size="100" /></td>
+  </tr>
+
+  <tr>
+    <td><label>Output -&gt; Workflow</label></td>
+    <td><input name="directionOutputWorkflow" type="checkbox" size="100" <%=directionOutputWorkflow.equals("true") ? "checked" : ""%>/></td>
+  </tr>
+  
+  <tr>
+    <td><label>Workflow -&gt; Input</label></td>
+    <td><input name="directionWorkflowInput" type="checkbox" size="100" <%=directionWorkflowInput.equals("true") ? "checked" : ""%>/></td>
   </tr>
 
   <tr>
@@ -86,6 +114,10 @@
 </table>
 
 <br/>
+<div style="font-weight:bold">Note on Data Types:</div>
+The <i>Input Data Type</i> and <i>Output Data Type</i> are used along with the <i>Workflow Data Format</i> when saving, to automatically assign the data converter to existing connectors that have matching values.
+
+<br/><br/>
 <input type="hidden" name="id" value="<%=id%>" />
 <input type="submit" name="dataConverterFormSubmit" value="Save" />
 <input type="submit" name="dataConverterFormSubmit" value="Cancel"/>

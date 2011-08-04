@@ -1,5 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="java.io.PrintWriter"%>
+<%@page import="org.simpl.resource.management.webinterface.utils.Check"%>
 <%@page import="org.simpl.resource.management.webinterface.*"%>
 <%@page import="org.simpl.resource.management.client.*"%>
 <%@page import="org.simpl.resource.management.data.*"%>
@@ -28,18 +29,22 @@
       <tr>
         <td></td>
         <td>Name</td>
-        <td>Implementation</td>
         <td>Connector Data Format</td>
         <td>Workflow Data Format</td>
+        <td>Connector -&gt; Workflow</td>
+        <td>Workflow -&gt; Connector</td>
+        <td>Implementation</td>
       </tr>
       
       <% for (DataTransformationService dataTransformationService : dataTransformationServices) { %>
         <tr>
           <td><input type="radio" name="id" value="<%=dataTransformationService.getId()%>"></input></td>
-          <td><%=!dataTransformationService.getName().equals("") ? dataTransformationService.getName() : ""%></td>
-          <td><%=!dataTransformationService.getImplementation().equals("") ? dataTransformationService.getImplementation() : ""%></td>
-          <td><%=!dataTransformationService.getConnectorDataConverter().getDataFormat().equals("") ? dataTransformationService.getConnectorDataConverter().getDataFormat() : ""%></td>
-          <td><%=!dataTransformationService.getWorkflowDataConverter().getDataFormat().equals("") ? dataTransformationService.getWorkflowDataConverter().getDataFormat() : ""%></td>
+          <td><%=!Check.empty(dataTransformationService.getName()) ? dataTransformationService.getName() : ""%></td>
+          <td><%=!Check.empty(dataTransformationService.getConnectorDataFormat()) ? dataTransformationService.getConnectorDataFormat() : ""%></td>
+          <td><%=!Check.empty(dataTransformationService.getWorkflowDataFormat()) ? dataTransformationService.getWorkflowDataFormat() : ""%></td>
+          <td><%=!Check.empty(dataTransformationService.getDirectionConnectorWorkflow()) ? dataTransformationService.getDirectionConnectorWorkflow() : ""%></td>
+          <td><%=!Check.empty(dataTransformationService.getDirectionWorkflowConnector()) ? dataTransformationService.getDirectionWorkflowConnector() : ""%></td>
+          <td><%=!Check.empty(dataTransformationService.getImplementation()) ? dataTransformationService.getImplementation() : ""%></td>
         </tr>
       <% } %>
     </table>

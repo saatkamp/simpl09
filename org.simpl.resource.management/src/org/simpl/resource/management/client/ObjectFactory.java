@@ -15,7 +15,6 @@ import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.DataSourceList;
 import org.simpl.resource.management.data.DataTransformationService;
 import org.simpl.resource.management.data.DataTransformationServiceList;
-import org.simpl.resource.management.data.LateBinding;
 import org.simpl.resource.management.data.StringList;
 
 
@@ -46,19 +45,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConnectorList }
+     * Create an instance of {@link DataConverter }
      * 
      */
-    public ConnectorList createConnectorList() {
-        return new ConnectorList();
+    public DataConverter createDataConverter() {
+        return new DataConverter();
     }
 
     /**
-     * Create an instance of {@link DataSource }
+     * Create an instance of {@link DataTransformationServiceList }
      * 
      */
-    public DataSource createDataSource() {
-        return new DataSource();
+    public DataTransformationServiceList createDataTransformationServiceList() {
+        return new DataTransformationServiceList();
     }
 
     /**
@@ -70,43 +69,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Exception }
-     * 
-     */
-    public Exception createException() {
-        return new Exception();
-    }
-
-    /**
-     * Create an instance of {@link DataSourceList }
-     * 
-     */
-    public DataSourceList createDataSourceList() {
-        return new DataSourceList();
-    }
-
-    /**
      * Create an instance of {@link StringList }
      * 
      */
     public StringList createStringList() {
         return new StringList();
-    }
-
-    /**
-     * Create an instance of {@link DataConverterList }
-     * 
-     */
-    public DataConverterList createDataConverterList() {
-        return new DataConverterList();
-    }
-
-    /**
-     * Create an instance of {@link Connector }
-     * 
-     */
-    public Connector createConnector() {
-        return new Connector();
     }
 
     /**
@@ -118,27 +85,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataConverter }
+     * Create an instance of {@link DataConverterList }
      * 
      */
-    public DataConverter createDataConverter() {
-        return new DataConverter();
+    public DataConverterList createDataConverterList() {
+        return new DataConverterList();
     }
 
     /**
-     * Create an instance of {@link LateBinding }
+     * Create an instance of {@link ConnectorList }
      * 
      */
-    public LateBinding createLateBinding() {
-        return new LateBinding();
+    public ConnectorList createConnectorList() {
+        return new ConnectorList();
     }
 
     /**
-     * Create an instance of {@link DataTransformationServiceList }
+     * Create an instance of {@link DataSourceList }
      * 
      */
-    public DataTransformationServiceList createDataTransformationServiceList() {
-        return new DataTransformationServiceList();
+    public DataSourceList createDataSourceList() {
+        return new DataSourceList();
+    }
+
+    /**
+     * Create an instance of {@link Exception }
+     * 
+     */
+    public Exception createException() {
+        return new Exception();
+    }
+
+    /**
+     * Create an instance of {@link DataSource }
+     * 
+     */
+    public DataSource createDataSource() {
+        return new DataSource();
+    }
+
+    /**
+     * Create an instance of {@link Connector }
+     * 
+     */
+    public Connector createConnector() {
+        return new Connector();
     }
 
     /**

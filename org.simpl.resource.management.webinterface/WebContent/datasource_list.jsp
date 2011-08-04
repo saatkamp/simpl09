@@ -1,5 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="java.io.PrintWriter"%>
+<%@page import="org.simpl.resource.management.webinterface.utils.Check"%>
 <%@page import="org.simpl.resource.management.webinterface.*"%>
 <%@page import="org.simpl.resource.management.client.*"%>
 <%@page import="org.simpl.resource.management.data.*"%>
@@ -43,17 +44,17 @@
       <% for (DataSource source : dataSources) { %>
         <tr>
           <td><input type="radio" name="id" value="<%=source.getId()%>"></input></td>
-          <td><%=!source.getName().equals("") ? source.getName() : ""%></td>
-          <td><%=!source.getAddress().equals("") ? source.getAddress() : ""%></td>
-          <td><%=!source.getType().equals("") ? source.getType() : ""%></td>
-          <td><%=!source.getSubType().equals("") ? source.getSubType() : ""%></td>
-          <td><%=!source.getLanguage().equals("") ? source.getLanguage() : ""%></td>
-          <td><%=!source.getConnector().getDataConverter().getDataFormat().equals("") ? source.getConnector().getDataConverter().getDataFormat() : ""%></td>
-          <td><%=!source.getAuthentication().getUser().equals("") ? source.getAuthentication().getUser() : ""%></td>
-          <td><%=!source.getAuthentication().getPassword().equals("") ? source.getAuthentication().getPassword().replaceAll(".", "*") : ""%></td>
-          <td><%=!source.getPropertiesDescription().equals("")%></td>
-          <td><%=!source.getConnectorPropertiesDescription().equals("")%></td>
-          <td><%=source.getConnector().getName()%></td>
+          <td><%=!Check.empty(source.getName()) ? source.getName() : ""%></td>
+          <td><%=!Check.empty(source.getAddress()) ? source.getAddress() : ""%></td>
+          <td><%=!Check.empty(source.getType()) ? source.getType() : ""%></td>
+          <td><%=!Check.empty(source.getSubType()) ? source.getSubType() : ""%></td>
+          <td><%=!Check.empty(source.getLanguage()) ? source.getLanguage() : ""%></td>
+          <td><%=!Check.empty(source.getConnector().getDataConverter().getWorkflowDataFormat()) ? source.getConnector().getDataConverter().getWorkflowDataFormat() : ""%></td>
+          <td><%=!Check.empty(source.getAuthentication().getUser()) ? source.getAuthentication().getUser() : ""%></td>
+          <td><%=!Check.empty(source.getAuthentication().getPassword()) ? source.getAuthentication().getPassword().replaceAll(".", "*") : ""%></td>
+          <td><%=!Check.empty(source.getPropertiesDescription())%></td>
+          <td><%=!Check.empty(source.getConnectorPropertiesDescription())%></td>
+          <td><%=!Check.empty(source.getConnector().getName()) ? source.getConnector().getName() : ""%></td>
         </tr>
       <% } %>
     </table>

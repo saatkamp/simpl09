@@ -135,7 +135,7 @@ public class SIMPLCore {
     ResourceManagement resourceManagement = new ResourceManagement();
     
     String schema = resourceManagement.getDataFormatSchema(
-        dataSource.getConnector().getDataConverter().getDataFormat());
+        dataSource.getConnector().getDataConverter().getWorkflowDataFormat());
     InputStream schemaInputStream = new ByteArrayInputStream(schema.getBytes());
     XSDHelper.INSTANCE.define(schemaInputStream, null);
 

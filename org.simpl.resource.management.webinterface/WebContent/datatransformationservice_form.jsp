@@ -21,9 +21,11 @@
 <%
   String id = "";
   String name = "";
-  String implementation = "";
   String connectorDataFormat = "";
   String workflowDataFormat = "";
+  String directionConnectorWorkflow = "";
+  String directionWorkflowConnector = "";
+  String implementation = "";
   
   DataTransformationService dataTransformationService = null;
   String param = null;
@@ -48,9 +50,11 @@
     if (dataTransformationService != null) {
       id = dataTransformationService.getId();
       name = dataTransformationService.getName();
+      connectorDataFormat = dataTransformationService.getConnectorDataFormat();
+      workflowDataFormat = dataTransformationService.getWorkflowDataFormat();
+      directionConnectorWorkflow = dataTransformationService.getDirectionConnectorWorkflow();
+      directionWorkflowConnector = dataTransformationService.getDirectionWorkflowConnector();
       implementation = dataTransformationService.getImplementation();
-      connectorDataFormat = dataTransformationService.getConnectorDataConverter().getDataFormat();
-      workflowDataFormat = dataTransformationService.getWorkflowDataConverter().getDataFormat();
     }
   }
 %>
@@ -78,7 +82,16 @@
     <td><label>Workflow Data Format</label></td>
     <td><%=FormMetaData.getInstance().getDataFormatSelect("workflowDataFormat", workflowDataFormat)%></td>
   </tr>
- 
+  
+  <tr>
+    <td><label>Connector -&gt; Workflow</label></td>
+    <td><input name="directionConnectorWorkflow" type="checkbox" size="100" <%=directionConnectorWorkflow.equals("true") ? "checked" : ""%>/></td>
+  </tr>
+
+  <tr>
+    <td><label>Workflow -&gt; Connector</label></td>
+    <td><input name="directionWorkflowConnector" type="checkbox" size="100" <%=directionWorkflowConnector.equals("true") ? "checked" : ""%>/></td>
+  </tr>
 </table>
 
 <br/>

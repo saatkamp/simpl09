@@ -63,7 +63,7 @@
       username = dataSource.getAuthentication().getUser();
       password = dataSource.getAuthentication().getPassword();
       language = dataSource.getLanguage();
-      dataformat = dataSource.getConnector().getDataConverter().getDataFormat();
+      dataformat = dataSource.getConnector().getDataConverter().getWorkflowDataFormat();
       connectorProperties = dataSource.getConnectorPropertiesDescription();
     }
   }
@@ -99,7 +99,7 @@
   </tr>
 
   <tr>
-    <td><label>Data Format</label></td>
+    <td><label>Workflow Data Format</label></td>
     <td><%=FormMetaData.getInstance().getDataFormatSelect("dataformat", dataformat)%></td>
   </tr>
 
@@ -134,6 +134,13 @@
 </table>
 
 <br/>
+<div style="font-weight:bold">Note on Properties Description:</div>
+The <i>Properties Description</i> must contain a WS-Policy expression in order to be used for late binding.
+<br/><br/>
+<div style="font-weight:bold">Note on Connector Properties Description:</div>
+The <i>Connector Properties Description</i> content is generated from <i>Type</i>, <i>Sub Type</i>, <i>Language</i> and <i>Workflow Data Format</i>, if it is not set explicitly. It is used when saving, to automatically find and assign a connector that has a matching properties description.
+
+<br/><br/>
 <input type="hidden" name="id" value="<%=id%>" />
 <input type="submit" name="dataSourceFormSubmit" value="Save" />
 <input type="submit" name="dataSourceFormSubmit" value="Cancel"/>

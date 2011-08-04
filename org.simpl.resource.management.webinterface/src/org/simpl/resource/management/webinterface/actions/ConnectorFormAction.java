@@ -119,6 +119,16 @@ public class ConnectorFormAction extends HttpServlet {
     Connector connector = new Connector();
     DataConverter dataConverter = new DataConverter();
 
+    // initialize connector
+    connector.setId(parameters.get("id"));
+    connector.setName(parameters.get("name"));
+    connector.setInputDataType(parameters.get("inputDataType"));
+    connector.setOutputDataType(parameters.get("outputDataType"));
+    connector.setImplementation(parameters.get("implementation"));
+    connector.setType(parameters.get("type"));
+    connector.setSubType(parameters.get("subType"));
+    connector.setLanguage(parameters.get("language"));
+
     // use existing connector properties data if no file is chosen
     if (!parameters.get("properties").equals("")) {
       connector.setPropertiesDescription(parameters.get("properties"));
@@ -131,16 +141,8 @@ public class ConnectorFormAction extends HttpServlet {
         connector.setPropertiesDescription("");
       }
     }
-
-    // initialize connector
-    connector.setId(parameters.get("id"));
-    connector.setName(parameters.get("name"));
-    connector.setImplementation(parameters.get("implementation"));
-    connector.setType(parameters.get("type"));
-    connector.setSubType(parameters.get("subtype"));
-    connector.setLanguage(parameters.get("language"));
-
-    dataConverter.setDataFormat(parameters.get("dataformat"));
+    
+    dataConverter.setWorkflowDataFormat(parameters.get("workflowDataFormat"));
     connector.setDataConverter(dataConverter);
 
     return connector;

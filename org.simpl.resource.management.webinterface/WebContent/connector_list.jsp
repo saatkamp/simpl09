@@ -1,8 +1,10 @@
 <%@page import="java.util.List"%>
 <%@page import="java.io.PrintWriter"%>
+<%@page import="org.simpl.resource.management.webinterface.utils.Check"%>
 <%@page import="org.simpl.resource.management.webinterface.*"%>
 <%@page import="org.simpl.resource.management.client.*"%>
 <%@page import="org.simpl.resource.management.data.*"%>
+<%@page import="org.apache.commons.lang.StringEscapeUtils"%>
 <%
   PrintWriter output = response.getWriter();
   ResourceManagement resourceManagement = ResourceManagementClient
@@ -28,8 +30,13 @@
       <tr>
         <td></td>
         <td>Name</td>
+        <td>Input Data Type</td>
+        <td>Output Data Type</td>
         <td>Implementation</td>
-        <td>Data Format</td>
+        <td>Type</td>
+        <td>Sub Type</td>
+        <td>Language</td>
+        <td>Workflow Data Format</td>
         <td>Properties (XML)</td>
         <td>Assigned Data Converter</td>
       </tr>
@@ -37,11 +44,16 @@
       <% for (Connector connector : connectors) { %>
         <tr>
           <td><input type="radio" name="id" value="<%=connector.getId()%>"></input></td>
-          <td><%=!connector.getName().equals("") ? connector.getName() : ""%></td>
-          <td><%=!connector.getImplementation().equals("") ? connector.getImplementation() : ""%></td>
-          <td><%=!connector.getDataConverter().getDataFormat().equals("") ? connector.getDataConverter().getDataFormat() : ""%></td>
-          <td><%=!connector.getPropertiesDescription().equals("")%></td>
-          <td><%=connector.getDataConverter().getName()%></td>
+          <td><%=!Check.empty(connector.getName()) ? connector.getName() : ""%></td>
+          <td><%=!Check.empty(connector.getInputDataType()) ? StringEscapeUtils.escapeHtml(connector.getInputDataType()) : ""%></td>
+          <td><%=!Check.empty(connector.getOutputDataType()) ? StringEscapeUtils.escapeHtml(connector.getOutputDataType()) : ""%></td>
+          <td><%=!Check.empty(connector.getImplementation()) ? connector.getImplementation() : ""%></td>
+          <td><%=!Check.empty(connector.getType()) ? connector.getType() : ""%></td>
+          <td><%=!Check.empty(connector.getSubType()) ? connector.getSubType() : ""%></td>
+          <td><%=!Check.empty(connector.getLanguage()) ? connector.getLanguage() : ""%></td>
+          <td><%=!Check.empty(connector.getDataConverter().getWorkflowDataFormat()) ? connector.getDataConverter().getWorkflowDataFormat() : ""%></td>
+          <td><%=!Check.empty(connector.getPropertiesDescription())%></td>
+          <td><%=!Check.empty(connector.getDataConverter().getName()) ? connector.getDataConverter().getName() : ""%></td>
         </tr>
       <% } %>
     </table>
