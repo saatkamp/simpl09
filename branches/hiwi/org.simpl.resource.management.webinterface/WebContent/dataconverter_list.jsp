@@ -1,8 +1,10 @@
 <%@page import="java.util.List"%>
 <%@page import="java.io.PrintWriter"%>
+<%@page import="org.simpl.resource.management.webinterface.utils.Check"%>
 <%@page import="org.simpl.resource.management.webinterface.*"%>
 <%@page import="org.simpl.resource.management.client.*"%>
 <%@page import="org.simpl.resource.management.data.*"%>
+<%@page import="org.apache.commons.lang.StringEscapeUtils"%>
 <%
   PrintWriter output = response.getWriter();
   ResourceManagement resourceManagement = ResourceManagementClient
@@ -28,7 +30,11 @@
       <tr>
         <td></td>
         <td>Name</td>
-        <td>Data Format</td>
+        <td>Input Data Type</td>
+        <td>Output Data Type</td>
+        <td>Workflow Data Format</td>
+        <td>Output -&gt; Workflow</td>
+        <td>Workflow -&gt; Input</td>
         <td>Implementation</td>
         <td>XML Schema (XML)</td>
       </tr>
@@ -36,10 +42,14 @@
       <% for (DataConverter dataConverter : dataConverters) { %>
         <tr>
           <td><input type="radio" name="id" value="<%=dataConverter.getId()%>"></input></td>
-          <td><%=!dataConverter.getName().equals("") ? dataConverter.getName() : ""%></td>
-          <td><%=!dataConverter.getDataFormat().equals("") ? dataConverter.getDataFormat() : ""%></td>
-          <td><%=!dataConverter.getImplementation().equals("") ? dataConverter.getImplementation() : ""%></td>
-          <td><%=!dataConverter.getXmlSchema().equals("") ? "true" : "false"%></td>
+          <td><%=!Check.empty(dataConverter.getName()) ? dataConverter.getName() : ""%></td>
+          <td><%=!Check.empty(dataConverter.getInputDataType()) ? StringEscapeUtils.escapeHtml(dataConverter.getInputDataType()) : ""%></td>
+          <td><%=!Check.empty(dataConverter.getOutputDataType()) ? StringEscapeUtils.escapeHtml(dataConverter.getOutputDataType()) : ""%></td>
+          <td><%=!Check.empty(dataConverter.getWorkflowDataFormat()) ? dataConverter.getWorkflowDataFormat() : ""%></td>
+          <td><%=!Check.empty(dataConverter.getDirectionWorkflowInput()) ? dataConverter.getDirectionWorkflowInput() : "false"%></td>
+          <td><%=!Check.empty(dataConverter.getDirectionOutputWorkflow()) ? dataConverter.getDirectionOutputWorkflow() : "false"%></td>
+          <td><%=!Check.empty(dataConverter.getImplementation()) ? dataConverter.getImplementation() : ""%></td>
+          <td><%=!Check.empty(dataConverter.getXmlSchema())%></td>
         </tr>
       <% } %>
     </table>

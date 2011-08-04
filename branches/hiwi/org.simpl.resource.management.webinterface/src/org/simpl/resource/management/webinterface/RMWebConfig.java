@@ -34,7 +34,9 @@ public class RMWebConfig {
   private static final RMWebConfig instance = new RMWebConfig();
 
   Element resourceManagementElement = null;
-
+  String configFileLocation;
+  
+  
   /**
    * Reads the config file into variables.
    */
@@ -52,6 +54,8 @@ public class RMWebConfig {
     configFilePath = configFilePath.substring(0, configFilePath.indexOf("WEB-INF") + 7)
         + File.separator + "conf" + File.separator;
 
+    this.configFileLocation = configFilePath + CONFIG_FILE_NAME;
+    
     System.out.println("Loading " + CONFIG_FILE_NAME + " from '" + configFilePath + CONFIG_FILE_NAME + "'.");
     
     try {
@@ -95,5 +99,9 @@ public class RMWebConfig {
     }
 
     return address;
+  }
+  
+  public String getConfigFileLocation() {
+    return this.configFileLocation;
   }
 }

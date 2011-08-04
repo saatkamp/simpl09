@@ -87,7 +87,7 @@ public class FormMetaData {
   public String getSubTypeSelect(String selectedItem) throws Exception {
     this.retrieveSubTypes();
     
-    String select = this.createSelectElement("subtype", selectedItem, subTypes);
+    String select = this.createSelectElement("subType", selectedItem, subTypes);
 
     return select;
   }
@@ -127,8 +127,8 @@ public class FormMetaData {
       DataConverterList dataConverters = resourceManagement.getAllDataConverters();
       
       for (DataConverter dataConverter : dataConverters.getDataConverters()) {
-        if (!this.dataFormats.contains(dataConverter.getDataFormat())) {
-          this.dataFormats.add(dataConverter.getDataFormat());
+        if (!this.dataFormats.contains(dataConverter.getWorkflowDataFormat())) {
+          this.dataFormats.add(dataConverter.getWorkflowDataFormat());
         }
       }
     }

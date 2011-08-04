@@ -24,14 +24,12 @@ import org.jdom.input.SAXBuilder;
 import org.simpl.resource.management.data.Authentication;
 import org.simpl.resource.management.data.Connector;
 import org.simpl.resource.management.data.ConnectorList;
-import org.simpl.resource.management.data.DataTransformationService;
-import org.simpl.resource.management.data.DataTransformationServiceList;
 import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataConverterList;
 import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.DataSourceList;
-import org.simpl.resource.management.data.LateBinding;
-import org.simpl.resource.management.data.Strategy;
+import org.simpl.resource.management.data.DataTransformationService;
+import org.simpl.resource.management.data.DataTransformationServiceList;
 import org.simpl.resource.management.data.StringList;
 import org.simpl.resource.management.db.DataSourceService;
 import org.xml.sax.InputSource;
@@ -69,44 +67,19 @@ public class ResourceManagement {
    */
   final static String defaultPropertiesDescription = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <properties_description xmlns=\"http://org.simpl.resource.management/connectors/properties_description\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://org.simpl.resource.management/connectors/properties_description connectors.xsd \"><type>%s</type><subType>%s</subType><language>%s</language><dataFormat>%s</dataFormat></properties_description>";
 
+  // for data retrieval
   DataSourceService dataSourceService = new DataSourceService();
   String dataSourceType = null;
   DataSource rmDataSource = ResourceManagementConfig.getInstance().getDataSource();
 
-  Document configDoc = null;
-  Element root = null;
-  List<Element> rows = null;
-  SAXBuilder saxBuilder = new SAXBuilder();
+  // dataconverters relation fields
+  String[] dataconvertersFields = { "id", "name", "input_datatype", "output_datatype",
+      "workflow_dataformat", "direction_output_workflow", "direction_workflow_input",
+      "implementation", "xml_schema" };
 
-  /**
-   * Returns all data sources.
-   * 
-   * @return
-   * @throws Exception
-   */
-  @WebMethod(action = "getAllDataSources")
-  public DataSourceList getAllDataSources() throws Exception {
-    ArrayList<DataSource> dataSources = null;
-    DataSourceList dataSourceList = new DataSourceList();
-    String statement = "";
-    String result = null;
-
-    statement += "SELECT datasources.*, connectors.name AS connector_name, connectors.implementation AS connector_implementation, connector_properties_description ";
-    statement += "FROM datasources ";
-    statement += "LEFT JOIN connectors ON (datasources.connector_id = connectors.id) ";
-    statement += "ORDER BY id ASC";
-
-    // retrieve data sources
-    result = dataSourceService.retrieveData(rmDataSource, statement);
-
-    if (result != null) {
-      dataSources = this.getDataSourcesFromResult(result);
-
-      dataSourceList.getDataSources().addAll(dataSources);
-    }
-
-    return dataSourceList;
-  }
+  // connectors fields
+  String[] connectorsFields = { "id", "name", "input_datatype", "output_datatype",
+      "implementation", "properties_description" };
 
   /**
    * Returns all data sources filtered by type.
@@ -124,11 +97,11 @@ public class ResourceManagement {
     String result = null;
 
     // build select statement
-    statement += "SELECT datasources.*, connectors.name AS connector_name, connectors.implementation AS connector_implementation ";
+    statement += "SELECT datasources.*, " + this.getUniqueFieldNames(connectorsFields, "connectors") + ", " + this.getUniqueFieldNames(dataconvertersFields, "dataconverters") + " ";
     statement += "FROM datasources ";
     statement += "LEFT JOIN connectors ON (datasources.connector_id = connectors.id) ";
-    statement += "WHERE getDataSourceXMLProperty('type', datasources.connector_properties_description) = '"
-        + type + "' ";
+    statement += "LEFT JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
+    statement += "WHERE getDataSourceXMLProperty('type', datasources.connector_properties_description) = '" + type + "' ";
     statement += "ORDER BY datasources.id ASC";
 
     // retrieve data sources
@@ -157,13 +130,12 @@ public class ResourceManagement {
     String result = null;
 
     // build select statement
-    statement += "SELECT datasources.*, connectors.name AS connector_name, connectors.implementation AS connector_implementation, connector_properties_description ";
+    statement += "SELECT datasources.*, " + this.getUniqueFieldNames(connectorsFields, "connectors") + ", " + this.getUniqueFieldNames(dataconvertersFields, "dataconverters") + " ";
     statement += "FROM datasources ";
     statement += "LEFT JOIN connectors ON (datasources.connector_id = connectors.id) ";
-    statement += "WHERE getDataSourceXMLProperty('type', connector_properties_description) = '"
-        + type + "' ";
-    statement += "AND getDataSourceXMLProperty('subType', connector_properties_description) LIKE '"
-        + subType + "' ";
+    statement += "LEFT JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
+    statement += "WHERE getDataSourceXMLProperty('type', connector_properties_description) = '" + type + "' ";
+    statement += "AND getDataSourceXMLProperty('subType', connector_properties_description) LIKE '" + subType + "' ";
     statement += "ORDER BY datasources.id ASC";
 
     // retrieve data sources
@@ -192,9 +164,10 @@ public class ResourceManagement {
     String result = null;
 
     // build select statement
-    statement += "SELECT datasources.*, connectors.name AS connector_name, connectors.implementation AS connector_implementation, connector_properties_description ";
+    statement += "SELECT datasources.*, " + this.getUniqueFieldNames(connectorsFields, "connectors") + ", " + this.getUniqueFieldNames(dataconvertersFields, "dataconverters") + " ";
     statement += "FROM datasources ";
     statement += "LEFT JOIN connectors ON (datasources.connector_id = connectors.id) ";
+    statement += "LEFT JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
     statement += "WHERE logical_name LIKE '" + name + "'";
 
     // retrieve data source
@@ -226,11 +199,12 @@ public class ResourceManagement {
     String result = null;
 
     // build select statement
-    statement += "SELECT datasources.*, connectors.name AS connector_name, connectors.implementation AS connector_implementation, connector_properties_description ";
+    statement += "SELECT datasources.*, " + this.getUniqueFieldNames(connectorsFields, "connectors") + ", " + this.getUniqueFieldNames(dataconvertersFields, "dataconverters") + " ";
     statement += "FROM datasources ";
     statement += "LEFT JOIN connectors ON (datasources.connector_id = connectors.id) ";
+    statement += "LEFT JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
     statement += "WHERE datasources.id = " + id;
-
+    
     // retrieve data source
     result = dataSourceService.retrieveData(rmDataSource, statement);
     dataSources = this.getDataSourcesFromResult(result);
@@ -258,16 +232,16 @@ public class ResourceManagement {
     ArrayList<Connector> connectors = null;
     String statement = "";
     String result = null;
-
+       
     // build select statement
-    statement += "SELECT connectors.*, dataconverters.dataformat AS dataconverter_dataformat, dataconverters.implementation AS dataconverter_implementation, dataconverters.xml_schema AS dataconverter_xml_schema ";
+    statement += "SELECT connectors.*, " + this.getUniqueFieldNames(dataconvertersFields, "dataconverters") + " ";
     statement += "FROM connectors ";
     statement += "LEFT JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
     statement += "WHERE connectors.id = " + id;
 
     // retrieve connnector
     result = dataSourceService.retrieveData(rmDataSource, statement);
-    connectors = this.getConnectorsFromResult(result);
+    connectors = this.getConnectorsFromResult(result, "");
 
     connectorList.getConnectors().addAll(connectors);
 
@@ -301,7 +275,7 @@ public class ResourceManagement {
 
     // retrieve data converter
     result = dataSourceService.retrieveData(rmDataSource, statement);
-    dataConverters = this.getDataConvertersFromResult(result);
+    dataConverters = this.getDataConvertersFromResult(result, "");
 
     dataConverterList.getDataConverters().addAll(dataConverters);
 
@@ -320,7 +294,8 @@ public class ResourceManagement {
    * @throws Exception
    */
   @WebMethod(action = "getDataTransformationServiceById")
-  public DataTransformationService getDataTransformationServiceById(@WebParam(name = "id") int id) throws Exception {
+  public DataTransformationService getDataTransformationServiceById(
+      @WebParam(name = "id") int id) throws Exception {
     DataTransformationService resultDataTransformationService = new DataTransformationService();
     DataTransformationServiceList dataTransformationServiceList = new DataTransformationServiceList();
     ArrayList<DataTransformationService> dataTransformationServices = null;
@@ -328,23 +303,52 @@ public class ResourceManagement {
     String result = null;
 
     // build select statement
-    statement += "SELECT datatransformationservices.*, connector_dataconverters.dataformat connector_dataconverter_dataformat, workflow_dataconverters.dataformat workflow_dataconverter_dataformat ";
+    statement += "SELECT * ";
     statement += "FROM datatransformationservices ";
-    statement += "LEFT JOIN dataconverters connector_dataconverters ON (datatransformationservices.connector_dataconverter_id = connector_dataconverters.id) ";
-    statement += "LEFT JOIN dataconverters workflow_dataconverters ON (datatransformationservices.workflow_dataconverter_id = workflow_dataconverters.id) ";
     statement += "WHERE datatransformationservices.id = " + id;
 
     // retrieve data transformation service
     result = dataSourceService.retrieveData(rmDataSource, statement);
     dataTransformationServices = this.getDataTransformationServicesFromResult(result);
 
-    dataTransformationServiceList.getDataTransformationServices().addAll(dataTransformationServices);
+    dataTransformationServiceList.getDataTransformationServices().addAll(
+        dataTransformationServices);
 
     if (dataTransformationServices.size() > 0) {
       resultDataTransformationService = dataTransformationServices.get(0);
     }
 
     return resultDataTransformationService;
+  }
+
+  /**
+   * Returns all data sources.
+   * 
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getAllDataSources")
+  public DataSourceList getAllDataSources() throws Exception {
+    ArrayList<DataSource> dataSources = null;
+    DataSourceList dataSourceList = new DataSourceList();
+    String statement = "";
+    String result = null;
+  
+    statement += "SELECT datasources.*, " + this.getUniqueFieldNames(connectorsFields, "connectors") + ", " + this.getUniqueFieldNames(dataconvertersFields, "dataconverters") + " ";
+    statement += "FROM datasources ";
+    statement += "LEFT JOIN connectors ON (datasources.connector_id = connectors.id) ";
+    statement += "LEFT JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
+    statement += "ORDER BY id ASC";
+    
+    // retrieve data sources
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+  
+    if (result != null) {
+      dataSources = this.getDataSourcesFromResult(result);
+      dataSourceList.getDataSources().addAll(dataSources);
+    }
+  
+    return dataSourceList;
   }
 
   /**
@@ -355,59 +359,20 @@ public class ResourceManagement {
    * @throws JDOMException
    * @throws IOException
    */
-  @SuppressWarnings("unchecked")
   @WebMethod(action = "getAllConnectors")
   public ConnectorList getAllConnectors() throws Exception {
     ConnectorList connectors = new ConnectorList();
     String statement = "";
     String result;
 
-    statement += "SELECT connectors.id, connectors.name, connectors.implementation, connectors.properties_description, dataconverters.name AS dataconverter_name, dataconverters.dataformat AS dataconverter_dataformat, dataconverters.implementation AS dataconverter_implementation ";
+    statement += "SELECT connectors.*, " + this.getUniqueFieldNames(dataconvertersFields, "dataconverters") + " ";
     statement += "FROM connectors ";
     statement += "LEFT JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
     statement += "ORDER BY id ASC";
 
     result = dataSourceService.retrieveData(rmDataSource, statement);
 
-    Document configDoc = null;
-    Element root = null;
-    List<Element> rows = null;
-    SAXBuilder saxBuilder = new SAXBuilder();
-
-    // transform the document to a list of data converters
-    configDoc = saxBuilder.build(new InputSource(new StringReader(result)));
-    root = configDoc.getRootElement();
-    rows = root.getChild("table").getChildren("row");
-
-    for (Element row : rows) {
-      Connector connector = new Connector();
-      DataConverter dataConverter = new DataConverter();
-      List<Element> columns = row.getChildren("column");
-
-      for (Element column : columns) {
-        if (column.getAttribute("name").getValue().equals("id")) {
-          connector.setId(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("name")) {
-          connector.setName(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("implementation")) {
-          connector.setImplementation(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("properties_description")) {
-          connector.setPropertiesDescription(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("dataconverter_name")) {
-          dataConverter.setName(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("dataconverter_dataformat")) {
-          dataConverter.setDataFormat(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("dataconverter_implementation")) {
-          dataConverter.setImplementation(column.getValue());
-        }
-      }
-
-      connector.setDataConverter(dataConverter);
-      connectors.getConnectors().add(connector);
-    }
+    connectors.getConnectors().addAll(this.getConnectorsFromResult(result, ""));
 
     return connectors;
   }
@@ -420,43 +385,13 @@ public class ResourceManagement {
    * @throws JDOMException
    * @throws IOException
    */
-  @SuppressWarnings("unchecked")
   @WebMethod(action = "getAllDataConverters")
   public DataConverterList getAllDataConverters() throws Exception {
     DataConverterList dataConverters = new DataConverterList();
     String statement = "SELECT * FROM dataconverters ORDER BY id ASC";
     String result = dataSourceService.retrieveData(rmDataSource, statement);
 
-    Document configDoc = null;
-    Element root = null;
-    List<Element> rows = null;
-    SAXBuilder saxBuilder = new SAXBuilder();
-
-    // transform the document to a list of data converters
-    configDoc = saxBuilder.build(new InputSource(new StringReader(result)));
-    root = configDoc.getRootElement();
-    rows = root.getChild("table").getChildren("row");
-
-    for (Element row : rows) {
-      DataConverter dataConverter = new DataConverter();
-      List<Element> columns = row.getChildren("column");
-
-      for (Element column : columns) {
-        if (column.getAttribute("name").getValue().equals("id")) {
-          dataConverter.setId(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("name")) {
-          dataConverter.setName(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("dataformat")) {
-          dataConverter.setDataFormat(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("implementation")) {
-          dataConverter.setImplementation(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("xml_schema")) {
-          dataConverter.setXmlSchema(column.getValue());
-        }
-      }
-
-      dataConverters.getDataConverters().add(dataConverter);
-    }
+    dataConverters.getDataConverters().addAll(this.getDataConvertersFromResult(result, ""));
 
     return dataConverters;
   }
@@ -469,71 +404,20 @@ public class ResourceManagement {
    * @throws JDOMException
    * @throws IOException
    */
-  @SuppressWarnings("unchecked")
   @WebMethod(action = "getAllDataTransformationServices")
-  public DataTransformationServiceList getAllDataTransformationServices() throws Exception {
+  public DataTransformationServiceList getAllDataTransformationServices()
+      throws Exception {
     DataTransformationServiceList dataTransformationServices = new DataTransformationServiceList();
     String statement = "";
     String result;
 
-    statement += "SELECT datatransformationservices.id, datatransformationservices.name, datatransformationservices.implementation, ";
-    statement += "  t2.dataformat AS connector_dataconverter_dataformat, t2.name AS connector_dataconverter_name, t2.implementation AS connector_dataconverter_implementation, ";
-    statement += "  t3.dataformat AS workflow_dataconverter_dataformat, t3.name AS workflow_dataconverter_name, t3.implementation AS workflow_dataconverter_implementation ";
+    statement += "SELECT * ";
     statement += "FROM datatransformationservices ";
-    statement += "LEFT JOIN dataconverters AS t2 ON (datatransformationservices.connector_dataconverter_id = t2.id) ";
-    statement += "LEFT JOIN dataconverters AS t3 ON (datatransformationservices.workflow_dataconverter_id = t3.id) ";
     statement += "ORDER BY id ASC";
 
     result = dataSourceService.retrieveData(rmDataSource, statement);
 
-    Document configDoc = null;
-    Element root = null;
-    List<Element> rows = null;
-    SAXBuilder saxBuilder = new SAXBuilder();
-
-    // transform the document to a list of data converters
-    configDoc = saxBuilder.build(new InputSource(new StringReader(result)));
-    root = configDoc.getRootElement();
-    rows = root.getChild("table").getChildren("row");
-
-    for (Element row : rows) {
-      DataTransformationService dataTransformationService = new DataTransformationService();
-      DataConverter connectorDataConverter = new DataConverter();
-      DataConverter workflowDataConverter = new DataConverter();
-      List<Element> columns = row.getChildren("column");
-
-      for (Element column : columns) {
-        if (column.getAttribute("name").getValue().equals("id")) {
-          dataTransformationService.setId(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("name")) {
-          dataTransformationService.setName(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("implementation")) {
-          dataTransformationService.setImplementation(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("connector_dataconverter_dataformat")) {
-          connectorDataConverter.setDataFormat(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("connector_dataconverter_name")) {
-          connectorDataConverter.setName(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("connector_dataconverter_implementation")) {
-          connectorDataConverter.setImplementation(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("workflow_dataconverter_name")) {
-          workflowDataConverter.setName(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("workflow_dataconverter_dataformat")) {
-          workflowDataConverter.setDataFormat(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("workflow_dataconverter_implementation")) {
-          workflowDataConverter.setImplementation(column.getValue());
-        }
-      }
-
-      dataTransformationService.setConnectorDataConverter(connectorDataConverter);
-      dataTransformationService.setWorkflowDataConverter(workflowDataConverter);
-      dataTransformationServices.getDataTransformationServices().add(dataTransformationService);
-    }
+    dataTransformationServices.getDataTransformationServices().addAll(this.getDataTransformationServicesFromResult(result));
 
     return dataTransformationServices;
   }
@@ -576,10 +460,13 @@ public class ResourceManagement {
 
     // extract types from the properties description
     for (String propertyDescription : propertiesDescriptions) {
-      stringList.getItems().add(
-          this.getFromPropertiesDescription("type", propertyDescription));
+      String type = this.getFromPropertiesDescription("type", propertyDescription);
+      
+      if (type != null) {
+        stringList.getItems().add(type);
+      }
     }
-
+    
     // remove duplicates
     HashSet<String> h = new HashSet<String>(stringList.getItems());
     stringList.getItems().clear();
@@ -587,7 +474,7 @@ public class ResourceManagement {
 
     // sort items
     Collections.sort(stringList.getItems());
-
+    
     return stringList;
   }
 
@@ -615,7 +502,7 @@ public class ResourceManagement {
       String typeFromResult = this.getFromPropertiesDescription("type",
           propertyDescription);
 
-      if (typeFromResult.equals(type)) {
+      if (typeFromResult != null && typeFromResult.equals(type)) {
         stringList.getItems().add(
             this.getFromPropertiesDescription("subType", propertyDescription));
       }
@@ -656,7 +543,7 @@ public class ResourceManagement {
       String typeFromResult = this.getFromPropertiesDescription("subType",
           propertyDescription);
 
-      if (typeFromResult.equals(subType)) {
+      if (typeFromResult != null && typeFromResult.equals(subType)) {
         stringList.getItems().add(
             this.getFromPropertiesDescription("language", propertyDescription));
       }
@@ -674,9 +561,9 @@ public class ResourceManagement {
   }
 
   /**
-   * Returns the xml schema of a data format.
+   * Returns the xml schema of a workflow data format.
    * 
-   * @param dataSource
+   * @param workflowDataFormat
    * @return
    * @throws Exception
    */
@@ -687,7 +574,7 @@ public class ResourceManagement {
     String result = null;
 
     statement += "SELECT xml_schema FROM dataconverters ";
-    statement += "WHERE dataformat LIKE '" + dataFormat + "'";
+    statement += "WHERE workflow_dataformat LIKE '" + dataFormat + "'";
 
     result = dataSourceService.retrieveData(rmDataSource, statement);
 
@@ -722,7 +609,8 @@ public class ResourceManagement {
   }
 
   /**
-   * Returns a list of data formats that are available for the given data source.
+   * Returns a list of workflow data formats that are available for the given data source.
+   * The result depends on the available connectors and their used data converters.
    * 
    * @param dataSource
    * @return
@@ -734,7 +622,7 @@ public class ResourceManagement {
     String statement = "";
     String result = null;
 
-    statement += "SELECT dataconverters.dataformat ";
+    statement += "SELECT dataconverters.workflow_dataformat ";
     statement += "FROM connectors ";
     statement += "INNER JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
     statement += "WHERE getConnectorXMLProperty('type', connectors.properties_description) = '"
@@ -746,8 +634,8 @@ public class ResourceManagement {
 
     result = dataSourceService.retrieveData(rmDataSource, statement);
 
-    stringList.getItems().addAll(getColumnValuesFromResult(result, "name"));
-
+    stringList.getItems().addAll(getColumnValuesFromResult(result, "workflow_dataformat"));
+    
     // sort items
     Collections.sort(stringList.getItems());
 
@@ -755,8 +643,8 @@ public class ResourceManagement {
   }
 
   /**
-   * Returns a list of data formats that can be converted to and from the data format of
-   * the given data source.
+   * Returns a list of workflow data formats that can be converted to and from the
+   * workflow data format of the given data source.
    * 
    * @param dataSource
    * @return
@@ -769,11 +657,11 @@ public class ResourceManagement {
     String statement = "";
     String result = null;
 
-    statement += "SELECT dataconverters.dataformat ";
+    statement += "SELECT replace(datatransformationservices.workflow_dataformat || datatransformationservices.connector_dataformat, dataconverters.workflow_dataformat, '') AS dataformat ";
     statement += "FROM datasources ";
     statement += "INNER JOIN connectors ON (datasources.connector_id = connectors.id) ";
-    statement += "INNER JOIN datatransformationservices ON (datatransformationservices.connector_dataconverter_id = connectors.dataconverter_id OR datatransformationservices.workflow_dataconverter_id = connectors.dataconverter_id) ";
-    statement += "INNER JOIN dataconverters ON (datatransformationservices.connector_dataconverter_id = dataconverters.id OR datatransformationservices.workflow_dataconverter_id = dataconverters.id) ";
+    statement += "INNER JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
+    statement += "INNER JOIN datatransformationservices ON ((datatransformationservices.direction_connector_workflow = 'true' AND datatransformationservices.connector_dataformat = dataconverters.workflow_dataformat) OR (datatransformationservices.direction_workflow_connector = 'true' AND datatransformationservices.workflow_dataformat = dataconverters.workflow_dataformat)) ";
     statement += "WHERE datasources.id = " + dataSource.getId();
 
     result = dataSourceService.retrieveData(rmDataSource, statement);
@@ -784,10 +672,6 @@ public class ResourceManagement {
     HashSet<String> h = new HashSet<String>(stringList.getItems());
     stringList.getItems().clear();
     stringList.getItems().addAll(h);
-
-    // remove data format of the data source itself
-    stringList.getItems().remove(
-        dataSource.getConnector().getDataConverter().getDataFormat());
 
     // sort items
     Collections.sort(stringList.getItems());
@@ -808,7 +692,7 @@ public class ResourceManagement {
     String statement = null;
     String propertiesDescription = dataSource.getPropertiesDescription();
 
-    // handle empty propertiesDescription value
+    // handle empty properties description value
     if (propertiesDescription == null || propertiesDescription.equals("")) {
       propertiesDescription = "NULL";
     } else {
@@ -816,22 +700,26 @@ public class ResourceManagement {
     }
 
     // build SQL insert statement
-    statement = "INSERT INTO datasources (logical_name, interface_description, connector_properties_description, properties_description, security_username, security_password) VALUES (";
+    statement = "INSERT INTO datasources (logical_name, security_username, security_password, interface_description, properties_description, connector_properties_description) VALUES (";
     statement += "'" + dataSource.getName() + "', ";
-    statement += "'" + dataSource.getAddress() + "', ";
-
-    if (!dataSource.getConnectorPropertiesDescription().equals("")) {
-      statement += "'" + dataSource.getConnectorPropertiesDescription() + "', ";
-    } else {
-      statement += "'"
-          + String.format(defaultConnectorPropertiesDescription, dataSource.getType(),
-              dataSource.getSubType(), dataSource.getLanguage(), dataSource
-                  .getConnector().getDataConverter().getDataFormat()) + "', ";
-    }
-
-    statement += "" + propertiesDescription + ", ";
     statement += "'" + dataSource.getAuthentication().getUser() + "', ";
-    statement += "'" + dataSource.getAuthentication().getPassword() + "'";
+    statement += "'" + dataSource.getAuthentication().getPassword() + "', ";
+    statement += "'" + dataSource.getAddress() + "', ";
+    statement += propertiesDescription + ", ";
+    
+      if (dataSource.getConnectorPropertiesDescription() == null 
+          || dataSource.getConnectorPropertiesDescription().equals("")) {
+        statement += "NULL";
+      } else if (!dataSource.getConnectorPropertiesDescription().equals("")) {
+        statement += "'" + dataSource.getConnectorPropertiesDescription() + "'";
+      } else {
+        statement += "'" + String.format(defaultConnectorPropertiesDescription, 
+            dataSource.getType(),
+            dataSource.getSubType(), 
+            dataSource.getLanguage(), 
+            dataSource.getConnector().getDataConverter().getWorkflowDataFormat()) + "',";
+      }
+    
     statement += ")";
 
     // add data source
@@ -851,21 +739,32 @@ public class ResourceManagement {
   public boolean addConnector(Connector connector) throws Exception {
     boolean successful = false;
     String statement = null;
-
-    // build SQL insert statement
-    statement = "INSERT INTO connectors (name, implementation, properties_description) VALUES (";
-    statement += "'" + connector.getName() + "', ";
-    statement += "'" + connector.getImplementation() + "', ";
-
-    if (!connector.getPropertiesDescription().equals("")) {
-      statement += "'" + connector.getPropertiesDescription() + "' ";
+    String propertiesDescription = connector.getPropertiesDescription();
+    
+    // handle empty properties description value
+    if (propertiesDescription == null || propertiesDescription.equals("")) {
+      propertiesDescription = "NULL";
     } else {
-      statement += "'"
-          + String.format(defaultPropertiesDescription, connector.getType(), connector
-              .getSubType(), connector.getLanguage(), connector.getDataConverter()
-              .getDataFormat()) + "' ";
+      propertiesDescription = "'" + propertiesDescription + "'";
     }
-
+    
+    // build SQL insert statement
+    statement = "INSERT INTO connectors (name, input_datatype, output_datatype, implementation, properties_description) VALUES (";
+    statement += "'" + connector.getName() + "', ";
+    statement += "'" + connector.getInputDataType() + "', ";
+    statement += "'" + connector.getOutputDataType() + "', ";
+    statement += "'" + connector.getImplementation() + "', ";
+    
+    if (propertiesDescription.equals("NULL")) {
+      statement += "'" + String.format(defaultPropertiesDescription, 
+          connector.getType(), 
+          connector.getSubType(), 
+          connector.getLanguage(), 
+          connector.getDataConverter().getWorkflowDataFormat()) + "'";
+    } else {
+      statement += propertiesDescription;
+    }
+    
     statement += ")";
 
     // add connector
@@ -895,13 +794,17 @@ public class ResourceManagement {
     }
 
     // build SQL insert statement
-    statement = "INSERT INTO dataconverters (name, dataformat, implementation, xml_schema) VALUES (";
+    statement = "INSERT INTO dataconverters (name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation, xml_schema) VALUES (";
     statement += "'" + dataConverter.getName() + "', ";
-    statement += "'" + dataConverter.getDataFormat() + "', ";
+    statement += "'" + dataConverter.getInputDataType() + "', ";
+    statement += "'" + dataConverter.getOutputDataType() + "', ";
+    statement += "'" + dataConverter.getWorkflowDataFormat() + "', ";
+    statement += "'" + dataConverter.getDirectionOutputWorkflow() + "', ";
+    statement += "'" + dataConverter.getDirectionWorkflowInput() + "', ";
     statement += "'" + dataConverter.getImplementation() + "', ";
     statement += xmlSchema;
     statement += ")";
-
+    
     // add data format
     successful = dataSourceService.executeStatement(rmDataSource, statement);
 
@@ -916,18 +819,19 @@ public class ResourceManagement {
    * @throws Exception
    */
   @WebMethod(action = "addDataTransformationService")
-  public boolean addDataTransformationService(DataTransformationService dataTransformationService) throws Exception {
+  public boolean addDataTransformationService(
+      DataTransformationService dataTransformationService) throws Exception {
     boolean successful = false;
     String statement = null;
 
     // build SQL insert statement
-    statement = "INSERT INTO datatransformationservices (name, implementation, connector_dataconverter_id, workflow_dataconverter_id) VALUES (";
+    statement = "INSERT INTO datatransformationservices (name, connector_dataformat, workflow_dataformat, direction_connector_workflow, direction_workflow_connector, implementation) VALUES (";
     statement += "'" + dataTransformationService.getName() + "', ";
-    statement += "'" + dataTransformationService.getImplementation() + "', ";
-    statement += "(SELECT id FROM dataconverters WHERE dataformat LIKE '"
-        + dataTransformationService.getConnectorDataConverter().getDataFormat() + "'), ";
-    statement += "(SELECT id FROM dataconverters WHERE dataformat LIKE '"
-        + dataTransformationService.getWorkflowDataConverter().getDataFormat() + "')";
+    statement += "'" + dataTransformationService.getConnectorDataFormat() + "', ";
+    statement += "'" + dataTransformationService.getWorkflowDataFormat() + "', ";
+    statement += "'" + dataTransformationService.getDirectionConnectorWorkflow() + "', ";
+    statement += "'" + dataTransformationService.getDirectionWorkflowConnector() + "', ";
+    statement += "'" + dataTransformationService.getImplementation() + "' ";
     statement += ")";
 
     // add data transformation service
@@ -958,24 +862,24 @@ public class ResourceManagement {
 
     // build SQL update statement
     statement = "UPDATE datasources SET ";
-    statement += "logical_name='" + dataSource.getName() + "',";
-    statement += "interface_description='"
-        + dataSource.getAddress().replace("\\", "\\\\") + "',";
-
+    statement += "logical_name='" + dataSource.getName() + "', ";
+    statement += "security_username='" + dataSource.getAuthentication().getUser() + "', ";
+    statement += "security_password='" + dataSource.getAuthentication().getPassword() + "', ";
+    statement += "interface_description='" + dataSource.getAddress().replace("\\", "\\\\") + "', ";
+    statement += "properties_description=" + propertiesDescription + ", ";
+    
     if (!dataSource.getConnectorPropertiesDescription().equals("")) {
       statement += "connector_properties_description='"
-          + dataSource.getConnectorPropertiesDescription() + "', ";
+          + dataSource.getConnectorPropertiesDescription() + "'";
     } else {
       statement += "connector_properties_description='"
-          + String.format(defaultConnectorPropertiesDescription, dataSource.getType(),
-              dataSource.getSubType(), dataSource.getLanguage(), dataSource
-                  .getConnector().getDataConverter().getDataFormat()) + "', ";
+          + String.format(defaultConnectorPropertiesDescription, 
+              dataSource.getType(),
+              dataSource.getSubType(), 
+              dataSource.getLanguage(), 
+              dataSource.getConnector().getDataConverter().getWorkflowDataFormat()) + "'";
     }
-
-    statement += "security_username='" + dataSource.getAuthentication().getUser() + "',";
-    statement += "security_password='" + dataSource.getAuthentication().getPassword()
-        + "',";
-    statement += "properties_description=" + propertiesDescription + "";
+    
     statement += " WHERE id=" + dataSource.getId();
 
     // update data source
@@ -999,6 +903,8 @@ public class ResourceManagement {
     // build SQL update statement
     statement += "UPDATE connectors SET ";
     statement += "name='" + connector.getName() + "',";
+    statement += "input_datatype='" + connector.getInputDataType() + "',";
+    statement += "output_datatype='" + connector.getOutputDataType() + "',";
     statement += "implementation='" + connector.getImplementation() + "',";
 
     if (!connector.getPropertiesDescription().equals("")) {
@@ -1006,9 +912,11 @@ public class ResourceManagement {
           + "' ";
     } else {
       statement += "properties_description='"
-          + String.format(defaultPropertiesDescription, connector.getType(), connector
-              .getSubType(), connector.getLanguage(), connector.getDataConverter()
-              .getDataFormat()) + "' ";
+          + String.format(defaultPropertiesDescription, 
+              connector.getType(), 
+              connector.getSubType(), 
+              connector.getLanguage(), 
+              connector.getDataConverter().getWorkflowDataFormat()) + "' ";
     }
 
     statement += " WHERE id=" + connector.getId();
@@ -1041,10 +949,14 @@ public class ResourceManagement {
 
     // build SQL update statement
     statement += "UPDATE dataconverters SET ";
-    statement += "name='" + dataConverter.getName() + "',";
-    statement += "dataformat='" + dataConverter.getDataFormat() + "',";
-    statement += "implementation='" + dataConverter.getImplementation() + "',";
-    statement += "xml_schema=" + xmlSchema + "";
+    statement += "name='" + dataConverter.getName() + "', ";
+    statement += "input_datatype='" + dataConverter.getInputDataType() + "', ";
+    statement += "output_datatype='" + dataConverter.getOutputDataType() + "', ";
+    statement += "workflow_dataformat='" + dataConverter.getWorkflowDataFormat() + "', ";
+    statement += "direction_output_workflow='" + dataConverter.getDirectionOutputWorkflow() + "', ";
+    statement += "direction_workflow_input='" + dataConverter.getDirectionWorkflowInput() + "', ";
+    statement += "implementation='" + dataConverter.getImplementation() + "', ";
+    statement += "xml_schema=" + xmlSchema;
     statement += " WHERE id=" + dataConverter.getId();
 
     // update data converter
@@ -1061,18 +973,19 @@ public class ResourceManagement {
    * @throws Exception
    */
   @WebMethod(action = "updateDataTransformationService")
-  public boolean updateDataTransformationService(DataTransformationService dataTransformationService) throws Exception {
+  public boolean updateDataTransformationService(
+      DataTransformationService dataTransformationService) throws Exception {
     boolean successful = false;
     String statement = "";
 
     // build SQL update statement
     statement += "UPDATE datatransformationservices SET ";
-    statement += "name='" + dataTransformationService.getName() + "',";
-    statement += "implementation='" + dataTransformationService.getImplementation() + "',";
-    statement += "connector_dataconverter_id=(SELECT id FROM dataconverters WHERE dataformat LIKE '"
-        + dataTransformationService.getConnectorDataConverter().getDataFormat() + "'), ";
-    statement += "workflow_dataconverter_id=(SELECT id FROM dataconverters WHERE dataformat LIKE '"
-        + dataTransformationService.getWorkflowDataConverter().getDataFormat() + "')";
+    statement += "name='" + dataTransformationService.getName() + "', ";
+    statement += "connector_dataformat='" + dataTransformationService.getConnectorDataFormat() + "', ";
+    statement += "workflow_dataformat='"  + dataTransformationService.getWorkflowDataFormat() + "', ";
+    statement += "direction_connector_workflow='" + dataTransformationService.getDirectionConnectorWorkflow() + "', ";
+    statement += "direction_workflow_connector='" + dataTransformationService.getDirectionWorkflowConnector() + "', ";
+    statement += "implementation='" + dataTransformationService.getImplementation() + "'";
     statement += " WHERE id=" + dataTransformationService.getId();
 
     // update data transformation service
@@ -1145,7 +1058,8 @@ public class ResourceManagement {
   @WebMethod(action = "deleteDataTransformationService")
   public boolean deleteDataTransformationService(int id) throws Exception {
     boolean successful = false;
-    String statement = "DELETE FROM datatransformationservices WHERE id = " + String.valueOf(id);
+    String statement = "DELETE FROM datatransformationservices WHERE id = "
+        + String.valueOf(id);
 
     // delete data transformation service
     successful = dataSourceService.executeStatement(rmDataSource, statement);
@@ -1204,7 +1118,8 @@ public class ResourceManagement {
       dataSourceService
           .executeStatement(rmDataSource, "DROP TABLE IF EXISTS datasources");
       dataSourceService.executeStatement(rmDataSource, "DROP TABLE IF EXISTS connectors");
-      dataSourceService.executeStatement(rmDataSource, "DROP TABLE IF EXISTS datatransformationservices");
+      dataSourceService.executeStatement(rmDataSource,
+          "DROP TABLE IF EXISTS datatransformationservices");
       dataSourceService.executeStatement(rmDataSource,
           "DROP TABLE IF EXISTS datacontainers");
       dataSourceService.executeStatement(rmDataSource,
@@ -1213,13 +1128,17 @@ public class ResourceManagement {
           "DROP TABLE IF EXISTS statement_types");
       dataSourceService.executeStatement(rmDataSource, "DROP TABLE IF EXISTS languages");
       dataSourceService.executeStatement(rmDataSource,
-          "DROP FUNCTION IF EXISTS getDataSourceXMLProperty(text, xml)");
+          "DROP FUNCTION IF EXISTS getDataSourceXMLProperty(text, xml, tid)");
       dataSourceService.executeStatement(rmDataSource,
           "DROP FUNCTION IF EXISTS getConnectorXMLProperty(text, xml)");
       dataSourceService.executeStatement(rmDataSource,
           "DROP FUNCTION IF EXISTS setDataSourceConnector()");
       dataSourceService.executeStatement(rmDataSource,
           "DROP FUNCTION IF EXISTS updateDataSourceConnectors()");
+      dataSourceService.executeStatement(rmDataSource,
+          "DROP FUNCTION IF EXISTS setConnectorDataConverter()");
+      dataSourceService.executeStatement(rmDataSource,
+          "DROP FUNCTION IF EXISTS updateConnectorDataConverters()");
       dataSourceService.executeStatement(rmDataSource, "DROP LANGUAGE plpgsql");
     }
 
@@ -1227,21 +1146,26 @@ public class ResourceManagement {
   }
 
   /**
-   * Dummy function in order to get unused data types generated on wsimport.
+   * Returns a string of unique comma separated fields for a SQL statement.
    * 
-   * This is a workaround, the parameter data types should belong to
-   * org.simpl.core.discovery, but they are not added to the JAXB context by the SIMPL
-   * Core data source web service client when they are not packaged with
-   * org.simpl.core.webservices. But if they are packaged with org.simpl.core.webservices,
-   * however the data types from org.simpl.resource.management.data are not added anymore.
-   * 
-   * @param lateBinding
-   * @param strategy
+   * @param array
+   * @param relation
+   * @return
    */
-  public void dummy(LateBinding lateBinding, Strategy strategy) {
-    // do nothing
-  }
+  private String getUniqueFieldNames(String[] array, String relation) {
+    String out = "";
+    String delim = ",";
 
+    for (int i = 0; i < array.length; i++) {
+      if (i != 0) {
+        out += delim;
+      }
+      out += relation + "." + array[i] + " AS " + relation + "_" + array[i];
+    }
+    
+    return out;
+  }
+  
   /**
    * Creates DataSource objects from a RDB data format result.
    * 
@@ -1255,7 +1179,9 @@ public class ResourceManagement {
   private ArrayList<DataSource> getDataSourcesFromResult(String result)
       throws JDOMException, IOException {
     ArrayList<DataSource> dataSources = new ArrayList<DataSource>();
-
+    ArrayList<Connector> connectors = this.getConnectorsFromResult(result, "connectors");
+    ArrayList<DataConverter> dataConverters = this.getDataConvertersFromResult(result, "dataconverters");
+    
     Document configDoc = null;
     Element root = null;
     List<Element> rows = null;
@@ -1266,10 +1192,11 @@ public class ResourceManagement {
     root = configDoc.getRootElement();
     rows = root.getChild("table").getChildren("row");
 
-    for (Element row : rows) {
+    for (int i = 0; i < rows.size(); i++) {
+      Element row = rows.get(i);
       DataSource dataSource = new DataSource();
-      Connector connector = new Connector();
-      DataConverter dataConverter = new DataConverter();
+      Connector connector = connectors.get(i);
+      DataConverter dataConverter = dataConverters.get(i);
       Authentication authentication = new Authentication();
       List<Element> columns = row.getChildren("column");
 
@@ -1278,32 +1205,19 @@ public class ResourceManagement {
           dataSource.setId(column.getValue());
         } else if (column.getAttribute("name").getValue().equals("logical_name")) {
           dataSource.setName(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("interface_description")) {
-          dataSource.setAddress(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("connector_name")) {
-          connector.setName(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("connector_implementation")) {
-          connector.setImplementation(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("connector_properties_description")) {
-          dataSource.setConnectorPropertiesDescription(column.getValue());
-          dataSource
-              .setType(this.getFromPropertiesDescription("type", column.getValue()));
-          dataSource.setSubType(this.getFromPropertiesDescription("subType",
-              column.getValue()));
-          dataSource.setLanguage(this.getFromPropertiesDescription("language",
-              column.getValue()));
-
-          dataConverter.setDataFormat(this.getFromPropertiesDescription("dataFormat",
-              column.getValue()));
         } else if (column.getAttribute("name").getValue().equals("security_username")) {
           authentication.setUser(column.getValue());
         } else if (column.getAttribute("name").getValue().equals("security_password")) {
           authentication.setPassword(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("properties_description")) {
+        } else if (column.getAttribute("name").getValue().equals("interface_description")) {
+          dataSource.setAddress(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("properties_description")) {
           dataSource.setPropertiesDescription(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("connector_properties_description")) {
+          dataSource.setConnectorPropertiesDescription(column.getValue());
+          dataSource.setType(this.getFromPropertiesDescription("type", column.getValue()));
+          dataSource.setSubType(this.getFromPropertiesDescription("subType", column.getValue()));
+          dataSource.setLanguage(this.getFromPropertiesDescription("language", column.getValue()));
         }
       }
 
@@ -1320,16 +1234,27 @@ public class ResourceManagement {
    * Creates Connector objects from a RDB data format result.
    * 
    * @param result
+   * @param relation
    * @return
    * @throws IOException
    * @throws JDOMException
    * @throws Exception
    */
   @SuppressWarnings("unchecked")
-  private ArrayList<Connector> getConnectorsFromResult(String result)
+  private ArrayList<Connector> getConnectorsFromResult(String result, String relation)
       throws JDOMException, IOException {
     ArrayList<Connector> connectors = new ArrayList<Connector>();
-
+    ArrayList<DataConverter> dataConverters = new ArrayList<DataConverter>();
+    String prefix;
+    
+    if (relation == null || relation.equals("")) {
+      prefix = "";
+    } else {
+      prefix = relation + "_";
+    }
+    
+    dataConverters = this.getDataConvertersFromResult(result, "dataconverters");
+    
     Document configDoc = null;
     Element root = null;
     List<Element> rows = null;
@@ -1340,41 +1265,34 @@ public class ResourceManagement {
     root = configDoc.getRootElement();
     rows = root.getChild("table").getChildren("row");
 
-    for (Element row : rows) {
+    for (int i = 0; i < rows.size(); i++) {
+      Element row = rows.get(i);
       Connector connector = new Connector();
-      DataConverter dataConverter = new DataConverter();
+      DataConverter dataConverter = dataConverters.get(i);
       List<Element> columns = row.getChildren("column");
-
+      
       for (Element column : columns) {
-        if (column.getAttribute("name").getValue().equals("id")) {
+        if (column.getAttribute("name").getValue().equals(prefix + "id")) {
           connector.setId(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("name")) {
+        } else if (column.getAttribute("name").getValue().equals(prefix + "name")) {
           connector.setName(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("implementation")) {
+        } else if (column.getAttribute("name").getValue().equals(prefix + "input_datatype")) {
+          connector.setInputDataType(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals(prefix + "output_datatype")) {
+          connector.setOutputDataType(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals(prefix + "implementation")) {
           connector.setImplementation(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("properties_description")) {
+        } else if (column.getAttribute("name").getValue().equals(prefix + "properties_description")) {
           connector.setPropertiesDescription(column.getValue());
-
           connector.setType(this.getFromPropertiesDescription("type", column.getValue()));
-          connector.setSubType(this.getFromPropertiesDescription("subType",
-              column.getValue()));
-          connector.setLanguage(this.getFromPropertiesDescription("language",
-              column.getValue()));
-
-          dataConverter.setDataFormat(this.getFromPropertiesDescription("dataFormat",
-              column.getValue()));
-        } else if (column.getAttribute("name").getValue().equals("dataconverter_name")) {
-          dataConverter.setName(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("dataconverter_dataformat")) {
-          dataConverter.setDataFormat(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("dataconverter_implementation")) {
-          dataConverter.setImplementation(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("dataconverter_xml_schema")) {
-          dataConverter.setXmlSchema(column.getValue());
+          connector.setSubType(this.getFromPropertiesDescription("subType", column.getValue()));
+          connector.setLanguage(this.getFromPropertiesDescription("language", column.getValue()));
+          
+          // create a potential data converter from the properties description
+          if (dataConverter == null) {
+            dataConverter = new DataConverter();
+            dataConverter.setWorkflowDataFormat(this.getFromPropertiesDescription("dataFormat", column.getValue()));
+          }
         }
       }
 
@@ -1389,16 +1307,24 @@ public class ResourceManagement {
    * Creates DataConverter objects from a RDB data format result.
    * 
    * @param result
+   * @param relation
    * @return
    * @throws IOException
    * @throws JDOMException
    * @throws Exception
    */
   @SuppressWarnings("unchecked")
-  private ArrayList<DataConverter> getDataConvertersFromResult(String result)
+  private ArrayList<DataConverter> getDataConvertersFromResult(String result, String relation)
       throws JDOMException, IOException {
     ArrayList<DataConverter> dataConverters = new ArrayList<DataConverter>();
-
+    String prefix;
+    
+    if (relation == null || relation.equals("")) {
+      prefix = "";
+    } else {
+      prefix = relation + "_";
+    }
+    
     Document configDoc = null;
     Element root = null;
     List<Element> rows = null;
@@ -1412,17 +1338,25 @@ public class ResourceManagement {
     for (Element row : rows) {
       DataConverter dataConverter = new DataConverter();
       List<Element> columns = row.getChildren("column");
-
+      
       for (Element column : columns) {
-        if (column.getAttribute("name").getValue().equals("id")) {
+        if (column.getAttribute("name").getValue().equals(prefix + "id")) {
           dataConverter.setId(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("name")) {
+        } else if (column.getAttribute("name").getValue().equals(prefix + "name")) {
           dataConverter.setName(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("dataformat")) {
-          dataConverter.setDataFormat(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("implementation")) {
-          dataConverter.setImplementation(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("xml_schema")) {
+        } else if (column.getAttribute("name").getValue().equals(prefix + "input_datatype")) {
+          dataConverter.setInputDataType(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals(prefix + "output_datatype")) {
+          dataConverter.setOutputDataType(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals(prefix + "workflow_dataformat")) {
+          dataConverter.setWorkflowDataFormat(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals(prefix + "direction_output_workflow")) {
+          dataConverter.setDirectionOutputWorkflow(column.getValue().trim());
+        } else if (column.getAttribute("name").getValue().equals(prefix + "direction_workflow_input")) {
+          dataConverter.setDirectionWorkflowInput(column.getValue().trim());
+        } else if (column.getAttribute("name").getValue().equals(prefix + "implementation")) {
+          dataConverter.setImplementation(column.getValue().trim());
+        } else if (column.getAttribute("name").getValue().equals(prefix + "xml_schema")) {
           dataConverter.setXmlSchema(column.getValue());
         }
       }
@@ -1443,8 +1377,8 @@ public class ResourceManagement {
    * @throws Exception
    */
   @SuppressWarnings("unchecked")
-  private ArrayList<DataTransformationService> getDataTransformationServicesFromResult(String result)
-      throws JDOMException, IOException {
+  private ArrayList<DataTransformationService> getDataTransformationServicesFromResult(
+      String result) throws JDOMException, IOException {
     ArrayList<DataTransformationService> dataTransformationServices = new ArrayList<DataTransformationService>();
 
     Document configDoc = null;
@@ -1459,8 +1393,6 @@ public class ResourceManagement {
 
     for (Element row : rows) {
       DataTransformationService dataTransformationService = new DataTransformationService();
-      DataConverter connectorDataConverter = new DataConverter();
-      DataConverter workflowDataConverter = new DataConverter();
       List<Element> columns = row.getChildren("column");
 
       for (Element column : columns) {
@@ -1468,19 +1400,19 @@ public class ResourceManagement {
           dataTransformationService.setId(column.getValue());
         } else if (column.getAttribute("name").getValue().equals("name")) {
           dataTransformationService.setName(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("connector_dataformat")) {
+          dataTransformationService.setConnectorDataFormat(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("workflow_dataformat")) {
+          dataTransformationService.setWorkflowDataFormat(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("direction_connector_workflow")) {
+          dataTransformationService.setDirectionConnectorWorkflow(column.getValue().trim());
+        } else if (column.getAttribute("name").getValue().equals("direction_workflow_connector")) {
+          dataTransformationService.setDirectionWorkflowConnector(column.getValue().trim());
         } else if (column.getAttribute("name").getValue().equals("implementation")) {
           dataTransformationService.setImplementation(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("connector_dataconverter_dataformat")) {
-          connectorDataConverter.setDataFormat(column.getValue());
-        } else if (column.getAttribute("name").getValue()
-            .equals("workflow_dataconverter_dataformat")) {
-          workflowDataConverter.setDataFormat(column.getValue());
         }
       }
 
-      dataTransformationService.setConnectorDataConverter(connectorDataConverter);
-      dataTransformationService.setWorkflowDataConverter(workflowDataConverter);
       dataTransformationServices.add(dataTransformationService);
     }
 
@@ -1519,7 +1451,7 @@ public class ResourceManagement {
         }
       }
     }
-
+    
     return values;
   }
 
@@ -1540,6 +1472,11 @@ public class ResourceManagement {
 
     if (matcher.find()) {
       value = matcher.group(1);
+    }
+    
+    // Workaround: sometimes the matcher returns null as string!
+    if (value != null && value.equals("null")) {
+      value = null;
     }
 
     return value;

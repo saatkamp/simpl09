@@ -115,7 +115,7 @@ public class ResourceManagementConfig {
     dataSource.setType(dataSourceElement.getChildText("type"));
     dataSource.setSubType(dataSourceElement.getChildText("subType"));
     
-    dataConverter.setDataFormat(dataSourceElement.getChildText("dataFormat"));
+    dataConverter.setWorkflowDataFormat(dataSourceElement.getChildText("dataFormat"));
     
     connector.setDataConverter(dataConverter);
     dataSource.setAuthentication(authentication);

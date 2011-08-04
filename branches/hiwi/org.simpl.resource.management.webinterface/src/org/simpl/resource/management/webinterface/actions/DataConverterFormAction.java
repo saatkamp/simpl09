@@ -116,7 +116,11 @@ public class DataConverterFormAction extends HttpServlet {
     // initialize data converter
     dataConverter.setId(parameters.get("id"));
     dataConverter.setName(parameters.get("name"));
-    dataConverter.setDataFormat(parameters.get("dataformat"));
+    dataConverter.setInputDataType(parameters.get("inputDataType"));
+    dataConverter.setOutputDataType(parameters.get("outputDataType"));
+    dataConverter.setWorkflowDataFormat(parameters.get("workflowDataFormat"));
+    dataConverter.setDirectionOutputWorkflow(parameters.get("directionOutputWorkflow") != null ? "true" : "false");
+    dataConverter.setDirectionWorkflowInput(parameters.get("directionWorkflowInput") != null ? "true" : "false");
     dataConverter.setImplementation(parameters.get("implementation"));
   
     // use existing xml schema data if no file is chosen

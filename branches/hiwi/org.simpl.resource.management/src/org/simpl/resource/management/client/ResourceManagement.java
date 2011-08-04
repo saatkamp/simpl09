@@ -16,8 +16,6 @@ import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.DataSourceList;
 import org.simpl.resource.management.data.DataTransformationService;
 import org.simpl.resource.management.data.DataTransformationServiceList;
-import org.simpl.resource.management.data.LateBinding;
-import org.simpl.resource.management.data.Strategy;
 import org.simpl.resource.management.data.StringList;
 
 
@@ -49,18 +47,6 @@ public interface ResourceManagement {
         Connector arg0)
         throws Exception_Exception
     ;
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod
-    public void dummy(
-        @WebParam(name = "arg0", partName = "arg0")
-        LateBinding arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        Strategy arg1);
 
     /**
      * 

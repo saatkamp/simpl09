@@ -17,22 +17,25 @@ import javax.xml.bind.annotation.XmlType;
  * @link http://code.google.com/p/simpl09/
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "connector", propOrder = { "id", "name", "implementation", "type",
-    "subType", "language", "propertiesDescription", "dataConverter" })
+@XmlType(name = "connector", propOrder = { "id", "name", "implementation",
+    "inputDataType", "outputDataType", "type", "subType", "language",
+    "propertiesDescription", "dataConverter" })
 public class Connector {
   private String id;
   private String name;
   private String implementation;
+  private String inputDataType;
+  private String outputDataType;
   private String type;
   private String subType;
   private String language;
   private String propertiesDescription;
   private DataConverter dataConverter = new DataConverter();
-  
+
   public Connector() {
-    
+
   }
-  
+
   /**
    * @return the id
    */
@@ -76,6 +79,36 @@ public class Connector {
    */
   public void setImplementation(String implementation) {
     this.implementation = implementation;
+  }
+
+  /**
+   * @return the inputDataType
+   */
+  public String getInputDataType() {
+    return inputDataType;
+  }
+
+  /**
+   * @param inputDataType
+   *          the inputDataType to set
+   */
+  public void setInputDataType(String inputDataType) {
+    this.inputDataType = inputDataType;
+  }
+
+  /**
+   * @return the outputDataType
+   */
+  public String getOutputDataType() {
+    return outputDataType;
+  }
+
+  /**
+   * @param outputDataType
+   *          the outputDataType to set
+   */
+  public void setOutputDataType(String outputDataType) {
+    this.outputDataType = outputDataType;
   }
 
   /**
@@ -160,6 +193,8 @@ public class Connector {
     string += "\r\nConnector {\r\n";
     string += "\tid: " + this.id + ",\r\n";
     string += "\tname: " + this.name + ",\r\n";
+    string += "\tinputDataType: " + this.inputDataType + ",\r\n";
+    string += "\toutputDataType: " + this.outputDataType + ",\r\n";
     string += "\timplementation: " + this.implementation + ",\r\n";
     string += "\tpropertiesDescription: " + this.propertiesDescription + ",\r\n";
     string += "\tdataConverter: " + this.dataConverter + "\r\n";

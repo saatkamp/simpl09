@@ -5,8 +5,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <b>Purpose:</b>Data type for a data converter that is used convert retrieved data from a
- * data source to XML.<br>
+ * <b>Purpose:</b>Data type for a data converter that is used convert retrieved data from
+ * a data source to XML.<br>
  * <b>Description:</b><br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
@@ -17,18 +17,24 @@ import javax.xml.bind.annotation.XmlType;
  * @link http://code.google.com/p/simpl09/
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "dataConverter", propOrder = { "id", "name", "dataFormat", "implementation", "xmlSchema" })
+@XmlType(name = "dataConverter", propOrder = { "id", "name", "inputDataType",
+    "outputDataType", "workflowDataFormat", "directionOutputWorkflow",
+    "directionWorkflowInput", "implementation", "xmlSchema" })
 public class DataConverter {
   private String id;
   private String name;
-  private String dataFormat;
+  private String inputDataType;
+  private String outputDataType;
+  private String workflowDataFormat;
+  private String directionOutputWorkflow;
+  private String directionWorkflowInput;
   private String implementation;
   private String xmlSchema;
 
   public DataConverter() {
-    
+
   }
-  
+
   /**
    * @return the id
    */
@@ -52,25 +58,86 @@ public class DataConverter {
   }
 
   /**
-   * @param name the name to set
+   * @param name
+   *          the name to set
    */
   public void setName(String name) {
     this.name = name;
   }
 
   /**
-   * @return the dataFormat
+   * @return the inputDataType
    */
-  public String getDataFormat() {
-    return dataFormat;
+  public String getInputDataType() {
+    return inputDataType;
+  }
+
+  /**
+   * @param inputDataType
+   *          the inputDataType to set
+   */
+  public void setInputDataType(String inputDataType) {
+    this.inputDataType = inputDataType;
+  }
+
+  /**
+   * @return the outputDataType
+   */
+  public String getOutputDataType() {
+    return outputDataType;
+  }
+
+  /**
+   * @param outputDataType
+   *          the outputDataType to set
+   */
+  public void setOutputDataType(String outputDataType) {
+    this.outputDataType = outputDataType;
+  }
+
+  /**
+   * @return the workflowDataFormat
+   */
+  public String getWorkflowDataFormat() {
+    return workflowDataFormat;
   }
 
   /**
    * @param name
    *          the name to set
    */
-  public void setDataFormat(String dataFormat) {
-    this.dataFormat = dataFormat;
+  public void setWorkflowDataFormat(String workflowDataFormat) {
+    this.workflowDataFormat = workflowDataFormat;
+  }
+
+  /**
+   * @return the directionOutputWorkflow
+   */
+  public String getDirectionOutputWorkflow() {
+    return directionOutputWorkflow;
+  }
+
+  /**
+   * @param directionOutputWorkflow
+   *          the directionOutputWorkflow to set
+   */
+  public void setDirectionOutputWorkflow(String directionOutputWorkflow) {
+    this.directionOutputWorkflow = directionOutputWorkflow;
+  }
+
+  /**
+   * @return the directionWorkflowInput
+   */
+  public String getDirectionWorkflowInput() {
+    return directionWorkflowInput;
+  }
+
+  /**
+   * @param directionWorkflowInput
+   *          the directionWorkflowInput to set
+   */
+  public void setDirectionWorkflowInput(String directionWorkflowInput) {
+    this.directionWorkflowInput = directionWorkflowInput;
   }
 
   /**
@@ -110,7 +177,11 @@ public class DataConverter {
     string += "\r\nDataConverter {\r\n";
     string += "\tid: " + this.id + ",\r\n";
     string += "\tname: " + this.name + ",\r\n";
-    string += "\tdataFormat: " + this.dataFormat + ",\r\n";
+    string += "\tinputDataType: " + this.inputDataType + ",\r\n";
+    string += "\toutputDataType: " + this.outputDataType + ",\r\n";
+    string += "\tworkflowDataFormat: " + this.workflowDataFormat + ",\r\n";
+    string += "\tdirectionOutputWorkflow: " + this.directionOutputWorkflow + ",\r\n";
+    string += "\tdirectionWorkflowInput: " + this.directionWorkflowInput + ",\r\n";
     string += "\timplementation: " + this.implementation + ",\r\n";
     string += "\txmlSchema: " + this.xmlSchema + ",\r\n";
     string += "}";

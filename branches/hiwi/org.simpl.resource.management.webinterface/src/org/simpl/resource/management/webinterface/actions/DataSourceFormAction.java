@@ -151,7 +151,7 @@ public class DataSourceFormAction extends HttpServlet {
     dataSource.setSubType(parameters.get("subtype"));
     dataSource.setLanguage(parameters.get("language"));
     
-    dataConverter.setDataFormat(parameters.get("dataformat"));
+    dataConverter.setWorkflowDataFormat(parameters.get("dataformat"));
     connector.setDataConverter(dataConverter);
     
     dataSource.setConnector(connector);

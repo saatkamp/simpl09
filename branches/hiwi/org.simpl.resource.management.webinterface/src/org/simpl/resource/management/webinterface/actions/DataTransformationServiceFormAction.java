@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
-import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataTransformationService;
 import org.simpl.resource.management.webinterface.FormMetaData;
 import org.simpl.resource.management.webinterface.MultipartForm;
@@ -113,17 +112,15 @@ public class DataTransformationServiceFormAction extends HttpServlet {
    */
   private DataTransformationService parametersToDataTransformationService(HashMap<String, String> parameters) {
     DataTransformationService datatransformationservice = new DataTransformationService();
-    DataConverter connectorDataConverter = new DataConverter();
-    DataConverter workflowDataConverter = new DataConverter();
     
     // initialize data transformation service
     datatransformationservice.setId(parameters.get("id"));
     datatransformationservice.setName(parameters.get("name"));
+    datatransformationservice.setConnectorDataFormat(parameters.get("connectorDataFormat"));
+    datatransformationservice.setWorkflowDataFormat(parameters.get("workflowDataFormat"));
+    datatransformationservice.setDirectionConnectorWorkflow(parameters.get("directionConnectorWorkflow") != null ? "true" : "false");
+    datatransformationservice.setDirectionWorkflowConnector(parameters.get("directionWorkflowConnector") != null ? "true" : "false");
     datatransformationservice.setImplementation(parameters.get("implementation"));
-    connectorDataConverter.setDataFormat(parameters.get("connectorDataFormat"));
-    workflowDataConverter.setDataFormat(parameters.get("workflowDataFormat"));   
-    datatransformationservice.setConnectorDataConverter(connectorDataConverter);
-    datatransformationservice.setWorkflowDataConverter(workflowDataConverter);
     
     return datatransformationservice;
   }

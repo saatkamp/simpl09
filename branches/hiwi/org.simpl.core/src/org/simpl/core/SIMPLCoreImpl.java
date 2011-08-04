@@ -70,7 +70,7 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
     try {
       // execute statement
       if (this.isDataSourceComplete(dataSource)) {
-        // get data source service instance
+        // get connector instance
         connector = ConnectorProvider.getInstance(dataSource.getType(),
             dataSource.getSubType());
 
@@ -110,7 +110,7 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
       // format data to SDO
       if (data != null) {
         retrievedData = formatRetrievedData(connector, data, dataSource.getConnector()
-            .getDataConverter().getDataFormat());
+            .getDataConverter().getWorkflowDataFormat());
       }
     } catch (Exception e) {
       e.printStackTrace();
@@ -147,7 +147,7 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
         } else {
           // write back data
           writeData = DataConverterProvider.getInstance(
-              dataSource.getConnector().getDataConverter().getDataFormat()).fromSDO(data);
+              dataSource.getConnector().getDataConverter().getWorkflowDataFormat()).fromSDO(data);
         }
 
         if (writeData != null) {
@@ -202,7 +202,7 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
     Connector<Object, Object> connector = null;
 
     try {
-      // get data source service instance
+      // get connector instance
       connector = ConnectorProvider.getInstance(dataSource.getType(),
           dataSource.getSubType());
 
@@ -231,12 +231,11 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
 
   /**
    * Formats SDO data to a format that can be understand and is writeable by the given
-   * data source service and its underlying data format. If the data format is not
-   * supported by the data source service, it is looked for a data format converter that
-   * can be used to convert the given data format to the data source service supported
-   * data format and thus be able to eventually write the data even though the incoming
-   * data format is not supported. Also creates a target on the data source to be able to
-   * write the data.
+   * connector and its underlying data format. If the data format is not supported by the
+   * connector, it is looked for a data converter that can be used to convert the given
+   * data format to the connector supported data format and thus be able to eventually
+   * write the data even though the incoming data format is not supported. Also creates a
+   * target on the data source to be able to write the data.
    * 
    * @param connector
    * @param data
@@ -257,7 +256,7 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
         .getSupportedDataFormats(connector);
     List<String> supportedConvertDataFormats = null;
 
-    // check if data format is supported by the data source service
+    // check if data format is supported by the connector
     if (supportedDataFormats.contains(dataFormat)) {
       // turn the SDO to the data type of the data source
       writeData = DataConverterProvider.getInstance(dataFormat).fromSDO(data);
@@ -267,7 +266,7 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
 
       // cycle through the data formats that can be converted to
       for (String supportedConvertDataFormat : supportedConvertDataFormats) {
-        // check if one of the data formats is supported by the data source service
+        // check if one of the data formats is supported by the connector
         if (DataConverterProvider.getSupportedDataFormats(connector).contains(
             supportedConvertDataFormat)) {
           // convert from the given data format to the supported data format
@@ -301,8 +300,8 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
   }
 
   /**
-   * Turns the retrieved data into SDO using a data format that is supported by the data
-   * source service.
+   * Turns the retrieved data into SDO using a data format that is supported by the simpl
+   * core service.
    * 
    * @param connector
    * @param data
@@ -337,7 +336,7 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
 
     complete = dataSource != null && dataSource.getAddress() != null
         && dataSource.getType() != null && dataSource.getSubType() != null
-        && dataSource.getConnector().getDataConverter().getDataFormat() != null;
+        && dataSource.getConnector().getDataConverter().getWorkflowDataFormat() != null;
 
     return complete;
   }

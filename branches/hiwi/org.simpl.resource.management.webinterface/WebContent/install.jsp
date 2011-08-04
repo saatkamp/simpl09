@@ -18,7 +18,7 @@
 <h2>SIMPL Resource Management - Installation</h2>
 <a href="index.jsp">Home</a> &gt; Installation
 <br/><br/>
-The installation will create all necessary tables for the Resource Management on the defined PostgreSQL database in the 'simpl-resource-management-config.xml'.
+The installation will create all necessary tables for the Resource Management on the PostgreSQL database <br/>that must be defined in the config file "<%=RMWebConfig.getInstance().getConfigFileLocation()%>".
 <br/>
 <br/>
 <form name="installation" action="InstallAction" method="post" onSubmit="return confirm('Are you sure?')">
