@@ -33,14 +33,14 @@ public class FilesystemStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      String result = this.simplCoreService.retrieveDataByDataSourceObject(
+      String result = this.simplCoreService.retrieveDataByDataSource(
           this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(),
           new LateBinding());
 
       if (result != null && !result.equals("")) {
         statementTest.setExecuted(true);
 
-        if (result.contains("dataFormatType=\"CSVDataFormat\"")) {
+        if (result.contains("dataFormat=\"CSVDataFormat\"")) {
           statementTest.setResult(new RelationalResult(result));
           this.statementTest.log("Retrieved "
               + ((RelationalResult) this.statementTest.getResult()).getRowCount()
@@ -72,7 +72,7 @@ public class FilesystemStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      successed = this.simplCoreService.issueCommandByDataSourceObject(
+      successed = this.simplCoreService.issueCommandByDataSource(
           this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(),
           new LateBinding());
 

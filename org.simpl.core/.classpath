@@ -3,10 +3,11 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/APACHE_ODE"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_DATA_TRANSFORMATION"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_DATA_TRANSFORMATION_WEBSERVICE_CLIENT"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.apache.ode.simpl.events"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.simpl.resource.management"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.simpl.resource.discovery"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_DATA_TRANSFORMATION"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_PLUGINS"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

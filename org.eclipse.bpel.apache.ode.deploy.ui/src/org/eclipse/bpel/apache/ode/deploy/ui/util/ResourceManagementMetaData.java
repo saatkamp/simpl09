@@ -22,7 +22,7 @@ import org.eclipse.simpl.communication.CommunicationPlugIn;
 import org.eclipse.simpl.communication.ResourceManagementCommunication;
 import org.eclipse.simpl.communication.ResourceManagementService;
 import org.simpl.resource.management.data.Connector;
-import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataSource;
 
 public class ResourceManagementMetaData {
@@ -120,7 +120,7 @@ public class ResourceManagementMetaData {
 	private static DataSource tDs2ds (TDatasource data){
 		DataSource dataSource = new DataSource();
 		Connector connector = new Connector();
-		DataFormat dataFormat = new DataFormat(); 
+		DataConverter dataConverter = new DataConverter(); 
 		
 		if (data != null){
 			dataSource.setName(data.getDataSourceName());
@@ -128,9 +128,9 @@ public class ResourceManagementMetaData {
 			dataSource.setType(data.getType());
 			dataSource.setSubType(data.getSubtype());
 			dataSource.setLanguage(data.getLanguage());
-			dataFormat.setName(data.getFormat());
+			dataConverter.setName(data.getFormat());
 			
-			connector.setConverterDataFormat(dataFormat);
+			connector.setDataConverter(dataConverter);
 			dataSource.setConnector(connector);
 		}
 		

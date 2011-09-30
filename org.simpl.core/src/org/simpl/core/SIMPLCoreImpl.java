@@ -3,6 +3,7 @@ package org.simpl.core;
 import java.io.InputStream;
 import java.util.List;
 
+import org.simpl.core.clients.DTSClient;
 import org.simpl.core.connector.Connector;
 import org.simpl.core.connector.ConnectorProvider;
 import org.simpl.core.dataconverter.DataConverterProvider;
@@ -244,7 +245,7 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
    * @return
    * @throws ConnectionException
    */
-  @SuppressWarnings({ "unchecked", "rawtypes" })
+  @SuppressWarnings({ "rawtypes" })
   private Object formatWriteDataAndCreateTarget(Connector connector, DataObject data,
       DataSource dataSource, String target) throws ConnectionException {
     Object writeData = null;
@@ -270,9 +271,8 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
         if (DataConverterProvider.getSupportedDataFormats(connector).contains(
             supportedConvertDataFormat)) {
           // convert from the given data format to the supported data format
-          convertedData = DataTransformationServiceProvider.getInstance(dataFormat,
-              supportedConvertDataFormat).convert(data, connector);
-
+          convertedData = DTSClient.getInstance().convert(dataFormat, supportedConvertDataFormat, data, connector.getClass().getCanonicalName());
+          
           // turn the converted SDO to the data type of the data source
           writeData = DataConverterProvider.getInstance(supportedConvertDataFormat)
               .fromSDO(convertedData);

@@ -137,7 +137,7 @@ public class ConnectorFormAction extends HttpServlet {
         connector.setPropertiesDescription(parameters.get("propertiesData"));
       } else {
         // if the properties description data didn't change, it will be regenerated from
-        // the form fields in the Resource Management - that for it has to be empty
+        // the form fields in the Resource Management - because of that, it has to be empty
         connector.setPropertiesDescription("");
       }
     }

@@ -2,18 +2,9 @@ package org.simpl.data.transformation.services;
 
 import java.util.List;
 
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
-
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.simpl.core.connector.Connector;
 import org.simpl.core.plugins.connector.rdb.DB2RDBConnector;
-import org.simpl.core.plugins.connector.rdb.DerbyRDBConnector;
-import org.simpl.core.plugins.connector.rdb.EmbDerbyRDBConnector;
-import org.simpl.core.plugins.connector.rdb.MySQLRDBConnector;
 import org.simpl.data.transformation.DataTransformationService;
 
 import commonj.sdo.DataObject;
@@ -31,8 +22,6 @@ import commonj.sdo.DataObject;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-@WebService(name = "CSVToRDBDataTransformationService")
-@SOAPBinding(style = SOAPBinding.Style.RPC)
 public class CSVToRDBDataTransformationService extends DataTransformationService {
   static Logger logger = Logger.getLogger(DB2RDBConnector.class);
 
@@ -53,11 +42,9 @@ public class CSVToRDBDataTransformationService extends DataTransformationService
    * org.simpl.core.services.dataformat.converter.DataFormatConverter#convertFrom(commonj
    * .sdo.DataObject)
    */
-  @WebMethod(action = "convertTo")
-  @SuppressWarnings({ "unchecked", "rawtypes" })
+  @SuppressWarnings({ "unchecked" })
   @Override
-  public DataObject convertTo(@WebParam(name = "csvSDO") DataObject csvSDO,
-      @WebParam(name = "connector") Connector connector) {
+  public DataObject convertTo(DataObject csvSDO, String connectorImpl) {
     if (CSVToRDBDataTransformationService.logger.isDebugEnabled()) {
       CSVToRDBDataTransformationService.logger
           .debug("Convert 'DataObject' data format from "
@@ -98,7 +85,7 @@ public class CSVToRDBDataTransformationService extends DataTransformationService
         rdbTableMetaDataColumnTypeObject.setString("columnName", rdbColumns.get(k)
             .getString("name"));
         rdbTableMetaDataColumnTypeObject.set(0,
-            this.getColumnType(rdbColumns.get(k).getString(0), connector));
+            this.getColumnType(rdbColumns.get(k).getString(0), connectorImpl));
       }
 
       // create default primary key
@@ -106,7 +93,7 @@ public class CSVToRDBDataTransformationService extends DataTransformationService
           .createDataObject("columnType");
       rdbTableMetaDataColumnTypeObject.setString("columnName", "PK_ID");
       rdbTableMetaDataColumnTypeObject.setBoolean("isPrimaryKey", true);
-      rdbTableMetaDataColumnTypeObject.set(0, this.getColumnType("123", connector));
+      rdbTableMetaDataColumnTypeObject.set(0, this.getColumnType("123", connectorImpl));
 
       // add primary key column to rows
       for (int k = 0; k < rdbRows.size(); k++) {
@@ -138,11 +125,9 @@ public class CSVToRDBDataTransformationService extends DataTransformationService
    * org.simpl.core.services.dataformat.converter.DataFormatConverter#convertTo(commonj
    * .sdo.DataObject)
    */
-  @WebMethod(action = "convertFrom")
-  @SuppressWarnings({ "unchecked", "rawtypes" })
+  @SuppressWarnings({ "unchecked" })
   @Override
-  public DataObject convertFrom(@WebParam(name = "rdbSDO") DataObject rdbSDO,
-      @WebParam(name = "connector") Connector connector) {
+  public DataObject convertFrom(DataObject rdbSDO, String connectorImpl) {
     if (CSVToRDBDataTransformationService.logger.isDebugEnabled()) {
       CSVToRDBDataTransformationService.logger
           .debug("Convert 'DataObject' data format from "
@@ -196,19 +181,21 @@ public class CSVToRDBDataTransformationService extends DataTransformationService
    * @param connector
    * @return
    */
-  @SuppressWarnings({ "rawtypes" })
-  private String getColumnType(String type, Connector connector) {
+  private String getColumnType(String type, String connectorImpl) {
     String sqlType = "VARCHAR(255)";
 
     try {
       if (Integer.valueOf(type) != null) {
-        if (connector instanceof DB2RDBConnector) {
+        if (connectorImpl.equals("org.simpl.core.plugins.connector.rdb.DB2RDBConnector")) {
           return sqlType = "INTEGER";
-        } else if (connector instanceof EmbDerbyRDBConnector) {
+        } else if (connectorImpl
+            .equals("org.simpl.core.plugins.connector.rdb.EmbDerbyRDBConnector")) {
           return sqlType = "INT";
-        } else if (connector instanceof DerbyRDBConnector) {
+        } else if (connectorImpl
+            .equals("org.simpl.core.plugins.connector.rdb.DerbyRDBConnector")) {
           return sqlType = "INT";
-        } else if (connector instanceof MySQLRDBConnector) {
+        } else if (connectorImpl
+            .equals("org.simpl.core.plugins.connector.rdb.MySQLRDBConnector")) {
           return sqlType = "INT(11)";
         } else {
           return sqlType = "INT";
@@ -220,13 +207,16 @@ public class CSVToRDBDataTransformationService extends DataTransformationService
 
     try {
       if (Boolean.valueOf(type)) {
-        if (connector instanceof DB2RDBConnector) {
+        if (connectorImpl.equals("org.simpl.core.plugins.connector.rdb.DB2RDBConnector")) {
           return sqlType = "SMALLINT";
-        } else if (connector instanceof EmbDerbyRDBConnector) {
+        } else if (connectorImpl
+            .equals("org.simpl.core.plugins.connector.rdb.EmbDerbyRDBConnector")) {
           return sqlType = "SMALLINT";
-        } else if (connector instanceof DerbyRDBConnector) {
+        } else if (connectorImpl
+            .equals("org.simpl.core.plugins.connector.rdb.DerbyRDBConnector")) {
           return sqlType = "SMALLINT";
-        } else if (connector instanceof MySQLRDBConnector) {
+        } else if (connectorImpl
+            .equals("org.simpl.core.plugins.connector.rdb.MySQLRDBConnector")) {
           return sqlType = "TINYINT(1)";
         } else {
           return sqlType = "SMALLINT";
@@ -238,13 +228,16 @@ public class CSVToRDBDataTransformationService extends DataTransformationService
 
     try {
       if (Float.valueOf(type) != null) {
-        if (connector instanceof DB2RDBConnector) {
+        if (connectorImpl.equals("org.simpl.core.plugins.connector.rdb.DB2RDBConnector")) {
           return sqlType = "FLOAT(23)";
-        } else if (connector instanceof EmbDerbyRDBConnector) {
+        } else if (connectorImpl
+            .equals("org.simpl.core.plugins.connector.rdb.EmbDerbyRDBConnector")) {
           return sqlType = "FLOAT";
-        } else if (connector instanceof DerbyRDBConnector) {
+        } else if (connectorImpl
+            .equals("org.simpl.core.plugins.connector.rdb.DerbyRDBConnector")) {
           return sqlType = "FLOAT";
-        } else if (connector instanceof MySQLRDBConnector) {
+        } else if (connectorImpl
+            .equals("org.simpl.core.plugins.connector.rdb.MySQLRDBConnector")) {
           return sqlType = "FLOAT";
         } else {
           return sqlType = "FLOAT";
@@ -256,13 +249,16 @@ public class CSVToRDBDataTransformationService extends DataTransformationService
 
     try {
       if (Double.valueOf(type) != null) {
-        if (connector instanceof DB2RDBConnector) {
+        if (connectorImpl.equals("org.simpl.core.plugins.connector.rdb.DB2RDBConnector")) {
           return sqlType = "DOUBLE";
-        } else if (connector instanceof EmbDerbyRDBConnector) {
+        } else if (connectorImpl
+            .equals("org.simpl.core.plugins.connector.rdb.EmbDerbyRDBConnector")) {
           return sqlType = "DOUBLE";
-        } else if (connector instanceof DerbyRDBConnector) {
+        } else if (connectorImpl
+            .equals("org.simpl.core.plugins.connector.rdb.DerbyRDBConnector")) {
           return sqlType = "DOUBLE";
-        } else if (connector instanceof MySQLRDBConnector) {
+        } else if (connectorImpl
+            .equals("org.simpl.core.plugins.connector.rdb.MySQLRDBConnector")) {
           return sqlType = "DOUBLE";
         } else {
           return sqlType = "DOUBLE";

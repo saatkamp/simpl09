@@ -105,10 +105,10 @@ public class PropertySectionUtils {
       absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation()
           .toOSString();
 
-      if (dataSource.getConnector().getConverterDataFormat().getName() != null) {
+      if (dataSource.getConnector().getDataConverter().getWorkflowDataFormat() != null) {
 
         IPath xsdPath = projectPath.append(
-            dataSource.getConnector().getConverterDataFormat().getName())
+            dataSource.getConnector().getDataConverter().getWorkflowDataFormat())
             .addFileExtension(IBPELUIConstants.EXTENSION_XSD);
 
         File xsdFileSIMPL = new File(absolutWorkspacePath + xsdPath.toOSString());
@@ -118,7 +118,7 @@ public class PropertySectionUtils {
             String stream = null;
             try {
               stream = ResourceManagementCommunication.getInstance().getService().getDataFormatSchema(
-                  dataSource.getConnector().getConverterDataFormat().getName());
+                  dataSource.getConnector().getDataConverter().getWorkflowDataFormat());
             } catch (Exception e) {
             }
             if (stream != null && xsdFileSIMPL.createNewFile()) {

@@ -7,7 +7,7 @@ import org.eclipse.simpl.communication.ResourceManagementCommunication;
 import org.eclipse.simpl.communication.SIMPLCoreCommunication;
 import org.simpl.resource.management.data.Authentication;
 import org.simpl.resource.management.data.Connector;
-import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataSource;
 
 /**
@@ -55,14 +55,14 @@ public class AuditingDSUtils {
 			//Load the address and name from DB
 			localDs = new DataSource();
 	    Connector connector = new Connector();
-	    DataFormat dataFormat = new DataFormat();
-	    connector.setConverterDataFormat(dataFormat);
+	    DataConverter dataConverter = new DataConverter();
+	    connector.setDataConverter(dataConverter);
 			localDs.setConnector(connector);
 	    
 			localDs.setName("local");
 			localDs.setType("Database");
 			localDs.setSubType("EmbeddedDerby");
-			localDs.getConnector().getConverterDataFormat().setName("RDBDataFormat");
+			localDs.getConnector().getDataConverter().setWorkflowDataFormat("RDBDataFormat");
 			
 			Authentication auth = new Authentication();
 			auth.setUser("");
