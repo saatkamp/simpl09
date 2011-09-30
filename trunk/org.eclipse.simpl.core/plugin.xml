@@ -121,6 +121,13 @@
                label="Settings">
          </adminConsoleItem>
       </adminConsoleItem>
+      <adminConsoleItem
+            label="DataTransformationService">
+         <adminConsoleItem
+               composite="org.eclipse.simpl.core.adminconsole.DataTransformationServiceSettingsComposite"
+               label="Settings">
+         </adminConsoleItem>
+      </adminConsoleItem>
    </extension>
 
 </plugin>

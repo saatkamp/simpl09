@@ -147,10 +147,10 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
         tableItem.setText(1, selectedDataSource.getAddress());
 
         tableItem = new TableItem(table, SWT.NONE);
-        tableItem.setText(0, "Data Format");
-        tableItem.setText(1, (selectedDataSource.getConnector().getConverterDataFormat()
-            .getName() != null) ? selectedDataSource.getConnector()
-            .getConverterDataFormat().getName() : "");
+        tableItem.setText(0, "Workflow Data Format");
+        tableItem.setText(1, (selectedDataSource.getConnector().getDataConverter()
+            .getWorkflowDataFormat() != null) ? selectedDataSource.getConnector()
+            .getDataConverter().getWorkflowDataFormat() : "");
       }
     });
 

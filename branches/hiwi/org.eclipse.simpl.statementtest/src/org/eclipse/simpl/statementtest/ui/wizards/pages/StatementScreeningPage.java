@@ -262,8 +262,8 @@ public class StatementScreeningPage extends StatementTestWizardPage {
     dataSourceAddressLabel.setText("Address: "
         + this.statementTest.getDataSource().getAddress());
     dataSourceDataFormatLabel.setText("Data Format: "
-        + this.statementTest.getDataSource().getConnector().getConverterDataFormat()
-            .getName());
+        + this.statementTest.getDataSource().getConnector().getDataConverter()
+            .getWorkflowDataFormat());
 
   }
 }

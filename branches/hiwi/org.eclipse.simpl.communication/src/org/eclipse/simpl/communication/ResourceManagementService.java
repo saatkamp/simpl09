@@ -117,7 +117,7 @@ public class ResourceManagementService {
     List<String> dataFormats = new ArrayList<String>();
 
     try {
-      dataFormats = this.getService().getSupportedDataFormatTypes(dataSource).getItems();
+      dataFormats = this.getService().getSupportedDataFormats(dataSource).getItems();
     } catch (Exception_Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -130,7 +130,7 @@ public class ResourceManagementService {
     List<String> dataFormats = new ArrayList<String>();
 
     try {
-      dataFormats = this.getService().getSupportedConvertDataFormatTypes(dataSource)
+      dataFormats = this.getService().getSupportedConvertDataFormats(dataSource)
           .getItems();
     } catch (Exception_Exception e) {
       // TODO Auto-generated catch block

@@ -2,18 +2,8 @@ package org.simpl.data.transformation.services;
 
 import java.util.List;
 
-import javax.jws.WebParam;
-import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
-
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.simpl.core.connector.Connector;
-import org.simpl.core.plugins.connector.rdb.DB2RDBConnector;
-import org.simpl.core.plugins.connector.rdb.DerbyRDBConnector;
-import org.simpl.core.plugins.connector.rdb.EmbDerbyRDBConnector;
-import org.simpl.core.plugins.connector.rdb.MySQLRDBConnector;
-import org.simpl.core.plugins.connector.rdb.PostgreSQLRDBConnector;
 import org.simpl.data.transformation.DataTransformationService;
 
 import commonj.sdo.DataObject;
@@ -32,8 +22,6 @@ import commonj.sdo.helper.XMLHelper;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-@WebService(name = "RandomFileToRDBDataTransformationService")
-@SOAPBinding(style = SOAPBinding.Style.RPC)
 public class RandomFileToRDBDataTransformationService extends DataTransformationService {
   static Logger logger = Logger.getLogger(RandomFileToRDBDataTransformationService.class);
 
@@ -53,10 +41,9 @@ public class RandomFileToRDBDataTransformationService extends DataTransformation
    * @see org.simpl.core.services.dataformat.converter.DataFormatConverter#convertFrom
    * (commonj .sdo.DataObject)
    */
-  @SuppressWarnings({ "unchecked", "rawtypes" })
+  @SuppressWarnings({ "unchecked" })
   @Override
-  public DataObject convertTo(@WebParam(name = "fileSDO") DataObject fileSDO,
-      @WebParam(name = "connector") Connector connector) {
+  public DataObject convertTo(DataObject fileSDO, String connectorImpl) {
     if (RandomFileToRDBDataTransformationService.logger.isDebugEnabled()) {
       RandomFileToRDBDataTransformationService.logger
           .debug("Convert 'DataObject' data format from "
@@ -84,13 +71,13 @@ public class RandomFileToRDBDataTransformationService extends DataTransformation
     columnTypeObject = rdbTableMetaDataObject.createDataObject("columnType");
     columnTypeObject.set("columnName", "PK_ID");
     columnTypeObject.set("isPrimaryKey", true);
-    columnTypeObject.set(0, getColumnType(0, connector));
+    columnTypeObject.set(0, getColumnType(0, connectorImpl));
     columnTypeObject = rdbTableMetaDataObject.createDataObject("columnType");
     columnTypeObject.set("columnName", "NAME");
-    columnTypeObject.set(0, getColumnType(1, connector));
+    columnTypeObject.set(0, getColumnType(1, connectorImpl));
     columnTypeObject = rdbTableMetaDataObject.createDataObject("columnType");
     columnTypeObject.set("columnName", "CONTENT");
-    columnTypeObject.set(0, getColumnType(2, connector));
+    columnTypeObject.set(0, getColumnType(2, connectorImpl));
 
     // fill the rdb table data object
     for (int i = 0; i < fileObjects.size(); i++) {
@@ -123,10 +110,9 @@ public class RandomFileToRDBDataTransformationService extends DataTransformation
    * @see org.simpl.core.services.dataformat.converter.DataFormatConverter#convertTo
    * (commonj .sdo.DataObject)
    */
-  @SuppressWarnings({ "unchecked", "rawtypes" })
+  @SuppressWarnings({ "unchecked" })
   @Override
-  public DataObject convertFrom(@WebParam(name = "rdbSDO") DataObject rdbSDO,
-      @WebParam(name = "connector") Connector connector) {
+  public DataObject convertFrom(DataObject rdbSDO, String connectorImpl) {
     if (RandomFileToRDBDataTransformationService.logger.isDebugEnabled()) {
       RandomFileToRDBDataTransformationService.logger
           .debug("Convert 'DataObject' data format from "
@@ -179,33 +165,37 @@ public class RandomFileToRDBDataTransformationService extends DataTransformation
    * 
    * @param index
    *          of column
-   * @param connector
+   * @param connectorImpl
    * @return For index=1 VARCHAR(511) and for index=2 a database specific type like
    *         LONGTEXT or BLOB to save the file content.
    */
 
-  private String getColumnType(int index,
-      @SuppressWarnings("rawtypes") Connector connector) {
+  private String getColumnType(int index, String connectorImpl) {
     String sqlType = "VARCHAR(511)";
 
     if (index == 0) {
-      if (connector instanceof DB2RDBConnector) {
+      if (connectorImpl.equals("org.simpl.core.plugins.connector.rdb.DB2RDBConnector")) {
         return sqlType = "INTEGER";
-      } else if (connector instanceof EmbDerbyRDBConnector) {
+      } else if (connectorImpl
+          .equals("org.simpl.core.plugins.connector.rdb.EmbDerbyRDBConnector")) {
         return sqlType = "INT";
-      } else if (connector instanceof DerbyRDBConnector) {
+      } else if (connectorImpl
+          .equals("org.simpl.core.plugins.connector.rdb.DerbyRDBConnector")) {
         return sqlType = "INT";
-      } else if (connector instanceof MySQLRDBConnector) {
+      } else if (connectorImpl
+          .equals("org.simpl.core.plugins.connector.rdb.MySQLRDBConnector")) {
         return sqlType = "INT(11)";
       } else {
         return sqlType = "INT";
       }
     } else if (index == 2) {
-      if (connector instanceof MySQLRDBConnector) {
+      if (connectorImpl.equals("org.simpl.core.plugins.connector.rdb.MySQLRDBConnector")) {
         return sqlType = "LONGTEXT";
-      } else if (connector instanceof DB2RDBConnector) {
+      } else if (connectorImpl
+          .equals("org.simpl.core.plugins.connector.rdb.DB2RDBConnector")) {
         return sqlType = "CLOB";
-      } else if (connector instanceof PostgreSQLRDBConnector) {
+      } else if (connectorImpl
+          .equals("org.simpl.core.plugins.connector.rdb.PostgreSQLRDBConnector")) {
         return sqlType = "BYTEA";
       } else {
         return sqlType = "BLOB";

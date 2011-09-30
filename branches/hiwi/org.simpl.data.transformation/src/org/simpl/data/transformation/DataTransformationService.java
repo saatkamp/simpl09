@@ -1,6 +1,5 @@
 package org.simpl.data.transformation;
 
-import org.simpl.core.connector.Connector;
 import org.simpl.core.dataconverter.DataConverter;
 import org.simpl.core.dataconverter.DataConverterProvider;
 
@@ -62,15 +61,15 @@ public abstract class DataTransformationService implements DataTransformation {
   }
 
   @Override
-  public DataObject convert(DataObject dataObject, Connector<Object, Object> connector) {
+  public DataObject convert(DataObject dataObject, String connectorImpl) {
     DataObject convertedSDO = null;
 
     if (dataObject.getString("dataFormat").equals(
         this.getToDataConverter().getDataFormat())) {
-      convertedSDO = this.convertFrom(dataObject, connector);
+      convertedSDO = this.convertFrom(dataObject, connectorImpl);
     } else if (dataObject.getString("dataFormat").equals(
         this.getFromDataConverter().getDataFormat())) {
-      convertedSDO = this.convertTo(dataObject, connector);
+      convertedSDO = this.convertTo(dataObject, connectorImpl);
     }
 
     return convertedSDO;

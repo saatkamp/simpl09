@@ -1,7 +1,5 @@
 package org.simpl.data.transformation;
 
-import org.simpl.core.connector.Connector;
-
 import commonj.sdo.DataObject;
 
 /**
@@ -23,19 +21,19 @@ public interface DataTransformation {
    * Converts the given data to the supported "to" data format.
    * 
    * @param data
-   * @param connector
+   * @param connectorImpl
    * @return
    */
-  public DataObject convertTo(DataObject data, Connector<Object, Object> connector);
+  public DataObject convertTo(DataObject data, String connectorImpl);
 
   /**
    * Converts the given SDO to the supported "from" data format.
    * 
    * @param data
-   * @param connector
+   * @param connectorImpl
    * @return
    */
-  public DataObject convertFrom(DataObject data, Connector<Object, Object> connector);
+  public DataObject convertFrom(DataObject data, String connectorImpl);
 
   /**
    * Converts automatically between two data formats. The given SDO's format is recognized
@@ -43,8 +41,8 @@ public interface DataTransformation {
    * {@link #convertTo(DataObject)} or {@link #convertFrom(DataObject)} method.
    * 
    * @param data
-   * @param connector
+   * @param connectorImpl
    * @return
    */
-  public DataObject convert(DataObject data, Connector<Object, Object> connector);
+  public DataObject convert(DataObject data, String connectorImpl);
 }

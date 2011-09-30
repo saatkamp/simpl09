@@ -1,19 +1,24 @@
 package org.simpl.data.transformation.webservice;
 
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
-import org.simpl.core.connector.Connector;
 import org.simpl.data.transformation.DataTransformationService;
+import org.simpl.resource.management.ResourceManagement;
 
 import commonj.sdo.DataObject;
+import commonj.sdo.helper.XMLDocument;
+import commonj.sdo.helper.XMLHelper;
+import commonj.sdo.helper.XSDHelper;
 
 /**
  * <b>Purpose: Provide the data transformation services as web service.</b> <br>
@@ -41,7 +46,6 @@ public class DataTransformation {
    * @return
    */
   @WebMethod(action = "convertTo")
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   public String convertTo(@WebParam(name = "serviceImpl") String serviceImpl,
       @WebParam(name = "data") String data,
       @WebParam(name = "connectorImpl") String connectorImpl) {
@@ -50,11 +54,11 @@ public class DataTransformation {
 
     try {
       DataObject dataObject = (DataObject) this.deserializeData(data);
-      Connector connector = (Connector) Class.forName(connectorImpl).newInstance();
       DataTransformationService dataTransformationService = (DataTransformationService) Class
           .forName(serviceImpl).newInstance();
 
-      convertedDataObject = dataTransformationService.convertTo(dataObject, connector);
+      convertedDataObject = dataTransformationService
+          .convertTo(dataObject, connectorImpl);
       convertedData = this.serializeData(convertedDataObject);
     } catch (InstantiationException e) {
       // TODO Auto-generated catch block
@@ -81,7 +85,6 @@ public class DataTransformation {
    * @return
    */
   @WebMethod(action = "convertFrom")
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   public String convertFrom(@WebParam(name = "serviceImpl") String serviceImpl,
       @WebParam(name = "data") String data,
       @WebParam(name = "connectorImpl") String connectorImpl) {
@@ -90,11 +93,11 @@ public class DataTransformation {
 
     try {
       DataObject dataObject = (DataObject) this.deserializeData(data);
-      Connector connector = (Connector) Class.forName(connectorImpl).newInstance();
       DataTransformationService dataTransformationService = (DataTransformationService) Class
           .forName(serviceImpl).newInstance();
 
-      convertedDataObject = dataTransformationService.convertFrom(dataObject, connector);
+      convertedDataObject = dataTransformationService.convertFrom(dataObject,
+          connectorImpl);
       convertedData = this.serializeData(convertedDataObject);
     } catch (InstantiationException e) {
       // TODO Auto-generated catch block
@@ -121,7 +124,6 @@ public class DataTransformation {
    * @return
    */
   @WebMethod(action = "convert")
-  @SuppressWarnings({ "rawtypes", "unchecked" })
   public String convert(@WebParam(name = "serviceImpl") String serviceImpl,
       @WebParam(name = "data") String data,
       @WebParam(name = "connectorImpl") String connectorImpl) {
@@ -129,12 +131,12 @@ public class DataTransformation {
     String convertedData = null;
 
     try {
-      DataObject dataObject = (DataObject) this.deserializeData(data);
-      Connector connector = (Connector) Class.forName(connectorImpl).newInstance();
       DataTransformationService dataTransformationService = (DataTransformationService) Class
           .forName(serviceImpl).newInstance();
 
-      convertedDataObject = dataTransformationService.convert(dataObject, connector);
+      DataObject dataObject = this.deserializeData(data);
+
+      convertedDataObject = dataTransformationService.convert(dataObject, connectorImpl);
       convertedData = this.serializeData(convertedDataObject);
     } catch (InstantiationException e) {
       // TODO Auto-generated catch block
@@ -151,37 +153,65 @@ public class DataTransformation {
   }
 
   /**
-   * Serializes a java object to a XML encoded object string.
+   * Serializes a data object to a XML encoded object string.
    * 
-   * @param object
+   * @param data
    * @return serialized object string
    */
-  private String serializeData(Object object) {
-    ByteArrayOutputStream byteArrayOuputStream = new ByteArrayOutputStream();
+  private String serializeData(DataObject data) {
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     String serializedData = null;
 
-    XMLEncoder encoder = new XMLEncoder(byteArrayOuputStream);
-    encoder.writeObject(object);
-    encoder.close();
+    if (data != null) {
+      try {
+        XMLDocument xmlDocument = XMLHelper.INSTANCE.createDocument(data, "commonj.sdo",
+            "dataObject");
+        xmlDocument.setEncoding("UTF-8");
+        XMLHelper.INSTANCE.save(xmlDocument, outputStream, null);
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+    }
 
-    serializedData = new String(byteArrayOuputStream.toByteArray());
+    serializedData = new String(outputStream.toByteArray());
 
     return serializedData;
   }
 
   /**
-   * Deserializes a XML encoded object string to a java object.
+   * Deserializes a XML encoded data object string to a java object.
    * 
    * @param data
    * @return deserialized java object
    */
-  private Object deserializeData(String data) {
-    ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(data.getBytes());
-    Object deserializedData = null;
+  private DataObject deserializeData(String data) {
+    DataObject deserializedData = null;
+    ResourceManagement resourceManagement = new ResourceManagement();
+    String schema = null;
+    String dataFormat = null;
+    Pattern dataFormatPattern = Pattern.compile("dataFormat=\"(.*?)\"");
+    Matcher matcher = dataFormatPattern.matcher(data);
 
-    XMLDecoder decoder = new XMLDecoder(byteArrayInputStream);
-    deserializedData = decoder.readObject();
-    decoder.close();
+    // retrieve the data format from the SDO xml data string
+    if (matcher.find()) {
+      dataFormat = matcher.group(1);
+    }
+
+    if (dataFormat != null) {
+      try {
+        schema = resourceManagement.getDataFormatSchema(dataFormat);
+        InputStream schemaInputStream = new ByteArrayInputStream(schema.getBytes());
+        XSDHelper.INSTANCE.define(schemaInputStream, null);
+
+        // convert xml string to SDO
+        XMLDocument xmlDoc = XMLHelper.INSTANCE.load(data);
+        deserializedData = xmlDoc.getRootObject();
+      } catch (Exception e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+    }
 
     return deserializedData;
   }

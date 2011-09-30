@@ -345,7 +345,7 @@ public class DatabaseStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      boolean result = this.simplCoreService.issueCommandByDataSourceObject(
+      boolean result = this.simplCoreService.issueCommandByDataSource(
           this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(),
           new LateBinding());
       statementTest.setExecuted(result);
@@ -374,14 +374,14 @@ public class DatabaseStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      String result = this.simplCoreService.retrieveDataByDataSourceObject(
+      String result = this.simplCoreService.retrieveDataByDataSource(
           this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(),
           new LateBinding());
 
       if (result != null && !result.equals("")) {
         statementTest.setExecuted(true);
         
-        if (result.contains("dataFormatType=\"RDBDataFormat\"")) {
+        if (result.contains("dataFormat=\"RDBDataFormat\"")) {
           statementTest.setResult(new RelationalResult(result));
           this.statementTest.log("Retrieved "
               + ((RelationalResult) this.statementTest.getResult()).getRowCount()
@@ -435,7 +435,7 @@ public class DatabaseStatementExecution extends StatementExecution {
     try {
       this.statementTest.log("Retrieve result before: " + execStatement);
 
-      resultBefore = this.simplCoreService.retrieveDataByDataSourceObject(
+      resultBefore = this.simplCoreService.retrieveDataByDataSource(
           this.statementTest.getDataSource(), execStatement, new LateBinding());
 
       // set table name (for drop activity)
@@ -464,7 +464,7 @@ public class DatabaseStatementExecution extends StatementExecution {
       this.statementTest.log("Execute statement: "
           + this.statementTest.getGeneratedStatement());
 
-      boolean result = simplCoreService.issueCommandByDataSourceObject(
+      boolean result = simplCoreService.issueCommandByDataSource(
           this.statementTest.getDataSource(), this.statementTest.getGeneratedStatement(),
           new LateBinding());
       statementTest.setExecuted(result);
@@ -496,7 +496,7 @@ public class DatabaseStatementExecution extends StatementExecution {
       // retrieve result after
       try {
         statementTest.log("Retrieve result after: " + execStatement);
-        resultAfter = this.simplCoreService.retrieveDataByDataSourceObject(
+        resultAfter = this.simplCoreService.retrieveDataByDataSource(
             this.statementTest.getDataSource(), execStatement, new LateBinding());
 
         if (resultAfter != null && !resultAfter.equals("")) {

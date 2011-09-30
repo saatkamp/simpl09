@@ -14,7 +14,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.simpl.resource.management.data.Authentication;
 import org.simpl.resource.management.data.Connector;
-import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataSource;
 
 public class AuditingLocalDsComposite extends AAdminConsoleComposite {
@@ -43,14 +43,14 @@ public class AuditingLocalDsComposite extends AAdminConsoleComposite {
 	@Override
 	public void createComposite(Composite composite) {
     Connector connector = new Connector();
-    DataFormat dataFormat = new DataFormat();
-    connector.setConverterDataFormat(dataFormat);	  
+    DataConverter dataConverter = new DataConverter();
+    connector.setDataConverter(dataConverter);	  
 	  dataSource.setConnector(connector);
     
 		dataSource.setName("local");
 		dataSource.setType("Database");
 		dataSource.setSubType("EmbeddedDerby");
-		dataSource.getConnector().getConverterDataFormat().setName("RDBDataFormat");
+		dataSource.getConnector().getDataConverter().setWorkflowDataFormat("RDBDataFormat");
 		Authentication auth = new Authentication();
 		auth.setUser("");
 		auth.setPassword("");
@@ -135,7 +135,7 @@ public class AuditingLocalDsComposite extends AAdminConsoleComposite {
 		formatLabel.setText("Format of the data source:");
 		formatText = new Text(comp, SWT.BORDER);
 		formatText.setLayoutData(gridData3);
-		formatText.setText(dataSource.getConnector().getConverterDataFormat().getName());
+		formatText.setText(dataSource.getConnector().getDataConverter().getWorkflowDataFormat());
 		formatText.setEnabled(false);
 	}
 

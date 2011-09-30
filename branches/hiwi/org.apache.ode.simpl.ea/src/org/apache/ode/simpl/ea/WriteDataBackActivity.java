@@ -69,7 +69,7 @@ public class WriteDataBackActivity extends DataManagementActivity {
       // retrieve the schema file and define it for SDO
       ResourceManagement rm = new ResourceManagement();
       String schema = rm.getDataFormatSchema(
-          ds.getConnector().getDataConverter().getDataFormat());
+          ds.getConnector().getDataConverter().getWorkflowDataFormat());
       InputStream schemaInputStream = new ByteArrayInputStream(schema.getBytes());
       XSDHelper.INSTANCE.define(schemaInputStream, null);
 

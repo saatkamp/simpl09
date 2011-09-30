@@ -87,7 +87,7 @@ public class FormMetaData {
   public String getSubTypeSelect(String selectedItem) throws Exception {
     this.retrieveSubTypes();
     
-    String select = this.createSelectElement("subType", selectedItem, subTypes);
+    String select = this.createSelectElement("subtype", selectedItem, subTypes);
 
     return select;
   }

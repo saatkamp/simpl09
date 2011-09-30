@@ -12,5 +12,6 @@
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
         <javaElement handleIdentifier="=org.simpl.data.transformation/src&lt;org.simpl.data.transformation.webservice.client"/>
+        <javaElement handleIdentifier="=org.simpl.data.transformation/src&lt;org.simpl.data.transformation.services"/>
     </selectedElements>
 </jardesc>

@@ -35,7 +35,7 @@ import org.eclipse.ui.PartInitException;
 import org.simpl.core.webservices.client.SIMPLCoreService;
 import org.simpl.core.webservices.client.SIMPLCoreServiceClient;
 import org.simpl.resource.management.data.Connector;
-import org.simpl.resource.management.data.DataFormat;
+import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataSource;
 
 /**
@@ -90,9 +90,9 @@ public class StatementTestWizard extends Wizard {
     // create a data source object from the activity data source properties
     DataSource activityDataSource = new DataSource();
     Connector connector = new Connector();
-    DataFormat dataFormat = new DataFormat();
+    DataConverter dataConverter = new DataConverter();
     
-    connector.setConverterDataFormat(dataFormat);
+    connector.setDataConverter(dataConverter);
     activityDataSource.setConnector(connector);
     activityDataSource.setAddress(activity.getDsIdentifier());
     activityDataSource.setType(activity.getDsType());
