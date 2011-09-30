@@ -76,10 +76,10 @@
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            category="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
+            category="org.eclipse.simpl.core.ui.preferences.SimTechHomePreferencePage"
             class="org.eclipse.simpl.rrs.transformation.preferences.TransformationPreferencePage"
             id="org.eclipse.simpl.rrs.transformation.TransformationPreferencePage"
-            name="Transformation Service">
+            name="RRS Transformation Service">
       </page>
    </extension>
 

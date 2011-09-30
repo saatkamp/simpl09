@@ -66,7 +66,7 @@
                   style="pull">
                <parameter
                      name="preferencePageId"
-                     value="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage">
+                     value="org.eclipse.simpl.communication.preferences.SIMPLCommunicationPreferencePage">
                </parameter>
             </command>
             <command
@@ -95,8 +95,8 @@
          point="org.eclipse.ui.preferencePages">
       <page
             class="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
-            id="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
-            name="SIMPL">
+            id="org.eclipse.simpl.core.ui.preferences.SimTechHomePreferencePage"
+            name="SimTech">
       </page>
    </extension>
    <extension

@@ -99,10 +99,10 @@
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            category="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
+            category="org.eclipse.simpl.core.ui.preferences.SimTechHomePreferencePage"
             class="org.eclipse.simpl.rrs.ui.preferences.RRSPreferencePage"
             id="org.eclipse.simpl.rrs.ui.preferences.RRSPreferencePage"
-            name="Reference Resolution System">
+            name="RRS Reference Resolution System">
       </page>
    </extension>
 
