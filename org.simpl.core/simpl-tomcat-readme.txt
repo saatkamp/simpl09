@@ -1,15 +1,15 @@
-SIMPL Tomcat Deployment Package v1.0.2
+SIMPL Tomcat Deployment Package v1.0.5
 
 = Content =
 SIMPL Core
 SIMPL Core Web Services
 SIMPL Core Plug-Ins
 SIMPL ODE Extensions
-SIMPL RRS (Reference Resolution System)
-SIMPL RRS Transformation Service
 SIMPL Resource Management
 SIMPL Resource Management Web Interface
 SIMPL Resource Discovery
+SIMPL Data Tranformation Services
+SIMPL Data Tranformation Web Service
 
 = Requirements =
 Apache Tomcat 5.5/6.0 (http://tomcat.apache.org/)
@@ -31,8 +31,9 @@ RRS: webapps\axis2\WEB-INF\conf\rrs-config.xml
 The user for Apache Tomcat and thus the Resource Management Web Interface is "admin", no password is set.
 
 = Links =
-SIMPL Core Web Services: http://localhost:8080/ode/services/listServices
-SIMPL RRS, Resource Management and Resource Discovery Web Services: http://localhost:8080/axis2/services/listServices
+SIMPL Core and Data Transformation Web Service: http://localhost:8080/ode/services/listServices
+SIMPL Resource Management and Resource Discovery Web Service: http://localhost:8080/axis2/services/listServices
+SIMPL Data Transformation Web Service: http://localhost:8080/ode/processes/DataTransformationService.DataTransformationPort?wsdl
 SIMPL Resource Management Web Interface: http://localhost:8080/rmweb
 
 = Problems =
