@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.xsd.XSDElementDeclaration;
+import org.eclipse.xsd.XSDTypeDefinition;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 
@@ -41,13 +42,19 @@ public class ContainerVariable extends AbstractVariable {
   public ContainerVariable(Variable variable) {
     super(variable);
 
-    XSDElementDeclaration xsd = variable.getXSDElement();
+    XSDElementDeclaration xsdElement = variable.getXSDElement();
+    XSDTypeDefinition xsdType = variable.getType();
+    
     NodeList typeNodes = null;
 
-    // use the schema type instead of variable type
-    if (xsd != null) {
-      this.type = xsd.getQName();
-      typeNodes = xsd.getTypeDefinition().getElement().getChildNodes();
+    // use element or type
+    if (xsdElement != null) {
+      this.type = xsdElement.getQName();
+      xsdType = xsdElement.getTypeDefinition();
+      typeNodes = xsdType.getElement().getChildNodes();
+    } else if (xsdType != null) { 
+      this.type = xsdType.getQName(); 
+      typeNodes = xsdType.getElement().getChildNodes();
     } else {
       System.out.println("Container variable XML schema (XSD) not found.");
       return;
@@ -67,8 +74,7 @@ public class ContainerVariable extends AbstractVariable {
       }
     }
 
-    NodeList variableSchemaNodes = variable.getXSDElement().getTypeDefinition()
-        .getComplexType().getElement().getChildNodes();
+    NodeList variableSchemaNodes = xsdType.getComplexType().getElement().getChildNodes();
     NamedNodeMap attributes = null;
     ContainerVariableElement element = null;
 
