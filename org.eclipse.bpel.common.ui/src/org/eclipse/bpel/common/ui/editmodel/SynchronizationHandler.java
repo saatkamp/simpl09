@@ -15,7 +15,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 
 /**
- * Used by the shared resource management. Should not be implemented
+ * Used by the shared resource framework. Should not be implemented
  * by clients.
  */
 interface SynchronizationHandler {
