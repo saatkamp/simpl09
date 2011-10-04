@@ -94,7 +94,7 @@
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            class="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
+            class="org.eclipse.simpl.core.ui.preferences.SimTechHomePreferencePage"
             id="org.eclipse.simpl.core.ui.preferences.SimTechHomePreferencePage"
             name="SimTech">
       </page>
