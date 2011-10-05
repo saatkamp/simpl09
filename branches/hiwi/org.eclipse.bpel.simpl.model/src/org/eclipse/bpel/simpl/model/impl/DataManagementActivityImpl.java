@@ -180,15 +180,14 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
    */
   public void setDsIdentifier(String newDsIdentifier) {
     String oldDsIdentifier = dsIdentifier;
-   	if (!isReconciling) {
-			ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
-					.getDataManagementActivity_DsIdentifier().getName(),
-					newDsIdentifier);
-		}
+    if (!isReconciling) {
+      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+          .getDataManagementActivity_DsIdentifier().getName(),
+          newDsIdentifier);
+    }
     dsIdentifier = newDsIdentifier;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER, oldDsIdentifier, dsIdentifier));

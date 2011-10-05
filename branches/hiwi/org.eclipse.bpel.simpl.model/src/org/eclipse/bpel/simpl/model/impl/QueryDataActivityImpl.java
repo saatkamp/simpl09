@@ -82,7 +82,6 @@ public class QueryDataActivityImpl extends DataManagementActivityImpl implements
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
    */
   public void setQueryTarget(String newQueryTarget) {
     String oldQueryTarget = queryTarget;
