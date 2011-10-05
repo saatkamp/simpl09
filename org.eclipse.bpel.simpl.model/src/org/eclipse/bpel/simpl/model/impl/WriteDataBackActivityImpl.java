@@ -109,7 +109,6 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
    */
   public void setDataVariable(Variable newDataVariable) {
     Variable oldDataVariable = dataVariable;
@@ -136,7 +135,6 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
    */
   public void setWriteTarget(String newWriteTarget) {
     String oldWriteTarget = writeTarget;

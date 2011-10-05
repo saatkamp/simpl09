@@ -166,7 +166,6 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
    */
   public void setTargetDsIdentifier(String newTargetDsIdentifier) {
     String oldTargetDsIdentifier = targetDsIdentifier;
@@ -192,7 +191,6 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
    */
   public void setTargetDsType(String newTargetDsType) {
     String oldTargetDsType = targetDsType;
@@ -218,7 +216,6 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
    */
   public void setTargetDsKind(String newTargetDsKind) {
     String oldTargetDsKind = targetDsKind;
@@ -244,7 +241,6 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
    */
   public void setTargetDsLanguage(String newTargetDsLanguage) {
     String oldTargetDsLanguage = targetDsLanguage;
@@ -270,7 +266,6 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
    */
   public void setTargetDsContainer(String newTargetDsContainer) {
     String oldTargetDsContainer = targetDsContainer;
