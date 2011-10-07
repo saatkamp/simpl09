@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://org.simpl.resource.management/datasources/connector_properties_description" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://org.simpl.resource.management/datasources/connector_properties_description">
+    <xsd:complexType name="tConnectorPropertiesDescription">
+      <xsd:sequence maxOccurs="1" minOccurs="1">
+        <xsd:element name="type" type="xsd:string"></xsd:element>
+        <xsd:element name="subType" type="xsd:string"></xsd:element>
+        <xsd:element name="language" type="xsd:string"></xsd:element>
+        <xsd:element name="dataFormat" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="connector_properties_description"
+      type="tConnectorPropertiesDescription">
+        <xsd:annotation>
+          <xsd:documentation>Describes the 'datasourceconnector_properties_description' field of the resource management table 'datasources'.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+
+
+
+
+</xsd:schema>
