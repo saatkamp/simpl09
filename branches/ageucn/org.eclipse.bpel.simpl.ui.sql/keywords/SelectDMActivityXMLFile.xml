@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <MainKeyWord value="QUERY" text="SELECT ">
+	<KeyWord value="SELECT" text="SELECT ">
+ 		<KeyWord value="WHERE" text="WHERE ">
+ 			<KeyWord value="GROUP BY" text="GROUP BY ">
+ 				<KeyWord value="HAVING" text="HAVING ">
+ 		
+    			</KeyWord>
+    		</KeyWord>
+    		<KeyWord value="ORDER BY" text="ORDER BY ">
+    		</KeyWord>
+ 		
+        </KeyWord>
+	</KeyWord>
+	
+	
+ </MainKeyWord>	
+</root>
