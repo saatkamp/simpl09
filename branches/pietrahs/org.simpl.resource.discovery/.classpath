@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/APACHE_ODE"/>
+	<classpathentry kind="lib" path="C:/Tomcat6.0/webapps/axis2/WEB-INF/lib/simpl-resource-management.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.simpl.resource.management"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
