@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SIMPL Core Plug-In: AC Auditing Extension
+Bundle-SymbolicName: org.eclipse.simpl.core.auditing;singleton:=true
+Bundle-Version: 0.1.1
+Bundle-Activator: org.eclipse.simpl.core.auditing.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.simpl.core,
+ org.eclipse.simpl.communication;bundle-version="0.1.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.eclipse.simpl.core.auditing;uses:="org.eclipse.ui.plugin,org.osgi.framework",
+ org.eclipse.simpl.core.auditing.ui;uses:="org.eclipse.swt.widgets,org.eclipse.simpl.core.extensions"
+Bundle-Vendor: SIMPL
