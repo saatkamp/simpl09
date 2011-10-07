@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xsd:schema targetNamespace="http://org.simpl.core/plugins/dataconverter/dataformat/RandomFileDataFormat"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+  xmlns="http://org.simpl.core/plugins/dataconverter/dataformat/RandomFileDataFormat"
+  xmlns:sdo="commonj.sdo" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <xsd:annotation>
+    <xsd:documentation>Defines the SDO structure of data from files.</xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="RandomFileDataFormat" type="tRandomFileDataFormat"></xsd:element>  <xsd:complexType name="tRandomFileDataFormat">
+    <xsd:sequence>
+      <xsd:element name="file" type="tFile" maxOccurs="unbounded"
+        minOccurs="0">
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="dataFormat" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="folder" type="xsd:string"></xsd:attribute>  </xsd:complexType>
+  <xsd:complexType name="tFile">
+    <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="content" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+</xsd:schema>
