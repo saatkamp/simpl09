@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://org.simpl.resource.management/languages/statement_description" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://org.simpl.resource.management/languages/statement_description">
+
+
+    <xsd:complexType name="tStatementDescription">
+      <xsd:sequence>
+        <xsd:element name="statement" type="tStatement"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="tStatement">
+      <xsd:sequence>
+        <xsd:element name="predicate" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:element name="statement_description" type="tStatementDescription"></xsd:element>
+</xsd:schema>
