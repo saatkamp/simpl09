@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="org.eclipse.simpl.statementtest.ui.views.StatementTestView"
+               ratio="0.5"
+               relationship="right"
+               relative="org.eclipse.ui.views.TaskList">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            category="org.eclipse.simpl.statementtest.StatementTestView"
+            class="org.eclipse.simpl.statementtest.ui.views.StatementTestView"
+            icon="icons/flask16.png"
+            id="org.eclipse.simpl.statementtest.ui.views.StatementTestView"
+            name="Statement Tests"
+            restorable="true">
+      </view>
+      <category
+            id="org.eclipse.simpl.statementtest.StatementTestView"
+            name="Statement Test">
+      </category>
+   </extension>
+
+</plugin>
