@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.eclipse.bpel.simpl.ui.queryLanguage" name="QueryLanguage" schema="schema/org.eclipse.bpel.simpl.ui.queryLanguage.exsd"/>
+   <extension
+         id="DataManagementUIObjectFactory"
+         name="simpl"
+         point="org.eclipse.bpel.ui.uiObjectFactories">
+       <factory
+            categoryId="not.used"
+            class="org.eclipse.bpel.simpl.ui.factories.DataManagementUIObjectFactory"
+            id="org.eclipse.bpel.simpl.ui.factories.DataManagementUIObjectFactory"
+            specCompliant="false">
+      </factory>
+   </extension>
+   
+   <extension point="org.eclipse.bpel.common.ui.paletteAdditions">
+      <additions
+            provider="org.eclipse.bpel.simpl.ui.palette.DataManagementPaletteProvider"
+            targetEditor="org.eclipse.bpel.ui.bpeleditor">
+      </additions>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.bpel.ui.bpeleditor">
+         <propertySection
+               class="org.eclipse.bpel.simpl.ui.properties.QueryDataActivityPropertySection"
+               id="org.eclipse.bpel.simpl.ui.properties.QueryDataActivityPropertySection"
+               tab="org.eclipse.bpel.ui.tabs.details">
+            <input
+                  type="org.eclipse.bpel.simpl.model.QueryDataActivity">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection"
+               id="org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection"
+               tab="org.eclipse.bpel.ui.tabs.details">
+            <input
+                  type="org.eclipse.bpel.simpl.model.IssueCommandActivity">
+            </input>
+
+            <input
+                  type="org.eclipse.bpel.simpl.model.TransferDataActivity">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.bpel.simpl.ui.properties.RetrieveDataActivityPropertySection"
+               id="org.eclipse.bpel.simpl.ui.properties.RetrieveDataActivityPropertySection"
+               tab="org.eclipse.bpel.ui.tabs.details">
+            <input
+                  type="org.eclipse.bpel.simpl.model.RetrieveDataActivity">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.bpel.simpl.ui.properties.WriteDataBackActivityPropertySection"
+               id="org.eclipse.bpel.simpl.ui.properties.WriteDataBackActivityPropertySection"
+               tab="org.eclipse.bpel.ui.tabs.details">
+            <input
+                  type="org.eclipse.bpel.simpl.model.WriteDataBackActivity">
+            </input>
+         </propertySection>         
+         <propertySection
+               afterSection="org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection"
+               class="org.eclipse.bpel.simpl.ui.properties.TransferDataActivityPropertySection"
+               id="org.eclipse.bpel.simpl.ui.properties.TransferDataActivityPropertySection"
+               tab="org.eclipse.bpel.ui.tabs.details">
+            <input
+                  type="org.eclipse.bpel.simpl.model.TransferDataActivity">
+            </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+   <extension
+         point="org.eclipse.bpel.ui.hoverHelpers">
+      <hoverHelper
+            class="org.eclipse.bpel.simpl.ui.hovers.SIMPLHoverHelper">
+      </hoverHelper>
+   </extension>
+
+</plugin>
+
