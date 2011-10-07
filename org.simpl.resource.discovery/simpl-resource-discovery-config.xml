@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDiscovery xmlns:p="http://org.simpl.resource.discovery" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.discovery simpl-resource-discovery-config.xsd ">
+  <!-- If no address is set, the ResourceManagement is accessed directly in the class path of the ResourceDiscovery -->
+  <ResourceManagement>
+    <address>http://localhost:8080/axis2/services/ResourceManagementService.ResourceManagementPort?wsdl</address>
+  </ResourceManagement>
+</ResourceDiscovery>
