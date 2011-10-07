@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
+            class="org.eclipse.simpl.communication.preferences.SIMPLCorePreferencePage"
+            id="org.eclipse.simpl.communication.preferences.SIMPLCorePreferencePage"
+            name="SIMPL Core">
+      </page>
+   </extension>
+
+</plugin>
