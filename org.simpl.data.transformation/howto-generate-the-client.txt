@@ -1,0 +1,13 @@
+First time setup:
+1) Go to External Tools Configuration "wsimport DataTransformation" and adapt the path under "Location:" and the url to the web service under "Arguments:".
+2) Go to External Tools Configuration "distribute simpl-data-transformation-webservice-client.jar" and adapt the path under "Working Directory:".
+3) Open the "distribute-simpl-data-transformation-webservice-client-jar.bat" in text editor and adapt the paths.
+4) Open the "simpl-data-transformation-webservice-client.jardesc" in text editor and adapt the jar path.
+
+Generate the client:
+1) Launch the Data Transformation Web Service (start Tomcat)
+2) Select the org.simpl.data.transformation.webservice.DataTransformation.java file and run the "wsimport DataTransformation" external tool.
+3) Delete all files under org.simpl.data.transformation.webservice.client that are not under version control (SVN)
+4) Correct the errors in the other files in importing unknown classes from "org.simpl.resource.management.data"
+5) SVN Revert the DataTransformationService.java
+6) Create the client jar file by using the simpl-data-transformation-webservice-client.jardesc
