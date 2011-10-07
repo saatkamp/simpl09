@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResourceManagement xmlns:p="http://org.simpl.resource.management" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management schemas/simpl-resource-management-config.xsd ">
+  <!--SIMPL data source to store the resource management data-->
+  <DataSource>
+    <name>Local PostgreSQL 8.4</name>
+    <address>localhost:5432/postgres</address>
+    <type>Database</type>
+    <subType>PostgreSQL</subType>
+    <dataFormat>RDBDataFormat</dataFormat>
+    <Authentication>
+      <user>postgres</user>
+      <password>postgres</password>
+    </Authentication>
+  </DataSource>
+</ResourceManagement>
