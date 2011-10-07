@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="C:/Tomcat6.0/webapps/ode/WEB-INF/lib/simpl-data-transformation-webservice-client.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/org.simpl.data.transformation/simpl-data-transformation-webservice-client.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="/org.simpl.core/SIMPL-CORE.MF" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=org.simpl.data.transformation/src&lt;org.simpl.data.transformation.webservice.client"/>
+        <javaElement handleIdentifier="=org.simpl.data.transformation/src&lt;org.simpl.data.transformation.services"/>
+    </selectedElements>
+</jardesc>
