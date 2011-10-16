@@ -59,11 +59,11 @@ public class DescriptorVariablesAdapter extends ContainerAdapter implements Edit
 	}	
 	
 	public String getTypeLabel(Object object) {
-		return "Descriptor Variables";  
+		return "Data Source References";  
 	}
 	
 	public String getLabel(Object object) {
-		return "Descriptor Variables"; 
+		return "Data Source References"; 
 	}	
 
 	/* IOutlineEditPartFactory */

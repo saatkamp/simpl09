@@ -10,7 +10,35 @@
  *******************************************************************************/
 package org.eclipse.bpel.ui.editparts;
 
-
+import org.eclipse.bpel.model.Variable;
+import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.xsd.XSDTypeDefinition;
 
 public class VariableEditPart extends BPELTrayCategoryEntryEditPart {
+  /**
+   * Overridden to hide the variable clones of container and descriptor variables in the
+   * GUI when the BPEL Editor is opened.
+   */
+  @Override
+  public IFigure createFigure() {
+    IFigure figure = super.createFigure();
+    Variable variable = (Variable) this.getModel();
+    XSDTypeDefinition type = variable.getType();
+
+    if (type != null
+        && (type.getName().equals(ContainerVariablesEditPart.DATA_TYPE) || type.getName()
+            .equals(DescriptorVariablesEditPart.DATA_TYPE))) {
+      figure.setFocusTraversable(false);
+      figure.setRequestFocusEnabled(false);
+      figure.setEnabled(false);
+      figure.setForegroundColor(new Color(Display.getCurrent(), 211, 211, 211));
+      figure.setPreferredSize(new Dimension(0, 0));
+      figure.setVisible(false);
+    }
+
+    return figure;
+  }
 }
