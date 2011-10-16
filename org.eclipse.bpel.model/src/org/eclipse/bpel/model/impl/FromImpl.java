@@ -14,6 +14,7 @@
  */
 package org.eclipse.bpel.model.impl;
 
+import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.EndpointReferenceRole;
 import org.eclipse.bpel.model.Expression;
@@ -22,6 +23,7 @@ import org.eclipse.bpel.model.PartnerLink;
 import org.eclipse.bpel.model.Query;
 import org.eclipse.bpel.model.ServiceRef;
 import org.eclipse.bpel.model.Variable;
+import org.eclipse.bpel.model.Variables;
 import org.eclipse.bpel.model.messageproperties.Property;
 import org.eclipse.bpel.model.proxy.PartProxy;
 import org.eclipse.bpel.model.util.BPELConstants;
@@ -36,6 +38,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.wst.wsdl.Message;
 import org.eclipse.wst.wsdl.Part;
 import org.eclipse.xsd.XSDTypeDefinition;
+import org.w3c.dom.Element;
 
 /**
  * <!-- begin-user-doc -->
@@ -272,6 +275,62 @@ public class FromImpl extends ExtensibleElementImpl implements From {
   @Override
   protected EClass eStaticClass() {
     return BPELPackage.Literals.FROM;
+  }
+
+  /**
+   * Finds the variable clone of the descriptor variable.
+   * 
+   * @return the variable clone
+   */
+  protected Variable findCloneVariable(Element variable) {
+    org.eclipse.bpel.model.Process process = BPELUtils.getProcess(this);
+    Variables variables = null;
+    Variable cloneVariable = null;
+  
+    if (process != null) {
+      variables = process.getVariables();
+      
+      for (Variable var : variables.getChildren()) {
+        if (var.getName().equals(variable.getAttribute("name"))) {
+          cloneVariable = var;
+          break;
+        }
+      }
+    }
+    
+    return cloneVariable;
+  }
+
+  /**
+   * Overridden to synchronize the from element of the container and descriptor variables
+   * on their variable clones.
+   */
+  @Override
+  protected void reconcile(Element changedElement) {
+    super.reconcile(changedElement);
+
+    // update the from element in the clone variables as well
+    if (changedElement.getParentNode().getLocalName().equals("descriptorVariable")
+        || changedElement.getParentNode().getLocalName().equals("containerVariable")) {
+      Element changedElementClone = (Element) changedElement.cloneNode(true);
+      From newFrom = BPELFactory.eINSTANCE.createFrom();
+      Variable cloneVariable = this.findCloneVariable((Element) changedElement
+          .getParentNode());
+      From cloneFrom = cloneVariable.getFrom();
+
+      newFrom.setElement(changedElementClone);
+      newFrom.setExpression(cloneFrom.getExpression());
+      newFrom.setLiteral(cloneFrom.getLiteral());
+      newFrom.setOpaque(cloneFrom.getOpaque());
+      newFrom.setPartnerLink(cloneFrom.getPartnerLink());
+      newFrom.setQuery(cloneFrom.getQuery());
+      newFrom.setEndpointReference(cloneFrom.getEndpointReference());
+      newFrom.setUnsafeLiteral(cloneFrom.getUnsafeLiteral());
+      newFrom.setVariable(cloneFrom.getVariable());
+      
+      ReconciliationHelper.getInstance().reconcile(cloneVariable.getFrom(),
+          newFrom.getElement());
+    }
   }
 
   /**
@@ -1088,5 +1147,4 @@ public class FromImpl extends ExtensibleElementImpl implements From {
     result.append(')');
     return result.toString();
   }
-
 } //FromImpl

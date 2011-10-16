@@ -13,10 +13,9 @@ package org.eclipse.bpel.ui.adapters;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.ui.BPELUIPlugin;
 import org.eclipse.bpel.ui.IBPELUIConstants;
-import org.eclipse.bpel.ui.Messages;
 import org.eclipse.bpel.ui.adapters.delegates.ReferenceContainer;
-import org.eclipse.bpel.ui.editparts.OutlineTreeEditPart;
 import org.eclipse.bpel.ui.editparts.ContainerVariablesEditPart;
+import org.eclipse.bpel.ui.editparts.OutlineTreeEditPart;
 import org.eclipse.bpel.ui.properties.PropertiesLabelProvider;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartFactory;
@@ -60,11 +59,11 @@ public class ContainerVariablesAdapter extends ContainerAdapter implements EditP
 	}	
 	
 	public String getTypeLabel(Object object) {
-		return "Container Variables";  
+		return "Data Container References";  
 	}
 	
 	public String getLabel(Object object) {
-		return "Container Variables"; 
+		return "Data Container References"; 
 	}	
 
 	/* IOutlineEditPartFactory */

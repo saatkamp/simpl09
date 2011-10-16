@@ -16,12 +16,15 @@ package org.eclipse.bpel.model.impl;
 
 import javax.xml.namespace.QName;
 
+import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.ContainerVariable;
 import org.eclipse.bpel.model.From;
+import org.eclipse.bpel.model.Variable;
+import org.eclipse.bpel.model.Variables;
 import org.eclipse.bpel.model.util.BPELConstants;
+import org.eclipse.bpel.model.util.BPELUtils;
 import org.eclipse.bpel.model.util.ReconciliationHelper;
-import org.eclipse.bpel.model.util.XSDUtil;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -30,9 +33,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.wst.wsdl.Message;
 import org.eclipse.wst.wsdl.WSDLElement;
 import org.eclipse.xsd.XSDElementDeclaration;
-import org.eclipse.xsd.XSDPackage;
-import org.eclipse.xsd.XSDSchema;
 import org.eclipse.xsd.XSDTypeDefinition;
+import org.w3c.dom.Element;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>ContainerVariable</b></em>'.
@@ -123,6 +125,44 @@ public class ContainerVariableImpl extends ExtensibleElementImpl implements Cont
   protected EClass eStaticClass() {
     return BPELPackage.Literals.CONTAINER_VARIABLE;
   }
+  
+  /**
+   * Finds the variable clone of this container variable.
+   * 
+   * @return the variable clone
+   */
+  protected Variable findCloneVariable() {
+    org.eclipse.bpel.model.Process process = BPELUtils.getProcess(this);
+    Variables variables = null;
+    Variable cloneVariable = null;
+    
+    if (process != null) {
+      variables = process.getVariables();
+      
+      for (Variable var : variables.getChildren()) {
+        if (var.getName().equals(this.getName())) {
+          cloneVariable = var;
+          break;
+        }
+      }
+    }
+    
+    return cloneVariable;
+  }
+
+  /**
+   * Overridden to synchronize the variable clone.
+   */
+  @Override
+  protected void reconcile(Element changedElement) {
+    super.reconcile(changedElement);
+    
+    // calling own setters to update the variable clone
+    this.setMessageType(this.getMessageType());
+    this.setXSDElement(this.getXSDElement());
+    this.setType(this.getType());
+    this.setFrom(this.getFrom());
+  }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -138,9 +178,14 @@ public class ContainerVariableImpl extends ExtensibleElementImpl implements Cont
   public void setName(String newName) {
     String oldName = name;
     if (!isReconciling) {
+      if (this.findCloneVariable() != null) {
+        this.findCloneVariable().setName(newName);
+      }
+
       ReconciliationHelper.replaceAttribute(this, BPELConstants.AT_NAME, newName);
       ReconciliationHelper.updateVariableName((WSDLElement) eContainer(), newName);
     }
+    
     name = newName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, BPELPackage.CONTAINER_VARIABLE__NAME,
@@ -185,6 +230,10 @@ public class ContainerVariableImpl extends ExtensibleElementImpl implements Cont
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
           BPELPackage.CONTAINER_VARIABLE__MESSAGE_TYPE, oldMessageType, messageType));
+    
+    if (this.findCloneVariable() != null) {
+      this.findCloneVariable().setMessageType(messageType);
+    }
   }
 
   /**
@@ -226,6 +275,10 @@ public class ContainerVariableImpl extends ExtensibleElementImpl implements Cont
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
           BPELPackage.CONTAINER_VARIABLE__XSD_ELEMENT, oldXSDElement, xsdElement));
+    
+    if (this.findCloneVariable() != null) {
+      this.findCloneVariable().setXSDElement(xsdElement);
+    }
   }
 
   /**
@@ -269,6 +322,10 @@ public class ContainerVariableImpl extends ExtensibleElementImpl implements Cont
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, BPELPackage.CONTAINER_VARIABLE__TYPE,
           oldType, type));
+    
+    if (this.findCloneVariable() != null) {
+      this.findCloneVariable().setType(type);
+    }
   }
 
   /**
@@ -319,6 +376,19 @@ public class ContainerVariableImpl extends ExtensibleElementImpl implements Cont
     } else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, BPELPackage.CONTAINER_VARIABLE__FROM,
           newFrom, newFrom));
+    
+    if (this.findCloneVariable() != null) {
+      Element fromCloneElement = null;
+      From fromClone = null;
+      
+      if (newFrom != null) {
+        fromCloneElement = (Element) newFrom.getElement().cloneNode(true);
+        fromClone = BPELFactory.eINSTANCE.createFrom();
+        fromClone.setElement(fromCloneElement);
+      }
+      
+      this.findCloneVariable().setFrom(fromClone);
+    }
   }
 
   /**
@@ -455,5 +525,4 @@ public class ContainerVariableImpl extends ExtensibleElementImpl implements Cont
     result.append(')');
     return result.toString();
   }
-
 } // ContainerVariableImpl

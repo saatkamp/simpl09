@@ -32,6 +32,14 @@ public class SetUniqueNameCommand extends org.eclipse.gef.commands.CompoundComma
 		this.process = process;
 		ILabeledElement element = BPELUtil.adapt(model, ILabeledElement.class);
 		String name = (element != null) ? element.getTypeLabel(model) : ""; //$NON-NLS-1$
+		
+		// HACK: renames container and descriptor variables to their user-friendly names
+    if (name.startsWith("Container Variable")) {
+      name = name.replace("Container Variable", "Data Container Reference");
+    } else if (name.startsWith("Descriptor Variable")) {
+      name = name.replace("Descriptor Variable", "Data Source Reference");
+    }
+		
 		String uniqueModelName = BPELUtil.getUniqueModelName(process, name, Collections.singletonList(model));
 		if (BPELUtil.adapt(model, INamedElement.class) != null) {
 			add(new SetNameCommand((EObject)model, uniqueModelName));
