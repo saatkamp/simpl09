@@ -78,7 +78,6 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.simpl.resource.management.ResourceManagementPlugIn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -167,11 +166,6 @@ public class ProcessPage extends FormPage implements IResourceChangeListener {
 				IResourceChangeEvent.POST_CHANGE);
 
 		this.domain = this.editor.getEditingDomain();
-		
-		
-		this.processType.setAttachedRMAddress(ResourceManagementPlugIn.getDefault()
-				.getPreferenceStore().getString(
-						"RESOURCE_MANAGEMENT_ADDRESS"));
 	}
 
 	@Override
