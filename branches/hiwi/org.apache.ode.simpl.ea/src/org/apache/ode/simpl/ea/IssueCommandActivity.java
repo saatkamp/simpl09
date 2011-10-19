@@ -6,7 +6,6 @@ import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.simpl.ea.util.DataSourceUtils;
 import org.simpl.core.SIMPLCoreInterface;
 import org.simpl.core.services.SIMPLCoreService;
-import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.LateBinding;
 import org.w3c.dom.Element;
 
@@ -20,8 +19,8 @@ public class IssueCommandActivity extends DataManagementActivity {
     // Load all attribute values from the activity.
     loadSIMPLAttributes(context, element);
 
-    DataSource ds = DataSourceUtils.getDataSource(context, getDsIdentifier());
-    LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
+    String ds = getDsIdentifier();
+    LateBinding lb = DataSourceUtils.getLateBinding(context, ds);
     
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 

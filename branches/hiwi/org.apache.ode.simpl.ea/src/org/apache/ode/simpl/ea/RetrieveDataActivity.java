@@ -8,7 +8,6 @@ import org.apache.ode.simpl.ea.util.DataSourceUtils;
 import org.apache.ode.simpl.ea.util.SDOUtils;
 import org.simpl.core.SIMPLCoreInterface;
 import org.simpl.core.services.SIMPLCoreService;
-import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.LateBinding;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
@@ -30,8 +29,8 @@ public class RetrieveDataActivity extends DataManagementActivity {
     Attr dataVarAttr = element.getAttributeNode("dataVariable");
     String dataVariableName = dataVarAttr.getValue();
 
-    DataSource ds = DataSourceUtils.getDataSource(context, getDsIdentifier());
-    LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
+    String ds = getDsIdentifier();
+    LateBinding lb = DataSourceUtils.getLateBinding(context, ds);
 
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 

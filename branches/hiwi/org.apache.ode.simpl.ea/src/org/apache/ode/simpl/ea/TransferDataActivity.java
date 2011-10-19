@@ -10,7 +10,6 @@ import org.apache.ode.simpl.ea.util.DataSourceUtils;
 import org.apache.ode.simpl.ea.util.StatementUtils;
 import org.simpl.core.SIMPLCoreInterface;
 import org.simpl.core.services.SIMPLCoreService;
-import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.LateBinding;
 import org.w3c.dom.Element;
 
@@ -62,8 +61,8 @@ public class TransferDataActivity extends DataManagementActivity {
           variables, targetDsContainer));
     }
 
-    DataSource dsFrom = DataSourceUtils.getDataSource(context, getDsIdentifier());
-    DataSource dsTo = DataSourceUtils.getDataSource(context, targetDsIdentifier);
+    String dsFrom = getDsIdentifier();
+    String dsTo = targetDsIdentifier;
     LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
 
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();

@@ -48,7 +48,7 @@ public class VariableUtils {
     }
 
     if (varType == CONTAINER_VAR) {
-      // Query all variables with the simpl:ContainerReferenceType
+      // Query all variables with the simpl:DataContainerReferenceType
       // xmlns:simpl "http://www.example.org/simpl"
       List<XSDSchema> schemas = ModelHelper.getSchemas(process, false);
       Iterator<XSDSchema> iterator = schemas.iterator();
@@ -70,8 +70,8 @@ public class VariableUtils {
 
       if (found) {
         XSDTypeDefinition contType = XSDUtils.getDataType(schema,
-            "ContainerReferenceType");
-        // Query all variables with ContainerReferenceType
+            "DataContainerReferenceType");
+        // Query all variables with DataContainerReferenceType
         if (contType != null) {
           Variable[] vars = ModelHelper.getVariablesOfType(process, contType.getName());
           for (Variable var : vars) {
@@ -82,7 +82,7 @@ public class VariableUtils {
     }
 
     if (varType == DESCRIPTOR_VAR) {
-      // Query all variables with the simpl:LogicalDataSourceDescriptorType
+      // Query all variables with the simpl:DataSourceReferenceType
       // xmlns:simpl "http://www.example.org/simpl"
       List<XSDSchema> schemas = ModelHelper.getSchemas(process, false);
       Iterator<XSDSchema> iterator = schemas.iterator();
@@ -104,8 +104,8 @@ public class VariableUtils {
 
       if (found) {
         XSDTypeDefinition contType = XSDUtils.getDataType(schema,
-            "LogicalDataSourceDescriptorType");
-        // Query all variables with LogicalDataSourceDescriptorType
+            "DataSourceReferenceType");
+        // Query all variables with DataSourceReferenceType
         if (contType != null) {
           Variable[] vars = ModelHelper.getVariablesOfType(process, contType.getName());
           for (Variable var : vars) {
@@ -131,7 +131,7 @@ public class VariableUtils {
       }
     }
 
-    // Query all variables with the simpl:ContainerReferenceType
+    // Query all variables with the simpl:DataContainerReferenceType
     // xmlns:simpl "http://www.example.org/simpl"
     List<XSDSchema> schemas = ModelHelper.getSchemas(process, false);
     Iterator<XSDSchema> iterator = schemas.iterator();
@@ -152,8 +152,8 @@ public class VariableUtils {
     }
 
     if (found) {
-      XSDTypeDefinition contType = XSDUtils.getDataType(schema, "ContainerReferenceType");
-      // Query all variables with ContainerReferenceType
+      XSDTypeDefinition contType = XSDUtils.getDataType(schema, "DataContainerReferenceType");
+      // Query all variables with DataContainerReferenceType
       Variable[] vars = ModelHelper.getVariablesOfType(process, contType.getName());
       for (Variable var : vars) {
         variableNames.add("[" + var.getName() + "]");
@@ -176,7 +176,7 @@ public class VariableUtils {
       String variableElement) {
     String value = null;
 
-    // Query all variables with the simpl:LogicalDataSourceDescriptorType
+    // Query all variables with the simpl:DataSourceReferenceType
     // xmlns:simpl "http://www.example.org/simpl"
     List<XSDSchema> schemas = ModelHelper.getSchemas(process, false);
     Iterator<XSDSchema> iterator = schemas.iterator();
@@ -198,8 +198,8 @@ public class VariableUtils {
 
     if (found) {
       XSDTypeDefinition contType = XSDUtils.getDataType(schema,
-          "LogicalDataSourceDescriptorType");
-      // Query all variables with LogicalDataSourceDescriptorType
+          "DataSourceReferenceType");
+      // Query all variables with DataSourceReferenceType
       Variable[] vars = ModelHelper.getVariablesOfType(process, contType.getName());
       for (Variable var : vars) {
         if (var.getName().equals(variableName) && var.getFrom() != null) {

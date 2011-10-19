@@ -79,7 +79,7 @@ public class SIMPLCoreWebService {
     return metaData;
   }
 
-  public boolean isSIMPLCoreAvailable() {
+  public boolean isAvailable() {
     boolean isAvailable = false;
     URL url;
 

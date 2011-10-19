@@ -108,7 +108,7 @@ public class StatementUtils {
 		String varName = "";
 		if (match.contains("[")) {
 			// Statement contains complex type
-			// (simpl:ContainerReferenceType)
+			// (simpl:DataContainerReferenceType)
 			// BPEL variables
 			/*
 			 * <?xml version="1.0" encoding="UTF-8"?> <containerReference
