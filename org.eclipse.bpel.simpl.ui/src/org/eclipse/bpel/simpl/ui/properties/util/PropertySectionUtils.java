@@ -16,7 +16,6 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.simpl.communication.ResourceManagementCommunication;
-import org.eclipse.simpl.communication.SIMPLCoreCommunication;
 import org.simpl.resource.management.data.DataSource;
 
 /**
@@ -84,18 +83,20 @@ public class PropertySectionUtils {
     DataSource dataSource = null;
 
     String dataSourceName = VariableUtils.getDescriptorElementValue(process, nameWithPrefix, "name");
-    dataSource = ResourceManagementCommunication.getInstance().findDataSourceByName(dataSourceName);
     
-    if (dataSource != null && dataSource.getName() == null) {
-      dataSource = null;
+    if (ResourceManagementCommunication.getInstance().isAvailable() && dataSourceName != null) {
+      dataSource = ResourceManagementCommunication.getInstance().findDataSourceByName(dataSourceName);
+
+      if (dataSource != null && dataSource.getName() == null) {
+        dataSource = null;
+      }
     }
 
     return dataSource;
   }
 
   public static void downloadSchema(DataSource dataSource, Process process) {
-
-    if (SIMPLCoreCommunication.getInstance().isSIMPLCoreAvailable() && dataSource != null) {
+    if (ResourceManagementCommunication.getInstance().isAvailable() && dataSource != null) {
       bpelFile = BPELUtil.getBPELFile(process);
 
       bpelPath = bpelFile.getFullPath();

@@ -10,7 +10,6 @@ import org.apache.ode.simpl.ea.util.DataSourceUtils;
 import org.apache.ode.simpl.ea.util.StatementUtils;
 import org.simpl.core.SIMPLCoreInterface;
 import org.simpl.core.services.SIMPLCoreService;
-import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.LateBinding;
 import org.w3c.dom.Element;
 
@@ -48,8 +47,8 @@ public class QueryDataActivity extends DataManagementActivity {
           queryTarget));
     }
 
-    DataSource ds = DataSourceUtils.getDataSource(context, getDsIdentifier());
-    LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
+    String ds = getDsIdentifier();
+    LateBinding lb = DataSourceUtils.getLateBinding(context, ds);
 
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 

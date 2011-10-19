@@ -377,7 +377,7 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
           MessageDialog.openInformation(
               parentComposite.getShell(),
               "Information",
-              "No container reference variable found.\n\nPlease create at least one variable of type 'ContainerReferenceType'.");
+              "No container reference variable found.\n\nPlease create at least one variable of type 'DataContainerReferenceType'.");
         }
 			}
 

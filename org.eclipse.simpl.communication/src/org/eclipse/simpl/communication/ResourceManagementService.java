@@ -1,5 +1,7 @@
 package org.eclipse.simpl.communication;
 
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -145,5 +147,23 @@ public class ResourceManagementService {
         .getString("SIMPL_RESOURCE_MANAGEMENT_ADDRESS");
 
     return ResourceManagementClient.getService(address);
+  }
+  
+  public boolean isAvailable() {
+    boolean isAvailable = false;
+    String address = CommunicationPlugIn.getDefault().getPreferenceStore()
+        .getString("SIMPL_RESOURCE_MANAGEMENT_ADDRESS");
+    URL url;
+
+    try {
+      url = new URL(address);
+      URLConnection connection = url.openConnection();
+      connection.connect();
+      isAvailable = true;
+    } catch (Exception e) {
+      isAvailable = false;
+    }
+    
+    return isAvailable;
   }
 }
