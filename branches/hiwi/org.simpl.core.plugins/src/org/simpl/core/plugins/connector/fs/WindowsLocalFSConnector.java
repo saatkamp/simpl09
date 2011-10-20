@@ -110,7 +110,7 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
     if (!dataSource.getAddress().equals("")) {
       dir = dataSource.getAddress() + File.separator;
     }
-
+    
     if (target != null && !target.equals("")) {
       targetFile = new File(dir + target);
 
@@ -125,7 +125,6 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
 
       // file -> directory
       if (dataFile.isFile() && targetFile.isDirectory()) {
-
         // create target directory if it doesn't exist
         if (!targetFile.exists()) {
           targetFile.mkdir();
@@ -140,6 +139,17 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
         }
       }
 
+      // directory -> file
+      if (dataFile.isDirectory() && (targetFile.isFile() || !targetFile.isFile() && !targetFile.isDirectory())) {
+        File firstFile = dataFile.listFiles()[0];
+
+        // check if file exists in target directory
+        if (!targetFile.exists()) {
+          // move file to the target
+          successful = firstFile.renameTo(targetFile);
+        }        
+      }
+      
       // directory -> directory
       if (dataFile.isDirectory() && targetFile.isDirectory()) {
         boolean filesExistOnTarget = false;

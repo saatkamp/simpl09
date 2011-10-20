@@ -6,6 +6,7 @@ import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.apache.ode.simpl.ea.util.DataSourceUtils;
 import org.apache.ode.simpl.ea.util.SDOUtils;
+import org.apache.ode.simpl.ea.util.VariableUtils;
 import org.simpl.core.SIMPLCoreInterface;
 import org.simpl.core.services.SIMPLCoreService;
 import org.simpl.resource.management.data.LateBinding;
@@ -29,8 +30,8 @@ public class RetrieveDataActivity extends DataManagementActivity {
     Attr dataVarAttr = element.getAttributeNode("dataVariable");
     String dataVariableName = dataVarAttr.getValue();
 
-    String ds = getDsIdentifier();
-    LateBinding lb = DataSourceUtils.getLateBinding(context, ds);
+    String ds = VariableUtils.getDataSourceReferenceValue(context, getDsIdentifier(), "name");
+    LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
 
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 

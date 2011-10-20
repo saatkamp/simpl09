@@ -8,6 +8,7 @@ import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.apache.ode.simpl.ea.util.DataSourceUtils;
 import org.apache.ode.simpl.ea.util.StatementUtils;
+import org.apache.ode.simpl.ea.util.VariableUtils;
 import org.simpl.core.SIMPLCoreInterface;
 import org.simpl.core.services.SIMPLCoreService;
 import org.simpl.resource.management.data.LateBinding;
@@ -47,8 +48,8 @@ public class QueryDataActivity extends DataManagementActivity {
           queryTarget));
     }
 
-    String ds = getDsIdentifier();
-    LateBinding lb = DataSourceUtils.getLateBinding(context, ds);
+    String ds = VariableUtils.getDataSourceReferenceValue(context, getDsIdentifier(), "name");
+    LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
 
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 

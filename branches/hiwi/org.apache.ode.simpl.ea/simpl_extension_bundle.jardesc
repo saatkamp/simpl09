@@ -11,7 +11,8 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <javaElement handleIdentifier="=org.apache.ode.simpl.ea/src"/>
+        <javaElement handleIdentifier="=org.apache.ode.simpl.ea/src&lt;org.apache.ode.simpl.ea"/>
         <javaElement handleIdentifier="=org.apache.ode.simpl.events/src"/>
+        <javaElement handleIdentifier="=org.apache.ode.simpl.ea/src&lt;org.apache.ode.simpl.ea.util"/>
     </selectedElements>
 </jardesc>

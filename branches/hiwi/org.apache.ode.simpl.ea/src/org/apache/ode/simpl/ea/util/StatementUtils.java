@@ -41,7 +41,7 @@ public class StatementUtils {
 		if (statement.contains("[") || statement.contains("#")) {
 			resultStatement = parseStatement(context, statement);
 			if (logger.isDebugEnabled()) {
-				logger.debug("Incomming statement: " + statement);
+				logger.debug("Incoming statement: " + statement);
 			}
 		} else {
 			resultStatement = statement;
