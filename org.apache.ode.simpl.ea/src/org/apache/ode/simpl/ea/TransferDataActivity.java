@@ -8,6 +8,7 @@ import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.apache.ode.simpl.ea.util.DataSourceUtils;
 import org.apache.ode.simpl.ea.util.StatementUtils;
+import org.apache.ode.simpl.ea.util.VariableUtils;
 import org.simpl.core.SIMPLCoreInterface;
 import org.simpl.core.services.SIMPLCoreService;
 import org.simpl.resource.management.data.LateBinding;
@@ -61,8 +62,8 @@ public class TransferDataActivity extends DataManagementActivity {
           variables, targetDsContainer));
     }
 
-    String dsFrom = getDsIdentifier();
-    String dsTo = targetDsIdentifier;
+    String dsFrom = VariableUtils.getDataSourceReferenceValue(context, getDsIdentifier(), "name");
+    String dsTo = VariableUtils.getDataSourceReferenceValue(context, targetDsIdentifier, "name");
     LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
 
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
@@ -71,7 +72,6 @@ public class TransferDataActivity extends DataManagementActivity {
       if (!targetDsIdentifier.equals("") || !targetDsContainer.equals("")) {
         DataObject dataObject = simplCoreService.retrieveData(dsFrom,
             getDsStatement(context), lb);
-
         if (dataObject == null) {
           this.successfulExecution = false;
         } else {

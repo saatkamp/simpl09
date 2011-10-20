@@ -92,12 +92,14 @@ public class AdministrationServiceImpl implements AdministrationServiceInterface
       // Erste Zeile der Ergebnismenge auswählen (es gibt nur eine durch die id)
       resultSet.next();
 
-      // Da wir wissen unsere id ist eindeutig, kann es nur eine Zeile im ResultSet
-      // geben und diese lesen wir aus.
-      for (int i = 2; i <= rsMetaData.getColumnCount(); i++) {
-        // Wir starten in der 2.Spalte, da wir die id nicht
-        // in den Einstellungen haben wollen.
-        settings.put(rsMetaData.getColumnName(i), resultSet.getString(i));
+      if (rsMetaData.getColumnCount() > 1) {
+        // Da wir wissen unsere id ist eindeutig, kann es nur eine Zeile im ResultSet
+        // geben und diese lesen wir aus.
+        for (int i = 2; i <= rsMetaData.getColumnCount(); i++) {
+          // Wir starten in der 2.Spalte, da wir die id nicht
+          // in den Einstellungen haben wollen.
+          settings.put(rsMetaData.getColumnName(i), resultSet.getString(i));
+        }
       }
       resultSet.close();
       stat.close();

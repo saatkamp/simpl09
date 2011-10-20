@@ -33,4 +33,12 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
+
+  <xsd:element name="relationalDatabaseDataContainerReference"
+    type="simpl:RelationalDatabaseDataContainerReferenceType">
+  </xsd:element>
+
+  <xsd:element name="dataSourceReference"
+    type="simpl:DataSourceReferenceType">
+  </xsd:element>
 </xsd:schema>

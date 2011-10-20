@@ -28,6 +28,10 @@ public class VariableEditPart extends BPELTrayCategoryEntryEditPart {
     Variable variable = (Variable) this.getModel();
     XSDTypeDefinition type = variable.getType();
 
+    if (type != null && type.getRootType() != null) {
+      type = type.getRootType();
+    }
+    
     if (type != null
         && (type.getName().equals(ContainerVariablesEditPart.DATA_TYPE) || type.getName()
             .equals(DescriptorVariablesEditPart.DATA_TYPE))) {

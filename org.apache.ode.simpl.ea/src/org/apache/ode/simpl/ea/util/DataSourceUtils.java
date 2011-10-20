@@ -48,7 +48,7 @@ public class DataSourceUtils {
     // // Query the data source from resource management (on demand)
     // dataSource = getResourceManagementDataSourceByName(dataSourceIdentifier);
     // } else {
-    String name = VariableUtils.getLDSDValue(context, dataSourceIdentifier,
+    String name = VariableUtils.getDataSourceReferenceValue(context, dataSourceIdentifier,
         "name");
 
     if (name != null) {
@@ -86,7 +86,7 @@ public class DataSourceUtils {
     // if (dataSourceIdentifier.startsWith("rm:")) {
     // dataSourceName = dataSourceIdentifier.substring(3);
     // } else {
-    dataSourceName = VariableUtils.getLDSDValue(context,
+    dataSourceName = VariableUtils.getDataSourceReferenceValue(context,
         dataSourceIdentifier, "name");
     // }
 
@@ -105,7 +105,7 @@ public class DataSourceUtils {
   public static LateBinding getLateBinding(ExtensionContext context,
       String descriptorVariableName) {
     LateBinding lateBinding = new LateBinding();
-    String requirements = VariableUtils.getLDSDValue(context,
+    String requirements = VariableUtils.getDataSourceReferenceValue(context,
         descriptorVariableName, "requirements");
 
     lateBinding.setPolicy(requirements);

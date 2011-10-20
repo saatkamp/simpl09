@@ -4,6 +4,7 @@ import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.simpl.ea.util.DataSourceUtils;
+import org.apache.ode.simpl.ea.util.VariableUtils;
 import org.simpl.core.SIMPLCoreInterface;
 import org.simpl.core.services.SIMPLCoreService;
 import org.simpl.resource.management.data.LateBinding;
@@ -19,8 +20,8 @@ public class IssueCommandActivity extends DataManagementActivity {
     // Load all attribute values from the activity.
     loadSIMPLAttributes(context, element);
 
-    String ds = getDsIdentifier();
-    LateBinding lb = DataSourceUtils.getLateBinding(context, ds);
+    String ds = VariableUtils.getDataSourceReferenceValue(context, getDsIdentifier(), "name");
+    LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
     
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 

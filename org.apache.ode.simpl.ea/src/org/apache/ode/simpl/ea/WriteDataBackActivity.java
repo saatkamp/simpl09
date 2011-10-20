@@ -16,6 +16,7 @@ import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.apache.ode.simpl.ea.util.DataSourceUtils;
+import org.apache.ode.simpl.ea.util.StatementUtils;
 import org.simpl.core.SIMPLCoreInterface;
 import org.simpl.core.services.SIMPLCoreService;
 import org.simpl.resource.management.ResourceManagement;
@@ -40,7 +41,7 @@ public class WriteDataBackActivity extends DataManagementActivity {
     loadSIMPLAttributes(context, element);
 
     // Load all specific attribute values from the WriteDataBackActivity.
-    String writeTarget = element.getAttribute("writeTarget");
+    String writeTarget = StatementUtils.processStatement(context, element.getAttribute("writeTarget"));
     Attr dataVarAttr = element.getAttributeNode("dataVariable");
     String dataVariableName = dataVarAttr.getValue();
 
@@ -66,17 +67,26 @@ public class WriteDataBackActivity extends DataManagementActivity {
       transformer.transform(source, result);
       String xmlValue = stringWriter.getBuffer().toString();
 
+      // retrieve workflow data format of the data  
+      String workflowDataFormat = xmlValue.substring(xmlValue.indexOf("dataFormat=\"") + 12, xmlValue.indexOf("\"", xmlValue.indexOf("dataFormat=\"") + 12));
+
       // retrieve the schema file and define it for SDO
       ResourceManagement rm = new ResourceManagement();
-      String schema = rm.getDataFormatSchema(
-          ds.getConnector().getDataConverter().getWorkflowDataFormat());
+      String schema = rm.getDataFormatSchema(workflowDataFormat);
       InputStream schemaInputStream = new ByteArrayInputStream(schema.getBytes());
       XSDHelper.INSTANCE.define(schemaInputStream, null);
-
+      
+      // Workaround to get the right XML tags for XMLHelper.INSTANCE.load, if not done we run into a timeout
+      // A better solution would be if we already receive the right XML format here.
+      xmlValue = xmlValue.replace("simpl:data", "sdo:dataObject");
+      xmlValue = xmlValue.replace("<sdo:dataObject", "<sdo:dataObject xmlns:sdo=\"commonj.sdo\"");
+      
+System.out.println("SCHEMA: " + schema);
+System.out.println("XML TO SDO: " + xmlValue); 
       // convert xml string to SDO
       XMLDocument xmlDoc = XMLHelper.INSTANCE.load(xmlValue);
       DataObject sdo = xmlDoc.getRootObject();
-
+System.out.println("WRITE DATA BACK " + ds.getName() + " / " + writeTarget + " / " + sdo);
       // write data back
       this.successfulExecution = simplCoreService.writeDataBack(ds, sdo, writeTarget, lb);
 

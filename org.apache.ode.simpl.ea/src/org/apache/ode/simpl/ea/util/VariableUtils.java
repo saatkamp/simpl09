@@ -25,7 +25,7 @@ public class VariableUtils {
    * @param variableElement
    * @return
    */
-  public static String getLDSDValue(ExtensionContext context,
+  public static String getDataSourceReferenceValue(ExtensionContext context,
       String variableName, String variableElement) {
     String value = null;
 
@@ -50,7 +50,7 @@ public class VariableUtils {
       e.printStackTrace();
     }
 
-    System.out.println("Resolved '" + variableElement + "' from LDSD variable '" + variableName + "': " + value);
+    System.out.println("Resolved '" + variableElement + "' from Data Source Reference variable '" + variableName + "': " + value);
     
     return value;
   }

@@ -12,7 +12,8 @@ import commonj.sdo.DataObject;
 
 /**
  * <b>Purpose:</b>Interface to access the SIMPL Core implementation that provides late
- * binding of data sources and the resolution of logical data source descriptors (LDSD).<br>
+ * binding of data sources and the resolution of logical data source descriptors (data
+ * source references).<br>
  * <b>Description:</b> If the given data source is not fully specified and late binding
  * information is given, the discovery service is consulted to find a matching full
  * specified data source.<br>
@@ -21,7 +22,8 @@ import commonj.sdo.DataObject;
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id$<br>
+ * @version $Id: SIMPLCoreInterface.java 1815 2011-07-05 12:33:12Z
+ *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class SIMPLCoreInterface {
