@@ -42,7 +42,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ContainerReferenceVariablesImpl extends ExtensibleElementImpl implements ContainerReferenceVariables {
+public class ContainerReferenceVariablesImpl extends ExtensibleElementImpl implements
+    ContainerReferenceVariables {
   /**
    * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -79,7 +80,8 @@ public class ContainerReferenceVariablesImpl extends ExtensibleElementImpl imple
    */
   public EList<ContainerReferenceVariable> getChildren() {
     if (children == null) {
-      children = new EObjectContainmentEList<ContainerReferenceVariable>(ContainerReferenceVariable.class, this,
+      children = new EObjectContainmentEList<ContainerReferenceVariable>(
+          ContainerReferenceVariable.class, this,
           BPELPackage.CONTAINER_REFERENCE_VARIABLES__CHILDREN);
     }
     return children;
@@ -164,11 +166,13 @@ public class ContainerReferenceVariablesImpl extends ExtensibleElementImpl imple
   protected void adoptContent(EReference reference, Object object) {
     if (object instanceof ContainerReferenceVariable) {
       if (getElement() == null) {
-        ReconciliationHelper.getInstance().patchParentElement((ContainerReferenceVariable) object, this,
-            null, BPELConstants.ND_CONTAINER_REFERENCE_VARIABLES, 
+        ReconciliationHelper.getInstance().patchParentElement(
+            (ContainerReferenceVariable) object, this, null,
+            BPELConstants.ND_CONTAINER_REFERENCE_VARIABLES,
             BPELConstants.ND_CONTAINER_REFERENCE_VARIABLE);
       } else {
-        ReconciliationHelper.adoptChild(this, children, (ContainerReferenceVariable) object,
+        ReconciliationHelper.adoptChild(this, children,
+            (ContainerReferenceVariable) object,
             BPELConstants.ND_CONTAINER_REFERENCE_VARIABLE);
       }
     }

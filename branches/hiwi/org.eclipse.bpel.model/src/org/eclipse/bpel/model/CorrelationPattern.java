@@ -27,7 +27,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- end-user-doc -->
  * @see org.eclipse.bpel.model.BPELPackage#getCorrelationPattern()
  * @model
- * @generated
  */
 public enum CorrelationPattern implements Enumerator {
   /**

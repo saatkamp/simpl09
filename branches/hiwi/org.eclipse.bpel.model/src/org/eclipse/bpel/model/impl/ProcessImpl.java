@@ -1181,8 +1181,8 @@ public class ProcessImpl extends ExtensibleElementImpl implements
     containerReferenceVariables = newContainerReferenceVariables;
     if (eNotificationRequired()) {
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-          BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES, oldContainerReferenceVariables,
-          newContainerReferenceVariables);
+          BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES,
+          oldContainerReferenceVariables, newContainerReferenceVariables);
       if (msgs == null)
         msgs = notification;
       else
@@ -1196,24 +1196,25 @@ public class ProcessImpl extends ExtensibleElementImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setContainerReferenceVariables(ContainerReferenceVariables newContainerReferenceVariables) {
+  public void setContainerReferenceVariables(
+      ContainerReferenceVariables newContainerReferenceVariables) {
     if (newContainerReferenceVariables != containerReferenceVariables) {
       NotificationChain msgs = null;
       if (containerReferenceVariables != null)
-        msgs = ((InternalEObject) containerReferenceVariables)
-            .eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-                - BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES, null, msgs);
+        msgs = ((InternalEObject) containerReferenceVariables).eInverseRemove(this,
+            EOPPOSITE_FEATURE_BASE - BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES,
+            null, msgs);
       if (newContainerReferenceVariables != null)
-        msgs = ((InternalEObject) newContainerReferenceVariables)
-            .eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-                - BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES, null, msgs);
+        msgs = ((InternalEObject) newContainerReferenceVariables).eInverseAdd(this,
+            EOPPOSITE_FEATURE_BASE - BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES,
+            null, msgs);
       msgs = basicSetContainerReferenceVariables(newContainerReferenceVariables, msgs);
       if (msgs != null)
         msgs.dispatch();
     } else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-          BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES, newContainerReferenceVariables,
-          newContainerReferenceVariables));
+          BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES,
+          newContainerReferenceVariables, newContainerReferenceVariables));
   }
 
   /**
@@ -1236,8 +1237,8 @@ public class ProcessImpl extends ExtensibleElementImpl implements
     dataSourceReferenceVariables = newDataSourceReferenceVariables;
     if (eNotificationRequired()) {
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-          BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES, oldDataSourceReferenceVariables,
-          newDataSourceReferenceVariables);
+          BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES,
+          oldDataSourceReferenceVariables, newDataSourceReferenceVariables);
       if (msgs == null)
         msgs = notification;
       else
@@ -1251,24 +1252,25 @@ public class ProcessImpl extends ExtensibleElementImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDataSourceReferenceVariables(DataSourceReferenceVariables newDataSourceReferenceVariables) {
+  public void setDataSourceReferenceVariables(
+      DataSourceReferenceVariables newDataSourceReferenceVariables) {
     if (newDataSourceReferenceVariables != dataSourceReferenceVariables) {
       NotificationChain msgs = null;
       if (dataSourceReferenceVariables != null)
-        msgs = ((InternalEObject) dataSourceReferenceVariables).eInverseRemove(this,
-            EOPPOSITE_FEATURE_BASE - BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES, null,
-            msgs);
+        msgs = ((InternalEObject) dataSourceReferenceVariables)
+            .eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+                - BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES, null, msgs);
       if (newDataSourceReferenceVariables != null)
-        msgs = ((InternalEObject) newDataSourceReferenceVariables).eInverseAdd(this,
-            EOPPOSITE_FEATURE_BASE - BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES, null,
-            msgs);
+        msgs = ((InternalEObject) newDataSourceReferenceVariables)
+            .eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+                - BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES, null, msgs);
       msgs = basicSetDataSourceReferenceVariables(newDataSourceReferenceVariables, msgs);
       if (msgs != null)
         msgs.dispatch();
     } else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-          BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES, newDataSourceReferenceVariables,
-          newDataSourceReferenceVariables));
+          BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES,
+          newDataSourceReferenceVariables, newDataSourceReferenceVariables));
   }
 
   /**

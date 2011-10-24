@@ -157,8 +157,8 @@ public class ReferenceVariablesImpl extends ExtensibleElementImpl implements
   protected void adoptContent(EReference reference, Object object) {
     if (object instanceof ReferenceVariable) {
       if (getElement() == null) {
-        ReconciliationHelper.getInstance().patchParentElement((ReferenceVariable) object, this, 
-            null, BPELConstants.ND_REFERENCE_VARIABLES,
+        ReconciliationHelper.getInstance().patchParentElement((ReferenceVariable) object,
+            this, null, BPELConstants.ND_REFERENCE_VARIABLES,
             BPELConstants.ND_REFERENCE_VARIABLE);
       } else {
         ReconciliationHelper.adoptChild(this, children, (ReferenceVariable) object,

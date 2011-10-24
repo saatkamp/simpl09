@@ -286,10 +286,10 @@ public class FromImpl extends ExtensibleElementImpl implements From {
     org.eclipse.bpel.model.Process process = BPELUtils.getProcess(this);
     Variables variables = null;
     Variable cloneVariable = null;
-  
+
     if (process != null) {
       variables = process.getVariables();
-      
+
       for (Variable var : variables.getChildren()) {
         if (var.getName().equals(variable.getAttribute("name"))) {
           cloneVariable = var;
@@ -297,7 +297,7 @@ public class FromImpl extends ExtensibleElementImpl implements From {
         }
       }
     }
-    
+
     return cloneVariable;
   }
 
@@ -310,8 +310,10 @@ public class FromImpl extends ExtensibleElementImpl implements From {
     super.reconcile(changedElement);
 
     // update the from element in the clone variables as well
-    if (changedElement.getParentNode().getLocalName().equals("dataSourceReferenceVariable")
-        || changedElement.getParentNode().getLocalName().equals("containerReferenceVariable")) {
+    if (changedElement.getParentNode().getLocalName()
+        .equals("dataSourceReferenceVariable")
+        || changedElement.getParentNode().getLocalName()
+            .equals("containerReferenceVariable")) {
       Element changedElementClone = (Element) changedElement.cloneNode(true);
       From newFrom = BPELFactory.eINSTANCE.createFrom();
       Variable cloneVariable = this.findCloneVariable((Element) changedElement
@@ -327,7 +329,7 @@ public class FromImpl extends ExtensibleElementImpl implements From {
       newFrom.setEndpointReference(cloneFrom.getEndpointReference());
       newFrom.setUnsafeLiteral(cloneFrom.getUnsafeLiteral());
       newFrom.setVariable(cloneFrom.getVariable());
-      
+
       ReconciliationHelper.getInstance().reconcile(cloneVariable.getFrom(),
           newFrom.getElement());
     }
