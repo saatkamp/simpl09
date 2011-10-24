@@ -24,15 +24,15 @@ import org.eclipse.bpel.model.CatchAll;
 import org.eclipse.bpel.model.CompensationHandler;
 import org.eclipse.bpel.model.CompletionCondition;
 import org.eclipse.bpel.model.Condition;
-import org.eclipse.bpel.model.ContainerVariable;
-import org.eclipse.bpel.model.ContainerVariables;
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.Copy;
 import org.eclipse.bpel.model.Correlation;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.CorrelationSets;
 import org.eclipse.bpel.model.Correlations;
-import org.eclipse.bpel.model.DescriptorVariable;
-import org.eclipse.bpel.model.DescriptorVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Documentation;
 import org.eclipse.bpel.model.Else;
 import org.eclipse.bpel.model.ElseIf;
@@ -121,23 +121,23 @@ public class ElementFactory {
 		}
 
     @Override
-    protected Element containerVariable2XML(ContainerVariable variable) {
-      return super.containerVariable2XML(variable);
+    protected Element containerReferenceVariable2XML(ContainerReferenceVariable variable) {
+      return super.containerReferenceVariable2XML(variable);
     }
 
     @Override
-    protected Element containerVariables2XML(ContainerVariables variables) {
-      return super.containerVariables2XML(variables);
+    protected Element containerReferenceVariables2XML(ContainerReferenceVariables variables) {
+      return super.containerReferenceVariables2XML(variables);
     }
 
     @Override
-    protected Element descriptorVariable2XML(DescriptorVariable variable) {
-      return super.descriptorVariable2XML(variable);
+    protected Element dataSourceReferenceVariable2XML(DataSourceReferenceVariable variable) {
+      return super.dataSourceReferenceVariable2XML(variable);
     }
 
     @Override
-    protected Element descriptorVariables2XML(DescriptorVariables variables) {
-      return super.descriptorVariables2XML(variables);
+    protected Element dataSourceReferenceVariables2XML(DataSourceReferenceVariables variables) {
+      return super.dataSourceReferenceVariables2XML(variables);
     }
     
 		@Override
@@ -407,17 +407,17 @@ public class ElementFactory {
 		if (element instanceof ReferenceVariables) {
 			return writer.referenceVariables2XML((ReferenceVariables) element);
 		}
-    if (element instanceof ContainerVariable) {
-      return writer.containerVariable2XML((ContainerVariable) element);
+    if (element instanceof ContainerReferenceVariable) {
+      return writer.containerReferenceVariable2XML((ContainerReferenceVariable) element);
     }
-		if (element instanceof ContainerVariables) {
-      return writer.containerVariables2XML((ContainerVariables) element);
+		if (element instanceof ContainerReferenceVariables) {
+      return writer.containerReferenceVariables2XML((ContainerReferenceVariables) element);
     }
-    if (element instanceof DescriptorVariable) {
-      return writer.descriptorVariable2XML((DescriptorVariable) element);
+    if (element instanceof DataSourceReferenceVariable) {
+      return writer.dataSourceReferenceVariable2XML((DataSourceReferenceVariable) element);
     }
-    if (element instanceof DescriptorVariables) {
-      return writer.descriptorVariables2XML((DescriptorVariables) element);
+    if (element instanceof DataSourceReferenceVariables) {
+      return writer.dataSourceReferenceVariables2XML((DataSourceReferenceVariables) element);
     }
 		if (element instanceof CompletionCondition) {
 			return writer

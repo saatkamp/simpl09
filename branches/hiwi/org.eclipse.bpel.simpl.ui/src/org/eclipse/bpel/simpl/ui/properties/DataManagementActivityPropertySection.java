@@ -71,7 +71,7 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 
 	private LiveEditStyleText statementText = null;
 	private Button insertParameterVariable = null;
-	private Button insertContainerVariable = null;
+	private Button insertContainerReferenceVariable = null;
 	private Button insertTable = null;
 	private Button Save = null;
 	private Button command = null, file = null; //, folder = null, driver = null;
@@ -351,9 +351,9 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 			}
 		});
 
-		insertContainerVariable = new Button(composite, SWT.NONE);
-		insertContainerVariable.setText("Insert Container Reference Variable");
-		insertContainerVariable.addSelectionListener(new SelectionListener() {
+		insertContainerReferenceVariable = new Button(composite, SWT.NONE);
+		insertContainerReferenceVariable.setText("Insert Container Reference Variable");
+		insertContainerReferenceVariable.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -416,7 +416,7 @@ public class DataManagementActivityPropertySection extends ADataManagementActivi
 
 		insertParameterVariable.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
-		insertContainerVariable.setBackground(Display.getCurrent()
+		insertContainerReferenceVariable.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
 
 		Label filler1 = new Label(composite, SWT.NONE);

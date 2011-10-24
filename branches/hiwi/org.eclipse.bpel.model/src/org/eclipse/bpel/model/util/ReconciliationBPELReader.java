@@ -27,16 +27,16 @@ import org.eclipse.bpel.model.CompensateScope;
 import org.eclipse.bpel.model.CompensationHandler;
 import org.eclipse.bpel.model.CompletionCondition;
 import org.eclipse.bpel.model.Condition;
-import org.eclipse.bpel.model.ContainerVariable;
-import org.eclipse.bpel.model.ContainerVariables;
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.Copy;
 import org.eclipse.bpel.model.Correlation;
 import org.eclipse.bpel.model.CorrelationPattern;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.CorrelationSets;
 import org.eclipse.bpel.model.Correlations;
-import org.eclipse.bpel.model.DescriptorVariable;
-import org.eclipse.bpel.model.DescriptorVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Documentation;
 import org.eclipse.bpel.model.Else;
 import org.eclipse.bpel.model.ElseIf;
@@ -4296,15 +4296,15 @@ public class ReconciliationBPELReader extends BPELReader implements
 	}
 	
 	 /**
-   * Converts an XML ContainerVariable element to a BPEL ContainerVariable
+   * Converts an XML ContainerReferenceVariable element to a BPEL ContainerReferenceVariable
    * object.
    */
-  protected ContainerVariable xml2ContainerVariable(ContainerVariable variable, Element variableElement) {
+  protected ContainerReferenceVariable xml2ContainerReferenceVariable(ContainerReferenceVariable variable, Element variableElement) {
     if (!variableElement.getLocalName().equals("variable"))
       return null;
 
     if (variable == null) {
-      variable = BPELFactory.eINSTANCE.createContainerVariable();
+      variable = BPELFactory.eINSTANCE.createContainerReferenceVariable();
       variable.setElement(variableElement);
     }
 
@@ -4364,13 +4364,13 @@ public class ReconciliationBPELReader extends BPELReader implements
     return variable;
   }
 
-  protected ContainerVariables xml2ContainerVariables(ContainerVariables variables,
+  protected ContainerReferenceVariables xml2ContainerReferenceVariables(ContainerReferenceVariables variables,
       Element variablesElement) {
-    if (!variablesElement.getLocalName().equals("containerVariables"))
+    if (!variablesElement.getLocalName().equals("containerReferenceVariables"))
       return null;
 
     if (variables == null) {
-      variables = BPELFactory.eINSTANCE.createContainerVariables();
+      variables = BPELFactory.eINSTANCE.createContainerReferenceVariables();
       variables.setElement(variablesElement);
     }
 
@@ -4378,11 +4378,11 @@ public class ReconciliationBPELReader extends BPELReader implements
     saveNamespacePrefix(variables, variablesElement);
 
     List<Element> childElements = ReconciliationHelper
-        .getBPELChildElementsByLocalName(variablesElement, "containerVariable");
-    EList<ContainerVariable> childrenList = variables.getChildren();
+        .getBPELChildElementsByLocalName(variablesElement, "containerReferenceVariable");
+    EList<ContainerReferenceVariable> childrenList = variables.getChildren();
     syncLists(variablesElement, childElements, childrenList, new Creator() {
       public WSDLElement create(Element element) {
-        return xml2ContainerVariable(null, element);
+        return xml2ContainerReferenceVariable(null, element);
       }
     });
 
@@ -4392,15 +4392,15 @@ public class ReconciliationBPELReader extends BPELReader implements
   }
   
   /**
-   * Converts an XML DescriptorVariable element to a BPEL DescriptorVariable
+   * Converts an XML DataSourceReferenceVariable element to a BPEL DataSourceReferenceVariable
    * object.
    */
-  protected DescriptorVariable xml2DescriptorVariable(DescriptorVariable variable, Element variableElement) {
+  protected DataSourceReferenceVariable xml2DataSourceReferenceVariable(DataSourceReferenceVariable variable, Element variableElement) {
     if (!variableElement.getLocalName().equals("variable"))
       return null;
 
     if (variable == null) {
-      variable = BPELFactory.eINSTANCE.createDescriptorVariable();
+      variable = BPELFactory.eINSTANCE.createDataSourceReferenceVariable();
       variable.setElement(variableElement);
     }
 
@@ -4460,13 +4460,13 @@ public class ReconciliationBPELReader extends BPELReader implements
     return variable;
   }
 
-  protected DescriptorVariables xml2DescriptorVariables(DescriptorVariables variables,
+  protected DataSourceReferenceVariables xml2DataSourceReferenceVariables(DataSourceReferenceVariables variables,
       Element variablesElement) {
-    if (!variablesElement.getLocalName().equals("descriptorVariables"))
+    if (!variablesElement.getLocalName().equals("dataSourceReferenceVariables"))
       return null;
 
     if (variables == null) {
-      variables = BPELFactory.eINSTANCE.createDescriptorVariables();
+      variables = BPELFactory.eINSTANCE.createDataSourceReferenceVariables();
       variables.setElement(variablesElement);
     }
 
@@ -4474,11 +4474,11 @@ public class ReconciliationBPELReader extends BPELReader implements
     saveNamespacePrefix(variables, variablesElement);
 
     List<Element> childElements = ReconciliationHelper
-        .getBPELChildElementsByLocalName(variablesElement, "descriptorVariable");
-    EList<DescriptorVariable> childrenList = variables.getChildren();
+        .getBPELChildElementsByLocalName(variablesElement, "dataSourceReferenceVariable");
+    EList<DataSourceReferenceVariable> childrenList = variables.getChildren();
     syncLists(variablesElement, childElements, childrenList, new Creator() {
       public WSDLElement create(Element element) {
-        return xml2DescriptorVariable(null, element);
+        return xml2DataSourceReferenceVariable(null, element);
       }
     });
 

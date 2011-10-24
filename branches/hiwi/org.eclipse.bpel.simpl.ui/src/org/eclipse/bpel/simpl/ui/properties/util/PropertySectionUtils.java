@@ -82,7 +82,7 @@ public class PropertySectionUtils {
   public static DataSource findDataSourceByIdentifier(Process process, String nameWithPrefix) {
     DataSource dataSource = null;
 
-    String dataSourceName = VariableUtils.getDescriptorElementValue(process, nameWithPrefix, "name");
+    String dataSourceName = VariableUtils.getDataSourceReferenceElementValue(process, nameWithPrefix, "name");
     
     if (ResourceManagementCommunication.getInstance().isAvailable() && dataSourceName != null) {
       dataSource = ResourceManagementCommunication.getInstance().findDataSourceByName(dataSourceName);

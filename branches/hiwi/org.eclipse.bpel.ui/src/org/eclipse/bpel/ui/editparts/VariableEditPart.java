@@ -19,7 +19,7 @@ import org.eclipse.xsd.XSDTypeDefinition;
 
 public class VariableEditPart extends BPELTrayCategoryEntryEditPart {
   /**
-   * Overridden to hide the variable clones of container and descriptor variables in the
+   * Overridden to hide the variable clones of container and data source reference variables in the
    * GUI when the BPEL Editor is opened.
    */
   @Override
@@ -33,8 +33,8 @@ public class VariableEditPart extends BPELTrayCategoryEntryEditPart {
     }
     
     if (type != null
-        && (type.getName().equals(ContainerVariablesEditPart.DATA_TYPE) || type.getName()
-            .equals(DescriptorVariablesEditPart.DATA_TYPE))) {
+        && (type.getName().equals(ContainerReferenceVariablesEditPart.DATA_TYPE) || type.getName()
+            .equals(DataSourceReferenceVariablesEditPart.DATA_TYPE))) {
       figure.setFocusTraversable(false);
       figure.setRequestFocusEnabled(false);
       figure.setEnabled(false);

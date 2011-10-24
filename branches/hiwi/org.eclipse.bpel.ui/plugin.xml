@@ -238,10 +238,10 @@
                   type="org.eclipse.bpel.model.ReferenceVariable">
             </input>
             <input
-                  type="org.eclipse.bpel.model.ContainerVariable">
+                  type="org.eclipse.bpel.model.ContainerReferenceVariable">
             </input>
             <input
-                  type="org.eclipse.bpel.model.DescriptorVariable">
+                  type="org.eclipse.bpel.model.DataSourceReferenceVariable">
             </input>
         </propertySection>
         <propertySection
@@ -510,35 +510,35 @@
            </input>
         </propertySection>
         <propertySection
-              class="org.eclipse.bpel.ui.properties.ContainerVariableInitSection"
-              id="org.eclipse.bpel.ui.sections.ContainerVariableInitSection"
+              class="org.eclipse.bpel.ui.properties.ContainerReferenceVariableInitSection"
+              id="org.eclipse.bpel.ui.sections.ContainerReferenceVariableInitSection"
               tab="org.eclipse.bpel.ui.tabs.initialization">
            <input
-                 type="org.eclipse.bpel.model.ContainerVariable">
+                 type="org.eclipse.bpel.model.ContainerReferenceVariable">
            </input>
         </propertySection>
         <propertySection
-              class="org.eclipse.bpel.ui.properties.ContainerVariableTypeSection"
-              id="org.eclipse.bpel.ui.sections.ContainerVariableImpl"
+              class="org.eclipse.bpel.ui.properties.ContainerReferenceVariableTypeSection"
+              id="org.eclipse.bpel.ui.sections.ContainerReferenceVariableImpl"
               tab="org.eclipse.bpel.ui.tabs.details">
            <input
-                 type="org.eclipse.bpel.model.ContainerVariable">
+                 type="org.eclipse.bpel.model.ContainerReferenceVariable">
            </input>
         </propertySection>
         <propertySection
-              class="org.eclipse.bpel.ui.properties.DescriptorVariableTypeSection"
-              id="org.eclipse.bpel.ui.sections.DescriptorVariableImpl"
+              class="org.eclipse.bpel.ui.properties.DataSourceReferenceVariableTypeSection"
+              id="org.eclipse.bpel.ui.sections.DataSourceReferenceVariableImpl"
               tab="org.eclipse.bpel.ui.tabs.details">
            <input
-                 type="org.eclipse.bpel.model.DescriptorVariable">
+                 type="org.eclipse.bpel.model.DataSourceReferenceVariable">
            </input>
         </propertySection>
         <propertySection
-              class="org.eclipse.bpel.ui.properties.DescriptorVariableInitSection"
-              id="org.eclipse.bpel.ui.sections.DescriptorVariableInitSection"
+              class="org.eclipse.bpel.ui.properties.DataSourceReferenceVariableInitSection"
+              id="org.eclipse.bpel.ui.sections.DataSourceReferenceVariableInitSection"
               tab="org.eclipse.bpel.ui.tabs.initialization">
            <input
-                 type="org.eclipse.bpel.model.DescriptorVariable">
+                 type="org.eclipse.bpel.model.DataSourceReferenceVariable">
            </input>
         </propertySection>
      </propertySections>

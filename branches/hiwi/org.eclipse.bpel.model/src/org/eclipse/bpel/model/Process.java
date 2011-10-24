@@ -48,8 +48,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.bpel.model.Process#getExitOnStandardFault <em>Exit On Standard Fault</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.Process#getMessageExchanges <em>Message Exchanges</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.Process#getAbstractProcessProfile <em>Abstract Process Profile</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.Process#getContainerVariables <em>Container Variables</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.Process#getDescriptorVariables <em>Descriptor Variables</em>}</li>
+ *   <li>{@link org.eclipse.bpel.model.Process#getContainerReferenceVariables <em>Container Reference Variables</em>}</li>
+ *   <li>{@link org.eclipse.bpel.model.Process#getDataSourceReferenceVariables <em>Data Source Reference Variables</em>}</li>
  * </ul>
  * </p>
  *
@@ -403,56 +403,56 @@ public interface Process extends ExtensibleElement {
   void setReferenceVariables(ReferenceVariables value);
 
   /**
-   * Returns the value of the '<em><b>Container Variables</b></em>' containment reference.
+   * Returns the value of the '<em><b>Container Reference Variables</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Container Variables</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Container Reference Variables</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Container Variables</em>' containment reference.
-   * @see #setContainerVariables(ContainerVariables)
-   * @see org.eclipse.bpel.model.BPELPackage#getProcess_ContainerVariables()
+   * @return the value of the '<em>Container Reference Variables</em>' containment reference.
+   * @see #setContainerReferenceVariables(ContainerReferenceVariables)
+   * @see org.eclipse.bpel.model.BPELPackage#getProcess_ContainerReferenceVariables()
    * @model containment="true"
    * @generated
    */
-  ContainerVariables getContainerVariables();
+  ContainerReferenceVariables getContainerReferenceVariables();
 
   /**
-   * Sets the value of the '{@link org.eclipse.bpel.model.Process#getContainerVariables <em>Container Variables</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.bpel.model.Process#getContainerReferenceVariables <em>Container Reference Variables</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Container Variables</em>' containment reference.
-   * @see #getContainerVariables()
+   * @param value the new value of the '<em>Container Reference Variables</em>' containment reference.
+   * @see #getContainerReferenceVariables()
    * @generated
    */
-  void setContainerVariables(ContainerVariables value);
+  void setContainerReferenceVariables(ContainerReferenceVariables value);
 
   /**
-   * Returns the value of the '<em><b>Descriptor Variables</b></em>' containment reference.
+   * Returns the value of the '<em><b>Data Source Reference Variables</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Descriptor Variables</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Data Source Reference Variables</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Descriptor Variables</em>' containment reference.
-   * @see #setDescriptorVariables(DescriptorVariables)
-   * @see org.eclipse.bpel.model.BPELPackage#getProcess_DescriptorVariables()
+   * @return the value of the '<em>Data Source Reference Variables</em>' containment reference.
+   * @see #setDataSourceReferenceVariables(DataSourceReferenceVariables)
+   * @see org.eclipse.bpel.model.BPELPackage#getProcess_DataSourceReferenceVariables()
    * @model containment="true"
    * @generated
    */
-  DescriptorVariables getDescriptorVariables();
+  DataSourceReferenceVariables getDataSourceReferenceVariables();
 
   /**
-   * Sets the value of the '{@link org.eclipse.bpel.model.Process#getDescriptorVariables <em>Descriptor Variables</em>}' containment reference.
+   * Sets the value of the '{@link org.eclipse.bpel.model.Process#getDataSourceReferenceVariables <em>Data Source Reference Variables</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Descriptor Variables</em>' containment reference.
-   * @see #getDescriptorVariables()
+   * @param value the new value of the '<em>Data Source Reference Variables</em>' containment reference.
+   * @see #getDataSourceReferenceVariables()
    * @generated
    */
-  void setDescriptorVariables(DescriptorVariables value);
+  void setDataSourceReferenceVariables(DataSourceReferenceVariables value);
 
   /**
    * Returns the value of the '<em><b>Activity</b></em>' containment reference.

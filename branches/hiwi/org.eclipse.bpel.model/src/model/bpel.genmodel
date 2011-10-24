@@ -41,8 +41,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bpel.ecore#//Process/exitOnStandardFault"/>
       <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference bpel.ecore#//Process/messageExchanges"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bpel.ecore#//Process/abstractProcessProfile"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//Process/containerVariables"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//Process/descriptorVariables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//Process/containerReferenceVariables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//Process/dataSourceReferenceVariables"/>
     </genClasses>
     <genClasses ecoreClass="bpel.ecore#//PartnerLink">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bpel.ecore#//PartnerLink/name"/>
@@ -366,25 +366,25 @@
     <genClasses ecoreClass="bpel.ecore#//ReferenceVariables">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//ReferenceVariables/children"/>
     </genClasses>
-    <genClasses ecoreClass="bpel.ecore#//ContainerVariables">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//ContainerVariables/children"/>
+    <genClasses ecoreClass="bpel.ecore#//ContainerReferenceVariables">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//ContainerReferenceVariables/children"/>
     </genClasses>
-    <genClasses ecoreClass="bpel.ecore#//DescriptorVariables">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//DescriptorVariables/children"/>
+    <genClasses ecoreClass="bpel.ecore#//DataSourceReferenceVariables">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//DataSourceReferenceVariables/children"/>
     </genClasses>
-    <genClasses ecoreClass="bpel.ecore#//ContainerVariable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bpel.ecore#//ContainerVariable/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bpel.ecore#//ContainerVariable/messageType"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bpel.ecore#//ContainerVariable/XSDElement"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bpel.ecore#//ContainerVariable/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//ContainerVariable/from"/>
+    <genClasses ecoreClass="bpel.ecore#//ContainerReferenceVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bpel.ecore#//ContainerReferenceVariable/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bpel.ecore#//ContainerReferenceVariable/messageType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bpel.ecore#//ContainerReferenceVariable/XSDElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bpel.ecore#//ContainerReferenceVariable/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//ContainerReferenceVariable/from"/>
     </genClasses>
-    <genClasses ecoreClass="bpel.ecore#//DescriptorVariable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bpel.ecore#//DescriptorVariable/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bpel.ecore#//DescriptorVariable/messageType"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bpel.ecore#//DescriptorVariable/XSDElement"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bpel.ecore#//DescriptorVariable/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//DescriptorVariable/from"/>
+    <genClasses ecoreClass="bpel.ecore#//DataSourceReferenceVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bpel.ecore#//DataSourceReferenceVariable/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bpel.ecore#//DataSourceReferenceVariable/messageType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bpel.ecore#//DataSourceReferenceVariable/XSDElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bpel.ecore#//DataSourceReferenceVariable/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bpel.ecore#//DataSourceReferenceVariable/from"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Partnerlinktype" basePackage="org.eclipse.bpel.model" disposableProviderFactory="true"

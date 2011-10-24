@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.eclipse.bpel.model.ContainerVariable;
-import org.eclipse.bpel.model.ContainerVariables;
-import org.eclipse.bpel.model.DescriptorVariable;
-import org.eclipse.bpel.model.DescriptorVariables;
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.ui.util.ModelHelper;
@@ -47,20 +47,20 @@ public class VariableUtils {
     }
 
     if (varType == CONTAINER_VAR) {
-      ContainerVariables vars = ModelHelper.getContainerVariables(process);
+      ContainerReferenceVariables vars = ModelHelper.getContainerReferenceVariables(process);
       
       if (vars != null) {
-        for (ContainerVariable var : vars.getChildren()) {
+        for (ContainerReferenceVariable var : vars.getChildren()) {
           variableNames.add("[" + var.getName() + "]");
         }
       }
     }
 
     if (varType == DESCRIPTOR_VAR) {
-      DescriptorVariables vars = ModelHelper.getDescriptorVariables(process);
+      DataSourceReferenceVariables vars = ModelHelper.getDataSourceReferenceVariables(process);
 
       if (vars != null) {
-        for (DescriptorVariable var : vars.getChildren()) {
+        for (DataSourceReferenceVariable var : vars.getChildren()) {
           variableNames.add(var.getName());
         }
       }
@@ -81,10 +81,10 @@ public class VariableUtils {
       }
     }
 
-    ContainerVariables vars = ModelHelper.getContainerVariables(process);
+    ContainerReferenceVariables vars = ModelHelper.getContainerReferenceVariables(process);
     
     if (vars != null) {
-      for (ContainerVariable var : vars.getChildren()) {
+      for (ContainerReferenceVariable var : vars.getChildren()) {
         variableNames.add("[" + var.getName() + "]");
       }
     }
@@ -93,21 +93,21 @@ public class VariableUtils {
   }
 
   /**
-   * Returns the value of a descriptor variable element.
+   * Returns the value of a data source reference variable element.
    * 
    * @param process
    * @param variableName
    * @param variableElement
    * @return
    */
-  public static String getDescriptorElementValue(Process process, String variableName,
+  public static String getDataSourceReferenceElementValue(Process process, String variableName,
       String variableElement) {
     String value = null;
 
-    DescriptorVariables vars = ModelHelper.getDescriptorVariables(process);
+    DataSourceReferenceVariables vars = ModelHelper.getDataSourceReferenceVariables(process);
 
     if (vars != null) {
-      for (DescriptorVariable var : vars.getChildren()) {
+      for (DataSourceReferenceVariable var : vars.getChildren()) {
         if (var.getName().equals(variableName) && var.getFrom() != null) {
           String literal = var.getFrom().getLiteral();
           Pattern pattern = Pattern.compile("\\<.*?" + variableElement + "\\>(.*?)</.*?"

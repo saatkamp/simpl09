@@ -18,7 +18,7 @@ import org.w3c.dom.NodeList;
  */
 public class VariableUtils {
   /**
-   * Returns the value of a descriptor variable element.
+   * Returns the value of a data source reference variable element.
    * 
    * @param context
    * @param variableName
@@ -50,7 +50,7 @@ public class VariableUtils {
       e.printStackTrace();
     }
 
-    System.out.println("Resolved '" + variableElement + "' from Data Source Reference variable '" + variableName + "': " + value);
+    System.out.println("Resolved '" + variableElement + "' from data source reference variable '" + variableName + "': " + value);
     
     return value;
   }

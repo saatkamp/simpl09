@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.bpel.model.BPELPackage;
-import org.eclipse.bpel.model.ContainerVariables;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.CorrelationSets;
-import org.eclipse.bpel.model.DescriptorVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.ExtensibleElement;
 import org.eclipse.bpel.model.MessageExchanges;
 import org.eclipse.bpel.model.PartnerLinks;
@@ -43,8 +43,8 @@ public class ProcessOutlineEditPart extends OutlineTreeEditPart {
 			Process process = (Process)getModel();
 			if (process.getVariables() != null)  adapter.addToObject(process.getVariables());
 			if (process.getReferenceVariables() != null) adapter.addToObject(process.getReferenceVariables());
-			if (process.getContainerVariables() != null) adapter.addToObject(process.getContainerVariables());
-			if (process.getDescriptorVariables() != null) adapter.addToObject(process.getDescriptorVariables());
+			if (process.getContainerReferenceVariables() != null) adapter.addToObject(process.getContainerReferenceVariables());
+			if (process.getDataSourceReferenceVariables() != null) adapter.addToObject(process.getDataSourceReferenceVariables());
 			if (process.getPartnerLinks() != null)  adapter.addToObject(process.getPartnerLinks());
 			if (process.getCorrelationSets() != null)  adapter.addToObject(process.getCorrelationSets());
 			if (process.getMessageExchanges() != null)  adapter.addToObject(process.getMessageExchanges());
@@ -74,14 +74,14 @@ public class ProcessOutlineEditPart extends OutlineTreeEditPart {
 			list.add(referenceVariables);
 		}
 
-    ContainerVariables containerVariables = process.getContainerVariables();
-    if (containerVariables != null) {
-      list.add(containerVariables);
+    ContainerReferenceVariables containerReferenceVariables = process.getContainerReferenceVariables();
+    if (containerReferenceVariables != null) {
+      list.add(containerReferenceVariables);
     }
 
-    DescriptorVariables descriptorVariables = process.getDescriptorVariables();
-    if (descriptorVariables != null) {
-      list.add(descriptorVariables);
+    DataSourceReferenceVariables dataSourceReferenceVariables = process.getDataSourceReferenceVariables();
+    if (dataSourceReferenceVariables != null) {
+      list.add(dataSourceReferenceVariables);
     }
     
 		CorrelationSets sets = process.getCorrelationSets();

@@ -17,10 +17,10 @@ import org.eclipse.bpel.common.ui.decorator.EditPartMarkerDecorator;
 import org.eclipse.bpel.common.ui.tray.MainTrayEditPart;
 import org.eclipse.bpel.common.ui.tray.TrayMarkerDecorator;
 import org.eclipse.bpel.model.BPELFactory;
-import org.eclipse.bpel.model.ContainerVariables;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.CorrelationSets;
-import org.eclipse.bpel.model.DescriptorVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.MessageExchange;
 import org.eclipse.bpel.model.MessageExchanges;
 import org.eclipse.bpel.model.PartnerLink;
@@ -176,14 +176,14 @@ public class ProcessTrayEditPart extends MainTrayEditPart implements IHoverHelpe
 			list.add(referenceVariables);
 		}
 
-    ContainerVariables containerVariables = getContainerVariables();
-    if (containerVariables != null) {
-      list.add(containerVariables);
+    ContainerReferenceVariables containerReferenceVariables = getContainerReferenceVariables();
+    if (containerReferenceVariables != null) {
+      list.add(containerReferenceVariables);
     }
 
-    DescriptorVariables descriptorVariables = getDescriptorVariables();
-    if (descriptorVariables != null) {
-      list.add(descriptorVariables);
+    DataSourceReferenceVariables dataSourceReferenceVariables = getDataSourceReferenceVariables();
+    if (dataSourceReferenceVariables != null) {
+      list.add(dataSourceReferenceVariables);
     }
     
 		CorrelationSets sets = getCorrelationSets();
@@ -253,22 +253,22 @@ public class ProcessTrayEditPart extends MainTrayEditPart implements IHoverHelpe
 		return process.getReferenceVariables();		
 	}
 
-  protected ContainerVariables getContainerVariables() {
+  protected ContainerReferenceVariables getContainerReferenceVariables() {
     Process process = getProcess();
-    if (process.getContainerVariables() == null) {
-      process.setContainerVariables(BPELFactory.eINSTANCE.createContainerVariables());
+    if (process.getContainerReferenceVariables() == null) {
+      process.setContainerReferenceVariables(BPELFactory.eINSTANCE.createContainerReferenceVariables());
     }
 
-    return process.getContainerVariables();
+    return process.getContainerReferenceVariables();
   }
 
-  protected DescriptorVariables getDescriptorVariables() {
+  protected DataSourceReferenceVariables getDataSourceReferenceVariables() {
     Process process = getProcess();
-    if (process.getDescriptorVariables() == null) {
-      process.setDescriptorVariables(BPELFactory.eINSTANCE.createDescriptorVariables());
+    if (process.getDataSourceReferenceVariables() == null) {
+      process.setDataSourceReferenceVariables(BPELFactory.eINSTANCE.createDataSourceReferenceVariables());
     }
 
-    return process.getDescriptorVariables();
+    return process.getDataSourceReferenceVariables();
   }
 	
 	/**

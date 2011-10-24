@@ -32,9 +32,9 @@ import org.eclipse.bpel.ui.actions.ToggleShowTerminationHandler;
 import org.eclipse.bpel.ui.actions.editpart.IEditPartAction;
 import org.eclipse.bpel.ui.adapters.IEditPartActionContributor;
 import org.eclipse.bpel.ui.editparts.BPELEditPart;
-import org.eclipse.bpel.ui.editparts.ContainerVariablesEditPart;
+import org.eclipse.bpel.ui.editparts.ContainerReferenceVariablesEditPart;
 import org.eclipse.bpel.ui.editparts.CorrelationSetsEditPart;
-import org.eclipse.bpel.ui.editparts.DescriptorVariablesEditPart;
+import org.eclipse.bpel.ui.editparts.DataSourceReferenceVariablesEditPart;
 import org.eclipse.bpel.ui.editparts.MessageExchangesEditPart;
 import org.eclipse.bpel.ui.editparts.PartnerLinksEditPart;
 import org.eclipse.bpel.ui.editparts.ReferencePartnerLinksEditPart;
@@ -207,12 +207,12 @@ public class ProcessContextMenuProvider extends ContextMenuProvider {
 			menu.appendToGroup(FREQUENT_ACTIONS, action);
 		}
 
-    action = actionRegistry.getAction(AddChildInTrayAction.calculateId(ContainerVariablesEditPart.class));
+    action = actionRegistry.getAction(AddChildInTrayAction.calculateId(ContainerReferenceVariablesEditPart.class));
     if (action != null && action.isEnabled()) {
       menu.appendToGroup(FREQUENT_ACTIONS, action);
     }
     
-    action = actionRegistry.getAction(AddChildInTrayAction.calculateId(DescriptorVariablesEditPart.class));
+    action = actionRegistry.getAction(AddChildInTrayAction.calculateId(DataSourceReferenceVariablesEditPart.class));
     if (action != null && action.isEnabled()) {
       menu.appendToGroup(FREQUENT_ACTIONS, action);
     }

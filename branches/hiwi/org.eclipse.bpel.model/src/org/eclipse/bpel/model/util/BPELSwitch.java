@@ -32,15 +32,15 @@ import org.eclipse.bpel.model.CompensateScope;
 import org.eclipse.bpel.model.CompensationHandler;
 import org.eclipse.bpel.model.CompletionCondition;
 import org.eclipse.bpel.model.Condition;
-import org.eclipse.bpel.model.ContainerVariable;
-import org.eclipse.bpel.model.ContainerVariables;
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.Copy;
 import org.eclipse.bpel.model.Correlation;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.CorrelationSets;
 import org.eclipse.bpel.model.Correlations;
-import org.eclipse.bpel.model.DescriptorVariable;
-import org.eclipse.bpel.model.DescriptorVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Documentation;
 import org.eclipse.bpel.model.Else;
 import org.eclipse.bpel.model.ElseIf;
@@ -1450,70 +1450,70 @@ public class BPELSwitch<T> {
         result = defaultCase(theEObject);
       return result;
     }
-    case BPELPackage.CONTAINER_VARIABLES: {
-      ContainerVariables containerVariables = (ContainerVariables) theEObject;
-      T result = caseContainerVariables(containerVariables);
+    case BPELPackage.CONTAINER_REFERENCE_VARIABLES: {
+      ContainerReferenceVariables containerReferenceVariables = (ContainerReferenceVariables) theEObject;
+      T result = caseContainerReferenceVariables(containerReferenceVariables);
       if (result == null)
-        result = caseExtensibleElement(containerVariables);
+        result = caseExtensibleElement(containerReferenceVariables);
       if (result == null)
-        result = caseWSDL_ExtensibleElement(containerVariables);
+        result = caseWSDL_ExtensibleElement(containerReferenceVariables);
       if (result == null)
-        result = caseWSDLElement(containerVariables);
+        result = caseWSDLElement(containerReferenceVariables);
       if (result == null)
-        result = caseIElementExtensible(containerVariables);
+        result = caseIElementExtensible(containerReferenceVariables);
       if (result == null)
-        result = caseIAttributeExtensible(containerVariables);
-      if (result == null)
-        result = defaultCase(theEObject);
-      return result;
-    }
-    case BPELPackage.DESCRIPTOR_VARIABLES: {
-      DescriptorVariables descriptorVariables = (DescriptorVariables) theEObject;
-      T result = caseDescriptorVariables(descriptorVariables);
-      if (result == null)
-        result = caseExtensibleElement(descriptorVariables);
-      if (result == null)
-        result = caseWSDL_ExtensibleElement(descriptorVariables);
-      if (result == null)
-        result = caseWSDLElement(descriptorVariables);
-      if (result == null)
-        result = caseIElementExtensible(descriptorVariables);
-      if (result == null)
-        result = caseIAttributeExtensible(descriptorVariables);
+        result = caseIAttributeExtensible(containerReferenceVariables);
       if (result == null)
         result = defaultCase(theEObject);
       return result;
     }
-    case BPELPackage.CONTAINER_VARIABLE: {
-      ContainerVariable containerVariable = (ContainerVariable) theEObject;
-      T result = caseContainerVariable(containerVariable);
+    case BPELPackage.DATA_SOURCE_REFERENCE_VARIABLES: {
+      DataSourceReferenceVariables dataSourceReferenceVariables = (DataSourceReferenceVariables) theEObject;
+      T result = caseDataSourceReferenceVariables(dataSourceReferenceVariables);
       if (result == null)
-        result = caseExtensibleElement(containerVariable);
+        result = caseExtensibleElement(dataSourceReferenceVariables);
       if (result == null)
-        result = caseWSDL_ExtensibleElement(containerVariable);
+        result = caseWSDL_ExtensibleElement(dataSourceReferenceVariables);
       if (result == null)
-        result = caseWSDLElement(containerVariable);
+        result = caseWSDLElement(dataSourceReferenceVariables);
       if (result == null)
-        result = caseIElementExtensible(containerVariable);
+        result = caseIElementExtensible(dataSourceReferenceVariables);
       if (result == null)
-        result = caseIAttributeExtensible(containerVariable);
+        result = caseIAttributeExtensible(dataSourceReferenceVariables);
       if (result == null)
         result = defaultCase(theEObject);
       return result;
     }
-    case BPELPackage.DESCRIPTOR_VARIABLE: {
-      DescriptorVariable descriptorVariable = (DescriptorVariable) theEObject;
-      T result = caseDescriptorVariable(descriptorVariable);
+    case BPELPackage.CONTAINER_REFERENCE_VARIABLE: {
+      ContainerReferenceVariable containerReferenceVariable = (ContainerReferenceVariable) theEObject;
+      T result = caseContainerReferenceVariable(containerReferenceVariable);
       if (result == null)
-        result = caseExtensibleElement(descriptorVariable);
+        result = caseExtensibleElement(containerReferenceVariable);
       if (result == null)
-        result = caseWSDL_ExtensibleElement(descriptorVariable);
+        result = caseWSDL_ExtensibleElement(containerReferenceVariable);
       if (result == null)
-        result = caseWSDLElement(descriptorVariable);
+        result = caseWSDLElement(containerReferenceVariable);
       if (result == null)
-        result = caseIElementExtensible(descriptorVariable);
+        result = caseIElementExtensible(containerReferenceVariable);
       if (result == null)
-        result = caseIAttributeExtensible(descriptorVariable);
+        result = caseIAttributeExtensible(containerReferenceVariable);
+      if (result == null)
+        result = defaultCase(theEObject);
+      return result;
+    }
+    case BPELPackage.DATA_SOURCE_REFERENCE_VARIABLE: {
+      DataSourceReferenceVariable dataSourceReferenceVariable = (DataSourceReferenceVariable) theEObject;
+      T result = caseDataSourceReferenceVariable(dataSourceReferenceVariable);
+      if (result == null)
+        result = caseExtensibleElement(dataSourceReferenceVariable);
+      if (result == null)
+        result = caseWSDL_ExtensibleElement(dataSourceReferenceVariable);
+      if (result == null)
+        result = caseWSDLElement(dataSourceReferenceVariable);
+      if (result == null)
+        result = caseIElementExtensible(dataSourceReferenceVariable);
+      if (result == null)
+        result = caseIAttributeExtensible(dataSourceReferenceVariable);
       if (result == null)
         result = defaultCase(theEObject);
       return result;
@@ -1944,62 +1944,62 @@ public class BPELSwitch<T> {
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Container Variable</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Container Reference Variable</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Container Variable</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Container Reference Variable</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseContainerVariable(ContainerVariable object) {
+  public T caseContainerReferenceVariable(ContainerReferenceVariable object) {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Descriptor Variable</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Data Source Reference Variable</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Descriptor Variable</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Data Source Reference Variable</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDescriptorVariable(DescriptorVariable object) {
+  public T caseDataSourceReferenceVariable(DataSourceReferenceVariable object) {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Container Variables</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Container Reference Variables</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Container Variables</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Container Reference Variables</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseContainerVariables(ContainerVariables object) {
+  public T caseContainerReferenceVariables(ContainerReferenceVariables object) {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Descriptor Variables</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Data Source Reference Variables</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Descriptor Variables</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Data Source Reference Variables</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDescriptorVariables(DescriptorVariables object) {
+  public T caseDataSourceReferenceVariables(DataSourceReferenceVariables object) {
     return null;
   }
 

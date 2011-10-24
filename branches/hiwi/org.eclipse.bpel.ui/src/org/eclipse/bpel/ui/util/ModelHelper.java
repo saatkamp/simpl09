@@ -33,10 +33,10 @@ import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Catch;
 import org.eclipse.bpel.model.CatchAll;
 import org.eclipse.bpel.model.CompensationHandler;
-import org.eclipse.bpel.model.ContainerVariables;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.Correlations;
-import org.eclipse.bpel.model.DescriptorVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Else;
 import org.eclipse.bpel.model.ElseIf;
 import org.eclipse.bpel.model.EventHandler;
@@ -1723,13 +1723,13 @@ public class ModelHelper {
 		throw new IllegalArgumentException();
 	}
 
-  public static ContainerVariables getContainerVariables(Object context)  {
-    if (context instanceof Process) return ((Process)context).getContainerVariables();
+  public static ContainerReferenceVariables getContainerReferenceVariables(Object context)  {
+    if (context instanceof Process) return ((Process)context).getContainerReferenceVariables();
     throw new IllegalArgumentException();
   }
   
-  public static DescriptorVariables getDescriptorVariables(Object context)  {
-    if (context instanceof Process) return ((Process)context).getDescriptorVariables();
+  public static DataSourceReferenceVariables getDataSourceReferenceVariables(Object context)  {
+    if (context instanceof Process) return ((Process)context).getDataSourceReferenceVariables();
     throw new IllegalArgumentException();
   }
 }

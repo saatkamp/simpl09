@@ -40,16 +40,16 @@ import org.eclipse.bpel.model.CompensateScope;
 import org.eclipse.bpel.model.CompensationHandler;
 import org.eclipse.bpel.model.CompletionCondition;
 import org.eclipse.bpel.model.Condition;
-import org.eclipse.bpel.model.ContainerVariable;
-import org.eclipse.bpel.model.ContainerVariables;
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.Copy;
 import org.eclipse.bpel.model.Correlation;
 import org.eclipse.bpel.model.CorrelationPattern;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.CorrelationSets;
 import org.eclipse.bpel.model.Correlations;
-import org.eclipse.bpel.model.DescriptorVariable;
-import org.eclipse.bpel.model.DescriptorVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Documentation;
 import org.eclipse.bpel.model.Else;
 import org.eclipse.bpel.model.ElseIf;
@@ -1081,17 +1081,17 @@ public class BPELReader implements ErrorHandler {
 		if (referenceVariablesElement != null)
 			process.setReferenceVariables(xml2ReferenceVariables(referenceVariablesElement));
 
-    // Handle ContainerVariables Element
-    Element containerVariablesElement = getBPELChildElementByLocalName(
-        processElement, "containerVariables");
-    if (containerVariablesElement != null)
-      process.setContainerVariables(xml2ContainerVariables(containerVariablesElement));
+    // Handle ContainerReferenceVariables Element
+    Element containerReferenceVariablesElement = getBPELChildElementByLocalName(
+        processElement, "containerReferenceVariables");
+    if (containerReferenceVariablesElement != null)
+      process.setContainerReferenceVariables(xml2ContainerReferenceVariables(containerReferenceVariablesElement));
 
-    // Handle DescriptorVariables Element
-    Element descriptorVariablesElement = getBPELChildElementByLocalName(
-        processElement, "descriptorVariables");
-    if (descriptorVariablesElement != null)
-      process.setDescriptorVariables(xml2DescriptorVariables(descriptorVariablesElement));
+    // Handle DataSourceReferenceVariables Element
+    Element dataSourceReferenceVariablesElement = getBPELChildElementByLocalName(
+        processElement, "dataSourceReferenceVariables");
+    if (dataSourceReferenceVariablesElement != null)
+      process.setDataSourceReferenceVariables(xml2DataSourceReferenceVariables(dataSourceReferenceVariablesElement));
 		
 		// Handle CorrelationSets Element
 		Element correlationSetsElement = getBPELChildElementByLocalName(
@@ -3960,14 +3960,14 @@ public class BPELReader implements ErrorHandler {
 	}
 	
 	 /**
-   * Converts an XML containerVariable element to a BPEL ContainerVariable
+   * Converts an XML containerReferenceVariable element to a BPEL ContainerReferenceVariable
    * object.
    */
-  protected ContainerVariable xml2ContainerVariable(Element variableElement) {
-    if (!variableElement.getLocalName().equals("containerVariable"))
+  protected ContainerReferenceVariable xml2ContainerReferenceVariable(Element variableElement) {
+    if (!variableElement.getLocalName().equals("containerReferenceVariable"))
       return null;
 
-    ContainerVariable variable = BPELFactory.eINSTANCE.createContainerVariable();
+    ContainerReferenceVariable variable = BPELFactory.eINSTANCE.createContainerReferenceVariable();
     variable.setElement(variableElement);
 
     // Save all the references to external namespaces
@@ -4021,34 +4021,34 @@ public class BPELReader implements ErrorHandler {
     return variable;
   }
 
-  public ContainerVariables xml2ContainerVariables(Element variablesElement) {
-    if (!variablesElement.getLocalName().equals("containerVariables"))
+  public ContainerReferenceVariables xml2ContainerReferenceVariables(Element variablesElement) {
+    if (!variablesElement.getLocalName().equals("containerReferenceVariables"))
       return null;
 
-    ContainerVariables variables = BPELFactory.eINSTANCE.createContainerVariables();
+    ContainerReferenceVariables variables = BPELFactory.eINSTANCE.createContainerReferenceVariables();
     variables.setElement(variablesElement);
 
     // Save all the references to external namespaces
     saveNamespacePrefix(variables, variablesElement);
     for (Element e : getBPELChildElementsByLocalName(variablesElement,
-        "containerVariable")) {
-      variables.getChildren().add(xml2ContainerVariable(e));
+        "containerReferenceVariable")) {
+      variables.getChildren().add(xml2ContainerReferenceVariable(e));
     }
     xml2ExtensibleElement(variables, variablesElement);
 
     // Move variables that are extensibility elements to the list of
     // children
     // JM: What is this supposed to accomplish?
-    List<ContainerVariable> toBeMoved = new BasicEList<ContainerVariable>();
+    List<ContainerReferenceVariable> toBeMoved = new BasicEList<ContainerReferenceVariable>();
     for (Object next : variables.getExtensibilityElements()) {
-      if (next instanceof ContainerVariable) {
-        toBeMoved.add((ContainerVariable) next);
+      if (next instanceof ContainerReferenceVariable) {
+        toBeMoved.add((ContainerReferenceVariable) next);
       }
     }
 
     List<?> extensibility = variables.getExtensibilityElements();
-    List<ContainerVariable> children = variables.getChildren();
-    for (ContainerVariable element : toBeMoved) {
+    List<ContainerReferenceVariable> children = variables.getChildren();
+    for (ContainerReferenceVariable element : toBeMoved) {
       extensibility.remove(element);
       children.add(element);
     }
@@ -4057,14 +4057,14 @@ public class BPELReader implements ErrorHandler {
   }
   
   /**
-   * Converts an XML descriptorVariable element to a BPEL DescriptorVariable
+   * Converts an XML dataSourceReferenceVariable element to a BPEL DataSourceReferenceVariable
    * object.
    */
-  protected DescriptorVariable xml2DescriptorVariable(Element variableElement) {
-    if (!variableElement.getLocalName().equals("descriptorVariable"))
+  protected DataSourceReferenceVariable xml2DataSourceReferenceVariable(Element variableElement) {
+    if (!variableElement.getLocalName().equals("dataSourceReferenceVariable"))
       return null;
 
-    DescriptorVariable variable = BPELFactory.eINSTANCE.createDescriptorVariable();
+    DataSourceReferenceVariable variable = BPELFactory.eINSTANCE.createDataSourceReferenceVariable();
     variable.setElement(variableElement);
 
     // Save all the references to external namespaces
@@ -4118,34 +4118,34 @@ public class BPELReader implements ErrorHandler {
     return variable;
   }
 
-  public DescriptorVariables xml2DescriptorVariables(Element variablesElement) {
-    if (!variablesElement.getLocalName().equals("descriptorVariables"))
+  public DataSourceReferenceVariables xml2DataSourceReferenceVariables(Element variablesElement) {
+    if (!variablesElement.getLocalName().equals("dataSourceReferenceVariables"))
       return null;
 
-    DescriptorVariables variables = BPELFactory.eINSTANCE.createDescriptorVariables();
+    DataSourceReferenceVariables variables = BPELFactory.eINSTANCE.createDataSourceReferenceVariables();
     variables.setElement(variablesElement);
 
     // Save all the references to external namespaces
     saveNamespacePrefix(variables, variablesElement);
     for (Element e : getBPELChildElementsByLocalName(variablesElement,
-        "descriptorVariable")) {
-      variables.getChildren().add(xml2DescriptorVariable(e));
+        "dataSourceReferenceVariable")) {
+      variables.getChildren().add(xml2DataSourceReferenceVariable(e));
     }
     xml2ExtensibleElement(variables, variablesElement);
 
     // Move variables that are extensibility elements to the list of
     // children
     // JM: What is this supposed to accomplish?
-    List<DescriptorVariable> toBeMoved = new BasicEList<DescriptorVariable>();
+    List<DataSourceReferenceVariable> toBeMoved = new BasicEList<DataSourceReferenceVariable>();
     for (Object next : variables.getExtensibilityElements()) {
-      if (next instanceof DescriptorVariable) {
-        toBeMoved.add((DescriptorVariable) next);
+      if (next instanceof DataSourceReferenceVariable) {
+        toBeMoved.add((DataSourceReferenceVariable) next);
       }
     }
 
     List<?> extensibility = variables.getExtensibilityElements();
-    List<DescriptorVariable> children = variables.getChildren();
-    for (DescriptorVariable element : toBeMoved) {
+    List<DataSourceReferenceVariable> children = variables.getChildren();
+    for (DataSourceReferenceVariable element : toBeMoved) {
       extensibility.remove(element);
       children.add(element);
     }

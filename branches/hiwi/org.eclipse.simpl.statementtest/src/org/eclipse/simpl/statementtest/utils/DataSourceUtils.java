@@ -45,7 +45,7 @@ public class DataSourceUtils {
 
     // TODO: Uncommented because rm: identifiers are not supported anymore
     //datasources.addAll(getRMDatasourceNames());
-    datasources.addAll(VariableUtils.getDescriptorVariablesFromProcess(process));
+    datasources.addAll(VariableUtils.getDataSourceReferenceVariablesFromProcess(process));
     
     return datasources.toArray(new String[0]);
   }

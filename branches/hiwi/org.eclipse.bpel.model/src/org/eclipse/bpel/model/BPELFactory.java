@@ -286,40 +286,40 @@ public interface BPELFactory extends EFactory {
   ReferenceVariables createReferenceVariables();
 
   /**
-   * Returns a new object of class '<em>Container Variable</em>'.
+   * Returns a new object of class '<em>Container Reference Variable</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Container Variable</em>'.
+   * @return a new object of class '<em>Container Reference Variable</em>'.
    * @generated
    */
-  ContainerVariable createContainerVariable();
+  ContainerReferenceVariable createContainerReferenceVariable();
 
   /**
-   * Returns a new object of class '<em>Descriptor Variable</em>'.
+   * Returns a new object of class '<em>Data Source Reference Variable</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Descriptor Variable</em>'.
+   * @return a new object of class '<em>Data Source Reference Variable</em>'.
    * @generated
    */
-  DescriptorVariable createDescriptorVariable();
+  DataSourceReferenceVariable createDataSourceReferenceVariable();
 
   /**
-   * Returns a new object of class '<em>Container Variables</em>'.
+   * Returns a new object of class '<em>Container Reference Variables</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Container Variables</em>'.
+   * @return a new object of class '<em>Container Reference Variables</em>'.
    * @generated
    */
-  ContainerVariables createContainerVariables();
+  ContainerReferenceVariables createContainerReferenceVariables();
 
   /**
-   * Returns a new object of class '<em>Descriptor Variables</em>'.
+   * Returns a new object of class '<em>Data Source Reference Variables</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Descriptor Variables</em>'.
+   * @return a new object of class '<em>Data Source Reference Variables</em>'.
    * @generated
    */
-  DescriptorVariables createDescriptorVariables();
+  DataSourceReferenceVariables createDataSourceReferenceVariables();
 
   /**
    * Returns a new object of class '<em>Compensation Handler</em>'.

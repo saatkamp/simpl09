@@ -18,9 +18,9 @@ import java.util.List;
 
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.BPELPackage;
-import org.eclipse.bpel.model.ContainerVariables;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.CorrelationSets;
-import org.eclipse.bpel.model.DescriptorVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.EventHandler;
 import org.eclipse.bpel.model.Extensions;
 import org.eclipse.bpel.model.FaultHandler;
@@ -67,8 +67,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.bpel.model.impl.ProcessImpl#getExitOnStandardFault <em>Exit On Standard Fault</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.impl.ProcessImpl#getMessageExchanges <em>Message Exchanges</em>}</li>
  *   <li>{@link org.eclipse.bpel.model.impl.ProcessImpl#getAbstractProcessProfile <em>Abstract Process Profile</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.impl.ProcessImpl#getContainerVariables <em>Container Variables</em>}</li>
- *   <li>{@link org.eclipse.bpel.model.impl.ProcessImpl#getDescriptorVariables <em>Descriptor Variables</em>}</li>
+ *   <li>{@link org.eclipse.bpel.model.impl.ProcessImpl#getContainerReferenceVariables <em>Container Reference Variables</em>}</li>
+ *   <li>{@link org.eclipse.bpel.model.impl.ProcessImpl#getDataSourceReferenceVariables <em>Data Source Reference Variables</em>}</li>
  * </ul>
  * </p>
  *
@@ -382,24 +382,24 @@ public class ProcessImpl extends ExtensibleElementImpl implements
   protected boolean abstractProcessProfileESet;
 
   /**
-   * The cached value of the '{@link #getContainerVariables() <em>Container Variables</em>}' containment reference.
+   * The cached value of the '{@link #getContainerReferenceVariables() <em>Container Reference Variables</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getContainerVariables()
+   * @see #getContainerReferenceVariables()
    * @generated
    * @ordered
    */
-  protected ContainerVariables containerVariables;
+  protected ContainerReferenceVariables containerReferenceVariables;
 
   /**
-   * The cached value of the '{@link #getDescriptorVariables() <em>Descriptor Variables</em>}' containment reference.
+   * The cached value of the '{@link #getDataSourceReferenceVariables() <em>Data Source Reference Variables</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDescriptorVariables()
+   * @see #getDataSourceReferenceVariables()
    * @generated
    * @ordered
    */
-  protected DescriptorVariables descriptorVariables;
+  protected DataSourceReferenceVariables dataSourceReferenceVariables;
 
   /**
    * <!-- begin-user-doc -->
@@ -1166,8 +1166,8 @@ public class ProcessImpl extends ExtensibleElementImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public ContainerVariables getContainerVariables() {
-    return containerVariables;
+  public ContainerReferenceVariables getContainerReferenceVariables() {
+    return containerReferenceVariables;
   }
 
   /**
@@ -1175,14 +1175,14 @@ public class ProcessImpl extends ExtensibleElementImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetContainerVariables(
-      ContainerVariables newContainerVariables, NotificationChain msgs) {
-    ContainerVariables oldContainerVariables = containerVariables;
-    containerVariables = newContainerVariables;
+  public NotificationChain basicSetContainerReferenceVariables(
+      ContainerReferenceVariables newContainerReferenceVariables, NotificationChain msgs) {
+    ContainerReferenceVariables oldContainerReferenceVariables = containerReferenceVariables;
+    containerReferenceVariables = newContainerReferenceVariables;
     if (eNotificationRequired()) {
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-          BPELPackage.PROCESS__CONTAINER_VARIABLES, oldContainerVariables,
-          newContainerVariables);
+          BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES, oldContainerReferenceVariables,
+          newContainerReferenceVariables);
       if (msgs == null)
         msgs = notification;
       else
@@ -1196,24 +1196,24 @@ public class ProcessImpl extends ExtensibleElementImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setContainerVariables(ContainerVariables newContainerVariables) {
-    if (newContainerVariables != containerVariables) {
+  public void setContainerReferenceVariables(ContainerReferenceVariables newContainerReferenceVariables) {
+    if (newContainerReferenceVariables != containerReferenceVariables) {
       NotificationChain msgs = null;
-      if (containerVariables != null)
-        msgs = ((InternalEObject) containerVariables)
+      if (containerReferenceVariables != null)
+        msgs = ((InternalEObject) containerReferenceVariables)
             .eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-                - BPELPackage.PROCESS__CONTAINER_VARIABLES, null, msgs);
-      if (newContainerVariables != null)
-        msgs = ((InternalEObject) newContainerVariables)
+                - BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES, null, msgs);
+      if (newContainerReferenceVariables != null)
+        msgs = ((InternalEObject) newContainerReferenceVariables)
             .eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-                - BPELPackage.PROCESS__CONTAINER_VARIABLES, null, msgs);
-      msgs = basicSetContainerVariables(newContainerVariables, msgs);
+                - BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES, null, msgs);
+      msgs = basicSetContainerReferenceVariables(newContainerReferenceVariables, msgs);
       if (msgs != null)
         msgs.dispatch();
     } else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-          BPELPackage.PROCESS__CONTAINER_VARIABLES, newContainerVariables,
-          newContainerVariables));
+          BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES, newContainerReferenceVariables,
+          newContainerReferenceVariables));
   }
 
   /**
@@ -1221,8 +1221,8 @@ public class ProcessImpl extends ExtensibleElementImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public DescriptorVariables getDescriptorVariables() {
-    return descriptorVariables;
+  public DataSourceReferenceVariables getDataSourceReferenceVariables() {
+    return dataSourceReferenceVariables;
   }
 
   /**
@@ -1230,14 +1230,14 @@ public class ProcessImpl extends ExtensibleElementImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetDescriptorVariables(
-      DescriptorVariables newDescriptorVariables, NotificationChain msgs) {
-    DescriptorVariables oldDescriptorVariables = descriptorVariables;
-    descriptorVariables = newDescriptorVariables;
+  public NotificationChain basicSetDataSourceReferenceVariables(
+      DataSourceReferenceVariables newDataSourceReferenceVariables, NotificationChain msgs) {
+    DataSourceReferenceVariables oldDataSourceReferenceVariables = dataSourceReferenceVariables;
+    dataSourceReferenceVariables = newDataSourceReferenceVariables;
     if (eNotificationRequired()) {
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-          BPELPackage.PROCESS__DESCRIPTOR_VARIABLES, oldDescriptorVariables,
-          newDescriptorVariables);
+          BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES, oldDataSourceReferenceVariables,
+          newDataSourceReferenceVariables);
       if (msgs == null)
         msgs = notification;
       else
@@ -1251,24 +1251,24 @@ public class ProcessImpl extends ExtensibleElementImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDescriptorVariables(DescriptorVariables newDescriptorVariables) {
-    if (newDescriptorVariables != descriptorVariables) {
+  public void setDataSourceReferenceVariables(DataSourceReferenceVariables newDataSourceReferenceVariables) {
+    if (newDataSourceReferenceVariables != dataSourceReferenceVariables) {
       NotificationChain msgs = null;
-      if (descriptorVariables != null)
-        msgs = ((InternalEObject) descriptorVariables).eInverseRemove(this,
-            EOPPOSITE_FEATURE_BASE - BPELPackage.PROCESS__DESCRIPTOR_VARIABLES, null,
+      if (dataSourceReferenceVariables != null)
+        msgs = ((InternalEObject) dataSourceReferenceVariables).eInverseRemove(this,
+            EOPPOSITE_FEATURE_BASE - BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES, null,
             msgs);
-      if (newDescriptorVariables != null)
-        msgs = ((InternalEObject) newDescriptorVariables).eInverseAdd(this,
-            EOPPOSITE_FEATURE_BASE - BPELPackage.PROCESS__DESCRIPTOR_VARIABLES, null,
+      if (newDataSourceReferenceVariables != null)
+        msgs = ((InternalEObject) newDataSourceReferenceVariables).eInverseAdd(this,
+            EOPPOSITE_FEATURE_BASE - BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES, null,
             msgs);
-      msgs = basicSetDescriptorVariables(newDescriptorVariables, msgs);
+      msgs = basicSetDataSourceReferenceVariables(newDataSourceReferenceVariables, msgs);
       if (msgs != null)
         msgs.dispatch();
     } else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-          BPELPackage.PROCESS__DESCRIPTOR_VARIABLES, newDescriptorVariables,
-          newDescriptorVariables));
+          BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES, newDataSourceReferenceVariables,
+          newDataSourceReferenceVariables));
   }
 
   /**
@@ -1300,10 +1300,10 @@ public class ProcessImpl extends ExtensibleElementImpl implements
       return basicSetExtensions(null, msgs);
     case BPELPackage.PROCESS__MESSAGE_EXCHANGES:
       return basicSetMessageExchanges(null, msgs);
-    case BPELPackage.PROCESS__CONTAINER_VARIABLES:
-      return basicSetContainerVariables(null, msgs);
-    case BPELPackage.PROCESS__DESCRIPTOR_VARIABLES:
-      return basicSetDescriptorVariables(null, msgs);
+    case BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES:
+      return basicSetContainerReferenceVariables(null, msgs);
+    case BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES:
+      return basicSetDataSourceReferenceVariables(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -1352,10 +1352,10 @@ public class ProcessImpl extends ExtensibleElementImpl implements
       return getMessageExchanges();
     case BPELPackage.PROCESS__ABSTRACT_PROCESS_PROFILE:
       return getAbstractProcessProfile();
-    case BPELPackage.PROCESS__CONTAINER_VARIABLES:
-      return getContainerVariables();
-    case BPELPackage.PROCESS__DESCRIPTOR_VARIABLES:
-      return getDescriptorVariables();
+    case BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES:
+      return getContainerReferenceVariables();
+    case BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES:
+      return getDataSourceReferenceVariables();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -1424,11 +1424,11 @@ public class ProcessImpl extends ExtensibleElementImpl implements
     case BPELPackage.PROCESS__ABSTRACT_PROCESS_PROFILE:
       setAbstractProcessProfile((String) newValue);
       return;
-    case BPELPackage.PROCESS__CONTAINER_VARIABLES:
-      setContainerVariables((ContainerVariables) newValue);
+    case BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES:
+      setContainerReferenceVariables((ContainerReferenceVariables) newValue);
       return;
-    case BPELPackage.PROCESS__DESCRIPTOR_VARIABLES:
-      setDescriptorVariables((DescriptorVariables) newValue);
+    case BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES:
+      setDataSourceReferenceVariables((DataSourceReferenceVariables) newValue);
       return;
     }
     super.eSet(featureID, newValue);
@@ -1496,11 +1496,11 @@ public class ProcessImpl extends ExtensibleElementImpl implements
     case BPELPackage.PROCESS__ABSTRACT_PROCESS_PROFILE:
       unsetAbstractProcessProfile();
       return;
-    case BPELPackage.PROCESS__CONTAINER_VARIABLES:
-      setContainerVariables((ContainerVariables) null);
+    case BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES:
+      setContainerReferenceVariables((ContainerReferenceVariables) null);
       return;
-    case BPELPackage.PROCESS__DESCRIPTOR_VARIABLES:
-      setDescriptorVariables((DescriptorVariables) null);
+    case BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES:
+      setDataSourceReferenceVariables((DataSourceReferenceVariables) null);
       return;
     }
     super.eUnset(featureID);
@@ -1552,10 +1552,10 @@ public class ProcessImpl extends ExtensibleElementImpl implements
       return messageExchanges != null;
     case BPELPackage.PROCESS__ABSTRACT_PROCESS_PROFILE:
       return isSetAbstractProcessProfile();
-    case BPELPackage.PROCESS__CONTAINER_VARIABLES:
-      return containerVariables != null;
-    case BPELPackage.PROCESS__DESCRIPTOR_VARIABLES:
-      return descriptorVariables != null;
+    case BPELPackage.PROCESS__CONTAINER_REFERENCE_VARIABLES:
+      return containerReferenceVariables != null;
+    case BPELPackage.PROCESS__DATA_SOURCE_REFERENCE_VARIABLES:
+      return dataSourceReferenceVariables != null;
     }
     return super.eIsSet(featureID);
   }

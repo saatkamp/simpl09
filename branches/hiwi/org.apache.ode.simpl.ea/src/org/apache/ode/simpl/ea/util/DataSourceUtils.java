@@ -98,15 +98,15 @@ public class DataSourceUtils {
    * 
    * @param context
    *          of the activity.
-   * @param descriptorVariableName
+   * @param dataSourceReferenceVariableName
    *          of the data source.
    * @return The data source late binding.
    */
   public static LateBinding getLateBinding(ExtensionContext context,
-      String descriptorVariableName) {
+      String dataSourceReferenceVariableName) {
     LateBinding lateBinding = new LateBinding();
     String requirements = VariableUtils.getDataSourceReferenceValue(context,
-        descriptorVariableName, "requirements");
+        dataSourceReferenceVariableName, "requirements");
 
     lateBinding.setPolicy(requirements);
     lateBinding.setStrategy(Strategy.FIRST_FIND);
