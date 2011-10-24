@@ -2095,7 +2095,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * @generated
    */
   public EReference getDataSourceReferenceVariables_Children() {
-    return (EReference) dataSourceReferenceVariablesEClass.getEStructuralFeatures().get(0);
+    return (EReference) dataSourceReferenceVariablesEClass.getEStructuralFeatures()
+        .get(0);
   }
 
   /**
@@ -3840,24 +3841,33 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
     createEReference(referenceVariablesEClass, REFERENCE_VARIABLES__CHILDREN);
 
     containerReferenceVariablesEClass = createEClass(CONTAINER_REFERENCE_VARIABLES);
-    createEReference(containerReferenceVariablesEClass, CONTAINER_REFERENCE_VARIABLES__CHILDREN);
+    createEReference(containerReferenceVariablesEClass,
+        CONTAINER_REFERENCE_VARIABLES__CHILDREN);
 
     dataSourceReferenceVariablesEClass = createEClass(DATA_SOURCE_REFERENCE_VARIABLES);
-    createEReference(dataSourceReferenceVariablesEClass, DATA_SOURCE_REFERENCE_VARIABLES__CHILDREN);
+    createEReference(dataSourceReferenceVariablesEClass,
+        DATA_SOURCE_REFERENCE_VARIABLES__CHILDREN);
 
     containerReferenceVariableEClass = createEClass(CONTAINER_REFERENCE_VARIABLE);
     createEAttribute(containerReferenceVariableEClass, CONTAINER_REFERENCE_VARIABLE__NAME);
-    createEReference(containerReferenceVariableEClass, CONTAINER_REFERENCE_VARIABLE__MESSAGE_TYPE);
-    createEReference(containerReferenceVariableEClass, CONTAINER_REFERENCE_VARIABLE__XSD_ELEMENT);
+    createEReference(containerReferenceVariableEClass,
+        CONTAINER_REFERENCE_VARIABLE__MESSAGE_TYPE);
+    createEReference(containerReferenceVariableEClass,
+        CONTAINER_REFERENCE_VARIABLE__XSD_ELEMENT);
     createEReference(containerReferenceVariableEClass, CONTAINER_REFERENCE_VARIABLE__TYPE);
     createEReference(containerReferenceVariableEClass, CONTAINER_REFERENCE_VARIABLE__FROM);
 
     dataSourceReferenceVariableEClass = createEClass(DATA_SOURCE_REFERENCE_VARIABLE);
-    createEAttribute(dataSourceReferenceVariableEClass, DATA_SOURCE_REFERENCE_VARIABLE__NAME);
-    createEReference(dataSourceReferenceVariableEClass, DATA_SOURCE_REFERENCE_VARIABLE__MESSAGE_TYPE);
-    createEReference(dataSourceReferenceVariableEClass, DATA_SOURCE_REFERENCE_VARIABLE__XSD_ELEMENT);
-    createEReference(dataSourceReferenceVariableEClass, DATA_SOURCE_REFERENCE_VARIABLE__TYPE);
-    createEReference(dataSourceReferenceVariableEClass, DATA_SOURCE_REFERENCE_VARIABLE__FROM);
+    createEAttribute(dataSourceReferenceVariableEClass,
+        DATA_SOURCE_REFERENCE_VARIABLE__NAME);
+    createEReference(dataSourceReferenceVariableEClass,
+        DATA_SOURCE_REFERENCE_VARIABLE__MESSAGE_TYPE);
+    createEReference(dataSourceReferenceVariableEClass,
+        DATA_SOURCE_REFERENCE_VARIABLE__XSD_ELEMENT);
+    createEReference(dataSourceReferenceVariableEClass,
+        DATA_SOURCE_REFERENCE_VARIABLE__TYPE);
+    createEReference(dataSourceReferenceVariableEClass,
+        DATA_SOURCE_REFERENCE_VARIABLE__FROM);
 
     // Create enums
     correlationPatternEEnum = createEEnum(CORRELATION_PATTERN);
@@ -3976,6 +3986,7 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
     completionConditionEClass.getESuperTypes().add(this.getExtensibleElement());
     branchesEClass.getESuperTypes().add(this.getExpression());
     extensibleElementEClass.getESuperTypes().add(theWSDLPackage.getExtensibleElement());
+    documentationEClass.getESuperTypes().add(theWSDLPackage.getExtensibleElement());
     compensateEClass.getESuperTypes().add(this.getActivity());
     fromPartsEClass.getESuperTypes().add(this.getExtensibleElement());
     toPartsEClass.getESuperTypes().add(this.getExtensibleElement());
@@ -5184,7 +5195,9 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
         null,
         "children", null, 0, -1, ReferenceVariables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(containerReferenceVariablesEClass, ContainerReferenceVariables.class,
+    initEClass(
+        containerReferenceVariablesEClass,
+        ContainerReferenceVariables.class,
         "ContainerReferenceVariables", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
         getContainerReferenceVariables_Children(),
@@ -5192,7 +5205,9 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
         null,
         "children", null, 0, -1, ContainerReferenceVariables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(dataSourceReferenceVariablesEClass, DataSourceReferenceVariables.class,
+    initEClass(
+        dataSourceReferenceVariablesEClass,
+        DataSourceReferenceVariables.class,
         "DataSourceReferenceVariables", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
         getDataSourceReferenceVariables_Children(),
@@ -5200,7 +5215,9 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
         null,
         "children", null, 0, -1, DataSourceReferenceVariables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(containerReferenceVariableEClass, ContainerReferenceVariable.class,
+    initEClass(
+        containerReferenceVariableEClass,
+        ContainerReferenceVariable.class,
         "ContainerReferenceVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEAttribute(
         getContainerReferenceVariable_Name(),
@@ -5227,7 +5244,9 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
         null,
         "from", null, 0, 1, ContainerReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(dataSourceReferenceVariableEClass, DataSourceReferenceVariable.class,
+    initEClass(
+        dataSourceReferenceVariableEClass,
+        DataSourceReferenceVariable.class,
         "DataSourceReferenceVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEAttribute(
         getDataSourceReferenceVariable_Name(),

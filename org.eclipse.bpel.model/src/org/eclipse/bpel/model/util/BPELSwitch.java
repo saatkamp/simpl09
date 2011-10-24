@@ -1360,6 +1360,14 @@ public class BPELSwitch<T> {
       Documentation documentation = (Documentation) theEObject;
       T result = caseDocumentation(documentation);
       if (result == null)
+        result = caseWSDL_ExtensibleElement(documentation);
+      if (result == null)
+        result = caseWSDLElement(documentation);
+      if (result == null)
+        result = caseIElementExtensible(documentation);
+      if (result == null)
+        result = caseIAttributeExtensible(documentation);
+      if (result == null)
         result = defaultCase(theEObject);
       return result;
     }

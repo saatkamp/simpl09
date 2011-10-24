@@ -6,7 +6,7 @@
  */
 package org.eclipse.bpel.model;
 
-import org.eclipse.wst.wsdl.WSDLElement;
+import org.eclipse.wst.wsdl.ExtensibleElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +26,7 @@ import org.eclipse.wst.wsdl.WSDLElement;
  * @model
  * @generated
  */
-public interface Documentation extends WSDLElement {
+public interface Documentation extends ExtensibleElement {
   /**
    * Returns the value of the '<em><b>Lang</b></em>' attribute.
    * <!-- begin-user-doc -->

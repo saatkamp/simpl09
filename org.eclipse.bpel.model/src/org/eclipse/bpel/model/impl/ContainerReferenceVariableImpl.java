@@ -54,7 +54,8 @@ import org.w3c.dom.Element;
  */
 
 @SuppressWarnings("restriction")
-public class ContainerReferenceVariableImpl extends ExtensibleElementImpl implements ContainerReferenceVariable {
+public class ContainerReferenceVariableImpl extends ExtensibleElementImpl implements
+    ContainerReferenceVariable {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -125,7 +126,7 @@ public class ContainerReferenceVariableImpl extends ExtensibleElementImpl implem
   protected EClass eStaticClass() {
     return BPELPackage.Literals.CONTAINER_REFERENCE_VARIABLE;
   }
-  
+
   /**
    * Finds the variable clone of this container variable.
    * 
@@ -135,10 +136,10 @@ public class ContainerReferenceVariableImpl extends ExtensibleElementImpl implem
     org.eclipse.bpel.model.Process process = BPELUtils.getProcess(this);
     Variables variables = null;
     Variable cloneVariable = null;
-    
+
     if (process != null) {
       variables = process.getVariables();
-      
+
       for (Variable var : variables.getChildren()) {
         if (var.getName().equals(this.getName())) {
           cloneVariable = var;
@@ -146,7 +147,7 @@ public class ContainerReferenceVariableImpl extends ExtensibleElementImpl implem
         }
       }
     }
-    
+
     return cloneVariable;
   }
 
@@ -156,7 +157,7 @@ public class ContainerReferenceVariableImpl extends ExtensibleElementImpl implem
   @Override
   protected void reconcile(Element changedElement) {
     super.reconcile(changedElement);
-    
+
     // calling own setters to update the variable clone
     this.setMessageType(this.getMessageType());
     this.setXSDElement(this.getXSDElement());
@@ -185,11 +186,11 @@ public class ContainerReferenceVariableImpl extends ExtensibleElementImpl implem
       ReconciliationHelper.replaceAttribute(this, BPELConstants.AT_NAME, newName);
       ReconciliationHelper.updateVariableName((WSDLElement) eContainer(), newName);
     }
-    
+
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, BPELPackage.CONTAINER_REFERENCE_VARIABLE__NAME,
-          oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET,
+          BPELPackage.CONTAINER_REFERENCE_VARIABLE__NAME, oldName, name));
   }
 
   /**
@@ -203,7 +204,8 @@ public class ContainerReferenceVariableImpl extends ExtensibleElementImpl implem
       if (messageType != oldMessageType) {
         if (eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-              BPELPackage.CONTAINER_REFERENCE_VARIABLE__MESSAGE_TYPE, oldMessageType, messageType));
+              BPELPackage.CONTAINER_REFERENCE_VARIABLE__MESSAGE_TYPE, oldMessageType,
+              messageType));
       }
     }
     return messageType;
@@ -229,8 +231,9 @@ public class ContainerReferenceVariableImpl extends ExtensibleElementImpl implem
     messageType = newMessageType;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-          BPELPackage.CONTAINER_REFERENCE_VARIABLE__MESSAGE_TYPE, oldMessageType, messageType));
-    
+          BPELPackage.CONTAINER_REFERENCE_VARIABLE__MESSAGE_TYPE, oldMessageType,
+          messageType));
+
     if (this.findCloneVariable() != null) {
       this.findCloneVariable().setMessageType(messageType);
     }
@@ -247,7 +250,8 @@ public class ContainerReferenceVariableImpl extends ExtensibleElementImpl implem
       if (xsdElement != oldXSDElement) {
         if (eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-              BPELPackage.CONTAINER_REFERENCE_VARIABLE__XSD_ELEMENT, oldXSDElement, xsdElement));
+              BPELPackage.CONTAINER_REFERENCE_VARIABLE__XSD_ELEMENT, oldXSDElement,
+              xsdElement));
       }
     }
     return xsdElement;
@@ -274,8 +278,9 @@ public class ContainerReferenceVariableImpl extends ExtensibleElementImpl implem
     xsdElement = newXSDElement;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-          BPELPackage.CONTAINER_REFERENCE_VARIABLE__XSD_ELEMENT, oldXSDElement, xsdElement));
-    
+          BPELPackage.CONTAINER_REFERENCE_VARIABLE__XSD_ELEMENT, oldXSDElement,
+          xsdElement));
+
     if (this.findCloneVariable() != null) {
       this.findCloneVariable().setXSDElement(xsdElement);
     }
@@ -320,9 +325,9 @@ public class ContainerReferenceVariableImpl extends ExtensibleElementImpl implem
     }
     type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, BPELPackage.CONTAINER_REFERENCE_VARIABLE__TYPE,
-          oldType, type));
-    
+      eNotify(new ENotificationImpl(this, Notification.SET,
+          BPELPackage.CONTAINER_REFERENCE_VARIABLE__TYPE, oldType, type));
+
     if (this.findCloneVariable() != null) {
       this.findCloneVariable().setType(type);
     }
@@ -359,7 +364,6 @@ public class ContainerReferenceVariableImpl extends ExtensibleElementImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
    */
   public void setFrom(From newFrom) {
     if (newFrom != from) {
@@ -390,7 +394,6 @@ public class ContainerReferenceVariableImpl extends ExtensibleElementImpl implem
       this.findCloneVariable().setFrom(fromClone);
     }
   }
-
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

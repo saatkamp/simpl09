@@ -13,6 +13,7 @@ package org.eclipse.bpel.model.util;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import javax.xml.namespace.QName;
 
 import org.eclipse.bpel.model.BPELPlugin;

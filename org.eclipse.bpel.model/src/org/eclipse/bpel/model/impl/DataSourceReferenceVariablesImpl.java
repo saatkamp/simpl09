@@ -42,7 +42,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class DataSourceReferenceVariablesImpl extends ExtensibleElementImpl implements DataSourceReferenceVariables {
+public class DataSourceReferenceVariablesImpl extends ExtensibleElementImpl implements
+    DataSourceReferenceVariables {
   /**
    * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -79,7 +80,8 @@ public class DataSourceReferenceVariablesImpl extends ExtensibleElementImpl impl
    */
   public EList<DataSourceReferenceVariable> getChildren() {
     if (children == null) {
-      children = new EObjectContainmentEList<DataSourceReferenceVariable>(DataSourceReferenceVariable.class, this,
+      children = new EObjectContainmentEList<DataSourceReferenceVariable>(
+          DataSourceReferenceVariable.class, this,
           BPELPackage.DATA_SOURCE_REFERENCE_VARIABLES__CHILDREN);
     }
     return children;
@@ -164,10 +166,13 @@ public class DataSourceReferenceVariablesImpl extends ExtensibleElementImpl impl
   protected void adoptContent(EReference reference, Object object) {
     if (object instanceof DataSourceReferenceVariable) {
       if (getElement() == null) {
-        ReconciliationHelper.getInstance().patchParentElement((DataSourceReferenceVariable) object, this,
-            null, BPELConstants.ND_DATA_SOURCE_REFERENCE_VARIABLES, BPELConstants.ND_DATA_SOURCE_REFERENCE_VARIABLE);
+        ReconciliationHelper.getInstance().patchParentElement(
+            (DataSourceReferenceVariable) object, this, null,
+            BPELConstants.ND_DATA_SOURCE_REFERENCE_VARIABLES,
+            BPELConstants.ND_DATA_SOURCE_REFERENCE_VARIABLE);
       } else {
-        ReconciliationHelper.adoptChild(this, children, (DataSourceReferenceVariable) object,
+        ReconciliationHelper.adoptChild(this, children,
+            (DataSourceReferenceVariable) object,
             BPELConstants.ND_DATA_SOURCE_REFERENCE_VARIABLE);
       }
     }
