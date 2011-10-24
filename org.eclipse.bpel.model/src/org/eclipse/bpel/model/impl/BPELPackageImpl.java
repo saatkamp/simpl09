@@ -27,16 +27,16 @@ import org.eclipse.bpel.model.CompensateScope;
 import org.eclipse.bpel.model.CompensationHandler;
 import org.eclipse.bpel.model.CompletionCondition;
 import org.eclipse.bpel.model.Condition;
-import org.eclipse.bpel.model.ContainerVariable;
-import org.eclipse.bpel.model.ContainerVariables;
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.Copy;
 import org.eclipse.bpel.model.Correlation;
 import org.eclipse.bpel.model.CorrelationPattern;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.CorrelationSets;
 import org.eclipse.bpel.model.Correlations;
-import org.eclipse.bpel.model.DescriptorVariable;
-import org.eclipse.bpel.model.DescriptorVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Documentation;
 import org.eclipse.bpel.model.Else;
 import org.eclipse.bpel.model.ElseIf;
@@ -318,28 +318,28 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass containerVariableEClass = null;
+  private EClass containerReferenceVariableEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass descriptorVariableEClass = null;
+  private EClass dataSourceReferenceVariableEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass containerVariablesEClass = null;
+  private EClass containerReferenceVariablesEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass descriptorVariablesEClass = null;
+  private EClass dataSourceReferenceVariablesEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -924,7 +924,7 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProcess_ContainerVariables() {
+  public EReference getProcess_ContainerReferenceVariables() {
     return (EReference) processEClass.getEStructuralFeatures().get(18);
   }
 
@@ -933,7 +933,7 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProcess_DescriptorVariables() {
+  public EReference getProcess_DataSourceReferenceVariables() {
     return (EReference) processEClass.getEStructuralFeatures().get(19);
   }
 
@@ -1959,8 +1959,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getContainerVariable() {
-    return containerVariableEClass;
+  public EClass getContainerReferenceVariable() {
+    return containerReferenceVariableEClass;
   }
 
   /**
@@ -1968,8 +1968,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getContainerVariable_Name() {
-    return (EAttribute) containerVariableEClass.getEStructuralFeatures().get(0);
+  public EAttribute getContainerReferenceVariable_Name() {
+    return (EAttribute) containerReferenceVariableEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1977,8 +1977,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getContainerVariable_MessageType() {
-    return (EReference) containerVariableEClass.getEStructuralFeatures().get(1);
+  public EReference getContainerReferenceVariable_MessageType() {
+    return (EReference) containerReferenceVariableEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1986,8 +1986,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getContainerVariable_XSDElement() {
-    return (EReference) containerVariableEClass.getEStructuralFeatures().get(2);
+  public EReference getContainerReferenceVariable_XSDElement() {
+    return (EReference) containerReferenceVariableEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1995,8 +1995,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getContainerVariable_Type() {
-    return (EReference) containerVariableEClass.getEStructuralFeatures().get(3);
+  public EReference getContainerReferenceVariable_Type() {
+    return (EReference) containerReferenceVariableEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -2004,8 +2004,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getContainerVariable_From() {
-    return (EReference) containerVariableEClass.getEStructuralFeatures().get(4);
+  public EReference getContainerReferenceVariable_From() {
+    return (EReference) containerReferenceVariableEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -2013,8 +2013,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDescriptorVariable() {
-    return descriptorVariableEClass;
+  public EClass getDataSourceReferenceVariable() {
+    return dataSourceReferenceVariableEClass;
   }
 
   /**
@@ -2022,8 +2022,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDescriptorVariable_Name() {
-    return (EAttribute) descriptorVariableEClass.getEStructuralFeatures().get(0);
+  public EAttribute getDataSourceReferenceVariable_Name() {
+    return (EAttribute) dataSourceReferenceVariableEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2031,8 +2031,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDescriptorVariable_MessageType() {
-    return (EReference) descriptorVariableEClass.getEStructuralFeatures().get(1);
+  public EReference getDataSourceReferenceVariable_MessageType() {
+    return (EReference) dataSourceReferenceVariableEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2040,8 +2040,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDescriptorVariable_XSDElement() {
-    return (EReference) descriptorVariableEClass.getEStructuralFeatures().get(2);
+  public EReference getDataSourceReferenceVariable_XSDElement() {
+    return (EReference) dataSourceReferenceVariableEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -2049,8 +2049,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDescriptorVariable_Type() {
-    return (EReference) descriptorVariableEClass.getEStructuralFeatures().get(3);
+  public EReference getDataSourceReferenceVariable_Type() {
+    return (EReference) dataSourceReferenceVariableEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -2058,8 +2058,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDescriptorVariable_From() {
-    return (EReference) descriptorVariableEClass.getEStructuralFeatures().get(4);
+  public EReference getDataSourceReferenceVariable_From() {
+    return (EReference) dataSourceReferenceVariableEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -2067,8 +2067,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getContainerVariables() {
-    return containerVariablesEClass;
+  public EClass getContainerReferenceVariables() {
+    return containerReferenceVariablesEClass;
   }
 
   /**
@@ -2076,8 +2076,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getContainerVariables_Children() {
-    return (EReference) containerVariablesEClass.getEStructuralFeatures().get(0);
+  public EReference getContainerReferenceVariables_Children() {
+    return (EReference) containerReferenceVariablesEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2085,8 +2085,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDescriptorVariables() {
-    return descriptorVariablesEClass;
+  public EClass getDataSourceReferenceVariables() {
+    return dataSourceReferenceVariablesEClass;
   }
 
   /**
@@ -2094,8 +2094,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDescriptorVariables_Children() {
-    return (EReference) descriptorVariablesEClass.getEStructuralFeatures().get(0);
+  public EReference getDataSourceReferenceVariables_Children() {
+    return (EReference) dataSourceReferenceVariablesEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3505,8 +3505,8 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
     createEAttribute(processEClass, PROCESS__EXIT_ON_STANDARD_FAULT);
     createEReference(processEClass, PROCESS__MESSAGE_EXCHANGES);
     createEAttribute(processEClass, PROCESS__ABSTRACT_PROCESS_PROFILE);
-    createEReference(processEClass, PROCESS__CONTAINER_VARIABLES);
-    createEReference(processEClass, PROCESS__DESCRIPTOR_VARIABLES);
+    createEReference(processEClass, PROCESS__CONTAINER_REFERENCE_VARIABLES);
+    createEReference(processEClass, PROCESS__DATA_SOURCE_REFERENCE_VARIABLES);
 
     partnerLinkEClass = createEClass(PARTNER_LINK);
     createEAttribute(partnerLinkEClass, PARTNER_LINK__NAME);
@@ -3839,25 +3839,25 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
     referenceVariablesEClass = createEClass(REFERENCE_VARIABLES);
     createEReference(referenceVariablesEClass, REFERENCE_VARIABLES__CHILDREN);
 
-    containerVariablesEClass = createEClass(CONTAINER_VARIABLES);
-    createEReference(containerVariablesEClass, CONTAINER_VARIABLES__CHILDREN);
+    containerReferenceVariablesEClass = createEClass(CONTAINER_REFERENCE_VARIABLES);
+    createEReference(containerReferenceVariablesEClass, CONTAINER_REFERENCE_VARIABLES__CHILDREN);
 
-    descriptorVariablesEClass = createEClass(DESCRIPTOR_VARIABLES);
-    createEReference(descriptorVariablesEClass, DESCRIPTOR_VARIABLES__CHILDREN);
+    dataSourceReferenceVariablesEClass = createEClass(DATA_SOURCE_REFERENCE_VARIABLES);
+    createEReference(dataSourceReferenceVariablesEClass, DATA_SOURCE_REFERENCE_VARIABLES__CHILDREN);
 
-    containerVariableEClass = createEClass(CONTAINER_VARIABLE);
-    createEAttribute(containerVariableEClass, CONTAINER_VARIABLE__NAME);
-    createEReference(containerVariableEClass, CONTAINER_VARIABLE__MESSAGE_TYPE);
-    createEReference(containerVariableEClass, CONTAINER_VARIABLE__XSD_ELEMENT);
-    createEReference(containerVariableEClass, CONTAINER_VARIABLE__TYPE);
-    createEReference(containerVariableEClass, CONTAINER_VARIABLE__FROM);
+    containerReferenceVariableEClass = createEClass(CONTAINER_REFERENCE_VARIABLE);
+    createEAttribute(containerReferenceVariableEClass, CONTAINER_REFERENCE_VARIABLE__NAME);
+    createEReference(containerReferenceVariableEClass, CONTAINER_REFERENCE_VARIABLE__MESSAGE_TYPE);
+    createEReference(containerReferenceVariableEClass, CONTAINER_REFERENCE_VARIABLE__XSD_ELEMENT);
+    createEReference(containerReferenceVariableEClass, CONTAINER_REFERENCE_VARIABLE__TYPE);
+    createEReference(containerReferenceVariableEClass, CONTAINER_REFERENCE_VARIABLE__FROM);
 
-    descriptorVariableEClass = createEClass(DESCRIPTOR_VARIABLE);
-    createEAttribute(descriptorVariableEClass, DESCRIPTOR_VARIABLE__NAME);
-    createEReference(descriptorVariableEClass, DESCRIPTOR_VARIABLE__MESSAGE_TYPE);
-    createEReference(descriptorVariableEClass, DESCRIPTOR_VARIABLE__XSD_ELEMENT);
-    createEReference(descriptorVariableEClass, DESCRIPTOR_VARIABLE__TYPE);
-    createEReference(descriptorVariableEClass, DESCRIPTOR_VARIABLE__FROM);
+    dataSourceReferenceVariableEClass = createEClass(DATA_SOURCE_REFERENCE_VARIABLE);
+    createEAttribute(dataSourceReferenceVariableEClass, DATA_SOURCE_REFERENCE_VARIABLE__NAME);
+    createEReference(dataSourceReferenceVariableEClass, DATA_SOURCE_REFERENCE_VARIABLE__MESSAGE_TYPE);
+    createEReference(dataSourceReferenceVariableEClass, DATA_SOURCE_REFERENCE_VARIABLE__XSD_ELEMENT);
+    createEReference(dataSourceReferenceVariableEClass, DATA_SOURCE_REFERENCE_VARIABLE__TYPE);
+    createEReference(dataSourceReferenceVariableEClass, DATA_SOURCE_REFERENCE_VARIABLE__FROM);
 
     // Create enums
     correlationPatternEEnum = createEEnum(CORRELATION_PATTERN);
@@ -3981,10 +3981,10 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
     toPartsEClass.getESuperTypes().add(this.getExtensibleElement());
     referenceVariableEClass.getESuperTypes().add(this.getExtensibleElement());
     referenceVariablesEClass.getESuperTypes().add(this.getExtensibleElement());
-    containerVariablesEClass.getESuperTypes().add(this.getExtensibleElement());
-    descriptorVariablesEClass.getESuperTypes().add(this.getExtensibleElement());
-    containerVariableEClass.getESuperTypes().add(this.getExtensibleElement());
-    descriptorVariableEClass.getESuperTypes().add(this.getExtensibleElement());
+    containerReferenceVariablesEClass.getESuperTypes().add(this.getExtensibleElement());
+    dataSourceReferenceVariablesEClass.getESuperTypes().add(this.getExtensibleElement());
+    containerReferenceVariableEClass.getESuperTypes().add(this.getExtensibleElement());
+    dataSourceReferenceVariableEClass.getESuperTypes().add(this.getExtensibleElement());
 
     // Initialize classes and features; add operations and parameters
     initEClass(processEClass, org.eclipse.bpel.model.Process.class,
@@ -4072,15 +4072,15 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
         theEcorePackage.getEString(),
         "abstractProcessProfile", null, 0, 1, org.eclipse.bpel.model.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getProcess_ContainerVariables(),
-        this.getContainerVariables(),
+        getProcess_ContainerReferenceVariables(),
+        this.getContainerReferenceVariables(),
         null,
-        "containerVariables", null, 0, 1, org.eclipse.bpel.model.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "containerReferenceVariables", null, 0, 1, org.eclipse.bpel.model.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getProcess_DescriptorVariables(),
-        this.getDescriptorVariables(),
+        getProcess_DataSourceReferenceVariables(),
+        this.getDataSourceReferenceVariables(),
         null,
-        "descriptorVariables", null, 0, 1, org.eclipse.bpel.model.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "dataSourceReferenceVariables", null, 0, 1, org.eclipse.bpel.model.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(partnerLinkEClass, PartnerLink.class,
         "PartnerLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -5184,75 +5184,75 @@ public class BPELPackageImpl extends EPackageImpl implements BPELPackage {
         null,
         "children", null, 0, -1, ReferenceVariables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(containerVariablesEClass, ContainerVariables.class,
-        "ContainerVariables", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEClass(containerReferenceVariablesEClass, ContainerReferenceVariables.class,
+        "ContainerReferenceVariables", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
-        getContainerVariables_Children(),
-        this.getContainerVariable(),
+        getContainerReferenceVariables_Children(),
+        this.getContainerReferenceVariable(),
         null,
-        "children", null, 0, -1, ContainerVariables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "children", null, 0, -1, ContainerReferenceVariables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(descriptorVariablesEClass, DescriptorVariables.class,
-        "DescriptorVariables", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEClass(dataSourceReferenceVariablesEClass, DataSourceReferenceVariables.class,
+        "DataSourceReferenceVariables", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
-        getDescriptorVariables_Children(),
-        this.getDescriptorVariable(),
+        getDataSourceReferenceVariables_Children(),
+        this.getDataSourceReferenceVariable(),
         null,
-        "children", null, 0, -1, DescriptorVariables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "children", null, 0, -1, DataSourceReferenceVariables.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(containerVariableEClass, ContainerVariable.class,
-        "ContainerVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEClass(containerReferenceVariableEClass, ContainerReferenceVariable.class,
+        "ContainerReferenceVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEAttribute(
-        getContainerVariable_Name(),
+        getContainerReferenceVariable_Name(),
         ecorePackage.getEString(),
-        "name", null, 0, 1, ContainerVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "name", null, 0, 1, ContainerReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getContainerVariable_MessageType(),
+        getContainerReferenceVariable_MessageType(),
         theWSDLPackage.getMessage(),
         null,
-        "messageType", null, 0, 1, ContainerVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "messageType", null, 0, 1, ContainerReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getContainerVariable_XSDElement(),
+        getContainerReferenceVariable_XSDElement(),
         theXSDPackage.getXSDElementDeclaration(),
         null,
-        "XSDElement", null, 0, 1, ContainerVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "XSDElement", null, 0, 1, ContainerReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getContainerVariable_Type(),
+        getContainerReferenceVariable_Type(),
         theXSDPackage.getXSDTypeDefinition(),
         null,
-        "type", null, 0, 1, ContainerVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "type", null, 0, 1, ContainerReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getContainerVariable_From(),
+        getContainerReferenceVariable_From(),
         this.getFrom(),
         null,
-        "from", null, 0, 1, ContainerVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "from", null, 0, 1, ContainerReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(descriptorVariableEClass, DescriptorVariable.class,
-        "DescriptorVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEClass(dataSourceReferenceVariableEClass, DataSourceReferenceVariable.class,
+        "DataSourceReferenceVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEAttribute(
-        getDescriptorVariable_Name(),
+        getDataSourceReferenceVariable_Name(),
         ecorePackage.getEString(),
-        "name", null, 0, 1, DescriptorVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "name", null, 0, 1, DataSourceReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getDescriptorVariable_MessageType(),
+        getDataSourceReferenceVariable_MessageType(),
         theWSDLPackage.getMessage(),
         null,
-        "messageType", null, 0, 1, DescriptorVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "messageType", null, 0, 1, DataSourceReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getDescriptorVariable_XSDElement(),
+        getDataSourceReferenceVariable_XSDElement(),
         theXSDPackage.getXSDElementDeclaration(),
         null,
-        "XSDElement", null, 0, 1, DescriptorVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "XSDElement", null, 0, 1, DataSourceReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getDescriptorVariable_Type(),
+        getDataSourceReferenceVariable_Type(),
         theXSDPackage.getXSDTypeDefinition(),
         null,
-        "type", null, 0, 1, DescriptorVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "type", null, 0, 1, DataSourceReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getDescriptorVariable_From(),
+        getDataSourceReferenceVariable_From(),
         this.getFrom(),
         null,
-        "from", null, 0, 1, DescriptorVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "from", null, 0, 1, DataSourceReferenceVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     // Initialize enums and add enum literals
     initEEnum(correlationPatternEEnum, CorrelationPattern.class, "CorrelationPattern"); //$NON-NLS-1$

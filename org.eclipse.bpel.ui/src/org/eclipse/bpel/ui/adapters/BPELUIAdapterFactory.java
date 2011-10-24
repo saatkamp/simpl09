@@ -145,13 +145,13 @@ public class BPELUIAdapterFactory extends BPELAdapterFactory {
 	}
 
   @Override
-  public Adapter createContainerVariableAdapter() {
-    return fProvider.getAdapter(ContainerVariableAdapter.class);    
+  public Adapter createContainerReferenceVariableAdapter() {
+    return fProvider.getAdapter(ContainerReferenceVariableAdapter.class);    
   }
 
   @Override
-  public Adapter createDescriptorVariableAdapter() {
-    return fProvider.getAdapter(DescriptorVariableAdapter.class);    
+  public Adapter createDataSourceReferenceVariableAdapter() {
+    return fProvider.getAdapter(DataSourceReferenceVariableAdapter.class);    
   }
   
 	/**
@@ -360,13 +360,13 @@ public class BPELUIAdapterFactory extends BPELAdapterFactory {
 	}
 
   @Override
-  public Adapter createContainerVariablesAdapter() {
-    return fProvider.getAdapter(ContainerVariablesAdapter.class);
+  public Adapter createContainerReferenceVariablesAdapter() {
+    return fProvider.getAdapter(ContainerReferenceVariablesAdapter.class);
   }
 
   @Override
-  public Adapter createDescriptorVariablesAdapter() {
-    return fProvider.getAdapter(DescriptorVariablesAdapter.class);
+  public Adapter createDataSourceReferenceVariablesAdapter() {
+    return fProvider.getAdapter(DataSourceReferenceVariablesAdapter.class);
   }
 	 
 	/**

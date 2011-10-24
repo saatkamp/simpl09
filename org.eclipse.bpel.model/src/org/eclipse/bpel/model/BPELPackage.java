@@ -963,22 +963,22 @@ public interface BPELPackage extends EPackage {
   int PROCESS__ABSTRACT_PROCESS_PROFILE = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 17;
 
   /**
-   * The feature id for the '<em><b>Container Variables</b></em>' containment reference.
+   * The feature id for the '<em><b>Container Reference Variables</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROCESS__CONTAINER_VARIABLES = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 18;
+  int PROCESS__CONTAINER_REFERENCE_VARIABLES = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 18;
 
   /**
-   * The feature id for the '<em><b>Descriptor Variables</b></em>' containment reference.
+   * The feature id for the '<em><b>Data Source Reference Variables</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROCESS__DESCRIPTOR_VARIABLES = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 19;
+  int PROCESS__DATA_SOURCE_REFERENCE_VARIABLES = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 19;
 
   /**
    * The number of structural features of the '<em>Process</em>' class.
@@ -6939,34 +6939,34 @@ public interface BPELPackage extends EPackage {
   int REFERENCE_VARIABLES_FEATURE_COUNT = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.eclipse.bpel.model.impl.ContainerVariableImpl <em>Container Variable</em>}' class.
+   * The meta object id for the '{@link org.eclipse.bpel.model.impl.ContainerReferenceVariableImpl <em>Container Reference Variable</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.bpel.model.impl.ContainerVariableImpl
-   * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getContainerVariable()
+   * @see org.eclipse.bpel.model.impl.ContainerReferenceVariableImpl
+   * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getContainerReferenceVariable()
    * @generated
    */
-  int CONTAINER_VARIABLE = 76;
+  int CONTAINER_REFERENCE_VARIABLE = 76;
 
   /**
-   * The meta object id for the '{@link org.eclipse.bpel.model.impl.DescriptorVariableImpl <em>Descriptor Variable</em>}' class.
+   * The meta object id for the '{@link org.eclipse.bpel.model.impl.DataSourceReferenceVariableImpl <em>Data Source Reference Variable</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.bpel.model.impl.DescriptorVariableImpl
-   * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getDescriptorVariable()
+   * @see org.eclipse.bpel.model.impl.DataSourceReferenceVariableImpl
+   * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getDataSourceReferenceVariable()
    * @generated
    */
-  int DESCRIPTOR_VARIABLE = 77;
+  int DATA_SOURCE_REFERENCE_VARIABLE = 77;
 
   /**
-   * The meta object id for the '{@link org.eclipse.bpel.model.impl.ContainerVariablesImpl <em>Container Variables</em>}' class.
+   * The meta object id for the '{@link org.eclipse.bpel.model.impl.ContainerReferenceVariablesImpl <em>Container Reference Variables</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.bpel.model.impl.ContainerVariablesImpl
-   * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getContainerVariables()
+   * @see org.eclipse.bpel.model.impl.ContainerReferenceVariablesImpl
+   * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getContainerReferenceVariables()
    * @generated
    */
-  int CONTAINER_VARIABLES = 74;
+  int CONTAINER_REFERENCE_VARIABLES = 74;
 
   /**
    * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
@@ -6975,7 +6975,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CONTAINER_VARIABLES__DOCUMENTATION_ELEMENT = EXTENSIBLE_ELEMENT__DOCUMENTATION_ELEMENT;
+  int CONTAINER_REFERENCE_VARIABLES__DOCUMENTATION_ELEMENT = EXTENSIBLE_ELEMENT__DOCUMENTATION_ELEMENT;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' attribute.
@@ -6984,7 +6984,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CONTAINER_VARIABLES__ELEMENT = EXTENSIBLE_ELEMENT__ELEMENT;
+  int CONTAINER_REFERENCE_VARIABLES__ELEMENT = EXTENSIBLE_ELEMENT__ELEMENT;
 
   /**
    * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
@@ -6993,7 +6993,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CONTAINER_VARIABLES__EEXTENSIBILITY_ELEMENTS = EXTENSIBLE_ELEMENT__EEXTENSIBILITY_ELEMENTS;
+  int CONTAINER_REFERENCE_VARIABLES__EEXTENSIBILITY_ELEMENTS = EXTENSIBLE_ELEMENT__EEXTENSIBILITY_ELEMENTS;
 
   /**
    * The feature id for the '<em><b>Documentation</b></em>' containment reference.
@@ -7002,7 +7002,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CONTAINER_VARIABLES__DOCUMENTATION = EXTENSIBLE_ELEMENT__DOCUMENTATION;
+  int CONTAINER_REFERENCE_VARIABLES__DOCUMENTATION = EXTENSIBLE_ELEMENT__DOCUMENTATION;
 
   /**
    * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -7011,26 +7011,26 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int CONTAINER_VARIABLES__CHILDREN = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 0;
+  int CONTAINER_REFERENCE_VARIABLES__CHILDREN = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Container Variables</em>' class.
+   * The number of structural features of the '<em>Container Reference Variables</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONTAINER_VARIABLES_FEATURE_COUNT = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
+  int CONTAINER_REFERENCE_VARIABLES_FEATURE_COUNT = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.eclipse.bpel.model.impl.DescriptorVariablesImpl <em>Descriptor Variables</em>}' class.
+   * The meta object id for the '{@link org.eclipse.bpel.model.impl.DataSourceReferenceVariablesImpl <em>Data Source Reference Variables</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.bpel.model.impl.DescriptorVariablesImpl
-   * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getDescriptorVariables()
+   * @see org.eclipse.bpel.model.impl.DataSourceReferenceVariablesImpl
+   * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getDataSourceReferenceVariables()
    * @generated
    */
-  int DESCRIPTOR_VARIABLES = 75;
+  int DATA_SOURCE_REFERENCE_VARIABLES = 75;
 
   /**
    * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
@@ -7039,7 +7039,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLES__DOCUMENTATION_ELEMENT = EXTENSIBLE_ELEMENT__DOCUMENTATION_ELEMENT;
+  int DATA_SOURCE_REFERENCE_VARIABLES__DOCUMENTATION_ELEMENT = EXTENSIBLE_ELEMENT__DOCUMENTATION_ELEMENT;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' attribute.
@@ -7048,7 +7048,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLES__ELEMENT = EXTENSIBLE_ELEMENT__ELEMENT;
+  int DATA_SOURCE_REFERENCE_VARIABLES__ELEMENT = EXTENSIBLE_ELEMENT__ELEMENT;
 
   /**
    * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
@@ -7057,7 +7057,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLES__EEXTENSIBILITY_ELEMENTS = EXTENSIBLE_ELEMENT__EEXTENSIBILITY_ELEMENTS;
+  int DATA_SOURCE_REFERENCE_VARIABLES__EEXTENSIBILITY_ELEMENTS = EXTENSIBLE_ELEMENT__EEXTENSIBILITY_ELEMENTS;
 
   /**
    * The feature id for the '<em><b>Documentation</b></em>' containment reference.
@@ -7066,7 +7066,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLES__DOCUMENTATION = EXTENSIBLE_ELEMENT__DOCUMENTATION;
+  int DATA_SOURCE_REFERENCE_VARIABLES__DOCUMENTATION = EXTENSIBLE_ELEMENT__DOCUMENTATION;
 
   /**
    * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -7075,106 +7075,16 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLES__CHILDREN = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 0;
+  int DATA_SOURCE_REFERENCE_VARIABLES__CHILDREN = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Descriptor Variables</em>' class.
+   * The number of structural features of the '<em>Data Source Reference Variables</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLES_FEATURE_COUNT = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINER_VARIABLE__DOCUMENTATION_ELEMENT = EXTENSIBLE_ELEMENT__DOCUMENTATION_ELEMENT;
-
-  /**
-   * The feature id for the '<em><b>Element</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINER_VARIABLE__ELEMENT = EXTENSIBLE_ELEMENT__ELEMENT;
-
-  /**
-   * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINER_VARIABLE__EEXTENSIBILITY_ELEMENTS = EXTENSIBLE_ELEMENT__EEXTENSIBILITY_ELEMENTS;
-
-  /**
-   * The feature id for the '<em><b>Documentation</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINER_VARIABLE__DOCUMENTATION = EXTENSIBLE_ELEMENT__DOCUMENTATION;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINER_VARIABLE__NAME = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Message Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINER_VARIABLE__MESSAGE_TYPE = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>XSD Element</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINER_VARIABLE__XSD_ELEMENT = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINER_VARIABLE__TYPE = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 3;
-
-  /**
-   * The feature id for the '<em><b>From</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINER_VARIABLE__FROM = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 4;
-
-  /**
-   * The number of structural features of the '<em>Container Variable</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONTAINER_VARIABLE_FEATURE_COUNT = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 5;
+  int DATA_SOURCE_REFERENCE_VARIABLES_FEATURE_COUNT = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
@@ -7183,7 +7093,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLE__DOCUMENTATION_ELEMENT = EXTENSIBLE_ELEMENT__DOCUMENTATION_ELEMENT;
+  int CONTAINER_REFERENCE_VARIABLE__DOCUMENTATION_ELEMENT = EXTENSIBLE_ELEMENT__DOCUMENTATION_ELEMENT;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' attribute.
@@ -7192,7 +7102,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLE__ELEMENT = EXTENSIBLE_ELEMENT__ELEMENT;
+  int CONTAINER_REFERENCE_VARIABLE__ELEMENT = EXTENSIBLE_ELEMENT__ELEMENT;
 
   /**
    * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
@@ -7201,7 +7111,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLE__EEXTENSIBILITY_ELEMENTS = EXTENSIBLE_ELEMENT__EEXTENSIBILITY_ELEMENTS;
+  int CONTAINER_REFERENCE_VARIABLE__EEXTENSIBILITY_ELEMENTS = EXTENSIBLE_ELEMENT__EEXTENSIBILITY_ELEMENTS;
 
   /**
    * The feature id for the '<em><b>Documentation</b></em>' containment reference.
@@ -7210,7 +7120,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLE__DOCUMENTATION = EXTENSIBLE_ELEMENT__DOCUMENTATION;
+  int CONTAINER_REFERENCE_VARIABLE__DOCUMENTATION = EXTENSIBLE_ELEMENT__DOCUMENTATION;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -7219,7 +7129,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLE__NAME = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 0;
+  int CONTAINER_REFERENCE_VARIABLE__NAME = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Message Type</b></em>' reference.
@@ -7228,7 +7138,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLE__MESSAGE_TYPE = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
+  int CONTAINER_REFERENCE_VARIABLE__MESSAGE_TYPE = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>XSD Element</b></em>' reference.
@@ -7237,7 +7147,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLE__XSD_ELEMENT = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 2;
+  int CONTAINER_REFERENCE_VARIABLE__XSD_ELEMENT = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -7246,7 +7156,7 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLE__TYPE = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 3;
+  int CONTAINER_REFERENCE_VARIABLE__TYPE = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>From</b></em>' containment reference.
@@ -7255,16 +7165,106 @@ public interface BPELPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLE__FROM = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 4;
+  int CONTAINER_REFERENCE_VARIABLE__FROM = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 4;
 
   /**
-   * The number of structural features of the '<em>Descriptor Variable</em>' class.
+   * The number of structural features of the '<em>Container Reference Variable</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DESCRIPTOR_VARIABLE_FEATURE_COUNT = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 5;
+  int CONTAINER_REFERENCE_VARIABLE_FEATURE_COUNT = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 5;
+
+  /**
+   * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_SOURCE_REFERENCE_VARIABLE__DOCUMENTATION_ELEMENT = EXTENSIBLE_ELEMENT__DOCUMENTATION_ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>Element</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_SOURCE_REFERENCE_VARIABLE__ELEMENT = EXTENSIBLE_ELEMENT__ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_SOURCE_REFERENCE_VARIABLE__EEXTENSIBILITY_ELEMENTS = EXTENSIBLE_ELEMENT__EEXTENSIBILITY_ELEMENTS;
+
+  /**
+   * The feature id for the '<em><b>Documentation</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_SOURCE_REFERENCE_VARIABLE__DOCUMENTATION = EXTENSIBLE_ELEMENT__DOCUMENTATION;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_SOURCE_REFERENCE_VARIABLE__NAME = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Message Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_SOURCE_REFERENCE_VARIABLE__MESSAGE_TYPE = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>XSD Element</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_SOURCE_REFERENCE_VARIABLE__XSD_ELEMENT = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_SOURCE_REFERENCE_VARIABLE__TYPE = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>From</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_SOURCE_REFERENCE_VARIABLE__FROM = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The number of structural features of the '<em>Data Source Reference Variable</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_SOURCE_REFERENCE_VARIABLE_FEATURE_COUNT = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link org.eclipse.bpel.model.CorrelationPattern <em>Correlation Pattern</em>}' enum.
@@ -7472,26 +7472,26 @@ public interface BPELPackage extends EPackage {
   EAttribute getProcess_AbstractProcessProfile();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.bpel.model.Process#getContainerVariables <em>Container Variables</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.bpel.model.Process#getContainerReferenceVariables <em>Container Reference Variables</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Container Variables</em>'.
-   * @see org.eclipse.bpel.model.Process#getContainerVariables()
+   * @return the meta object for the containment reference '<em>Container Reference Variables</em>'.
+   * @see org.eclipse.bpel.model.Process#getContainerReferenceVariables()
    * @see #getProcess()
    * @generated
    */
-  EReference getProcess_ContainerVariables();
+  EReference getProcess_ContainerReferenceVariables();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.bpel.model.Process#getDescriptorVariables <em>Descriptor Variables</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.bpel.model.Process#getDataSourceReferenceVariables <em>Data Source Reference Variables</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Descriptor Variables</em>'.
-   * @see org.eclipse.bpel.model.Process#getDescriptorVariables()
+   * @return the meta object for the containment reference '<em>Data Source Reference Variables</em>'.
+   * @see org.eclipse.bpel.model.Process#getDataSourceReferenceVariables()
    * @see #getProcess()
    * @generated
    */
-  EReference getProcess_DescriptorVariables();
+  EReference getProcess_DataSourceReferenceVariables();
 
   /**
    * Returns the meta object for the containment reference '{@link org.eclipse.bpel.model.Process#getEventHandlers <em>Event Handlers</em>}'.
@@ -8710,176 +8710,176 @@ public interface BPELPackage extends EPackage {
   EReference getReferenceVariables_Children();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.bpel.model.ContainerVariable <em>Container Variable</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.bpel.model.ContainerReferenceVariable <em>Container Reference Variable</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Container Variable</em>'.
-   * @see org.eclipse.bpel.model.ContainerVariable
+   * @return the meta object for class '<em>Container Reference Variable</em>'.
+   * @see org.eclipse.bpel.model.ContainerReferenceVariable
    * @generated
    */
-  EClass getContainerVariable();
+  EClass getContainerReferenceVariable();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.model.ContainerVariable#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.model.ContainerReferenceVariable#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.eclipse.bpel.model.ContainerVariable#getName()
-   * @see #getContainerVariable()
+   * @see org.eclipse.bpel.model.ContainerReferenceVariable#getName()
+   * @see #getContainerReferenceVariable()
    * @generated
    */
-  EAttribute getContainerVariable_Name();
+  EAttribute getContainerReferenceVariable_Name();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.bpel.model.ContainerVariable#getMessageType <em>Message Type</em>}'.
+   * Returns the meta object for the reference '{@link org.eclipse.bpel.model.ContainerReferenceVariable#getMessageType <em>Message Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Message Type</em>'.
-   * @see org.eclipse.bpel.model.ContainerVariable#getMessageType()
-   * @see #getContainerVariable()
+   * @see org.eclipse.bpel.model.ContainerReferenceVariable#getMessageType()
+   * @see #getContainerReferenceVariable()
    * @generated
    */
-  EReference getContainerVariable_MessageType();
+  EReference getContainerReferenceVariable_MessageType();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.bpel.model.ContainerVariable#getXSDElement <em>XSD Element</em>}'.
+   * Returns the meta object for the reference '{@link org.eclipse.bpel.model.ContainerReferenceVariable#getXSDElement <em>XSD Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>XSD Element</em>'.
-   * @see org.eclipse.bpel.model.ContainerVariable#getXSDElement()
-   * @see #getContainerVariable()
+   * @see org.eclipse.bpel.model.ContainerReferenceVariable#getXSDElement()
+   * @see #getContainerReferenceVariable()
    * @generated
    */
-  EReference getContainerVariable_XSDElement();
+  EReference getContainerReferenceVariable_XSDElement();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.bpel.model.ContainerVariable#getType <em>Type</em>}'.
+   * Returns the meta object for the reference '{@link org.eclipse.bpel.model.ContainerReferenceVariable#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Type</em>'.
-   * @see org.eclipse.bpel.model.ContainerVariable#getType()
-   * @see #getContainerVariable()
+   * @see org.eclipse.bpel.model.ContainerReferenceVariable#getType()
+   * @see #getContainerReferenceVariable()
    * @generated
    */
-  EReference getContainerVariable_Type();
+  EReference getContainerReferenceVariable_Type();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.bpel.model.ContainerVariable#getFrom <em>From</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.bpel.model.ContainerReferenceVariable#getFrom <em>From</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>From</em>'.
-   * @see org.eclipse.bpel.model.ContainerVariable#getFrom()
-   * @see #getContainerVariable()
+   * @see org.eclipse.bpel.model.ContainerReferenceVariable#getFrom()
+   * @see #getContainerReferenceVariable()
    * @generated
    */
-  EReference getContainerVariable_From();
+  EReference getContainerReferenceVariable_From();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.bpel.model.DescriptorVariable <em>Descriptor Variable</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.bpel.model.DataSourceReferenceVariable <em>Data Source Reference Variable</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Descriptor Variable</em>'.
-   * @see org.eclipse.bpel.model.DescriptorVariable
+   * @return the meta object for class '<em>Data Source Reference Variable</em>'.
+   * @see org.eclipse.bpel.model.DataSourceReferenceVariable
    * @generated
    */
-  EClass getDescriptorVariable();
+  EClass getDataSourceReferenceVariable();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.model.DescriptorVariable#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.model.DataSourceReferenceVariable#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.eclipse.bpel.model.DescriptorVariable#getName()
-   * @see #getDescriptorVariable()
+   * @see org.eclipse.bpel.model.DataSourceReferenceVariable#getName()
+   * @see #getDataSourceReferenceVariable()
    * @generated
    */
-  EAttribute getDescriptorVariable_Name();
+  EAttribute getDataSourceReferenceVariable_Name();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.bpel.model.DescriptorVariable#getMessageType <em>Message Type</em>}'.
+   * Returns the meta object for the reference '{@link org.eclipse.bpel.model.DataSourceReferenceVariable#getMessageType <em>Message Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Message Type</em>'.
-   * @see org.eclipse.bpel.model.DescriptorVariable#getMessageType()
-   * @see #getDescriptorVariable()
+   * @see org.eclipse.bpel.model.DataSourceReferenceVariable#getMessageType()
+   * @see #getDataSourceReferenceVariable()
    * @generated
    */
-  EReference getDescriptorVariable_MessageType();
+  EReference getDataSourceReferenceVariable_MessageType();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.bpel.model.DescriptorVariable#getXSDElement <em>XSD Element</em>}'.
+   * Returns the meta object for the reference '{@link org.eclipse.bpel.model.DataSourceReferenceVariable#getXSDElement <em>XSD Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>XSD Element</em>'.
-   * @see org.eclipse.bpel.model.DescriptorVariable#getXSDElement()
-   * @see #getDescriptorVariable()
+   * @see org.eclipse.bpel.model.DataSourceReferenceVariable#getXSDElement()
+   * @see #getDataSourceReferenceVariable()
    * @generated
    */
-  EReference getDescriptorVariable_XSDElement();
+  EReference getDataSourceReferenceVariable_XSDElement();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.bpel.model.DescriptorVariable#getType <em>Type</em>}'.
+   * Returns the meta object for the reference '{@link org.eclipse.bpel.model.DataSourceReferenceVariable#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Type</em>'.
-   * @see org.eclipse.bpel.model.DescriptorVariable#getType()
-   * @see #getDescriptorVariable()
+   * @see org.eclipse.bpel.model.DataSourceReferenceVariable#getType()
+   * @see #getDataSourceReferenceVariable()
    * @generated
    */
-  EReference getDescriptorVariable_Type();
+  EReference getDataSourceReferenceVariable_Type();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.eclipse.bpel.model.DescriptorVariable#getFrom <em>From</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.bpel.model.DataSourceReferenceVariable#getFrom <em>From</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>From</em>'.
-   * @see org.eclipse.bpel.model.DescriptorVariable#getFrom()
-   * @see #getDescriptorVariable()
+   * @see org.eclipse.bpel.model.DataSourceReferenceVariable#getFrom()
+   * @see #getDataSourceReferenceVariable()
    * @generated
    */
-  EReference getDescriptorVariable_From();
+  EReference getDataSourceReferenceVariable_From();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.bpel.model.ContainerVariables <em>Container Variables</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.bpel.model.ContainerReferenceVariables <em>Container Reference Variables</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Container Variables</em>'.
-   * @see org.eclipse.bpel.model.ContainerVariables
+   * @return the meta object for class '<em>Container Reference Variables</em>'.
+   * @see org.eclipse.bpel.model.ContainerReferenceVariables
    * @generated
    */
-  EClass getContainerVariables();
+  EClass getContainerReferenceVariables();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.bpel.model.ContainerVariables#getChildren <em>Children</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Children</em>'.
-   * @see org.eclipse.bpel.model.ContainerVariables#getChildren()
-   * @see #getContainerVariables()
-   * @generated
-   */
-  EReference getContainerVariables_Children();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.bpel.model.DescriptorVariables <em>Descriptor Variables</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Descriptor Variables</em>'.
-   * @see org.eclipse.bpel.model.DescriptorVariables
-   * @generated
-   */
-  EClass getDescriptorVariables();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.bpel.model.DescriptorVariables#getChildren <em>Children</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.eclipse.bpel.model.ContainerReferenceVariables#getChildren <em>Children</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Children</em>'.
-   * @see org.eclipse.bpel.model.DescriptorVariables#getChildren()
-   * @see #getDescriptorVariables()
+   * @see org.eclipse.bpel.model.ContainerReferenceVariables#getChildren()
+   * @see #getContainerReferenceVariables()
    * @generated
    */
-  EReference getDescriptorVariables_Children();
+  EReference getContainerReferenceVariables_Children();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.bpel.model.DataSourceReferenceVariables <em>Data Source Reference Variables</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Data Source Reference Variables</em>'.
+   * @see org.eclipse.bpel.model.DataSourceReferenceVariables
+   * @generated
+   */
+  EClass getDataSourceReferenceVariables();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.bpel.model.DataSourceReferenceVariables#getChildren <em>Children</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Children</em>'.
+   * @see org.eclipse.bpel.model.DataSourceReferenceVariables#getChildren()
+   * @see #getDataSourceReferenceVariables()
+   * @generated
+   */
+  EReference getDataSourceReferenceVariables_Children();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.bpel.model.CompensationHandler <em>Compensation Handler</em>}'.
@@ -10674,20 +10674,20 @@ public interface BPELPackage extends EPackage {
         .getProcess_AbstractProcessProfile();
 
     /**
-     * The meta object literal for the '<em><b>Container Variables</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Container Reference Variables</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROCESS__CONTAINER_VARIABLES = eINSTANCE.getProcess_ContainerVariables();
+    EReference PROCESS__CONTAINER_REFERENCE_VARIABLES = eINSTANCE.getProcess_ContainerReferenceVariables();
 
     /**
-     * The meta object literal for the '<em><b>Descriptor Variables</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Data Source Reference Variables</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROCESS__DESCRIPTOR_VARIABLES = eINSTANCE.getProcess_DescriptorVariables();
+    EReference PROCESS__DATA_SOURCE_REFERENCE_VARIABLES = eINSTANCE.getProcess_DataSourceReferenceVariables();
 
     /**
      * The meta object literal for the '{@link org.eclipse.bpel.model.impl.PartnerLinkImpl <em>Partner Link</em>}' class.
@@ -12914,14 +12914,14 @@ public interface BPELPackage extends EPackage {
     EReference REFERENCE_VARIABLES__CHILDREN = eINSTANCE.getReferenceVariables_Children();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.bpel.model.impl.ContainerVariableImpl <em>Container Variable</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.bpel.model.impl.ContainerReferenceVariableImpl <em>Container Reference Variable</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.bpel.model.impl.ContainerVariableImpl
-     * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getContainerVariable()
+     * @see org.eclipse.bpel.model.impl.ContainerReferenceVariableImpl
+     * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getContainerReferenceVariable()
      * @generated
      */
-    EClass CONTAINER_VARIABLE = eINSTANCE.getContainerVariable();
+    EClass CONTAINER_REFERENCE_VARIABLE = eINSTANCE.getContainerReferenceVariable();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -12929,7 +12929,7 @@ public interface BPELPackage extends EPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CONTAINER_VARIABLE__NAME = eINSTANCE.getContainerVariable_Name();
+    EAttribute CONTAINER_REFERENCE_VARIABLE__NAME = eINSTANCE.getContainerReferenceVariable_Name();
 
     /**
      * The meta object literal for the '<em><b>Message Type</b></em>' reference feature.
@@ -12937,8 +12937,8 @@ public interface BPELPackage extends EPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONTAINER_VARIABLE__MESSAGE_TYPE = eINSTANCE
-        .getContainerVariable_MessageType();
+    EReference CONTAINER_REFERENCE_VARIABLE__MESSAGE_TYPE = eINSTANCE
+        .getContainerReferenceVariable_MessageType();
 
     /**
      * The meta object literal for the '<em><b>XSD Element</b></em>' reference feature.
@@ -12946,8 +12946,8 @@ public interface BPELPackage extends EPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONTAINER_VARIABLE__XSD_ELEMENT = eINSTANCE
-        .getContainerVariable_XSDElement();
+    EReference CONTAINER_REFERENCE_VARIABLE__XSD_ELEMENT = eINSTANCE
+        .getContainerReferenceVariable_XSDElement();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' reference feature.
@@ -12955,7 +12955,7 @@ public interface BPELPackage extends EPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONTAINER_VARIABLE__TYPE = eINSTANCE.getContainerVariable_Type();
+    EReference CONTAINER_REFERENCE_VARIABLE__TYPE = eINSTANCE.getContainerReferenceVariable_Type();
 
     /**
      * The meta object literal for the '<em><b>From</b></em>' containment reference feature.
@@ -12963,17 +12963,17 @@ public interface BPELPackage extends EPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONTAINER_VARIABLE__FROM = eINSTANCE.getContainerVariable_From();
+    EReference CONTAINER_REFERENCE_VARIABLE__FROM = eINSTANCE.getContainerReferenceVariable_From();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.bpel.model.impl.DescriptorVariableImpl <em>Descriptor Variable</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.bpel.model.impl.DataSourceReferenceVariableImpl <em>Data Source Reference Variable</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.bpel.model.impl.DescriptorVariableImpl
-     * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getDescriptorVariable()
+     * @see org.eclipse.bpel.model.impl.DataSourceReferenceVariableImpl
+     * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getDataSourceReferenceVariable()
      * @generated
      */
-    EClass DESCRIPTOR_VARIABLE = eINSTANCE.getDescriptorVariable();
+    EClass DATA_SOURCE_REFERENCE_VARIABLE = eINSTANCE.getDataSourceReferenceVariable();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -12981,7 +12981,7 @@ public interface BPELPackage extends EPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute DESCRIPTOR_VARIABLE__NAME = eINSTANCE.getDescriptorVariable_Name();
+    EAttribute DATA_SOURCE_REFERENCE_VARIABLE__NAME = eINSTANCE.getDataSourceReferenceVariable_Name();
 
     /**
      * The meta object literal for the '<em><b>Message Type</b></em>' reference feature.
@@ -12989,8 +12989,8 @@ public interface BPELPackage extends EPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DESCRIPTOR_VARIABLE__MESSAGE_TYPE = eINSTANCE
-        .getDescriptorVariable_MessageType();
+    EReference DATA_SOURCE_REFERENCE_VARIABLE__MESSAGE_TYPE = eINSTANCE
+        .getDataSourceReferenceVariable_MessageType();
 
     /**
      * The meta object literal for the '<em><b>XSD Element</b></em>' reference feature.
@@ -12998,8 +12998,8 @@ public interface BPELPackage extends EPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DESCRIPTOR_VARIABLE__XSD_ELEMENT = eINSTANCE
-        .getDescriptorVariable_XSDElement();
+    EReference DATA_SOURCE_REFERENCE_VARIABLE__XSD_ELEMENT = eINSTANCE
+        .getDataSourceReferenceVariable_XSDElement();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' reference feature.
@@ -13007,7 +13007,7 @@ public interface BPELPackage extends EPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DESCRIPTOR_VARIABLE__TYPE = eINSTANCE.getDescriptorVariable_Type();
+    EReference DATA_SOURCE_REFERENCE_VARIABLE__TYPE = eINSTANCE.getDataSourceReferenceVariable_Type();
 
     /**
      * The meta object literal for the '<em><b>From</b></em>' containment reference feature.
@@ -13015,35 +13015,17 @@ public interface BPELPackage extends EPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DESCRIPTOR_VARIABLE__FROM = eINSTANCE.getDescriptorVariable_From();
+    EReference DATA_SOURCE_REFERENCE_VARIABLE__FROM = eINSTANCE.getDataSourceReferenceVariable_From();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.bpel.model.impl.ContainerVariablesImpl <em>Container Variables</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.bpel.model.impl.ContainerReferenceVariablesImpl <em>Container Reference Variables</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.bpel.model.impl.ContainerVariablesImpl
-     * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getContainerVariables()
+     * @see org.eclipse.bpel.model.impl.ContainerReferenceVariablesImpl
+     * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getContainerReferenceVariables()
      * @generated
      */
-    EClass CONTAINER_VARIABLES = eINSTANCE.getContainerVariables();
-
-    /**
-     * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONTAINER_VARIABLES__CHILDREN = eINSTANCE.getContainerVariables_Children();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.bpel.model.impl.DescriptorVariablesImpl <em>Descriptor Variables</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.bpel.model.impl.DescriptorVariablesImpl
-     * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getDescriptorVariables()
-     * @generated
-     */
-    EClass DESCRIPTOR_VARIABLES = eINSTANCE.getDescriptorVariables();
+    EClass CONTAINER_REFERENCE_VARIABLES = eINSTANCE.getContainerReferenceVariables();
 
     /**
      * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
@@ -13051,8 +13033,26 @@ public interface BPELPackage extends EPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DESCRIPTOR_VARIABLES__CHILDREN = eINSTANCE
-        .getDescriptorVariables_Children();
+    EReference CONTAINER_REFERENCE_VARIABLES__CHILDREN = eINSTANCE.getContainerReferenceVariables_Children();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.bpel.model.impl.DataSourceReferenceVariablesImpl <em>Data Source Reference Variables</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.bpel.model.impl.DataSourceReferenceVariablesImpl
+     * @see org.eclipse.bpel.model.impl.BPELPackageImpl#getDataSourceReferenceVariables()
+     * @generated
+     */
+    EClass DATA_SOURCE_REFERENCE_VARIABLES = eINSTANCE.getDataSourceReferenceVariables();
+
+    /**
+     * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DATA_SOURCE_REFERENCE_VARIABLES__CHILDREN = eINSTANCE
+        .getDataSourceReferenceVariables_Children();
 
     /**
      * The meta object literal for the '{@link org.eclipse.bpel.model.CorrelationPattern <em>Correlation Pattern</em>}' enum.

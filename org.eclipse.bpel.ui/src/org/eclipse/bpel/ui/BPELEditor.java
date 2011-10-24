@@ -61,9 +61,9 @@ import org.eclipse.bpel.ui.dnd.BPELTemplateTransferDropTargetListener;
 import org.eclipse.bpel.ui.dnd.BPELTextTransferDropTargetListener;
 import org.eclipse.bpel.ui.dnd.FileDropTargetListener;
 import org.eclipse.bpel.ui.dnd.TextDropTargetListener;
-import org.eclipse.bpel.ui.editparts.ContainerVariablesEditPart;
+import org.eclipse.bpel.ui.editparts.ContainerReferenceVariablesEditPart;
 import org.eclipse.bpel.ui.editparts.CorrelationSetsEditPart;
-import org.eclipse.bpel.ui.editparts.DescriptorVariablesEditPart;
+import org.eclipse.bpel.ui.editparts.DataSourceReferenceVariablesEditPart;
 import org.eclipse.bpel.ui.editparts.FlowEditPart;
 import org.eclipse.bpel.ui.editparts.MessageExchangesEditPart;
 import org.eclipse.bpel.ui.editparts.PartnerLinksEditPart;
@@ -911,16 +911,16 @@ public class BPELEditor extends GraphicalEditorWithPaletteAndTray /*, IGotoMarke
 		getSelectionActions().add(action.getId());
 
     action = new BPELAddChildInTrayAction(this, 
-        ContainerVariablesEditPart.class, 
-        "Add ContainerVariable",  
-        BPELUIPlugin.INSTANCE.getImageDescriptor(IBPELUIConstants.ICON_CONTAINER_VARIABLE_16));
+        ContainerReferenceVariablesEditPart.class, 
+        "Add ContainerReferenceVariable",  
+        BPELUIPlugin.INSTANCE.getImageDescriptor(IBPELUIConstants.ICON_CONTAINER_REFERENCE_VARIABLE_16));
     registry.registerAction(action);
     getSelectionActions().add(action.getId());
     
     action = new BPELAddChildInTrayAction(this, 
-        DescriptorVariablesEditPart.class, 
-        "Add DescriptorVariable",  
-        BPELUIPlugin.INSTANCE.getImageDescriptor(IBPELUIConstants.ICON_DESCRIPTOR_VARIABLE_16));
+        DataSourceReferenceVariablesEditPart.class, 
+        "Add DataSourceReferenceVariable",  
+        BPELUIPlugin.INSTANCE.getImageDescriptor(IBPELUIConstants.ICON_DATA_SOURCE_REFERENCE_VARIABLE_16));
     registry.registerAction(action);
     getSelectionActions().add(action.getId());
 		

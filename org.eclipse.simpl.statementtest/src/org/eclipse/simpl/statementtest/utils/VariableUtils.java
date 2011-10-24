@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.eclipse.bpel.model.ContainerVariable;
-import org.eclipse.bpel.model.ContainerVariables;
-import org.eclipse.bpel.model.DescriptorVariable;
-import org.eclipse.bpel.model.DescriptorVariables;
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.ui.util.ModelHelper;
@@ -42,10 +42,10 @@ public class VariableUtils {
       }
     }
 
-    ContainerVariables vars = ModelHelper.getContainerVariables(process);
+    ContainerReferenceVariables vars = ModelHelper.getContainerReferenceVariables(process);
     
     if (vars != null) {
-      for (ContainerVariable var : vars.getChildren()) {
+      for (ContainerReferenceVariable var : vars.getChildren()) {
         variableNames.add("[" + var.getName() + "]");
       }
     }
@@ -81,7 +81,7 @@ public class VariableUtils {
    */
   public static List<String> getContainerVariablesFromStatement(String statement,
       Process process) {
-    ArrayList<String> containerVariables = new ArrayList<String>();
+    ArrayList<String> containerReferenceVariables = new ArrayList<String>();
     Pattern parameterPattern = Pattern.compile("\\[(.*?)\\]");
     Matcher matcher = parameterPattern.matcher(statement);
     List<String> useableVariables = VariableUtils.getUseableVariables(process);
@@ -90,24 +90,24 @@ public class VariableUtils {
       // the variable may not be able to use or may not exist
       if (useableVariables.contains(matcher.group(0))
           && VariableUtils.getVariableByName(matcher.group(1), process) != null) {
-        containerVariables.add(matcher.group(1));
+        containerReferenceVariables.add(matcher.group(1));
       }
     }
 
     // remove duplicates
-    containerVariables = new ArrayList<String>(new LinkedHashSet<String>(
-        containerVariables));
+    containerReferenceVariables = new ArrayList<String>(new LinkedHashSet<String>(
+        containerReferenceVariables));
 
-    return containerVariables;
+    return containerReferenceVariables;
   }
 
-  public static List<String> getDescriptorVariablesFromProcess(Process process) {
+  public static List<String> getDataSourceReferenceVariablesFromProcess(Process process) {
     List<String> variableNames = new ArrayList<String>();
 
-    DescriptorVariables vars = ModelHelper.getDescriptorVariables(process);
+    DataSourceReferenceVariables vars = ModelHelper.getDataSourceReferenceVariables(process);
 
     if (vars != null) {
-      for (DescriptorVariable var : vars.getChildren()) {
+      for (DataSourceReferenceVariable var : vars.getChildren()) {
         variableNames.add(var.getName());
       }
     }
@@ -153,10 +153,10 @@ public class VariableUtils {
       String variableElement) {
     String value = null;
 
-    DescriptorVariables vars = ModelHelper.getDescriptorVariables(process);
+    DataSourceReferenceVariables vars = ModelHelper.getDataSourceReferenceVariables(process);
 
     if (vars != null) {
-      for (DescriptorVariable var : vars.getChildren()) {
+      for (DataSourceReferenceVariable var : vars.getChildren()) {
         if (var.getName().equals(variableName) && var.getFrom() != null) {
           String literal = var.getFrom().getLiteral();
           Pattern pattern = Pattern.compile("\\<.*?" + variableElement + "\\>(.*?)</.*?"

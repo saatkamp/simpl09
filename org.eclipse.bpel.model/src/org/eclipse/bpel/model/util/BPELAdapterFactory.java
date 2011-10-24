@@ -30,15 +30,15 @@ import org.eclipse.bpel.model.CompensateScope;
 import org.eclipse.bpel.model.CompensationHandler;
 import org.eclipse.bpel.model.CompletionCondition;
 import org.eclipse.bpel.model.Condition;
-import org.eclipse.bpel.model.ContainerVariable;
-import org.eclipse.bpel.model.ContainerVariables;
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.Copy;
 import org.eclipse.bpel.model.Correlation;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.CorrelationSets;
 import org.eclipse.bpel.model.Correlations;
-import org.eclipse.bpel.model.DescriptorVariable;
-import org.eclipse.bpel.model.DescriptorVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Documentation;
 import org.eclipse.bpel.model.Else;
 import org.eclipse.bpel.model.ElseIf;
@@ -529,23 +529,23 @@ public class BPELAdapterFactory extends AdapterFactoryImpl {
     }
 
     @Override
-    public Adapter caseContainerVariables(ContainerVariables object) {
-      return createContainerVariablesAdapter();
+    public Adapter caseContainerReferenceVariables(ContainerReferenceVariables object) {
+      return createContainerReferenceVariablesAdapter();
     }
 
     @Override
-    public Adapter caseDescriptorVariables(DescriptorVariables object) {
-      return createDescriptorVariablesAdapter();
+    public Adapter caseDataSourceReferenceVariables(DataSourceReferenceVariables object) {
+      return createDataSourceReferenceVariablesAdapter();
     }
 
     @Override
-    public Adapter caseContainerVariable(ContainerVariable object) {
-      return createContainerVariableAdapter();
+    public Adapter caseContainerReferenceVariable(ContainerReferenceVariable object) {
+      return createContainerReferenceVariableAdapter();
     }
 
     @Override
-    public Adapter caseDescriptorVariable(DescriptorVariable object) {
-      return createDescriptorVariableAdapter();
+    public Adapter caseDataSourceReferenceVariable(DataSourceReferenceVariable object) {
+      return createDataSourceReferenceVariableAdapter();
     }
 
     @Override
@@ -997,58 +997,58 @@ public class BPELAdapterFactory extends AdapterFactoryImpl {
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.ContainerVariable <em>Container Variable</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.ContainerReferenceVariable <em>Container Reference Variable</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.bpel.model.ContainerVariable
+   * @see org.eclipse.bpel.model.ContainerReferenceVariable
    * @generated
    */
-  public Adapter createContainerVariableAdapter() {
+  public Adapter createContainerReferenceVariableAdapter() {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.ContainerVariables <em>Container Variables</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.ContainerReferenceVariables <em>Container Reference Variables</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.bpel.model.ContainerVariables
+   * @see org.eclipse.bpel.model.ContainerReferenceVariables
    * @generated
    */
-  public Adapter createContainerVariablesAdapter() {
+  public Adapter createContainerReferenceVariablesAdapter() {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.DescriptorVariable <em>Descriptor Variable</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.DataSourceReferenceVariable <em>Data Source Reference Variable</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.bpel.model.DescriptorVariable
+   * @see org.eclipse.bpel.model.DataSourceReferenceVariable
    * @generated
    */
-  public Adapter createDescriptorVariableAdapter() {
+  public Adapter createDataSourceReferenceVariableAdapter() {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.DescriptorVariables <em>Descriptor Variables</em>}'.
+   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.model.DataSourceReferenceVariables <em>Data Source Reference Variables</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.eclipse.bpel.model.DescriptorVariables
+   * @see org.eclipse.bpel.model.DataSourceReferenceVariables
    * @generated
    */
-  public Adapter createDescriptorVariablesAdapter() {
+  public Adapter createDataSourceReferenceVariablesAdapter() {
     return null;
   }
 

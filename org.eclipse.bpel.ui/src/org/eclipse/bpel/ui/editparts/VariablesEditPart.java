@@ -60,7 +60,7 @@ public class VariablesEditPart extends BPELTrayCategoryEditPart {
 
   /**
    * Overridden to select a variable that is not a hidden clone variable of a container or
-   * descriptor variable, when a variable is removed.
+   * data source reference variable, when a variable is removed.
    */
   @SuppressWarnings({ "rawtypes", "unchecked" })
   @Override
@@ -82,8 +82,8 @@ public class VariablesEditPart extends BPELTrayCategoryEditPart {
       type = variable.getType();
 
       while (type != null
-          && (type.getName().equals(ContainerVariablesEditPart.DATA_TYPE) || type
-              .getName().equals(DescriptorVariablesEditPart.DATA_TYPE))
+          && (type.getName().equals(ContainerReferenceVariablesEditPart.DATA_TYPE) || type
+              .getName().equals(DataSourceReferenceVariablesEditPart.DATA_TYPE))
           && selectedIndex > 0) {
         selectedIndex--;
         variable = this.getModelChildren().get(selectedIndex);

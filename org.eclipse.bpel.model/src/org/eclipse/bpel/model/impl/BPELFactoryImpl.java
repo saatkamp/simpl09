@@ -27,16 +27,16 @@ import org.eclipse.bpel.model.CompensateScope;
 import org.eclipse.bpel.model.CompensationHandler;
 import org.eclipse.bpel.model.CompletionCondition;
 import org.eclipse.bpel.model.Condition;
-import org.eclipse.bpel.model.ContainerVariable;
-import org.eclipse.bpel.model.ContainerVariables;
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.Copy;
 import org.eclipse.bpel.model.Correlation;
 import org.eclipse.bpel.model.CorrelationPattern;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.CorrelationSets;
 import org.eclipse.bpel.model.Correlations;
-import org.eclipse.bpel.model.DescriptorVariable;
-import org.eclipse.bpel.model.DescriptorVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Documentation;
 import org.eclipse.bpel.model.Else;
 import org.eclipse.bpel.model.ElseIf;
@@ -295,14 +295,14 @@ public class BPELFactoryImpl extends EFactoryImpl implements BPELFactory {
       return createReferenceVariable();
     case BPELPackage.REFERENCE_VARIABLES:
       return createReferenceVariables();
-    case BPELPackage.CONTAINER_VARIABLES:
-      return createContainerVariables();
-    case BPELPackage.DESCRIPTOR_VARIABLES:
-      return createDescriptorVariables();
-    case BPELPackage.CONTAINER_VARIABLE:
-      return createContainerVariable();
-    case BPELPackage.DESCRIPTOR_VARIABLE:
-      return createDescriptorVariable();
+    case BPELPackage.CONTAINER_REFERENCE_VARIABLES:
+      return createContainerReferenceVariables();
+    case BPELPackage.DATA_SOURCE_REFERENCE_VARIABLES:
+      return createDataSourceReferenceVariables();
+    case BPELPackage.CONTAINER_REFERENCE_VARIABLE:
+      return createContainerReferenceVariable();
+    case BPELPackage.DATA_SOURCE_REFERENCE_VARIABLE:
+      return createDataSourceReferenceVariable();
     default:
       throw new IllegalArgumentException(
           "The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -634,9 +634,9 @@ public class BPELFactoryImpl extends EFactoryImpl implements BPELFactory {
    * <!-- end-user-doc -->
    * @generated
    */
-  public ContainerVariable createContainerVariable() {
-    ContainerVariableImpl containerVariable = new ContainerVariableImpl();
-    return containerVariable;
+  public ContainerReferenceVariable createContainerReferenceVariable() {
+    ContainerReferenceVariableImpl containerReferenceVariable = new ContainerReferenceVariableImpl();
+    return containerReferenceVariable;
   }
 
   /**
@@ -644,9 +644,9 @@ public class BPELFactoryImpl extends EFactoryImpl implements BPELFactory {
    * <!-- end-user-doc -->
    * @generated
    */
-  public DescriptorVariable createDescriptorVariable() {
-    DescriptorVariableImpl descriptorVariable = new DescriptorVariableImpl();
-    return descriptorVariable;
+  public DataSourceReferenceVariable createDataSourceReferenceVariable() {
+    DataSourceReferenceVariableImpl dataSourceReferenceVariable = new DataSourceReferenceVariableImpl();
+    return dataSourceReferenceVariable;
   }
 
   /**
@@ -654,9 +654,9 @@ public class BPELFactoryImpl extends EFactoryImpl implements BPELFactory {
    * <!-- end-user-doc -->
    * @generated
    */
-  public ContainerVariables createContainerVariables() {
-    ContainerVariablesImpl containerVariables = new ContainerVariablesImpl();
-    return containerVariables;
+  public ContainerReferenceVariables createContainerReferenceVariables() {
+    ContainerReferenceVariablesImpl containerReferenceVariables = new ContainerReferenceVariablesImpl();
+    return containerReferenceVariables;
   }
 
   /**
@@ -664,9 +664,9 @@ public class BPELFactoryImpl extends EFactoryImpl implements BPELFactory {
    * <!-- end-user-doc -->
    * @generated
    */
-  public DescriptorVariables createDescriptorVariables() {
-    DescriptorVariablesImpl descriptorVariables = new DescriptorVariablesImpl();
-    return descriptorVariables;
+  public DataSourceReferenceVariables createDataSourceReferenceVariables() {
+    DataSourceReferenceVariablesImpl dataSourceReferenceVariables = new DataSourceReferenceVariablesImpl();
+    return dataSourceReferenceVariables;
   }
 
   /**

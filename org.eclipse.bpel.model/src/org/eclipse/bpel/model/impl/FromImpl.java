@@ -278,7 +278,7 @@ public class FromImpl extends ExtensibleElementImpl implements From {
   }
 
   /**
-   * Finds the variable clone of the descriptor variable.
+   * Finds the variable clone of the data source reference variable.
    * 
    * @return the variable clone
    */
@@ -302,7 +302,7 @@ public class FromImpl extends ExtensibleElementImpl implements From {
   }
 
   /**
-   * Overridden to synchronize the from element of the container and descriptor variables
+   * Overridden to synchronize the from element of the container and data source reference variables
    * on their variable clones.
    */
   @Override
@@ -310,8 +310,8 @@ public class FromImpl extends ExtensibleElementImpl implements From {
     super.reconcile(changedElement);
 
     // update the from element in the clone variables as well
-    if (changedElement.getParentNode().getLocalName().equals("descriptorVariable")
-        || changedElement.getParentNode().getLocalName().equals("containerVariable")) {
+    if (changedElement.getParentNode().getLocalName().equals("dataSourceReferenceVariable")
+        || changedElement.getParentNode().getLocalName().equals("containerReferenceVariable")) {
       Element changedElementClone = (Element) changedElement.cloneNode(true);
       From newFrom = BPELFactory.eINSTANCE.createFrom();
       Variable cloneVariable = this.findCloneVariable((Element) changedElement

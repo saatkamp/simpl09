@@ -35,12 +35,12 @@ import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Catch;
 import org.eclipse.bpel.model.CompensateScope;
-import org.eclipse.bpel.model.ContainerVariable;
-import org.eclipse.bpel.model.ContainerVariables;
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.CorrelationSets;
-import org.eclipse.bpel.model.DescriptorVariable;
-import org.eclipse.bpel.model.DescriptorVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Flow;
 import org.eclipse.bpel.model.ForEach;
 import org.eclipse.bpel.model.Invoke;
@@ -177,8 +177,8 @@ import org.eclipse.xsd.XSDPackage;
 public class BPELUtil {
 
 	private static final ReferenceVariable[] EMPTY_REFERENCE_VARIABLE_ARRAY = new ReferenceVariable[0];
-	private static final ContainerVariable[] EMPTY_CONTAINER_VARIABLE_ARRAY = new ContainerVariable[0];
-	private static final DescriptorVariable[] EMPTY_DESCRIPTOR_VARIABLE_ARRAY = new DescriptorVariable[0];
+	private static final ContainerReferenceVariable[] EMPTY_CONTAINER_REFERENCE_VARIABLE_ARRAY = new ContainerReferenceVariable[0];
+	private static final DataSourceReferenceVariable[] EMPTY_DATA_SOURCE_REFERENCE_VARIABLE_ARRAY = new DataSourceReferenceVariable[0];
 	private static final Variable[] EMPTY_VARIABLE_ARRAY = new Variable[0];
 	private static final PartnerLink[] EMPTY_PARTNERLINK_ARRAY = new PartnerLink[0];
 	private static final CorrelationSet[] EMPTY_CORRELATIONSET_ARRAY = new CorrelationSet[0];
@@ -1870,35 +1870,35 @@ public class BPELUtil {
 	}
 	
 	 /**
-   * Look up the container variables visible to a certain context activity (or the whole process).
+   * Look up the container reference variables visible to a certain context activity (or the whole process).
    * Variables in BPEL follow lexical scoping rules (resolved OASIS issue 101).
    * 
    * The returned variables are in no particular order.
    */
-  public static ContainerVariable[] getVisibleContainerVariables (EObject target) {
+  public static ContainerReferenceVariable[] getVisibleContainerReferenceVariables (EObject target) {
     
-    Map<String,ContainerVariable> name2Variable = new HashMap<String,ContainerVariable>();
+    Map<String,ContainerReferenceVariable> name2Variable = new HashMap<String,ContainerReferenceVariable>();
     
-    addVisibleContainerVariables(name2Variable, target,  target instanceof ContainerVariable ? (ContainerVariable) target: null );
+    addVisibleContainerReferenceVariables(name2Variable, target,  target instanceof ContainerReferenceVariable ? (ContainerReferenceVariable) target: null );
     
     if (name2Variable.isEmpty()) {
-      return EMPTY_CONTAINER_VARIABLE_ARRAY;
+      return EMPTY_CONTAINER_REFERENCE_VARIABLE_ARRAY;
     }
     
-    Collection<ContainerVariable> variables =  name2Variable.values();    
+    Collection<ContainerReferenceVariable> variables =  name2Variable.values();    
     if (variables.size() == 1) {      
-      return variables.toArray(EMPTY_CONTAINER_VARIABLE_ARRAY);
+      return variables.toArray(EMPTY_CONTAINER_REFERENCE_VARIABLE_ARRAY);
     }   
-    ArrayList<ContainerVariable> list = new ArrayList<ContainerVariable>( variables );
-    Collections.sort(list, new Comparator<ContainerVariable>() {
-      public int compare(ContainerVariable o1, ContainerVariable o2) {
+    ArrayList<ContainerReferenceVariable> list = new ArrayList<ContainerReferenceVariable>( variables );
+    Collections.sort(list, new Comparator<ContainerReferenceVariable>() {
+      public int compare(ContainerReferenceVariable o1, ContainerReferenceVariable o2) {
         return o1.getName().compareTo(o2.getName());
       }       
     });   
-    return list.toArray(EMPTY_CONTAINER_VARIABLE_ARRAY);    
+    return list.toArray(EMPTY_CONTAINER_REFERENCE_VARIABLE_ARRAY);    
   }
   
-  static void addVisibleContainerVariables (Map<String,ContainerVariable> targetMap, EObject target, ContainerVariable refVariable ) {
+  static void addVisibleContainerReferenceVariables (Map<String,ContainerReferenceVariable> targetMap, EObject target, ContainerReferenceVariable refVariable ) {
     if (target == null) {
       return;
     }
@@ -1907,18 +1907,18 @@ public class BPELUtil {
     }
     
     if (target instanceof Process) {
-      addContainerVariablesToMap(targetMap, ((Process)target).getContainerVariables(), refVariable );
+      addContainerReferenceVariablesToMap(targetMap, ((Process)target).getContainerReferenceVariables(), refVariable );
       return ;
     } 
     // recursively add less local variables first
-    addVisibleContainerVariables(targetMap, target.eContainer(), refVariable );
+    addVisibleContainerReferenceVariables(targetMap, target.eContainer(), refVariable );
   }
   
-  static void addContainerVariablesToMap(Map<String, ContainerVariable> targetMap, ContainerVariables vars, ContainerVariable refVar ) {
+  static void addContainerReferenceVariablesToMap(Map<String, ContainerReferenceVariable> targetMap, ContainerReferenceVariables vars, ContainerReferenceVariable refVar ) {
     if (vars == null) {
       return;
     }
-    for(ContainerVariable v : vars.getChildren()) {
+    for(ContainerReferenceVariable v : vars.getChildren()) {
       // scoping for initialization (only visible from).
       if (v == refVar) {
         break;
@@ -1929,59 +1929,59 @@ public class BPELUtil {
     }
   }
   
-  public static ContainerVariable[] getContainerVariables (EObject target) {
+  public static ContainerReferenceVariable[] getContainerReferenceVariables (EObject target) {
     
-    Map<String,ContainerVariable> name2Variable = new HashMap<String,ContainerVariable>();
+    Map<String,ContainerReferenceVariable> name2Variable = new HashMap<String,ContainerReferenceVariable>();
     
-    addVisibleContainerVariables(name2Variable, target,  target instanceof ContainerVariable ? (ContainerVariable) target: null );
+    addVisibleContainerReferenceVariables(name2Variable, target,  target instanceof ContainerReferenceVariable ? (ContainerReferenceVariable) target: null );
     
     if (name2Variable.isEmpty()) {
-      return EMPTY_CONTAINER_VARIABLE_ARRAY;
+      return EMPTY_CONTAINER_REFERENCE_VARIABLE_ARRAY;
     }
     
-    Collection<ContainerVariable> variables =  name2Variable.values();    
+    Collection<ContainerReferenceVariable> variables =  name2Variable.values();    
     if (variables.size() == 1) {      
-      return variables.toArray(EMPTY_CONTAINER_VARIABLE_ARRAY);
+      return variables.toArray(EMPTY_CONTAINER_REFERENCE_VARIABLE_ARRAY);
     }   
-    ArrayList<ContainerVariable> list = new ArrayList<ContainerVariable>( variables );
-    Collections.sort(list, new Comparator<ContainerVariable>() {
-      public int compare(ContainerVariable o1, ContainerVariable o2) {
+    ArrayList<ContainerReferenceVariable> list = new ArrayList<ContainerReferenceVariable>( variables );
+    Collections.sort(list, new Comparator<ContainerReferenceVariable>() {
+      public int compare(ContainerReferenceVariable o1, ContainerReferenceVariable o2) {
         return o1.getName().compareTo(o2.getName());
       }       
     });   
-    return list.toArray(EMPTY_CONTAINER_VARIABLE_ARRAY);    
+    return list.toArray(EMPTY_CONTAINER_REFERENCE_VARIABLE_ARRAY);    
   }
   
   /**
-   * Look up the descriptor variables visible to a certain context activity (or the whole process).
+   * Look up the data source reference variables visible to a certain context activity (or the whole process).
    * Variables in BPEL follow lexical scoping rules (resolved OASIS issue 101).
    * 
    * The returned variables are in no particular order.
    */
-  public static DescriptorVariable[] getVisibleDescriptorVariables (EObject target) {
+  public static DataSourceReferenceVariable[] getVisibleDataSourceReferenceVariables (EObject target) {
     
-    Map<String,DescriptorVariable> name2Variable = new HashMap<String,DescriptorVariable>();
+    Map<String,DataSourceReferenceVariable> name2Variable = new HashMap<String,DataSourceReferenceVariable>();
     
-    addVisibleDescriptorVariables(name2Variable, target,  target instanceof DescriptorVariable ? (DescriptorVariable) target: null );
+    addVisibleDataSourceReferenceVariables(name2Variable, target,  target instanceof DataSourceReferenceVariable ? (DataSourceReferenceVariable) target: null );
     
     if (name2Variable.isEmpty()) {
-      return EMPTY_DESCRIPTOR_VARIABLE_ARRAY;
+      return EMPTY_DATA_SOURCE_REFERENCE_VARIABLE_ARRAY;
     }
     
-    Collection<DescriptorVariable> variables =  name2Variable.values();   
+    Collection<DataSourceReferenceVariable> variables =  name2Variable.values();   
     if (variables.size() == 1) {      
-      return variables.toArray(EMPTY_DESCRIPTOR_VARIABLE_ARRAY);
+      return variables.toArray(EMPTY_DATA_SOURCE_REFERENCE_VARIABLE_ARRAY);
     }   
-    ArrayList<DescriptorVariable> list = new ArrayList<DescriptorVariable>( variables );
-    Collections.sort(list, new Comparator<DescriptorVariable>() {
-      public int compare(DescriptorVariable o1, DescriptorVariable o2) {
+    ArrayList<DataSourceReferenceVariable> list = new ArrayList<DataSourceReferenceVariable>( variables );
+    Collections.sort(list, new Comparator<DataSourceReferenceVariable>() {
+      public int compare(DataSourceReferenceVariable o1, DataSourceReferenceVariable o2) {
         return o1.getName().compareTo(o2.getName());
       }       
     });   
-    return list.toArray(EMPTY_DESCRIPTOR_VARIABLE_ARRAY);   
+    return list.toArray(EMPTY_DATA_SOURCE_REFERENCE_VARIABLE_ARRAY);   
   }
   
-  static void addVisibleDescriptorVariables (Map<String,DescriptorVariable> targetMap, EObject target, DescriptorVariable refVariable ) {
+  static void addVisibleDataSourceReferenceVariables (Map<String,DataSourceReferenceVariable> targetMap, EObject target, DataSourceReferenceVariable refVariable ) {
     if (target == null) {
       return;
     }
@@ -1990,18 +1990,18 @@ public class BPELUtil {
     }
     
     if (target instanceof Process) {
-      addDescriptorVariablesToMap(targetMap, ((Process)target).getDescriptorVariables(), refVariable );
+      addDataSourceReferenceVariablesToMap(targetMap, ((Process)target).getDataSourceReferenceVariables(), refVariable );
       return ;
     } 
     // recursively add less local variables first
-    addVisibleDescriptorVariables(targetMap, target.eContainer(), refVariable );
+    addVisibleDataSourceReferenceVariables(targetMap, target.eContainer(), refVariable );
   }
   
-  static void addDescriptorVariablesToMap(Map<String, DescriptorVariable> targetMap, DescriptorVariables vars, DescriptorVariable refVar ) {
+  static void addDataSourceReferenceVariablesToMap(Map<String, DataSourceReferenceVariable> targetMap, DataSourceReferenceVariables vars, DataSourceReferenceVariable refVar ) {
     if (vars == null) {
       return;
     }
-    for(DescriptorVariable v : vars.getChildren()) {
+    for(DataSourceReferenceVariable v : vars.getChildren()) {
       // scoping for initialization (only visible from).
       if (v == refVar) {
         break;
@@ -2012,26 +2012,26 @@ public class BPELUtil {
     }
   }
   
-  public static DescriptorVariable[] getDescriptorVariables (EObject target) {
+  public static DataSourceReferenceVariable[] getDataSourceReferenceVariables (EObject target) {
     
-    Map<String,DescriptorVariable> name2Variable = new HashMap<String,DescriptorVariable>();
+    Map<String,DataSourceReferenceVariable> name2Variable = new HashMap<String,DataSourceReferenceVariable>();
     
-    addVisibleDescriptorVariables(name2Variable, target,  target instanceof DescriptorVariable ? (DescriptorVariable) target: null );
+    addVisibleDataSourceReferenceVariables(name2Variable, target,  target instanceof DataSourceReferenceVariable ? (DataSourceReferenceVariable) target: null );
     
     if (name2Variable.isEmpty()) {
-      return EMPTY_DESCRIPTOR_VARIABLE_ARRAY;
+      return EMPTY_DATA_SOURCE_REFERENCE_VARIABLE_ARRAY;
     }
     
-    Collection<DescriptorVariable> variables =  name2Variable.values();   
+    Collection<DataSourceReferenceVariable> variables =  name2Variable.values();   
     if (variables.size() == 1) {      
-      return variables.toArray(EMPTY_DESCRIPTOR_VARIABLE_ARRAY);
+      return variables.toArray(EMPTY_DATA_SOURCE_REFERENCE_VARIABLE_ARRAY);
     }   
-    ArrayList<DescriptorVariable> list = new ArrayList<DescriptorVariable>( variables );
-    Collections.sort(list, new Comparator<DescriptorVariable>() {
-      public int compare(DescriptorVariable o1, DescriptorVariable o2) {
+    ArrayList<DataSourceReferenceVariable> list = new ArrayList<DataSourceReferenceVariable>( variables );
+    Collections.sort(list, new Comparator<DataSourceReferenceVariable>() {
+      public int compare(DataSourceReferenceVariable o1, DataSourceReferenceVariable o2) {
         return o1.getName().compareTo(o2.getName());
       }       
     });   
-    return list.toArray(EMPTY_DESCRIPTOR_VARIABLE_ARRAY);   
+    return list.toArray(EMPTY_DATA_SOURCE_REFERENCE_VARIABLE_ARRAY);   
   }
 }

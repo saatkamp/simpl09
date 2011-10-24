@@ -157,10 +157,10 @@ public class BPELConstants {
     //SIMPL Nodes
     public static final String ND_REFERENCE_VARIABLES = "referenceVariables";
     public static final String ND_REFERENCE_VARIABLE = "referenceVariable";
-    public static final String ND_CONTAINER_VARIABLES = "containerVariables";
-    public static final String ND_CONTAINER_VARIABLE = "containerVariable";
-    public static final String ND_DESCRIPTOR_VARIABLES = "descriptorVariables";
-    public static final String ND_DESCRIPTOR_VARIABLE = "descriptorVariable";
+    public static final String ND_CONTAINER_REFERENCE_VARIABLES = "containerReferenceVariables";
+    public static final String ND_CONTAINER_REFERENCE_VARIABLE = "containerReferenceVariable";
+    public static final String ND_DATA_SOURCE_REFERENCE_VARIABLES = "dataSourceReferenceVariables";
+    public static final String ND_DATA_SOURCE_REFERENCE_VARIABLE = "dataSourceReferenceVariable";
     
     public static final String ND_CORRELATION_SETS = "correlationSets";
     public static final String ND_CORRELATION_SET = "correlationSet";

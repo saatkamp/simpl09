@@ -39,15 +39,15 @@ import org.eclipse.bpel.model.CompensateScope;
 import org.eclipse.bpel.model.CompensationHandler;
 import org.eclipse.bpel.model.CompletionCondition;
 import org.eclipse.bpel.model.Condition;
-import org.eclipse.bpel.model.ContainerVariable;
-import org.eclipse.bpel.model.ContainerVariables;
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.Copy;
 import org.eclipse.bpel.model.Correlation;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.CorrelationSets;
 import org.eclipse.bpel.model.Correlations;
-import org.eclipse.bpel.model.DescriptorVariable;
-import org.eclipse.bpel.model.DescriptorVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Documentation;
 import org.eclipse.bpel.model.Else;
 import org.eclipse.bpel.model.ElseIf;
@@ -540,13 +540,13 @@ public class BPELWriter {
 				&& !process.getReferenceVariables().getChildren().isEmpty())
 			processElement.appendChild(referenceVariables2XML(process.getReferenceVariables()));
 
-    if (process.getContainerVariables() != null
-        && !process.getContainerVariables().getChildren().isEmpty())
-      processElement.appendChild(containerVariables2XML(process.getContainerVariables()));
+    if (process.getContainerReferenceVariables() != null
+        && !process.getContainerReferenceVariables().getChildren().isEmpty())
+      processElement.appendChild(containerReferenceVariables2XML(process.getContainerReferenceVariables()));
     
-    if (process.getDescriptorVariables() != null
-        && !process.getDescriptorVariables().getChildren().isEmpty())
-      processElement.appendChild(descriptorVariables2XML(process.getDescriptorVariables()));
+    if (process.getDataSourceReferenceVariables() != null
+        && !process.getDataSourceReferenceVariables().getChildren().isEmpty())
+      processElement.appendChild(dataSourceReferenceVariables2XML(process.getDataSourceReferenceVariables()));
 		
 		if (process.getCorrelationSets() != null
 				&& !process.getCorrelationSets().getChildren().isEmpty())
@@ -2549,16 +2549,16 @@ public class BPELWriter {
 		return variableElement;
 	}
 	
-	 protected Element containerVariables2XML(ContainerVariables variables) {
+	 protected Element containerReferenceVariables2XML(ContainerReferenceVariables variables) {
 	    // If there are no variables then skip creating Element
 	    if (variables.getChildren().isEmpty())
 	      return null;
 
-	    Element variablesElement = createBPELElement("containerVariables");
+	    Element variablesElement = createBPELElement("containerReferenceVariables");
 
 	    for (Object next : variables.getChildren()) {
-	      ContainerVariable variable = (ContainerVariable) next;
-	      variablesElement.appendChild(containerVariable2XML(variable));
+	      ContainerReferenceVariable variable = (ContainerReferenceVariable) next;
+	      variablesElement.appendChild(containerReferenceVariable2XML(variable));
 	    }
 
 	    extensibleElement2XML(variables, variablesElement);
@@ -2571,8 +2571,8 @@ public class BPELWriter {
 
 	  }
 
-	  protected Element containerVariable2XML(ContainerVariable variable) {
-	    Element variableElement = createBPELElement("containerVariable");
+	  protected Element containerReferenceVariable2XML(ContainerReferenceVariable variable) {
+	    Element variableElement = createBPELElement("containerReferenceVariable");
 
 	    if (variable.getName() != null) {
 	      variableElement.setAttribute("name", variable.getName());
@@ -2614,16 +2614,16 @@ public class BPELWriter {
 	    return variableElement;
 	  }
 	  
-	  protected Element descriptorVariables2XML(DescriptorVariables variables) {
+	  protected Element dataSourceReferenceVariables2XML(DataSourceReferenceVariables variables) {
 	    // If there are no variables then skip creating Element
 	    if (variables.getChildren().isEmpty())
 	      return null;
 
-	    Element variablesElement = createBPELElement("descriptorVariables");
+	    Element variablesElement = createBPELElement("dataSourceReferenceVariables");
 
 	    for (Object next : variables.getChildren()) {
-	      DescriptorVariable variable = (DescriptorVariable) next;
-	      variablesElement.appendChild(descriptorVariable2XML(variable));
+	      DataSourceReferenceVariable variable = (DataSourceReferenceVariable) next;
+	      variablesElement.appendChild(dataSourceReferenceVariable2XML(variable));
 	    }
 
 	    extensibleElement2XML(variables, variablesElement);
@@ -2636,8 +2636,8 @@ public class BPELWriter {
 
 	  }
 
-	  protected Element descriptorVariable2XML(DescriptorVariable variable) {
-	    Element variableElement = createBPELElement("descriptorVariable");
+	  protected Element dataSourceReferenceVariable2XML(DataSourceReferenceVariable variable) {
+	    Element variableElement = createBPELElement("dataSourceReferenceVariable");
 
 	    if (variable.getName() != null) {
 	      variableElement.setAttribute("name", variable.getName());
