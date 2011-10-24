@@ -14,6 +14,7 @@
     <xsd:sequence>
       <xsd:element name="name" type="xsd:string"></xsd:element>
       <xsd:element name="requirements" type="xsd:string"></xsd:element>
+      <xsd:element name="strategy" type="xsd:string"></xsd:element>
     </xsd:sequence>
   </xsd:complexType>
 

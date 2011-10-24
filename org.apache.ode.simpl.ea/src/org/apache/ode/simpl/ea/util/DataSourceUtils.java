@@ -107,10 +107,12 @@ public class DataSourceUtils {
     LateBinding lateBinding = new LateBinding();
     String requirements = VariableUtils.getDataSourceReferenceValue(context,
         dataSourceReferenceVariableName, "requirements");
-
+    String strategy = VariableUtils.getDataSourceReferenceValue(context,
+        dataSourceReferenceVariableName, "strategy");
+    
     lateBinding.setPolicy(requirements);
-    lateBinding.setStrategy(Strategy.FIRST_FIND);
-
+    lateBinding.setStrategy(Strategy.valueOf(strategy));
+    
     return lateBinding;
   }
 
