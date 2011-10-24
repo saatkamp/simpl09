@@ -27,6 +27,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- end-user-doc -->
  * @see org.eclipse.bpel.model.BPELPackage#getCorrelationPattern()
  * @model
+ * @generated
  */
 public enum CorrelationPattern implements Enumerator {
   /**
@@ -34,6 +35,7 @@ public enum CorrelationPattern implements Enumerator {
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #REQUEST
+   * @generated
    * @ordered
    */
   REQUEST_LITERAL(0, "request", "request"), /**
@@ -49,7 +51,6 @@ public enum CorrelationPattern implements Enumerator {
                                                 * <!-- begin-user-doc -->
                                                 * <!-- end-user-doc -->
                                                 * @see #REQUESTRESPONSE
-                                                * @generated
                                                 * @ordered
                                                 */
   REQUESTRESPONSE_LITERAL(2, "request-response", "request-response");
