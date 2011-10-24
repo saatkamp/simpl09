@@ -34,7 +34,6 @@ public enum CorrelationPattern implements Enumerator {
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #REQUEST
-   * @generated
    * @ordered
    */
   REQUEST_LITERAL(0, "request", "request"), /**

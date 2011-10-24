@@ -378,19 +378,19 @@ public class DataSourceReferenceVariableImpl extends ExtensibleElementImpl imple
       if (msgs != null)
         msgs.dispatch();
     } else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, BPELPackage.DATA_SOURCE_REFERENCE_VARIABLE__FROM,
-          newFrom, newFrom));
-    
+      eNotify(new ENotificationImpl(this, Notification.SET,
+          BPELPackage.DATA_SOURCE_REFERENCE_VARIABLE__FROM, newFrom, newFrom));
+
     if (this.findCloneVariable() != null) {
       Element fromCloneElement = null;
       From fromClone = null;
-      
+
       if (newFrom != null) {
         fromCloneElement = (Element) newFrom.getElement().cloneNode(true);
         fromClone = BPELFactory.eINSTANCE.createFrom();
         fromClone.setElement(fromCloneElement);
       }
-      
+
       this.findCloneVariable().setFrom(fromClone);
     }
   }
