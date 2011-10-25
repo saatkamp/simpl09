@@ -30,6 +30,8 @@ import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.DataSourceList;
 import org.simpl.resource.management.data.DataTransformationService;
 import org.simpl.resource.management.data.DataTransformationServiceList;
+import org.simpl.resource.management.data.StrategyPlugin;
+import org.simpl.resource.management.data.StrategyPluginList;
 import org.simpl.resource.management.data.StringList;
 import org.simpl.resource.management.db.DataSourceService;
 import org.xml.sax.InputSource;
@@ -322,6 +324,42 @@ public class ResourceManagement {
   }
 
   /**
+   * Returns a strategy plug-in by id.
+   * 
+   * @param id
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getStrategyPluginById")
+  public StrategyPlugin getStrategyPluginById(
+      @WebParam(name = "id") int id) throws Exception {
+    StrategyPlugin resultStrategyPlugin = new StrategyPlugin();
+    StrategyPluginList strategyPluginList = new StrategyPluginList();
+    ArrayList<StrategyPlugin> strategyPlugins = null;
+    String statement = "";
+    String result = null;
+
+    // build select statement
+    statement += "SELECT * ";
+    statement += "FROM strategyplugins ";
+    statement += "WHERE strategyplugins.id = " + id;
+
+    // retrieve strategy plug-ins
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+    strategyPlugins = this.getStrategyPluginsFromResult(result);
+
+    strategyPluginList.getStrategyPlugins().addAll(
+        strategyPlugins);
+
+    if (strategyPlugins.size() > 0) {
+      resultStrategyPlugin = strategyPlugins.get(0);
+    }
+
+    return resultStrategyPlugin;
+  }
+
+  
+  /**
    * Returns all data sources.
    * 
    * @return
@@ -420,6 +458,28 @@ public class ResourceManagement {
     dataTransformationServices.getDataTransformationServices().addAll(this.getDataTransformationServicesFromResult(result));
 
     return dataTransformationServices;
+  }
+
+  /**
+   * Returns a list of strategies.
+   * 
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getAllStrategyPlugins")
+  public StrategyPluginList getAllStrategyPlugins() throws Exception {
+    StrategyPluginList strategyList = new StrategyPluginList();
+    ArrayList<StrategyPlugin> strategiePlugins = null;
+  
+    String statement = "SELECT * FROM strategyplugins";
+    String result = dataSourceService.retrieveData(rmDataSource, statement);
+  
+    // extract strategy plug-ins from result
+    strategiePlugins = this.getStrategyPluginsFromResult(result);
+    
+    strategyList.getStrategyPlugins().addAll(strategiePlugins);
+    
+    return strategyList;
   }
 
   /**
@@ -839,6 +899,30 @@ public class ResourceManagement {
 
     return successful;
   }
+  
+  /**
+   * Adds a strategy plug-in.
+   * 
+   * @param StrategyPlugin
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "addStrategyPlugin")
+  public boolean addStrategyPlugin(StrategyPlugin strategyPlugin) throws Exception {
+    boolean successful = false;
+    String statement = null;
+
+    // build SQL insert statement
+    statement = "INSERT INTO strategyplugins (name, implementation) VALUES (";
+    statement += "'" + strategyPlugin.getName() + "', ";
+    statement += "'" + strategyPlugin.getImplementation() + "' ";
+    statement += ")";
+
+    // add strategy plug-in
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return successful;
+  }
 
   /**
    * Updates a data source.
@@ -995,6 +1079,31 @@ public class ResourceManagement {
   }
 
   /**
+   * Updates a strategy plug-in.
+   * 
+   * @param strategyPlugin
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "updateStrategyPlugin")
+  public boolean updateStrategyPlugin(StrategyPlugin strategyPlugin)
+      throws Exception {
+    boolean successful = false;
+    String statement = "";
+
+    // build SQL update statement
+    statement += "UPDATE strategyplugins SET ";
+    statement += "name='" + strategyPlugin.getName() + "', ";
+    statement += "implementation='" + strategyPlugin.getImplementation() + "'";
+    statement += " WHERE id=" + strategyPlugin.getId();
+
+    // update data transformation service
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return successful;
+  }
+  
+  /**
    * Deletes a data source.
    * 
    * @param id
@@ -1067,6 +1176,24 @@ public class ResourceManagement {
     return successful;
   }
 
+  /**
+   * Deletes a strategy plug-in.
+   * 
+   * @param id
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "deleteStrategyPlugin")
+  public boolean deleteStrategyPlugin(int id) throws Exception {
+    boolean successful = false;
+    String statement = "DELETE FROM strategyplugins WHERE id = " + String.valueOf(id);
+
+    // delete strategy plug-in
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return successful;
+  }
+  
   /**
    * Creates the tables for the Resource Management in the configured PostgreSQL data
    * source.
@@ -1419,6 +1546,51 @@ public class ResourceManagement {
     return dataTransformationServices;
   }
 
+  /**
+   * Creates DataTransformationService objects from a RDB data format result.
+   * 
+   * @param result
+   * @return
+   * @throws IOException
+   * @throws JDOMException
+   * @throws Exception
+   */
+  @SuppressWarnings("unchecked")
+  private ArrayList<StrategyPlugin> getStrategyPluginsFromResult(
+      String result) throws JDOMException, IOException {
+    ArrayList<StrategyPlugin> strategies = new ArrayList<StrategyPlugin>();
+
+    Document configDoc = null;
+    Element root = null;
+    List<Element> rows = null;
+    SAXBuilder saxBuilder = new SAXBuilder();
+
+    // transform the document to a list of data source objects
+    configDoc = saxBuilder.build(new InputSource(new StringReader(result)));
+    root = configDoc.getRootElement();
+    rows = root.getChild("table").getChildren("row");
+
+    for (Element row : rows) {
+      StrategyPlugin strategy = new StrategyPlugin();
+      
+      List<Element> columns = row.getChildren("column");
+
+      for (Element column : columns) {
+        if (column.getAttribute("name").getValue().equals("id")) {
+          strategy.setId(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("name")) {
+          strategy.setName(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("implementation")) {
+          strategy.setImplementation(column.getValue());
+        }
+      }
+
+      strategies.add(strategy);
+    }
+
+    return strategies;
+  }
+  
   /**
    * Returns a list of all items from the given column.
    * 

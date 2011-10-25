@@ -11,7 +11,8 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <javaElement handleIdentifier="=org.simpl.resource.management/src&lt;org.simpl.resource.management.data"/>
+        <javaElement handleIdentifier="=org.simpl.resource.discovery/src&lt;org.simpl.resource.discovery.strategy"/>
         <javaElement handleIdentifier="=org.simpl.resource.discovery/src&lt;org.simpl.resource.discovery"/>
+        <javaElement handleIdentifier="=org.simpl.resource.management/src&lt;org.simpl.resource.management.data"/>
     </selectedElements>
 </jardesc>

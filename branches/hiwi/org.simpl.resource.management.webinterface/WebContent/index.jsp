@@ -24,6 +24,8 @@
   <br/>
   <a href="datatransformationservice_list.jsp">Data Transformation Service Management</a>
   <br/>
+  <a href="strategyplugin_list.jsp">Strategy Plug-In Management</a>
+  <br/>
   <br/>
   <a href="install.jsp">Installation</a>
 </body>

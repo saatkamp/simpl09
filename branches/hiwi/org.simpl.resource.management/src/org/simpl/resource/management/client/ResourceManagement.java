@@ -16,6 +16,8 @@ import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.DataSourceList;
 import org.simpl.resource.management.data.DataTransformationService;
 import org.simpl.resource.management.data.DataTransformationServiceList;
+import org.simpl.resource.management.data.StrategyPlugin;
+import org.simpl.resource.management.data.StrategyPluginList;
 import org.simpl.resource.management.data.StringList;
 
 
@@ -239,6 +241,18 @@ public interface ResourceManagement {
 
     /**
      * 
+     * @return
+     *     returns org.simpl.resource.management.client.StrategyPluginList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getAllStrategyPlugins")
+    @WebResult(partName = "return")
+    public StrategyPluginList getAllStrategyPlugins()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
      * @param type
      * @return
      *     returns org.simpl.resource.management.client.DataSourceList
@@ -340,6 +354,21 @@ public interface ResourceManagement {
     @WebMethod(action = "getDataTransformationServiceById")
     @WebResult(partName = "return")
     public DataTransformationService getDataTransformationServiceById(
+        @WebParam(name = "id", partName = "id")
+        int id)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns org.simpl.resource.management.client.StrategyPlugin
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getStrategyPluginById")
+    @WebResult(partName = "return")
+    public StrategyPlugin getStrategyPluginById(
         @WebParam(name = "id", partName = "id")
         int id)
         throws Exception_Exception
@@ -492,6 +521,51 @@ public interface ResourceManagement {
     public StringList getSupportedConvertDataFormats(
         @WebParam(name = "arg0", partName = "arg0")
         DataSource arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "addStrategyPlugin")
+    @WebResult(partName = "return")
+    public boolean addStrategyPlugin(
+        @WebParam(name = "arg0", partName = "arg0")
+        StrategyPlugin arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "updateStrategyPlugin")
+    @WebResult(partName = "return")
+    public boolean updateStrategyPlugin(
+        @WebParam(name = "arg0", partName = "arg0")
+        StrategyPlugin arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "deleteStrategyPlugin")
+    @WebResult(partName = "return")
+    public boolean deleteStrategyPlugin(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0)
         throws Exception_Exception
     ;
 
