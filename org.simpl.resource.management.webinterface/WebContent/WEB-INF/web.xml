@@ -63,6 +63,20 @@
   </servlet>
 
   <servlet>
+    <description>StrategyPluginListAction</description>
+    <display-name>StrategyPluginListAction</display-name>
+    <servlet-name>StrategyPluginListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.StrategyPluginListAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>StrategyPluginFormAction</description>
+    <display-name>StrategyPluginFormAction</display-name>
+    <servlet-name>StrategyPluginFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.StrategyPluginFormAction</servlet-class>
+  </servlet>
+
+  <servlet>
     <description>InstallAction</description>
     <display-name>InstallAction</display-name>
     <servlet-name>InstallAction</servlet-name>
@@ -107,6 +121,16 @@
   <servlet-mapping>
     <servlet-name>DataTransformationServiceFormAction</servlet-name>
     <url-pattern>/DataTransformationServiceFormAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>StrategyPluginListAction</servlet-name>
+    <url-pattern>/StrategyPluginListAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>StrategyPluginFormAction</servlet-name>
+    <url-pattern>/StrategyPluginFormAction</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>

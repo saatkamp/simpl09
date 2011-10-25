@@ -15,6 +15,8 @@ import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.DataSourceList;
 import org.simpl.resource.management.data.DataTransformationService;
 import org.simpl.resource.management.data.DataTransformationServiceList;
+import org.simpl.resource.management.data.StrategyPlugin;
+import org.simpl.resource.management.data.StrategyPluginList;
 import org.simpl.resource.management.data.StringList;
 
 
@@ -45,11 +47,59 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link StringList }
+     * 
+     */
+    public StringList createStringList() {
+        return new StringList();
+    }
+
+    /**
+     * Create an instance of {@link ConnectorList }
+     * 
+     */
+    public ConnectorList createConnectorList() {
+        return new ConnectorList();
+    }
+
+    /**
      * Create an instance of {@link DataConverter }
      * 
      */
     public DataConverter createDataConverter() {
         return new DataConverter();
+    }
+
+    /**
+     * Create an instance of {@link DataSourceList }
+     * 
+     */
+    public DataSourceList createDataSourceList() {
+        return new DataSourceList();
+    }
+
+    /**
+     * Create an instance of {@link Connector }
+     * 
+     */
+    public Connector createConnector() {
+        return new Connector();
+    }
+
+    /**
+     * Create an instance of {@link Exception }
+     * 
+     */
+    public Exception createException() {
+        return new Exception();
+    }
+
+    /**
+     * Create an instance of {@link Authentication }
+     * 
+     */
+    public Authentication createAuthentication() {
+        return new Authentication();
     }
 
     /**
@@ -69,19 +119,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StringList }
+     * Create an instance of {@link DataSource }
      * 
      */
-    public StringList createStringList() {
-        return new StringList();
-    }
-
-    /**
-     * Create an instance of {@link Authentication }
-     * 
-     */
-    public Authentication createAuthentication() {
-        return new Authentication();
+    public DataSource createDataSource() {
+        return new DataSource();
     }
 
     /**
@@ -93,43 +135,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConnectorList }
+     * Create an instance of {@link StrategyPlugin }
      * 
      */
-    public ConnectorList createConnectorList() {
-        return new ConnectorList();
+    public StrategyPlugin createStrategyPlugin() {
+        return new StrategyPlugin();
     }
 
     /**
-     * Create an instance of {@link DataSourceList }
+     * Create an instance of {@link StrategyPluginList }
      * 
      */
-    public DataSourceList createDataSourceList() {
-        return new DataSourceList();
-    }
-
-    /**
-     * Create an instance of {@link Exception }
-     * 
-     */
-    public Exception createException() {
-        return new Exception();
-    }
-
-    /**
-     * Create an instance of {@link DataSource }
-     * 
-     */
-    public DataSource createDataSource() {
-        return new DataSource();
-    }
-
-    /**
-     * Create an instance of {@link Connector }
-     * 
-     */
-    public Connector createConnector() {
-        return new Connector();
+    public StrategyPluginList createStrategyPluginList() {
+        return new StrategyPluginList();
     }
 
     /**

@@ -70,6 +70,13 @@ CREATE TABLE datatransformationservices (
    implementation varchar(255) UNIQUE NOT NULL
 );
 
+CREATE TABLE strategyplugins (
+   id SERIAL PRIMARY KEY,
+   name varchar(255) UNIQUE NOT NULL,
+   implementation varchar(255) UNIQUE NOT NULL
+);
+
+
 CREATE TABLE datacontainers (
    id SERIAL PRIMARY KEY,
    datasource_id INTEGER,
@@ -679,3 +686,7 @@ INSERT INTO languages
 VALUES
 ('Shell', '<statement_description xmlns="http://org.simpl.resource.management/languages/statement_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/languages/statement_description languages.xsd "><statement name="Delete"><predicate>^(?i)del.*</predicate></statement></statement_description>');
 
+INSERT INTO strategyplugins
+(id, name, implementation)
+VALUES
+(1, 'FIRST_FIND', 'org.simpl.resource.discovery.strategy.FirstFindStrategy');
