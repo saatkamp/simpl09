@@ -22,7 +22,7 @@ import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.model.impl.BPELFactoryImpl;
 import org.eclipse.bpel.model.util.BPELUtils;
-import org.eclipse.bpel.model.util.XSDImportResolver;
+import org.eclipse.bpel.model.util.WSDLImportResolver;
 import org.eclipse.bpel.model.util.XSDUtil;
 import org.eclipse.bpel.ui.commands.AddVariableCommand;
 import org.eclipse.bpel.ui.commands.SetDataSourceReferenceVariableTypeCommand;
@@ -82,15 +82,15 @@ public class DataSourceReferenceVariablesEditPart extends BPELTrayCategoryEditPa
   protected Object addEntry() {
     // add data source reference variable
     DataSourceReferenceVariable variable = (DataSourceReferenceVariable) super.addEntry();
-    XSDImportResolver resolver = new XSDImportResolver();
+    WSDLImportResolver resolver = new WSDLImportResolver();
     org.eclipse.bpel.model.Process process = BPELUtils.getProcess(this
         .getDataSourceReferenceVariables());
     EList<Import> imports = process.getImports();
     List<Object> definitions = null;
 
     for (Import import1 : imports) {
-      if (import1.getNamespace().equals(SIMPL_NAMESPACE)) {
-        definitions = resolver.resolve(import1, XSDImportResolver.RESOLVE_SCHEMA);
+      if (import1.getNamespace() != null && import1.getNamespace().equals(SIMPL_NAMESPACE)) {
+        definitions = resolver.resolve(import1, WSDLImportResolver.RESOLVE_SCHEMA);
         break;
       }
     }

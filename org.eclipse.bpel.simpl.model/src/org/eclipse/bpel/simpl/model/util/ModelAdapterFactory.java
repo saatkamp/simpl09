@@ -16,7 +16,6 @@ import javax.wsdl.extensions.ElementExtensible;
 
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.ExtensionActivity;
-import org.eclipse.bpel.simpl.model.*;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;

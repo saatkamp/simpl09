@@ -14,7 +14,6 @@ package org.eclipse.bpel.simpl.model;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 

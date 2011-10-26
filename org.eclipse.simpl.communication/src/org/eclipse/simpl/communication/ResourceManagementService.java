@@ -11,6 +11,7 @@ import org.eclipse.swt.widgets.Display;
 import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
+import org.simpl.resource.management.data.Connector;
 import org.simpl.resource.management.data.DataSource;
 
 /**
@@ -19,15 +20,19 @@ import org.simpl.resource.management.data.DataSource;
  * @author Michael Schneidt
  */
 public class ResourceManagementService {
+  ResourceManagement resourceManagementService = null;
   HashMap<String, DataSource> dataSourcesMap = new HashMap<String, DataSource>();
+  HashMap<String, String> dataFormatsMap = new HashMap<String, String>();
+  List<DataSource> dataSources = null;
+  List<Connector> connectors = null;
 
   ResourceManagementService() {
-    List<DataSource> dataSources = null;
-    ResourceManagement resourceManagementService = this.getService();
+    resourceManagementService = this.getService();
 
     try {
       if (resourceManagementService != null) {
         dataSources = resourceManagementService.getAllDataSources().getDataSources();
+        connectors = resourceManagementService.getAllConnectors().getConnectors();
       } else {
         MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
             "Resource Management is not available.", "Could not load resources.");
@@ -72,6 +77,28 @@ public class ResourceManagementService {
     return new ArrayList<DataSource>(dataSourcesMap.values());
   }
 
+  public List<Connector> getAllConnectors() {
+    return connectors;
+  }
+  
+  public String getDataFormatSchema(String dataFormat) {
+    String dataFormatSchema = null;
+
+    if (dataFormatsMap.containsKey(dataFormat)) {
+      dataFormatSchema = dataFormatsMap.get(dataFormat);
+    } else {
+      try {
+        dataFormatSchema = resourceManagementService.getDataFormatSchema(dataFormat);
+        dataFormatsMap.put(dataFormat, dataFormatSchema);
+      } catch (Exception_Exception e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+    }
+
+    return dataFormatSchema;
+  }
+  
   public List<String> getDataSourceNames() {
     return new ArrayList<String>(dataSourcesMap.keySet());
   }
