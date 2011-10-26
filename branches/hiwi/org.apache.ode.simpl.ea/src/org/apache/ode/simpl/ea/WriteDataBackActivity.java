@@ -81,12 +81,10 @@ public class WriteDataBackActivity extends DataManagementActivity {
       xmlValue = xmlValue.replace("simpl:data", "sdo:dataObject");
       xmlValue = xmlValue.replace("<sdo:dataObject", "<sdo:dataObject xmlns:sdo=\"commonj.sdo\"");
       
-System.out.println("SCHEMA: " + schema);
-System.out.println("XML TO SDO: " + xmlValue); 
       // convert xml string to SDO
       XMLDocument xmlDoc = XMLHelper.INSTANCE.load(xmlValue);
       DataObject sdo = xmlDoc.getRootObject();
-System.out.println("WRITE DATA BACK " + ds.getName() + " / " + writeTarget + " / " + sdo);
+
       // write data back
       this.successfulExecution = simplCoreService.writeDataBack(ds, sdo, writeTarget, lb);
 

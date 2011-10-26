@@ -53,7 +53,7 @@ public class StatementTestView extends ViewPart {
   // composite for the statistics
   Composite statisticComposite = null;
 
-  // composite for the result table (label+table)
+  // composite for the result table (label + table)
   Composite tableComposite = null;
 
   // composite for the log
@@ -193,8 +193,10 @@ public class StatementTestView extends ViewPart {
    * @param statementTest
    */
   private void updateTabFolder(StatementTest statementTest) {
+    // update result composite
     this.buildResultComposite(statementTest);
 
+    // update parameter composite
     if (statementTest.getParameterVariables().size() > 0
         || statementTest.getContainerVariables().size() > 0) {
       this.buildParameterComposite(statementTest);
@@ -202,6 +204,7 @@ public class StatementTestView extends ViewPart {
       this.clearParameterTable();
     }
 
+    // update log composite
     if (!statementTest.getLog().isEmpty()) {
       String log = "";
 
@@ -484,9 +487,9 @@ public class StatementTestView extends ViewPart {
 
     this.clearParameterTable();
 
+    parameterTable.setEnabled(true);
     parameterTable.setLinesVisible(true);
     parameterTable.setHeaderVisible(true);
-    parameterTable.setEnabled(true);
 
     for (Variable variable : statementTest.getParameterVariables().keySet()) {
       parameterVariable = statementTest.getParameterVariables().get(variable);
