@@ -22,9 +22,11 @@ import org.eclipse.bpel.model.MessageExchanges;
 import org.eclipse.bpel.model.PartnerLinks;
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.ReferenceVariables;
+import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.model.Variables;
 import org.eclipse.bpel.ui.adapters.IContainer;
 import org.eclipse.bpel.ui.adapters.delegates.ActivityContainer;
+import org.eclipse.xsd.XSDTypeDefinition;
 
 
 public class ProcessOutlineEditPart extends OutlineTreeEditPart {
@@ -65,8 +67,23 @@ public class ProcessOutlineEditPart extends OutlineTreeEditPart {
 		}
 
 		Variables variables = process.getVariables();
+		
 		if (variables != null) {
-			list.add(variables);
+			// SIMPL: filter container reference and data source reference variables as they should not be visible in the outline
+		  List<ExtensibleElement> cleanedVariables = new ArrayList<ExtensibleElement>();
+      for (Variable variable : variables.getChildren()) {
+        XSDTypeDefinition type = variable.getType();
+        if (type != null) {
+          if (!type.getName().equals(ContainerReferenceVariablesEditPart.DATA_TYPE)
+              && !type.getName().equals(DataSourceReferenceVariablesEditPart.DATA_TYPE)) {
+            cleanedVariables.add(variable);
+          }
+        } else {
+          cleanedVariables.add(variable);
+        }
+      }
+		  
+		  list.addAll(cleanedVariables);
 		}
 		
 		ReferenceVariables referenceVariables = process.getReferenceVariables();
