@@ -111,7 +111,10 @@ public class DataSourceUtils {
         dataSourceReferenceVariableName, "strategy");
     
     lateBinding.setPolicy(requirements);
-    lateBinding.setStrategy(Strategy.valueOf(strategy));
+    
+    if (!strategy.equals("")) {
+      lateBinding.setStrategy(Strategy.valueOf(strategy));
+    }
     
     return lateBinding;
   }

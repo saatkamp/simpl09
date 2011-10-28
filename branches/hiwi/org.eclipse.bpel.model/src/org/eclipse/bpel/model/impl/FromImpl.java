@@ -14,7 +14,6 @@
  */
 package org.eclipse.bpel.model.impl;
 
-import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.EndpointReferenceRole;
 import org.eclipse.bpel.model.Expression;
@@ -314,24 +313,12 @@ public class FromImpl extends ExtensibleElementImpl implements From {
         .equals("dataSourceReferenceVariable")
         || changedElement.getParentNode().getLocalName()
             .equals("containerReferenceVariable")) {
-      Element changedElementClone = (Element) changedElement.cloneNode(true);
-      From newFrom = BPELFactory.eINSTANCE.createFrom();
       Variable cloneVariable = this.findCloneVariable((Element) changedElement
           .getParentNode());
       From cloneFrom = cloneVariable.getFrom();
 
-      newFrom.setElement(changedElementClone);
-      newFrom.setExpression(cloneFrom.getExpression());
-      newFrom.setLiteral(cloneFrom.getLiteral());
-      newFrom.setOpaque(cloneFrom.getOpaque());
-      newFrom.setPartnerLink(cloneFrom.getPartnerLink());
-      newFrom.setQuery(cloneFrom.getQuery());
-      newFrom.setEndpointReference(cloneFrom.getEndpointReference());
-      newFrom.setUnsafeLiteral(cloneFrom.getUnsafeLiteral());
-      newFrom.setVariable(cloneFrom.getVariable());
-
-      ReconciliationHelper.getInstance().reconcile(cloneVariable.getFrom(),
-          newFrom.getElement());
+      ReconciliationHelper.getInstance().reconcile(cloneFrom,
+          (Element)changedElement.cloneNode(true));
     }
   }
 

@@ -44,12 +44,11 @@ public class RetrieveDataActivity extends DataManagementActivity {
         // "The result of the query is null");
         // context.getInternalInstance().sendEvent(DMFailure);
       } else {
-        Node value = SDOUtils.createNodeOfSDO(dataObject, element.getNamespaceURI());
+        Node value = SDOUtils.createNodeOfSDO(dataObject);
         Variable variable = context.getVisibleVariables().get(dataVariableName);
+        
         if (variable != null) {
-
           context.writeVariable(variable, value);
-
         }
 
         // ScopeEvent DMEnd = new DMEnd();

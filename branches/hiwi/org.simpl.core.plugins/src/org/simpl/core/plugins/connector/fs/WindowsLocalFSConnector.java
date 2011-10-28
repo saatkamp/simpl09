@@ -138,17 +138,6 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
           successful = dataFile.renameTo(checkFile);
         }
       }
-
-      // directory -> file
-      if (dataFile.isDirectory() && (targetFile.isFile() || !targetFile.isFile() && !targetFile.isDirectory())) {
-        File firstFile = dataFile.listFiles()[0];
-
-        // check if file exists in target directory
-        if (!targetFile.exists()) {
-          // move file to the target
-          successful = firstFile.renameTo(targetFile);
-        }        
-      }
       
       // directory -> directory
       if (dataFile.isDirectory() && targetFile.isDirectory()) {
