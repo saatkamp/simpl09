@@ -75,12 +75,7 @@ public class WriteDataBackActivity extends DataManagementActivity {
       String schema = rm.getDataFormatSchema(workflowDataFormat);
       InputStream schemaInputStream = new ByteArrayInputStream(schema.getBytes());
       XSDHelper.INSTANCE.define(schemaInputStream, null);
-      
-      // Workaround to get the right XML tags for XMLHelper.INSTANCE.load, if not done we run into a timeout
-      // A better solution would be if we already receive the right XML format here.
-      xmlValue = xmlValue.replace("simpl:data", "sdo:dataObject");
-      xmlValue = xmlValue.replace("<sdo:dataObject", "<sdo:dataObject xmlns:sdo=\"commonj.sdo\"");
-      
+
       // convert xml string to SDO
       XMLDocument xmlDoc = XMLHelper.INSTANCE.load(xmlValue);
       DataObject sdo = xmlDoc.getRootObject();

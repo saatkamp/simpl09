@@ -13,18 +13,17 @@
 package org.eclipse.bpel.simpl.model.util;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import javax.wsdl.Definition;
-import javax.wsdl.Types;
-import javax.wsdl.WSDLException;
 import javax.xml.namespace.QName;
 
 import org.eclipse.bpel.model.Activity;
@@ -33,8 +32,10 @@ import org.eclipse.bpel.model.Extension;
 import org.eclipse.bpel.model.Extensions;
 import org.eclipse.bpel.model.Import;
 import org.eclipse.bpel.model.Process;
+import org.eclipse.bpel.model.adapters.INamespaceMap;
 import org.eclipse.bpel.model.extensions.BPELActivitySerializer;
 import org.eclipse.bpel.model.resource.BPELWriter;
+import org.eclipse.bpel.model.util.BPELUtils;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
@@ -53,17 +54,15 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.simpl.communication.ResourceManagementCommunication;
-import org.eclipse.wst.wsdl.WSDLFactory;
-import org.eclipse.wst.wsdl.XSDSchemaExtensibilityElement;
 import org.eclipse.wst.wsdl.util.WSDLConstants;
-import org.eclipse.xsd.util.XSDParser;
 import org.simpl.resource.management.data.Connector;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 public class DataManagementActivitySerializer implements BPELActivitySerializer {
-
+  final static HashMap<File, String> SIMPL_SCHEMA_FILES = new HashMap<File, String>();
+  
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -90,9 +89,11 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 			 *       Projektordner des Benutzers vorliegen. Wenn nicht, dann
 			 *       werden diese erzeugt.
 			 */
-			createFilesForImport(process);
+			createFilesForImports(process);
 
-			setExtensionImport(process);
+			setExtensionImports(process);
+			
+			setPrefixForImports(process);
 		}
 
 		/*
@@ -437,10 +438,7 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 	 * @param process
 	 *            : aktueller Prozess
 	 */
-	private void createFilesForImport(Process process) {
-    final String wsdlName = "simpl";
-    final String wsdlTargetNamespace = "http://www.example.org/simpl";
-
+	private void createFilesForImports(Process process) {
 		/**
 		 * Die BPEL Datei des Prozesses
 		 */
@@ -466,36 +464,13 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 				.getLocation().toOSString();
 
 		/******************************************************************
-		 * simpl.wsdl
+		 * simpl schema files
 		 ******************************************************************/
-
-		/**
-		 * Pfad zur XSD Datei = Pfad zum Projektordner + XSD Dateiname und
-		 * Dateienendung
-		 */
-		IPath wsdlPathSIMPL = projectPath.append("simpl").addFileExtension(
-				IBPELUIConstants.EXTENSION_WSDL);
-
-		/**
-		 * Objekte vom Typ File sind eine abstrakte Repräsentation einer Datei.
-		 * Sie verweisen auf die konkreten Dateien (oder Ordner). Dass es ein
-		 * solches Objekt gibt, heisst noch nicht, dass es diese Datei auch
-		 * gibt.
-		 */
-		File wsdlFileSIMPL = new File(absolutWorkspacePath
-				+ wsdlPathSIMPL.toOSString());
 
     /**
      * Get all SIMPL schemas from the Resource Management and merge them to a WSDL with
      * type definitions. (simpl.wsdl)
      */
-    @SuppressWarnings("deprecation")
-    XSDParser parser = new XSDParser();
-    XSDSchemaExtensibilityElement xsdSchema = null;
-    List<XSDSchemaExtensibilityElement> xsdSchemas = new ArrayList<XSDSchemaExtensibilityElement>();
-    Definition wsdl = WSDLFactory.eINSTANCE.createDefinition();
-    Types wsdlTypes = wsdl.createTypes();
-    
     List<String> dataFormats = null;
     List<Connector> connectors = null;
     String dataFormatSchemaString = null;
@@ -509,6 +484,7 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
       for (Connector connector : connectors) {
         if (connector.getDataConverter() != null) {
           String dataFormat = connector.getDataConverter().getWorkflowDataFormat();
+          
           if (!dataFormats.contains(dataFormat)) {
             dataFormats.add(dataFormat);
           }
@@ -520,14 +496,19 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
       for (String dataFormat : dataFormats) {
         dataFormatSchemaString = ResourceManagementCommunication.getInstance().getDataFormatSchema(
             dataFormat);
-        parser.parseString(dataFormatSchemaString);
-        xsdSchema = WSDLFactory.eINSTANCE.createXSDSchemaExtensibilityElement();
-        xsdSchema.setSchema(parser.getSchema());
         
-        xsdSchemas.add(xsdSchema);
+        // write file
+        File file = new File(absolutWorkspacePath + projectPath.append(dataFormat).addFileExtension(
+            IBPELUIConstants.EXTENSION_XSD));
+        FileWriter fstream = new FileWriter(file);
+        BufferedWriter out = new BufferedWriter(fstream);
+        out.write(dataFormatSchemaString);
+        out.close();
+        
+        SIMPL_SCHEMA_FILES.put(file, dataFormatSchemaString);
       }
 
-      // TODO: retrieve schema from Resource Management when available 
+      // TODO: retrieve schema from Resource Management when it is available 
       // add schema/simpl.xsd
       File xsdFileSIMPL = new File(FileLocator.toFileURL(Platform.getBundle(  
           "org.eclipse.bpel.simpl.model").getEntry("/schema/simpl.xsd")).toURI());
@@ -540,33 +521,19 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
       }
       in.close();
 
-      parser.parseString(fileContent.toString());
-      xsdSchema = WSDLFactory.eINSTANCE.createXSDSchemaExtensibilityElement();
-      xsdSchema.setSchema(parser.getSchema());
-      xsdSchemas.add(xsdSchema);
-
-      // add XSD schemas to the WSDL definition
-      for (XSDSchemaExtensibilityElement schema : xsdSchemas) {
-        wsdlTypes.addExtensibilityElement(schema);  
-      }
+      // write file
+      File file = new File(absolutWorkspacePath + projectPath.append("simpl").addFileExtension(
+          IBPELUIConstants.EXTENSION_XSD));
+      FileWriter fstream = new FileWriter(file);
+      BufferedWriter out = new BufferedWriter(fstream);
+      out.write(fileContent.toString());
+      out.close();
       
-      // set the WSDL definition 
-      wsdl.setQName(new QName(wsdlName));
-      wsdl.setTargetNamespace(wsdlTargetNamespace);
-      wsdl.setTypes(wsdlTypes);
-      wsdl.setExtensionRegistry(javax.wsdl.factory.WSDLFactory.newInstance()
-          .newPopulatedExtensionRegistry());
-
-      // write the simpl.wsdl file
-      javax.wsdl.factory.WSDLFactory.newInstance().newWSDLWriter()
-          .writeWSDL(wsdl, new FileOutputStream(wsdlFileSIMPL));
+      SIMPL_SCHEMA_FILES.put(file, fileContent.toString());
       
       // refresh the workspace to update the files
       ResourcesPlugin.getWorkspace().getRoot()
           .refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor()); 
-    } catch (WSDLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
     } catch (FileNotFoundException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -592,30 +559,30 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 	 * 
 	 * @param process
 	 */
-	private void setExtensionImport(Process process) {
+	private void setExtensionImports(Process process) {
+	  boolean exist = false;
+	  
+    for (File schemaFile : SIMPL_SCHEMA_FILES.keySet()) {
+      // Prüfen ob Import schon existiert
+      for (Import imp : process.getImports()) {
+        if (imp.getLocation().equals(schemaFile.getName())) {
+          exist = true;
+        }
+      }
+      
+      // Neuen Import erstellen
+      if (!exist) {
+        Import bpelImport = BPELFactory.eINSTANCE.createImport();
+        String schema = SIMPL_SCHEMA_FILES.get(schemaFile);
+        String namespace = schema.substring(schema.indexOf("targetNamespace=\"") + 17, schema.indexOf("\"", schema.indexOf("targetNamespace=\"") + 17));
 
-		/**
-		 * Zunächst überprüfen, ob die benötigten XSD-Datei schon in den
-		 * BPEL-Prozess importiert wurden. Die Überprüfung erfolgt über die
-		 * Location (Dateiname). Nur wenn es noch keinen Import dieser Dateien
-		 * gibt, wird ein neuer Import erzeugt.
-		 */
-		boolean wsdlExist = false;
-		for (Import i : process.getImports()) {
-			if (i.getLocation().equals("simpl.wsdl")) {
-				wsdlExist = true;
-			}
-		}
-
-		if (!wsdlExist) {
-			// Erstellen einen neuen Import
-			Import wsdlImportSIMPL = BPELFactory.eINSTANCE.createImport();
-			wsdlImportSIMPL.setImportType(WSDLConstants.WSDL_NAMESPACE_URI);
-			wsdlImportSIMPL.setLocation("simpl.wsdl");
-			wsdlImportSIMPL.setNamespace("http://www.example.org/simpl");
-			process.getImports().add(wsdlImportSIMPL);
-		}
-
+        bpelImport.setImportType(WSDLConstants.XSD_NAMESPACE_URI);
+        bpelImport.setLocation(schemaFile.getName());
+        bpelImport.setNamespace(namespace);
+        process.getImports().add(bpelImport);
+      }
+    }
+	  
 		/**
 		 * Nun überprüfen, ob der durch die WSDL-Datei definierte Namespace schon
 		 * im Prozess als Extension eingefügt wurde.
@@ -652,5 +619,27 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 			// Das erweiterte Extensions-Objekt im Prozess setzen
 			process.setExtensions(processExtensions);
 		}
+	}
+	
+	/**
+	 * Setz einen Prefix für die Namespaces der Imports.
+	 * 
+	 * @param process
+	 */
+	private void setPrefixForImports(Process process) {
+    int i = 0;
+    
+	  for (File schemaFile : SIMPL_SCHEMA_FILES.keySet()) {
+      String schema = SIMPL_SCHEMA_FILES.get(schemaFile);
+      String nsURI = schema.substring(schema.indexOf("targetNamespace=\"") + 17, schema.indexOf("\"", schema.indexOf("targetNamespace=\"") + 17));
+      String nsPrefix = "simpldf" + i++;
+      INamespaceMap<String, String> nsMap = BPELUtils.getNamespaceMap(process);
+
+      // Der Prefix für den Namespace http://www.example.org/simpl ist bereits durch den
+      // Namespace des Ecore-Model gegeben
+      if (!nsURI.equals(ModelPackage.eINSTANCE.getNsURI())) {
+        nsMap.put(nsPrefix, nsURI);
+      }
+    }
 	}
 }

@@ -16,7 +16,6 @@ package org.eclipse.bpel.model.impl;
 
 import javax.xml.namespace.QName;
 
-import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.ContainerReferenceVariable;
 import org.eclipse.bpel.model.From;
@@ -30,6 +29,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.wst.wsdl.Message;
 import org.eclipse.wst.wsdl.WSDLElement;
 import org.eclipse.xsd.XSDElementDeclaration;
@@ -382,15 +382,8 @@ public class ContainerReferenceVariableImpl extends ExtensibleElementImpl implem
           BPELPackage.CONTAINER_REFERENCE_VARIABLE__FROM, newFrom, newFrom));
 
     if (this.findCloneVariable() != null) {
-      Element fromCloneElement = null;
-      From fromClone = null;
-
-      if (newFrom != null) {
-        fromCloneElement = (Element) newFrom.getElement().cloneNode(true);
-        fromClone = BPELFactory.eINSTANCE.createFrom();
-        fromClone.setElement(fromCloneElement);
-      }
-
+      From fromClone = EcoreUtil.copy(newFrom);
+      fromClone.setElement((Element)newFrom.getElement().cloneNode(true));
       this.findCloneVariable().setFrom(fromClone);
     }
   }
