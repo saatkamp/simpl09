@@ -1,7 +1,13 @@
 /**
+ * CREATE SCHEMAS
+ */
+CREATE SCHEMA simpl_resources;
+CREATE SCHEMA simpl_definitions;
+
+/**
  * CREATE TABLES
  */
-CREATE TABLE dataconverters (
+CREATE TABLE simpl_resources.dataconverters (
    id SERIAL PRIMARY KEY,
    name varchar(255) UNIQUE NOT NULL,
    input_datatype varchar(255) NOT NULL,
@@ -13,20 +19,7 @@ CREATE TABLE dataconverters (
    xml_schema xml
 );
 
-CREATE TABLE languages (
-   id SERIAL PRIMARY KEY,
-   name varchar(255) UNIQUE NOT NULL,
-   statement_description xml DEFAULT '<statement_description
-  xmlns="http://org.simpl.resource.management/languages/statement_description"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://org.simpl.resource.management/languages/statement_description languages.xsd ">
-  <statement name="">
-    <predicate>predicate</predicate>
-  </statement>
-</statement_description>'
-);
-
-CREATE TABLE connectors (
+CREATE TABLE simpl_resources.connectors (
    id SERIAL PRIMARY KEY,
    dataconverter_id INTEGER,
    name varchar(255) UNIQUE NOT NULL,
@@ -40,10 +33,10 @@ CREATE TABLE connectors (
   <language></language>
   <dataFormat></dataFormat>
 </properties_description>' NOT NULL,
-   FOREIGN KEY (dataconverter_id) references dataconverters(id)
+   FOREIGN KEY (dataconverter_id) references simpl_resources.dataconverters(id)
 );
 
-CREATE TABLE datasources (
+CREATE TABLE simpl_resources.datasources (
    id SERIAL PRIMARY KEY,
    connector_id INTEGER,
    logical_name varchar(255) UNIQUE NOT NULL,
@@ -57,10 +50,10 @@ CREATE TABLE datasources (
   <language></language>
   <dataFormat></dataFormat>
 </connector_properties_description>',
-   FOREIGN KEY (connector_id) references connectors(id)
+   FOREIGN KEY (connector_id) references simpl_resources.connectors(id)
 );
 
-CREATE TABLE datatransformationservices (
+CREATE TABLE simpl_resources.datatransformationservices (
    id SERIAL PRIMARY KEY,
    name varchar(255) UNIQUE NOT NULL,
    connector_dataformat varchar(255) NOT NULL,
@@ -70,20 +63,36 @@ CREATE TABLE datatransformationservices (
    implementation varchar(255) UNIQUE NOT NULL
 );
 
-CREATE TABLE strategyplugins (
+CREATE TABLE simpl_resources.strategyplugins (
    id SERIAL PRIMARY KEY,
    name varchar(255) UNIQUE NOT NULL,
    implementation varchar(255) UNIQUE NOT NULL
 );
 
-
-CREATE TABLE datacontainers (
+CREATE TABLE simpl_definitions.languages (
    id SERIAL PRIMARY KEY,
-   datasource_id INTEGER,
-   logical_name varchar(255) NOT NULL,
-   local_identifier xml NOT NULL
+   name varchar(255) UNIQUE NOT NULL,
+   statement_description xml DEFAULT '<statement_description
+  xmlns="http://org.simpl.resource.management/languages/statement_description"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://org.simpl.resource.management/languages/statement_description languages.xsd ">
+  <statement name="">
+    <predicate>predicate</predicate>
+  </statement>
+</statement_description>'
 );
 
+CREATE TABLE simpl_definitions.datacontainer_reference_types (
+   id SERIAL PRIMARY KEY,
+   name varchar(255) NOT NULL,
+   xsd_type xml NOT NULL
+);
+
+CREATE TABLE simpl_definitions.datasource_reference_types (
+   id SERIAL PRIMARY KEY,
+   name varchar(255) NOT NULL,
+   xsd_type xml NOT NULL
+);
 
 /**
  * CREATE FUNCTIONS
@@ -92,7 +101,7 @@ CREATE TABLE datacontainers (
 CREATE OR REPLACE FUNCTION getDataSourceXMLProperty(text, xml)
   RETURNS text AS 
   $$
-    SELECT CAST ((xpath('//rmns:' || $1 || '/text()', $2, ARRAY[ARRAY['rmns','http://org.simpl.resource.management/datasources/connector_properties_description']]))[1] AS text) FROM datasources
+    SELECT CAST ((xpath('//rmns:' || $1 || '/text()', $2, ARRAY[ARRAY['rmns','http://org.simpl.resource.management/datasources/connector_properties_description']]))[1] AS text) FROM simpl_resources.datasources
   $$ 
 LANGUAGE SQL;
 
@@ -100,7 +109,7 @@ LANGUAGE SQL;
 CREATE OR REPLACE FUNCTION getConnectorXMLProperty(text, xml)
   RETURNS text AS 
   $$
-    SELECT CAST ((xpath('//rmns:' || $1 || '/text()', $2, ARRAY[ARRAY['rmns','http://org.simpl.resource.management/connectors/properties_description']]))[1] AS text) FROM connectors
+    SELECT CAST ((xpath('//rmns:' || $1 || '/text()', $2, ARRAY[ARRAY['rmns','http://org.simpl.resource.management/connectors/properties_description']]))[1] AS text) FROM simpl_resources.connectors
   $$ 
 LANGUAGE SQL;
 
@@ -118,11 +127,11 @@ CREATE OR REPLACE FUNCTION setDataSourceConnector() RETURNS trigger AS '
 			RAISE NOTICE ''[Trigger] language: %'', getDataSourceXMLProperty(''language'', NEW.connector_properties_description);
 			RAISE NOTICE ''[Trigger] dataFormat: %'', getDataSourceXMLProperty(''dataFormat'', NEW.connector_properties_description);
       SELECT INTO matching_connector_id id 
-        FROM connectors 
-        WHERE getConnectorXMLProperty(''type'', connectors.properties_description) = getDataSourceXMLProperty(''type'', NEW.connector_properties_description) 
-          AND getConnectorXMLProperty(''subType'', connectors.properties_description) = getDataSourceXMLProperty(''subType'', NEW.connector_properties_description) 
-          AND getConnectorXMLProperty(''language'', connectors.properties_description) = getDataSourceXMLProperty(''language'', NEW.connector_properties_description) 
-          AND getConnectorXMLProperty(''dataFormat'', connectors.properties_description) = getDataSourceXMLProperty(''dataFormat'', NEW.connector_properties_description) 
+        FROM simpl_resources.connectors 
+        WHERE getConnectorXMLProperty(''type'', simpl_resources.connectors.properties_description) = getDataSourceXMLProperty(''type'', NEW.connector_properties_description) 
+          AND getConnectorXMLProperty(''subType'', simpl_resources.connectors.properties_description) = getDataSourceXMLProperty(''subType'', NEW.connector_properties_description) 
+          AND getConnectorXMLProperty(''language'', simpl_resources.connectors.properties_description) = getDataSourceXMLProperty(''language'', NEW.connector_properties_description) 
+          AND getConnectorXMLProperty(''dataFormat'', simpl_resources.connectors.properties_description) = getDataSourceXMLProperty(''dataFormat'', NEW.connector_properties_description) 
         LIMIT 1;
       IF matching_connector_id IS NOT NULL THEN
         /* avoid a second update if this function is triggered by an UPDATE from updateDataSourceConnectors() */
@@ -162,7 +171,7 @@ CREATE OR REPLACE FUNCTION updateDataSourceConnectors() RETURNS trigger AS '
 		  connector_language := getConnectorXMLProperty(''language'', NEW.properties_description);
 		  connector_dataformat := getConnectorXMLProperty(''dataFormat'', NEW.properties_description);
       RAISE NOTICE ''[Trigger] new or updated connector: %, %, %, %'',connector_type, connector_sub_type, connector_language, connector_dataformat;
-	    FOR datasource_record IN SELECT * FROM datasources ORDER BY id LOOP
+	    FOR datasource_record IN SELECT * FROM simpl_resources.datasources ORDER BY id LOOP
 	      datasource_type := getDataSourceXMLProperty(''type'', datasource_record.connector_properties_description);
 	      datasource_sub_type := getDataSourceXMLProperty(''subType'', datasource_record.connector_properties_description);
 	      datasource_language := getDataSourceXMLProperty(''language'', datasource_record.connector_properties_description);
@@ -172,7 +181,7 @@ CREATE OR REPLACE FUNCTION updateDataSourceConnectors() RETURNS trigger AS '
           AND connector_language = datasource_language 
           AND connector_dataformat = datasource_dataformat 
           AND (datasource_record.connector_id IS NULL OR (datasource_record.connector_id <> NEW.id)) THEN
-          UPDATE datasources SET connector_id = NEW.id WHERE datasources.id = datasource_record.id;
+          UPDATE simpl_resources.datasources SET connector_id = NEW.id WHERE simpl_resources.datasources.id = datasource_record.id;
 	        RAISE NOTICE ''[Trigger] updated connector_id (id = %) on datasource (id = %)'', NEW.id, datasource_record.id;
 	      END IF;
         /* remove connector from data source if the connector changed and does not fit anymore */
@@ -181,7 +190,7 @@ CREATE OR REPLACE FUNCTION updateDataSourceConnectors() RETURNS trigger AS '
 	        OR connector_language <> datasource_language 
 	        OR connector_dataformat <> datasource_dataformat) 
 	        AND (datasource_record.connector_id = NEW.id)) THEN
-          UPDATE datasources SET connector_id = NULL WHERE datasources.id = datasource_record.id;
+          UPDATE simpl_resources.datasources SET connector_id = NULL WHERE simpl_resources.datasources.id = datasource_record.id;
           RAISE NOTICE ''[Trigger] updated connector_id (id = %) on datasource (id = %)'', NEW.id, datasource_record.id;
         END IF;
 	    END LOOP;
@@ -201,7 +210,7 @@ CREATE OR REPLACE FUNCTION setConnectorDataConverter() RETURNS trigger AS '
       RAISE NOTICE ''[Trigger] output_datatype: %'', NEW.output_datatype;
       RAISE NOTICE ''[Trigger] dataFormat: %'', getconnectorXMLProperty(''dataFormat'', NEW.properties_description);
       SELECT INTO matching_dataconverter_id id 
-        FROM dataconverters 
+        FROM simpl_resources.dataconverters 
         WHERE input_datatype = NEW.input_datatype 
           AND output_datatype = NEW.output_datatype 
           AND workflow_dataformat = getConnectorXMLProperty(''dataFormat'', NEW.properties_description)  
@@ -244,7 +253,7 @@ CREATE OR REPLACE FUNCTION updateConnectorDataConverters() RETURNS trigger AS '
       dataconverter_output_datatype := NEW.output_datatype;
       dataconverter_workflow_dataformat := NEW.workflow_dataformat;
       RAISE NOTICE ''[Trigger] new or updated dataconverter: %, %, %'',dataconverter_input_datatype, dataconverter_output_datatype, dataconverter_workflow_dataformat;
-      FOR connector_record IN SELECT * FROM connectors ORDER BY id LOOP
+      FOR connector_record IN SELECT * FROM simpl_resources.connectors ORDER BY id LOOP
         connector_input_datatype := connector_record.input_datatype;
         connector_output_datatype := connector_record.output_datatype;
         connector_workflow_dataformat := getConnectorXMLProperty(''dataFormat'', connector_record.properties_description);
@@ -252,7 +261,7 @@ CREATE OR REPLACE FUNCTION updateConnectorDataConverters() RETURNS trigger AS '
           AND dataconverter_output_datatype = connector_output_datatype
           AND dataconverter_workflow_dataformat = connector_workflow_dataformat  
           AND (connector_record.dataconverter_id IS NULL OR (connector_record.dataconverter_id <> NEW.id)) THEN
-          UPDATE connectors SET dataconverter_id = NEW.id WHERE connectors.id = connector_record.id;
+          UPDATE simpl_resources.connectors SET dataconverter_id = NEW.id WHERE simpl_resources.connectors.id = connector_record.id;
           RAISE NOTICE ''[Trigger] updated dataconverter_id (id = %) on connector (id = %)'', NEW.id, connector_record.id;
         END IF;
         /* remove dataconverter from connector if the dataconverter changed and does not fit anymore */
@@ -260,7 +269,7 @@ CREATE OR REPLACE FUNCTION updateConnectorDataConverters() RETURNS trigger AS '
           OR dataconverter_output_datatype = connector_output_datatype
           OR dataconverter_workflow_dataformat = connector_workflow_dataformat) 
           AND (connector_record.dataconverter_id = NEW.id)) THEN
-          UPDATE connectors SET dataconverter_id = NULL WHERE connectors.id = connector_record.id;
+          UPDATE simpl_resources.connectors SET dataconverter_id = NULL WHERE simpl_resources.connectors.id = connector_record.id;
           RAISE NOTICE ''[Trigger] updated dataconverter_id (id = %) on connector (id = %)'', NEW.id, connector_record.id;
         END IF;
       END LOOP;
@@ -269,18 +278,18 @@ CREATE OR REPLACE FUNCTION updateConnectorDataConverters() RETURNS trigger AS '
   END;' 
 LANGUAGE plpgsql;
 
-CREATE TRIGGER set_data_source_connector BEFORE INSERT OR UPDATE ON datasources FOR EACH ROW EXECUTE PROCEDURE setDataSourceConnector();
+CREATE TRIGGER set_data_source_connector BEFORE INSERT OR UPDATE ON simpl_resources.datasources FOR EACH ROW EXECUTE PROCEDURE setDataSourceConnector();
 
-CREATE TRIGGER update_data_source_connectors AFTER INSERT OR UPDATE ON connectors FOR EACH ROW EXECUTE PROCEDURE updateDataSourceConnectors();
+CREATE TRIGGER update_data_source_connectors AFTER INSERT OR UPDATE ON simpl_resources.connectors FOR EACH ROW EXECUTE PROCEDURE updateDataSourceConnectors();
 
-CREATE TRIGGER set_connector_data_converter BEFORE INSERT OR UPDATE ON connectors FOR EACH ROW EXECUTE PROCEDURE setConnectorDataConverter();
+CREATE TRIGGER set_connector_data_converter BEFORE INSERT OR UPDATE ON simpl_resources.connectors FOR EACH ROW EXECUTE PROCEDURE setConnectorDataConverter();
 
-CREATE TRIGGER update_connector_data_converters AFTER INSERT OR UPDATE ON dataconverters FOR EACH ROW EXECUTE PROCEDURE updateConnectorDataConverters();
+CREATE TRIGGER update_connector_data_converters AFTER INSERT OR UPDATE ON simpl_resources.dataconverters FOR EACH ROW EXECUTE PROCEDURE updateConnectorDataConverters();
 
 /**
  * INSERT DATA
  */
-INSERT INTO dataconverters
+INSERT INTO simpl_resources.dataconverters
 (id, name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation, xml_schema)
 VALUES
 (1, 'RDBDataConverter', 'List<String>', 'RDBResult', 'RDBDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.relational.RDBDataConverter', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -362,7 +371,7 @@ VALUES
   </xsd:complexType>
 </xsd:schema>');
 
-INSERT INTO dataconverters
+INSERT INTO simpl_resources.dataconverters
 (id, name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation, xml_schema)
 VALUES
 (2, 'CSVDataConverter', 'File', 'RandomFile', 'CSVDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.relational.CSVDataConverter', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -444,7 +453,7 @@ VALUES
   </xsd:complexType>
 </xsd:schema>');
 
-INSERT INTO dataconverters
+INSERT INTO simpl_resources.dataconverters
 (id, name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation, xml_schema)
 VALUES
 (3, 'RandomFileDataConverter', 'File', 'RandomFile', 'RandomFileDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.file.RandomFileDataConverter', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -473,12 +482,12 @@ VALUES
 </xsd:schema>');
 
 /* Workaround: the getConnectorXMLProperty and thus the setConnectorDataConverter trigger does not work properly if not at least one connector exists. This is why one dummy connector is created before inserting the real connectors. */
-INSERT INTO connectors
+INSERT INTO simpl_resources.connectors
 (id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
 VALUES
 (2, 0, 'DUMMY', '', '', '', '<dummy></dummy>');
 
-INSERT INTO connectors
+INSERT INTO simpl_resources.connectors
 (id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
 VALUES
 (1, 1, 'DB2RDBConnector', 'List<String>', 'RDBResult', 'org.simpl.core.plugins.connector.rdb.DB2RDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
@@ -490,9 +499,9 @@ VALUES
 </properties_description>');
 
 /* Workaround: the DUMMY connector gets deleted after one connector is insert. */
-DELETE FROM connectors WHERE name = 'DUMMY';
+DELETE FROM simpl_resources.connectors WHERE name = 'DUMMY';
 
-INSERT INTO connectors
+INSERT INTO simpl_resources.connectors
 (id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
 VALUES
 (2, 1, 'DerbyRDBConnector', 'List<String>', 'RDBResult', 'org.simpl.core.plugins.connector.rdb.DerbyRDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
@@ -503,7 +512,7 @@ VALUES
   <dataFormat>RDBDataFormat</dataFormat>
 </properties_description>');
 
-INSERT INTO connectors
+INSERT INTO simpl_resources.connectors
 (id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
 VALUES
 (3, 1, 'EmbDerbyRDBConnector', 'List<String>', 'RDBResult', 'org.simpl.core.plugins.connector.rdb.EmbDerbyRDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
@@ -514,7 +523,7 @@ VALUES
   <dataFormat>RDBDataFormat</dataFormat>
 </properties_description>');
 
-INSERT INTO connectors
+INSERT INTO simpl_resources.connectors
 (id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
 VALUES
 (4, 1, 'MySQLRDBConnector', 'List<String>', 'RDBResult', 'org.simpl.core.plugins.connector.rdb.MySQLRDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
@@ -525,7 +534,7 @@ VALUES
   <dataFormat>RDBDataFormat</dataFormat>
 </properties_description>');
 
-INSERT INTO connectors
+INSERT INTO simpl_resources.connectors
 (id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
 VALUES
 (5, 1, 'PostgreSQLRDBConnector', 'List<String>', 'RDBResult', 'org.simpl.core.plugins.connector.rdb.PostgreSQLRDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
@@ -536,7 +545,7 @@ VALUES
   <dataFormat>RDBDataFormat</dataFormat>
 </properties_description>');
 
-INSERT INTO connectors
+INSERT INTO simpl_resources.connectors
 (id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
 VALUES
 (6, 3, 'WindowsLocalFSConnector', 'File', 'RandomFile', 'org.simpl.core.plugins.connector.fs.WindowsLocalFSConnector', '<?xml version="1.0" encoding="UTF-8"?>
@@ -547,18 +556,18 @@ VALUES
   <dataFormat>RandomFileDataFormat</dataFormat>
 </properties_description>');
 
-INSERT INTO datatransformationservices
+INSERT INTO simpl_resources.datatransformationservices
 (id, name, connector_dataformat, workflow_dataformat, direction_connector_workflow, direction_workflow_connector, implementation)
 VALUES
 (1, 'CSVToRDBDataTransformationService', 'CSVDataFormat', 'RDBDataFormat', 'true', 'true', 'org.simpl.data.transformation.services.CSVToRDBDataTransformationService');
 
-INSERT INTO datatransformationservices
+INSERT INTO simpl_resources.datatransformationservices
 (id, name, connector_dataformat, workflow_dataformat, direction_connector_workflow, direction_workflow_connector, implementation)
 VALUES
 (2, 'RandomFileToRDBDataTransformationService', 'RandomFileDataFormat', 'RDBDataFormat', 'true', 'true', 'org.simpl.data.transformation.services.RandomFileToRDBDataTransformationService');
 
 /* Workaround: the getDataSourceXMLProperty and thus the setDataSourceConnector trigger does not work properly if not at least one connector exists. This is why one dummy datasource is created before inserting the real datasources. */
-INSERT INTO datasources
+INSERT INTO simpl_resources.datasources
 (
   logical_name
   , security_username
@@ -577,7 +586,7 @@ VALUES
   , NULL
 );
 
-INSERT INTO datasources
+INSERT INTO simpl_resources.datasources
 (
   logical_name
   , security_username
@@ -597,9 +606,9 @@ VALUES
 );
 
 /* Workaround: the DUMMY database gets deleted after one datasource is insert. */
-DELETE FROM datasources WHERE logical_name = 'DUMMY';
+DELETE FROM simpl_resources.datasources WHERE logical_name = 'DUMMY';
 
-INSERT INTO datasources
+INSERT INTO simpl_resources.datasources
 (
   logical_name
   , security_username
@@ -618,7 +627,7 @@ VALUES
   , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>MySQL</subType><language>SQL</language><dataFormat>RDBDataFormat</dataFormat></connector_properties_description>'
 );
 
-INSERT INTO datasources
+INSERT INTO simpl_resources.datasources
 (
   logical_name
   , security_username
@@ -638,7 +647,7 @@ VALUES
 );
 
 
-INSERT INTO datasources
+INSERT INTO simpl_resources.datasources
 (
   logical_name
   , security_username
@@ -657,7 +666,7 @@ VALUES
   , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>DB2</subType><language>SQL</language><dataFormat>RDBDataFormat</dataFormat></connector_properties_description>'
 );
 
-INSERT INTO datasources
+INSERT INTO simpl_resources.datasources
 (
   logical_name
   , security_username
@@ -676,17 +685,54 @@ VALUES
   , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>EmbeddedDerby</subType><language>SQL</language><dataFormat>RDBDataFormat</dataFormat></connector_properties_description>'
 );
 
-INSERT INTO languages
+INSERT INTO simpl_definitions.languages
 (name, statement_description)
 VALUES
 ('SQL', '<statement_description xmlns="http://org.simpl.resource.management/languages/statement_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/languages/statement_description languages.xsd "><statement name="Create"><predicate>^(?i)CREATE.*</predicate></statement><statement name="Insert"><predicate>^(?i)INSERT.*</predicate></statement><statement name="Update"><predicate>^(?i)UPDATE.*</predicate></statement><statement name="Delete"><predicate>^(?i)DELETE.*</predicate></statement><statement name="Drop"><predicate>^(?i)DROP.*</predicate></statement></statement_description>');
 
-INSERT INTO languages
+INSERT INTO simpl_definitions.languages
 (name, statement_description)
 VALUES
 ('Shell', '<statement_description xmlns="http://org.simpl.resource.management/languages/statement_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/languages/statement_description languages.xsd "><statement name="Delete"><predicate>^(?i)del.*</predicate></statement></statement_description>');
 
-INSERT INTO strategyplugins
+INSERT INTO simpl_resources.strategyplugins
 (id, name, implementation)
 VALUES
 (1, 'FIRST_FIND', 'org.simpl.resource.discovery.strategy.FirstFindStrategy');
+
+INSERT INTO simpl_definitions.datacontainer_reference_types
+(name, xsd_type)
+VALUES
+('DataContainerReferenceType', '<xsd:complexType name="DataContainerReferenceType">
+</xsd:complexType>');
+
+INSERT INTO simpl_definitions.datacontainer_reference_types
+(name, xsd_type)
+VALUES
+('RelationalDatabaseDataContainerReferenceType', '<xsd:complexType name="RelationalDatabaseDataContainerReferenceType">
+    <xsd:complexContent>
+      <xsd:extension base="simpl:DataContainerReferenceType">
+        <xsd:sequence>
+          <xsd:element name="schema" type="xsd:string" maxOccurs="1"
+            minOccurs="0">
+          </xsd:element>
+          <xsd:element name="table" type="xsd:string" maxOccurs="1"
+            minOccurs="1">
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="stringPattern" type="xsd:string" use="required" fixed="schema.table">
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>');
+
+INSERT INTO simpl_definitions.datasource_reference_types
+(name, xsd_type)
+VALUES
+('DataSourceReferenceType', '<xsd:complexType name="DataSourceReferenceType">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string"></xsd:element>
+      <xsd:element name="requirements" type="xsd:string"></xsd:element>
+      <xsd:element name="strategy" type="xsd:string"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>');

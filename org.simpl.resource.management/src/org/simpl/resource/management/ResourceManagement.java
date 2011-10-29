@@ -100,9 +100,9 @@ public class ResourceManagement {
 
     // build select statement
     statement += "SELECT datasources.*, " + this.getUniqueFieldNames(connectorsFields, "connectors") + ", " + this.getUniqueFieldNames(dataconvertersFields, "dataconverters") + " ";
-    statement += "FROM datasources ";
-    statement += "LEFT JOIN connectors ON (datasources.connector_id = connectors.id) ";
-    statement += "LEFT JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
+    statement += "FROM simpl_resources.datasources ";
+    statement += "LEFT JOIN simpl_resources.connectors ON (datasources.connector_id = connectors.id) ";
+    statement += "LEFT JOIN simpl_resources.dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
     statement += "WHERE getDataSourceXMLProperty('type', datasources.connector_properties_description) = '" + type + "' ";
     statement += "ORDER BY datasources.id ASC";
 
@@ -133,9 +133,9 @@ public class ResourceManagement {
 
     // build select statement
     statement += "SELECT datasources.*, " + this.getUniqueFieldNames(connectorsFields, "connectors") + ", " + this.getUniqueFieldNames(dataconvertersFields, "dataconverters") + " ";
-    statement += "FROM datasources ";
-    statement += "LEFT JOIN connectors ON (datasources.connector_id = connectors.id) ";
-    statement += "LEFT JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
+    statement += "FROM simpl_resources.datasources ";
+    statement += "LEFT JOIN simpl_resources.connectors ON (datasources.connector_id = connectors.id) ";
+    statement += "LEFT JOIN simpl_resources.dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
     statement += "WHERE getDataSourceXMLProperty('type', connector_properties_description) = '" + type + "' ";
     statement += "AND getDataSourceXMLProperty('subType', connector_properties_description) LIKE '" + subType + "' ";
     statement += "ORDER BY datasources.id ASC";
@@ -167,9 +167,9 @@ public class ResourceManagement {
 
     // build select statement
     statement += "SELECT datasources.*, " + this.getUniqueFieldNames(connectorsFields, "connectors") + ", " + this.getUniqueFieldNames(dataconvertersFields, "dataconverters") + " ";
-    statement += "FROM datasources ";
-    statement += "LEFT JOIN connectors ON (datasources.connector_id = connectors.id) ";
-    statement += "LEFT JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
+    statement += "FROM simpl_resources.datasources ";
+    statement += "LEFT JOIN simpl_resources.connectors ON (datasources.connector_id = connectors.id) ";
+    statement += "LEFT JOIN simpl_resources.dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
     statement += "WHERE logical_name LIKE '" + name + "'";
 
     // retrieve data source
@@ -202,9 +202,9 @@ public class ResourceManagement {
 
     // build select statement
     statement += "SELECT datasources.*, " + this.getUniqueFieldNames(connectorsFields, "connectors") + ", " + this.getUniqueFieldNames(dataconvertersFields, "dataconverters") + " ";
-    statement += "FROM datasources ";
-    statement += "LEFT JOIN connectors ON (datasources.connector_id = connectors.id) ";
-    statement += "LEFT JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
+    statement += "FROM simpl_resources.datasources ";
+    statement += "LEFT JOIN simpl_resources.connectors ON (datasources.connector_id = connectors.id) ";
+    statement += "LEFT JOIN simpl_resources.dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
     statement += "WHERE datasources.id = " + id;
     
     // retrieve data source
@@ -237,8 +237,8 @@ public class ResourceManagement {
        
     // build select statement
     statement += "SELECT connectors.*, " + this.getUniqueFieldNames(dataconvertersFields, "dataconverters") + " ";
-    statement += "FROM connectors ";
-    statement += "LEFT JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
+    statement += "FROM simpl_resources.connectors ";
+    statement += "LEFT JOIN simpl_resources.dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
     statement += "WHERE connectors.id = " + id;
 
     // retrieve connnector
@@ -272,7 +272,7 @@ public class ResourceManagement {
 
     // build select statement
     statement += "SELECT *";
-    statement += "FROM dataconverters ";
+    statement += "FROM simpl_resources.dataconverters ";
     statement += "WHERE dataconverters.id = " + id;
 
     // retrieve data converter
@@ -306,7 +306,7 @@ public class ResourceManagement {
 
     // build select statement
     statement += "SELECT * ";
-    statement += "FROM datatransformationservices ";
+    statement += "FROM simpl_resources.datatransformationservices ";
     statement += "WHERE datatransformationservices.id = " + id;
 
     // retrieve data transformation service
@@ -341,7 +341,7 @@ public class ResourceManagement {
 
     // build select statement
     statement += "SELECT * ";
-    statement += "FROM strategyplugins ";
+    statement += "FROM simpl_resources.strategyplugins ";
     statement += "WHERE strategyplugins.id = " + id;
 
     // retrieve strategy plug-ins
@@ -373,9 +373,9 @@ public class ResourceManagement {
     String result = null;
   
     statement += "SELECT datasources.*, " + this.getUniqueFieldNames(connectorsFields, "connectors") + ", " + this.getUniqueFieldNames(dataconvertersFields, "dataconverters") + " ";
-    statement += "FROM datasources ";
-    statement += "LEFT JOIN connectors ON (datasources.connector_id = connectors.id) ";
-    statement += "LEFT JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
+    statement += "FROM simpl_resources.datasources ";
+    statement += "LEFT JOIN simpl_resources.connectors ON (datasources.connector_id = connectors.id) ";
+    statement += "LEFT JOIN simpl_resources.dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
     statement += "ORDER BY id ASC";
     
     // retrieve data sources
@@ -404,8 +404,8 @@ public class ResourceManagement {
     String result;
 
     statement += "SELECT connectors.*, " + this.getUniqueFieldNames(dataconvertersFields, "dataconverters") + " ";
-    statement += "FROM connectors ";
-    statement += "LEFT JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
+    statement += "FROM simpl_resources.connectors ";
+    statement += "LEFT JOIN simpl_resources.dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
     statement += "ORDER BY id ASC";
 
     result = dataSourceService.retrieveData(rmDataSource, statement);
@@ -426,7 +426,7 @@ public class ResourceManagement {
   @WebMethod(action = "getAllDataConverters")
   public DataConverterList getAllDataConverters() throws Exception {
     DataConverterList dataConverters = new DataConverterList();
-    String statement = "SELECT * FROM dataconverters ORDER BY id ASC";
+    String statement = "SELECT * FROM simpl_resources.dataconverters ORDER BY id ASC";
     String result = dataSourceService.retrieveData(rmDataSource, statement);
 
     dataConverters.getDataConverters().addAll(this.getDataConvertersFromResult(result, ""));
@@ -450,7 +450,7 @@ public class ResourceManagement {
     String result;
 
     statement += "SELECT * ";
-    statement += "FROM datatransformationservices ";
+    statement += "FROM simpl_resources.datatransformationservices ";
     statement += "ORDER BY id ASC";
 
     result = dataSourceService.retrieveData(rmDataSource, statement);
@@ -471,7 +471,7 @@ public class ResourceManagement {
     StrategyPluginList strategyList = new StrategyPluginList();
     ArrayList<StrategyPlugin> strategiePlugins = null;
   
-    String statement = "SELECT * FROM strategyplugins";
+    String statement = "SELECT * FROM simpl_resources.strategyplugins";
     String result = dataSourceService.retrieveData(rmDataSource, statement);
   
     // extract strategy plug-ins from result
@@ -492,7 +492,7 @@ public class ResourceManagement {
   public StringList getAllLanguages() throws Exception {
     StringList languages = new StringList();
 
-    String statement = "SELECT name FROM languages ORDER BY name ASC";
+    String statement = "SELECT name FROM simpl_definitions.languages ORDER BY name ASC";
     String result = dataSourceService.retrieveData(rmDataSource, statement);
 
     languages.getItems().addAll(this.getColumnValuesFromResult(result, "name"));
@@ -500,6 +500,43 @@ public class ResourceManagement {
     return languages;
   }
 
+  /**
+   * Returns a xml schema including all type definitions.
+   * 
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getAllTypeDefinitionsSchema")
+  public String getAllTypeDefinitionsSchema() throws Exception {
+    String schema = null;
+    String statement = null;
+    String result = null;
+    StringList typeDefinitions = new StringList();
+
+    // datacontainer_reference_types
+    statement = "SELECT * FROM simpl_definitions.datacontainer_reference_types ORDER BY name ASC";
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+    typeDefinitions.getItems().addAll(this.getColumnValuesFromResult(result, "xsd_type"));
+    
+    // datasource_reference_types
+    statement = "SELECT * FROM simpl_definitions.datasource_reference_types ORDER BY name ASC";
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+    typeDefinitions.getItems().addAll(this.getColumnValuesFromResult(result, "xsd_type"));
+
+    // build XSD schema
+    String schemaOpenTag = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><xsd:schema targetNamespace=\"http://www.example.org/simpl\" xmlns:simpl=\"http://www.example.org/simpl\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">";
+    StringBuffer schemaContent = new StringBuffer();
+    String schemaCloseTag = "</xsd:schema>"; 
+    
+    for (String complexType : typeDefinitions.getItems()) {
+      schemaContent.append(complexType);
+    }
+    schema = schemaOpenTag + schemaContent.toString() + schemaCloseTag;
+    
+    return schema;
+  }
+
+  
   /**
    * Returns a list of data source types.
    * 
@@ -511,7 +548,7 @@ public class ResourceManagement {
     StringList stringList = new StringList();
     ArrayList<String> propertiesDescriptions = null;
 
-    String statement = "SELECT properties_description FROM connectors";
+    String statement = "SELECT properties_description FROM simpl_resources.connectors";
     String result = dataSourceService.retrieveData(rmDataSource, statement);
 
     // extract properties description from result
@@ -550,7 +587,7 @@ public class ResourceManagement {
     StringList stringList = new StringList();
     ArrayList<String> propertiesDescriptions = null;
 
-    String statement = "SELECT properties_description FROM connectors";
+    String statement = "SELECT properties_description FROM simpl_resources.connectors";
     String result = dataSourceService.retrieveData(rmDataSource, statement);
 
     // extract properties description from result
@@ -591,7 +628,7 @@ public class ResourceManagement {
     StringList stringList = new StringList();
     ArrayList<String> propertiesDescriptions = null;
 
-    String statement = "SELECT properties_description FROM connectors";
+    String statement = "SELECT properties_description FROM simpl_resources.connectors";
     String result = dataSourceService.retrieveData(rmDataSource, statement);
 
     // extract properties description from result
@@ -633,7 +670,7 @@ public class ResourceManagement {
     String statement = "";
     String result = null;
 
-    statement += "SELECT xml_schema FROM dataconverters ";
+    statement += "SELECT xml_schema FROM simpl_resources.dataconverters ";
     statement += "WHERE workflow_dataformat LIKE '" + dataFormat + "'";
 
     result = dataSourceService.retrieveData(rmDataSource, statement);
@@ -657,7 +694,7 @@ public class ResourceManagement {
     String result = null;
 
     statement += "SELECT CAST(statement_description AS TEXT) ";
-    statement += "FROM languages ";
+    statement += "FROM simpl_definitions.languages ";
     statement += "WHERE name LIKE '%" + language + "%'";
 
     result = dataSourceService.retrieveData(rmDataSource, statement);
@@ -683,8 +720,8 @@ public class ResourceManagement {
     String result = null;
 
     statement += "SELECT dataconverters.workflow_dataformat ";
-    statement += "FROM connectors ";
-    statement += "INNER JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
+    statement += "FROM simpl_resources.connectors ";
+    statement += "INNER JOIN simpl_resources.dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
     statement += "WHERE getConnectorXMLProperty('type', connectors.properties_description) = '"
         + dataSource.getType() + "' ";
     statement += "AND getConnectorXMLProperty('subType', connectors.properties_description) = '"
@@ -718,10 +755,10 @@ public class ResourceManagement {
     String result = null;
 
     statement += "SELECT replace(datatransformationservices.workflow_dataformat || datatransformationservices.connector_dataformat, dataconverters.workflow_dataformat, '') AS dataformat ";
-    statement += "FROM datasources ";
-    statement += "INNER JOIN connectors ON (datasources.connector_id = connectors.id) ";
-    statement += "INNER JOIN dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
-    statement += "INNER JOIN datatransformationservices ON ((datatransformationservices.direction_connector_workflow = 'true' AND datatransformationservices.connector_dataformat = dataconverters.workflow_dataformat) OR (datatransformationservices.direction_workflow_connector = 'true' AND datatransformationservices.workflow_dataformat = dataconverters.workflow_dataformat)) ";
+    statement += "FROM simpl_resources.datasources ";
+    statement += "INNER JOIN simpl_resources.connectors ON (datasources.connector_id = connectors.id) ";
+    statement += "INNER JOIN simpl_resources.dataconverters ON (connectors.dataconverter_id = dataconverters.id) ";
+    statement += "INNER JOIN simpl_resources.datatransformationservices ON ((datatransformationservices.direction_connector_workflow = 'true' AND datatransformationservices.connector_dataformat = dataconverters.workflow_dataformat) OR (datatransformationservices.direction_workflow_connector = 'true' AND datatransformationservices.workflow_dataformat = dataconverters.workflow_dataformat)) ";
     statement += "WHERE datasources.id = " + dataSource.getId();
 
     result = dataSourceService.retrieveData(rmDataSource, statement);
@@ -945,7 +982,7 @@ public class ResourceManagement {
     }
 
     // build SQL update statement
-    statement = "UPDATE datasources SET ";
+    statement = "UPDATE simpl_resources.datasources SET ";
     statement += "logical_name='" + dataSource.getName() + "', ";
     statement += "security_username='" + dataSource.getAuthentication().getUser() + "', ";
     statement += "security_password='" + dataSource.getAuthentication().getPassword() + "', ";
@@ -985,7 +1022,7 @@ public class ResourceManagement {
     String statement = "";
 
     // build SQL update statement
-    statement += "UPDATE connectors SET ";
+    statement += "UPDATE simpl_resources.connectors SET ";
     statement += "name='" + connector.getName() + "',";
     statement += "input_datatype='" + connector.getInputDataType() + "',";
     statement += "output_datatype='" + connector.getOutputDataType() + "',";
@@ -1032,7 +1069,7 @@ public class ResourceManagement {
     }
 
     // build SQL update statement
-    statement += "UPDATE dataconverters SET ";
+    statement += "UPDATE simpl_resources.dataconverters SET ";
     statement += "name='" + dataConverter.getName() + "', ";
     statement += "input_datatype='" + dataConverter.getInputDataType() + "', ";
     statement += "output_datatype='" + dataConverter.getOutputDataType() + "', ";
@@ -1063,7 +1100,7 @@ public class ResourceManagement {
     String statement = "";
 
     // build SQL update statement
-    statement += "UPDATE datatransformationservices SET ";
+    statement += "UPDATE simpl_resources.datatransformationservices SET ";
     statement += "name='" + dataTransformationService.getName() + "', ";
     statement += "connector_dataformat='" + dataTransformationService.getConnectorDataFormat() + "', ";
     statement += "workflow_dataformat='"  + dataTransformationService.getWorkflowDataFormat() + "', ";
@@ -1092,7 +1129,7 @@ public class ResourceManagement {
     String statement = "";
 
     // build SQL update statement
-    statement += "UPDATE strategyplugins SET ";
+    statement += "UPDATE simpl_resources.strategyplugins SET ";
     statement += "name='" + strategyPlugin.getName() + "', ";
     statement += "implementation='" + strategyPlugin.getImplementation() + "'";
     statement += " WHERE id=" + strategyPlugin.getId();
@@ -1113,7 +1150,7 @@ public class ResourceManagement {
   @WebMethod(action = "deleteDataSource")
   public boolean deleteDataSource(int id) throws Exception {
     boolean successful = false;
-    String statement = "DELETE FROM datasources WHERE id = " + String.valueOf(id);
+    String statement = "DELETE FROM simpl_resources.datasources WHERE id = " + String.valueOf(id);
 
     // delete data source
     successful = dataSourceService.executeStatement(rmDataSource, statement);
@@ -1131,7 +1168,7 @@ public class ResourceManagement {
   @WebMethod(action = "deleteConnector")
   public boolean deleteConnector(int id) throws Exception {
     boolean successful = false;
-    String statement = "DELETE FROM connectors WHERE id = " + String.valueOf(id);
+    String statement = "DELETE FROM simpl_resources.connectors WHERE id = " + String.valueOf(id);
 
     // delete connector
     successful = dataSourceService.executeStatement(rmDataSource, statement);
@@ -1149,7 +1186,7 @@ public class ResourceManagement {
   @WebMethod(action = "deleteDataConverter")
   public boolean deleteDataConverter(int id) throws Exception {
     boolean successful = false;
-    String statement = "DELETE FROM dataconverters WHERE id = " + String.valueOf(id);
+    String statement = "DELETE FROM simpl_resources.dataconverters WHERE id = " + String.valueOf(id);
 
     // delete data converter
     successful = dataSourceService.executeStatement(rmDataSource, statement);
@@ -1167,7 +1204,7 @@ public class ResourceManagement {
   @WebMethod(action = "deleteDataTransformationService")
   public boolean deleteDataTransformationService(int id) throws Exception {
     boolean successful = false;
-    String statement = "DELETE FROM datatransformationservices WHERE id = "
+    String statement = "DELETE FROM simpl_resources.datatransformationservices WHERE id = "
         + String.valueOf(id);
 
     // delete data transformation service
@@ -1186,7 +1223,7 @@ public class ResourceManagement {
   @WebMethod(action = "deleteStrategyPlugin")
   public boolean deleteStrategyPlugin(int id) throws Exception {
     boolean successful = false;
-    String statement = "DELETE FROM strategyplugins WHERE id = " + String.valueOf(id);
+    String statement = "DELETE FROM simpl_resources.strategyplugins WHERE id = " + String.valueOf(id);
 
     // delete strategy plug-in
     successful = dataSourceService.executeStatement(rmDataSource, statement);
@@ -1240,20 +1277,10 @@ public class ResourceManagement {
       }
     }
 
-    // drop tables on failure
+    // clean DB on failure
     if (!successful) {
-      dataSourceService
-          .executeStatement(rmDataSource, "DROP TABLE IF EXISTS datasources");
-      dataSourceService.executeStatement(rmDataSource, "DROP TABLE IF EXISTS connectors");
-      dataSourceService.executeStatement(rmDataSource,
-          "DROP TABLE IF EXISTS datatransformationservices");
-      dataSourceService.executeStatement(rmDataSource,
-          "DROP TABLE IF EXISTS datacontainers");
-      dataSourceService.executeStatement(rmDataSource,
-          "DROP TABLE IF EXISTS dataconverters");
-      dataSourceService.executeStatement(rmDataSource,
-          "DROP TABLE IF EXISTS statement_types");
-      dataSourceService.executeStatement(rmDataSource, "DROP TABLE IF EXISTS languages");
+      dataSourceService.executeStatement(rmDataSource, "DROP SCHEMA simpl_resources CASCADE");
+      dataSourceService.executeStatement(rmDataSource, "DROP SCHEMA simpl_definitions CASCADE");
       dataSourceService.executeStatement(rmDataSource,
           "DROP FUNCTION IF EXISTS getDataSourceXMLProperty(text, xml, tid)");
       dataSourceService.executeStatement(rmDataSource,
