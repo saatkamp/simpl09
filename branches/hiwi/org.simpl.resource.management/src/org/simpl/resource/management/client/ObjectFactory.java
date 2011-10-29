@@ -47,19 +47,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StringList }
+     * Create an instance of {@link Exception }
      * 
      */
-    public StringList createStringList() {
-        return new StringList();
-    }
-
-    /**
-     * Create an instance of {@link ConnectorList }
-     * 
-     */
-    public ConnectorList createConnectorList() {
-        return new ConnectorList();
+    public Exception createException() {
+        return new Exception();
     }
 
     /**
@@ -71,11 +63,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataSourceList }
+     * Create an instance of {@link Authentication }
      * 
      */
-    public DataSourceList createDataSourceList() {
-        return new DataSourceList();
+    public Authentication createAuthentication() {
+        return new Authentication();
     }
 
     /**
@@ -87,27 +79,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Exception }
+     * Create an instance of {@link DataSourceList }
      * 
      */
-    public Exception createException() {
-        return new Exception();
+    public DataSourceList createDataSourceList() {
+        return new DataSourceList();
     }
 
     /**
-     * Create an instance of {@link Authentication }
+     * Create an instance of {@link ConnectorList }
      * 
      */
-    public Authentication createAuthentication() {
-        return new Authentication();
+    public ConnectorList createConnectorList() {
+        return new ConnectorList();
     }
 
     /**
-     * Create an instance of {@link DataTransformationServiceList }
+     * Create an instance of {@link DataConverterList }
      * 
      */
-    public DataTransformationServiceList createDataTransformationServiceList() {
-        return new DataTransformationServiceList();
+    public DataConverterList createDataConverterList() {
+        return new DataConverterList();
+    }
+
+    /**
+     * Create an instance of {@link StrategyPluginList }
+     * 
+     */
+    public StrategyPluginList createStrategyPluginList() {
+        return new StrategyPluginList();
+    }
+
+    /**
+     * Create an instance of {@link StrategyPlugin }
+     * 
+     */
+    public StrategyPlugin createStrategyPlugin() {
+        return new StrategyPlugin();
     }
 
     /**
@@ -127,27 +135,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataConverterList }
+     * Create an instance of {@link DataTransformationServiceList }
      * 
      */
-    public DataConverterList createDataConverterList() {
-        return new DataConverterList();
+    public DataTransformationServiceList createDataTransformationServiceList() {
+        return new DataTransformationServiceList();
     }
 
     /**
-     * Create an instance of {@link StrategyPlugin }
+     * Create an instance of {@link StringList }
      * 
      */
-    public StrategyPlugin createStrategyPlugin() {
-        return new StrategyPlugin();
-    }
-
-    /**
-     * Create an instance of {@link StrategyPluginList }
-     * 
-     */
-    public StrategyPluginList createStrategyPluginList() {
-        return new StrategyPluginList();
+    public StringList createStringList() {
+        return new StringList();
     }
 
     /**

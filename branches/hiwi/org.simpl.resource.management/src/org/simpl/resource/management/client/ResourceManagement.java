@@ -127,18 +127,6 @@ public interface ResourceManagement {
 
     /**
      * 
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "createResourceManagementTables")
-    @WebResult(partName = "return")
-    public boolean createResourceManagementTables()
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
      * @param arg0
      * @return
      *     returns boolean
@@ -149,6 +137,48 @@ public interface ResourceManagement {
     public boolean deleteConnector(
         @WebParam(name = "arg0", partName = "arg0")
         int arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "addStrategyPlugin")
+    @WebResult(partName = "return")
+    public boolean addStrategyPlugin(
+        @WebParam(name = "arg0", partName = "arg0")
+        StrategyPlugin arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "updateStrategyPlugin")
+    @WebResult(partName = "return")
+    public boolean updateStrategyPlugin(
+        @WebParam(name = "arg0", partName = "arg0")
+        StrategyPlugin arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "createResourceManagementTables")
+    @WebResult(partName = "return")
+    public boolean createResourceManagementTables()
         throws Exception_Exception
     ;
 
@@ -189,6 +219,36 @@ public interface ResourceManagement {
      *     returns boolean
      * @throws Exception_Exception
      */
+    @WebMethod(action = "deleteStrategyPlugin")
+    @WebResult(partName = "return")
+    public boolean deleteStrategyPlugin(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "deleteDataSource")
+    @WebResult(partName = "return")
+    public boolean deleteDataSource(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
     @WebMethod(action = "addDataSource")
     @WebResult(partName = "return")
     public boolean addDataSource(
@@ -209,21 +269,6 @@ public interface ResourceManagement {
     public boolean updateDataSource(
         @WebParam(name = "arg0", partName = "arg0")
         DataSource arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "deleteDataSource")
-    @WebResult(partName = "return")
-    public boolean deleteDataSource(
-        @WebParam(name = "arg0", partName = "arg0")
-        int arg0)
         throws Exception_Exception
     ;
 
@@ -425,6 +470,18 @@ public interface ResourceManagement {
     /**
      * 
      * @return
+     *     returns java.lang.String
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getAllTypeDefinitionsSchema")
+    @WebResult(partName = "return")
+    public String getAllTypeDefinitionsSchema()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
      *     returns org.simpl.resource.management.client.StringList
      * @throws Exception_Exception
      */
@@ -521,51 +578,6 @@ public interface ResourceManagement {
     public StringList getSupportedConvertDataFormats(
         @WebParam(name = "arg0", partName = "arg0")
         DataSource arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "addStrategyPlugin")
-    @WebResult(partName = "return")
-    public boolean addStrategyPlugin(
-        @WebParam(name = "arg0", partName = "arg0")
-        StrategyPlugin arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "updateStrategyPlugin")
-    @WebResult(partName = "return")
-    public boolean updateStrategyPlugin(
-        @WebParam(name = "arg0", partName = "arg0")
-        StrategyPlugin arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "deleteStrategyPlugin")
-    @WebResult(partName = "return")
-    public boolean deleteStrategyPlugin(
-        @WebParam(name = "arg0", partName = "arg0")
-        int arg0)
         throws Exception_Exception
     ;
 

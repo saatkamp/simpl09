@@ -169,6 +169,19 @@ public class ResourceManagementService {
     return dataFormats;
   }
 
+  public String getAllTypeDefinitionsSchema() {
+    String schema = null;
+    
+    try {
+      schema = this.getService().getAllTypeDefinitionsSchema();
+    } catch (Exception_Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
+    return schema;
+  }
+  
   public ResourceManagement getService() {
     String address = CommunicationPlugIn.getDefault().getPreferenceStore()
         .getString("SIMPL_RESOURCE_MANAGEMENT_ADDRESS");

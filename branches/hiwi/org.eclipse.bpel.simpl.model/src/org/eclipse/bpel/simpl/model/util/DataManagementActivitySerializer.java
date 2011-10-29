@@ -12,14 +12,11 @@
  */
 package org.eclipse.bpel.simpl.model.util;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,10 +46,8 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.simpl.communication.ResourceManagementCommunication;
 import org.eclipse.wst.wsdl.util.WSDLConstants;
 import org.simpl.resource.management.data.Connector;
@@ -508,28 +503,18 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
         SIMPL_SCHEMA_FILES.put(file, dataFormatSchemaString);
       }
 
-      // TODO: retrieve schema from Resource Management when it is available 
-      // add schema/simpl.xsd
-      File xsdFileSIMPL = new File(FileLocator.toFileURL(Platform.getBundle(  
-          "org.eclipse.bpel.simpl.model").getEntry("/schema/simpl.xsd")).toURI());
-      BufferedReader in = new BufferedReader(new FileReader(xsdFileSIMPL));
-      StringBuffer fileContent = new StringBuffer();
-      String str;
-
-      while ((str = in.readLine()) != null) {
-        fileContent.append(str);
-      }
-      in.close();
+      // retrieve definitions schema from Resource Management
+      String schema = ResourceManagementCommunication.getInstance().getAllTypeDefinitionsSchema();
 
       // write file
       File file = new File(absolutWorkspacePath + projectPath.append("simpl").addFileExtension(
           IBPELUIConstants.EXTENSION_XSD));
       FileWriter fstream = new FileWriter(file);
       BufferedWriter out = new BufferedWriter(fstream);
-      out.write(fileContent.toString());
+      out.write(schema);
       out.close();
       
-      SIMPL_SCHEMA_FILES.put(file, fileContent.toString());
+      SIMPL_SCHEMA_FILES.put(file, schema);
       
       // refresh the workspace to update the files
       ResourcesPlugin.getWorkspace().getRoot()
@@ -538,9 +523,6 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
       // TODO Auto-generated catch block
       e.printStackTrace();
     } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (URISyntaxException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     } catch (CoreException e) {
