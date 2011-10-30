@@ -24,6 +24,8 @@ import org.jdom.input.SAXBuilder;
 import org.simpl.resource.management.data.Authentication;
 import org.simpl.resource.management.data.Connector;
 import org.simpl.resource.management.data.ConnectorList;
+import org.simpl.resource.management.data.TypeDefinition;
+import org.simpl.resource.management.data.TypeDefinitionList;
 import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataConverterList;
 import org.simpl.resource.management.data.DataSource;
@@ -358,6 +360,75 @@ public class ResourceManagement {
     return resultStrategyPlugin;
   }
 
+  /**
+   * Returns a data container reference type by id.
+   * 
+   * @param id
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getDataContainerReferenceTypeById")
+  public TypeDefinition getDataContainerReferenceTypeById(
+      @WebParam(name = "id") int id) throws Exception {
+    TypeDefinition resultDataContainerReferenceType = new TypeDefinition();
+    TypeDefinitionList dataContainerReferenceTypeList = new TypeDefinitionList();
+    ArrayList<TypeDefinition> dataContainerReferenceTypes = null;
+    String statement = "";
+    String result = null;
+
+    // build select statement
+    statement += "SELECT * ";
+    statement += "FROM simpl_definitions.datacontainer_reference_types ";
+    statement += "WHERE datacontainer_reference_types.id = " + id;
+
+    // retrieve data container reference types
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+    dataContainerReferenceTypes = this.getTypeDefinitionsFromResult(result);
+
+    dataContainerReferenceTypeList.getTypeDefinitions().addAll(
+        dataContainerReferenceTypes);
+
+    if (dataContainerReferenceTypes.size() > 0) {
+      resultDataContainerReferenceType = dataContainerReferenceTypes.get(0);
+    }
+
+    return resultDataContainerReferenceType;
+  }
+  
+  /**
+   * Returns a data container reference type by id.
+   * 
+   * @param id
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getDataSourceReferenceTypeById")
+  public TypeDefinition getDataSourceReferenceTypeById(
+      @WebParam(name = "id") int id) throws Exception {
+    TypeDefinition resultDataSourceReferenceType = new TypeDefinition();
+    TypeDefinitionList dataSourceReferenceTypeList = new TypeDefinitionList();
+    ArrayList<TypeDefinition> dataSourceReferenceTypes = null;
+    String statement = "";
+    String result = null;
+
+    // build select statement
+    statement += "SELECT * ";
+    statement += "FROM simpl_definitions.datasource_reference_types ";
+    statement += "WHERE datasource_reference_types.id = " + id;
+
+    // retrieve data source reference types
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+    dataSourceReferenceTypes = this.getTypeDefinitionsFromResult(result);
+
+    dataSourceReferenceTypeList.getTypeDefinitions().addAll(
+        dataSourceReferenceTypes);
+
+    if (dataSourceReferenceTypes.size() > 0) {
+      resultDataSourceReferenceType = dataSourceReferenceTypes.get(0);
+    }
+
+    return resultDataSourceReferenceType;
+  }
   
   /**
    * Returns all data sources.
@@ -426,7 +497,11 @@ public class ResourceManagement {
   @WebMethod(action = "getAllDataConverters")
   public DataConverterList getAllDataConverters() throws Exception {
     DataConverterList dataConverters = new DataConverterList();
-    String statement = "SELECT * FROM simpl_resources.dataconverters ORDER BY id ASC";
+    String statement = "";
+    
+    statement += "SELECT * FROM simpl_resources.dataconverters ";
+    statement += "ORDER BY id ASC";
+    
     String result = dataSourceService.retrieveData(rmDataSource, statement);
 
     dataConverters.getDataConverters().addAll(this.getDataConvertersFromResult(result, ""));
@@ -447,7 +522,7 @@ public class ResourceManagement {
       throws Exception {
     DataTransformationServiceList dataTransformationServices = new DataTransformationServiceList();
     String statement = "";
-    String result;
+    String result = null;
 
     statement += "SELECT * ";
     statement += "FROM simpl_resources.datatransformationservices ";
@@ -470,9 +545,14 @@ public class ResourceManagement {
   public StrategyPluginList getAllStrategyPlugins() throws Exception {
     StrategyPluginList strategyList = new StrategyPluginList();
     ArrayList<StrategyPlugin> strategiePlugins = null;
-  
-    String statement = "SELECT * FROM simpl_resources.strategyplugins";
-    String result = dataSourceService.retrieveData(rmDataSource, statement);
+    String statement = "";
+    String result = null; 
+      
+    statement += "SELECT * ";
+    statement += "FROM simpl_resources.strategyplugins ";
+    statement += "ORDER BY id ASC";
+    
+    result = dataSourceService.retrieveData(rmDataSource, statement);
   
     // extract strategy plug-ins from result
     strategiePlugins = this.getStrategyPluginsFromResult(result);
@@ -482,6 +562,61 @@ public class ResourceManagement {
     return strategyList;
   }
 
+  /**
+   * Returns a list of data container reference types.
+   * 
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getAllDataContainerReferenceTypes")
+  public TypeDefinitionList getAllDataContainerReferenceTypes() throws Exception {
+    TypeDefinitionList typeDefinitionList = new TypeDefinitionList();
+    ArrayList<TypeDefinition> typeDefinitions = null;
+    String statement = "";
+    String result = null;
+    
+    statement += "SELECT * ";    
+    statement += "FROM simpl_definitions.datacontainer_reference_types ";
+    statement += "ORDER BY id ASC";
+    
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+  
+    // extract type definitions from result
+    typeDefinitions = this.getTypeDefinitionsFromResult(result);
+    
+    typeDefinitionList.getTypeDefinitions().addAll(typeDefinitions);
+    
+    return typeDefinitionList;
+  }
+
+  /**
+   * Returns a list of data source reference types.
+   * 
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getAllDataSourceReferenceTypes")
+  public TypeDefinitionList getAllDataSourceReferenceTypes() throws Exception {
+    TypeDefinitionList typeDefinitionList = new TypeDefinitionList();
+    ArrayList<TypeDefinition> typeDefinitions = null;
+  
+    String statement = "";
+    String result = null;
+    
+    statement += "SELECT * ";
+    statement += "FROM simpl_definitions.datasource_reference_types ";
+    statement += "ORDER BY id ASC";
+    
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+  
+    // extract type definitions from result
+    typeDefinitions = this.getTypeDefinitionsFromResult(result);
+    
+    typeDefinitionList.getTypeDefinitions().addAll(typeDefinitions);
+    
+    return typeDefinitionList;
+  }
+  
   /**
    * Returns the names of all available languages.
    * 
@@ -797,7 +932,7 @@ public class ResourceManagement {
     }
 
     // build SQL insert statement
-    statement = "INSERT INTO datasources (logical_name, security_username, security_password, interface_description, properties_description, connector_properties_description) VALUES (";
+    statement = "INSERT INTO simpl_resources.datasources (logical_name, security_username, security_password, interface_description, properties_description, connector_properties_description) VALUES (";
     statement += "'" + dataSource.getName() + "', ";
     statement += "'" + dataSource.getAuthentication().getUser() + "', ";
     statement += "'" + dataSource.getAuthentication().getPassword() + "', ";
@@ -846,7 +981,7 @@ public class ResourceManagement {
     }
     
     // build SQL insert statement
-    statement = "INSERT INTO connectors (name, input_datatype, output_datatype, implementation, properties_description) VALUES (";
+    statement = "INSERT INTO simpl_resources.connectors (name, input_datatype, output_datatype, implementation, properties_description) VALUES (";
     statement += "'" + connector.getName() + "', ";
     statement += "'" + connector.getInputDataType() + "', ";
     statement += "'" + connector.getOutputDataType() + "', ";
@@ -891,7 +1026,7 @@ public class ResourceManagement {
     }
 
     // build SQL insert statement
-    statement = "INSERT INTO dataconverters (name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation, xml_schema) VALUES (";
+    statement = "INSERT INTO simpl_resources.dataconverters (name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation, xml_schema) VALUES (";
     statement += "'" + dataConverter.getName() + "', ";
     statement += "'" + dataConverter.getInputDataType() + "', ";
     statement += "'" + dataConverter.getOutputDataType() + "', ";
@@ -911,7 +1046,7 @@ public class ResourceManagement {
   /**
    * Adds a data transformation service.
    * 
-   * @param DataTransformationService
+   * @param dataTransformationService
    * @return
    * @throws Exception
    */
@@ -922,7 +1057,7 @@ public class ResourceManagement {
     String statement = null;
 
     // build SQL insert statement
-    statement = "INSERT INTO datatransformationservices (name, connector_dataformat, workflow_dataformat, direction_connector_workflow, direction_workflow_connector, implementation) VALUES (";
+    statement = "INSERT INTO simpl_resources.datatransformationservices (name, connector_dataformat, workflow_dataformat, direction_connector_workflow, direction_workflow_connector, implementation) VALUES (";
     statement += "'" + dataTransformationService.getName() + "', ";
     statement += "'" + dataTransformationService.getConnectorDataFormat() + "', ";
     statement += "'" + dataTransformationService.getWorkflowDataFormat() + "', ";
@@ -940,7 +1075,7 @@ public class ResourceManagement {
   /**
    * Adds a strategy plug-in.
    * 
-   * @param StrategyPlugin
+   * @param strategyPlugin
    * @return
    * @throws Exception
    */
@@ -950,7 +1085,7 @@ public class ResourceManagement {
     String statement = null;
 
     // build SQL insert statement
-    statement = "INSERT INTO strategyplugins (name, implementation) VALUES (";
+    statement = "INSERT INTO simpl_resources.strategyplugins (name, implementation) VALUES (";
     statement += "'" + strategyPlugin.getName() + "', ";
     statement += "'" + strategyPlugin.getImplementation() + "' ";
     statement += ")";
@@ -961,6 +1096,54 @@ public class ResourceManagement {
     return successful;
   }
 
+  /**
+   * Adds a data container reference type.
+   * 
+   * @param typeDefinition
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "addDataContainerReferenceType")
+  public boolean addDataContainerReferenceType(TypeDefinition typeDefinition) throws Exception {
+    boolean successful = false;
+    String statement = null;
+
+    // build SQL insert statement
+    statement = "INSERT INTO simpl_definitions.datacontainer_reference_types (name, xsd_type) VALUES (";
+    statement += "'" + typeDefinition.getName() + "', ";
+    statement += "'" + typeDefinition.getXsdType() + "' ";
+    statement += ")";
+
+    // add type definition
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return successful;
+  }
+
+  /**
+   * Adds a data source reference type.
+   * 
+   * @param TypeDefinition
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "addDataSourceReferenceType")
+  public boolean addDataSourceReferenceType(TypeDefinition typeDefinition) throws Exception {
+    boolean successful = false;
+    String statement = null;
+
+    // build SQL insert statement
+    statement = "INSERT INTO simpl_definitions.datasource_reference_types (name, xsd_type) VALUES (";
+    statement += "'" + typeDefinition.getName() + "', ";
+    statement += "'" + typeDefinition.getXsdType() + "' ";
+    statement += ")";
+
+    // add type definition
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return successful;
+  }
+  
   /**
    * Updates a data source.
    * 
@@ -1139,6 +1322,73 @@ public class ResourceManagement {
 
     return successful;
   }
+
+  /**
+   * Updates a data container reference type.
+   * 
+   * @param typeDefinition
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "updateDataContainerReferenceType")
+  public boolean updateDataContainerReferenceType(TypeDefinition typeDefinition)
+      throws Exception {
+    boolean successful = false;
+    String statement = "";
+    String xsdType = typeDefinition.getXsdType();
+
+    // set xsd_type value
+    if (xsdType == null || xsdType.equals("")) {
+      xsdType = "NULL";
+    } else {
+      xsdType = "'" + xsdType + "'";
+    }
+    
+    // build SQL update statement
+    statement += "UPDATE simpl_definitions.datacontainer_reference_types SET ";
+    statement += "name='" + typeDefinition.getName() + "', ";
+    statement += "xsd_type=" + xsdType + "";
+    statement += " WHERE id=" + typeDefinition.getId();
+
+    // update data container reference type
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return successful;
+  }
+
+  /**
+   * Updates a data source reference type.
+   * 
+   * @param typeDefinition
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "updateDataSourceReferenceType")
+  public boolean updateDataSourceReferenceType(TypeDefinition typeDefinition)
+      throws Exception {
+    boolean successful = false;
+    String statement = "";
+    String xsdType = typeDefinition.getXsdType();
+
+    // set xsd_type value
+    if (xsdType == null || xsdType.equals("")) {
+      xsdType = "NULL";
+    } else {
+      xsdType = "'" + xsdType + "'";
+    }
+    
+    // build SQL update statement
+    statement += "UPDATE simpl_definitions.datasource_reference_types SET ";
+    statement += "name='" + typeDefinition.getName() + "', ";
+    statement += "xsd_type=" + xsdType + "";
+    statement += " WHERE id=" + typeDefinition.getId();
+
+    // update data source reference type
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return successful;
+  }
+
   
   /**
    * Deletes a data source.
@@ -1226,6 +1476,42 @@ public class ResourceManagement {
     String statement = "DELETE FROM simpl_resources.strategyplugins WHERE id = " + String.valueOf(id);
 
     // delete strategy plug-in
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return successful;
+  }
+
+  /**
+   * Deletes a data container reference type.
+   * 
+   * @param id
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "deleteDataContainerReferenceType")
+  public boolean deleteDataContainerReferenceType(int id) throws Exception {
+    boolean successful = false;
+    String statement = "DELETE FROM simpl_definitions.datacontainer_reference_types WHERE id = " + String.valueOf(id);
+
+    // delete data container reference type
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return successful;
+  }
+
+  /**
+   * Deletes a data source reference type.
+   * 
+   * @param id
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "deleteDataSourceReferenceType")
+  public boolean deleteDataSourceReferenceType(int id) throws Exception {
+    boolean successful = false;
+    String statement = "DELETE FROM simpl_definitions.datasource_reference_types WHERE id = " + String.valueOf(id);
+
+    // delete data source reference type
     successful = dataSourceService.executeStatement(rmDataSource, statement);
 
     return successful;
@@ -1617,7 +1903,52 @@ public class ResourceManagement {
 
     return strategies;
   }
-  
+
+  /**
+   * Creates TypeDefinition objects from a RDB data format result.
+   * 
+   * @param result
+   * @return
+   * @throws IOException
+   * @throws JDOMException
+   * @throws Exception
+   */
+  @SuppressWarnings("unchecked")
+  private ArrayList<TypeDefinition> getTypeDefinitionsFromResult(
+      String result) throws JDOMException, IOException {
+    ArrayList<TypeDefinition> typeDefinitions = new ArrayList<TypeDefinition>();
+
+    Document configDoc = null;
+    Element root = null;
+    List<Element> rows = null;
+    SAXBuilder saxBuilder = new SAXBuilder();
+
+    // transform the document to a list of data source objects
+    configDoc = saxBuilder.build(new InputSource(new StringReader(result)));
+    root = configDoc.getRootElement();
+    rows = root.getChild("table").getChildren("row");
+
+    for (Element row : rows) {
+      TypeDefinition typeDefinition = new TypeDefinition();
+      
+      List<Element> columns = row.getChildren("column");
+
+      for (Element column : columns) {
+        if (column.getAttribute("name").getValue().equals("id")) {
+          typeDefinition.setId(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("name")) {
+          typeDefinition.setName(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("xsd_type")) {
+          typeDefinition.setXsdType(column.getValue());
+        }
+      }
+
+      typeDefinitions.add(typeDefinition);
+    }
+
+    return typeDefinitions;
+  }
+
   /**
    * Returns a list of all items from the given column.
    * 

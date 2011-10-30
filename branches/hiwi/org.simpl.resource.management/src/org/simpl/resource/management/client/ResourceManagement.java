@@ -19,6 +19,8 @@ import org.simpl.resource.management.data.DataTransformationServiceList;
 import org.simpl.resource.management.data.StrategyPlugin;
 import org.simpl.resource.management.data.StrategyPluginList;
 import org.simpl.resource.management.data.StringList;
+import org.simpl.resource.management.data.TypeDefinition;
+import org.simpl.resource.management.data.TypeDefinitionList;
 
 
 /**
@@ -421,6 +423,36 @@ public interface ResourceManagement {
 
     /**
      * 
+     * @param id
+     * @return
+     *     returns org.simpl.resource.management.client.TypeDefinition
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getDataContainerReferenceTypeById")
+    @WebResult(partName = "return")
+    public TypeDefinition getDataContainerReferenceTypeById(
+        @WebParam(name = "id", partName = "id")
+        int id)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns org.simpl.resource.management.client.TypeDefinition
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getDataSourceReferenceTypeById")
+    @WebResult(partName = "return")
+    public TypeDefinition getDataSourceReferenceTypeById(
+        @WebParam(name = "id", partName = "id")
+        int id)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
      * @return
      *     returns org.simpl.resource.management.client.ConnectorList
      * @throws Exception_Exception
@@ -452,6 +484,30 @@ public interface ResourceManagement {
     @WebMethod(action = "getAllDataTransformationServices")
     @WebResult(partName = "return")
     public DataTransformationServiceList getAllDataTransformationServices()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns org.simpl.resource.management.client.TypeDefinitionList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getAllDataContainerReferenceTypes")
+    @WebResult(partName = "return")
+    public TypeDefinitionList getAllDataContainerReferenceTypes()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns org.simpl.resource.management.client.TypeDefinitionList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getAllDataSourceReferenceTypes")
+    @WebResult(partName = "return")
+    public TypeDefinitionList getAllDataSourceReferenceTypes()
         throws Exception_Exception
     ;
 
@@ -578,6 +634,96 @@ public interface ResourceManagement {
     public StringList getSupportedConvertDataFormats(
         @WebParam(name = "arg0", partName = "arg0")
         DataSource arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "addDataContainerReferenceType")
+    @WebResult(partName = "return")
+    public boolean addDataContainerReferenceType(
+        @WebParam(name = "arg0", partName = "arg0")
+        TypeDefinition arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "addDataSourceReferenceType")
+    @WebResult(partName = "return")
+    public boolean addDataSourceReferenceType(
+        @WebParam(name = "arg0", partName = "arg0")
+        TypeDefinition arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "updateDataContainerReferenceType")
+    @WebResult(partName = "return")
+    public boolean updateDataContainerReferenceType(
+        @WebParam(name = "arg0", partName = "arg0")
+        TypeDefinition arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "updateDataSourceReferenceType")
+    @WebResult(partName = "return")
+    public boolean updateDataSourceReferenceType(
+        @WebParam(name = "arg0", partName = "arg0")
+        TypeDefinition arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "deleteDataContainerReferenceType")
+    @WebResult(partName = "return")
+    public boolean deleteDataContainerReferenceType(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "deleteDataSourceReferenceType")
+    @WebResult(partName = "return")
+    public boolean deleteDataSourceReferenceType(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0)
         throws Exception_Exception
     ;
 

@@ -77,6 +77,35 @@
   </servlet>
 
   <servlet>
+    <description>DataContainerReferenceTypeListAction</description>
+    <display-name>DataContainerReferenceTypeListAction</display-name>
+    <servlet-name>DataContainerReferenceTypeListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataContainerReferenceTypeListAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>DataContainerReferenceTypeFormAction</description>
+    <display-name>DataContainerReferenceTypeFormAction</display-name>
+    <servlet-name>DataContainerReferenceTypeFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataContainerReferenceTypeFormAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>DataSourceReferenceTypeListAction</description>
+    <display-name>DataSourceReferenceTypeListAction</display-name>
+    <servlet-name>DataSourceReferenceTypeListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataSourceReferenceTypeListAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>DataSourceReferenceTypeFormAction</description>
+    <display-name>DataSourceReferenceTypeFormAction</display-name>
+    <servlet-name>DataSourceReferenceTypeFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataSourceReferenceTypeFormAction</servlet-class>
+  </servlet>
+
+
+  <servlet>
     <description>InstallAction</description>
     <display-name>InstallAction</display-name>
     <servlet-name>InstallAction</servlet-name>
@@ -131,6 +160,26 @@
   <servlet-mapping>
     <servlet-name>StrategyPluginFormAction</servlet-name>
     <url-pattern>/StrategyPluginFormAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DataContainerReferenceTypeListAction</servlet-name>
+    <url-pattern>/DataContainerReferenceTypeListAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DataContainerReferenceTypeFormAction</servlet-name>
+    <url-pattern>/DataContainerReferenceTypeFormAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DataSourceReferenceTypeListAction</servlet-name>
+    <url-pattern>/DataSourceReferenceTypeListAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DataSourceReferenceTypeFormAction</servlet-name>
+    <url-pattern>/DataSourceReferenceTypeFormAction</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>
