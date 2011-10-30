@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <b>Purpose:</b>Data type for Resource Discovery Strategy Plug-Ins.<br>
+ * <b>Purpose:</b>Data type for a type definition.<br>
  * <b>Description:</b><br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
@@ -16,11 +16,11 @@ import javax.xml.bind.annotation.XmlType;
  * @link http://code.google.com/p/simpl09/
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "strategyPlugin", propOrder = { "id", "name", "implementation" })
-public class StrategyPlugin {
+@XmlType(name = "typeDefinition", propOrder = { "id", "name", "xsdType" })
+public class TypeDefinition {
   String id;
   String name;
-  String implementation;
+  String xsdType;
 
   /**
    * @return the id
@@ -53,17 +53,17 @@ public class StrategyPlugin {
   }
 
   /**
-   * @return the implementation
+   * @return the xsdType
    */
-  public String getImplementation() {
-    return implementation;
+  public String getXsdType() {
+    return xsdType;
   }
 
   /**
-   * @param implementation
-   *          the implementation to set
+   * @param xsdType
+   *          the xsdType to set
    */
-  public void setImplementation(String implementation) {
-    this.implementation = implementation;
+  public void setXsdType(String xsdType) {
+    this.xsdType = xsdType;
   }
 }

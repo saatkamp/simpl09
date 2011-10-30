@@ -18,6 +18,8 @@ import org.simpl.resource.management.data.DataTransformationServiceList;
 import org.simpl.resource.management.data.StrategyPlugin;
 import org.simpl.resource.management.data.StrategyPluginList;
 import org.simpl.resource.management.data.StringList;
+import org.simpl.resource.management.data.TypeDefinition;
+import org.simpl.resource.management.data.TypeDefinitionList;
 
 
 /**
@@ -47,35 +49,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Exception }
+     * Create an instance of {@link DataTransformationServiceList }
      * 
      */
-    public Exception createException() {
-        return new Exception();
-    }
-
-    /**
-     * Create an instance of {@link DataConverter }
-     * 
-     */
-    public DataConverter createDataConverter() {
-        return new DataConverter();
-    }
-
-    /**
-     * Create an instance of {@link Authentication }
-     * 
-     */
-    public Authentication createAuthentication() {
-        return new Authentication();
-    }
-
-    /**
-     * Create an instance of {@link Connector }
-     * 
-     */
-    public Connector createConnector() {
-        return new Connector();
+    public DataTransformationServiceList createDataTransformationServiceList() {
+        return new DataTransformationServiceList();
     }
 
     /**
@@ -95,11 +73,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataConverterList }
+     * Create an instance of {@link Connector }
      * 
      */
-    public DataConverterList createDataConverterList() {
-        return new DataConverterList();
+    public Connector createConnector() {
+        return new Connector();
     }
 
     /**
@@ -119,11 +97,51 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Exception }
+     * 
+     */
+    public Exception createException() {
+        return new Exception();
+    }
+
+    /**
+     * Create an instance of {@link Authentication }
+     * 
+     */
+    public Authentication createAuthentication() {
+        return new Authentication();
+    }
+
+    /**
+     * Create an instance of {@link TypeDefinition }
+     * 
+     */
+    public TypeDefinition createTypeDefinition() {
+        return new TypeDefinition();
+    }
+
+    /**
+     * Create an instance of {@link TypeDefinitionList }
+     * 
+     */
+    public TypeDefinitionList createTypeDefinitionList() {
+        return new TypeDefinitionList();
+    }
+
+    /**
      * Create an instance of {@link DataTransformationService }
      * 
      */
     public DataTransformationService createDataTransformationService() {
         return new DataTransformationService();
+    }
+
+    /**
+     * Create an instance of {@link DataConverterList }
+     * 
+     */
+    public DataConverterList createDataConverterList() {
+        return new DataConverterList();
     }
 
     /**
@@ -135,19 +153,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataTransformationServiceList }
-     * 
-     */
-    public DataTransformationServiceList createDataTransformationServiceList() {
-        return new DataTransformationServiceList();
-    }
-
-    /**
      * Create an instance of {@link StringList }
      * 
      */
     public StringList createStringList() {
         return new StringList();
+    }
+
+    /**
+     * Create an instance of {@link DataConverter }
+     * 
+     */
+    public DataConverter createDataConverter() {
+        return new DataConverter();
     }
 
     /**
