@@ -30,9 +30,9 @@ public class ResourceManagementService
         try {
             URL baseUrl;
             baseUrl = org.simpl.resource.management.client.ResourceManagementService.class.getResource(".");
-            url = new URL(baseUrl, ResourceManagementClient.serviceAddress);
+            url = new URL(baseUrl, "http://localhost:8080/axis2/services/ResourceManagementService.ResourceManagementPort?wsdl");
         } catch (MalformedURLException e) {
-            logger.warning("Failed to create URL for the wsdl Location: '" + ResourceManagementClient.serviceAddress + "', retrying as a local file");
+            logger.warning("Failed to create URL for the wsdl Location: 'http://localhost:8080/axis2/services/ResourceManagementService.ResourceManagementPort?wsdl', retrying as a local file");
             logger.warning(e.getMessage());
         }
         RESOURCEMANAGEMENTSERVICE_WSDL_LOCATION = url;

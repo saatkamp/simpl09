@@ -1,7 +1,9 @@
 package org.simpl.resource.management;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -9,6 +11,7 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
+import org.jdom.output.XMLOutputter;
 import org.simpl.resource.management.data.Authentication;
 import org.simpl.resource.management.data.Connector;
 import org.simpl.resource.management.data.DataConverter;
@@ -43,6 +46,8 @@ public class ResourceManagementConfig {
   private static final String CONFIG_FILE_LOCATION_2 = System.getProperty("user.dir")
       + "/../webapps/axis2/WEB-INF/conf/"
       + ResourceManagementConfig.CONFIG_FILE_NAME;
+  
+  private String filePath = "./simpl-resource-management-config.xml";
 
   /**
    * Config singleton instance.
@@ -63,14 +68,17 @@ public class ResourceManagementConfig {
     try {
       System.out.println("Loading " + CONFIG_FILE_NAME + " from '" + ResourceManagementConfig.CONFIG_FILE_LOCATION_1 + "'.");
       in = new FileInputStream(ResourceManagementConfig.CONFIG_FILE_LOCATION_1);
+      filePath = ResourceManagementConfig.CONFIG_FILE_LOCATION_1;
     } catch (FileNotFoundException e) {
       try {
         System.out.println("Loading " + CONFIG_FILE_NAME + " from '" + ResourceManagementConfig.CONFIG_FILE_LOCATION_2 + "'.");
         in = new FileInputStream(ResourceManagementConfig.CONFIG_FILE_LOCATION_2);
+        filePath = ResourceManagementConfig.CONFIG_FILE_LOCATION_2;
       } catch (FileNotFoundException e1) {
         try {
           System.out.println("Loading " + CONFIG_FILE_NAME + " from '" + ResourceManagementConfig.CONFIG_FILE_NAME + "'.");
           in = new FileInputStream(ResourceManagementConfig.CONFIG_FILE_NAME);
+          filePath = ResourceManagementConfig.CONFIG_FILE_NAME;
         } catch (FileNotFoundException e2) {
           // TODO Auto-generated catch block
           e2.printStackTrace();
@@ -122,5 +130,67 @@ public class ResourceManagementConfig {
     dataSource.setConnector(connector);
     
     return dataSource;
+  }
+  
+  //this method changes the 'simpl-resource-management-config.xml' file
+  //at the end, when write operation was successful, the 'dataSourceElement'
+  //variable gets a new value
+  //because of that, no restart of the server in necessary (the new value will be returned directly)
+	public Boolean updateConfig(DataSource rmDataSource) {
+		Boolean success = false;
+		InputStream in = null;
+		Document configDoc = null;
+		SAXBuilder saxBuilder = new SAXBuilder();
+
+		Element localDataSourceElement = null;
+		Element authentication = null;
+
+		FileOutputStream out = null;
+
+		try {
+			in = new FileInputStream(filePath);
+			configDoc = saxBuilder.build(in);
+			localDataSourceElement = configDoc.getRootElement().getChild("DataSource");
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//set new values
+		localDataSourceElement.getChild("name").setText(rmDataSource.getName());
+		localDataSourceElement.getChild("address").setText(rmDataSource.getAddress());
+		localDataSourceElement.getChild("type").setText(rmDataSource.getType());
+		localDataSourceElement.getChild("subType").setText(rmDataSource.getSubType());
+		localDataSourceElement.getChild("dataFormat").setText(
+				rmDataSource.getConnector().getDataConverter()
+						.getWorkflowDataFormat());
+		authentication = localDataSourceElement.getChild("Authentication");
+		Authentication a = rmDataSource.getAuthentication();
+		authentication.getChild("user").setText(a.getUser());
+		authentication.getChild("password").setText(a.getPassword());
+		//write data to to file
+		
+		try {
+			out = new FileOutputStream(new File(filePath));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			XMLOutputter serializer = new XMLOutputter();
+			serializer.output(configDoc, out);
+			out.flush();
+			out.close();
+			//assign new value
+			dataSourceElement = localDataSourceElement;
+			success = true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return success;
   }
 }

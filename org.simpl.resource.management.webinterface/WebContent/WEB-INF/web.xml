@@ -69,6 +69,13 @@
     <servlet-class>org.simpl.resource.management.webinterface.actions.InstallAction</servlet-class>
   </servlet>
   
+  <servlet>
+    <description>EditConfigAction</description>
+    <display-name>EditConfigAction</display-name>
+    <servlet-name>EditConfigAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.EditConfigAction</servlet-class>
+  </servlet>
+  
   <servlet-mapping>
     <servlet-name>DataSourceListAction</servlet-name>
     <url-pattern>/DataSourceListAction</url-pattern>
@@ -112,6 +119,11 @@
   <servlet-mapping>
     <servlet-name>InstallAction</servlet-name>
     <url-pattern>/InstallAction</url-pattern>
+  </servlet-mapping>
+  
+    <servlet-mapping>
+    <servlet-name>EditConfigAction</servlet-name>
+    <url-pattern>/EditConfigAction</url-pattern>
   </servlet-mapping>
   
   <security-constraint>

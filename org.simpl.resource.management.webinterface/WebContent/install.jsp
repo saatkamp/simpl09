@@ -19,6 +19,7 @@
 <a href="index.jsp">Home</a> &gt; Installation
 <br/><br/>
 The installation will create all necessary tables for the Resource Management on the PostgreSQL database <br/>that must be defined in the config file "<%=RMWebConfig.getInstance().getConfigFileLocation()%>".
+<br/>In order to edit the address and authentication information of the PostgreSQL database please click <a href="editconfig.jsp">here</a>.
 <br/>
 <br/>
 <form name="installation" action="InstallAction" method="post" onSubmit="return confirm('Are you sure?')">
