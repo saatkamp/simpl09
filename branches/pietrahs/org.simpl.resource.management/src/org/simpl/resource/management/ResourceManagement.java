@@ -1144,7 +1144,32 @@ public class ResourceManagement {
 
     return successful;
   }
-
+  
+  /**
+   * The information for accessing the PostgreSQL database will be returned
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getConfig")
+  public DataSource getConfig() throws Exception {
+	  return this.rmDataSource;
+  }
+  
+  /**
+   * the user has entered new information about accessing the PostgreSQL database
+   * these new information will now be stored
+   * @param rmDataSource
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "setConfig")
+  public Boolean setConfig(DataSource rmDataSource) throws Exception {
+	  Boolean success = false;
+	  success = ResourceManagementConfig.getInstance().updateConfig(rmDataSource);
+	  this.rmDataSource = rmDataSource;
+	  return success;
+  }
+  
   /**
    * Returns a string of unique comma separated fields for a SQL statement.
    * 

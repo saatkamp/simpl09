@@ -17,7 +17,6 @@ import org.simpl.resource.management.data.DataTransformationService;
 import org.simpl.resource.management.data.DataTransformationServiceList;
 import org.simpl.resource.management.data.StringList;
 
-
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
@@ -45,6 +44,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DataTransformationService }
+     * 
+     */
+    public DataTransformationService createDataTransformationService() {
+        return new DataTransformationService();
+    }
+
+    /**
      * Create an instance of {@link DataConverter }
      * 
      */
@@ -61,59 +68,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataTransformationService }
-     * 
-     */
-    public DataTransformationService createDataTransformationService() {
-        return new DataTransformationService();
-    }
-
-    /**
      * Create an instance of {@link StringList }
      * 
      */
     public StringList createStringList() {
         return new StringList();
-    }
-
-    /**
-     * Create an instance of {@link Authentication }
-     * 
-     */
-    public Authentication createAuthentication() {
-        return new Authentication();
-    }
-
-    /**
-     * Create an instance of {@link DataConverterList }
-     * 
-     */
-    public DataConverterList createDataConverterList() {
-        return new DataConverterList();
-    }
-
-    /**
-     * Create an instance of {@link ConnectorList }
-     * 
-     */
-    public ConnectorList createConnectorList() {
-        return new ConnectorList();
-    }
-
-    /**
-     * Create an instance of {@link DataSourceList }
-     * 
-     */
-    public DataSourceList createDataSourceList() {
-        return new DataSourceList();
-    }
-
-    /**
-     * Create an instance of {@link Exception }
-     * 
-     */
-    public Exception createException() {
-        return new Exception();
     }
 
     /**
@@ -125,11 +84,51 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Exception }
+     * 
+     */
+    public Exception createException() {
+        return new Exception();
+    }
+
+    /**
+     * Create an instance of {@link Authentication }
+     * 
+     */
+    public Authentication createAuthentication() {
+        return new Authentication();
+    }
+
+    /**
      * Create an instance of {@link Connector }
      * 
      */
     public Connector createConnector() {
         return new Connector();
+    }
+
+    /**
+     * Create an instance of {@link DataSourceList }
+     * 
+     */
+    public DataSourceList createDataSourceList() {
+        return new DataSourceList();
+    }
+
+    /**
+     * Create an instance of {@link ConnectorList }
+     * 
+     */
+    public ConnectorList createConnectorList() {
+        return new ConnectorList();
+    }
+
+    /**
+     * Create an instance of {@link DataConverterList }
+     * 
+     */
+    public DataConverterList createDataConverterList() {
+        return new DataConverterList();
     }
 
     /**
