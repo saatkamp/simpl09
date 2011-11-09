@@ -688,17 +688,19 @@ public class StatementTestView extends ViewPart {
     parameterComposite = new Composite(tabFolder, SWT.NONE);
     parameterComposite.setLayout(new GridLayout(1, true));
     
-    parameterTable = new Table(parameterComposite, SWT.BORDER);
-    parameterTable.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-    parameterTable.setEnabled(false);
-    parameterTable.setLinesVisible(true);
-    parameterTable.setHeaderVisible(true);
-    parameterTableColumn = new TableColumn(parameterTable, SWT.LEFT);
-    parameterTableColumn.setText("Variable");
-    parameterTableColumn.setWidth(150);
-    parameterTableColumn = new TableColumn(parameterTable, SWT.LEFT);
-    parameterTableColumn.setText("Value");
-    parameterTableColumn.setWidth(300);
+    if (parameterTable == null) {
+      parameterTable = new Table(parameterComposite, SWT.BORDER);
+      parameterTable.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+      parameterTable.setEnabled(false);
+      parameterTable.setLinesVisible(true);
+      parameterTable.setHeaderVisible(true);
+      parameterTableColumn = new TableColumn(parameterTable, SWT.LEFT);
+      parameterTableColumn.setText("Variable");
+      parameterTableColumn.setWidth(150);
+      parameterTableColumn = new TableColumn(parameterTable, SWT.LEFT);
+      parameterTableColumn.setText("Value");
+      parameterTableColumn.setWidth(300);
+    }
     
     if (statementTest != null) {
       this.buildParameterTable(statementTest);

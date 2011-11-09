@@ -40,7 +40,6 @@ public class CSVDataConverter extends DataConverterPlugin<RandomFiles, File> {
    */
   public CSVDataConverter() {
     this.setDataFormat("CSVDataFormat");
-    this.setSchemaFile("RelationalDataFormat.xsd");
     this.setSchemaType("tRelationalDataFormat");
 
     // Set up a simple configuration that logs on the console.

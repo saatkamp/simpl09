@@ -36,7 +36,6 @@ public class RandomFilesDataConverter extends DataConverterPlugin<RandomFiles, F
    */
   public RandomFilesDataConverter() {
     this.setDataFormat("RandomFilesDataFormat");
-    this.setSchemaFile("RandomFilesDataFormat.xsd");
     this.setSchemaType("tRandomFilesDataFormat");
 
     // Set up a simple configuration that logs on the console.

@@ -48,6 +48,11 @@ public class RMDirectClient {
   private HashMap<String, ArrayList<String>> dataFormatMapping = new HashMap<String, ArrayList<String>>();
 
   /**
+   * The data format schemas.
+   */
+  private HashMap<String, String> dataFormatSchemas = new HashMap<String, String>();
+  
+  /**
    * Maps data transformation services to the connectors that can use it.
    */
   private HashMap<String, ArrayList<String>> dataTransformationServiceMapping = new HashMap<String, ArrayList<String>>();
@@ -118,6 +123,30 @@ public class RMDirectClient {
     return dataFormatMapping;
   }
 
+  /**
+   * Returns the schema of a data format.
+   * 
+   * @param dataFormat
+   * @return data format schema
+   */
+  public String getDataFormatSchema(String dataFormat) {
+    String dataFormatSchema = null;
+    
+    if (!dataFormatSchemas.containsKey(dataFormat)) {
+      try {
+        dataFormatSchema = resourceManagement.getDataFormatSchema(dataFormat);
+        dataFormatSchemas.put(dataFormat, dataFormatSchema);
+      } catch (Exception e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }  
+    } else {
+      dataFormatSchema = dataFormatSchemas.get(dataFormat);
+    }
+    
+    return dataFormatSchema;
+  }
+  
   /**
    * Returns a map of data transformation services and their supported connectors, key and values are full
    * qualified class names.
@@ -230,5 +259,8 @@ public class RMDirectClient {
         }
       }
     }
+    
+    // clear data format schemas
+    dataFormatSchemas.clear();
   }
 }

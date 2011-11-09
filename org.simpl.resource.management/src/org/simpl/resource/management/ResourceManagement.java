@@ -923,7 +923,8 @@ public class ResourceManagement {
     boolean successful = false;
     String statement = null;
     String propertiesDescription = dataSource.getPropertiesDescription();
-
+    String connectorPropertiesDescription = dataSource.getConnectorPropertiesDescription();
+    
     // handle empty properties description value
     if (propertiesDescription == null || propertiesDescription.equals("")) {
       propertiesDescription = "NULL";
@@ -931,6 +932,13 @@ public class ResourceManagement {
       propertiesDescription = "'" + propertiesDescription + "'";
     }
 
+    // handle empty connector properties description value
+    if (connectorPropertiesDescription == null || connectorPropertiesDescription.equals("")) {
+      connectorPropertiesDescription = "NULL";
+    } else {
+      connectorPropertiesDescription = "'" + connectorPropertiesDescription + "'";
+    }
+    
     // build SQL insert statement
     statement = "INSERT INTO simpl_resources.datasources (logical_name, security_username, security_password, interface_description, properties_description, connector_properties_description) VALUES (";
     statement += "'" + dataSource.getName() + "', ";
@@ -939,18 +947,15 @@ public class ResourceManagement {
     statement += "'" + dataSource.getAddress() + "', ";
     statement += propertiesDescription + ", ";
     
-      if (dataSource.getConnectorPropertiesDescription() == null 
-          || dataSource.getConnectorPropertiesDescription().equals("")) {
-        statement += "NULL";
-      } else if (!dataSource.getConnectorPropertiesDescription().equals("")) {
-        statement += "'" + dataSource.getConnectorPropertiesDescription() + "'";
-      } else {
-        statement += "'" + String.format(defaultConnectorPropertiesDescription, 
-            dataSource.getType(),
-            dataSource.getSubType(), 
-            dataSource.getLanguage(), 
-            dataSource.getConnector().getDataConverter().getWorkflowDataFormat()) + "',";
-      }
+    if (connectorPropertiesDescription.equals("NULL")) {
+      statement += "'" + String.format(defaultConnectorPropertiesDescription, 
+          dataSource.getType(),
+          dataSource.getSubType(), 
+          dataSource.getLanguage(), 
+          dataSource.getConnector().getDataConverter().getWorkflowDataFormat()) + "'";
+    } else {
+      statement += "'" + dataSource.getConnectorPropertiesDescription() + "'";
+    }
     
     statement += ")";
 

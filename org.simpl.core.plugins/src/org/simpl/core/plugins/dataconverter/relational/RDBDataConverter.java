@@ -39,7 +39,6 @@ public class RDBDataConverter extends DataConverterPlugin<RDBResult, List<String
   
   public RDBDataConverter() {
     this.setDataFormat("RDBDataFormat");
-    this.setSchemaFile("RelationalDataFormat.xsd");
     this.setSchemaType("tRelationalDataFormat");
 
     quotedDataTypes.add("VARCHAR");

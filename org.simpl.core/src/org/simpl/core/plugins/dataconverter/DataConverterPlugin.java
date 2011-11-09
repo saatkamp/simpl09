@@ -1,8 +1,10 @@
 package org.simpl.core.plugins.dataconverter;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.simpl.core.clients.RMClient;
 import org.simpl.core.dataconverter.DataConverter;
 
 import commonj.sdo.DataObject;
@@ -36,9 +38,9 @@ public abstract class DataConverterPlugin<S, T> implements DataConverter<S, T> {
   private String dataFormat = "";
 
   /**
-   * Name of the data format schema file.
+   * The schema as string.
    */
-  private String schemaFile = "";
+  private String schema = null;
 
   /**
    * The data format schema type defined in the data format schema file that is used to
@@ -49,17 +51,17 @@ public abstract class DataConverterPlugin<S, T> implements DataConverter<S, T> {
   /**
    * @return Empty SDO created from the data format schema.
    */
-  public DataObject getSDO() {
+  public DataObject getSDO() { 
     DataObject dataObject = null;
     InputStream inputStream = null;
 
-    // load the schema file
-    inputStream = getClass().getResourceAsStream(this.schemaFile);
-
-    if (inputStream == null) {
-      System.out.println("The file '" + this.schemaFile + "' could not be found.");
+    // load schema from Resource Management
+    if (schema == null) {
+      schema = RMClient.getInstance().getDataFormatSchema(dataFormat);
     }
-
+    
+    inputStream = new ByteArrayInputStream(schema.getBytes());
+    
     XSDHelper.INSTANCE.define(inputStream, null);
 
     try {
@@ -67,9 +69,12 @@ public abstract class DataConverterPlugin<S, T> implements DataConverter<S, T> {
     } catch (IOException e) {
       e.printStackTrace();
     }
-
-    dataObject = DataFactory.INSTANCE.create("http://org.simpl.core/plugins/dataconverter/dataformat/"
-        + this.schemaFile.replace(".xsd", ""), this.schemaType);
+    
+    int targetNamespaceStart = schema.indexOf("targetNamespace") + 17;
+    int targetNamespaceStop = schema.indexOf("\"", targetNamespaceStart);
+    String targetNamespace = schema.substring(targetNamespaceStart, targetNamespaceStop);
+    
+    dataObject = DataFactory.INSTANCE.create(targetNamespace, this.schemaType);
 
     // write the data format to the data object if possible
     try {
@@ -97,31 +102,6 @@ public abstract class DataConverterPlugin<S, T> implements DataConverter<S, T> {
    */
   public void setSchemaType(String dfSchemaType) {
     this.schemaType = dfSchemaType;
-  }
-
-  /**
-   * Sets the name and location of the data format schema file.
-   * 
-   * @param dfSchemaFile
-   */
-  public void setSchemaFile(String dfSchemaFile) {
-    this.schemaFile = dfSchemaFile;
-  }
-
-  /**
-   * @return The schema file as InputStream
-   */
-  public InputStream getSchemaFile() {
-    InputStream inputStream = null;
-
-    // Load the schema from jar file
-    inputStream = getClass().getResourceAsStream(this.schemaFile);
-
-    if (inputStream == null) {
-      System.out.println("The file '" + schemaFile + "' could not be found.");
-    }
-
-    return inputStream;
   }
 
   /**
