@@ -7,7 +7,7 @@
             category="org.eclipse.simpl.core.ui.preferences.SimTechHomePreferencePage"
             class="org.eclipse.simpl.communication.preferences.SIMPLCommunicationPreferencePage"
             id="org.eclipse.simpl.communication.preferences.SIMPLCommunicationPreferencePage"
-            name="SIMPL Communication">
+            name="SIMPL">
       </page>
    </extension>
 </plugin>

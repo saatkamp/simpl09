@@ -71,7 +71,7 @@ public class DTSWebClient {
     DataObject convertedData = null;
     String convertedDataString = null;
     ResourceManagement resourceManagement = new ResourceManagement();
-    String schema;
+    String schema = null;
     
     if (data != null) {
       try {
@@ -83,7 +83,7 @@ public class DTSWebClient {
         e.printStackTrace();
       }
     }
-
+    
     dataString = new String(outputStream.toByteArray());
     convertedDataString = dataTransformation.convert(serviceImpl, dataString, connectorImpl);
     

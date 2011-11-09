@@ -5,10 +5,10 @@ import org.eclipse.simpl.core.SIMPLCorePlugIn;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
-public class SimTechPreferencePage extends FieldEditorPreferencePage
+public class SimTechHomePreferencePage extends FieldEditorPreferencePage
 	implements IWorkbenchPreferencePage {
 
-	public SimTechPreferencePage() {
+	public SimTechHomePreferencePage() {
 		super(GRID);
 		setPreferenceStore(SIMPLCorePlugIn.getDefault().getPreferenceStore());
 	}

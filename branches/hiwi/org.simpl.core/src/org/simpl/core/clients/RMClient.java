@@ -81,6 +81,14 @@ public class RMClient {
     }
   }
 
+  public String getDataFormatSchema(String dataFormat) {
+    if (isUsingWebService()) {
+      return RMWebClient.getInstance().getDataFormatSchema(dataFormat);
+    } else {
+      return RMDirectClient.getInstance().getDataFormatSchema(dataFormat);
+    }
+  }  
+  
   public HashMap<String, ArrayList<String>> getDataTransformationServiceMapping() {
     if (isUsingWebService()) {
       return RMWebClient.getInstance().getDataTransformationServiceMapping();
