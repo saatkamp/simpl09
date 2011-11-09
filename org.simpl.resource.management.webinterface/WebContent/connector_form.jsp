@@ -91,17 +91,17 @@
 
   <tr>
     <td><label>Type</label></td>
-    <td><%=FormMetaData.getInstance().getTypeSelect(type)%></td>
+    <td><input name="type" type="text" value="<%=type%>" size="100" /></td>
   </tr>
 
   <tr>
     <td><label>Sub Type</label></td>
-    <td><%=FormMetaData.getInstance().getSubTypeSelect(subType)%></td>
+    <td><input name="subType" type="text" value="<%=subType%>" size="100" /></td>
   </tr>
 
   <tr>
     <td><label>Language</label></td>
-    <td><%=FormMetaData.getInstance().getLanguageSelect(language)%></td>
+    <td><input name="language" type="text" value="<%=language%>" size="100" /></td>
   </tr>
 
   <tr>

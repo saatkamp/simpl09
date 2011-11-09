@@ -374,7 +374,7 @@ VALUES
 INSERT INTO simpl_resources.dataconverters
 (id, name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation, xml_schema)
 VALUES
-(2, 'CSVDataConverter', 'File', 'RandomFile', 'CSVDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.relational.CSVDataConverter', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+(2, 'CSVDataConverter', 'File', 'RandomFiles', 'CSVDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.relational.CSVDataConverter', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xsd:schema targetNamespace="http://org.simpl.core/plugins/dataconverter/dataformat/RelationalDataFormat"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
   xmlns="http://org.simpl.core/plugins/dataconverter/dataformat/RelationalDataFormat"
@@ -456,17 +456,17 @@ VALUES
 INSERT INTO simpl_resources.dataconverters
 (id, name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation, xml_schema)
 VALUES
-(3, 'RandomFileDataConverter', 'File', 'RandomFile', 'RandomFileDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.file.RandomFileDataConverter', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsd:schema targetNamespace="http://org.simpl.core/plugins/dataconverter/dataformat/RandomFileDataFormat"
+(3, 'RandomFilesDataConverter', 'File', 'RandomFiles', 'RandomFilesDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.file.RandomFilesDataConverter', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xsd:schema targetNamespace="http://org.simpl.core/plugins/dataconverter/dataformat/RandomFilesDataFormat"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-  xmlns="http://org.simpl.core/plugins/dataconverter/dataformat/RandomFileDataFormat"
+  xmlns="http://org.simpl.core/plugins/dataconverter/dataformat/RandomFilesDataFormat"
   xmlns:sdo="commonj.sdo" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <xsd:annotation>
     <xsd:documentation>Defines the SDO structure of data from files.</xsd:documentation>
   </xsd:annotation>
-  <xsd:element name="RandomFileDataFormat" type="tRandomFileDataFormat"></xsd:element>
-  <xsd:complexType name="tRandomFileDataFormat">
+  <xsd:element name="RandomFilesDataFormat" type="tRandomFilesDataFormat"></xsd:element>
+  <xsd:complexType name="tRandomFilesDataFormat">
     <xsd:sequence>
       <xsd:element name="file" type="tFile" maxOccurs="unbounded"
         minOccurs="0">
@@ -548,12 +548,23 @@ VALUES
 INSERT INTO simpl_resources.connectors
 (id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
 VALUES
-(6, 3, 'WindowsLocalFSConnector', 'File', 'RandomFile', 'org.simpl.core.plugins.connector.fs.WindowsLocalFSConnector', '<?xml version="1.0" encoding="UTF-8"?>
+(6, 3, 'WindowsLocalFSConnector', 'File', 'RandomFiles', 'org.simpl.core.plugins.connector.fs.WindowsLocalFSConnector', '<?xml version="1.0" encoding="UTF-8"?>
 <properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Filesystem</type>
   <subType>Windows Local</subType>
   <language>Shell</language>
-  <dataFormat>RandomFileDataFormat</dataFormat>
+  <dataFormat>RandomFilesDataFormat</dataFormat>
+</properties_description>');
+
+INSERT INTO simpl_resources.connectors
+(id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
+VALUES
+(7, 3, 'SSHConnector', 'File', 'RandomFiles', 'org.simpl.core.plugins.connector.ssh.SSHConnector', '<?xml version="1.0" encoding="UTF-8"?>
+<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
+	<type>Filesystem</type>
+	<subType>SSH Server</subType>
+	<language>Shell</language>
+	<dataFormat>RandomFilesDataFormat</dataFormat>
 </properties_description>');
 
 INSERT INTO simpl_resources.datatransformationservices
@@ -564,7 +575,7 @@ VALUES
 INSERT INTO simpl_resources.datatransformationservices
 (id, name, connector_dataformat, workflow_dataformat, direction_connector_workflow, direction_workflow_connector, implementation)
 VALUES
-(2, 'RandomFileToRDBDataTransformationService', 'RandomFileDataFormat', 'RDBDataFormat', 'true', 'true', 'org.simpl.data.transformation.services.RandomFileToRDBDataTransformationService');
+(2, 'RandomFilesToRDBDataTransformationService', 'RandomFilesDataFormat', 'RDBDataFormat', 'true', 'true', 'org.simpl.data.transformation.services.RandomFilesToRDBDataTransformationService');
 
 /* Workaround: the getDataSourceXMLProperty and thus the setDataSourceConnector trigger does not work properly if not at least one connector exists. This is why one dummy datasource is created before inserting the real datasources. */
 INSERT INTO simpl_resources.datasources
@@ -602,7 +613,7 @@ VALUES
   , ''
   , ''
   , NULL
-  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Filesystem</type><subType>Windows Local</subType><language>Shell</language><dataFormat>RandomFileDataFormat</dataFormat></connector_properties_description>'
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Filesystem</type><subType>Windows Local</subType><language>Shell</language><dataFormat>RandomFilesDataFormat</dataFormat></connector_properties_description>'
 );
 
 /* Workaround: the DUMMY database gets deleted after one datasource is insert. */
@@ -736,3 +747,4 @@ VALUES
       <xsd:element name="strategy" type="xsd:string"></xsd:element>
     </xsd:sequence>
   </xsd:complexType>');
+

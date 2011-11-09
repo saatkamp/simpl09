@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.plugins.connector.rdb.DB2RDBConnector;
 import org.simpl.core.plugins.dataconverter.DataConverterPlugin;
-import org.simpl.core.plugins.dataconverter.file.RandomFile;
+import org.simpl.core.plugins.dataconverter.file.RandomFiles;
 
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
@@ -32,7 +32,7 @@ import commonj.sdo.DataObject;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class CSVDataConverter extends DataConverterPlugin<RandomFile, File> {
+public class CSVDataConverter extends DataConverterPlugin<RandomFiles, File> {
   static Logger logger = Logger.getLogger(DB2RDBConnector.class);
 
   /**
@@ -51,7 +51,7 @@ public class CSVDataConverter extends DataConverterPlugin<RandomFile, File> {
    * (non-Javadoc)
    * @see org.simpl.core.services.dataformat.DataFormatService#getSDO(java.lang.Object )
    */
-  public DataObject toSDO(RandomFile file) {
+  public DataObject toSDO(RandomFiles file) {
     CSVReader csvReader = null;
     String[] headLine;
     String[] nextLine;
@@ -68,13 +68,13 @@ public class CSVDataConverter extends DataConverterPlugin<RandomFile, File> {
     }
 
     try {
-      csvReader = new CSVReader(new FileReader(file.getFile()));
+      csvReader = new CSVReader(new FileReader(file.getFiles()[0]));
 
       // the first line is expected to be the headline
       headLine = csvReader.readNext();
 
       dataFormatMetaDataObject.set("dataSource", file.getDataSource().getName());
-      csvTableMetaDataObject.setString("filename", file.getFile().getName());
+      csvTableMetaDataObject.setString("filename", file.getFiles()[0].getName());
 
       // uncommented because CSV properties cannot be recognized and used by OpenCSV
       // csvTableMetaDataObject.setString("separator", ",");

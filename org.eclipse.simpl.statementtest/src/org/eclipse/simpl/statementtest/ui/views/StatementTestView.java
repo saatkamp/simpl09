@@ -567,7 +567,8 @@ public class StatementTestView extends ViewPart {
       resultTextField.setEnabled(false);
       
       if (statementTest != null) {
-        resultTextField.setText(statementTest.getResult().toString());
+        // Workaround: replacing the data because of infinite loop problem on setText when string is too long
+        resultTextField.setText(statementTest.getResult().toString().replaceAll("content=\".*?\"", "content=\"[BASE64_ENCODED_DATA]\""));
         resultTextField.setEnabled(true);
         resultTextField.setBackground(resultTextField.getDisplay().getSystemColor(SWT.COLOR_WHITE));
         

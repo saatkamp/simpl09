@@ -5,7 +5,7 @@ import java.io.File;
 import org.simpl.resource.management.data.DataSource;
 
 /**
- * <b>Purpose:</b>Used by RandomFileDataFormat and CSVDataFormat to hold a file or folder
+ * <b>Purpose:</b>Used by RandomFilesDataFormat and CSVDataFormat to hold a file or folder
  * and meta data like the data source the file was retrieved from.<br>
  * <b>Description:</b>The meta data is used to give additional information about the
  * retrieved data besides the actual data.<br>
@@ -17,23 +17,23 @@ import org.simpl.resource.management.data.DataSource;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class RandomFile {
-  private File file = null;
+public class RandomFiles {
+  private File[] files = null;
   private DataSource dataSource = null;
 
   /**
-   * @return the file
+   * @return the files
    */
-  public File getFile() {
-    return file;
+  public File[] getFiles() {
+    return files;
   }
 
   /**
-   * @param file
-   *          the file to set
+   * @param files
+   *          the files to set
    */
-  public void setFile(File file) {
-    this.file = file;
+  public void setFiles(File[] files) {
+    this.files = files;
   }
 
   /**

@@ -22,14 +22,14 @@ import commonj.sdo.helper.XMLHelper;
  * @version $Id$<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class RandomFileToRDBDataTransformationService extends DataTransformationService {
-  static Logger logger = Logger.getLogger(RandomFileToRDBDataTransformationService.class);
+public class RandomFilesToRDBDataTransformationService extends DataTransformationService {
+  static Logger logger = Logger.getLogger(RandomFilesToRDBDataTransformationService.class);
 
   /**
    * Initialize the service.
    */
-  public RandomFileToRDBDataTransformationService() {
-    this.setFromDataFormat("RandomFileDataFormat");
+  public RandomFilesToRDBDataTransformationService() {
+    this.setFromDataFormat("RandomFilesDataFormat");
     this.setToDataFormat("RDBDataFormat");
 
     // Set up a simple configuration that logs on the console.
@@ -44,8 +44,8 @@ public class RandomFileToRDBDataTransformationService extends DataTransformation
   @SuppressWarnings({ "unchecked" })
   @Override
   public DataObject convertTo(DataObject fileSDO, String connectorImpl) {
-    if (RandomFileToRDBDataTransformationService.logger.isDebugEnabled()) {
-      RandomFileToRDBDataTransformationService.logger
+    if (RandomFilesToRDBDataTransformationService.logger.isDebugEnabled()) {
+      RandomFilesToRDBDataTransformationService.logger
           .debug("Convert 'DataObject' data format from "
               + this.getFromDataConverter().getDataFormat() + " to "
               + this.getToDataConverter().getDataFormat());
@@ -96,9 +96,9 @@ public class RandomFileToRDBDataTransformationService extends DataTransformation
       columnObject.set(0, fileObjects.get(i).get("content"));
     }
 
-    if (RandomFileToRDBDataTransformationService.logger.isDebugEnabled()) {
+    if (RandomFilesToRDBDataTransformationService.logger.isDebugEnabled()) {
       String result = XMLHelper.INSTANCE.save(rdbDataObject, "commonj.sdo", "dataObject");
-      RandomFileToRDBDataTransformationService.logger.debug("RandomFile DataObject: "
+      RandomFilesToRDBDataTransformationService.logger.debug("RandomFiles DataObject: "
           + result);
     }
 
@@ -113,8 +113,8 @@ public class RandomFileToRDBDataTransformationService extends DataTransformation
   @SuppressWarnings({ "unchecked" })
   @Override
   public DataObject convertFrom(DataObject rdbSDO, String connectorImpl) {
-    if (RandomFileToRDBDataTransformationService.logger.isDebugEnabled()) {
-      RandomFileToRDBDataTransformationService.logger
+    if (RandomFilesToRDBDataTransformationService.logger.isDebugEnabled()) {
+      RandomFilesToRDBDataTransformationService.logger
           .debug("Convert 'DataObject' data format from "
               + this.getToDataConverter().getDataFormat() + " to "
               + this.getFromDataConverter().getDataFormat());
@@ -151,9 +151,9 @@ public class RandomFileToRDBDataTransformationService extends DataTransformation
       }
     }
 
-    if (RandomFileToRDBDataTransformationService.logger.isDebugEnabled()) {
+    if (RandomFilesToRDBDataTransformationService.logger.isDebugEnabled()) {
       String result = XMLHelper.INSTANCE.save(folderSDO, "commonj.sdo", "dataObject");
-      RandomFileToRDBDataTransformationService.logger.debug("RandomFile DataObject: "
+      RandomFilesToRDBDataTransformationService.logger.debug("RandomFiles DataObject: "
           + result);
     }
 
