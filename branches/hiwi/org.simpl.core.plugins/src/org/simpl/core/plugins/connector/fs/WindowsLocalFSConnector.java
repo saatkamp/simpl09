@@ -2,6 +2,7 @@ package org.simpl.core.plugins.connector.fs;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.exceptions.ConnectionException;
 import org.simpl.core.plugins.connector.ConnectorPlugin;
-import org.simpl.core.plugins.dataconverter.file.RandomFile;
+import org.simpl.core.plugins.dataconverter.file.RandomFiles;
 import org.simpl.resource.management.data.DataSource;
 
 import commonj.sdo.DataObject;
@@ -30,7 +31,7 @@ import commonj.sdo.DataObject;
  *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
-public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
+public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFiles> {
   static Logger logger = Logger.getLogger(WindowsLocalFSConnector.class);
 
   /**
@@ -74,9 +75,9 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
   }
 
   @Override
-  public RandomFile retrieveData(DataSource dataSource, String file)
+  public RandomFiles retrieveData(DataSource dataSource, String file)
       throws ConnectionException {
-    RandomFile result = new RandomFile();
+    RandomFiles result = new RandomFiles();
     String dir = "";
 
     if (WindowsLocalFSConnector.logger.isDebugEnabled()) {
@@ -88,90 +89,101 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
       dir = dataSource.getAddress() + File.separator;
     }
 
+    File f = new File(dir + file);
+    File[] files = null;
+
+    if (f.isDirectory()) {
+      files = f.listFiles(new FileFilter() {
+        @Override
+        public boolean accept(File f) {
+          return f.isFile();
+        }
+      });
+    } else {
+      files = new File[1];
+      files[0] = f;
+    }
+
     result.setDataSource(dataSource);
-    result.setFile(new File(dir + file));
+    result.setFiles(files);
 
     return result;
   }
 
   @Override
-  public boolean writeDataBack(DataSource dataSource, File dataFile, String target)
+  public boolean writeDataBack(DataSource dataSource, File source, String target)
       throws ConnectionException {
     boolean successful = false;
-    File targetFile = null;
+    File targetDir = null;
     String dir = "";
 
     if (WindowsLocalFSConnector.logger.isDebugEnabled()) {
       WindowsLocalFSConnector.logger.debug("boolean writeDataBack("
-          + dataSource.getAddress() + ", " + dataFile.getName() + ", " + target
+          + dataSource.getAddress() + ", " + source.getName() + ", " + target
           + ") executed.");
     }
 
     if (!dataSource.getAddress().equals("")) {
       dir = dataSource.getAddress() + File.separator;
+      
+      // Workaround: sometimes a line break manages into the address!? (at least when
+      // using the web service with soapUI)
+      dir = dir.replace("\n", "");
     }
-    
+
     if (target != null && !target.equals("")) {
-      targetFile = new File(dir + target);
+      targetDir = new File(dir + target);
+      
+      // source is always a directory (see RandomFilesDataConverter)
+      // target must be a directory
 
-      // file -> file
-      if (dataFile.isFile() && targetFile.isFile()) {
-        // check if target file exists
-        if (!targetFile.exists()) {
-          // move file to the target
-          successful = dataFile.renameTo(targetFile);
-        }
-      }
+      WindowsLocalFSConnector.logger.debug("Source: " + source);
+      WindowsLocalFSConnector.logger.debug("Target: " + targetDir);
 
-      // file -> directory
-      if (dataFile.isFile() && targetFile.isDirectory()) {
-        // create target directory if it doesn't exist
-        if (!targetFile.exists()) {
-          targetFile.mkdir();
-        }
-
-        File checkFile = new File(targetFile.getAbsolutePath(), dataFile.getName());
-
-        // check if file exists in target directory
-        if (!checkFile.exists()) {
-          // move file to the target
-          successful = dataFile.renameTo(checkFile);
-        }
+      // create target directory
+      if (!targetDir.exists()) {
+        boolean createdTarget = targetDir.mkdir();
+        WindowsLocalFSConnector.logger.debug("Created target: " + createdTarget);
       }
       
-      // directory -> directory
-      if (dataFile.isDirectory() && targetFile.isDirectory()) {
-        boolean filesExistOnTarget = false;
+      boolean filesExistOnTarget = false;
 
-        // check if directory files exist in target directory
-        for (File file : dataFile.listFiles()) {
-          if (!file.isDirectory()) {
-            File checkFile = new File(targetFile.getAbsolutePath(), file.getName());
+      // check if files already exist in target directory
+      for (File f : source.listFiles()) {
+        if (!f.isDirectory()) {
+          File targetFile = new File(targetDir, f.getName());
 
-            if (!checkFile.isDirectory() && checkFile.exists()) {
-              filesExistOnTarget = true;
-            }
-          }
-        }
+          WindowsLocalFSConnector.logger.debug("Check if file exists on target: "
+              + targetFile);
 
-        if (!filesExistOnTarget) {
-          successful = true;
-
-          // create target directory if it doesn't exist
-          if (!targetFile.exists()) {
-            targetFile.mkdir();
-          }
-
-          for (File file : dataFile.listFiles()) {
-            if (!file.isDirectory()) {
-              File checkFile = new File(targetFile.getAbsolutePath(), file.getName());
-
-              // move file to the target
-              successful = successful && file.renameTo(checkFile);
-            }
+          if (!targetFile.isDirectory() && targetFile.exists()) {
+            filesExistOnTarget = true;
           }
         }
       }
+
+      WindowsLocalFSConnector.logger.debug("One or more target files already exist: "
+          + filesExistOnTarget);
+
+      if (!filesExistOnTarget) {
+        successful = true;
+
+        for (File sourceFile : source.listFiles()) {
+          if (sourceFile.isFile()) {
+            File targetFile = new File(targetDir, sourceFile.getName());
+
+            WindowsLocalFSConnector.logger
+                .debug("Write file: " + sourceFile + " -> " + targetFile);
+
+            // move file to the target
+            successful = successful && sourceFile.renameTo(targetFile);
+
+            WindowsLocalFSConnector.logger.debug("Write successful: " + successful);
+          }
+        }
+      }
+    } else {
+      WindowsLocalFSConnector.logger.debug("Abort because no target is defined.");
     }
 
     return successful;
@@ -296,7 +308,7 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFile> {
   @Override
   public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
       throws ConnectionException {
-    // no need to create a target on local filesystem
+    // no need to create a target
     return true;
   }
 

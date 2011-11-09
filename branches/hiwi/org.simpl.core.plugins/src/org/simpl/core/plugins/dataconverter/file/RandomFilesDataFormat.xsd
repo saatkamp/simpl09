@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsd:schema targetNamespace="http://org.simpl.core/plugins/dataconverter/dataformat/RandomFileDataFormat"
+<xsd:schema targetNamespace="http://org.simpl.core/plugins/dataconverter/dataformat/RandomFilesDataFormat"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-  xmlns="http://org.simpl.core/plugins/dataconverter/dataformat/RandomFileDataFormat"
+  xmlns="http://org.simpl.core/plugins/dataconverter/dataformat/RandomFilesDataFormat"
   xmlns:sdo="commonj.sdo" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <xsd:annotation>
     <xsd:documentation>Defines the SDO structure of data from files.</xsd:documentation>
   </xsd:annotation>
-  <xsd:element name="RandomFileDataFormat" type="tRandomFileDataFormat"></xsd:element>  <xsd:complexType name="tRandomFileDataFormat">
+  <xsd:element name="RandomFilesDataFormat" type="tRandomFilesDataFormat"></xsd:element>  <xsd:complexType name="tRandomFilesDataFormat">
     <xsd:sequence>
       <xsd:element name="file" type="tFile" maxOccurs="unbounded"
         minOccurs="0">
