@@ -57,19 +57,51 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TypeDefinition }
+     * 
+     */
+    public TypeDefinition createTypeDefinition() {
+        return new TypeDefinition();
+    }
+
+    /**
+     * Create an instance of {@link DataSource }
+     * 
+     */
+    public DataSource createDataSource() {
+        return new DataSource();
+    }
+
+    /**
+     * Create an instance of {@link TypeDefinitionList }
+     * 
+     */
+    public TypeDefinitionList createTypeDefinitionList() {
+        return new TypeDefinitionList();
+    }
+
+    /**
+     * Create an instance of {@link StringList }
+     * 
+     */
+    public StringList createStringList() {
+        return new StringList();
+    }
+
+    /**
+     * Create an instance of {@link Exception }
+     * 
+     */
+    public Exception createException() {
+        return new Exception();
+    }
+
+    /**
      * Create an instance of {@link DataSourceList }
      * 
      */
     public DataSourceList createDataSourceList() {
         return new DataSourceList();
-    }
-
-    /**
-     * Create an instance of {@link ConnectorList }
-     * 
-     */
-    public ConnectorList createConnectorList() {
-        return new ConnectorList();
     }
 
     /**
@@ -89,51 +121,19 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DataConverter }
+     * 
+     */
+    public DataConverter createDataConverter() {
+        return new DataConverter();
+    }
+
+    /**
      * Create an instance of {@link StrategyPlugin }
      * 
      */
     public StrategyPlugin createStrategyPlugin() {
         return new StrategyPlugin();
-    }
-
-    /**
-     * Create an instance of {@link Exception }
-     * 
-     */
-    public Exception createException() {
-        return new Exception();
-    }
-
-    /**
-     * Create an instance of {@link Authentication }
-     * 
-     */
-    public Authentication createAuthentication() {
-        return new Authentication();
-    }
-
-    /**
-     * Create an instance of {@link TypeDefinition }
-     * 
-     */
-    public TypeDefinition createTypeDefinition() {
-        return new TypeDefinition();
-    }
-
-    /**
-     * Create an instance of {@link TypeDefinitionList }
-     * 
-     */
-    public TypeDefinitionList createTypeDefinitionList() {
-        return new TypeDefinitionList();
-    }
-
-    /**
-     * Create an instance of {@link DataTransformationService }
-     * 
-     */
-    public DataTransformationService createDataTransformationService() {
-        return new DataTransformationService();
     }
 
     /**
@@ -145,27 +145,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataSource }
+     * Create an instance of {@link Authentication }
      * 
      */
-    public DataSource createDataSource() {
-        return new DataSource();
+    public Authentication createAuthentication() {
+        return new Authentication();
     }
 
     /**
-     * Create an instance of {@link StringList }
+     * Create an instance of {@link DataTransformationService }
      * 
      */
-    public StringList createStringList() {
-        return new StringList();
+    public DataTransformationService createDataTransformationService() {
+        return new DataTransformationService();
     }
 
     /**
-     * Create an instance of {@link DataConverter }
+     * Create an instance of {@link ConnectorList }
      * 
      */
-    public DataConverter createDataConverter() {
-        return new DataConverter();
+    public ConnectorList createConnectorList() {
+        return new ConnectorList();
     }
 
     /**
