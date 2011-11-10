@@ -39,6 +39,21 @@ public interface ResourceManagement {
 
     /**
      * 
+     * @param rmDataSource
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "setConfig")
+    @WebResult(partName = "return")
+    public boolean setConfig(
+        @WebParam(name = "rmDataSource", partName = "rmDataSource")
+        DataSource rmDataSource)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns boolean
@@ -129,6 +144,18 @@ public interface ResourceManagement {
 
     /**
      * 
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "createResourceManagementTables")
+    @WebResult(partName = "return")
+    public boolean createResourceManagementTables()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns boolean
@@ -174,18 +201,6 @@ public interface ResourceManagement {
 
     /**
      * 
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "createResourceManagementTables")
-    @WebResult(partName = "return")
-    public boolean createResourceManagementTables()
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
      * @param arg0
      * @return
      *     returns boolean
@@ -211,6 +226,36 @@ public interface ResourceManagement {
     public boolean updateDataConverter(
         @WebParam(name = "arg0", partName = "arg0")
         DataConverter arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "addDataContainerReferenceType")
+    @WebResult(partName = "return")
+    public boolean addDataContainerReferenceType(
+        @WebParam(name = "arg0", partName = "arg0")
+        TypeDefinition arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "updateDataContainerReferenceType")
+    @WebResult(partName = "return")
+    public boolean updateDataContainerReferenceType(
+        @WebParam(name = "arg0", partName = "arg0")
+        TypeDefinition arg0)
         throws Exception_Exception
     ;
 
@@ -251,6 +296,51 @@ public interface ResourceManagement {
      *     returns boolean
      * @throws Exception_Exception
      */
+    @WebMethod(action = "deleteDataSourceReferenceType")
+    @WebResult(partName = "return")
+    public boolean deleteDataSourceReferenceType(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "addDataSourceReferenceType")
+    @WebResult(partName = "return")
+    public boolean addDataSourceReferenceType(
+        @WebParam(name = "arg0", partName = "arg0")
+        TypeDefinition arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "updateDataSourceReferenceType")
+    @WebResult(partName = "return")
+    public boolean updateDataSourceReferenceType(
+        @WebParam(name = "arg0", partName = "arg0")
+        TypeDefinition arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
     @WebMethod(action = "addDataSource")
     @WebResult(partName = "return")
     public boolean addDataSource(
@@ -271,6 +361,33 @@ public interface ResourceManagement {
     public boolean updateDataSource(
         @WebParam(name = "arg0", partName = "arg0")
         DataSource arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "deleteDataContainerReferenceType")
+    @WebResult(partName = "return")
+    public boolean deleteDataContainerReferenceType(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns org.simpl.resource.management.client.DataSource
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getConfig")
+    @WebResult(partName = "return")
+    public DataSource getConfig()
         throws Exception_Exception
     ;
 
@@ -634,96 +751,6 @@ public interface ResourceManagement {
     public StringList getSupportedConvertDataFormats(
         @WebParam(name = "arg0", partName = "arg0")
         DataSource arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "addDataContainerReferenceType")
-    @WebResult(partName = "return")
-    public boolean addDataContainerReferenceType(
-        @WebParam(name = "arg0", partName = "arg0")
-        TypeDefinition arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "addDataSourceReferenceType")
-    @WebResult(partName = "return")
-    public boolean addDataSourceReferenceType(
-        @WebParam(name = "arg0", partName = "arg0")
-        TypeDefinition arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "updateDataContainerReferenceType")
-    @WebResult(partName = "return")
-    public boolean updateDataContainerReferenceType(
-        @WebParam(name = "arg0", partName = "arg0")
-        TypeDefinition arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "updateDataSourceReferenceType")
-    @WebResult(partName = "return")
-    public boolean updateDataSourceReferenceType(
-        @WebParam(name = "arg0", partName = "arg0")
-        TypeDefinition arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "deleteDataContainerReferenceType")
-    @WebResult(partName = "return")
-    public boolean deleteDataContainerReferenceType(
-        @WebParam(name = "arg0", partName = "arg0")
-        int arg0)
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "deleteDataSourceReferenceType")
-    @WebResult(partName = "return")
-    public boolean deleteDataSourceReferenceType(
-        @WebParam(name = "arg0", partName = "arg0")
-        int arg0)
         throws Exception_Exception
     ;
 

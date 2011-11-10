@@ -180,7 +180,8 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
     gridData.horizontalIndent = 0;
     gridData.grabExcessVerticalSpace = true;
     GridLayout gridLayout = new GridLayout();
-    gridLayout.numColumns = 4;
+    //numColumns=5 => to move the 'Data Sources' Box to the right position
+    gridLayout.numColumns = 5;
     parentComposite.setLayout(gridLayout);
     parentComposite.setBackground(Display.getCurrent().getSystemColor(
         SWT.COLOR_WHITE));
@@ -191,8 +192,9 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
         SWT.COLOR_WHITE));
     typeLabel.setLayoutData(gridData51);
     createTypeCombo();
-    Label filler2 = new Label(composite, SWT.NONE);
-    Label filler5 = new Label(composite, SWT.NONE);
+    Label filler1_3 = new Label(composite, SWT.NONE);
+    Label filler1_4 = new Label(composite, SWT.NONE);
+    Label filler1_5 = new Label(composite, SWT.NONE);
     kindLabel = new Label(composite, SWT.NONE);
     kindLabel.setText("Subtype of data source:");
     kindLabel.setBackground(Display.getCurrent().getSystemColor(
@@ -238,6 +240,7 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
     dataSourceIdentifierLabel.setLayoutData(gridData31);
     dataSourceIdentifierLabel.setBackground(Display.getCurrent()
         .getSystemColor(SWT.COLOR_WHITE));
+    Label filler2_5 = new Label(composite, SWT.NONE);
     languageLabel = new Label(composite, SWT.NONE);
     languageText = new Text(composite, SWT.BORDER);
     languageText.setBackground(Display.getCurrent().getSystemColor(
@@ -282,7 +285,18 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
                 .getText()));
       }
     });
-    
+    Label filler3_5 = new Label(composite, SWT.NONE);
+	typeText.setEnabled(false);
+	kindText.setEnabled(false);
+	languageText.setEnabled(false);
+    Label filler4_1 = new Label(composite, SWT.NONE);
+    Label filler4_2 = new Label(composite, SWT.NONE);
+
+    //label is created here, in order to get a good alignment
+    Label InputVariableWidgetLabel = new Label(composite, SWT.NONE);
+    InputVariableWidgetLabel.setText("Data variable:");
+    InputVariableWidgetLabel.setBackground(Display.getCurrent().getSystemColor(
+        SWT.COLOR_WHITE));
     createInputVariableWidgets();
   }
 
@@ -448,7 +462,7 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
     Composite inputVariableComp = new Composite(parentComposite, SWT.NONE);
 
     GridLayout gridLayout = new GridLayout();
-    gridLayout.numColumns = 3;
+    gridLayout.numColumns = 2;
     inputVariableComp.setLayout(gridLayout);
     inputVariableComp.setBackground(Display.getCurrent().getSystemColor(
         SWT.COLOR_WHITE));
@@ -463,11 +477,11 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
     gridData6.horizontalAlignment = GridData.FILL;
     gridData6.verticalAlignment = GridData.CENTER;
     gridData6.grabExcessHorizontalSpace = true;
-
-    inputVariableLabel = fWidgetFactory.createLabel(inputVariableComp,
-        "Data variable:");
+//    compare line 294
+//    inputVariableLabel = fWidgetFactory.createLabel(inputVariableComp,
+//        "Data variable:");
     inputVariableText = fWidgetFactory.createText(inputVariableComp,
-        EMPTY_STRING);
+    		EMPTY_STRING);
     inputVariableButton = fWidgetFactory.createButton(inputVariableComp,
         EMPTY_STRING, SWT.ARROW | SWT.DOWN | SWT.CENTER);
 
@@ -524,7 +538,6 @@ public class WriteDataBackActivityPropertySection extends ADataManagementActivit
         }
       }
     });
-
     inputVariableText.setLayoutData(gridData6);
   }
 
