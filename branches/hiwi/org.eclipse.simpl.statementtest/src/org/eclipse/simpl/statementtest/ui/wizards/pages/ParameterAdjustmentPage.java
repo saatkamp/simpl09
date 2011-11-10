@@ -228,6 +228,13 @@ public class ParameterAdjustmentPage extends StatementTestWizardPage {
         optionalTextFields.add(variableElementText);
       }
 
+      // extract and set the value
+      int valueStart = variable.getValue().indexOf("<" + variableElement.getName() + ">") + variableElement.getName().length() + 2;
+      int valueStop = variable.getValue().indexOf("</" + variableElement.getName() + ">", valueStart);
+      String value = variable.getValue().substring(valueStart, valueStop);
+      variableElementText.setText(value);
+      variableElement.setValue(value);
+      
       variableElementText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
       variableElementText.addKeyListener(new KeyAdapter() {
         @Override
