@@ -74,7 +74,7 @@ public class ProcessOutlineEditPart extends OutlineTreeEditPart {
       for (Variable variable : variables.getChildren()) {
         XSDTypeDefinition type = variable.getType();
         if (type != null) {
-          if (!type.getName().equals(ContainerReferenceVariablesEditPart.DATA_TYPE)
+          if (!type.getBaseType().getName().equals(ContainerReferenceVariablesEditPart.DATA_TYPE)
               && !type.getName().equals(DataSourceReferenceVariablesEditPart.DATA_TYPE)) {
             cleanedVariables.add(variable);
           }
