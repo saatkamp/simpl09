@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>rmweb</display-name>
+  
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    <description>DataSourceListAction</description>
+    <display-name>DataSourceListAction</display-name>
+    <servlet-name>DataSourceListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataSourceListAction</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <description>DataSourceFormAction</description>
+    <display-name>DataSourceFormAction</display-name>
+    <servlet-name>DataSourceFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataSourceFormAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>ConnectorListAction</description>
+    <display-name>ConnectorListAction</display-name>
+    <servlet-name>ConnectorListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.ConnectorListAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>ConnectorFormAction</description>
+    <display-name>ConnectorFormAction</display-name>
+    <servlet-name>ConnectorFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.ConnectorFormAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>DataConverterListAction</description>
+    <display-name>DataConverterListAction</display-name>
+    <servlet-name>DataConverterListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataConverterListAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>DataConverterFormAction</description>
+    <display-name>DataConverterFormAction</display-name>
+    <servlet-name>DataConverterFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataConverterFormAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>DataTransformationServiceListAction</description>
+    <display-name>DataTransformationServiceListAction</display-name>
+    <servlet-name>DataTransformationServiceListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataTransformationServiceListAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>DataTransformationServiceFormAction</description>
+    <display-name>DataTransformationServiceFormAction</display-name>
+    <servlet-name>DataTransformationServiceFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataTransformationServiceFormAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>StrategyPluginListAction</description>
+    <display-name>StrategyPluginListAction</display-name>
+    <servlet-name>StrategyPluginListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.StrategyPluginListAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>StrategyPluginFormAction</description>
+    <display-name>StrategyPluginFormAction</display-name>
+    <servlet-name>StrategyPluginFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.StrategyPluginFormAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>DataContainerReferenceTypeListAction</description>
+    <display-name>DataContainerReferenceTypeListAction</display-name>
+    <servlet-name>DataContainerReferenceTypeListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataContainerReferenceTypeListAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>DataContainerReferenceTypeFormAction</description>
+    <display-name>DataContainerReferenceTypeFormAction</display-name>
+    <servlet-name>DataContainerReferenceTypeFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataContainerReferenceTypeFormAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>DataSourceReferenceTypeListAction</description>
+    <display-name>DataSourceReferenceTypeListAction</display-name>
+    <servlet-name>DataSourceReferenceTypeListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataSourceReferenceTypeListAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>DataSourceReferenceTypeFormAction</description>
+    <display-name>DataSourceReferenceTypeFormAction</display-name>
+    <servlet-name>DataSourceReferenceTypeFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataSourceReferenceTypeFormAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>InstallAction</description>
+    <display-name>InstallAction</display-name>
+    <servlet-name>InstallAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.InstallAction</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <description>EditConfigAction</description>
+    <display-name>EditConfigAction</display-name>
+    <servlet-name>EditConfigAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.EditConfigAction</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>DataSourceListAction</servlet-name>
+    <url-pattern>/DataSourceListAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>DataSourceFormAction</servlet-name>
+    <url-pattern>/DataSourceFormAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ConnectorListAction</servlet-name>
+    <url-pattern>/ConnectorListAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>ConnectorFormAction</servlet-name>
+    <url-pattern>/ConnectorFormAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DataConverterListAction</servlet-name>
+    <url-pattern>/DataConverterListAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>DataConverterFormAction</servlet-name>
+    <url-pattern>/DataConverterFormAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DataTransformationServiceListAction</servlet-name>
+    <url-pattern>/DataTransformationServiceListAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>DataTransformationServiceFormAction</servlet-name>
+    <url-pattern>/DataTransformationServiceFormAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>StrategyPluginListAction</servlet-name>
+    <url-pattern>/StrategyPluginListAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>StrategyPluginFormAction</servlet-name>
+    <url-pattern>/StrategyPluginFormAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DataContainerReferenceTypeListAction</servlet-name>
+    <url-pattern>/DataContainerReferenceTypeListAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DataContainerReferenceTypeFormAction</servlet-name>
+    <url-pattern>/DataContainerReferenceTypeFormAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DataSourceReferenceTypeListAction</servlet-name>
+    <url-pattern>/DataSourceReferenceTypeListAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DataSourceReferenceTypeFormAction</servlet-name>
+    <url-pattern>/DataSourceReferenceTypeFormAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>InstallAction</servlet-name>
+    <url-pattern>/InstallAction</url-pattern>
+  </servlet-mapping>
+  
+<servlet-mapping>
+    <servlet-name>EditConfigAction</servlet-name>
+    <url-pattern>/EditConfigAction</url-pattern>
+  </servlet-mapping>
+  
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>rmweb</web-resource-name>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    
+    <auth-constraint>
+      <role-name>secure</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>Interner Bereich</realm-name>
+  </login-config>
+</web-app>
