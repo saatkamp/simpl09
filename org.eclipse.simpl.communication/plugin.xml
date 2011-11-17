@@ -4,11 +4,10 @@
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            category="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
-            class="org.eclipse.simpl.communication.preferences.SIMPLCorePreferencePage"
-            id="org.eclipse.simpl.communication.preferences.SIMPLCorePreferencePage"
-            name="SIMPL Core">
+            category="org.eclipse.simpl.core.ui.preferences.SimTechHomePreferencePage"
+            class="org.eclipse.simpl.communication.preferences.SIMPLCommunicationPreferencePage"
+            id="org.eclipse.simpl.communication.preferences.SIMPLCommunicationPreferencePage"
+            name="SIMPL">
       </page>
    </extension>
-
 </plugin>
