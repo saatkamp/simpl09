@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema targetNamespace="http://org.simpl.resource.discovery" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://org.simpl.resource.discovery">
+
+
+
+    <xsd:element name="ResourceDiscovery" type="tResourceDiscovery"></xsd:element>
+    
+
+
+
+
+    <xsd:complexType name="tResourceManagement">
+      <xsd:sequence>
+        <xsd:element name="address" type="xsd:string"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="tResourceDiscovery">
+      <xsd:sequence>
+        <xsd:element name="ResourceManagement" type="tResourceManagement"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
