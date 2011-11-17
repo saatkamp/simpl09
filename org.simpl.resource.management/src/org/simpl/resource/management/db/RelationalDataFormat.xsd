@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xsd:schema targetNamespace="http://org.simpl.resource.management/db/RelationalDataFormat"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:das="http:///org.apache.tuscany.das.rdb/das"
+  xmlns="http://org.simpl.resource.management/db/RelationalDataFormat"
+  xmlns:sdo="commonj.sdo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  
+  <xsd:annotation>
+    <xsd:documentation>Defines the SDO structure of relational data such as from databases or CSV files.</xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:element name="RelationalDataFormat" type="tRelationalDataFormat"></xsd:element>
+
+  <xsd:complexType name="tRelationalDataFormat">
+    <xsd:sequence>
+            <xsd:element name="dataFormatMetaData" type="tDataFormatMetaData" maxOccurs="1" minOccurs="0">
+      </xsd:element>
+            <xsd:element name="table" type="tTable" maxOccurs="unbounded"
+        minOccurs="0">
+      </xsd:element>
+
+
+    </xsd:sequence>
+
+    <xsd:attribute name="dataFormatType" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="tTable">
+    <xsd:sequence>
+
+      <xsd:element name="rdbTableMetaData" type="tRDBTableMetaData"
+        maxOccurs="1" minOccurs="0">
+      </xsd:element>
+            <xsd:element name="csvTableMetaData" type="tCSVTableMetaData" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="row" type="tRow" maxOccurs="unbounded"
+        minOccurs="0">
+      </xsd:element>
+    </xsd:sequence>
+    
+  </xsd:complexType>
+
+  <xsd:complexType name="tColumn">
+
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+
+
+
+
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="tRow">
+    <xsd:sequence>
+      <xsd:element name="column" type="tColumn" maxOccurs="unbounded"
+        minOccurs="1"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name="tCSVTableMetaData">
+
+    <xsd:attribute name="filename" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="separator" type="xsd:string"></xsd:attribute>
+
+    <xsd:attribute name="quoteChar" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="escapeChar" type="xsd:string"></xsd:attribute>
+    <xsd:attribute name="strictQuotes" type="xsd:string"></xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:complexType name="tRDBTableMetaData">
+      <xsd:sequence>
+        <xsd:element name="columnType" type="tColumnType" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+        <xsd:attribute name="schema" type="xsd:string"></xsd:attribute>
+        <xsd:attribute name="catalog" type="xsd:string"></xsd:attribute>
+    </xsd:complexType>
+
+  <xsd:complexType name="tColumnType">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="isPrimaryKey" type="xsd:boolean"
+          use="optional">
+        </xsd:attribute>
+        <xsd:attribute name="columnName" type="xsd:string" use="required"></xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="tDataFormatMetaData">
+      <xsd:sequence>
+        <xsd:element name="dataSource" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
