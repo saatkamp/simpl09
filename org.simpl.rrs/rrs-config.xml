@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<RRSConfig name="RRSConfig">
-	<RRSDQAdapterPlugin name="org.simpl.rrs.dsadapter.plugins.rdb.DB2RDBAdapter" />
-	<RRSDQAdapterPlugin name="org.simpl.rrs.dsadapter.plugins.rdb.EmbDerbyRDBAdapter" />
-	<RRSDQAdapterPlugin name="org.simpl.rrs.dsadapter.plugins.rdb.MySQLRDBAdapter" />
-	<RRSDQAdapterPlugin name="org.simpl.rrs.dsadapter.plugins.rdb.DerbyRDBAdapter" />
-</RRSConfig>
