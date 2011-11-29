@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Communication Plug-In for the SIMPL Core
+Bundle-SymbolicName: org.eclipse.simpl.communication;singleton:=true
+Bundle-Version: 0.1.0
+Bundle-Activator: org.eclipse.simpl.communication.CommunicationPlugIn
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.eclipse.simpl.communication;
+  uses:="org.simpl.resource.management.client,
+   org.simpl.core.webservices.client,
+   org.eclipse.ui.plugin,
+   org.osgi.framework",
+ org.eclipse.simpl.communication.preferences;uses:="org.eclipse.jface.preference,org.eclipse.ui",
+ org.simpl.core.webservices.client,
+ org.simpl.resource.management.client,
+ org.simpl.resource.management.data
+Bundle-ClassPath: .,
+ lib/simpl-core-webservices-client.jar,
+ lib/simpl-resource-management-client.jar
