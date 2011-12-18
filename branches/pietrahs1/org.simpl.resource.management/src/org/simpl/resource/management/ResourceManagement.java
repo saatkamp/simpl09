@@ -64,12 +64,12 @@ public class ResourceManagement {
   /**
    * Default value for the datasources.connector_properties_description.
    */
-  final static String defaultConnectorPropertiesDescription = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><connector_properties_description xmlns=\"http://org.simpl.resource.management/datasources/connector_properties_description\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd \"><type>%s</type><subType>%s</subType><language>%s</language><dataFormat>%s</dataFormat></connector_properties_description>";
+  final static String defaultConnectorPropertiesDescription = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><connector_properties_description xmlns=\"http://org.simpl.resource.management/datasources/connector_properties_description\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd \"><type>%s</type><subType>%s</subType><language>%s</language><apiType>%s</apiType><driverName>%s</driverName><addressPrefix>%s</addressPrefix><dataFormat>%s</dataFormat></connector_properties_description>";
 
   /**
    * Default value for the connectors.properties_description.
    */
-  final static String defaultPropertiesDescription = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <properties_description xmlns=\"http://org.simpl.resource.management/connectors/properties_description\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://org.simpl.resource.management/connectors/properties_description connectors.xsd \"><type>%s</type><subType>%s</subType><language>%s</language><dataFormat>%s</dataFormat></properties_description>";
+  final static String defaultPropertiesDescription = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <properties_description xmlns=\"http://org.simpl.resource.management/connectors/properties_description\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://org.simpl.resource.management/connectors/properties_description connectors.xsd \"><type>%s</type><subType>%s</subType><language>%s</language><apiType>%s</apiType><dataFormat>%s</dataFormat></properties_description>";
 
   // for data retrieval
   DataSourceService dataSourceService = new DataSourceService();
@@ -79,7 +79,7 @@ public class ResourceManagement {
   // dataconverters relation fields
   String[] dataconvertersFields = { "id", "name", "input_datatype", "output_datatype",
       "workflow_dataformat", "direction_output_workflow", "direction_workflow_input",
-      "implementation", "xml_schema" };
+      "implementation"};
 
   // connectors fields
   String[] connectorsFields = { "id", "name", "input_datatype", "output_datatype",
@@ -398,7 +398,7 @@ public class ResourceManagement {
 
     return resultStrategyPlugin;
   }
-
+  
   /**
    * Returns a data container reference type by id.
    * 
@@ -468,6 +468,41 @@ public class ResourceManagement {
     return resultDataSourceReferenceType;
   }
 
+  /**
+   * Returns a workflow data format type by id.
+   * 
+   * @param id
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getWorkflowDataFormatTypeById")
+  public TypeDefinition getWorkflowDataFormatTypeById(@WebParam(name = "id") int id)
+      throws Exception {
+    TypeDefinition resultWorkflowDataFormatType = new TypeDefinition();
+    TypeDefinitionList workflowDataFormatTypeList = new TypeDefinitionList();
+    ArrayList<TypeDefinition> workflowDataFormatTypes = null;
+    String statement = "";
+    String result = null;
+
+    // build select statement
+    statement += "SELECT * ";
+    statement += "FROM simpl_definitions.workflow_dataformat_types ";
+    statement += "WHERE workflow_dataformat_types.id = " + id;
+
+    // retrieve workflow data format types
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+    workflowDataFormatTypes = this.getTypeDefinitionsFromResult(result);
+
+    workflowDataFormatTypeList.getTypeDefinitions().addAll(
+        workflowDataFormatTypes);
+
+    if (workflowDataFormatTypes.size() > 0) {
+      resultWorkflowDataFormatType = workflowDataFormatTypes.get(0);
+    }
+
+    return resultWorkflowDataFormatType;
+  }
+  
   /**
    * Returns all data sources.
    * 
@@ -604,7 +639,7 @@ public class ResourceManagement {
 
     return strategyList;
   }
-
+  
   /**
    * Returns a list of data container reference types.
    * 
@@ -659,6 +694,33 @@ public class ResourceManagement {
 
     return typeDefinitionList;
   }
+  
+  /**
+   * Returns a list of workflow data format types.
+   * 
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getAllWorkflowDataFormatTypes")
+  public TypeDefinitionList getAllWorkflowDataFormatTypes() throws Exception {
+    TypeDefinitionList typeDefinitionList = new TypeDefinitionList();
+    ArrayList<TypeDefinition> typeDefinitions = null;
+    String statement = "";
+    String result = null;
+
+    statement += "SELECT * ";
+    statement += "FROM simpl_definitions.workflow_dataformat_types ";
+    statement += "ORDER BY id ASC";
+
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+
+    // extract type definitions from result
+    typeDefinitions = this.getTypeDefinitionsFromResult(result);
+
+    typeDefinitionList.getTypeDefinitions().addAll(typeDefinitions);
+
+    return typeDefinitionList;
+  }
 
   /**
    * Returns the names of all available languages.
@@ -698,6 +760,11 @@ public class ResourceManagement {
 
     // datasource_reference_types
     statement = "SELECT * FROM simpl_definitions.datasource_reference_types ORDER BY name ASC";
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+    typeDefinitions.getItems().addAll(this.getColumnValuesFromResult(result, "xsd_type"));
+    
+    // datasource_reference_types
+    statement = "SELECT * FROM simpl_definitions.workflow_dataformat_types ORDER BY name ASC";
     result = dataSourceService.retrieveData(rmDataSource, statement);
     typeDefinitions.getItems().addAll(this.getColumnValuesFromResult(result, "xsd_type"));
 
@@ -835,6 +902,62 @@ public class ResourceManagement {
   }
 
   /**
+   * Returns a list of API types types.
+   * 
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getAPITypes")
+  public StringList getAPITypes() throws Exception {
+    StringList stringList = new StringList();
+    ArrayList<String> propertiesDescriptions = null;
+
+    String statement = "SELECT properties_description FROM simpl_resources.connectors";
+    String result = dataSourceService.retrieveData(rmDataSource, statement);
+
+    // extract properties description from result
+    propertiesDescriptions = this.getColumnValuesFromResult(result,
+        "properties_description");
+
+    // extract types from the properties description
+    for (String propertyDescription : propertiesDescriptions) {
+      String apiType = this.getFromPropertiesDescription("apiType", propertyDescription);
+
+      if (apiType != null) {
+        stringList.getItems().add(apiType);
+      }
+    }
+
+    // remove duplicates
+    HashSet<String> h = new HashSet<String>(stringList.getItems());
+    stringList.getItems().clear();
+    stringList.getItems().addAll(h);
+
+    // sort items
+    Collections.sort(stringList.getItems());
+
+    return stringList;
+  }
+  
+  /**
+   * Returns the names of all available workflow data format types.
+   * 
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getWorkflowDataFormatTypeNames")
+  public StringList getWorkflowDataFormatTypeNames() throws Exception {
+    StringList names = new StringList();
+
+    String statement = "SELECT name FROM simpl_definitions.workflow_dataformat_types ORDER BY name ASC";
+    String result = dataSourceService.retrieveData(rmDataSource, statement);
+
+    names.getItems().addAll(this.getColumnValuesFromResult(result, "name"));
+
+    return names;
+  }
+  
+  /**
    * Returns the xml schema of a workflow data format.
    * 
    * @param workflowDataFormat
@@ -843,16 +966,25 @@ public class ResourceManagement {
    */
   @WebMethod(action = "getDataFormatSchema")
   public String getDataFormatSchema(String dataFormat) throws Exception {
-    String xmlSchema = null;
+    String complexType = null;
+	String xmlSchema = null;
     String statement = "";
     String result = null;
 
-    statement += "SELECT xml_schema FROM simpl_resources.dataconverters ";
-    statement += "WHERE workflow_dataformat LIKE '" + dataFormat + "'";
+    //two types are needed: the specified data format and the associated base type
+    statement += "SELECT xsd_type FROM simpl_definitions.workflow_dataformat_types ";
+    statement += "WHERE name LIKE '" + dataFormat + "' OR name LIKE 'DataFormat'" ;
 
     result = dataSourceService.retrieveData(rmDataSource, statement);
 
-    xmlSchema = this.getColumnValuesFromResult(result, "xml_schema").get(0);
+    
+    complexType = this.getColumnValuesFromResult(result, "xsd_type").get(0) + this.getColumnValuesFromResult(result, "xsd_type").get(1);
+    
+    // build XSD schema
+    String schemaOpenTag = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><xsd:schema targetNamespace=\"http://www.example.org/simpl\" xmlns:simpl=\"http://www.example.org/simpl\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">";
+    String schemaCloseTag = "</xsd:schema>";
+
+    xmlSchema = schemaOpenTag + complexType + schemaCloseTag;
 
     return xmlSchema;
   }
@@ -995,8 +1127,9 @@ public class ResourceManagement {
     if (connectorPropertiesDescription.equals("NULL")) {
       statement += "'"
           + String.format(defaultConnectorPropertiesDescription, dataSource.getType(),
-              dataSource.getSubType(), dataSource.getLanguage(), dataSource
-                  .getConnector().getDataConverter().getWorkflowDataFormat()) + "'";
+              dataSource.getSubType(), dataSource.getLanguage(), dataSource.getAPIType(), 
+              dataSource.getDriverName(), dataSource.getAddressPrefix(), dataSource
+              .getConnector().getDataConverter().getWorkflowDataFormat()) + "'";
     } else {
       statement += "'" + dataSource.getConnectorPropertiesDescription() + "'";
     }
@@ -1039,8 +1172,8 @@ public class ResourceManagement {
     if (propertiesDescription.equals("NULL")) {
       statement += "'"
           + String.format(defaultPropertiesDescription, connector.getType(), connector
-              .getSubType(), connector.getLanguage(), connector.getDataConverter()
-              .getWorkflowDataFormat()) + "'";
+              .getSubType(), connector.getLanguage(), connector.getAPIType(), connector
+              .getDataConverter().getWorkflowDataFormat()) + "'";
     } else {
       statement += propertiesDescription;
     }
@@ -1064,25 +1197,24 @@ public class ResourceManagement {
   public boolean addDataConverter(DataConverter dataConverter) throws Exception {
     boolean successful = false;
     String statement = null;
-    String xmlSchema = dataConverter.getXmlSchema();
-
-    // handle empty xml_schema value
-    if (xmlSchema == null || xmlSchema.equals("")) {
-      xmlSchema = "NULL";
-    } else {
-      xmlSchema = "'" + xmlSchema + "'";
-    }
+//    String xmlSchema = dataConverter.getXmlSchema();
+//
+//    // handle empty xml_schema value
+//    if (xmlSchema == null || xmlSchema.equals("")) {
+//      xmlSchema = "NULL";
+//    } else {
+//      xmlSchema = "'" + xmlSchema + "'";
+//    }
 
     // build SQL insert statement
-    statement = "INSERT INTO simpl_resources.dataconverters (name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation, xml_schema) VALUES (";
+    statement = "INSERT INTO simpl_resources.dataconverters (name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation) VALUES (";
     statement += "'" + dataConverter.getName() + "', ";
     statement += "'" + dataConverter.getInputDataType() + "', ";
     statement += "'" + dataConverter.getOutputDataType() + "', ";
     statement += "'" + dataConverter.getWorkflowDataFormat() + "', ";
     statement += "'" + dataConverter.getDirectionOutputWorkflow() + "', ";
     statement += "'" + dataConverter.getDirectionWorkflowInput() + "', ";
-    statement += "'" + dataConverter.getImplementation() + "', ";
-    statement += xmlSchema;
+    statement += "'" + dataConverter.getImplementation() + "'";
     statement += ")";
 
     // add data format
@@ -1143,7 +1275,7 @@ public class ResourceManagement {
 
     return successful;
   }
-
+  
   /**
    * Adds a data container reference type.
    * 
@@ -1193,6 +1325,31 @@ public class ResourceManagement {
 
     return successful;
   }
+  
+  /**
+   * Adds a workflow data format type.
+   * 
+   * @param typeDefinition
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "addWorkflowDataFormatType")
+  public boolean addWorkflowDataFormatType(TypeDefinition typeDefinition)
+      throws Exception {
+    boolean successful = false;
+    String statement = null;
+
+    // build SQL insert statement
+    statement = "INSERT INTO simpl_definitions.workflow_dataformat_types (name, xsd_type) VALUES (";
+    statement += "'" + typeDefinition.getName() + "', ";
+    statement += "'" + typeDefinition.getXsdType() + "'";
+    statement += ")";
+
+    // add type definition
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return successful;
+  }
 
   /**
    * Updates a data source.
@@ -1230,8 +1387,9 @@ public class ResourceManagement {
     } else {
       statement += "connector_properties_description='"
           + String.format(defaultConnectorPropertiesDescription, dataSource.getType(),
-              dataSource.getSubType(), dataSource.getLanguage(), dataSource
-                  .getConnector().getDataConverter().getWorkflowDataFormat()) + "'";
+              dataSource.getSubType(), dataSource.getLanguage(), dataSource.getAPIType(), 
+              dataSource.getDriverName(), dataSource.getAddressPrefix(), dataSource
+              .getConnector().getDataConverter().getWorkflowDataFormat()) + "'";
     }
 
     statement += " WHERE id=" + dataSource.getId();
@@ -1267,8 +1425,8 @@ public class ResourceManagement {
     } else {
       statement += "properties_description='"
           + String.format(defaultPropertiesDescription, connector.getType(), connector
-              .getSubType(), connector.getLanguage(), connector.getDataConverter()
-              .getWorkflowDataFormat()) + "' ";
+              .getSubType(), connector.getLanguage(), connector.getAPIType(), connector
+              .getDataConverter().getWorkflowDataFormat()) + "' ";
     }
 
     statement += " WHERE id=" + connector.getId();
@@ -1290,14 +1448,14 @@ public class ResourceManagement {
   public boolean updateDataConverter(DataConverter dataConverter) throws Exception {
     boolean successful = false;
     String statement = "";
-    String xmlSchema = dataConverter.getXmlSchema();
-
-    // set xml_schema value
-    if (xmlSchema == null || xmlSchema.equals("")) {
-      xmlSchema = "NULL";
-    } else {
-      xmlSchema = "'" + xmlSchema + "'";
-    }
+//    String xmlSchema = dataConverter.getXmlSchema();
+//
+//    // set xml_schema value
+//    if (xmlSchema == null || xmlSchema.equals("")) {
+//      xmlSchema = "NULL";
+//    } else {
+//      xmlSchema = "'" + xmlSchema + "'";
+//    }
 
     // build SQL update statement
     statement += "UPDATE simpl_resources.dataconverters SET ";
@@ -1309,8 +1467,8 @@ public class ResourceManagement {
         + dataConverter.getDirectionOutputWorkflow() + "', ";
     statement += "direction_workflow_input='" + dataConverter.getDirectionWorkflowInput()
         + "', ";
-    statement += "implementation='" + dataConverter.getImplementation() + "', ";
-    statement += "xml_schema=" + xmlSchema;
+    statement += "implementation='" + dataConverter.getImplementation() + "'";
+//    statement += "xml_schema=" + xmlSchema;
     statement += " WHERE id=" + dataConverter.getId();
 
     // update data converter
@@ -1375,7 +1533,7 @@ public class ResourceManagement {
 
     return successful;
   }
-
+  
   /**
    * Updates a data container reference type.
    * 
@@ -1437,6 +1595,39 @@ public class ResourceManagement {
     statement += " WHERE id=" + typeDefinition.getId();
 
     // update data source reference type
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return successful;
+  }
+  
+  /**
+   * Updates a workflow data format type.
+   * 
+   * @param typeDefinition
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "updateWorkflowDataFormatType")
+  public boolean updateWorkflowDataFormatType(TypeDefinition typeDefinition)
+      throws Exception {
+    boolean successful = false;
+    String statement = "";
+    String xsdType = typeDefinition.getXsdType();
+
+    // set xsd_type value
+    if (xsdType == null || xsdType.equals("")) {
+      xsdType = "NULL";
+    } else {
+      xsdType = "'" + xsdType + "'";
+    }
+
+    // build SQL update statement
+    statement += "UPDATE simpl_definitions.workflow_dataformat_types SET ";
+    statement += "name='" + typeDefinition.getName() + "', ";
+    statement += "xsd_type=" + xsdType + "";
+    statement += " WHERE id=" + typeDefinition.getId();
+
+    // update data container reference type
     successful = dataSourceService.executeStatement(rmDataSource, statement);
 
     return successful;
@@ -1536,7 +1727,7 @@ public class ResourceManagement {
 
     return successful;
   }
-
+  
   /**
    * Deletes a data container reference type.
    * 
@@ -1575,6 +1766,25 @@ public class ResourceManagement {
     return successful;
   }
 
+  /**
+   * Deletes a workflow data format type.
+   * 
+   * @param id
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "deleteWorkflowDataFormatType")
+  public boolean deleteWorkflowDataFormatType(int id) throws Exception {
+    boolean successful = false;
+    String statement = "DELETE FROM simpl_definitions.workflow_dataformat_types WHERE id = "
+        + String.valueOf(id);
+
+    // delete data container reference type
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return successful;
+  } 
+  
   /**
    * Creates the tables for the Resource Management in the configured PostgreSQL data
    * source.
@@ -1724,6 +1934,12 @@ public class ResourceManagement {
               column.getValue()));
           dataSource.setLanguage(this.getFromPropertiesDescription("language",
               column.getValue()));
+          dataSource.setAPIType(this.getFromPropertiesDescription("apiType",
+                  column.getValue()));
+          dataSource.setDriverName(this.getFromPropertiesDescription("driverName",
+                  column.getValue()));
+          dataSource.setAddressPrefix(this.getFromPropertiesDescription("addressPrefix",
+                  column.getValue()));
         }
       }
 
@@ -1799,7 +2015,9 @@ public class ResourceManagement {
               column.getValue()));
           connector.setLanguage(this.getFromPropertiesDescription("language",
               column.getValue()));
-
+          connector.setAPIType(this.getFromPropertiesDescription("apiType",
+                  column.getValue()));
+          
           // create a potential data converter from the properties description
           if (dataConverter == null) {
             dataConverter = new DataConverter();
@@ -1875,9 +2093,7 @@ public class ResourceManagement {
         } else if (column.getAttribute("name").getValue()
             .equals(prefix + "implementation")) {
           dataConverter.setImplementation(column.getValue().trim());
-        } else if (column.getAttribute("name").getValue().equals(prefix + "xml_schema")) {
-          dataConverter.setXmlSchema(column.getValue());
-        }
+        } 
       }
 
       dataConverters.add(dataConverter);

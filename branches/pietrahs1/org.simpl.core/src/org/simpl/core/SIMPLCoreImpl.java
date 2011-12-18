@@ -190,31 +190,35 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
     return data;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.connector.Connector#createTarget(org.simpl.resource.management.client
-   * .DataSource, commonj.sdo.DataObject, java.lang.String)
-   */
-  @Override
-  public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
-      throws ConnectionException {
-    boolean success = false;
-    Connector<Object, Object> connector = null;
-
-    try {
-      // get connector instance
-      connector = ConnectorProvider.getInstance(dataSource.getType(),
-          dataSource.getSubType());
-
-      // create target
-      success = connector.createTarget(dataSource, dataObject, target);
-    } catch (Exception e) {
-      throw new ConnectionException(e.getCause());
-    }
-
-    return success;
-  }
+//not used anymore
+//required tables must already be present
+//
+//
+//  /*
+//   * (non-Javadoc)
+//   * @see
+//   * org.simpl.core.connector.Connector#createTarget(org.simpl.resource.management.client
+//   * .DataSource, commonj.sdo.DataObject, java.lang.String)
+//   */
+//  @Override
+//  public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
+//      throws ConnectionException {
+//    boolean success = false;
+//    Connector<Object, Object> connector = null;
+//
+//    try {
+//      // get connector instance
+//      connector = ConnectorProvider.getInstance(dataSource.getType(),
+//          dataSource.getSubType());
+//
+//      // create target
+//      success = connector.createTarget(dataSource, dataObject, target);
+//    } catch (Exception e) {
+//      throw new ConnectionException(e.getCause());
+//    }
+//
+//    return success;
+//  }
 
   /**
    * Returns the data source's meta data schema file as InputStream.
@@ -250,7 +254,6 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
       DataSource dataSource, String target) throws ConnectionException {
     Object writeData = null;
 
-    boolean createdTarget;
     DataObject convertedData = null;
     String dataFormat = data.getString("dataFormat");
     List<String> supportedDataFormats = DataConverterProvider
@@ -281,20 +284,24 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
         }
       }
     }
-
-    // create target
-    if (writeData != null) {
-      if (convertedData != null) {
-        createdTarget = connector.createTarget(dataSource, convertedData, target);
-      } else {
-        createdTarget = connector.createTarget(dataSource, data, target);
-      }
-
-      // write data
-      if (!createdTarget) {
-        writeData = null;
-      }
-    }
+    
+//    not used anymore
+//    required tables must already be present
+//
+//
+//    // create target
+//    if (writeData != null) {
+//      if (convertedData != null) {
+//        createdTarget = connector.createTarget(dataSource, convertedData, target);
+//      } else {
+//        createdTarget = connector.createTarget(dataSource, data, target);
+//      }
+//
+//      // write data
+//      if (!createdTarget) {
+//        writeData = null;
+//      }
+//    }
 
     return writeData;
   }

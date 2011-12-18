@@ -27,7 +27,6 @@
   String directionOutputWorkflow = "";
   String directionWorkflowInput = "";
   String implementation = "";
-  String xmlSchema = "";
   
   DataConverter dataConverter = null;
   String param = null;
@@ -58,7 +57,6 @@
       directionOutputWorkflow = dataConverter.getDirectionOutputWorkflow();
       directionWorkflowInput = dataConverter.getDirectionWorkflowInput();
       implementation = dataConverter.getImplementation();
-      xmlSchema = dataConverter.getXmlSchema();
     }
   }
 %>
@@ -84,7 +82,7 @@
   
   <tr>
     <td><label>Workflow Data Format</label></td>
-    <td><input name="workflowDataFormat" type="text" value="<%=workflowDataFormat%>" size="100" /></td>
+    <td><%=FormMetaData.getInstance().getDataFormatSelect("workflowDataFormat", workflowDataFormat)%></td>
   </tr>
 
   <tr>
@@ -102,15 +100,6 @@
     <td><input name="implementation" type="text" value="<%=implementation%>" size="100" /></td>
   </tr>
   
-  <tr>
-    <td><label>XML Schema</label></td>
-    <td>
-      <textarea name="xmlSchemaData" cols="77" rows="10"><%=xmlSchema%></textarea>
-      <textarea name="oldXmlSchemaData" cols="0" rows="0" style="height:0px;width:0px;position:absolute;top:0px;left:0px;visibility:hidden"><%=xmlSchema%></textarea>
-      <br/>
-      <input name="xmlSchema" type="file" size="100"/>
-    </td>
-  </tr> 
 </table>
 
 <br/>

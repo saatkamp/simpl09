@@ -32,6 +32,8 @@
   <br/>
   <a href="datacontainerreferencetype_list.jsp">Data Container Reference Type Management</a>
   <br/>
+  <a href="workflowdataformattype_list.jsp">Workflow Data Format Type Management</a>
+  <br/>
   <h3>Installation</h3>
   <a href="install.jsp">Installation</a>
 </body>

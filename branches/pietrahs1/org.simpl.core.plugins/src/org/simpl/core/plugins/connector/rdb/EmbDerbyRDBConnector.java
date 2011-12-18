@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -98,31 +98,39 @@ public class EmbDerbyRDBConnector extends ConnectorPlugin<List<String>, RDBResul
     Connection connection = openConnection(dataSource.getAddress());
 
     Statement connStatement = null;
+    
     ResultSet resultSet = null;
+    ResultSetMetaData resultSetMetaData = null;
+    DatabaseMetaData databaseMetaData = null;
+
     RDBResult rdbResult = null;
 
     try {
       connStatement = connection.createStatement();
       resultSet = connStatement.executeQuery(statement);
-
+      resultSetMetaData = resultSet.getMetaData();
+      databaseMetaData = connection.getMetaData();
+      
+      // save primary keys
       rdbResult = new RDBResult();
-      rdbResult.setDbMetaData(connection.getMetaData());
-      rdbResult.setResultSet(resultSet);
+      rdbResult.setPrimaryKeysRowSet(databaseMetaData.getPrimaryKeys(null,
+          resultSetMetaData.getSchemaName(1).trim(),
+          resultSetMetaData.getTableName(1)));
+      // save description of table columns
+      for (int i = 1; i < resultSetMetaData.getColumnCount() + 1; i++) {
+        rdbResult.addColumnRowSetList(databaseMetaData.getColumns(null, null,
+            resultSetMetaData.getTableName(i), null));
+      }
+      ;
+      // save result sset
+      rdbResult.setResultRowSet(resultSet);
+      // save datasource
       rdbResult.setDataSource(dataSource);
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-
-    if (rdbResult == null) {
-      try {
-        connStatement.close();
-        connection.close();
-      } catch (SQLException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-    }
+    closeConnection(connection);
 
     EmbDerbyRDBConnector.logger.info("Statement \"" + statement + "\" executed on "
         + dataSource.getAddress() + ".");
@@ -204,20 +212,7 @@ public class EmbDerbyRDBConnector extends ConnectorPlugin<List<String>, RDBResul
           + dataSource.getAddress() + ", " + statement + ") executed.");
     }
 
-    // Hier wird ein seit SQL2003 exisiterender erweiterter CREATE TABLE Befehl
-    // genutzt.
-    // Beispiel: CREATE TABLE TAB AS SELECT * FROM T1 WITH DATA;
-    // Dies erzeugt aus den Query-Daten eine Neue Tabelle TAB mit den
-    // gequerieten Daten.
-    StringBuilder createTableStatement = new StringBuilder();
-    createTableStatement.append("CREATE TABLE");
-    createTableStatement.append(" ");
-    createTableStatement.append(target);
-    createTableStatement.append(" AS ");
-    createTableStatement.append(statement);
-    createTableStatement.append(" ");
-    createTableStatement.append("WITH NO DATA");
-
+    //create insert statement
     StringBuilder insertStatement = new StringBuilder();
     insertStatement.append("INSERT INTO");
     insertStatement.append(" ");
@@ -228,24 +223,17 @@ public class EmbDerbyRDBConnector extends ConnectorPlugin<List<String>, RDBResul
     Connection conn = openConnection(dataSource.getAddress());
 
     try {
-      Statement createState = conn.createStatement();
-      Statement insertState = conn.createStatement();
-
-      // Neue Tabelle aus dem Query erzeugen
-      createState.execute(createTableStatement.toString());
-
-      // Query-Daten in die neue Tabelle einfügen
-      insertState.execute(insertStatement.toString());
-
+      Statement connStatement = conn.createStatement();
+      
+      //insert data
+      connStatement.execute(insertStatement.toString());
+      
+      connStatement.close();
       conn.commit();
-      createState.close();
-      insertState.close();
-      closeConnection(conn);
-
       success = true;
     } catch (Throwable e) {
       EmbDerbyRDBConnector.logger.error("exception executing the statement: "
-          + createTableStatement.toString(), e);
+          + insertStatement.toString(), e);
       EmbDerbyRDBConnector.logger.debug("Connection will be rolled back.");
 
       try {
@@ -255,8 +243,10 @@ public class EmbDerbyRDBConnector extends ConnectorPlugin<List<String>, RDBResul
         e1.printStackTrace();
       }
     }
+    
+    closeConnection(conn);
 
-    EmbDerbyRDBConnector.logger.info("Statement \"" + createTableStatement.toString()
+    EmbDerbyRDBConnector.logger.info("Statement \"" + insertStatement.toString()
         + "\" " + "& \"" + insertStatement.toString() + "\" " + "executed on "
         + dataSource.getAddress());
 
@@ -304,116 +294,6 @@ public class EmbDerbyRDBConnector extends ConnectorPlugin<List<String>, RDBResul
     }
 
     return metaDataObject;
-  }
-
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.simpl.core.services.datasource.DataSourceService#getCreateTargetStatements(org
-   * .simpl.core.services.datasource.DataSource, commonj.sdo.DataObject, java.lang.String)
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
-      throws ConnectionException {
-    boolean createdTarget = false;
-
-    if (MySQLRDBConnector.logger.isDebugEnabled()) {
-      MySQLRDBConnector.logger.debug("createTarget '" + target + "' on '"
-          + dataSource.getAddress() + "'.");
-    }
-
-    // test if target already exists
-    try {
-      createdTarget = this.issueCommand(dataSource, "SELECT * FROM " + target);
-    } catch (Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-
-    if (!createdTarget) {
-      List<DataObject> tables = dataObject.getList("table");
-      DataObject tableMetaData = tables.get(0).getDataObject("rdbTableMetaData");
-      List<DataObject> rows = tables.get(0).getList("row");
-      List<DataObject> columns = rows.get(0).getList("column");
-      List<String> primaryKeys = this.getPrimaryKeys(tableMetaData);
-      String createTargetStatement = null;
-
-      // build create statement
-      createTargetStatement = "CREATE TABLE " + target + " (";
-
-      // create table with columns
-      for (int i = 0; i < columns.size(); i++) {
-        if (i > 0) {
-          createTargetStatement += ",";
-        }
-
-        createTargetStatement += columns.get(i).getString("name") + " "
-            + this.getColumnType(columns.get(i).getString("name"), tableMetaData);
-      }
-
-      // add primary keys
-      if (!primaryKeys.isEmpty()) {
-        createTargetStatement += ", PRIMARY KEY (";
-
-        for (int j = 0; j < primaryKeys.size(); j++) {
-          createTargetStatement += primaryKeys.get(j);
-
-          if (j < primaryKeys.size() - 1) {
-            createTargetStatement += ",";
-          }
-        }
-
-        createTargetStatement += ")";
-      }
-
-      createTargetStatement += ")";
-      createdTarget = this.issueCommand(dataSource, createTargetStatement);
-    }
-
-    return createdTarget;
-  }
-
-  /**
-   * Returns the primary key columns from the table meta data.
-   * 
-   * @param tableMetaData
-   * @return
-   */
-  @SuppressWarnings("unchecked")
-  private List<String> getPrimaryKeys(DataObject tableMetaData) {
-    List<String> primaryKeys = new ArrayList<String>();
-    List<DataObject> columnTypes = tableMetaData.getList("columnType");
-
-    for (DataObject columnType : columnTypes) {
-      if (columnType.getBoolean("isPrimaryKey")) {
-        primaryKeys.add(columnType.getString("columnName"));
-      }
-    }
-
-    return primaryKeys;
-  }
-
-  /**
-   * Returns the column type of a column from the table meta data.
-   * 
-   * @param column
-   * @param tableMetaData
-   */
-  @SuppressWarnings("unchecked")
-  private String getColumnType(String column, DataObject tableMetaData) {
-    String columnType = "";
-    List<DataObject> columnTypes = tableMetaData.getList("columnType");
-
-    for (DataObject columnTypeObject : columnTypes) {
-      if (columnTypeObject.getString("columnName").equals(column)) {
-        columnType = columnTypeObject.getString(0);
-
-        break;
-      }
-    }
-
-    return columnType;
   }
 
   /**

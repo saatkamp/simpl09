@@ -77,6 +77,20 @@
   </servlet>
 
   <servlet>
+    <description>WorkflowDataFormatTypeListAction</description>
+    <display-name>WorkflowDataFormatTypeListAction</display-name>
+    <servlet-name>WorkflowDataFormatTypeListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.WorkflowDataFormatTypeListAction</servlet-class>
+  </servlet>
+
+  <servlet>
+    <description>WorkflowDataFormatTypeFormAction</description>
+    <display-name>WorkflowDataFormatTypeFormAction</display-name>
+    <servlet-name>WorkflowDataFormatTypeFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.WorkflowDataFormatTypeFormAction</servlet-class>
+  </servlet>
+
+  <servlet>
     <description>DataContainerReferenceTypeListAction</description>
     <display-name>DataContainerReferenceTypeListAction</display-name>
     <servlet-name>DataContainerReferenceTypeListAction</servlet-name>
@@ -166,6 +180,16 @@
   <servlet-mapping>
     <servlet-name>StrategyPluginFormAction</servlet-name>
     <url-pattern>/StrategyPluginFormAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>WorkflowDataFormatTypeListAction</servlet-name>
+    <url-pattern>/WorkflowDataFormatTypeListAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>WorkflowDataFormatTypeFormAction</servlet-name>
+    <url-pattern>/WorkflowDataFormatTypeFormAction</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>

@@ -7,66 +7,11 @@ CREATE SCHEMA simpl_definitions;
 /**
  * CREATE TABLES
  */
-CREATE TABLE simpl_resources.dataconverters (
+
+CREATE TABLE simpl_definitions.workflow_dataformat_types (
    id SERIAL PRIMARY KEY,
    name varchar(255) UNIQUE NOT NULL,
-   input_datatype varchar(255) NOT NULL,
-   output_datatype varchar(255) NOT NULL,
-   workflow_dataformat varchar(255) UNIQUE NOT NULL,
-   direction_output_workflow char(5) DEFAULT 'true',
-   direction_workflow_input char(5) DEFAULT 'true',
-   implementation varchar(255) UNIQUE NOT NULL,
-   xml_schema xml
-);
-
-CREATE TABLE simpl_resources.connectors (
-   id SERIAL PRIMARY KEY,
-   dataconverter_id INTEGER,
-   name varchar(255) UNIQUE NOT NULL,
-   input_datatype varchar(255) NOT NULL,
-   output_datatype varchar(255) NOT NULL,
-   implementation varchar(255) UNIQUE NOT NULL,
-   properties_description xml DEFAULT '<?xml version="1.0" encoding="UTF-8"?>
-<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
-  <type></type>
-  <subType></subType>
-  <language></language>
-  <dataFormat></dataFormat>
-</properties_description>' NOT NULL,
-   FOREIGN KEY (dataconverter_id) references simpl_resources.dataconverters(id)
-);
-
-CREATE TABLE simpl_resources.datasources (
-   id SERIAL PRIMARY KEY,
-   connector_id INTEGER,
-   logical_name varchar(255) UNIQUE NOT NULL,
-   security_username varchar(255),
-   security_password varchar(255),
-   interface_description varchar(255) NOT NULL,
-   properties_description xml,
-   connector_properties_description xml DEFAULT '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd ">
-  <type></type>
-  <subType></subType>
-  <language></language>
-  <dataFormat></dataFormat>
-</connector_properties_description>',
-   FOREIGN KEY (connector_id) references simpl_resources.connectors(id)
-);
-
-CREATE TABLE simpl_resources.datatransformationservices (
-   id SERIAL PRIMARY KEY,
-   name varchar(255) UNIQUE NOT NULL,
-   connector_dataformat varchar(255) NOT NULL,
-   workflow_dataformat varchar(255) NOT NULL,
-   direction_connector_workflow char(5) DEFAULT 'true',
-   direction_workflow_connector char(5) DEFAULT 'true',
-   implementation varchar(255) UNIQUE NOT NULL
-);
-
-CREATE TABLE simpl_resources.strategyplugins (
-   id SERIAL PRIMARY KEY,
-   name varchar(255) UNIQUE NOT NULL,
-   implementation varchar(255) UNIQUE NOT NULL
+   xsd_type xml NOT NULL
 );
 
 CREATE TABLE simpl_definitions.languages (
@@ -92,6 +37,72 @@ CREATE TABLE simpl_definitions.datasource_reference_types (
    id SERIAL PRIMARY KEY,
    name varchar(255) NOT NULL,
    xsd_type xml NOT NULL
+);
+
+CREATE TABLE simpl_resources.dataconverters (
+   id SERIAL PRIMARY KEY,
+   name varchar(255) UNIQUE NOT NULL,
+   input_datatype varchar(255) NOT NULL,
+   output_datatype varchar(255) NOT NULL,
+   workflow_dataformat varchar(255) NOT NULL,
+   direction_output_workflow char(5) DEFAULT 'true',
+   direction_workflow_input char(5) DEFAULT 'true',
+   implementation varchar(255) UNIQUE NOT NULL,
+   FOREIGN KEY (workflow_dataformat) references simpl_definitions.workflow_dataformat_types(name)
+);
+
+CREATE TABLE simpl_resources.connectors (
+   id SERIAL PRIMARY KEY,
+   dataconverter_id INTEGER,
+   name varchar(255) UNIQUE NOT NULL,
+   input_datatype varchar(255) NOT NULL,
+   output_datatype varchar(255) NOT NULL,
+   implementation varchar(255) UNIQUE NOT NULL,
+   properties_description xml DEFAULT '<?xml version="1.0" encoding="UTF-8"?>
+<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
+  <type></type>
+  <subType></subType>
+  <language></language>
+  <apiType></apiType>
+  <dataFormat></dataFormat>
+</properties_description>' NOT NULL,
+   FOREIGN KEY (dataconverter_id) references simpl_resources.dataconverters(id)
+);
+
+CREATE TABLE simpl_resources.datasources (
+   id SERIAL PRIMARY KEY,
+   connector_id INTEGER,
+   logical_name varchar(255) UNIQUE NOT NULL,
+   security_username varchar(255),
+   security_password varchar(255),
+   interface_description varchar(255) NOT NULL,
+   properties_description xml,
+   connector_properties_description xml DEFAULT '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd ">
+  <type></type>
+  <subType></subType>
+  <language></language>
+  <apiType></apiType>
+  <driverName></driverName>
+  <addressPrefix></addressPrefix>
+  <dataFormat></dataFormat>
+</connector_properties_description>',
+   FOREIGN KEY (connector_id) references simpl_resources.connectors(id)
+);
+
+CREATE TABLE simpl_resources.datatransformationservices (
+   id SERIAL PRIMARY KEY,
+   name varchar(255) UNIQUE NOT NULL,
+   connector_dataformat varchar(255) NOT NULL,
+   workflow_dataformat varchar(255) NOT NULL,
+   direction_connector_workflow char(5) DEFAULT 'true',
+   direction_workflow_connector char(5) DEFAULT 'true',
+   implementation varchar(255) UNIQUE NOT NULL
+);
+
+CREATE TABLE simpl_resources.strategyplugins (
+   id SERIAL PRIMARY KEY,
+   name varchar(255) UNIQUE NOT NULL,
+   implementation varchar(255) UNIQUE NOT NULL
 );
 
 /**
@@ -122,16 +133,10 @@ CREATE OR REPLACE FUNCTION setDataSourceConnector() RETURNS trigger AS '
   BEGIN
     RAISE NOTICE ''[Trigger] set_data_source_connector activated'';
     IF NEW.connector_properties_description IS NOT NULL THEN 
-		  RAISE NOTICE ''[Trigger] type: %'', getDataSourceXMLProperty(''type'', NEW.connector_properties_description);
-			RAISE NOTICE ''[Trigger] subType: %'', getDataSourceXMLProperty(''subType'', NEW.connector_properties_description);
-			RAISE NOTICE ''[Trigger] language: %'', getDataSourceXMLProperty(''language'', NEW.connector_properties_description);
-			RAISE NOTICE ''[Trigger] dataFormat: %'', getDataSourceXMLProperty(''dataFormat'', NEW.connector_properties_description);
+		  RAISE NOTICE ''[Trigger] apiType: %'', getDataSourceXMLProperty(''apiType'', NEW.connector_properties_description);
       SELECT INTO matching_connector_id id 
         FROM simpl_resources.connectors 
-        WHERE getConnectorXMLProperty(''type'', simpl_resources.connectors.properties_description) = getDataSourceXMLProperty(''type'', NEW.connector_properties_description) 
-          AND getConnectorXMLProperty(''subType'', simpl_resources.connectors.properties_description) = getDataSourceXMLProperty(''subType'', NEW.connector_properties_description) 
-          AND getConnectorXMLProperty(''language'', simpl_resources.connectors.properties_description) = getDataSourceXMLProperty(''language'', NEW.connector_properties_description) 
-          AND getConnectorXMLProperty(''dataFormat'', simpl_resources.connectors.properties_description) = getDataSourceXMLProperty(''dataFormat'', NEW.connector_properties_description) 
+        WHERE getConnectorXMLProperty(''apiType'', simpl_resources.connectors.properties_description) = getDataSourceXMLProperty(''apiType'', NEW.connector_properties_description) 
         LIMIT 1;
       IF matching_connector_id IS NOT NULL THEN
         /* avoid a second update if this function is triggered by an UPDATE from updateDataSourceConnectors() */
@@ -155,40 +160,22 @@ CREATE OR REPLACE FUNCTION updateDataSourceConnectors() RETURNS trigger AS '
   DECLARE
     matching_connector_id INTEGER;
     datasource_record RECORD;
-    connector_type VARCHAR;
-    connector_sub_type VARCHAR;
-    connector_language VARCHAR;
-    connector_dataformat VARCHAR;
-    datasource_type VARCHAR;
-    datasource_sub_type VARCHAR;
-    datasource_language VARCHAR;
-    datasource_dataformat VARCHAR;
+    connector_apiType VARCHAR;
+    datasource_apiType VARCHAR;
   BEGIN
     RAISE NOTICE ''[Trigger] update_data_source_connectors activated'';
     IF NEW.properties_description IS NOT NULL THEN
-	    connector_type := getConnectorXMLProperty(''type'', NEW.properties_description);
-		  connector_sub_type := getConnectorXMLProperty(''subType'', NEW.properties_description);
-		  connector_language := getConnectorXMLProperty(''language'', NEW.properties_description);
-		  connector_dataformat := getConnectorXMLProperty(''dataFormat'', NEW.properties_description);
-      RAISE NOTICE ''[Trigger] new or updated connector: %, %, %, %'',connector_type, connector_sub_type, connector_language, connector_dataformat;
+	    connector_apiType := getConnectorXMLProperty(''apiType'', NEW.properties_description);
+      RAISE NOTICE ''[Trigger] new or updated connector: %'', connector_apiType;
 	    FOR datasource_record IN SELECT * FROM simpl_resources.datasources ORDER BY id LOOP
-	      datasource_type := getDataSourceXMLProperty(''type'', datasource_record.connector_properties_description);
-	      datasource_sub_type := getDataSourceXMLProperty(''subType'', datasource_record.connector_properties_description);
-	      datasource_language := getDataSourceXMLProperty(''language'', datasource_record.connector_properties_description);
-        datasource_dataformat := getDataSourceXMLProperty(''dataFormat'', datasource_record.connector_properties_description);
-	      IF connector_type = datasource_type 
-          AND connector_sub_type = datasource_sub_type 
-          AND connector_language = datasource_language 
-          AND connector_dataformat = datasource_dataformat 
+	      datasource_apiType := getDataSourceXMLProperty(''apiType'', datasource_record.connector_properties_description);
+	      IF connector_apiType = datasource_apiType 
           AND (datasource_record.connector_id IS NULL OR (datasource_record.connector_id <> NEW.id)) THEN
           UPDATE simpl_resources.datasources SET connector_id = NEW.id WHERE simpl_resources.datasources.id = datasource_record.id;
 	        RAISE NOTICE ''[Trigger] updated connector_id (id = %) on datasource (id = %)'', NEW.id, datasource_record.id;
 	      END IF;
         /* remove connector from data source if the connector changed and does not fit anymore */
-        IF ((connector_type <> datasource_type 
-	        OR connector_sub_type <> datasource_sub_type 
-	        OR connector_language <> datasource_language 
-	        OR connector_dataformat <> datasource_dataformat) 
+        IF ((connector_apiType <> datasource_apiType)  
 	        AND (datasource_record.connector_id = NEW.id)) THEN
           UPDATE simpl_resources.datasources SET connector_id = NULL WHERE simpl_resources.datasources.id = datasource_record.id;
           RAISE NOTICE ''[Trigger] updated connector_id (id = %) on datasource (id = %)'', NEW.id, datasource_record.id;
@@ -289,212 +276,221 @@ CREATE TRIGGER update_connector_data_converters AFTER INSERT OR UPDATE ON simpl_
 /**
  * INSERT DATA
  */
-INSERT INTO simpl_resources.dataconverters
-(id, name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation, xml_schema)
+INSERT INTO simpl_definitions.workflow_dataformat_types
+(name, xsd_type)
 VALUES
-(1, 'RDBDataConverter', 'List<String>', 'RDBResult', 'RDBDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.relational.RDBDataConverter', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsd:schema targetNamespace="http://org.simpl.core/plugins/dataconverter/dataformat/RelationalDataFormat"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-  xmlns="http://org.simpl.core/plugins/dataconverter/dataformat/RelationalDataFormat"
-  xmlns:sdo="commonj.sdo" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <xsd:annotation>
-    <xsd:documentation>Defines the SDO structure of relational data such as from databases or CSV files.</xsd:documentation>
-  </xsd:annotation>
-  <xsd:element name="RelationalDataFormat" type="tRelationalDataFormat"></xsd:element>
-  <xsd:complexType name="tRelationalDataFormat">
-    <xsd:sequence>
-      <xsd:element name="dataFormatMetaData" type="tDataFormatMetaData"
-        maxOccurs="1" minOccurs="0">
-      </xsd:element>
-      <xsd:element name="table" type="tTable" maxOccurs="unbounded"
-        minOccurs="0">
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name="dataFormat" type="xsd:string"></xsd:attribute>
-  </xsd:complexType>
-  <xsd:complexType name="tTable">
-    <xsd:sequence>
-      <xsd:element name="rdbTableMetaData" type="tRDBTableMetaData"
-        maxOccurs="1" minOccurs="0">
-      </xsd:element>
-      <xsd:element name="csvTableMetaData" type="tCSVTableMetaData"
-        maxOccurs="1" minOccurs="0"></xsd:element>
-      <xsd:element name="row" type="tRow" maxOccurs="unbounded"
-        minOccurs="0">
-      </xsd:element>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="tColumn">
-    <xsd:simpleContent>
-      <xsd:extension base="xsd:string">
-        <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
-      </xsd:extension>
-    </xsd:simpleContent>
-  </xsd:complexType>
-  <xsd:complexType name="tRow">
-    <xsd:sequence>
-      <xsd:element name="column" type="tColumn" maxOccurs="unbounded"
-        minOccurs="1"></xsd:element>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="tCSVTableMetaData">
-    <xsd:attribute name="filename" type="xsd:string"></xsd:attribute>
-    <xsd:attribute name="separator" type="xsd:string"></xsd:attribute>
-    <xsd:attribute name="quoteChar" type="xsd:string"></xsd:attribute>
-    <xsd:attribute name="escapeChar" type="xsd:string"></xsd:attribute>
-    <xsd:attribute name="strictQuotes" type="xsd:string"></xsd:attribute>
-  </xsd:complexType>
-  <xsd:complexType name="tRDBTableMetaData">
-    <xsd:sequence>
-      <xsd:element name="columnType" type="tColumnType" maxOccurs="unbounded"
-        minOccurs="0"></xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
-    <xsd:attribute name="schema" type="xsd:string"></xsd:attribute>
-    <xsd:attribute name="catalog" type="xsd:string"></xsd:attribute>
-  </xsd:complexType>
-  <xsd:complexType name="tColumnType">
-    <xsd:simpleContent>
-      <xsd:extension base="xsd:string">
-        <xsd:attribute name="isPrimaryKey" type="xsd:boolean" use="optional">
-        </xsd:attribute>
-        <xsd:attribute name="columnName" type="xsd:string" use="required"></xsd:attribute>
-      </xsd:extension>
-    </xsd:simpleContent>
-  </xsd:complexType>
-  <xsd:complexType name="tDataFormatMetaData">
-    <xsd:sequence>
-      <xsd:element name="dataSource" type="xsd:string" maxOccurs="1"
-        minOccurs="0"></xsd:element>
-    </xsd:sequence>
-  </xsd:complexType>
-</xsd:schema>');
+('DataFormat', '<xsd:complexType name="tDataFormat">
+  <xsd:attribute name="dataFormat" type="xsd:string"></xsd:attribute>
+</xsd:complexType>')
+
+INSERT INTO simpl_definitions.workflow_dataformat_types
+(name, xsd_type)
+VALUES
+('RDBDataFormat', '<xsd:complexType name="tRelationalDataFormat">
+  <xsd:complexContent>
+    <xsd:extension base="simpl:tDataFormat">
+      <xsd:sequence>
+        <xsd:element name="dataFormatMetaData" maxOccurs="1"
+          minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="dataSource" type="xsd:string"
+                maxOccurs="1" minOccurs="0"></xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="table" maxOccurs="unbounded"
+          minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="rdbTableMetaData" maxOccurs="1"
+                minOccurs="0">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="columnType" maxOccurs="unbounded"
+                      minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:simpleContent>
+                          <xsd:extension base="xsd:string">
+                            <xsd:attribute name="isPrimaryKey" type="xsd:boolean"
+                              use="optional">
+                            </xsd:attribute>
+                            <xsd:attribute name="columnName" type="xsd:string"
+                              use="required"></xsd:attribute>
+                          </xsd:extension>
+                        </xsd:simpleContent>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+                  <xsd:attribute name="schema" type="xsd:string"></xsd:attribute>
+                  <xsd:attribute name="catalog" type="xsd:string"></xsd:attribute>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="csvTableMetaData" maxOccurs="1"
+                minOccurs="0">
+                <xsd:complexType>
+                  <xsd:attribute name="filename" type="xsd:string"></xsd:attribute>
+                  <xsd:attribute name="separator" type="xsd:string"></xsd:attribute>
+                  <xsd:attribute name="quoteChar" type="xsd:string"></xsd:attribute>
+                  <xsd:attribute name="escapeChar" type="xsd:string"></xsd:attribute>
+                  <xsd:attribute name="strictQuotes" type="xsd:string"></xsd:attribute>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="row" maxOccurs="unbounded"
+                minOccurs="0">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="column" maxOccurs="unbounded"
+                      minOccurs="1">
+                      <xsd:complexType>
+                        <xsd:simpleContent>
+                          <xsd:extension base="xsd:string">
+                            <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+                          </xsd:extension>
+                        </xsd:simpleContent>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>');
+
+INSERT INTO simpl_definitions.workflow_dataformat_types
+(name, xsd_type)
+VALUES
+('CSVDataFormat', '<xsd:complexType name="tCSVDataFormat">
+  <xsd:complexContent>
+    <xsd:extension base="simpl:tDataFormat">
+      <xsd:sequence>
+        <xsd:element name="dataFormatMetaData" maxOccurs="1"
+          minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="dataSource" type="xsd:string"
+                maxOccurs="1" minOccurs="0"></xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="table" maxOccurs="unbounded"
+          minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="rdbTableMetaData" maxOccurs="1"
+                minOccurs="0">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="columnType" maxOccurs="unbounded"
+                      minOccurs="0">
+                      <xsd:complexType>
+                        <xsd:simpleContent>
+                          <xsd:extension base="xsd:string">
+                            <xsd:attribute name="isPrimaryKey" type="xsd:boolean"
+                              use="optional">
+                            </xsd:attribute>
+                            <xsd:attribute name="columnName" type="xsd:string"
+                              use="required"></xsd:attribute>
+                          </xsd:extension>
+                        </xsd:simpleContent>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+                  <xsd:attribute name="schema" type="xsd:string"></xsd:attribute>
+                  <xsd:attribute name="catalog" type="xsd:string"></xsd:attribute>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="csvTableMetaData" maxOccurs="1"
+                minOccurs="0">
+                <xsd:complexType>
+                  <xsd:attribute name="filename" type="xsd:string"></xsd:attribute>
+                  <xsd:attribute name="separator" type="xsd:string"></xsd:attribute>
+                  <xsd:attribute name="quoteChar" type="xsd:string"></xsd:attribute>
+                  <xsd:attribute name="escapeChar" type="xsd:string"></xsd:attribute>
+                  <xsd:attribute name="strictQuotes" type="xsd:string"></xsd:attribute>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="row" maxOccurs="unbounded"
+                minOccurs="0">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="column" maxOccurs="unbounded"
+                      minOccurs="1">
+                      <xsd:complexType>
+                        <xsd:simpleContent>
+                          <xsd:extension base="xsd:string">
+                            <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+                          </xsd:extension>
+                        </xsd:simpleContent>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>');
+
+INSERT INTO simpl_definitions.workflow_dataformat_types
+(name, xsd_type)
+VALUES
+('RandomFilesDataFormat', '<xsd:complexType name="tRandomFilesDataFormat">
+  <xsd:complexContent>
+    <xsd:extension base="simpl:tDataFormat">
+      <xsd:sequence>
+        <xsd:element name="file" maxOccurs="unbounded"
+          minOccurs="0">
+          <xsd:complexType>
+            <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+            <xsd:attribute name="content" type="xsd:string"></xsd:attribute>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+      <xsd:attribute name="folder" type="xsd:string"></xsd:attribute>
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>');
 
 INSERT INTO simpl_resources.dataconverters
-(id, name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation, xml_schema)
+(name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
 VALUES
-(2, 'CSVDataConverter', 'File', 'RandomFiles', 'CSVDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.relational.CSVDataConverter', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsd:schema targetNamespace="http://org.simpl.core/plugins/dataconverter/dataformat/RelationalDataFormat"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-  xmlns="http://org.simpl.core/plugins/dataconverter/dataformat/RelationalDataFormat"
-  xmlns:sdo="commonj.sdo" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <xsd:annotation>
-    <xsd:documentation>Defines the SDO structure of relational data such as from databases or CSV files.</xsd:documentation>
-  </xsd:annotation>
-  <xsd:element name="RelationalDataFormat" type="tRelationalDataFormat"></xsd:element>
-  <xsd:complexType name="tRelationalDataFormat">
-    <xsd:sequence>
-      <xsd:element name="dataFormatMetaData" type="tDataFormatMetaData"
-        maxOccurs="1" minOccurs="0">
-      </xsd:element>
-      <xsd:element name="table" type="tTable" maxOccurs="unbounded"
-        minOccurs="0">
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name="dataFormat" type="xsd:string"></xsd:attribute>
-  </xsd:complexType>
-  <xsd:complexType name="tTable">
-    <xsd:sequence>
-      <xsd:element name="rdbTableMetaData" type="tRDBTableMetaData"
-        maxOccurs="1" minOccurs="0">
-      </xsd:element>
-      <xsd:element name="csvTableMetaData" type="tCSVTableMetaData"
-        maxOccurs="1" minOccurs="0"></xsd:element>
-      <xsd:element name="row" type="tRow" maxOccurs="unbounded"
-        minOccurs="0">
-      </xsd:element>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="tColumn">
-    <xsd:simpleContent>
-      <xsd:extension base="xsd:string">
-        <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
-      </xsd:extension>
-    </xsd:simpleContent>
-  </xsd:complexType>
-  <xsd:complexType name="tRow">
-    <xsd:sequence>
-      <xsd:element name="column" type="tColumn" maxOccurs="unbounded"
-        minOccurs="1"></xsd:element>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="tCSVTableMetaData">
-    <xsd:attribute name="filename" type="xsd:string"></xsd:attribute>
-    <xsd:attribute name="separator" type="xsd:string"></xsd:attribute>
-    <xsd:attribute name="quoteChar" type="xsd:string"></xsd:attribute>
-    <xsd:attribute name="escapeChar" type="xsd:string"></xsd:attribute>
-    <xsd:attribute name="strictQuotes" type="xsd:string"></xsd:attribute>
-  </xsd:complexType>
-  <xsd:complexType name="tRDBTableMetaData">
-    <xsd:sequence>
-      <xsd:element name="columnType" type="tColumnType" maxOccurs="unbounded"
-        minOccurs="0"></xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
-    <xsd:attribute name="schema" type="xsd:string"></xsd:attribute>
-    <xsd:attribute name="catalog" type="xsd:string"></xsd:attribute>
-  </xsd:complexType>
-  <xsd:complexType name="tColumnType">
-    <xsd:simpleContent>
-      <xsd:extension base="xsd:string">
-        <xsd:attribute name="isPrimaryKey" type="xsd:boolean" use="optional">
-        </xsd:attribute>
-        <xsd:attribute name="columnName" type="xsd:string" use="required"></xsd:attribute>
-      </xsd:extension>
-    </xsd:simpleContent>
-  </xsd:complexType>
-  <xsd:complexType name="tDataFormatMetaData">
-    <xsd:sequence>
-      <xsd:element name="dataSource" type="xsd:string" maxOccurs="1"
-        minOccurs="0"></xsd:element>
-    </xsd:sequence>
-  </xsd:complexType>
-</xsd:schema>');
+('RDBDataConverter', 'List<String>', 'RDBResult', 'RDBDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.relational.RDBDataConverter');
 
 INSERT INTO simpl_resources.dataconverters
-(id, name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation, xml_schema)
+(name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
 VALUES
-(3, 'RandomFilesDataConverter', 'File', 'RandomFiles', 'RandomFilesDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.file.RandomFilesDataConverter', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xsd:schema targetNamespace="http://org.simpl.core/plugins/dataconverter/dataformat/RandomFilesDataFormat"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-  xmlns="http://org.simpl.core/plugins/dataconverter/dataformat/RandomFilesDataFormat"
-  xmlns:sdo="commonj.sdo" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <xsd:annotation>
-    <xsd:documentation>Defines the SDO structure of data from files.</xsd:documentation>
-  </xsd:annotation>
-  <xsd:element name="RandomFilesDataFormat" type="tRandomFilesDataFormat"></xsd:element>
-  <xsd:complexType name="tRandomFilesDataFormat">
-    <xsd:sequence>
-      <xsd:element name="file" type="tFile" maxOccurs="unbounded"
-        minOccurs="0">
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name="dataFormat" type="xsd:string"></xsd:attribute>
-    <xsd:attribute name="folder" type="xsd:string"></xsd:attribute>
-  </xsd:complexType>
-  <xsd:complexType name="tFile">
-    <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
-    <xsd:attribute name="content" type="xsd:string"></xsd:attribute>
-  </xsd:complexType>
-</xsd:schema>');
+('CSVDataConverter', 'File', 'RandomFiles', 'CSVDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.relational.CSVDataConverter');
+
+INSERT INTO simpl_resources.dataconverters
+(name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
+VALUES
+('RandomFilesDataConverter', 'File', 'RandomFiles', 'RandomFilesDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.file.RandomFilesDataConverter');
 
 /* Workaround: the getConnectorXMLProperty and thus the setConnectorDataConverter trigger does not work properly if not at least one connector exists. This is why one dummy connector is created before inserting the real connectors. */
 INSERT INTO simpl_resources.connectors
-(id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
+(dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
 VALUES
-(2, 0, 'DUMMY', '', '', '', '<dummy></dummy>');
+(0, 'DUMMY', '', '', '', '<dummy></dummy>');
 
 INSERT INTO simpl_resources.connectors
-(id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
+(dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
 VALUES
-(1, 1, 'DB2RDBConnector', 'List<String>', 'RDBResult', 'org.simpl.core.plugins.connector.rdb.DB2RDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
+(1, 'RelationalJDBCbasedDatabaseConnector', 'List<String>', 'RDBResult', 'org.simpl.core.plugins.connector.rdb.RelationalJDBCbasedDatabaseConnector', '<?xml version="1.0" encoding="UTF-8"?>
 <properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Database</type>
-  <subType>DB2</subType>
+  <subType>Relational</subType>
   <language>SQL</language>
+  <apiType>JDBC</apiType>
   <dataFormat>RDBDataFormat</dataFormat>
 </properties_description>');
 
@@ -502,80 +498,50 @@ VALUES
 DELETE FROM simpl_resources.connectors WHERE name = 'DUMMY';
 
 INSERT INTO simpl_resources.connectors
-(id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
+(dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
 VALUES
-(2, 1, 'DerbyRDBConnector', 'List<String>', 'RDBResult', 'org.simpl.core.plugins.connector.rdb.DerbyRDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
-<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
-  <type>Database</type>
-  <subType>Derby</subType>
-  <language>SQL</language>
-  <dataFormat>RDBDataFormat</dataFormat>
-</properties_description>');
-
-INSERT INTO simpl_resources.connectors
-(id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
-VALUES
-(3, 1, 'EmbDerbyRDBConnector', 'List<String>', 'RDBResult', 'org.simpl.core.plugins.connector.rdb.EmbDerbyRDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
+(1, 'EmbDerbyRDBConnector', 'List<String>', 'RDBResult', 'org.simpl.core.plugins.connector.rdb.EmbDerbyRDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
 <properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Database</type>
   <subType>EmbeddedDerby</subType>
   <language>SQL</language>
+  <apiType>JDBC_JDC</apiType>
   <dataFormat>RDBDataFormat</dataFormat>
 </properties_description>');
 
 INSERT INTO simpl_resources.connectors
-(id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
+(dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
 VALUES
-(4, 1, 'MySQLRDBConnector', 'List<String>', 'RDBResult', 'org.simpl.core.plugins.connector.rdb.MySQLRDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
-<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
-  <type>Database</type>
-  <subType>MySQL</subType>
-  <language>SQL</language>
-  <dataFormat>RDBDataFormat</dataFormat>
-</properties_description>');
-
-INSERT INTO simpl_resources.connectors
-(id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
-VALUES
-(5, 1, 'PostgreSQLRDBConnector', 'List<String>', 'RDBResult', 'org.simpl.core.plugins.connector.rdb.PostgreSQLRDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
-<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
-  <type>Database</type>
-  <subType>PostgreSQL</subType>
-  <language>SQL</language>
-  <dataFormat>RDBDataFormat</dataFormat>
-</properties_description>');
-
-INSERT INTO simpl_resources.connectors
-(id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
-VALUES
-(6, 3, 'WindowsLocalFSConnector', 'File', 'RandomFiles', 'org.simpl.core.plugins.connector.fs.WindowsLocalFSConnector', '<?xml version="1.0" encoding="UTF-8"?>
+(3, 'WindowsLocalFSConnector', 'File', 'RandomFiles', 'org.simpl.core.plugins.connector.fs.WindowsLocalFSConnector', '<?xml version="1.0" encoding="UTF-8"?>
 <properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
   <type>Filesystem</type>
   <subType>Windows Local</subType>
   <language>Shell</language>
+  <apiType>CommandLine</apiType>
   <dataFormat>RandomFilesDataFormat</dataFormat>
 </properties_description>');
 
 INSERT INTO simpl_resources.connectors
-(id, dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
+(dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
 VALUES
-(7, 3, 'SSHConnector', 'File', 'RandomFiles', 'org.simpl.core.plugins.connector.ssh.SSHConnector', '<?xml version="1.0" encoding="UTF-8"?>
+(3, 'SSHConnector', 'File', 'RandomFiles', 'org.simpl.core.plugins.connector.ssh.SSHConnector', '<?xml version="1.0" encoding="UTF-8"?>
 <properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
 	<type>Filesystem</type>
 	<subType>SSH Server</subType>
 	<language>Shell</language>
+	<apiType>SSH</apiType>
 	<dataFormat>RandomFilesDataFormat</dataFormat>
 </properties_description>');
 
 INSERT INTO simpl_resources.datatransformationservices
-(id, name, connector_dataformat, workflow_dataformat, direction_connector_workflow, direction_workflow_connector, implementation)
+(name, connector_dataformat, workflow_dataformat, direction_connector_workflow, direction_workflow_connector, implementation)
 VALUES
-(1, 'CSVToRDBDataTransformationService', 'CSVDataFormat', 'RDBDataFormat', 'true', 'true', 'org.simpl.data.transformation.services.CSVToRDBDataTransformationService');
+('CSVToRDBDataTransformationService', 'CSVDataFormat', 'RDBDataFormat', 'true', 'true', 'org.simpl.data.transformation.services.CSVToRDBDataTransformationService');
 
 INSERT INTO simpl_resources.datatransformationservices
-(id, name, connector_dataformat, workflow_dataformat, direction_connector_workflow, direction_workflow_connector, implementation)
+(name, connector_dataformat, workflow_dataformat, direction_connector_workflow, direction_workflow_connector, implementation)
 VALUES
-(2, 'RandomFilesToRDBDataTransformationService', 'RandomFilesDataFormat', 'RDBDataFormat', 'true', 'true', 'org.simpl.data.transformation.services.RandomFilesToRDBDataTransformationService');
+('RandomFilesToRDBDataTransformationService', 'RandomFilesDataFormat', 'RDBDataFormat', 'true', 'true', 'org.simpl.data.transformation.services.RandomFilesToRDBDataTransformationService');
 
 /* Workaround: the getDataSourceXMLProperty and thus the setDataSourceConnector trigger does not work properly if not at least one connector exists. This is why one dummy datasource is created before inserting the real datasources. */
 INSERT INTO simpl_resources.datasources
@@ -613,7 +579,7 @@ VALUES
   , ''
   , ''
   , NULL
-  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Filesystem</type><subType>Windows Local</subType><language>Shell</language><dataFormat>RandomFilesDataFormat</dataFormat></connector_properties_description>'
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Filesystem</type><subType>Windows Local</subType><language>Shell</language><apiType>CommandLine</apiType><driverName></driverName><addressPrefix></addressPrefix><dataFormat>RandomFilesDataFormat</dataFormat></connector_properties_description>'
 );
 
 /* Workaround: the DUMMY database gets deleted after one datasource is insert. */
@@ -635,7 +601,7 @@ VALUES
   , 'simpl'
   , 'localhost/simpl'
   , NULL
-  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>MySQL</subType><language>SQL</language><dataFormat>RDBDataFormat</dataFormat></connector_properties_description>'
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>Relational</subType><language>SQL</language><apiType>JDBC</apiType><driverName>com.mysql.jdbc.Driver</driverName><addressPrefix>jdbc:mysql://</addressPrefix><dataFormat>RDBDataFormat</dataFormat></connector_properties_description>'
 );
 
 INSERT INTO simpl_resources.datasources
@@ -654,7 +620,7 @@ VALUES
   , 'postgres'
   , 'localhost:5432/postgres'
   , NULL
-  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>PostgreSQL</subType><language>SQL</language><dataFormat>RDBDataFormat</dataFormat></connector_properties_description>'
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>Relational</subType><language>SQL</language><apiType>JDBC</apiType><driverName>org.postgresql.Driver</driverName><addressPrefix>jdbc:postgresql://</addressPrefix><dataFormat>RDBDataFormat</dataFormat></connector_properties_description>'
 );
 
 
@@ -674,7 +640,7 @@ VALUES
   , 'hiwi'
   , 'localhost:50000/TESTDAT'
   , NULL
-  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>DB2</subType><language>SQL</language><dataFormat>RDBDataFormat</dataFormat></connector_properties_description>'
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>Relational</subType><language>SQL</language><apiType>JDBC</apiType><driverName>com.ibm.db2.jcc.DB2Driver</driverName><addressPrefix>jdbc:db2://</addressPrefix><dataFormat>RDBDataFormat</dataFormat></connector_properties_description>'
 );
 
 INSERT INTO simpl_resources.datasources
@@ -693,7 +659,26 @@ VALUES
   , ''
   , 'C:\\Tomcat 6.0\\simplDB'
   , NULL
-  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>EmbeddedDerby</subType><language>SQL</language><dataFormat>RDBDataFormat</dataFormat></connector_properties_description>'
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>Relational</subType><language>SQL</language><apiType>JDBC</apiType><driverName>org.apache.derby.jdbc.EmbeddedDriver</driverName><addressPrefix>jdbc:derby:</addressPrefix><dataFormat>RDBDataFormat</dataFormat></connector_properties_description>'
+);
+
+INSERT INTO simpl_resources.datasources
+(
+  logical_name
+  , security_username
+  , security_password
+  , interface_description
+  , properties_description
+  , connector_properties_description
+)
+VALUES
+(
+  'MyDerby'
+  , ''
+  , ''
+  , 'C:\\MyDerby\\testdb'
+  , NULL
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>Relational</subType><language>SQL</language><apiType>JDBC</apiType><driverName>org.apache.derby.jdbc.EmbeddedDriver</driverName><addressPrefix>jdbc:derby:</addressPrefix><dataFormat>RDBDataFormat</dataFormat></connector_properties_description>'
 );
 
 INSERT INTO simpl_definitions.languages

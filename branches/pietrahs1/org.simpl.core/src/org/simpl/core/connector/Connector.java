@@ -83,16 +83,4 @@ public interface Connector<S, T> {
   public DataObject getMetaData(DataSource dataSource, String filter)
       throws ConnectionException;
 
-  /**
-   * Creates a new target (e.g. a database table) that is used to write new data as
-   * required for {@link #queryData(DataSource, String, String)} and
-   * {@link #writeData(DataSource, Object, String)}.
-   * 
-   * @param dataSource
-   * @param dataObject
-   * @param target
-   * @return
-   */
-  public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
-      throws ConnectionException;
 }

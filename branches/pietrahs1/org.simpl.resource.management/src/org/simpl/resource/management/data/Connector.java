@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "connector", propOrder = { "id", "name", "implementation",
-    "inputDataType", "outputDataType", "type", "subType", "language",
+    "inputDataType", "outputDataType", "type", "subType", "language", "apiType",
     "propertiesDescription", "dataConverter" })
 public class Connector {
   private String id;
@@ -29,6 +29,7 @@ public class Connector {
   private String type;
   private String subType;
   private String language;
+  private String apiType;
   private String propertiesDescription;
   private DataConverter dataConverter = new DataConverter();
 
@@ -154,6 +155,21 @@ public class Connector {
    */
   public void setLanguage(String language) {
     this.language = language;
+  }
+  
+  /**
+   * @return the api type
+   */
+  public String getAPIType() {
+    return apiType;
+  }
+
+  /**
+   * @param language
+   *          the api type to set
+   */
+  public void setAPIType(String apiType) {
+    this.apiType = apiType;
   }
 
   /**

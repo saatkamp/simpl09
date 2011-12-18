@@ -128,6 +128,7 @@ public class ConnectorFormAction extends HttpServlet {
     connector.setType(parameters.get("type"));
     connector.setSubType(parameters.get("subType"));
     connector.setLanguage(parameters.get("language"));
+    connector.setAPIType(parameters.get("apiType"));
 
     // use existing connector properties data if no file is chosen
     if (!parameters.get("properties").equals("")) {

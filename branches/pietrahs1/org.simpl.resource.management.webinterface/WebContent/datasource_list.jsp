@@ -33,6 +33,9 @@
         <td>Type</td>
         <td>Sub Type</td>
         <td>Language</td>
+        <td>apiType</td>
+        <td>driverName</td>
+        <td>addressPrefix</td>
         <td>Data Format</td>
         <td>User</td>
         <td>Password</td>
@@ -49,6 +52,9 @@
           <td><%=!Check.empty(source.getType()) ? source.getType() : ""%></td>
           <td><%=!Check.empty(source.getSubType()) ? source.getSubType() : ""%></td>
           <td><%=!Check.empty(source.getLanguage()) ? source.getLanguage() : ""%></td>
+          <td><%=!Check.empty(source.getAPIType()) ? source.getAPIType() : ""%></td>
+          <td><%=!Check.empty(source.getDriverName()) ? source.getDriverName() : ""%></td>
+          <td><%=!Check.empty(source.getAddressPrefix()) ? source.getAddressPrefix() : ""%></td>
           <td><%=!Check.empty(source.getConnector().getDataConverter().getWorkflowDataFormat()) ? source.getConnector().getDataConverter().getWorkflowDataFormat() : ""%></td>
           <td><%=!Check.empty(source.getAuthentication().getUser()) ? source.getAuthentication().getUser() : ""%></td>
           <td><%=!Check.empty(source.getAuthentication().getPassword()) ? source.getAuthentication().getPassword().replaceAll(".", "*") : ""%></td>

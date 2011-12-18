@@ -122,13 +122,6 @@ public class DataConverterFormAction extends HttpServlet {
     dataConverter.setDirectionOutputWorkflow(parameters.get("directionOutputWorkflow") != null ? "true" : "false");
     dataConverter.setDirectionWorkflowInput(parameters.get("directionWorkflowInput") != null ? "true" : "false");
     dataConverter.setImplementation(parameters.get("implementation"));
-  
-    // use existing xml schema data if no file is chosen
-    if (!parameters.get("xmlSchema").equals("")) {
-      dataConverter.setXmlSchema(parameters.get("xmlSchema").replace("'", "\\'"));
-    } else {
-      dataConverter.setXmlSchema(parameters.get("xmlSchemaData").replace("'", "\\'"));
-    }
     
     return dataConverter;
   }

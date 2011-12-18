@@ -11,7 +11,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.simpl.core.plugins.connector.rdb.DB2RDBConnector;
 import org.simpl.core.plugins.dataconverter.DataConverterPlugin;
 import org.simpl.core.plugins.dataconverter.file.RandomFiles;
 
@@ -33,7 +32,7 @@ import commonj.sdo.DataObject;
  * @link http://code.google.com/p/simpl09/
  */
 public class CSVDataConverter extends DataConverterPlugin<RandomFiles, File> {
-  static Logger logger = Logger.getLogger(DB2RDBConnector.class);
+  static Logger logger = Logger.getLogger(CSVDataConverter.class);
 
   /**
    * Initialize the plug-in.

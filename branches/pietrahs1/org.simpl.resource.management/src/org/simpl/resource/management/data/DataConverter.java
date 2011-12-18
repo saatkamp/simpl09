@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dataConverter", propOrder = { "id", "name", "inputDataType",
     "outputDataType", "workflowDataFormat", "directionOutputWorkflow",
-    "directionWorkflowInput", "implementation", "xmlSchema" })
+    "directionWorkflowInput", "implementation"})
 public class DataConverter {
   private String id;
   private String name;
@@ -29,7 +29,6 @@ public class DataConverter {
   private String directionOutputWorkflow;
   private String directionWorkflowInput;
   private String implementation;
-  private String xmlSchema;
 
   public DataConverter() {
 
@@ -155,21 +154,6 @@ public class DataConverter {
     this.implementation = implementation;
   }
 
-  /**
-   * @return the xmlSchema
-   */
-  public String getXmlSchema() {
-    return xmlSchema;
-  }
-
-  /**
-   * @param xmlSchema
-   *          the xmlSchema to set
-   */
-  public void setXmlSchema(String xmlSchema) {
-    this.xmlSchema = xmlSchema;
-  }
-
   @Override
   public String toString() {
     String string = "";
@@ -183,7 +167,6 @@ public class DataConverter {
     string += "\tdirectionOutputWorkflow: " + this.directionOutputWorkflow + ",\r\n";
     string += "\tdirectionWorkflowInput: " + this.directionWorkflowInput + ",\r\n";
     string += "\timplementation: " + this.implementation + ",\r\n";
-    string += "\txmlSchema: " + this.xmlSchema + ",\r\n";
     string += "}";
 
     return string;
