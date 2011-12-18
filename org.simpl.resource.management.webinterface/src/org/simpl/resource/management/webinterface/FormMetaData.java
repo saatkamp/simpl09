@@ -5,8 +5,6 @@ import java.util.HashSet;
 
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
-import org.simpl.resource.management.data.DataConverter;
-import org.simpl.resource.management.data.DataConverterList;
 
 /**
  * <b>Purpose: Offers elements for web forms with data from the Resource Management.</b><br>
@@ -22,11 +20,13 @@ import org.simpl.resource.management.data.DataConverterList;
  */
 public class FormMetaData {
   private static FormMetaData instance = null;
-  private ArrayList<String> dataFormats = null;
+  private ArrayList<String> workflowDataformatTypeNames = null;
   private ResourceManagement resourceManagement = null;
   private ArrayList<String> types = null;
   private ArrayList<String> subTypes = null;
   private ArrayList<String> languages = null;
+  private ArrayList<String> apiTypes = null;
+
 
   private FormMetaData() {
     this.resourceManagement = ResourceManagementClient.getService(RMWebConfig
@@ -42,7 +42,7 @@ public class FormMetaData {
   }
 
   /**
-   * Returns the data formats as HTML select element.
+   * Returns the names of the workflow data format types as HTML select element.
    * 
    * @param name
    *          Name of the form element
@@ -52,11 +52,11 @@ public class FormMetaData {
    * @throws Exception
    */
   public String getDataFormatSelect(String name, String selectedItem) throws Exception {
-    this.retrieveDataConverters();
+    this.retrieveWorkflowDataFormatNames();
 
     String select = this
-        .createSelectElement(name, selectedItem, this.dataFormats);
-
+    	.createSelectElement(name, selectedItem, this.workflowDataformatTypeNames);
+    
     return select;
   }
 
@@ -107,6 +107,22 @@ public class FormMetaData {
 
     return select;
   }
+  
+  /**
+   * Returns the API types as HTML select element.
+   * 
+   * @param selectedItem
+   *          Selected item
+   * @return HTML select element
+   * @throws Exception
+   */
+  public String getAPITypeSelect(String name, String selectedItem) throws Exception {
+    this.retrieveAPITypes();
+
+    String select = this.createSelectElement(name, selectedItem, this.apiTypes);
+
+    return select;
+  }
 
   /**
    * Resets the resource management data.
@@ -116,22 +132,14 @@ public class FormMetaData {
   }
 
   /**
-   * Retrieves the data format names from the resource management.
+   * Retrieves the names of the workflow data format types from the resource management.
    * 
    * @throws Exception
    */
-  private void retrieveDataConverters() throws Exception {
-    if (this.dataFormats == null) {
-      this.dataFormats = new ArrayList<String>();
-      
-      DataConverterList dataConverters = resourceManagement.getAllDataConverters();
-      
-      for (DataConverter dataConverter : dataConverters.getDataConverters()) {
-        if (!this.dataFormats.contains(dataConverter.getWorkflowDataFormat())) {
-          this.dataFormats.add(dataConverter.getWorkflowDataFormat());
-        }
-      }
-    }
+  private void retrieveWorkflowDataFormatNames() throws Exception {
+	  if (this.workflowDataformatTypeNames == null) {
+	      this.workflowDataformatTypeNames = (ArrayList<String>) this.resourceManagement.getWorkflowDataFormatTypeNames().getItems();
+	    }
   }
 
   /**
@@ -194,6 +202,17 @@ public class FormMetaData {
       this.languages.clear();
       this.languages.addAll(h);
     }
+  }
+  
+  /**
+   * Retrieves the API types from the resource management.
+   * 
+   * @throws Exception
+   */
+  private void retrieveAPITypes() throws Exception {
+	  if (this.apiTypes == null) {
+	      this.apiTypes = (ArrayList<String>) this.resourceManagement.getAPITypes().getItems();
+	    }
   }
 
   /**

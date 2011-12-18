@@ -246,13 +246,6 @@ public class SSHConnector extends ConnectorPlugin<File, RandomFiles> {
     return metaDataObject;
   }
 
-  @Override
-  public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
-      throws ConnectionException {
-    // no need to create a target
-    return true;
-  }
-
   /**
    * Executes a shell command on the SSH server.
    * 

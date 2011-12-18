@@ -150,6 +150,9 @@ public class DataSourceFormAction extends HttpServlet {
     dataSource.setType(parameters.get("type"));
     dataSource.setSubType(parameters.get("subtype"));
     dataSource.setLanguage(parameters.get("language"));
+    dataSource.setAPIType(parameters.get("apitype"));
+    dataSource.setDriverName(parameters.get("drivername"));
+    dataSource.setAddressPrefix(parameters.get("addressprefix"));
     
     dataConverter.setWorkflowDataFormat(parameters.get("dataformat"));
     connector.setDataConverter(dataConverter);

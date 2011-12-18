@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dataSource", propOrder = { "id", "name", "address", "type", "subType",
-    "language", "propertiesDescription", "connectorPropertiesDescription",
+    "language", "apiType", "driverName", "addressPrefix", "propertiesDescription", "connectorPropertiesDescription",
     "authentication", "connector" })
 public class DataSource {
   private String id;
@@ -32,6 +32,9 @@ public class DataSource {
   private String type;
   private String subType;
   private String language;
+  private String apiType;
+  private String driverName;
+  private String addressPrefix;
   private String propertiesDescription;
   private String connectorPropertiesDescription;
   private Authentication authentication = new Authentication();
@@ -130,6 +133,51 @@ public class DataSource {
   public void setLanguage(String language) {
     this.language = language;
   }
+  
+  /**
+   * @return the api type
+   */
+  public String getAPIType() {
+    return apiType;
+  }
+
+  /**
+   * @param apiType
+   *          the api type to set
+   */
+  public void setAPIType(String apiType) {
+    this.apiType = apiType;
+  }
+  
+  /**
+   * @return the driver name
+   */
+  public String getDriverName() {
+    return driverName;
+  }
+
+  /**
+   * @param apiType
+   *          the driver name to set
+   */
+  public void setDriverName(String driverName) {
+    this.driverName = driverName;
+  }
+  
+  /**
+   * @return the address prefix
+   */
+  public String getAddressPrefix() {
+    return addressPrefix;
+  }
+
+  /**
+   * @param apiType
+   *          the address prefix to set
+   */
+  public void setAddressPrefix(String addressPrefix) {
+    this.addressPrefix = addressPrefix;
+  }
 
   /**
    * @return the propertiesDescription
@@ -202,6 +250,9 @@ public class DataSource {
     string += "\ttype: " + this.type + ",\r\n";
     string += "\tsubtype: " + this.subType + ",\r\n";
     string += "\tlanguage: " + this.language + ",\r\n";
+    string += "\tapitype: " + this.apiType + ",\r\n";
+    string += "\tdrivername: " + this.driverName + ",\r\n";
+    string += "\taddressprefix: " + this.addressPrefix + ",\r\n";
     string += "\tpropertiesDescription: " + this.propertiesDescription + ",\r\n";
     string += "\tconnectorPropertiesDescription: " + this.connectorPropertiesDescription
         + ",\r\n";

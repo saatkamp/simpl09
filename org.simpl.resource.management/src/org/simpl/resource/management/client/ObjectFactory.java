@@ -21,7 +21,6 @@ import org.simpl.resource.management.data.StringList;
 import org.simpl.resource.management.data.TypeDefinition;
 import org.simpl.resource.management.data.TypeDefinitionList;
 
-
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
@@ -49,51 +48,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataTransformationServiceList }
+     * Create an instance of {@link Authentication }
      * 
      */
-    public DataTransformationServiceList createDataTransformationServiceList() {
-        return new DataTransformationServiceList();
+    public Authentication createAuthentication() {
+        return new Authentication();
     }
 
     /**
-     * Create an instance of {@link TypeDefinition }
+     * Create an instance of {@link DataTransformationService }
      * 
      */
-    public TypeDefinition createTypeDefinition() {
-        return new TypeDefinition();
+    public DataTransformationService createDataTransformationService() {
+        return new DataTransformationService();
     }
 
     /**
-     * Create an instance of {@link DataSource }
+     * Create an instance of {@link StrategyPlugin }
      * 
      */
-    public DataSource createDataSource() {
-        return new DataSource();
+    public StrategyPlugin createStrategyPlugin() {
+        return new StrategyPlugin();
     }
 
     /**
-     * Create an instance of {@link TypeDefinitionList }
+     * Create an instance of {@link StrategyPluginList }
      * 
      */
-    public TypeDefinitionList createTypeDefinitionList() {
-        return new TypeDefinitionList();
-    }
-
-    /**
-     * Create an instance of {@link StringList }
-     * 
-     */
-    public StringList createStringList() {
-        return new StringList();
-    }
-
-    /**
-     * Create an instance of {@link Exception }
-     * 
-     */
-    public Exception createException() {
-        return new Exception();
+    public StrategyPluginList createStrategyPluginList() {
+        return new StrategyPluginList();
     }
 
     /**
@@ -113,27 +96,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StrategyPluginList }
+     * Create an instance of {@link StringList }
      * 
      */
-    public StrategyPluginList createStrategyPluginList() {
-        return new StrategyPluginList();
+    public StringList createStringList() {
+        return new StringList();
     }
 
     /**
-     * Create an instance of {@link DataConverter }
+     * Create an instance of {@link TypeDefinition }
      * 
      */
-    public DataConverter createDataConverter() {
-        return new DataConverter();
-    }
-
-    /**
-     * Create an instance of {@link StrategyPlugin }
-     * 
-     */
-    public StrategyPlugin createStrategyPlugin() {
-        return new StrategyPlugin();
+    public TypeDefinition createTypeDefinition() {
+        return new TypeDefinition();
     }
 
     /**
@@ -145,19 +120,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Authentication }
+     * Create an instance of {@link DataSource }
      * 
      */
-    public Authentication createAuthentication() {
-        return new Authentication();
+    public DataSource createDataSource() {
+        return new DataSource();
     }
 
     /**
-     * Create an instance of {@link DataTransformationService }
+     * Create an instance of {@link DataConverter }
      * 
      */
-    public DataTransformationService createDataTransformationService() {
-        return new DataTransformationService();
+    public DataConverter createDataConverter() {
+        return new DataConverter();
     }
 
     /**
@@ -166,6 +141,30 @@ public class ObjectFactory {
      */
     public ConnectorList createConnectorList() {
         return new ConnectorList();
+    }
+
+    /**
+     * Create an instance of {@link Exception }
+     * 
+     */
+    public Exception createException() {
+        return new Exception();
+    }
+
+    /**
+     * Create an instance of {@link TypeDefinitionList }
+     * 
+     */
+    public TypeDefinitionList createTypeDefinitionList() {
+        return new TypeDefinitionList();
+    }
+
+    /**
+     * Create an instance of {@link DataTransformationServiceList }
+     * 
+     */
+    public DataTransformationServiceList createDataTransformationServiceList() {
+        return new DataTransformationServiceList();
     }
 
     /**

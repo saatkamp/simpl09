@@ -305,13 +305,6 @@ public class WindowsLocalFSConnector extends ConnectorPlugin<File, RandomFiles> 
     return metaDataObject;
   }
 
-  @Override
-  public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
-      throws ConnectionException {
-    // no need to create a target
-    return true;
-  }
-
   /**
    * Executes a shell command in the given working directory and returns the shell output.
    * 

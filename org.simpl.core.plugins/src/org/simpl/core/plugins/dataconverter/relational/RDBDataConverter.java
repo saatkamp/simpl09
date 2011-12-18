@@ -1,11 +1,12 @@
 package org.simpl.core.plugins.dataconverter.relational;
 
-import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.sql.rowset.CachedRowSet;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -19,9 +20,8 @@ import commonj.sdo.DataObject;
  * back from a DataObject, SQL statements are created, that can be executed on a RDB
  * database to create or update the data.<br>
  * Because the result set and data base meta data objects need a connection to be able to
- * retrieve data from, the connection is not closed by the data source service
- * retrieveData() method but after toSDO(). The method fromSDO() is only working if the
- * table has primary keys<br>
+ * retrieve data from, the connector saves the required information as cached row set objects.
+ * The method fromSDO() is only working if the table has primary keys<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
@@ -66,9 +66,8 @@ public class RDBDataConverter extends DataConverterPlugin<RDBResult, List<String
     DataObject rowObject = null;
     DataObject columnObject = null;
 
-    ResultSet resultSet = rdbResult.getResultSet();
-    ResultSet primaryKeys = null;
-    DatabaseMetaData dbMetaData = rdbResult.getDbMetaData();
+    CachedRowSet rowSet = rdbResult.getResultRowSet();
+    CachedRowSet primaryKeys = null;
 
     List<String> primaryKeyList = new ArrayList<String>();
     boolean isSetTableMetaData = false;
@@ -81,13 +80,9 @@ public class RDBDataConverter extends DataConverterPlugin<RDBResult, List<String
     dataFormatMetaDataObject.set("dataSource", rdbResult.getDataSource().getName());
 
     try {
-      ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
-
-      // get primary keys (the catalog attribute is set null because it doesn't reflect
-      // the DB2 catalog, and no primary keys are retrieved in that case)
-      primaryKeys = dbMetaData.getPrimaryKeys(null, resultSetMetaData.getSchemaName(1)
-          .trim(), resultSetMetaData.getTableName(1));
-
+      ResultSetMetaData resultSetMetaData = rowSet.getMetaData();
+      primaryKeys = rdbResult.getPrimaryKeyRowSet();
+      
       while (primaryKeys.next()) {
         primaryKeyList.add(primaryKeys.getString("COLUMN_NAME"));
       }
@@ -98,42 +93,31 @@ public class RDBDataConverter extends DataConverterPlugin<RDBResult, List<String
       rdbTableMetaDataObject.setString("name", resultSetMetaData.getTableName(1));
       rdbTableMetaDataObject.setString("catalog", resultSetMetaData.getCatalogName(1));
 
-      while (resultSet.next()) {
+      while (rowSet.next()) {
         // add row
         rowObject = tableObject.createDataObject("row");
-
         for (int i = 1; i < resultSetMetaData.getColumnCount() + 1; i++) {
+          
           // add table meta data
           if (!isSetTableMetaData) {
             columnTypeObject = rdbTableMetaDataObject.createDataObject("columnType");
             columnTypeObject.set(0, resultSetMetaData.getColumnTypeName(i)
-                + "("
-                + this.getColumnSize(dbMetaData, resultSetMetaData.getTableName(i),
-                    resultSetMetaData.getColumnName(i)) + ")");
+                + "(" + this.getColumnSize(rdbResult.getColumnRowSet(i-1),
+                resultSetMetaData.getColumnName(i)) + ")");
             columnTypeObject.set("columnName", resultSetMetaData.getColumnName(i));
-
             if (primaryKeyList.contains(resultSetMetaData.getColumnName(i))) {
               columnTypeObject.set("isPrimaryKey", true);
             }
           }
-
+          
           // add column
           columnObject = rowObject.createDataObject("column");
           columnObject.set("name", resultSetMetaData.getColumnName(i));
-          columnObject.set(0, resultSet.getString(resultSetMetaData.getColumnName(i)));
+          columnObject.set(0, rowSet.getString(resultSetMetaData.getColumnName(i)));
         }
 
         isSetTableMetaData = true;
       }
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-
-    // disconnect from the data source
-    try {
-      dbMetaData.getConnection().commit();
-      dbMetaData.getConnection().close();
     } catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -338,15 +322,16 @@ public class RDBDataConverter extends DataConverterPlugin<RDBResult, List<String
    * @param columnName
    * @return
    */
-  private int getColumnSize(DatabaseMetaData dbMetaData, String tableName,
+  private int getColumnSize(CachedRowSet columns2,
       String columnName) {
     int size = 0;
 
     ResultSet columns = null;
 
     try {
-      columns = dbMetaData.getColumns(null, null, tableName, null);
-
+      //columns = dbMetaData.getColumns(null, null, tableName, null);
+      columns = columns2;
+      
       while (columns.next()) {
         if (columns.getString("COLUMN_NAME").equals(columnName)) {
           size = columns.getInt("COLUMN_SIZE");

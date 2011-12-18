@@ -466,42 +466,45 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
      * Get all SIMPL schemas from the Resource Management and merge them to a WSDL with
      * type definitions. (simpl.wsdl)
      */
-    List<String> dataFormats = null;
-    List<Connector> connectors = null;
-    String dataFormatSchemaString = null;
+//    List<String> dataFormats = null;
+//    List<Connector> connectors = null;
+//    String dataFormatSchemaString = null;
 
-    // retrieve all XML schemas from Resource Management connectors
+    // retrieve XML schema from Resource Management 
     try {
-      dataFormats = new ArrayList<String>();
-      connectors = ResourceManagementCommunication.getInstance().getAllConnectors();
-
-      // get the existing workflow data formats from the connectors
-      for (Connector connector : connectors) {
-        if (connector.getDataConverter() != null) {
-          String dataFormat = connector.getDataConverter().getWorkflowDataFormat();
-          
-          if (!dataFormats.contains(dataFormat)) {
-            dataFormats.add(dataFormat);
-          }
-        }
-      }
-
-      // get the workflow data format XSD schemas from the Resource Management and parse
-      // them into XSD schema objects.
-      for (String dataFormat : dataFormats) {
-        dataFormatSchemaString = ResourceManagementCommunication.getInstance().getDataFormatSchema(
-            dataFormat);
-        
-        // write file
-        File file = new File(absolutWorkspacePath + projectPath.append(dataFormat).addFileExtension(
-            IBPELUIConstants.EXTENSION_XSD));
-        FileWriter fstream = new FileWriter(file);
-        BufferedWriter out = new BufferedWriter(fstream);
-        out.write(dataFormatSchemaString);
-        out.close();
-        
-        SIMPL_SCHEMA_FILES.put(file, dataFormatSchemaString);
-      }
+//      the workflow data format types are now stored in the simpl.xsd
+//
+//
+//      dataFormats = new ArrayList<String>();
+//      connectors = ResourceManagementCommunication.getInstance().getAllConnectors();
+//
+//      // get the existing workflow data formats from the connectors
+//      for (Connector connector : connectors) {
+//        if (connector.getDataConverter() != null) {
+//          String dataFormat = connector.getDataConverter().getWorkflowDataFormat();
+//          
+//          if (!dataFormats.contains(dataFormat)) {
+//            dataFormats.add(dataFormat);
+//          }
+//        }
+//      }
+//
+//      // get the workflow data format XSD schemas from the Resource Management and parse
+//      // them into XSD schema objects.
+//      for (String dataFormat : dataFormats) {
+//        dataFormatSchemaString = ResourceManagementCommunication.getInstance().getDataFormatSchema(
+//            dataFormat);
+//        
+//        // write file
+//        File file = new File(absolutWorkspacePath + projectPath.append(dataFormat).addFileExtension(
+//            IBPELUIConstants.EXTENSION_XSD));
+//        FileWriter fstream = new FileWriter(file);
+//        BufferedWriter out = new BufferedWriter(fstream);
+//        out.write(dataFormatSchemaString);
+//        out.close();
+//        
+//        SIMPL_SCHEMA_FILES.put(file, dataFormatSchemaString);
+//      }
 
       // retrieve definitions schema from Resource Management
       String schema = ResourceManagementCommunication.getInstance().getAllTypeDefinitionsSchema();

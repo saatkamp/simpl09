@@ -28,7 +28,10 @@
   String key = "";
   String password = "";
   String language = "";
-  String dataformat = "";
+  String apitype = "";
+  String drivername = "";
+  String addressprefix = "";
+  String workflowdataformat = "";
   String properties = "";
   String connectorProperties = "";
   
@@ -59,11 +62,14 @@
       address = dataSource.getAddress();
       type = dataSource.getType();
       subtype = dataSource.getSubType();
+      apitype = dataSource.getAPIType();
+      drivername = dataSource.getDriverName();
+      addressprefix = dataSource.getAddressPrefix();
       properties = dataSource.getPropertiesDescription();
       username = dataSource.getAuthentication().getUser();
       password = dataSource.getAuthentication().getPassword();
       language = dataSource.getLanguage();
-      dataformat = dataSource.getConnector().getDataConverter().getWorkflowDataFormat();
+      workflowdataformat = dataSource.getConnector().getDataConverter().getWorkflowDataFormat();
       connectorProperties = dataSource.getConnectorPropertiesDescription();
     }
   }
@@ -97,10 +103,25 @@
     <td><label>Language</label></td>
     <td><%=FormMetaData.getInstance().getLanguageSelect(language)%></td>
   </tr>
+  
+  <tr>
+    <td><label>API Type</label></td>
+    <td><%=FormMetaData.getInstance().getAPITypeSelect("apitype", apitype)%></td>
+  </tr>
+  
+  <tr>
+    <td><label>Driver Name*</label></td>
+    <td><input name="drivername" type="text" value="<%=drivername%>" size="100" /></td>
+  </tr>
+  
+  <tr>
+    <td><label>Address Prefix*</label></td>
+    <td><input name="addressprefix" type="text" value="<%=addressprefix%>" size="100" /></td>
+  </tr>
 
   <tr>
     <td><label>Workflow Data Format</label></td>
-    <td><%=FormMetaData.getInstance().getDataFormatSelect("dataformat", dataformat)%></td>
+    <td><%=FormMetaData.getInstance().getDataFormatSelect("workflowdataformat", workflowdataformat)%></td>
   </tr>
 
   <tr>
@@ -138,8 +159,10 @@
 The <i>Properties Description</i> must contain a WS-Policy expression in order to be used for late binding.
 <br/><br/>
 <div style="font-weight:bold">Note on Connector Properties Description:</div>
-The <i>Connector Properties Description</i> content is generated from <i>Type</i>, <i>Sub Type</i>, <i>Language</i> and <i>Workflow Data Format</i>, if it is not set explicitly. It is used when saving, to automatically find and assign a connector that has a matching properties description.
-
+The <i>Connector Properties Description</i> content is generated from <i>Type</i>, <i>Sub Type</i>, <i>Language</i>, <i>API Type</i>, <i>Driver Name</i>, <i>Address Prefix</i> and <i>Workflow Data Format</i>, if it is not set explicitly. 
+The <i>API Type</i> is used when saving, to automatically find and assign a connector that has a matching properties description. The remaining properties are used only for documentation.
+<br/><br/>
+* only required for relational and JDBC based databases
 <br/><br/>
 <input type="hidden" name="id" value="<%=id%>" />
 <input type="submit" name="dataSourceFormSubmit" value="Save" />

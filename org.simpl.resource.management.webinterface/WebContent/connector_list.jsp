@@ -37,6 +37,7 @@
         <td>Sub Type</td>
         <td>Language</td>
         <td>Workflow Data Format</td>
+        <td>API Type</td>
         <td>Properties (XML)</td>
         <td>Assigned Data Converter</td>
       </tr>
@@ -52,6 +53,7 @@
           <td><%=!Check.empty(connector.getSubType()) ? connector.getSubType() : ""%></td>
           <td><%=!Check.empty(connector.getLanguage()) ? connector.getLanguage() : ""%></td>
           <td><%=!Check.empty(connector.getDataConverter().getWorkflowDataFormat()) ? connector.getDataConverter().getWorkflowDataFormat() : ""%></td>
+          <td><%=!Check.empty(connector.getAPIType()) ? connector.getAPIType() : ""%></td>
           <td><%=!Check.empty(connector.getPropertiesDescription())%></td>
           <td><%=!Check.empty(connector.getDataConverter().getName()) ? connector.getDataConverter().getName() : ""%></td>
         </tr>

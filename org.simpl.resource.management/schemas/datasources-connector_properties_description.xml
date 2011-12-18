@@ -3,5 +3,8 @@
   <type></type>
   <subType></subType>
   <language></language>
+  <apiType></apiType>
+  <driverName></driverName>
+  <addressPrefix></addressPrefix>
   <dataFormat></dataFormat>
 </connector_properties_description>

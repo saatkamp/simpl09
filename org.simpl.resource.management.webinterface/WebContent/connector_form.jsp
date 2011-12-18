@@ -28,6 +28,7 @@
   String subType = "";
   String language = "";
   String workflowDataFormat = "";
+  String apiType = "";
   String properties = "";
   
   Connector connector = null;
@@ -60,6 +61,7 @@
       subType = connector.getSubType();
       language = connector.getLanguage();
       workflowDataFormat = connector.getDataConverter().getWorkflowDataFormat();
+      apiType = connector.getAPIType();
       properties = connector.getPropertiesDescription();
     }
   }
@@ -103,6 +105,11 @@
     <td><label>Language</label></td>
     <td><input name="language" type="text" value="<%=language%>" size="100" /></td>
   </tr>
+  
+    <tr>
+    <td><label>API Type</label></td>
+    <td><input name="apiType" type="text" value="<%=apiType%>" size="100" /></td>
+  </tr>
 
   <tr>
     <td><label>Workflow Data Format</label></td>
@@ -126,9 +133,9 @@ The <i>Input Data Type</i> and <i>Output Data Type</i> are used along with the <
 
 <br/><br/>
 <div style="font-weight:bold">Note on Properties Description:</div>
-The <i>Properties Description</i> content is generated when saving from <i>Type</i>, <i>Sub Type</i>, <i>Language</i> and <i>Workflow Data Format</i>, if it is not set explicitly. It is used when saving to automatically assign the connector to existing data sources that have a matching connector properties description.
+The <i>Properties Description</i> content is generated when saving from <i>Type</i>, <i>Sub Type</i>, <i>Language</i>, <i>API Type</i> and <i>Workflow Data Format</i>, if it is not set explicitly. The <i>API Type</i> is used when saving to automatically assign the connector to existing data sources that have a matching connector properties description.
 <br/><br/>
-The other way around on opening, the values for <i>Type</i>, <i>Sub Type</i> and <i>Language</i> are taken from an existing <i>Properties Description</i>. The <i>Workflow Data Format</i> is taken from the assigned data converter, if there is one.
+The other way around on opening, the values for <i>Type</i>, <i>Sub Type</i>, <i>Language</i> and <i>API Type</i> are taken from an existing <i>Properties Description</i>. The <i>Workflow Data Format</i> is taken from the assigned data converter, if there is one.
 
 <br/><br/>
 <input type="hidden" name="id" value="<%=id%>" />

@@ -36,7 +36,6 @@
         <td>Output -&gt; Workflow</td>
         <td>Workflow -&gt; Input</td>
         <td>Implementation</td>
-        <td>XML Schema (XML)</td>
       </tr>
       
       <% for (DataConverter dataConverter : dataConverters) { %>
@@ -49,7 +48,6 @@
           <td><%=!Check.empty(dataConverter.getDirectionWorkflowInput()) ? dataConverter.getDirectionWorkflowInput() : "false"%></td>
           <td><%=!Check.empty(dataConverter.getDirectionOutputWorkflow()) ? dataConverter.getDirectionOutputWorkflow() : "false"%></td>
           <td><%=!Check.empty(dataConverter.getImplementation()) ? dataConverter.getImplementation() : ""%></td>
-          <td><%=!Check.empty(dataConverter.getXmlSchema())%></td>
         </tr>
       <% } %>
     </table>

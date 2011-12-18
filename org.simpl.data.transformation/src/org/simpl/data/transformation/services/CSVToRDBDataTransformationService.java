@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.simpl.core.plugins.connector.rdb.DB2RDBConnector;
 import org.simpl.data.transformation.DataTransformationService;
 
 import commonj.sdo.DataObject;
@@ -23,7 +22,7 @@ import commonj.sdo.DataObject;
  * @link http://code.google.com/p/simpl09/
  */
 public class CSVToRDBDataTransformationService extends DataTransformationService {
-  static Logger logger = Logger.getLogger(DB2RDBConnector.class);
+  static Logger logger = Logger.getLogger(CSVToRDBDataTransformationService.class);
 
   /**
    * Initialize the service.
