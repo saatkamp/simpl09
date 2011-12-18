@@ -11,11 +11,12 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.connector.rdb"/>
         <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataconverter.file"/>
-        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;au.com.bytecode.opencsv"/>
         <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.connector.ssh"/>
-        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataconverter.relational"/>
         <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.connector.fs"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.connector.rdb{EmbDerbyRDBConnector.java"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.connector.rdb{RelationalJDBCbasedDatabaseConnector.java"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;au.com.bytecode.opencsv"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataconverter.relational"/>
     </selectedElements>
 </jardesc>

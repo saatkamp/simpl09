@@ -11,18 +11,6 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.services"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.helpers"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.dataconverter"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.connector"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.clients"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.administration"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.metadata"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.plugins.dataconverter"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.datatransformation"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.exceptions"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.plugins.connector"/>
-        <javaElement handleIdentifier="=org.simpl.core/src&lt;org.simpl.core.connection"/>
+        <javaElement handleIdentifier="=org.simpl.core/src"/>
     </selectedElements>
 </jardesc>
