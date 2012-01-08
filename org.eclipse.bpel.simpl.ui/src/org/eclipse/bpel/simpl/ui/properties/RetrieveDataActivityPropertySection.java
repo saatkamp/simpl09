@@ -12,9 +12,14 @@
 package org.eclipse.bpel.simpl.ui.properties;
 
 import java.io.File;
+import java.util.List;
 
 import org.eclipse.bpel.common.ui.assist.FieldAssistAdapter;
+import org.eclipse.bpel.model.Import;
 import org.eclipse.bpel.model.Variable;
+import org.eclipse.bpel.model.util.BPELUtils;
+import org.eclipse.bpel.model.util.XSDImportResolver;
+import org.eclipse.bpel.model.util.XSDUtil;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
 import org.eclipse.bpel.simpl.ui.command.SetDataVariableCommand;
 import org.eclipse.bpel.simpl.ui.command.SetDsIdentifierCommand;
@@ -29,16 +34,18 @@ import org.eclipse.bpel.simpl.ui.widgets.LiveEditStyleText;
 import org.eclipse.bpel.simpl.ui.widgets.ParametersListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.SchemaListPopUp;
 import org.eclipse.bpel.simpl.ui.widgets.TablsListPopUp;
+import org.eclipse.bpel.ui.details.providers.BaseTypeVariableFilter;
 import org.eclipse.bpel.ui.details.providers.ModelLabelProvider;
 import org.eclipse.bpel.ui.details.providers.VariableContentProvider;
-import org.eclipse.bpel.ui.details.providers.VariableFilter;
 import org.eclipse.bpel.ui.proposal.providers.ModelContentProposalProvider;
 import org.eclipse.bpel.ui.util.BatchedMultiObjectAdapter;
 import org.eclipse.bpel.ui.util.ModelHelper;
 import org.eclipse.bpel.ui.util.MultiObjectAdapter;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.xml.type.internal.QName;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.fieldassist.IContentProposal;
@@ -64,6 +71,7 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.xsd.XSDSchema;
 import org.eclipse.xsd.XSDTypeDefinition;
 import org.simpl.resource.management.data.DataSource;
 
@@ -72,7 +80,12 @@ import org.simpl.resource.management.data.DataSource;
  */
 public class RetrieveDataActivityPropertySection extends ADataManagementActivityPropertySection {
 
-	private VariableFilter fInputVariableFilter = new VariableFilter();
+	private BaseTypeVariableFilter fInputVariableFilter = new BaseTypeVariableFilter();
+	
+	/** simpl.xsd */
+  public static String DATA_TYPE = "tDataFormat";
+  private static String SIMPL_NAMESPACE = "http://www.example.org/simpl";
+  private static String SIMPL_PREFIX = "simpl";
 
 	/** The tabels pop window tables. */
 	SchemaListPopUp schemaPopWindow;
@@ -467,8 +480,10 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 		typeText.setEnabled(false);
 		kindText.setEnabled(false);
 		languageText.setEnabled(false);
+		
+    setBaseTypeVariableFilterType();
 	}
-
+	
 	/**
 	 * for creating the GUI elements of DB data source as child Composite.
 	 * 
@@ -932,24 +947,41 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 		updateInputVariableWidgets();
 	}
 
-	private void updateInputVariableWidgets() {
-		Variable inputVar = activity.getDataVariable();
+  private void updateInputVariableWidgets() {
+    Variable inputVar = activity.getDataVariable();
+    if (inputVar != null) {
+      inputVariableText.setText(inputVar.getName());
+    } else {
+      inputVariableText.setText(EMPTY_STRING);
+    }
+  }
+  
+  /**
+   * this method is used to set the type of the filter 
+   */
+  private void setBaseTypeVariableFilterType () {
+    XSDImportResolver resolver = new XSDImportResolver();
+    org.eclipse.bpel.model.Process process = BPELUtils.getProcess(getModel());
+    EList<Import> imports = process.getImports();
+    List<Object> definitions = null;
 
-		if (inputVar != null && inputVariableText != null) {
-		  inputVariableText.setText(inputVar.getName());
+    for (Import import1 : imports) {
+      if (import1.getNamespace() != null
+          && import1.getNamespace().equals(SIMPL_NAMESPACE)) {
+        definitions = resolver.resolve(import1,
+            XSDImportResolver.RESOLVE_SCHEMA);
+        break;
+      }
+    }
 
-			// Figure out the type of the variable XSDTypeDefinition.
-			fInputVariableFilter.clear();
-			Object type = inputVar.getType();
-			if (type != null && type instanceof XSDTypeDefinition) {
-				fInputVariableFilter.setType((XSDTypeDefinition) type);
-			}
-		} else {
-		  if (inputVariableText != null) {
-		    inputVariableText.setText(EMPTY_STRING);
-		  }
-		  
-		  fInputVariableFilter.clear();
-		}
-	}
+    if (!definitions.isEmpty()) {
+      XSDTypeDefinition newType = XSDUtil.resolveTypeDefinition(
+          (XSDSchema) definitions.get(0), new QName(SIMPL_NAMESPACE, DATA_TYPE,
+              SIMPL_PREFIX));
+      if (newType != null) {
+        fInputVariableFilter.clear();
+        fInputVariableFilter.setType(newType);
+      }
+    }
+  }
 }
