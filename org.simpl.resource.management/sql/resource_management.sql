@@ -365,7 +365,7 @@ VALUES
 INSERT INTO simpl_definitions.workflow_dataformat_types
 (name, xsd_type)
 VALUES
-('CSVDataFormat', '<xsd:complexType name="tCSVDataFormat">
+('CSVDataFormat', '<xsd:complexType name="tRelationalDataFormat">
   <xsd:complexContent>
     <xsd:extension base="simpl:tDataFormat">
       <xsd:sequence>
@@ -461,6 +461,75 @@ VALUES
   </xsd:complexContent>
 </xsd:complexType>');
 
+INSERT INTO simpl_definitions.workflow_dataformat_types
+(name, xsd_type)
+VALUES
+('XMLDataFormat', '<xsd:complexType name="tXMLDataFormat">
+		<xsd:complexContent>
+			<xsd:extension base="simpl:tDataFormat">
+				<xsd:sequence>
+					<xsd:element name="dataFormatMetaData" maxOccurs="1"
+						minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="dataSource" type="xsd:string"
+									maxOccurs="1" minOccurs="0"></xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="documentHeader" type="xsd:string"
+						minOccurs="0" />
+					<xsd:element name="documentContent" type="xsd:anyType" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>');
+
+INSERT INTO simpl_definitions.workflow_dataformat_types
+(name, xsd_type)
+VALUES
+('TinyDBDataFormat', '<xsd:complexType name="tTinyDBDataFormat">
+  <xsd:complexContent>
+    <xsd:extension base="simpl:tDataFormat">
+      <xsd:sequence>
+        <xsd:element name="dataFormatMetaData" maxOccurs="1"
+          minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="dataSource" type="xsd:string"
+                maxOccurs="1" minOccurs="0"></xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="table" maxOccurs="unbounded"
+          minOccurs="0">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="row" maxOccurs="unbounded"
+                minOccurs="0">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="column" maxOccurs="unbounded"
+                      minOccurs="1">
+                      <xsd:complexType>
+                        <xsd:simpleContent>
+                          <xsd:extension base="xsd:string">
+                            <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
+                          </xsd:extension>
+                        </xsd:simpleContent>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>');
+
 INSERT INTO simpl_resources.dataconverters
 (name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
 VALUES
@@ -475,6 +544,17 @@ INSERT INTO simpl_resources.dataconverters
 (name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
 VALUES
 ('RandomFilesDataConverter', 'File', 'RandomFiles', 'RandomFilesDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.file.RandomFilesDataConverter');
+
+INSERT INTO simpl_resources.dataconverters
+(name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
+VALUES
+('XMLDataConverter', 'File', 'XMLResult', 'XMLDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.xml.XMLResultDataConverter');
+
+INSERT INTO simpl_resources.dataconverters
+(name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
+VALUES
+('TinyDBDataConverter', 'String', 'TinyDBResult', 'TinyDBDataFormat', 'true', 'false', 'org.simpl.core.plugins.dataconverter.sensor.network.TinyDBResultConverter');
+
 
 /* Workaround: the getConnectorXMLProperty and thus the setConnectorDataConverter trigger does not work properly if not at least one connector exists. This is why one dummy connector is created before inserting the real connectors. */
 INSERT INTO simpl_resources.connectors
@@ -531,6 +611,54 @@ VALUES
 	<language>Shell</language>
 	<apiType>SSH</apiType>
 	<dataFormat>RandomFilesDataFormat</dataFormat>
+</properties_description>');
+
+INSERT INTO simpl_resources.connectors
+(dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
+VALUES
+(4, 'MonetDBXQueryConnector', 'File', 'XMLResult', 'org.simpl.core.plugins.connector.xml.MonetDBXQueryConnector', '<?xml version="1.0" encoding="UTF-8"?>
+<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
+	<type>Database</type>
+	<subType>MonetDBXQuery</subType>
+	<language>XQuery</language>
+	<apiType>JDBC_XML</apiType>
+	<dataFormat>XMLDataFormat</dataFormat>
+</properties_description>');
+
+INSERT INTO simpl_resources.connectors
+(dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
+VALUES
+(4, 'ExistDBConnector', 'File', 'XMLResult', 'org.simpl.core.plugins.connector.xml.ExistDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
+<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
+	<type>Database</type>
+	<subType>ExistDB</subType>
+	<language>XQuery</language>
+	<apiType>XML:DB</apiType>
+	<dataFormat>XMLDataFormat</dataFormat>
+</properties_description>');
+
+INSERT INTO simpl_resources.connectors
+(dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
+VALUES
+(4, 'XTCConnector', 'File', 'XMLResult', 'org.simpl.core.plugins.connector.xml.XMLTransactionCoordinatorConnector', '<?xml version="1.0" encoding="UTF-8"?>
+<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
+	<type>Database</type>
+	<subType>XTC</subType>
+	<language>XQuery</language>
+	<apiType>XTC</apiType>
+	<dataFormat>XMLDataFormat</dataFormat>
+</properties_description>');
+
+INSERT INTO simpl_resources.connectors
+(dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
+VALUES
+(5, 'TinyDBConnector', 'String', 'TinyDBResult', 'org.simpl.core.plugins.connector.sensor.network.TinyDBConnector', '<?xml version="1.0" encoding="UTF-8"?>
+<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
+	<type>Database</type>
+	<subType>TinyDB</subType>
+	<language>TinySQL</language>
+	<apiType>TinyDB</apiType>
+	<dataFormat>TinyDBDataFormat</dataFormat>
 </properties_description>');
 
 INSERT INTO simpl_resources.datatransformationservices
@@ -681,6 +809,82 @@ VALUES
   , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>Relational</subType><language>SQL</language><apiType>JDBC</apiType><driverName>org.apache.derby.jdbc.EmbeddedDriver</driverName><addressPrefix>jdbc:derby:</addressPrefix><dataFormat>RDBDataFormat</dataFormat></connector_properties_description>'
 );
 
+INSERT INTO simpl_resources.datasources
+(
+  logical_name
+  , security_username
+  , security_password
+  , interface_description
+  , properties_description
+  , connector_properties_description
+)
+VALUES
+(
+  'MonetDBXQuery'
+  , 'monetdb'
+  , 'monetdb'
+  , 'localhost:50000/demo'
+  , NULL
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>MonetDBXQuery</subType><language>XQuery</language><apiType>JDBC_XML</apiType><driverName>nl.cwi.monetdb.jdbc.MonetDriver</driverName><addressPrefix>jdbc:monetdb://</addressPrefix><dataFormat>XMLDataFormat</dataFormat></connector_properties_description>'
+);
+
+INSERT INTO simpl_resources.datasources
+(
+  logical_name
+  , security_username
+  , security_password
+  , interface_description
+  , properties_description
+  , connector_properties_description
+)
+VALUES
+(
+  'ExistDB'
+  , 'admin'
+  , 'admin'
+  , 'localhost:5433/exist/xmlrpc/db'
+  , NULL
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>ExistDB</subType><language>XQuery</language><apiType>XML:DB</apiType><driverName>org.exist.xmldb.DatabaseImpl</driverName><addressPrefix>xmldb:exist://</addressPrefix><dataFormat>XMLDataFormat</dataFormat></connector_properties_description>'
+);
+
+INSERT INTO simpl_resources.datasources
+(
+  logical_name
+  , security_username
+  , security_password
+  , interface_description
+  , properties_description
+  , connector_properties_description
+)
+VALUES
+(
+  'XTC'
+  , 'xtc'
+  , 'xtc'
+  , 'localhost:24203'
+  , NULL
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>XTC</subType><language>XQuery</language><apiType>XTC</apiType><driverName></driverName><addressPrefix></addressPrefix><dataFormat>XMLDataFormat</dataFormat></connector_properties_description>'
+);
+
+INSERT INTO simpl_resources.datasources
+(
+  logical_name
+  , security_username
+  , security_password
+  , interface_description
+  , properties_description
+  , connector_properties_description
+)
+VALUES
+(
+  'TinyDB'
+  , ''
+  , ''
+  , ''
+  , NULL
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Database</type><subType>TinyDB</subType><language>TinySQL</language><apiType>TinyDB</apiType><driverName></driverName><addressPrefix></addressPrefix><dataFormat>TinyDBDataFormat</dataFormat></connector_properties_description>'
+);
+
 INSERT INTO simpl_definitions.languages
 (name, statement_description)
 VALUES
@@ -717,6 +921,26 @@ VALUES
           </xsd:element>
         </xsd:sequence>
         <xsd:attribute name="stringPattern" type="xsd:string" use="required" fixed="schema.table">
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>');
+  
+INSERT INTO simpl_definitions.datacontainer_reference_types
+(name, xsd_type)
+VALUES
+('XMLDatabaseDataContainerReferenceType', '<xsd:complexType name="XMLDatabaseDataContainerReferenceType">
+    <xsd:complexContent>
+      <xsd:extension base="simpl:DataContainerReferenceType">
+        <xsd:sequence>
+          <xsd:element name="collectionName" type="xsd:string" maxOccurs="1"
+            minOccurs="0">
+          </xsd:element>
+          <xsd:element name="documentName" type="xsd:string" maxOccurs="1"
+            minOccurs="1">
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="stringPattern" type="xsd:string" use="required" fixed="collectionName/documentName">
         </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>

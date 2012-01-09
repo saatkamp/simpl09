@@ -14,8 +14,8 @@ import com.sun.rowset.CachedRowSetImpl;
 /**
  * <b>Purpose: Used by RDBDataFormat to hold the resultSet and the associated
  * database meta data.</b> <br>
- * <b>Description: The result set, the primary keys and a description of table columns available
- * in the catalog are saved. </b> <br>
+ * <b>Description: The result set, the primary keys and a description of table
+ * columns available in the catalog are saved. </b> <br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b> SIMPL<br>
@@ -27,11 +27,11 @@ import com.sun.rowset.CachedRowSetImpl;
  */
 public class RDBResult {
 
-  // the original result as a cached row set object object
+  // the original result as a cached row set object
   private CachedRowSet resultRowSet = null;
   // the primary keys result set as a cached row set object
   private CachedRowSet primaryKeyRowSet = null;
-  // a list of metadata of each column
+  // a list of metadata (a cached row set object for each column)
   private List<CachedRowSet> columnRowSetList = null;
 
   private DataSource dataSource = null;
@@ -51,7 +51,7 @@ public class RDBResult {
   /**
    * 
    * @param resultSet
-   *       the result set to convert and set
+   *          the result set to convert and set
    */
   public void setResultRowSet(ResultSet resultSet) {
     try {
@@ -74,7 +74,7 @@ public class RDBResult {
   /**
    * 
    * @param primaryKeysResultSet
-   *       the result to convert and set
+   *          the result to convert and set
    */
   public void setPrimaryKeysRowSet(ResultSet primaryKeysResultSet) {
     try {
@@ -88,9 +88,9 @@ public class RDBResult {
 
   /**
    * 
-   * @param i 
-   *       the specified list entry
-   * @return the columnRowSet 
+   * @param i
+   *          the specified list entry
+   * @return the columnRowSet
    */
   public CachedRowSet getColumnRowSet(int i) {
     return this.columnRowSetList.get(i);
@@ -99,7 +99,7 @@ public class RDBResult {
   /**
    * 
    * @param columnResultSet
-   *       the result set to convert and add
+   *          the result set to convert and add
    */
   public void addColumnRowSetList(ResultSet columnResultSet) {
     try {
@@ -121,7 +121,7 @@ public class RDBResult {
 
   /**
    * @param dataSource
-   *            the dataSource to set
+   *          the dataSource to set
    */
   public void setDataSource(DataSource dataSource) {
     this.dataSource = dataSource;

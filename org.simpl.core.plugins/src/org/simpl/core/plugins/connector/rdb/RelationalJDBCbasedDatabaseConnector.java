@@ -16,15 +16,30 @@ import org.apache.log4j.PropertyConfigurator;
 import org.simpl.core.exceptions.ConnectionException;
 import org.simpl.core.plugins.connector.ConnectorPlugin;
 import org.simpl.core.plugins.dataconverter.relational.RDBResult;
+import org.simpl.resource.management.data.Connector;
 import org.simpl.resource.management.data.DataSource;
 
 import commonj.sdo.DataObject;
 
+/**
+ * <b>Purpose:</b>Implements all methods of the {@link Connector} interface for
+ * supporting relational and JDBC based databases.<br>
+ * <b>Description:</b>dsAddress = path to database<br>
+ * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
+ * http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b>SIMPL<br>
+ * 
+ * @author Henrik Pietranek <henrik.pietranek@googlemail.com><br>
+ * @link http://code.google.com/p/simpl09/
+ */
 public class RelationalJDBCbasedDatabaseConnector extends
     ConnectorPlugin<List<String>, RDBResult> {
   static Logger logger = Logger
       .getLogger(RelationalJDBCbasedDatabaseConnector.class);
 
+  /**
+   * Initialize the plug-in
+   */
   public RelationalJDBCbasedDatabaseConnector() {
     this.setType("Database");
     this.setMetaDataSchemaType("tDatabaseMetaData");
@@ -67,9 +82,10 @@ public class RelationalJDBCbasedDatabaseConnector extends
       }
     }
 
+    closeConnection(connection);
+
     RelationalJDBCbasedDatabaseConnector.logger.info("Statement \"" + statement
         + "\" send to " + dataSource.getAddress() + ".");
-    closeConnection(connection);
 
     return success;
   }
@@ -150,8 +166,7 @@ public class RelationalJDBCbasedDatabaseConnector extends
 
               RelationalJDBCbasedDatabaseConnector.logger.info("Statement \""
                   + statement + "\" " + "executed on "
-                  + dataSource.getAddress()
-                  + (success ? " was successful" : " failed"));
+                  + dataSource.getAddress() + ".");
             }
           } else {
             if (statement.startsWith("INSERT")) {
@@ -164,8 +179,7 @@ public class RelationalJDBCbasedDatabaseConnector extends
 
               RelationalJDBCbasedDatabaseConnector.logger.info("Statement \""
                   + statement + "\" " + "executed on "
-                  + dataSource.getAddress()
-                  + (success ? " was successful" : " failed"));
+                  + dataSource.getAddress() + ".");
             }
           }
         }
@@ -312,6 +326,13 @@ public class RelationalJDBCbasedDatabaseConnector extends
     return value;
   }
 
+  /**
+   * Opens a connection.
+   * 
+   * @param dataSource
+   * @return
+   * @throws ConnectionException
+   */
   private Connection openConnection(DataSource dataSource)
       throws ConnectionException {
     if (RelationalJDBCbasedDatabaseConnector.logger.isDebugEnabled()) {
@@ -323,14 +344,12 @@ public class RelationalJDBCbasedDatabaseConnector extends
     Connection connect = null;
 
     try {
-      RelationalJDBCbasedDatabaseConnector.logger
-          .debug("xxx: nun hole alle Informationen");
       String driverName = getFromPropertiesDescription("driverName",
           dataSource.getConnectorPropertiesDescription());
       String addressPrefix = getFromPropertiesDescription("addressPrefix",
           dataSource.getConnectorPropertiesDescription());
       String dsAddress = dataSource.getAddress();
-      String user = dataSource.getAuthentication().getPassword();
+      String user = dataSource.getAuthentication().getUser();
       String password = dataSource.getAuthentication().getPassword();
 
       Class.forName(driverName);
@@ -365,6 +384,12 @@ public class RelationalJDBCbasedDatabaseConnector extends
     return connect;
   }
 
+  /**
+   * Closes a connection.
+   * 
+   * @param connection
+   * @return
+   */
   private boolean closeConnection(Connection connection) {
     boolean success = false;
 

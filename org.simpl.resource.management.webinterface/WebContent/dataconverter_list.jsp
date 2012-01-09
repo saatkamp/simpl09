@@ -33,8 +33,8 @@
         <td>Input Data Type</td>
         <td>Output Data Type</td>
         <td>Workflow Data Format</td>
-        <td>Output -&gt; Workflow</td>
         <td>Workflow -&gt; Input</td>
+        <td>Output -&gt; Workflow</td>
         <td>Implementation</td>
       </tr>
       

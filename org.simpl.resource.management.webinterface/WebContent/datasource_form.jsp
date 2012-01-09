@@ -162,7 +162,7 @@ The <i>Properties Description</i> must contain a WS-Policy expression in order t
 The <i>Connector Properties Description</i> content is generated from <i>Type</i>, <i>Sub Type</i>, <i>Language</i>, <i>API Type</i>, <i>Driver Name</i>, <i>Address Prefix</i> and <i>Workflow Data Format</i>, if it is not set explicitly. 
 The <i>API Type</i> is used when saving, to automatically find and assign a connector that has a matching properties description. The remaining properties are used only for documentation.
 <br/><br/>
-* only required for relational and JDBC based databases
+* only required for relational and JDBC based databases and XML:DB based databases
 <br/><br/>
 <input type="hidden" name="id" value="<%=id%>" />
 <input type="submit" name="dataSourceFormSubmit" value="Save" />
