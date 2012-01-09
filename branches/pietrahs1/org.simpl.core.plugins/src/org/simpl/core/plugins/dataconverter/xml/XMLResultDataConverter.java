@@ -196,7 +196,7 @@ public class XMLResultDataConverter extends
         }
       }
     }
-
+    file.deleteOnExit();
     return file;
   }
 }

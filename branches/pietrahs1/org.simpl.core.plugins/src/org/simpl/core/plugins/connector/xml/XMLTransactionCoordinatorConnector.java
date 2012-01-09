@@ -292,9 +292,16 @@ public class XMLTransactionCoordinatorConnector extends
 
     // collection + document name
     // example /collection1/collection2/document1
-    String documentName = target.substring(target.lastIndexOf("/") + 1,
-        target.length() - 1);
-    String collectionName = target.substring(0, target.lastIndexOf("/") - 1);
+    String documentName = null;
+    String collectionName = null;
+    if (target.contains("/")) {
+      documentName = target.substring(target.lastIndexOf("/") + 1,
+          target.length());
+      collectionName = target.substring(0, target.lastIndexOf("/"));
+    } else {
+      documentName = target;
+      collectionName = "";
+    }
 
     connection = openConnection(dataSource);
     try {
