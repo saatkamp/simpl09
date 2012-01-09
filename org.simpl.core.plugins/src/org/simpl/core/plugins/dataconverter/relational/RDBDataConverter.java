@@ -162,7 +162,8 @@ public class RDBDataConverter extends DataConverterPlugin<RDBResult, List<String
           quote = "";
           
           for (String quotedDataType : quotedDataTypes) {
-            if (this.getColumnType(column.getString("name"), tableMetaData).startsWith(quotedDataType)) {
+            // e.g. PostgreSQL: varchar(256) -> VARCHAR(256)
+            if (this.getColumnType(column.getString("name"), tableMetaData).toUpperCase().startsWith(quotedDataType)) {
               quote = "'";
               break;
             }
@@ -296,7 +297,7 @@ public class RDBDataConverter extends DataConverterPlugin<RDBResult, List<String
 
     for (int i = 0; i < columns.size(); i++) {
       for (String quotedDataType : quotedDataTypes) {
-        if (this.getColumnType(columns.get(i).getString("name"), tableMetaData).startsWith(quotedDataType)) {
+        if (this.getColumnType(columns.get(i).getString("name"), tableMetaData).toUpperCase().startsWith(quotedDataType)) {
           quote = "'";
           break;
         }
