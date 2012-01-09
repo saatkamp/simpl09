@@ -553,7 +553,7 @@ VALUES
 INSERT INTO simpl_resources.dataconverters
 (name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
 VALUES
-('TinyDBDataConverter', 'String', 'TinyDBResult', 'TinyDBDataFormat', 'true', 'false', 'org.simpl.core.plugins.dataconverter.sensor.network.TinyDBResultConverter');
+('TinyDBDataConverter', 'String', 'TinyDBResult', 'TinyDBDataFormat', 'false', 'true', 'org.simpl.core.plugins.dataconverter.sensor.network.TinyDBResultConverter');
 
 
 /* Workaround: the getConnectorXMLProperty and thus the setConnectorDataConverter trigger does not work properly if not at least one connector exists. This is why one dummy connector is created before inserting the real connectors. */
