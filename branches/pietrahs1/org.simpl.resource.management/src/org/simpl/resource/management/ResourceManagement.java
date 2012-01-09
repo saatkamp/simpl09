@@ -751,7 +751,13 @@ public class ResourceManagement {
     String schema = null;
     String statement = null;
     String result = null;
+    StringList workflowDataFormatTypeDefinitions = new StringList();
     StringList typeDefinitions = new StringList();
+    
+    // workflow_dataformat_types
+    statement = "SELECT * FROM simpl_definitions.workflow_dataformat_types ORDER BY name ASC";
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+    workflowDataFormatTypeDefinitions.getItems().addAll(this.getColumnValuesFromResult(result, "xsd_type"));
 
     // datacontainer_reference_types
     statement = "SELECT * FROM simpl_definitions.datacontainer_reference_types ORDER BY name ASC";
@@ -763,16 +769,26 @@ public class ResourceManagement {
     result = dataSourceService.retrieveData(rmDataSource, statement);
     typeDefinitions.getItems().addAll(this.getColumnValuesFromResult(result, "xsd_type"));
     
-    // datasource_reference_types
-    statement = "SELECT * FROM simpl_definitions.workflow_dataformat_types ORDER BY name ASC";
-    result = dataSourceService.retrieveData(rmDataSource, statement);
-    typeDefinitions.getItems().addAll(this.getColumnValuesFromResult(result, "xsd_type"));
 
     // build XSD schema
     String schemaOpenTag = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><xsd:schema targetNamespace=\"http://www.example.org/simpl\" xmlns:simpl=\"http://www.example.org/simpl\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">";
     StringBuffer schemaContent = new StringBuffer();
     String schemaCloseTag = "</xsd:schema>";
 
+    // TODO Effizientere Vergleichsoperation implementieren
+    // Verschiedene Workflow Datenformate (RDBDataFormat und CSVDataFormat)
+    // nutzen den selben Typ.
+    // Damit diese Typdefinition in der 'simpl.xsd' nicht doppelt vorkommt,
+    // muessen solche Faelle ausgeschlossen werden.
+    for (String complexType : workflowDataFormatTypeDefinitions.getItems()) {
+      int start = complexType.indexOf("\"", complexType.indexOf("name"));
+      int end = complexType.indexOf("\"", start + 1);
+      String typeName = complexType.substring(start, end);
+      if (schemaContent.indexOf(typeName) == -1) {
+        schemaContent.append(complexType);
+      }
+    } 
+    
     for (String complexType : typeDefinitions.getItems()) {
       schemaContent.append(complexType);
     }
