@@ -9,6 +9,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/APACHE_TOMCAT"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/simpl-resource-management-client.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_RESOURCE_MANAGEMENT_CLIENT"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
