@@ -101,7 +101,6 @@ public class XMLResultDataConverter extends
         sdo.setDataObject("documentContent", doc.getRootObject());
       }
     }
-    fromSDO(sdo);
 
     return sdo;
   }
