@@ -96,54 +96,55 @@ public class PropertySectionUtils {
   }
 
   public static void downloadSchema(DataSource dataSource, Process process) {
-    if (ResourceManagementCommunication.getInstance().isAvailable() && dataSource != null) {
-      bpelFile = BPELUtil.getBPELFile(process);
-
-      bpelPath = bpelFile.getFullPath();
-
-      projectPath = bpelPath.removeFileExtension().removeLastSegments(1);
-
-      absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation()
-          .toOSString();
-
-      if (dataSource.getConnector().getDataConverter().getWorkflowDataFormat() != null) {
-
-        IPath xsdPath = projectPath.append(
-            dataSource.getConnector().getDataConverter().getWorkflowDataFormat())
-            .addFileExtension(IBPELUIConstants.EXTENSION_XSD);
-
-        File xsdFileSIMPL = new File(absolutWorkspacePath + xsdPath.toOSString());
-
-        if (!xsdFileSIMPL.exists()) {
-          try {
-            String stream = null;
-            try {
-              stream = ResourceManagementCommunication.getInstance().getService().getDataFormatSchema(
-                  dataSource.getConnector().getDataConverter().getWorkflowDataFormat());
-            } catch (Exception e) {
-            }
-            if (stream != null && xsdFileSIMPL.createNewFile()) {
-
-              OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(
-                  xsdFileSIMPL.getAbsolutePath()), "UTF-8");
-
-              out.write(stream.toCharArray());
-              out.close();
-
-            }
-          } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-          } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-          } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-          }
-
-        }
-      }
-    }
+    //not needed anymore
+//    if (ResourceManagementCommunication.getInstance().isAvailable() && dataSource != null) {
+//      bpelFile = BPELUtil.getBPELFile(process);
+//
+//      bpelPath = bpelFile.getFullPath();
+//
+//      projectPath = bpelPath.removeFileExtension().removeLastSegments(1);
+//
+//      absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation()
+//          .toOSString();
+//
+//      if (dataSource.getConnector().getDataConverter().getWorkflowDataFormat() != null) {
+//
+//        IPath xsdPath = projectPath.append(
+//            dataSource.getConnector().getDataConverter().getWorkflowDataFormat())
+//            .addFileExtension(IBPELUIConstants.EXTENSION_XSD);
+//
+//        File xsdFileSIMPL = new File(absolutWorkspacePath + xsdPath.toOSString());
+//
+//        if (!xsdFileSIMPL.exists()) {
+//          try {
+//            String stream = null;
+//            try {
+//              stream = ResourceManagementCommunication.getInstance().getService().getDataFormatSchema(
+//                  dataSource.getConnector().getDataConverter().getWorkflowDataFormat());
+//            } catch (Exception e) {
+//            }
+//            if (stream != null && xsdFileSIMPL.createNewFile()) {
+//
+//              OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(
+//                  xsdFileSIMPL.getAbsolutePath()), "UTF-8");
+//
+//              out.write(stream.toCharArray());
+//              out.close();
+//
+//            }
+//          } catch (UnsupportedEncodingException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//          } catch (FileNotFoundException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//          } catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//          }
+//
+//        }
+//      }
+//    }
   }
 }
