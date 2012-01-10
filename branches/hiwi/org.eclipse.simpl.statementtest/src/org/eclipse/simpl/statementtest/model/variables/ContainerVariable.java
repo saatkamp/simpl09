@@ -34,7 +34,7 @@ public class ContainerVariable extends AbstractVariable {
   /**
    * Concatenation string pattern.
    */
-  String stringPattern = "schema.table";
+  String stringPattern = "";
 
   /**
    * The constructor reads the elements and the string pattern from the variable.
@@ -44,7 +44,7 @@ public class ContainerVariable extends AbstractVariable {
 
     XSDElementDeclaration xsdElement = variable.getXSDElement();
     XSDTypeDefinition xsdType = variable.getType();
-    
+
     NodeList typeNodes = null;
 
     // use element or type
@@ -52,8 +52,8 @@ public class ContainerVariable extends AbstractVariable {
       this.type = xsdElement.getQName();
       xsdType = xsdElement.getTypeDefinition();
       typeNodes = xsdType.getElement().getChildNodes();
-    } else if (xsdType != null) { 
-      this.type = xsdType.getQName(); 
+    } else if (xsdType != null) {
+      this.type = xsdType.getQName();
       typeNodes = xsdType.getElement().getChildNodes();
     } else {
       System.out.println("Container variable XML schema (XSD) not found.");
@@ -63,14 +63,27 @@ public class ContainerVariable extends AbstractVariable {
     // read string pattern attribute
     for (int i = 0; i < typeNodes.getLength(); i++) {
       if (typeNodes.item(i).getLocalName() != null
-          && typeNodes.item(i).getLocalName().equals("attribute")) {
-        NamedNodeMap attributes = typeNodes.item(i).getAttributes();
+          && typeNodes.item(i).getLocalName().equals("complexContent")) {
+        NodeList complexContentNodes = typeNodes.item(i).getChildNodes();
 
-        if (attributes.getNamedItem("name").getNodeValue().equals("stringPattern")) {
-          this.stringPattern = attributes.getNamedItem("fixed").getNodeValue();
+        for (int j = 0; j < complexContentNodes.getLength(); j++) {
+          if (complexContentNodes.item(j).getLocalName() != null
+              && complexContentNodes.item(j).getLocalName().equals("extension")) {
+            NodeList extensionNodes = complexContentNodes.item(j).getChildNodes();
+
+            for (int k = 0; k < extensionNodes.getLength(); k++) {
+              NamedNodeMap attributes = extensionNodes.item(k).getAttributes();
+
+              if (attributes != null
+                  && attributes.getNamedItem("name") != null
+                  && attributes.getNamedItem("name").getNodeValue()
+                      .equals("stringPattern")) {
+                this.stringPattern = attributes.getNamedItem("fixed").getNodeValue();
+                break;
+              }
+            }
+          }
         }
-
-        break;
       }
     }
 
