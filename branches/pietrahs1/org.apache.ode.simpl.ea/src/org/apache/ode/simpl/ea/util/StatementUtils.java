@@ -123,7 +123,7 @@ public class StatementUtils {
 			if (var != null) {
 				try {
 					Node varContent = context.readVariable(var);
-					String schemaTable = "";
+					String identifier = "";
 					if (varContent.hasChildNodes()) {
 						NodeList nodes = varContent.getChildNodes();
 
@@ -131,21 +131,30 @@ public class StatementUtils {
 							Node current = nodes.item(i);
 
 							if (current.getLocalName() != null) {
-								// If a schema is specified, a table has to be
-								// set
+                // If a schema is specified, a table has or a
+                // collection-document pair has to be set
 								if (current.getLocalName().equals("schema")) {
-									schemaTable = schemaTable.concat(current
+								  identifier = identifier.concat(current
 											.getTextContent()
 											+ ".");
 								}
 								if (current.getLocalName().equals("table")) {
-									schemaTable = schemaTable.concat(current
+								  identifier = identifier.concat(current
 											.getTextContent());
 								}
+                if (current.getLocalName().equals("collectionName")) {
+                  identifier = identifier.concat(current
+                      .getTextContent()
+                      + "/");
+                }
+                if (current.getLocalName().equals("documentName")) {
+                  identifier = identifier.concat(current
+                      .getTextContent());
+                }
 							}
 						}
 					}
-					return schemaTable;
+					return identifier;
 				} catch (FaultException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
