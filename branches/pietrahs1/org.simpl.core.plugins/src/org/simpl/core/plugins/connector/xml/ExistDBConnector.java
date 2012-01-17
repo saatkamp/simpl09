@@ -83,11 +83,12 @@ public class ExistDBConnector extends ConnectorPlugin<File, XMLResult> {
   @Override
   public boolean writeDataBack(DataSource dataSource, File file, String target)
       throws ConnectionException {
+    boolean success = false;
     if (ExistDBConnector.logger.isDebugEnabled()) {
       ExistDBConnector.logger.debug("boolean writeData("
           + dataSource.getAddress() + ", DataObject) executed.");
     }
-    boolean success = storeData(dataSource, file, target);
+    success = storeData(dataSource, file, target);
     if (success) {
       XMLTransactionCoordinatorConnector.logger
           .info("Statement successfully executed on " + dataSource.getAddress());
@@ -231,7 +232,7 @@ public class ExistDBConnector extends ConnectorPlugin<File, XMLResult> {
   }
 
   /**
-   * This methos is used to put data into a ExistDB database.
+   * This method is used to put data into a ExistDB database.
    * 
    * @param dataSource
    * @param file
@@ -260,25 +261,28 @@ public class ExistDBConnector extends ConnectorPlugin<File, XMLResult> {
     XMLResource resource = null;
 
     collection = openConnection(dataSource, collectionName);
-    try {
-      resource = (XMLResource) collection.createResource(documentName,
-          "XMLResource");
-      resource.setContent(file);
-      collection.storeResource(resource);
-      success = true;
-    } catch (XMLDBException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } finally {
-      if (resource != null) {
-        try {
-          ((EXistResource) resource).freeResources();
-        } catch (XMLDBException xe) {
-          xe.printStackTrace();
+    if (collection != null) {
+      try {
+        resource = (XMLResource) collection.createResource(documentName,
+            "XMLResource");
+        resource.setContent(file);
+        collection.storeResource(resource);
+        success = true;
+      } catch (XMLDBException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } finally {
+        if (resource != null) {
+          try {
+            ((EXistResource) resource).freeResources();
+          } catch (XMLDBException xe) {
+            xe.printStackTrace();
+          }
         }
       }
+      closeConnection(collection);
     }
-    closeConnection(collection);
+
     if (file.exists()) {
       file.delete();
     }
@@ -382,32 +386,46 @@ public class ExistDBConnector extends ConnectorPlugin<File, XMLResult> {
         collection = DatabaseManager.getCollection(uri.toString(), user,
             password);
       } else {
-        String[] stringArray = null;
-        if (col.contains("/")) {
-          stringArray = col.split(Pattern.quote("/"));
-        } else {
-          stringArray = new String[] { col };
+        if (!col.startsWith("/")) {
+          col = "/" + col;
         }
-        String subSequence = "";
-        Collection parent = DatabaseManager.getCollection(uri.toString(), user,
+        collection = DatabaseManager.getCollection(uri.toString() + col, user,
             password);
-
-        for (int i = 0; i < stringArray.length; i++) {
-          if (!stringArray[i].equals("")) {
-            subSequence += "/" + stringArray[i];
-            Collection child = DatabaseManager.getCollection(uri.toString()
-                + subSequence, user, password);
-            // create required collection
-            if (child == null) {
-              CollectionManagementService mgt = (CollectionManagementService) parent
-                  .getService("CollectionManagementService", "1.0");
-              child = mgt.createCollection(stringArray[i]);
-            }
-            parent = child;
-          }
-        }
-        collection = parent;
       }
+      // with this code fragment, collections will be created, if they do not
+      // exist
+      //
+      //
+      // if (col.equals("")) {
+      // collection = DatabaseManager.getCollection(uri.toString(), user,
+      // password);
+      // } else {
+      // String[] stringArray = null;
+      // if (col.contains("/")) {
+      // stringArray = col.split(Pattern.quote("/"));
+      // } else {
+      // stringArray = new String[] { col };
+      // }
+      // String subSequence = "";
+      // Collection parent = DatabaseManager.getCollection(uri.toString(), user,
+      // password);
+      //
+      // for (int i = 0; i < stringArray.length; i++) {
+      // if (!stringArray[i].equals("")) {
+      // subSequence += "/" + stringArray[i];
+      // Collection child = DatabaseManager.getCollection(uri.toString()
+      // + subSequence, user, password);
+      // // create required collection
+      // if (child == null) {
+      // CollectionManagementService mgt = (CollectionManagementService) parent
+      // .getService("CollectionManagementService", "1.0");
+      // child = mgt.createCollection(stringArray[i]);
+      // }
+      // parent = child;
+      // }
+      // }
+      // collection = parent;
+      // }
     } catch (ClassNotFoundException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
