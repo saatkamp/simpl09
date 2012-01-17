@@ -307,7 +307,7 @@ public class XMLTransactionCoordinatorConnector extends
     try {
       connection.beginWork("store Data");
       // create required collections
-      changeOrCreateCollection(connection, collectionName);
+      changeCollection(connection, collectionName);
       putInfoObject = new PutInfoObject(file.getAbsolutePath().replace('\\',
           '/'), documentName, DOCUMENT_SOURCE.CLIENT);
       // delete old document (if there is one)
@@ -368,8 +368,8 @@ public class XMLTransactionCoordinatorConnector extends
    * @throws XTCexception
    */
   @SuppressWarnings("unchecked")
-  private void changeOrCreateCollection(XTCconnection connection,
-      String collection) throws JDOMException, IOException, XTCexception {
+  private void changeCollection(XTCconnection connection, String collection)
+      throws JDOMException, IOException, XTCexception {
     String[] stringArray = null;
     SAXBuilder saxBuilder = null;
     Document document = null;
@@ -382,6 +382,9 @@ public class XMLTransactionCoordinatorConnector extends
         stringArray = new String[] { collection };
       }
       for (int i = 0; i < stringArray.length; i++) {
+        // TODO Parsen der XML Baeume entfernen
+        // Dies ist momentan noetig, da die Methode changeDirectory keine
+        // Exception wirft, wenn die Directory nicht existiert
         if (!stringArray[i].equals("")) {
           saxBuilder = new SAXBuilder();
           String directory = connection.getCurrentDirectory();
@@ -399,7 +402,7 @@ public class XMLTransactionCoordinatorConnector extends
             }
           }
           if (hit == false) {
-            connection.createDirectory(stringArray[i]);
+            throw new XTCexception();
           }
 
           connection.changeDirectory(stringArray[i]);
