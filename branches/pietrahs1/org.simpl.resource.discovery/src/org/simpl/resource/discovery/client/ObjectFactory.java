@@ -3,6 +3,7 @@ package org.simpl.resource.discovery.client;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
+
 import org.simpl.resource.management.data.Authentication;
 import org.simpl.resource.management.data.Connector;
 import org.simpl.resource.management.data.DataConverter;
@@ -43,19 +44,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataConverter }
+     * Create an instance of {@link Authentication }
      * 
      */
-    public DataConverter createDataConverter() {
-        return new DataConverter();
-    }
-
-    /**
-     * Create an instance of {@link DataSource }
-     * 
-     */
-    public DataSource createDataSource() {
-        return new DataSource();
+    public Authentication createAuthentication() {
+        return new Authentication();
     }
 
     /**
@@ -67,11 +60,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Authentication }
+     * Create an instance of {@link DataSource }
      * 
      */
-    public Authentication createAuthentication() {
-        return new Authentication();
+    public DataSource createDataSource() {
+        return new DataSource();
+    }
+
+    /**
+     * Create an instance of {@link DataConverter }
+     * 
+     */
+    public DataConverter createDataConverter() {
+        return new DataConverter();
     }
 
 }

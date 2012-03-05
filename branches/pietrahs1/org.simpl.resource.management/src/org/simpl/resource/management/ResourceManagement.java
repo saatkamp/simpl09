@@ -16,6 +16,11 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
+import javax.xml.transform.Source;
+import javax.xml.transform.sax.SAXSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 
 import org.jdom.Document;
 import org.jdom.Element;
@@ -24,6 +29,8 @@ import org.jdom.input.SAXBuilder;
 import org.simpl.resource.management.data.Authentication;
 import org.simpl.resource.management.data.Connector;
 import org.simpl.resource.management.data.ConnectorList;
+import org.simpl.resource.management.data.DataContainer;
+import org.simpl.resource.management.data.DataContainerList;
 import org.simpl.resource.management.data.TypeDefinition;
 import org.simpl.resource.management.data.TypeDefinitionList;
 import org.simpl.resource.management.data.DataConverter;
@@ -37,6 +44,7 @@ import org.simpl.resource.management.data.StrategyPluginList;
 import org.simpl.resource.management.data.StringList;
 import org.simpl.resource.management.db.DataSourceService;
 import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 /**
  * <b>Purpose:</b>The Resource Management stores data sources and other resources for the
@@ -364,6 +372,72 @@ public class ResourceManagement {
 
     return resultDataTransformationService;
   }
+  
+  /**
+   * Returns a data container by id.
+   * 
+   * @param id
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getDataContainerById")
+  public DataContainer getDataContainerById(@WebParam(name = "id") int id)
+      throws Exception {
+    DataContainer resultDataContainer = new DataContainer();
+    DataContainerList dataContainerList = new DataContainerList();
+    ArrayList<DataContainer> dataContainers = null;
+    String statement = "";
+    String result = null;
+
+    statement += "SELECT datacontainers.*, datasources.logical_name AS datasource_name FROM simpl_resources.datacontainers ";
+    statement += "LEFT JOIN simpl_resources.datasources ON (datacontainers.datasource_id = datasources.id) ";
+    statement += "WHERE datacontainers.id = " + id;
+
+    // retrieve data container
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+    dataContainers = this.getDataContainersFromResult(result, "");
+
+    dataContainerList.getDataContainers().addAll(dataContainers);
+
+    if (dataContainers.size() > 0) {
+      resultDataContainer = dataContainers.get(0);
+    }
+
+    return resultDataContainer;
+  }
+  
+  /**
+   * Returns a data container by logical name.
+   * 
+   * @param id
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getDataContainerByName")
+  public DataContainer getDataContainerByName(
+      @WebParam(name = "name") String name) throws Exception {
+    DataContainer resultDataContainer = new DataContainer();
+    DataContainerList dataContainerList = new DataContainerList();
+    ArrayList<DataContainer> dataContainers = null;
+    String statement = "";
+    String result = null;
+
+    statement += "SELECT datacontainers.*, datasources.logical_name AS datasource_name FROM simpl_resources.datacontainers ";
+    statement += "LEFT JOIN simpl_resources.datasources ON (datacontainers.datasource_id = datasources.id) ";
+    statement += "WHERE datacontainers.logical_name = '" + name + "'";
+
+    // retrieve data container
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+    dataContainers = this.getDataContainersFromResult(result, "");
+
+    dataContainerList.getDataContainers().addAll(dataContainers);
+
+    if (dataContainers.size() > 0) {
+      resultDataContainer = dataContainers.get(0);
+    }
+
+    return resultDataContainer;
+  }
 
   /**
    * Returns a strategy plug-in by id.
@@ -432,6 +506,46 @@ public class ResourceManagement {
     }
 
     return resultDataContainerReferenceType;
+  }
+  
+  /**
+   * Returns the xml part of a data container reference type specified by a data
+   * source id.
+   * 
+   * @param id
+   * @param basetype
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getDataContainerReferenceTypeByDataSourceId")
+  public String getDataContainerReferenceTypeByDataSourceId(String id,
+      boolean basetype) throws Exception {
+    String statement = "";
+    String result = null;
+    StringBuffer stringBuffer = new StringBuffer();
+
+    // build statement
+    statement += "SELECT a.xsd_type FROM simpl_definitions.datacontainer_reference_types a WHERE a.name = (SELECT b.datacontainer_reference_type FROM simpl_resources.datasources b WHERE b.id =";
+    statement += Integer.parseInt(id);
+    statement += ")";
+
+    result = dataSourceService.retrieveData(rmDataSource, statement);
+    stringBuffer.append(this.getColumnValuesFromResult(result, "xsd_type").get(
+        0));
+
+    // include associated base types
+    if (basetype) {
+      statement = "SELECT xsd_type FROM simpl_definitions.datacontainer_reference_types WHERE name = 'DataContainerReferenceType' OR name = 'LocalDataContainerReferenceType'";
+      result = dataSourceService.retrieveData(rmDataSource, statement);
+
+      stringBuffer.append(this.getColumnValuesFromResult(result, "xsd_type")
+          .get(0));
+      result = dataSourceService.retrieveData(rmDataSource, statement);
+      stringBuffer.append(this.getColumnValuesFromResult(result, "xsd_type")
+          .get(1));
+    }
+
+    return stringBuffer.toString();
   }
 
   /**
@@ -611,6 +725,57 @@ public class ResourceManagement {
         this.getDataTransformationServicesFromResult(result));
 
     return dataTransformationServices;
+  }
+  
+  /**
+   * Returns a list of all data containers.
+   * 
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getAllDataContainers")
+  public DataContainerList getAllDataContainers() throws Exception {
+    DataContainerList dataContainers = new DataContainerList();
+    String statement = "";
+
+    statement += "SELECT datacontainers.*, datasources.logical_name AS datasource_name FROM simpl_resources.datacontainers ";
+    statement += "LEFT JOIN simpl_resources.datasources ON (datacontainers.datasource_id = datasources.id) ";
+    statement += "ORDER BY id ASC";
+
+    String result = dataSourceService.retrieveData(rmDataSource, statement);
+
+    dataContainers.getDataContainers().addAll(
+        this.getDataContainersFromResult(result, ""));
+
+    return dataContainers;
+  }
+
+  /**
+   * Returns a list of all data containers belonging to a specified data source
+   * name.
+   * 
+   * @param name
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getAllDataContainersByDataSourceName")
+  public DataContainerList getAllDataContainersByDataSourceName(
+      @WebParam(name = "name") int name) throws Exception {
+    DataContainerList dataContainers = new DataContainerList();
+    String statement = "";
+
+    statement += "SELECT datacontainers.*, datasources.logical_name AS datasource_name FROM simpl_resources.datacontainers ";
+    statement += "LEFT JOIN simpl_resources.datasources ON (datacontainers.datasource_id = datasources.id) WHERE datasources.logical_name=";
+    statement += "'" + name + "' ";
+
+    statement += "ORDER BY id ASC";
+
+    String result = dataSourceService.retrieveData(rmDataSource, statement);
+
+    dataContainers.getDataContainers().addAll(
+        this.getDataContainersFromResult(result, ""));
+
+    return dataContainers;
   }
 
   /**
@@ -961,6 +1126,42 @@ public class ResourceManagement {
    * @return
    * @throws Exception
    */
+  @WebMethod(action = "getDataContainerReferenceTypeNames")
+  public StringList getDataContainerReferenceTypeNames() throws Exception {
+    StringList names = new StringList();
+
+    String statement = "SELECT name FROM simpl_definitions.datacontainer_reference_types ORDER BY name ASC";
+    String result = dataSourceService.retrieveData(rmDataSource, statement);
+
+    names.getItems().addAll(this.getColumnValuesFromResult(result, "name"));
+
+    return names;
+  }
+  
+  /**
+   * Returns the names of all available data sources.
+   * 
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "getDataSourceNames")
+  public StringList getDataSourceNames() throws Exception {
+    StringList names = new StringList();
+
+    String statement = "SELECT logical_name FROM simpl_resources.datasources ORDER BY logical_name ASC";
+    String result = dataSourceService.retrieveData(rmDataSource, statement);
+
+    names.getItems().addAll(this.getColumnValuesFromResult(result, "logical_name"));
+
+    return names;
+  }
+  
+  /**
+   * Returns the names of all available workflow data format types.
+   * 
+   * @return
+   * @throws Exception
+   */
   @WebMethod(action = "getWorkflowDataFormatTypeNames")
   public StringList getWorkflowDataFormatTypeNames() throws Exception {
     StringList names = new StringList();
@@ -1133,7 +1334,7 @@ public class ResourceManagement {
     }
 
     // build SQL insert statement
-    statement = "INSERT INTO simpl_resources.datasources (logical_name, security_username, security_password, interface_description, properties_description, connector_properties_description) VALUES (";
+    statement = "INSERT INTO simpl_resources.datasources (logical_name, security_username, security_password, interface_description, properties_description, connector_properties_description, datacontainer_reference_type) VALUES (";
     statement += "'" + dataSource.getName() + "', ";
     statement += "'" + dataSource.getAuthentication().getUser() + "', ";
     statement += "'" + dataSource.getAuthentication().getPassword() + "', ";
@@ -1145,12 +1346,17 @@ public class ResourceManagement {
           + String.format(defaultConnectorPropertiesDescription, dataSource.getType(),
               dataSource.getSubType(), dataSource.getLanguage(), dataSource.getAPIType(), 
               dataSource.getDriverName(), dataSource.getAddressPrefix(), dataSource
-              .getConnector().getDataConverter().getWorkflowDataFormat()) + "'";
+              .getConnector().getDataConverter().getWorkflowDataFormat()) + "', ";
     } else {
-      statement += "'" + dataSource.getConnectorPropertiesDescription() + "'";
+      statement += "'" + dataSource.getConnectorPropertiesDescription() + "', ";
     }
 
-    statement += ")";
+    if (dataSource.getDataContainerReferenceType().equals("")) {
+      statement += "NULL)";
+    } else {
+      statement += "'" + dataSource.getDataContainerReferenceType() + "')";
+    }
+    
 
     // add data source
     successful = dataSourceService.executeStatement(rmDataSource, statement);
@@ -1268,6 +1474,36 @@ public class ResourceManagement {
     return successful;
   }
 
+  /**
+   * Adds a data container.
+   * 
+   * @param dataConverter
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "addDataConverter")
+  public boolean addDataContainer(DataContainer dataContainer) throws Exception {
+    boolean successful = false;
+    dataContainer.setDataSourceId(getDataSourceByName(
+        dataContainer.getDataSourceName()).getId());
+
+    if (validateDataContainerReference(dataContainer)) {
+      String statement = null;
+
+      // build SQL insert statement
+      statement = "INSERT INTO simpl_resources.datacontainers (datasource_id, logical_name, local_identifier) VALUES (";
+      statement += dataContainer.getDataSourceId() + ", ";
+      statement += "'" + dataContainer.getLogicalName() + "', ";
+      statement += "'" + dataContainer.getLocalIdentifier() + "'";
+      statement += ")";
+
+      // add data format
+      successful = dataSourceService.executeStatement(rmDataSource, statement);
+    }
+
+    return successful;
+  }
+  
   /**
    * Adds a strategy plug-in.
    * 
@@ -1399,13 +1635,19 @@ public class ResourceManagement {
 
     if (!dataSource.getConnectorPropertiesDescription().equals("")) {
       statement += "connector_properties_description='"
-          + dataSource.getConnectorPropertiesDescription() + "'";
+          + dataSource.getConnectorPropertiesDescription() + "', ";
     } else {
       statement += "connector_properties_description='"
           + String.format(defaultConnectorPropertiesDescription, dataSource.getType(),
               dataSource.getSubType(), dataSource.getLanguage(), dataSource.getAPIType(), 
               dataSource.getDriverName(), dataSource.getAddressPrefix(), dataSource
-              .getConnector().getDataConverter().getWorkflowDataFormat()) + "'";
+              .getConnector().getDataConverter().getWorkflowDataFormat()) + "', ";
+    }
+    if (dataSource.getDataContainerReferenceType().equals("")) {
+      statement += "datacontainer_reference_type=NULL";
+    } else {
+      statement += "datacontainer_reference_type='"
+          + dataSource.getDataContainerReferenceType() + "'";
     }
 
     statement += " WHERE id=" + dataSource.getId();
@@ -1526,6 +1768,37 @@ public class ResourceManagement {
     return successful;
   }
 
+  /**
+   * Updates a data container.
+   * 
+   * @param dataConverter
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "updateDataContainer")
+  public boolean updateDataContainer(DataContainer dataContainer)
+      throws Exception {
+    boolean successful = false;
+    dataContainer.setDataSourceId(getDataSourceByName(
+        dataContainer.getDataSourceName()).getId());
+    
+    if (validateDataContainerReference(dataContainer)) {
+      String statement = "";
+
+      // build SQL update statement
+      statement += "UPDATE simpl_resources.datacontainers SET ";
+      statement += "datasource_id=" + dataContainer.getDataSourceId() + ", ";
+      statement += "logical_name='" + dataContainer.getLogicalName() + "', ";
+      statement += "local_identifier='" + dataContainer.getLocalIdentifier() + "'";
+      statement += " WHERE id=" + dataContainer.getId();
+
+      // update data converter
+      successful = dataSourceService.executeStatement(rmDataSource, statement);
+    }
+
+    return successful;
+  }
+  
   /**
    * Updates a strategy plug-in.
    * 
@@ -1720,6 +1993,25 @@ public class ResourceManagement {
         + String.valueOf(id);
 
     // delete data transformation service
+    successful = dataSourceService.executeStatement(rmDataSource, statement);
+
+    return successful;
+  }
+  
+  /**
+   * Deletes a data container.
+   * 
+   * @param id
+   * @return
+   * @throws Exception
+   */
+  @WebMethod(action = "deleteDataContainer")
+  public boolean deleteDataContainer(int id) throws Exception {
+    boolean successful = false;
+    String statement = "DELETE FROM simpl_resources.datacontainers WHERE id = "
+        + String.valueOf(id);
+
+    // delete data converter
     successful = dataSourceService.executeStatement(rmDataSource, statement);
 
     return successful;
@@ -1956,6 +2248,9 @@ public class ResourceManagement {
                   column.getValue()));
           dataSource.setAddressPrefix(this.getFromPropertiesDescription("addressPrefix",
                   column.getValue()));
+        } else if (column.getAttribute("name").getValue()
+            .equals("datacontainer_reference_type")){
+          dataSource.setDataContainerReferenceType(column.getValue());
         }
       }
 
@@ -2175,6 +2470,65 @@ public class ResourceManagement {
   }
 
   /**
+   * Creates DataContainer objects from a RDB data format result.
+   * 
+   * @param result
+   * @param relation
+   * @return
+   * @throws JDOMException
+   * @throws IOException
+   */
+  @SuppressWarnings("unchecked")
+  private ArrayList<DataContainer> getDataContainersFromResult(String result,
+      String relation) throws JDOMException, IOException {
+    ArrayList<DataContainer> dataContainers = new ArrayList<DataContainer>();
+    String prefix;
+
+    if (relation == null || relation.equals("")) {
+      prefix = "";
+    } else {
+      prefix = relation + "_";
+    }
+
+    Document configDoc = null;
+    Element root = null;
+    List<Element> rows = null;
+    SAXBuilder saxBuilder = new SAXBuilder();
+
+    // transform the document to a list of data source objects
+    configDoc = saxBuilder.build(new InputSource(new StringReader(result)));
+    root = configDoc.getRootElement();
+    rows = root.getChild("table").getChildren("row");
+
+    for (Element row : rows) {
+      DataContainer dataContainer = new DataContainer();
+      List<Element> columns = row.getChildren("column");
+
+      for (Element column : columns) {
+        if (column.getAttribute("name").getValue().equals(prefix + "id")) {
+          dataContainer.setId(column.getValue());
+        } else if (column.getAttribute("name").getValue()
+            .equals(prefix + "datasource_id")) {
+          dataContainer.setDataSourceId(column.getValue());
+        } else if (column.getAttribute("name").getValue()
+            .equals(prefix + "datasource_name")) {
+          dataContainer.setDataSourceName(column.getValue());
+        } else if (column.getAttribute("name").getValue()
+            .equals(prefix + "logical_name")) {
+          dataContainer.setLogicalName(column.getValue());
+        } else if (column.getAttribute("name").getValue()
+            .equals(prefix + "local_identifier")) {
+          dataContainer.setLocalIdentifier(column.getValue());
+        }
+      }
+
+      dataContainers.add(dataContainer);
+    }
+
+    return dataContainers;
+  }
+
+  /**
    * Creates DataTransformationService objects from a RDB data format result.
    * 
    * @param result
@@ -2325,5 +2679,65 @@ public class ResourceManagement {
     }
 
     return value;
+  }
+  
+  /**
+   * Validates a given xml fragment against a the belonging (data container
+   * reference) type definition.
+   * 
+   * @param dataContainer
+   * @return
+   * @throws Exception
+   */
+  private boolean validateDataContainerReference(DataContainer dataContainer) throws Exception {
+    String schemaOpenTag = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><xsd:schema targetNamespace=\"http://www.example.org/simpl\" xmlns:simpl=\"http://www.example.org/simpl\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">";
+    String schemaCloseTag = "</xsd:schema>";
+    StringBuffer stringBuffer = new StringBuffer();
+
+    //
+    // build schema document
+    //
+    stringBuffer.append(schemaOpenTag);
+    // get type and base types
+    stringBuffer.append(getDataContainerReferenceTypeByDataSourceId(
+        dataContainer.getDataSourceId(), true));
+    // extract reference type name
+    Pattern pattern = Pattern.compile("\\W*(name)\\W*(=)\\W*(\")\\w*(\")");
+    Matcher matcher = pattern.matcher(stringBuffer.toString());
+    String match = "";
+    if (matcher.find()) {
+      match = matcher.group();
+      match = (match
+          .substring(match.indexOf("\"") + 1, match.lastIndexOf("\"")));
+    }
+    // extract name of the corresponding element
+    int start = dataContainer.getLocalIdentifier().lastIndexOf("</") + 2;
+    int stop = dataContainer.getLocalIdentifier().lastIndexOf(">");
+    String name = dataContainer.getLocalIdentifier().substring(start, stop);
+    // create element (for instantiation needed)
+    stringBuffer.append("<xsd:element name=\"" + name.replace("simpl:", "")
+        + "\" type=\"simpl:" + match + "\"></xsd:element>");
+    stringBuffer.append(schemaCloseTag);
+
+    //
+    // validation
+    //
+    SchemaFactory factory = SchemaFactory
+        .newInstance("http://www.w3.org/2001/XMLSchema");
+    try {
+      Schema schema = factory.newSchema(new SAXSource(new InputSource(
+          new StringReader(stringBuffer.toString()))));
+      Validator validator = schema.newValidator();
+      Source source = new SAXSource(new InputSource(new StringReader(
+          dataContainer.getLocalIdentifier())));
+      validator.validate(source);
+    } catch (SAXException e) {
+      e.printStackTrace();
+      return false;
+    } catch (IOException e) {
+      e.printStackTrace();
+      return false;
+    }
+    return true;
   }
 }

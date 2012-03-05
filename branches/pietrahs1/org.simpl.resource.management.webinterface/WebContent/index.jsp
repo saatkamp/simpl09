@@ -19,6 +19,8 @@
   <h3>Resources</h3>
   <a href="datasource_list.jsp">Data Source Management</a>
   <br/>
+  <a href="datacontainer_list.jsp">Data Container Management</a>
+  <br/>
   <a href="connector_list.jsp">Connector Management</a>
   <br/>
   <a href="dataconverter_list.jsp">Data Converter Management</a>

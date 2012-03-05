@@ -37,6 +37,7 @@
         <td>driverName</td>
         <td>addressPrefix</td>
         <td>Data Format</td>
+        <td>Data Container Reference Type</td>
         <td>User</td>
         <td>Password</td>
         <td>Properties (XML)</td>
@@ -56,6 +57,7 @@
           <td><%=!Check.empty(source.getDriverName()) ? source.getDriverName() : ""%></td>
           <td><%=!Check.empty(source.getAddressPrefix()) ? source.getAddressPrefix() : ""%></td>
           <td><%=!Check.empty(source.getConnector().getDataConverter().getWorkflowDataFormat()) ? source.getConnector().getDataConverter().getWorkflowDataFormat() : ""%></td>
+          <td><%=!Check.empty(source.getDataContainerReferenceType()) ? source.getDataContainerReferenceType() : ""%></td>
           <td><%=!Check.empty(source.getAuthentication().getUser()) ? source.getAuthentication().getUser() : ""%></td>
           <td><%=!Check.empty(source.getAuthentication().getPassword()) ? source.getAuthentication().getPassword().replaceAll(".", "*") : ""%></td>
           <td><%=!Check.empty(source.getPropertiesDescription())%></td>

@@ -12,6 +12,7 @@ import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
 import org.simpl.resource.management.data.Connector;
 import org.simpl.resource.management.data.ConnectorList;
+import org.simpl.resource.management.data.DataContainer;
 import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.DataSourceList;
 import org.simpl.resource.management.data.DataTransformationService;
@@ -199,6 +200,44 @@ public class RMWebClient {
     return dataSources;
   }
 
+  /**
+   * Returns a data container by its name.
+   * 
+   * @return
+   */
+  public DataContainer getDataContainerByName(String name) {
+    DataContainer dataContainer = null;
+
+    try {
+      dataContainer = this.resourceManagement.getDataContainerByName(name);
+    } catch (Exception_Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    return dataContainer;
+  }
+
+  /**
+   * Returns a data container reference type by a data source id.
+   * 
+   * @return
+   */
+  public String getDataContainerReferenceTypeByDataSourceId(String id,
+      boolean basetype) {
+    String result = null;
+
+    try {
+      result = this.resourceManagement
+          .getDataContainerReferenceTypeByDataSourceId(id, basetype);
+    } catch (Exception_Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    return result;
+  }
+  
   /**
    * Reloads the data from the Resource Management.
    */

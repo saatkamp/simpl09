@@ -21,6 +21,8 @@ import org.simpl.resource.management.client.ResourceManagementClient;
 public class FormMetaData {
   private static FormMetaData instance = null;
   private ArrayList<String> workflowDataformatTypeNames = null;
+  private ArrayList<String> dataContainerReferenceTypeNames = null;
+  private ArrayList<String> dataSourceNames = null;
   private ResourceManagement resourceManagement = null;
   private ArrayList<String> types = null;
   private ArrayList<String> subTypes = null;
@@ -60,6 +62,45 @@ public class FormMetaData {
     return select;
   }
 
+  /**
+   * Returns the names of the data container reference types as HTML select element.
+   * 
+   * @param name
+   *          Name of the form element
+   * @param selectedItem
+   *          Selected item
+   * @return HTML select element
+   * @throws Exception
+   */
+  public String getDataContainerReferenceTypeSelect(String name, String selectedItem) throws Exception {
+    this.retrieveDataContainerReferenceTypeNames();
+
+    String select = this
+      .createSelectElement(name, selectedItem, this.dataContainerReferenceTypeNames);
+    
+    return select;
+  }
+  
+  /**
+   * Returns the names of the data sources as HTML select element.
+   * 
+   * @param name
+   *          Name of the form element
+   * @param selectedItem
+   *          Selected item
+   * @return HTML select element
+   * @throws Exception
+   */
+  public String getDataSourceSelect(String name, String selectedItem) throws Exception {
+    this.retrieveDataSourceNames();
+
+    String select = this
+      .createSelectElement(name, selectedItem, this.dataSourceNames);
+    
+    return select;
+  }
+  
+  
   /**
    * Returns the data source types as HTML select element.
    * 
@@ -141,7 +182,30 @@ public class FormMetaData {
 	      this.workflowDataformatTypeNames = (ArrayList<String>) this.resourceManagement.getWorkflowDataFormatTypeNames().getItems();
 	    }
   }
+  
+  /**
+   * Retrieves the names of the data container reference types from the resource management.
+   * 
+   * @throws Exception
+   */
+  private void retrieveDataContainerReferenceTypeNames() throws Exception {
+    if (this.dataContainerReferenceTypeNames == null) {
+        this.dataContainerReferenceTypeNames = (ArrayList<String>) this.resourceManagement.getDataContainerReferenceTypeNames().getItems();
+      }
+  }
 
+  /**
+   * Retrieves the names of the data sources from the resource management.
+   * 
+   * @throws Exception
+   */
+  private void retrieveDataSourceNames() throws Exception {
+    if (this.dataSourceNames == null) {
+        this.dataSourceNames = (ArrayList<String>) this.resourceManagement.getDataSourceNames().getItems();
+      }
+  }
+
+  
   /**
    * Retrieves the data source types from the resource management.
    * 

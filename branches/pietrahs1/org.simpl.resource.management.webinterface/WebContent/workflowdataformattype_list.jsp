@@ -48,7 +48,7 @@
   <input type="submit" name="workflowDataFormatTypeListSubmit" value="New" />
   <% if (typeDefinitions.size() > 0) { %>
     <input type="submit" name="workflowDataFormatTypeListSubmit" value="Edit" "/>
-    <input type="submit" name="workflowDataFormatTypeListSubmit" value="Delete" onclick="return confirm('Are you sure you want to delete the data source reference type?')" />
+    <input type="submit" name="workflowDataFormatTypeListSubmit" value="Delete" onclick="return confirm('Are you sure you want to delete the workflow data format type?')" />
   <% } %>
 </form>
   

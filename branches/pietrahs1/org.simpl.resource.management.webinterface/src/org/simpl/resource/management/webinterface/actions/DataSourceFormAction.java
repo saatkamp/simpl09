@@ -158,6 +158,7 @@ public class DataSourceFormAction extends HttpServlet {
     connector.setDataConverter(dataConverter);
     
     dataSource.setConnector(connector);
+    dataSource.setDataContainerReferenceType(parameters.get("datacontainerreferencetype"));
     dataSource.setAuthentication(auth);
 
     return dataSource;

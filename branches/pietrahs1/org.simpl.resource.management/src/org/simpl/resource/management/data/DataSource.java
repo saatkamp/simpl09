@@ -5,26 +5,29 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <b>Purpose:</b>Data type for a data source with all relevant information that is needed
- * to set up a connection.<br>
- * <b>Description:</b>Type and subType are used by the SIMPL Core to determine a data
- * source service that can respond to the data source over the address. Further it holds a
- * properties description that defines non-functional properties used for a late binding,
- * a connector properties description that can be used to automatically find and assign a
- * working connector, the necessary authentication information for the data source, and
- * the assigned connector.<br>
+ * <b>Purpose:</b>Data type for a data source with all relevant information that
+ * is needed to set up a connection.<br>
+ * <b>Description:</b>Type and subType are used by the SIMPL Core to determine a
+ * data source service that can respond to the data source over the address.
+ * Further it holds a properties description that defines non-functional
+ * properties used for a late binding, a connector properties description that
+ * can be used to automatically find and assign a working connector, the
+ * necessary authentication information for the data source, and the assigned
+ * connector.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id: DataSource.java 1786 2011-04-05 11:24:45Z michael.schneidt@arcor.de $<br>
+ * @version $Id: DataSource.java 1786 2011-04-05 11:24:45Z
+ *          michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "dataSource", propOrder = { "id", "name", "address", "type", "subType",
-    "language", "apiType", "driverName", "addressPrefix", "propertiesDescription", "connectorPropertiesDescription",
-    "authentication", "connector" })
+@XmlType(name = "dataSource", propOrder = { "id", "name", "address", "type",
+    "subType", "language", "apiType", "driverName", "addressPrefix",
+    "dataContainerReferenceType", "propertiesDescription",
+    "connectorPropertiesDescription", "authentication", "connector" })
 public class DataSource {
   private String id;
   private String name;
@@ -35,15 +38,16 @@ public class DataSource {
   private String apiType;
   private String driverName;
   private String addressPrefix;
+  private String dataContainerReferenceType;
   private String propertiesDescription;
   private String connectorPropertiesDescription;
   private Authentication authentication = new Authentication();
   private Connector connector = new Connector();
 
   public DataSource() {
-    
+
   }
-  
+
   /**
    * @return the id
    */
@@ -133,7 +137,7 @@ public class DataSource {
   public void setLanguage(String language) {
     this.language = language;
   }
-  
+
   /**
    * @return the api type
    */
@@ -148,7 +152,7 @@ public class DataSource {
   public void setAPIType(String apiType) {
     this.apiType = apiType;
   }
-  
+
   /**
    * @return the driver name
    */
@@ -163,7 +167,7 @@ public class DataSource {
   public void setDriverName(String driverName) {
     this.driverName = driverName;
   }
-  
+
   /**
    * @return the address prefix
    */
@@ -177,6 +181,23 @@ public class DataSource {
    */
   public void setAddressPrefix(String addressPrefix) {
     this.addressPrefix = addressPrefix;
+  }
+
+  /**
+   * 
+   * @return the dataContainerReferenceType
+   */
+  public String getDataContainerReferenceType() {
+    return dataContainerReferenceType;
+  }
+
+  /**
+   * 
+   * @param dataContainerReferenceType
+   *          the dataContainerReferenceType
+   */
+  public void setDataContainerReferenceType(String dataContainerReferenceType) {
+    this.dataContainerReferenceType = dataContainerReferenceType;
   }
 
   /**
@@ -205,7 +226,8 @@ public class DataSource {
    * @param connectorPropertiesDescription
    *          the connectorPropertiesDescription to set
    */
-  public void setConnectorPropertiesDescription(String connectorPropertiesDescription) {
+  public void setConnectorPropertiesDescription(
+      String connectorPropertiesDescription) {
     this.connectorPropertiesDescription = connectorPropertiesDescription;
   }
 
@@ -253,9 +275,10 @@ public class DataSource {
     string += "\tapitype: " + this.apiType + ",\r\n";
     string += "\tdrivername: " + this.driverName + ",\r\n";
     string += "\taddressprefix: " + this.addressPrefix + ",\r\n";
-    string += "\tpropertiesDescription: " + this.propertiesDescription + ",\r\n";
-    string += "\tconnectorPropertiesDescription: " + this.connectorPropertiesDescription
+    string += "\tpropertiesDescription: " + this.propertiesDescription
         + ",\r\n";
+    string += "\tconnectorPropertiesDescription: "
+        + this.connectorPropertiesDescription + ",\r\n";
     string += "\tconnector: " + this.connector + "\r\n";
     string += "}";
 
