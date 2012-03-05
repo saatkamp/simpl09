@@ -75,8 +75,8 @@ public class ResourceManagementBrowserView extends ViewPart {
 
 	// This will create the columns for the table
 	private void createColumns(final TableViewer viewer) {
-		String[] titles = { "Name", "Address", "Type", "Subtype", "Language", "Format", "User", "Password" };
-		int[] bounds = { 125, 200, 100, 100, 100, 100, 100, 100};
+		String[] titles = { "Name", "Address", "Type", "Subtype", "Language", "API Type", "Driver Name", "Address Prefix", "Format", "User", "Password" };
+		int[] bounds = { 125, 200, 100, 100, 100, 100, 100, 100, 100, 100, 100};
 
 		for (int i = 0; i < titles.length; i++) {
 			final int index = i;

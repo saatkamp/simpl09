@@ -12,6 +12,7 @@ import org.simpl.resource.management.client.Exception_Exception;
 import org.simpl.resource.management.client.ResourceManagement;
 import org.simpl.resource.management.client.ResourceManagementClient;
 import org.simpl.resource.management.data.Connector;
+import org.simpl.resource.management.data.DataContainer;
 import org.simpl.resource.management.data.DataSource;
 
 /**
@@ -23,8 +24,10 @@ public class ResourceManagementService {
   ResourceManagement resourceManagementService = null;
   HashMap<String, DataSource> dataSourcesMap = new HashMap<String, DataSource>();
   HashMap<String, String> dataFormatsMap = new HashMap<String, String>();
+  HashMap<String, List<DataContainer>> dataContainerMap = new HashMap<String, List<DataContainer>>();
   List<DataSource> dataSources = null;
   List<Connector> connectors = null;
+  List<DataContainer> dataContainers = null;
 
   ResourceManagementService() {
     resourceManagementService = this.getService();
@@ -33,6 +36,7 @@ public class ResourceManagementService {
       if (resourceManagementService != null) {
         dataSources = resourceManagementService.getAllDataSources().getDataSources();
         connectors = resourceManagementService.getAllConnectors().getConnectors();
+        dataContainers = resourceManagementService.getAllDataContainers().getDataContainers();
       } else {
         MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
             "Resource Management is not available.", "Could not load resources.");
@@ -45,6 +49,19 @@ public class ResourceManagementService {
     if (dataSources != null) {
       for (DataSource dataSource : dataSources) {
         dataSourcesMap.put(dataSource.getName(), dataSource);
+      }
+    }
+    if (dataContainers != null) {
+      for (DataContainer dataContainer : dataContainers) {
+        if (dataContainerMap.containsKey(dataContainer.getDataSourceName())) {
+          dataContainerMap.get(dataContainer.getDataSourceName()).add(
+              dataContainer);
+        } else {
+          dataContainerMap.put(dataContainer.getDataSourceName(),
+              new ArrayList<DataContainer>());
+          dataContainerMap.get(dataContainer.getDataSourceName()).add(
+              dataContainer);
+        }
       }
     }
   }
@@ -181,6 +198,16 @@ public class ResourceManagementService {
     
     return schema;
   }
+  
+  public List<DataContainer> getAllDataContainersByDataSourceName(String name) {
+    if (dataContainerMap.containsKey(name)) {
+      return dataContainerMap.get(name);
+    } else {
+      return new ArrayList<DataContainer>();
+    }
+  }
+  
+  
   
   public ResourceManagement getService() {
     String address = CommunicationPlugIn.getDefault().getPreferenceStore()

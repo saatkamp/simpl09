@@ -13,21 +13,29 @@ public class ResourceManagementLabelProvider extends LabelProvider implements
 		
 		switch (columnIndex) {
 		case 0:
-			return datasource.getName();
-		case 1:
-			return datasource.getAddress();
-		case 2:
-			return datasource.getType();
-		case 3:
-			return datasource.getSubType();
-		case 4:
-			return datasource.getLanguage();
-		case 5:
-			return datasource.getConnector().getDataConverter().getWorkflowDataFormat();
-		case 6:
-			return datasource.getAuthentication().getUser();
-		case 7:
-			return datasource.getAuthentication().getPassword().replaceAll(".", "*");
+      return datasource.getName();
+    case 1:
+      return datasource.getAddress();
+    case 2:
+      return datasource.getType();
+    case 3:
+      return datasource.getSubType();
+    case 4:
+      return datasource.getLanguage();
+    case 5:
+      return datasource.getAPIType();
+    case 6:
+      return datasource.getDriverName();
+    case 7:
+      return datasource.getAddressPrefix();
+    case 8:
+      return datasource.getConnector().getDataConverter()
+          .getWorkflowDataFormat();
+    case 9:
+      return datasource.getAuthentication().getUser();
+    case 10:
+      return datasource.getAuthentication().getPassword()
+          .replaceAll(".", "*");
 		default:
 			throw new RuntimeException("Too many columns.");
 		}

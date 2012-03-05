@@ -231,27 +231,32 @@ public class ParameterAdjustmentPage extends StatementTestWizardPage {
       // extract and set the value
       int valueStart = variable.getValue().indexOf("<" + variableElement.getName() + ">") + variableElement.getName().length() + 2;
       int valueStop = variable.getValue().indexOf("</" + variableElement.getName() + ">", valueStart);
-      String value = variable.getValue().substring(valueStart, valueStop);
-      variableElementText.setText(value);
-      variableElement.setValue(value);
-      
-      variableElementText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-      variableElementText.addKeyListener(new KeyAdapter() {
-        @Override
-        public void keyReleased(KeyEvent e) {
-          // save variable value
-          variableElement.setValue(((Text) e.widget).getText());
+      if (valueStart > -1 && valueStop > -1) {
+        String value = variable.getValue().substring(valueStart, valueStop);
+        variableElementText.setText(value);
+        variableElement.setValue(value);
 
-          if (allParametersAreSet(group)) {
-            setPageComplete(true);
-            setMessage(ParameterAdjustmentPage.PAGE_MESSAGE, IMessageProvider.NONE);
-          } else {
-            setPageComplete(false);
-            setMessage(ParameterAdjustmentPage.ERROR_ALL_PARAMETERS_MUST_BE_SET,
-                IMessageProvider.ERROR);
+        variableElementText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER,
+            true, false));
+        variableElementText.addKeyListener(new KeyAdapter() {
+          @Override
+          public void keyReleased(KeyEvent e) {
+            // save variable value
+            variableElement.setValue(((Text) e.widget).getText());
+
+            if (allParametersAreSet(group)) {
+              setPageComplete(true);
+              setMessage(ParameterAdjustmentPage.PAGE_MESSAGE,
+                  IMessageProvider.NONE);
+            } else {
+              setPageComplete(false);
+              setMessage(
+                  ParameterAdjustmentPage.ERROR_ALL_PARAMETERS_MUST_BE_SET,
+                  IMessageProvider.ERROR);
+            }
           }
-        }
-      });
+        });
+      }
     }
   }
 }
