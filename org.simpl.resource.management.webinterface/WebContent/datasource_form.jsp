@@ -32,6 +32,7 @@
   String drivername = "";
   String addressprefix = "";
   String workflowdataformat = "";
+  String datacontainerreferencetype = "";
   String properties = "";
   String connectorProperties = "";
   
@@ -70,6 +71,7 @@
       password = dataSource.getAuthentication().getPassword();
       language = dataSource.getLanguage();
       workflowdataformat = dataSource.getConnector().getDataConverter().getWorkflowDataFormat();
+      datacontainerreferencetype = dataSource.getDataContainerReferenceType();
       connectorProperties = dataSource.getConnectorPropertiesDescription();
     }
   }
@@ -122,6 +124,11 @@
   <tr>
     <td><label>Workflow Data Format</label></td>
     <td><%=FormMetaData.getInstance().getDataFormatSelect("workflowdataformat", workflowdataformat)%></td>
+  </tr>
+  
+  <tr>
+    <td><label>Data Container Reference Type</label></td>
+    <td><%=FormMetaData.getInstance().getDataContainerReferenceTypeSelect("datacontainerreferencetype", datacontainerreferencetype)%></td>
   </tr>
 
   <tr>

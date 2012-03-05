@@ -4,12 +4,14 @@ import java.io.InputStream;
 import java.util.List;
 
 import org.simpl.core.clients.DTSClient;
+import org.simpl.core.clients.RMClient;
 import org.simpl.core.connector.Connector;
 import org.simpl.core.connector.ConnectorProvider;
 import org.simpl.core.dataconverter.DataConverterProvider;
 import org.simpl.core.datatransformation.DataTransformationServiceProvider;
 import org.simpl.core.exceptions.ConnectionException;
 import org.simpl.core.plugins.connector.ConnectorPlugin;
+import org.simpl.core.resolver.DataContainerReferencesResolver;
 import org.simpl.resource.management.data.DataSource;
 
 import commonj.sdo.DataObject;
@@ -43,9 +45,14 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
 
     try {
       if (this.isDataSourceComplete(dataSource)) {
-        connector = ConnectorProvider.getInstance(dataSource.getType(),
-            dataSource.getSubType());
-
+        connector = ConnectorProvider.getInstance(dataSource.getType(), dataSource.getSubType());
+        // check to see, if there are references and to solve them if necessary
+        if (statement.contains("[") || target.contains("[")) {
+          DataContainerReferencesResolver resolver = new DataContainerReferencesResolver(
+              RMClient.getInstance().getDataContainerReferenceTypeByDataSourceId(dataSource.getId(), false));
+          statement = resolver.parseStatement(statement);
+          target = resolver.parseStatement(target);
+        }
         success = connector.queryData(dataSource, statement, target);
       }
     } catch (Exception e) {
@@ -72,9 +79,14 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
       // execute statement
       if (this.isDataSourceComplete(dataSource)) {
         // get connector instance
-        connector = ConnectorProvider.getInstance(dataSource.getType(),
-            dataSource.getSubType());
+        connector = ConnectorProvider.getInstance(dataSource.getType(), dataSource.getSubType());
+        // check to see, if there are references and to solve them if necessary
+        if (statement.contains("[")) {
+          DataContainerReferencesResolver resolver = new DataContainerReferencesResolver(
+              RMClient.getInstance().getDataContainerReferenceTypeByDataSourceId(dataSource.getId(), false));
+          statement = resolver.parseStatement(statement);
 
+        }
         // execute statement
         success = connector.issueCommand(dataSource, statement);
       }
@@ -102,9 +114,13 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
       // retrieve data
       if (this.isDataSourceComplete(dataSource)) {
         // get connector instance
-        connector = ConnectorProvider.getInstance(dataSource.getType(),
-            dataSource.getSubType());
-        
+        connector = ConnectorProvider.getInstance(dataSource.getType(), dataSource.getSubType());
+        // check to see, if there are references and to solve them if necessary
+        if (statement.contains("[")) {
+          DataContainerReferencesResolver resolver = new DataContainerReferencesResolver(
+              RMClient.getInstance().getDataContainerReferenceTypeByDataSourceId(dataSource.getId(), false));
+          statement = resolver.parseStatement(statement);
+        }
         data = connector.retrieveData(dataSource, statement);
       }
 
@@ -138,9 +154,13 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
     try {
       if (this.isDataSourceComplete(dataSource)) {
         // get connector instance
-        connector = ConnectorProvider.getInstance(dataSource.getType(),
-            dataSource.getSubType());
-
+        connector = ConnectorProvider.getInstance(dataSource.getType(), dataSource.getSubType());
+        // check to see, if there are references and to solve them if necessary
+        if (target.contains("[")) {
+          DataContainerReferencesResolver resolver = new DataContainerReferencesResolver(
+              RMClient.getInstance().getDataContainerReferenceTypeByDataSourceId(dataSource.getId(), false));
+          target = resolver.parseStatement(target);
+        }
         if (target != null && !target.equals("")) {
           // format and write back data
           writeData = formatWriteDataAndCreateTarget(connector, data, dataSource,
@@ -190,35 +210,37 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
     return data;
   }
 
-//not used anymore
-//required tables must already be present
-//
-//
-//  /*
-//   * (non-Javadoc)
-//   * @see
-//   * org.simpl.core.connector.Connector#createTarget(org.simpl.resource.management.client
-//   * .DataSource, commonj.sdo.DataObject, java.lang.String)
-//   */
-//  @Override
-//  public boolean createTarget(DataSource dataSource, DataObject dataObject, String target)
-//      throws ConnectionException {
-//    boolean success = false;
-//    Connector<Object, Object> connector = null;
-//
-//    try {
-//      // get connector instance
-//      connector = ConnectorProvider.getInstance(dataSource.getType(),
-//          dataSource.getSubType());
-//
-//      // create target
-//      success = connector.createTarget(dataSource, dataObject, target);
-//    } catch (Exception e) {
-//      throw new ConnectionException(e.getCause());
-//    }
-//
-//    return success;
-//  }
+  // not used anymore
+  // required tables must already be present
+  //
+  //
+  // /*
+  // * (non-Javadoc)
+  // * @see
+  // *
+  // org.simpl.core.connector.Connector#createTarget(org.simpl.resource.management.client
+  // * .DataSource, commonj.sdo.DataObject, java.lang.String)
+  // */
+  // @Override
+  // public boolean createTarget(DataSource dataSource, DataObject dataObject,
+  // String target)
+  // throws ConnectionException {
+  // boolean success = false;
+  // Connector<Object, Object> connector = null;
+  //
+  // try {
+  // // get connector instance
+  // connector = ConnectorProvider.getInstance(dataSource.getType(),
+  // dataSource.getSubType());
+  //
+  // // create target
+  // success = connector.createTarget(dataSource, dataObject, target);
+  // } catch (Exception e) {
+  // throw new ConnectionException(e.getCause());
+  // }
+  //
+  // return success;
+  // }
 
   /**
    * Returns the data source's meta data schema file as InputStream.

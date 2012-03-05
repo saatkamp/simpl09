@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.simpl.core.services.SIMPLCoreAdministrationService;
+import org.simpl.resource.management.data.DataContainer;
 import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.DataSourceList;
 
@@ -110,6 +111,22 @@ public class RMClient {
       return RMWebClient.getInstance().getAllDataSources();
     } else {
       return RMDirectClient.getInstance().getAllDataSources();
+    }
+  }
+  
+  public DataContainer getDataContainerByName(String name){
+    if (isUsingWebService()) {
+      return RMWebClient.getInstance().getDataContainerByName(name);
+    } else {
+      return RMDirectClient.getInstance().getDataContainerByName(name);
+    }
+  }
+  
+  public String getDataContainerReferenceTypeByDataSourceId(String id, boolean basetype){
+    if (isUsingWebService()) {
+      return RMWebClient.getInstance().getDataContainerReferenceTypeByDataSourceId(id, basetype);
+    } else {
+      return RMDirectClient.getInstance().getDataContainerReferenceTypeByDataSourceId(id, basetype);
     }
   }
 

@@ -19,6 +19,20 @@
     <servlet-name>DataSourceFormAction</servlet-name>
     <servlet-class>org.simpl.resource.management.webinterface.actions.DataSourceFormAction</servlet-class>
   </servlet>
+  
+  <servlet>
+    <description>DataContainerListAction</description>
+    <display-name>DataContainerListAction</display-name>
+    <servlet-name>DataContainerListAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataContainerListAction</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <description>DataContainerFormAction</description>
+    <display-name>DataContainerFormAction</display-name>
+    <servlet-name>DataContainerFormAction</servlet-name>
+    <servlet-class>org.simpl.resource.management.webinterface.actions.DataContainerFormAction</servlet-class>
+  </servlet>
 
   <servlet>
     <description>ConnectorListAction</description>
@@ -140,6 +154,16 @@
   <servlet-mapping>
     <servlet-name>DataSourceFormAction</servlet-name>
     <url-pattern>/DataSourceFormAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>DataContainerListAction</servlet-name>
+    <url-pattern>/DataContainerListAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>DataContainerFormAction</servlet-name>
+    <url-pattern>/DataContainerFormAction</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>

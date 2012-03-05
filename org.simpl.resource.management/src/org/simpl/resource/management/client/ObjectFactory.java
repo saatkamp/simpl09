@@ -9,6 +9,8 @@ import javax.xml.namespace.QName;
 import org.simpl.resource.management.data.Authentication;
 import org.simpl.resource.management.data.Connector;
 import org.simpl.resource.management.data.ConnectorList;
+import org.simpl.resource.management.data.DataContainer;
+import org.simpl.resource.management.data.DataContainerList;
 import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataConverterList;
 import org.simpl.resource.management.data.DataSource;
@@ -48,11 +50,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Authentication }
+     * Create an instance of {@link DataSource }
      * 
      */
-    public Authentication createAuthentication() {
-        return new Authentication();
+    public DataSource createDataSource() {
+        return new DataSource();
+    }
+
+    /**
+     * Create an instance of {@link ConnectorList }
+     * 
+     */
+    public ConnectorList createConnectorList() {
+        return new ConnectorList();
     }
 
     /**
@@ -64,27 +74,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link StrategyPlugin }
+     * Create an instance of {@link Authentication }
      * 
      */
-    public StrategyPlugin createStrategyPlugin() {
-        return new StrategyPlugin();
+    public Authentication createAuthentication() {
+        return new Authentication();
     }
 
     /**
-     * Create an instance of {@link StrategyPluginList }
+     * Create an instance of {@link Exception }
      * 
      */
-    public StrategyPluginList createStrategyPluginList() {
-        return new StrategyPluginList();
+    public Exception createException() {
+        return new Exception();
     }
 
     /**
-     * Create an instance of {@link DataSourceList }
+     * Create an instance of {@link DataConverter }
      * 
      */
-    public DataSourceList createDataSourceList() {
-        return new DataSourceList();
+    public DataConverter createDataConverter() {
+        return new DataConverter();
     }
 
     /**
@@ -93,6 +103,14 @@ public class ObjectFactory {
      */
     public Connector createConnector() {
         return new Connector();
+    }
+
+    /**
+     * Create an instance of {@link DataConverterList }
+     * 
+     */
+    public DataConverterList createDataConverterList() {
+        return new DataConverterList();
     }
 
     /**
@@ -112,51 +130,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataConverterList }
+     * Create an instance of {@link DataContainer }
      * 
      */
-    public DataConverterList createDataConverterList() {
-        return new DataConverterList();
-    }
-
-    /**
-     * Create an instance of {@link DataSource }
-     * 
-     */
-    public DataSource createDataSource() {
-        return new DataSource();
-    }
-
-    /**
-     * Create an instance of {@link DataConverter }
-     * 
-     */
-    public DataConverter createDataConverter() {
-        return new DataConverter();
-    }
-
-    /**
-     * Create an instance of {@link ConnectorList }
-     * 
-     */
-    public ConnectorList createConnectorList() {
-        return new ConnectorList();
-    }
-
-    /**
-     * Create an instance of {@link Exception }
-     * 
-     */
-    public Exception createException() {
-        return new Exception();
-    }
-
-    /**
-     * Create an instance of {@link TypeDefinitionList }
-     * 
-     */
-    public TypeDefinitionList createTypeDefinitionList() {
-        return new TypeDefinitionList();
+    public DataContainer createDataContainer() {
+        return new DataContainer();
     }
 
     /**
@@ -165,6 +143,46 @@ public class ObjectFactory {
      */
     public DataTransformationServiceList createDataTransformationServiceList() {
         return new DataTransformationServiceList();
+    }
+
+    /**
+     * Create an instance of {@link DataContainerList }
+     * 
+     */
+    public DataContainerList createDataContainerList() {
+        return new DataContainerList();
+    }
+
+    /**
+     * Create an instance of {@link DataSourceList }
+     * 
+     */
+    public DataSourceList createDataSourceList() {
+        return new DataSourceList();
+    }
+
+    /**
+     * Create an instance of {@link StrategyPluginList }
+     * 
+     */
+    public StrategyPluginList createStrategyPluginList() {
+        return new StrategyPluginList();
+    }
+
+    /**
+     * Create an instance of {@link StrategyPlugin }
+     * 
+     */
+    public StrategyPlugin createStrategyPlugin() {
+        return new StrategyPlugin();
+    }
+
+    /**
+     * Create an instance of {@link TypeDefinitionList }
+     * 
+     */
+    public TypeDefinitionList createTypeDefinitionList() {
+        return new TypeDefinitionList();
     }
 
     /**

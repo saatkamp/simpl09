@@ -12,6 +12,7 @@ import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataSource;
 import org.simpl.resource.management.data.LateBinding;
 
+
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
@@ -39,6 +40,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link LateBinding }
+     * 
+     */
+    public LateBinding createLateBinding() {
+        return new LateBinding();
+    }
+
+    /**
+     * Create an instance of {@link DataConverter }
+     * 
+     */
+    public DataConverter createDataConverter() {
+        return new DataConverter();
+    }
+
+    /**
+     * Create an instance of {@link Authentication }
+     * 
+     */
+    public Authentication createAuthentication() {
+        return new Authentication();
+    }
+
+    /**
      * Create an instance of {@link Connector }
      * 
      */
@@ -52,30 +77,6 @@ public class ObjectFactory {
      */
     public Exception createException() {
         return new Exception();
-    }
-
-    /**
-     * Create an instance of {@link Authentication }
-     * 
-     */
-    public Authentication createAuthentication() {
-        return new Authentication();
-    }
-
-    /**
-     * Create an instance of {@link DataConverter }
-     * 
-     */
-    public DataConverter createDataConverter() {
-        return new DataConverter();
-    }
-
-    /**
-     * Create an instance of {@link LateBinding }
-     * 
-     */
-    public LateBinding createLateBinding() {
-        return new LateBinding();
     }
 
     /**

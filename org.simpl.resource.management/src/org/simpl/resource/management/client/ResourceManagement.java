@@ -10,6 +10,8 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 import org.simpl.resource.management.data.Connector;
 import org.simpl.resource.management.data.ConnectorList;
+import org.simpl.resource.management.data.DataContainer;
+import org.simpl.resource.management.data.DataContainerList;
 import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataConverterList;
 import org.simpl.resource.management.data.DataSource;
@@ -69,24 +71,24 @@ public interface ResourceManagement {
     /**
      * 
      * @return
-     *     returns org.simpl.resource.management.client.DataSourceList
-     * @throws Exception_Exception
-     */
-    @WebMethod(action = "getAllDataSources")
-    @WebResult(partName = "return")
-    public DataSourceList getAllDataSources()
-        throws Exception_Exception
-    ;
-
-    /**
-     * 
-     * @return
      *     returns org.simpl.resource.management.client.StrategyPluginList
      * @throws Exception_Exception
      */
     @WebMethod(action = "getAllStrategyPlugins")
     @WebResult(partName = "return")
     public StrategyPluginList getAllStrategyPlugins()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns org.simpl.resource.management.client.DataSourceList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getAllDataSources")
+    @WebResult(partName = "return")
+    public DataSourceList getAllDataSources()
         throws Exception_Exception
     ;
 
@@ -202,12 +204,12 @@ public interface ResourceManagement {
      * 
      * @param id
      * @return
-     *     returns org.simpl.resource.management.client.StrategyPlugin
+     *     returns org.simpl.resource.management.client.DataContainer
      * @throws Exception_Exception
      */
-    @WebMethod(action = "getStrategyPluginById")
+    @WebMethod(action = "getDataContainerById")
     @WebResult(partName = "return")
-    public StrategyPlugin getStrategyPluginById(
+    public DataContainer getDataContainerById(
         @WebParam(name = "id", partName = "id")
         int id)
         throws Exception_Exception
@@ -215,14 +217,29 @@ public interface ResourceManagement {
 
     /**
      * 
-     * @param id
+     * @param name
      * @return
-     *     returns org.simpl.resource.management.client.TypeDefinition
+     *     returns org.simpl.resource.management.client.DataContainer
      * @throws Exception_Exception
      */
-    @WebMethod(action = "getWorkflowDataFormatTypeById")
+    @WebMethod(action = "getDataContainerByName")
     @WebResult(partName = "return")
-    public TypeDefinition getWorkflowDataFormatTypeById(
+    public DataContainer getDataContainerByName(
+        @WebParam(name = "name", partName = "name")
+        String name)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns org.simpl.resource.management.client.StrategyPlugin
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getStrategyPluginById")
+    @WebResult(partName = "return")
+    public StrategyPlugin getStrategyPluginById(
         @WebParam(name = "id", partName = "id")
         int id)
         throws Exception_Exception
@@ -245,6 +262,24 @@ public interface ResourceManagement {
 
     /**
      * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getDataContainerReferenceTypeByDataSourceId")
+    @WebResult(partName = "return")
+    public String getDataContainerReferenceTypeByDataSourceId(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        boolean arg1)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
      * @param id
      * @return
      *     returns org.simpl.resource.management.client.TypeDefinition
@@ -253,6 +288,21 @@ public interface ResourceManagement {
     @WebMethod(action = "getDataSourceReferenceTypeById")
     @WebResult(partName = "return")
     public TypeDefinition getDataSourceReferenceTypeById(
+        @WebParam(name = "id", partName = "id")
+        int id)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns org.simpl.resource.management.client.TypeDefinition
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getWorkflowDataFormatTypeById")
+    @WebResult(partName = "return")
+    public TypeDefinition getWorkflowDataFormatTypeById(
         @WebParam(name = "id", partName = "id")
         int id)
         throws Exception_Exception
@@ -297,12 +347,27 @@ public interface ResourceManagement {
     /**
      * 
      * @return
-     *     returns org.simpl.resource.management.client.TypeDefinitionList
+     *     returns org.simpl.resource.management.client.DataContainerList
      * @throws Exception_Exception
      */
-    @WebMethod(action = "getAllWorkflowDataFormatTypes")
+    @WebMethod(action = "getAllDataContainers")
     @WebResult(partName = "return")
-    public TypeDefinitionList getAllWorkflowDataFormatTypes()
+    public DataContainerList getAllDataContainers()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param name
+     * @return
+     *     returns org.simpl.resource.management.client.DataContainerList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getAllDataContainersByDataSourceName")
+    @WebResult(partName = "return")
+    public DataContainerList getAllDataContainersByDataSourceName(
+        @WebParam(name = "name", partName = "name")
+        int name)
         throws Exception_Exception
     ;
 
@@ -327,6 +392,18 @@ public interface ResourceManagement {
     @WebMethod(action = "getAllDataSourceReferenceTypes")
     @WebResult(partName = "return")
     public TypeDefinitionList getAllDataSourceReferenceTypes()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns org.simpl.resource.management.client.TypeDefinitionList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getAllWorkflowDataFormatTypes")
+    @WebResult(partName = "return")
+    public TypeDefinitionList getAllWorkflowDataFormatTypes()
         throws Exception_Exception
     ;
 
@@ -405,6 +482,30 @@ public interface ResourceManagement {
     @WebMethod(action = "getAPITypes")
     @WebResult(partName = "return")
     public StringList getAPITypes()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns org.simpl.resource.management.client.StringList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getDataContainerReferenceTypeNames")
+    @WebResult(partName = "return")
+    public StringList getDataContainerReferenceTypeNames()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns org.simpl.resource.management.client.StringList
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "getDataSourceNames")
+    @WebResult(partName = "return")
+    public StringList getDataSourceNames()
         throws Exception_Exception
     ;
 
@@ -532,11 +633,11 @@ public interface ResourceManagement {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "addStrategyPlugin")
+    @WebMethod(action = "addDataConverter")
     @WebResult(partName = "return")
-    public boolean addStrategyPlugin(
+    public boolean addDataContainer(
         @WebParam(name = "arg0", partName = "arg0")
-        StrategyPlugin arg0)
+        DataContainer arg0)
         throws Exception_Exception
     ;
 
@@ -547,11 +648,11 @@ public interface ResourceManagement {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "addWorkflowDataFormatType")
+    @WebMethod(action = "addStrategyPlugin")
     @WebResult(partName = "return")
-    public boolean addWorkflowDataFormatType(
+    public boolean addStrategyPlugin(
         @WebParam(name = "arg0", partName = "arg0")
-        TypeDefinition arg0)
+        StrategyPlugin arg0)
         throws Exception_Exception
     ;
 
@@ -580,6 +681,21 @@ public interface ResourceManagement {
     @WebMethod(action = "addDataSourceReferenceType")
     @WebResult(partName = "return")
     public boolean addDataSourceReferenceType(
+        @WebParam(name = "arg0", partName = "arg0")
+        TypeDefinition arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "addWorkflowDataFormatType")
+    @WebResult(partName = "return")
+    public boolean addWorkflowDataFormatType(
         @WebParam(name = "arg0", partName = "arg0")
         TypeDefinition arg0)
         throws Exception_Exception
@@ -652,11 +768,11 @@ public interface ResourceManagement {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "updateStrategyPlugin")
+    @WebMethod(action = "updateDataContainer")
     @WebResult(partName = "return")
-    public boolean updateStrategyPlugin(
+    public boolean updateDataContainer(
         @WebParam(name = "arg0", partName = "arg0")
-        StrategyPlugin arg0)
+        DataContainer arg0)
         throws Exception_Exception
     ;
 
@@ -667,11 +783,11 @@ public interface ResourceManagement {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "updateWorkflowDataFormatType")
+    @WebMethod(action = "updateStrategyPlugin")
     @WebResult(partName = "return")
-    public boolean updateWorkflowDataFormatType(
+    public boolean updateStrategyPlugin(
         @WebParam(name = "arg0", partName = "arg0")
-        TypeDefinition arg0)
+        StrategyPlugin arg0)
         throws Exception_Exception
     ;
 
@@ -700,6 +816,21 @@ public interface ResourceManagement {
     @WebMethod(action = "updateDataSourceReferenceType")
     @WebResult(partName = "return")
     public boolean updateDataSourceReferenceType(
+        @WebParam(name = "arg0", partName = "arg0")
+        TypeDefinition arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "updateWorkflowDataFormatType")
+    @WebResult(partName = "return")
+    public boolean updateWorkflowDataFormatType(
         @WebParam(name = "arg0", partName = "arg0")
         TypeDefinition arg0)
         throws Exception_Exception
@@ -772,9 +903,9 @@ public interface ResourceManagement {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "deleteStrategyPlugin")
+    @WebMethod(action = "deleteDataContainer")
     @WebResult(partName = "return")
-    public boolean deleteStrategyPlugin(
+    public boolean deleteDataContainer(
         @WebParam(name = "arg0", partName = "arg0")
         int arg0)
         throws Exception_Exception
@@ -787,9 +918,9 @@ public interface ResourceManagement {
      *     returns boolean
      * @throws Exception_Exception
      */
-    @WebMethod(action = "deleteWorkflowDataFormatType")
+    @WebMethod(action = "deleteStrategyPlugin")
     @WebResult(partName = "return")
-    public boolean deleteWorkflowDataFormatType(
+    public boolean deleteStrategyPlugin(
         @WebParam(name = "arg0", partName = "arg0")
         int arg0)
         throws Exception_Exception
@@ -820,6 +951,21 @@ public interface ResourceManagement {
     @WebMethod(action = "deleteDataSourceReferenceType")
     @WebResult(partName = "return")
     public boolean deleteDataSourceReferenceType(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(action = "deleteWorkflowDataFormatType")
+    @WebResult(partName = "return")
+    public boolean deleteWorkflowDataFormatType(
         @WebParam(name = "arg0", partName = "arg0")
         int arg0)
         throws Exception_Exception
