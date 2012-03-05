@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd ">
+  <type></type>
+  <subType></subType>
+  <language></language>
+  <apiType></apiType>
+  <driverName></driverName>
+  <addressPrefix></addressPrefix>
+  <dataFormat></dataFormat>
+</connector_properties_description>
