@@ -13,10 +13,11 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 
 /**
- * <b>Purpose: Model of a SIMPL container variable (simpl:containerReference).</b> <br>
- * <b>Description:</b>Container variables consist of a sequence of elements and a string
- * pattern attribute that describes how the elements are concatenated for the use in a
- * statement.<br>
+ * <b>Purpose: Model of a SIMPL container variable
+ * (simpl:containerReference).</b> <br>
+ * <b>Description:</b>Container variables consist of a sequence of elements and
+ * a string pattern attribute that describes how the elements are concatenated
+ * for the use in a statement.<br>
  * <b>Copyright:</b>Licensed under the Apache License, Version 2.0.
  * http://www.apache.org/licenses/LICENSE-2.0<br>
  * <b>Company:</b><br>
@@ -37,7 +38,8 @@ public class ContainerVariable extends AbstractVariable {
   String stringPattern = "";
 
   /**
-   * The constructor reads the elements and the string pattern from the variable.
+   * The constructor reads the elements and the string pattern from the
+   * variable.
    */
   public ContainerVariable(Variable variable) {
     super(variable);
@@ -69,7 +71,8 @@ public class ContainerVariable extends AbstractVariable {
         for (int j = 0; j < complexContentNodes.getLength(); j++) {
           if (complexContentNodes.item(j).getLocalName() != null
               && complexContentNodes.item(j).getLocalName().equals("extension")) {
-            NodeList extensionNodes = complexContentNodes.item(j).getChildNodes();
+            NodeList extensionNodes = complexContentNodes.item(j)
+                .getChildNodes();
 
             for (int k = 0; k < extensionNodes.getLength(); k++) {
               NamedNodeMap attributes = extensionNodes.item(k).getAttributes();
@@ -78,7 +81,8 @@ public class ContainerVariable extends AbstractVariable {
                   && attributes.getNamedItem("name") != null
                   && attributes.getNamedItem("name").getNodeValue()
                       .equals("stringPattern")) {
-                this.stringPattern = attributes.getNamedItem("fixed").getNodeValue();
+                this.stringPattern = attributes.getNamedItem("fixed")
+                    .getNodeValue();
                 break;
               }
             }
@@ -86,31 +90,40 @@ public class ContainerVariable extends AbstractVariable {
         }
       }
     }
-
-    NodeList variableSchemaNodes = xsdType.getComplexType().getElement().getChildNodes();
-    NamedNodeMap attributes = null;
-    ContainerVariableElement element = null;
-
-    // read container elements
-    for (int i = 0; i < variableSchemaNodes.getLength(); i++) {
-      element = new ContainerVariableElement();
-
-      if (variableSchemaNodes.item(i).hasAttributes()) {
-        attributes = variableSchemaNodes.item(i).getAttributes();
-
-        element.setName(attributes.getNamedItem("name").getNodeValue());
-        element.setType(attributes.getNamedItem("type").getNodeValue()
-            .replace("xsd:", ""));
-
-        if (attributes.getNamedItem("minOccurs").getNodeValue().equals("1")) {
-          element.setRequired(true);
-        } else {
-          element.setRequired(false);
-        }
-
-        elements.add(element);
-      }
-    }
+    // TODO preferred solution (below) does not work -> Workaround: rekNodeList
+    // xsdType.getComplexType().getElement().getChildNodes() fuehrt
+    // zu einer NullPointerException, wenn Eigenschaften
+    // (DataSourceReferenceVariable) vererbt werden sollen. Aus diesem
+    // Grund werden an dieser Stelle alle Kindelemente durchlaufen.
+    // (Zukunft: schauen, warum die Exception auftritt)
+    rekNodeList(xsdType.getElement().getChildNodes());
+    
+    
+    // NodeList variableSchemaNodes =
+    // xsdType.getComplexType().getElement().getChildNodes();
+    // NamedNodeMap attributes = null;
+    // ContainerVariableElement element = null;
+    //
+    // // read container elements
+    // for (int i = 0; i < variableSchemaNodes.getLength(); i++) {
+    // element = new ContainerVariableElement();
+    //
+    // if (variableSchemaNodes.item(i).hasAttributes()) {
+    // attributes = variableSchemaNodes.item(i).getAttributes();
+    //
+    // element.setName(attributes.getNamedItem("name").getNodeValue());
+    // element.setType(attributes.getNamedItem("type").getNodeValue()
+    // .replace("xsd:", ""));
+    //
+    // if (attributes.getNamedItem("minOccurs").getNodeValue().equals("1")) {
+    // element.setRequired(true);
+    // } else {
+    // element.setRequired(false);
+    // }
+    //
+    // elements.add(element);
+    // }
+    // }
   }
 
   /**
@@ -123,8 +136,8 @@ public class ContainerVariable extends AbstractVariable {
   /**
    * String representation described by the pattern.
    * 
-   * Because the pattern elements are replaced or removed gradually, the positions of the
-   * remaining elements are updated with each step.
+   * Because the pattern elements are replaced or removed gradually, the
+   * positions of the remaining elements are updated with each step.
    */
   @Override
   public String toString() {
@@ -149,12 +162,14 @@ public class ContainerVariable extends AbstractVariable {
           // if first element, remove name including right delimiter
           pattern = pattern.substring(positions.get(i + 1), pattern.length());
         } else {
-          positionedElementPreceding = positionedElements.get(positions.get(i - 1));
+          positionedElementPreceding = positionedElements.get(positions
+              .get(i - 1));
 
           // remove element including left delimiter
           String remove = pattern.substring(
-              (positions.get(i - 1) + positionedElementPreceding.getName().length()),
-              (positions.get(i) + positionedElement.getName().length()));
+              (positions.get(i - 1) + positionedElementPreceding.getName()
+                  .length()), (positions.get(i) + positionedElement.getName()
+                  .length()));
 
           pattern = pattern.replace(remove, "");
         }
@@ -171,14 +186,16 @@ public class ContainerVariable extends AbstractVariable {
   }
 
   /**
-   * Cycles through the elements of a variable and maps the elements to their positions.
+   * Cycles through the elements of a variable and maps the elements to their
+   * positions.
    * 
    * @param positionedElements
    * @param pattern
    * @return
    */
   private List<Integer> findPositions(
-      HashMap<Integer, ContainerVariableElement> positionedElements, String pattern) {
+      HashMap<Integer, ContainerVariableElement> positionedElements,
+      String pattern) {
     List<Integer> positions = new ArrayList<Integer>();
 
     // clear previous positioned elements
@@ -196,5 +213,43 @@ public class ContainerVariable extends AbstractVariable {
     Collections.sort(positions);
 
     return positions;
+  }
+
+  /**
+   * Cycles through the elements of the type definition and puts the elements
+   * into a list.
+   * 
+   * @param nodeList
+   */
+  private void rekNodeList(NodeList nodeList) {
+    ContainerVariableElement element = null;
+    for (int i = 0; i < nodeList.getLength(); i++) {
+      if (nodeList.item(i).hasChildNodes()) {
+        rekNodeList(nodeList.item(i).getChildNodes());
+      }
+      NamedNodeMap attributes = null;
+      if (nodeList.item(i).hasAttributes()) {
+        attributes = nodeList.item(i).getAttributes();
+        if (attributes.getNamedItem("name") != null
+            && !attributes.getNamedItem("name").getNodeValue()
+                .equals("stringPattern")
+            && attributes.getNamedItem("type") != null) {
+          element = new ContainerVariableElement();
+          element.setName(attributes.getNamedItem("name").getNodeValue());
+          element.setType(attributes.getNamedItem("type").getNodeValue()
+              .replace("xsd:", ""));
+
+          if (attributes.getNamedItem("minOccurs") != null
+              && attributes.getNamedItem("minOccurs").getNodeValue()
+                  .equals("1")) {
+            element.setRequired(true);
+          } else {
+            element.setRequired(false);
+          }
+
+          elements.add(element);
+        }
+      }
+    }
   }
 }

@@ -12,7 +12,7 @@ public class DataSourceFilter extends ViewerFilter {
 
 	public void setSearchText(String s) {
 		// Search must be a substring of the existing value
-		this.searchString = ".*" + s + ".*";
+		this.searchString = ".*" + s.toLowerCase() + ".*";
 	}
 
 	@Override
@@ -23,18 +23,33 @@ public class DataSourceFilter extends ViewerFilter {
 		DataSource ds = (DataSource) element;
 		
 		try {
-			if (ds.getName().matches(searchString)) {
+			if (ds.getName().toLowerCase().matches(searchString)) {
 				return true;
 			}
-			if (ds.getAddress().matches(searchString)) {
+			if (ds.getAddress().toLowerCase().matches(searchString)) {
 				return true;
 			}
-			if (ds.getType().matches(searchString)) {
+			if (ds.getType().toLowerCase().matches(searchString)) {
 				return true;
 			}
-			if (ds.getSubType().matches(searchString)) {
+			if (ds.getSubType().toLowerCase().matches(searchString)) {
 				return true;
 			}
+	     if (ds.getLanguage().toLowerCase().matches(searchString)) {
+	        return true;
+	      }
+	     if (ds.getAPIType().toLowerCase().matches(searchString)) {
+	        return true;
+	      }
+	     if (ds.getDriverName().toLowerCase().matches(searchString)) {
+         return true;
+       }
+	     if (ds.getAddressPrefix().toLowerCase().matches(searchString)) {
+         return true;
+       }
+       if (ds.getConnector().getDataConverter().getWorkflowDataFormat().toLowerCase().matches(searchString)) {
+         return true;
+       }
 		}catch (PatternSyntaxException e) {
 			e.printStackTrace();
 		}
