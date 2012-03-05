@@ -34,56 +34,56 @@ import org.eclipse.wst.wsdl.ExtensibilityElement;
  * @generated
  */
 public interface Query extends ExtensibilityElement {
-	/**
-	 * Returns the value of the '<em><b>Query Language</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Query Language</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Query Language</em>' attribute.
-	 * @see #setQueryLanguage(String)
-	 * @see org.eclipse.bpel.model.messageproperties.MessagepropertiesPackage#getQuery_QueryLanguage()
-	 * @model
-	 * @generated
-	 */
-	String getQueryLanguage();
+  /**
+   * Returns the value of the '<em><b>Query Language</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Query Language</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Query Language</em>' attribute.
+   * @see #setQueryLanguage(String)
+   * @see org.eclipse.bpel.model.messageproperties.MessagepropertiesPackage#getQuery_QueryLanguage()
+   * @model
+   * @generated
+   */
+  String getQueryLanguage();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.messageproperties.Query#getQueryLanguage <em>Query Language</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Query Language</em>' attribute.
-	 * @see #getQueryLanguage()
-	 * @generated
-	 */
-	void setQueryLanguage(String value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.messageproperties.Query#getQueryLanguage <em>Query Language</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Query Language</em>' attribute.
+   * @see #getQueryLanguage()
+   * @generated
+   */
+  void setQueryLanguage(String value);
 
-	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(String)
-	 * @see org.eclipse.bpel.model.messageproperties.MessagepropertiesPackage#getQuery_Value()
-	 * @model
-	 * @generated
-	 */
-	String getValue();
+  /**
+   * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Value</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Value</em>' attribute.
+   * @see #setValue(String)
+   * @see org.eclipse.bpel.model.messageproperties.MessagepropertiesPackage#getQuery_Value()
+   * @model
+   * @generated
+   */
+  String getValue();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.messageproperties.Query#getValue <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #getValue()
-	 * @generated
-	 */
-	void setValue(String value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.messageproperties.Query#getValue <em>Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Value</em>' attribute.
+   * @see #getValue()
+   * @generated
+   */
+  void setValue(String value);
 
 } // Query

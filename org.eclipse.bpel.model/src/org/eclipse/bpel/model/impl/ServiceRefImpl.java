@@ -17,12 +17,10 @@ package org.eclipse.bpel.model.impl;
 import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.ServiceRef;
 import org.eclipse.bpel.model.util.BPELConstants;
-import org.eclipse.bpel.model.util.ElementFactory;
 import org.eclipse.bpel.model.util.ReconciliationHelper;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.wst.wsdl.internal.impl.ExtensibleElementImpl;
 import org.w3c.dom.Node;
 
@@ -41,207 +39,204 @@ import org.w3c.dom.Node;
  * @generated
  */
 public class ServiceRefImpl extends ExtensibleElementImpl implements ServiceRef {
-	/**
-	 * The default value of the '{@link #getReferenceScheme() <em>Reference Scheme</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getReferenceScheme()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String REFERENCE_SCHEME_EDEFAULT = null;
+  /**
+   * The default value of the '{@link #getReferenceScheme() <em>Reference Scheme</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReferenceScheme()
+   * @generated
+   * @ordered
+   */
+  protected static final String REFERENCE_SCHEME_EDEFAULT = null;
 
-	/**
-	 * The cached value of the '{@link #getReferenceScheme() <em>Reference Scheme</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getReferenceScheme()
-	 * @generated
-	 * @ordered
-	 */
-	protected String referenceScheme = REFERENCE_SCHEME_EDEFAULT;
+  /**
+   * The cached value of the '{@link #getReferenceScheme() <em>Reference Scheme</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReferenceScheme()
+   * @generated
+   * @ordered
+   */
+  protected String referenceScheme = REFERENCE_SCHEME_EDEFAULT;
 
-	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Object VALUE_EDEFAULT = null;
+  /**
+   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValue()
+   * @generated
+   * @ordered
+   */
+  protected static final Object VALUE_EDEFAULT = null;
 
-	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected Object value = VALUE_EDEFAULT;
+  /**
+   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValue()
+   * @generated
+   * @ordered
+   */
+  protected Object value = VALUE_EDEFAULT;
 
-	private Node valueNode;
+  private Node valueNode;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ServiceRefImpl() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ServiceRefImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return BPELPackage.Literals.SERVICE_REF;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return BPELPackage.Literals.SERVICE_REF;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getReferenceScheme() {
-		return referenceScheme;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getReferenceScheme() {
+    return referenceScheme;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 */
-	public void setReferenceScheme(String newReferenceScheme) {
-		String oldReferenceScheme = referenceScheme;
-		if (!isReconciling) {
-			ReconciliationHelper.replaceAttribute(this,
-					BPELConstants.AT_REFERENCE_SCHEME, newReferenceScheme);
-		}
-		referenceScheme = newReferenceScheme;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					BPELPackage.SERVICE_REF__REFERENCE_SCHEME,
-					oldReferenceScheme, referenceScheme));
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   */
+  public void setReferenceScheme(String newReferenceScheme) {
+    String oldReferenceScheme = referenceScheme;
+    if (!isReconciling) {
+      ReconciliationHelper.replaceAttribute(this, BPELConstants.AT_REFERENCE_SCHEME,
+          newReferenceScheme);
+    }
+    referenceScheme = newReferenceScheme;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET,
+          BPELPackage.SERVICE_REF__REFERENCE_SCHEME, oldReferenceScheme, referenceScheme));
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 */
-	public Object getValue() {
-		if (!isReconciling && getElement() != null) {
-			ReconciliationHelper.getInstance().reconcile(this, getElement());
-		}
-		return value;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   */
+  public Object getValue() {
+    if (!isReconciling && getElement() != null) {
+      ReconciliationHelper.getInstance().reconcile(this, getElement());
+    }
+    return value;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 */
-	public void setValue(Object newValue) {
-		Object oldValue = value;
-		value = newValue;
-		if (!isReconciling && oldValue != newValue) {
-			valueNode = ReconciliationHelper.replaceValue(this, valueNode,
-					newValue);
-		}
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					BPELPackage.SERVICE_REF__VALUE, oldValue, value));
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   */
+  public void setValue(Object newValue) {
+    Object oldValue = value;
+    value = newValue;
+    if (!isReconciling && oldValue != newValue) {
+      valueNode = ReconciliationHelper.replaceValue(this, valueNode, newValue);
+    }
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET,
+          BPELPackage.SERVICE_REF__VALUE, oldValue, value));
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-		case BPELPackage.SERVICE_REF__REFERENCE_SCHEME:
-			return getReferenceScheme();
-		case BPELPackage.SERVICE_REF__VALUE:
-			return getValue();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
+    case BPELPackage.SERVICE_REF__REFERENCE_SCHEME:
+      return getReferenceScheme();
+    case BPELPackage.SERVICE_REF__VALUE:
+      return getValue();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-		case BPELPackage.SERVICE_REF__REFERENCE_SCHEME:
-			setReferenceScheme((String) newValue);
-			return;
-		case BPELPackage.SERVICE_REF__VALUE:
-			setValue(newValue);
-			return;
-		}
-		super.eSet(featureID, newValue);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
+    case BPELPackage.SERVICE_REF__REFERENCE_SCHEME:
+      setReferenceScheme((String) newValue);
+      return;
+    case BPELPackage.SERVICE_REF__VALUE:
+      setValue(newValue);
+      return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-		case BPELPackage.SERVICE_REF__REFERENCE_SCHEME:
-			setReferenceScheme(REFERENCE_SCHEME_EDEFAULT);
-			return;
-		case BPELPackage.SERVICE_REF__VALUE:
-			setValue(VALUE_EDEFAULT);
-			return;
-		}
-		super.eUnset(featureID);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID) {
+    switch (featureID) {
+    case BPELPackage.SERVICE_REF__REFERENCE_SCHEME:
+      setReferenceScheme(REFERENCE_SCHEME_EDEFAULT);
+      return;
+    case BPELPackage.SERVICE_REF__VALUE:
+      setValue(VALUE_EDEFAULT);
+      return;
+    }
+    super.eUnset(featureID);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-		case BPELPackage.SERVICE_REF__REFERENCE_SCHEME:
-			return REFERENCE_SCHEME_EDEFAULT == null ? referenceScheme != null
-					: !REFERENCE_SCHEME_EDEFAULT.equals(referenceScheme);
-		case BPELPackage.SERVICE_REF__VALUE:
-			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT
-					.equals(value);
-		}
-		return super.eIsSet(featureID);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
+    case BPELPackage.SERVICE_REF__REFERENCE_SCHEME:
+      return REFERENCE_SCHEME_EDEFAULT == null ? referenceScheme != null
+          : !REFERENCE_SCHEME_EDEFAULT.equals(referenceScheme);
+    case BPELPackage.SERVICE_REF__VALUE:
+      return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+    }
+    return super.eIsSet(featureID);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString() {
+    if (eIsProxy())
+      return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (referenceScheme: "); //$NON-NLS-1$
-		result.append(referenceScheme);
-		result.append(", value: "); //$NON-NLS-1$
-		result.append(value);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (referenceScheme: "); //$NON-NLS-1$
+    result.append(referenceScheme);
+    result.append(", value: "); //$NON-NLS-1$
+    result.append(value);
+    result.append(')');
+    return result.toString();
+  }
 
 } //ServiceRefImpl

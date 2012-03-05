@@ -3,6 +3,9 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/APACHE_ODE"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_CORE"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.simpl.core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.simpl.resource.management"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_DATA_TRANSFORMATION_SERVICES"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SIMPL_DATA_TRANSFORMATION"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

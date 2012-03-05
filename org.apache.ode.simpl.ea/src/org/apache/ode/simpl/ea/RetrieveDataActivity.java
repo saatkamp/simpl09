@@ -4,10 +4,12 @@ import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.evt.ActivityFailureEvent;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
+import org.apache.ode.simpl.ea.util.DataSourceUtils;
 import org.apache.ode.simpl.ea.util.SDOUtils;
-import org.simpl.core.SIMPLCore;
-import org.simpl.core.services.datasource.DataSource;
-import org.simpl.core.services.datasource.DataSourceService;
+import org.apache.ode.simpl.ea.util.VariableUtils;
+import org.simpl.core.SIMPLCoreInterface;
+import org.simpl.core.services.SIMPLCoreService;
+import org.simpl.resource.management.data.LateBinding;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -16,58 +18,53 @@ import commonj.sdo.DataObject;
 
 public class RetrieveDataActivity extends DataManagementActivity {
 
-	@Override
-	protected void runSync(ExtensionContext context, Element element)
-			throws FaultException {
+  @Override
+  protected void runSync(ExtensionContext context, Element element) throws FaultException {
+    // ScopeEvent DMStarted = new DMStarted();
+    // context.getInternalInstance().sendEvent(DMStarted);
 
-//		ScopeEvent DMStarted = new DMStarted();
-//		context.getInternalInstance().sendEvent(DMStarted);
+    // Load all attribute values from the activity.
+    loadSIMPLAttributes(context, element);
 
-		// Load all attribute values from the activity.
-		loadSIMPLAttributes(context, element);
+    // Load all specific attribute values from the RetrieveDataActivity.
+    Attr dataVarAttr = element.getAttributeNode("dataVariable");
+    String dataVariableName = dataVarAttr.getValue();
 
-		// Load all specific attribute values from the RetrieveDataActivity.
-		Attr dataVarAttr = element.getAttributeNode("dataVariable");
-		String dataVariableName = dataVarAttr.getValue();
+    String ds = VariableUtils.getDataSourceReferenceValue(context, getDsIdentifier(), "name");
+    LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
 
-		DataSource ds = getDataSource(getActivityName(), getDsAddress());
+    SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 
-		DataSourceService<DataObject, DataObject> datasourceService = SIMPLCore
-				.getInstance().dataSourceService();
+    try {
+      DataObject dataObject = simplCoreService.retrieveData(ds, getDsStatement(context),
+          lb);
 
-		try {
-			DataObject dataObject = datasourceService.retrieveData(ds,
-					getDsStatement(context));
+      if (dataObject == null) {
+        // ScopeEvent DMFailure = new DMFailure(
+        // "The result of the query is null");
+        // context.getInternalInstance().sendEvent(DMFailure);
+      } else {
+        Node value = SDOUtils.createNodeOfSDO(dataObject);
+        Variable variable = context.getVisibleVariables().get(dataVariableName);
+        
+        if (variable != null) {
+          context.writeVariable(variable, value);
+        }
 
-			if (dataObject == null) {
-//				ScopeEvent DMFailure = new DMFailure(
-//						"The result of the query is null");
-//				context.getInternalInstance().sendEvent(DMFailure);
-			} else {
-				Node value = SDOUtils.createNodeOfSDO(dataObject, element.getNamespaceURI());
-				Variable variable = context.getVisibleVariables().get(
-						dataVariableName);
-				if (variable != null) {
+        // ScopeEvent DMEnd = new DMEnd();
+        // context.getInternalInstance().sendEvent(DMEnd);
+      }
 
-					context.writeVariable(variable, value);
+    } catch (Exception e) {
+      ActivityFailureEvent event = new ActivityFailureEvent(e.toString());
+      event.setActivityName(context.getActivityName());
+      event.setActivityId(context.getOActivity().getId());
+      event.setActivityType("RetrieveDataActivity");
+      event.setScopeName(context.getOActivity().getParent().name);
+      event.setScopeId(0L);
+      event.setScopeDeclerationId(context.getOActivity().getParent().getId());
 
-				}
-
-//				ScopeEvent DMEnd = new DMEnd();
-//				context.getInternalInstance().sendEvent(DMEnd);
-			}
-
-		} catch (Exception e) {
-			ActivityFailureEvent event = new ActivityFailureEvent(e.toString());
-			event.setActivityName(context.getActivityName());
-			event.setActivityId(context.getOActivity().getId());
-			event.setActivityType("RetrieveDataActivity");
-			event.setScopeName(context.getOActivity().getParent().name);
-			event.setScopeId(0L);
-			event.setScopeDeclerationId(context.getOActivity().getParent().getId());
-			
-			context.getInternalInstance().sendEvent(event);
-		}
-	}
-
+      context.getInternalInstance().sendEvent(event);
+    }
+  }
 }

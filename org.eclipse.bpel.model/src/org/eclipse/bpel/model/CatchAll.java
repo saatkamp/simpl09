@@ -31,30 +31,30 @@ package org.eclipse.bpel.model;
  * @generated
  */
 public interface CatchAll extends ExtensibleElement {
-	/**
-	 * Returns the value of the '<em><b>Activity</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Activity</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Activity</em>' containment reference.
-	 * @see #setActivity(Activity)
-	 * @see org.eclipse.bpel.model.BPELPackage#getCatchAll_Activity()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	Activity getActivity();
+  /**
+   * Returns the value of the '<em><b>Activity</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Activity</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Activity</em>' containment reference.
+   * @see #setActivity(Activity)
+   * @see org.eclipse.bpel.model.BPELPackage#getCatchAll_Activity()
+   * @model containment="true" required="true"
+   * @generated
+   */
+  Activity getActivity();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.CatchAll#getActivity <em>Activity</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Activity</em>' containment reference.
-	 * @see #getActivity()
-	 * @generated
-	 */
-	void setActivity(Activity value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.CatchAll#getActivity <em>Activity</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Activity</em>' containment reference.
+   * @see #getActivity()
+   * @generated
+   */
+  void setActivity(Activity value);
 
 } // CatchAll

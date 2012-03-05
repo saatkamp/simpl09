@@ -5,7 +5,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: DataManagementConstants.java 1755 2011-01-17 16:16:42Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -18,32 +18,20 @@ package org.eclipse.bpel.simpl.model.util;
 public class DataManagementConstants {
 
 	// node names
-	/** The Constant ND_QUERY_ACTIVITY. */
-	public static final String ND_QUERY_ACTIVITY = "queryActivity";
+	/** The Constant ND_QUERY_DATA_ACTIVITY. */
+	public static final String ND_QUERY_DATA_ACTIVITY = "queryDataActivity";
 	
-	/** The Constant ND_INSERT_ACTIVITY. */
-	public static final String ND_INSERT_ACTIVITY = "insertActivity";
-	
-	/** The Constant ND_UPDATE_ACTIVITY. */
-	public static final String ND_UPDATE_ACTIVITY = "updateActivity";	
-	
-	/** The Constant ND_DELETE_ACTIVITY. */
-	public static final String ND_DELETE_ACTIVITY = "deleteActivity";
-	
-	/** The Constant ND_CREATE_ACTIVITY. */
-	public static final String ND_CREATE_ACTIVITY = "createActivity";
-	
-	/** The Constant ND_DROP_ACTIVITY. */
-	public static final String ND_DROP_ACTIVITY = "dropActivity";
-	
-	/** The Constant ND_CALL_ACTIVITY. */
-	public static final String ND_CALL_ACTIVITY = "callActivity";
+	/** The Constant ND_ISSUE_COMMAND_ACTIVITY. */
+	public static final String ND_ISSUE_COMMAND_ACTIVITY = "issueCommandActivity";
+
+  /** The Constant ND_WRITE_DATA_BACK_ACTIVITY. */
+  public static final String ND_WRITE_DATA_BACK_ACTIVITY = "writeDataBackActivity";
 	
 	/** The Constant ND_RETRIEVE_DATA_ACTIVITY. */
 	public static final String ND_RETRIEVE_DATA_ACTIVITY = "retrieveDataActivity";
 	
-	/** The Constant ND_TRANSFER_ACTIVITY. */
-	public static final String ND_TRANSFER_ACTIVITY = "transferActivity";
+	/** The Constant ND_TRANSFER_DATA_ACTIVITY. */
+	public static final String ND_TRANSFER_DATA_ACTIVITY = "transferDataActivity";
 
 	/** The Constant ND_DATA_MANAGEMENT_ACTIVITY. */
 	public static final String ND_DATA_MANAGEMENT_ACTIVITY = "dataManagementActivity";

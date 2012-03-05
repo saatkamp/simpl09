@@ -1,6 +1,5 @@
 package org.eclipse.bpel.simpl.ui.widgets;
 
-import java.util.ArrayList;
 
 public class FileSystemElement {
 

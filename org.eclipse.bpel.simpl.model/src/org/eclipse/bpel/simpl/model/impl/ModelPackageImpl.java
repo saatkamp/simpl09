@@ -5,7 +5,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: ModelPackageImpl.java 1807 2011-05-12 09:27:15Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -17,18 +17,14 @@ import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.extensions.BPELExtensionRegistry;
 import org.eclipse.bpel.model.messageproperties.MessagepropertiesPackage;
 import org.eclipse.bpel.model.partnerlinktype.PartnerlinktypePackage;
-import org.eclipse.bpel.simpl.model.CallActivity;
-import org.eclipse.bpel.simpl.model.CreateActivity;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.model.DeleteActivity;
-import org.eclipse.bpel.simpl.model.DropActivity;
-import org.eclipse.bpel.simpl.model.InsertActivity;
+import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelFactory;
 import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
-import org.eclipse.bpel.simpl.model.TransferActivity;
-import org.eclipse.bpel.simpl.model.UpdateActivity;
+import org.eclipse.bpel.simpl.model.TransferDataActivity;
+import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.bpel.simpl.model.util.DataManagementActivityDeserializer;
 import org.eclipse.bpel.simpl.model.util.DataManagementActivitySerializer;
 import org.eclipse.bpel.simpl.model.util.DataManagementConstants;
@@ -47,99 +43,71 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  */
 public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private EClass dataManagementActivityEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass queryActivityEClass = null;
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass queryDataActivityEClass = null;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass insertActivityEClass = null;
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass issueCommandActivityEClass = null;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass updateActivityEClass = null;
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass writeDataBackActivityEClass = null;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass deleteActivityEClass = null;
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass transferDataActivityEClass = null;
 
-	/**
-	 * <!-- begin-user-doc -->
+  /**
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass createActivityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass dropActivityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass callActivityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private EClass retrieveDataActivityEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the model <b>Package</b>, registered with
+   * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
+   * package URI value.
+   * <p>Note: the correct way to create the package is via the static
+   * factory method {@link #init init()}, which also performs
+   * initialization of the package, or returns the registered package,
+   * if one already exists.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass transferActivityEClass = null;
-
-	/**
-	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.eclipse.bpel.simpl.model.ModelPackage#eNS_URI
-	 * @see #init()
-	 * @generated
-	 */
+   * @see org.eclipse.emf.ecore.EPackage.Registry
+   * @see org.eclipse.bpel.simpl.model.ModelPackage#eNS_URI
+   * @see #init()
+   * @generated
+   */
 	private ModelPackageImpl() {
-		super(eNS_URI, ModelFactory.eINSTANCE);
-	}
+    super(eNS_URI, ModelFactory.eINSTANCE);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private static boolean isInited = false;
 
 	/**
@@ -199,52 +167,17 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		DataManagementActivityDeserializer deserializer = new DataManagementActivityDeserializer();
 		DataManagementActivitySerializer serializer = new DataManagementActivitySerializer();
 
-		// QueryActivity
-		String name = QueryActivity.class.getSimpleName();
+		// QueryDataActivity
+		String name = QueryDataActivity.class.getSimpleName();
 		extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
-				DataManagementConstants.ND_QUERY_ACTIVITY), deserializer);
+				DataManagementConstants.ND_QUERY_DATA_ACTIVITY), deserializer);
 		extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
 				serializer);
 		
-		// InsertActivity
-		name = InsertActivity.class.getSimpleName();
+		// IssueCommandActivity
+		name = IssueCommandActivity.class.getSimpleName();
 		extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
-				DataManagementConstants.ND_INSERT_ACTIVITY), deserializer);
-		extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
-				serializer);
-		
-		// UpdateActivity
-		name = UpdateActivity.class.getSimpleName();
-		extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
-				DataManagementConstants.ND_UPDATE_ACTIVITY), deserializer);
-		extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
-				serializer);
-		
-		// DeleteActivity
-		name = DeleteActivity.class.getSimpleName();
-		extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
-				DataManagementConstants.ND_DELETE_ACTIVITY), deserializer);
-		extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
-				serializer);
-		
-		// CreateActivity
-		name = CreateActivity.class.getSimpleName();
-		extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
-				DataManagementConstants.ND_CREATE_ACTIVITY), deserializer);
-		extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
-				serializer);
-		
-		// DropActivity
-		name = DropActivity.class.getSimpleName();
-		extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
-				DataManagementConstants.ND_DROP_ACTIVITY), deserializer);
-		extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
-				serializer);
-		
-		// CallActivity
-		name = CallActivity.class.getSimpleName();
-		extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
-				DataManagementConstants.ND_CALL_ACTIVITY), deserializer);
+				DataManagementConstants.ND_ISSUE_COMMAND_ACTIVITY), deserializer);
 		extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
 				serializer);
 		
@@ -254,11 +187,18 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 				DataManagementConstants.ND_RETRIEVE_DATA_ACTIVITY), deserializer);
 		extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
 				serializer);
-
-		// TransferActivity
-		name = TransferActivity.class.getSimpleName();
+    
+    // WriteDataBackActivity
+    name = WriteDataBackActivity.class.getSimpleName();
+    extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
+        DataManagementConstants.ND_WRITE_DATA_BACK_ACTIVITY), deserializer);
+    extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
+        serializer);
+    
+		// TransferDataActivity
+		name = TransferDataActivity.class.getSimpleName();
 		extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
-				DataManagementConstants.ND_TRANSFER_ACTIVITY), deserializer);
+				DataManagementConstants.ND_TRANSFER_DATA_ACTIVITY), deserializer);
 		extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
 				serializer);
 	}
@@ -270,18 +210,28 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	public EClass getDataManagementActivity() {
-		return dataManagementActivityEClass;
-	}
+    return dataManagementActivityEClass;
+  }
 
 	/**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDataManagementActivity_DsIdentifier() {
+    return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(0);
+  }
+
+
+  /**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 * 
 	 * @return the data management activity_ ds statement
 	 * @generated
 	 */
 	public EAttribute getDataManagementActivity_DsStatement() {
-		return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(3);
-	}
+    return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(3);
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -290,19 +240,39 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	public EAttribute getDataManagementActivity_DsLanguage() {
-		return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(4);
-	}
+    return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(4);
+  }
 
 
 	/**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getQueryDataActivity() {
+    return queryDataActivityEClass;
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getQueryDataActivity_QueryTarget() {
+    return (EAttribute)queryDataActivityEClass.getEStructuralFeatures().get(0);
+  }
+
+
+  /**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 * 
 	 * @return the data management activity_ ds kind
 	 * @generated
 	 */
 	public EAttribute getDataManagementActivity_DsKind() {
-		return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(2);
-	}
+    return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(2);
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -311,109 +281,118 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	public EAttribute getDataManagementActivity_DsType() {
-		return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(1);
-	}
+    return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(1);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the data management activity_ ds address
-	 * @generated
-	 */
-	public EAttribute getDataManagementActivity_DsAddress() {
-		return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the query activity
-	 * @generated
-	 */
-	public EClass getQueryActivity() {
-		return queryActivityEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the query activity_ query target
-	 * @generated
-	 */
-	public EAttribute getQueryActivity_QueryTarget() {
-		return (EAttribute)queryActivityEClass.getEStructuralFeatures().get(0);
-	}
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIssueCommandActivity() {
+    return issueCommandActivityEClass;
+  }
 
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the insert activity
-	 * @generated
-	 */
-	public EClass getInsertActivity() {
-		return insertActivityEClass;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getWriteDataBackActivity() {
+    return writeDataBackActivityEClass;
+  }
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the update activity
-	 * @generated
-	 */
-	public EClass getUpdateActivity() {
-		return updateActivityEClass;
-	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the delete activity
-	 * @generated
-	 */
-	public EClass getDeleteActivity() {
-		return deleteActivityEClass;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getWriteDataBackActivity_DataVariable() {
+    return (EReference)writeDataBackActivityEClass.getEStructuralFeatures().get(0);
+  }
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the creates the activity
-	 * @generated
-	 */
-	public EClass getCreateActivity() {
-		return createActivityEClass;
-	}
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the drop activity
-	 * @generated
-	 */
-	public EClass getDropActivity() {
-		return dropActivityEClass;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWriteDataBackActivity_WriteTarget() {
+    return (EAttribute)writeDataBackActivityEClass.getEStructuralFeatures().get(1);
+  }
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the call activity
-	 * @generated
-	 */
-	public EClass getCallActivity() {
-		return callActivityEClass;
-	}
 
-	/**
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTransferDataActivity() {
+    return transferDataActivityEClass;
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTransferDataActivity_TargetDsIdentifier() {
+    return (EAttribute)transferDataActivityEClass.getEStructuralFeatures().get(0);
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTransferDataActivity_TargetDsType() {
+    return (EAttribute)transferDataActivityEClass.getEStructuralFeatures().get(1);
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTransferDataActivity_TargetDsKind() {
+    return (EAttribute)transferDataActivityEClass.getEStructuralFeatures().get(2);
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTransferDataActivity_TargetDsLanguage() {
+    return (EAttribute)transferDataActivityEClass.getEStructuralFeatures().get(3);
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTransferDataActivity_TargetDsContainer() {
+    return (EAttribute)transferDataActivityEClass.getEStructuralFeatures().get(4);
+  }
+
+
+  /**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 * 
 	 * @return the retrieve data activity
 	 * @generated
 	 */
 	public EClass getRetrieveDataActivity() {
-		return retrieveDataActivityEClass;
-	}
+    return retrieveDataActivityEClass;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -422,68 +401,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	public EReference getRetrieveDataActivity_DataVariable() {
-		return (EReference)retrieveDataActivityEClass.getEStructuralFeatures().get(0);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTransferActivity() {
-		return transferActivityEClass;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTransferActivity_TargetDsAddress() {
-		return (EAttribute)transferActivityEClass.getEStructuralFeatures().get(0);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTransferActivity_TargetDsType() {
-		return (EAttribute)transferActivityEClass.getEStructuralFeatures().get(1);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTransferActivity_TargetDsKind() {
-		return (EAttribute)transferActivityEClass.getEStructuralFeatures().get(2);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTransferActivity_TargetDsLanguage() {
-		return (EAttribute)transferActivityEClass.getEStructuralFeatures().get(3);
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTransferActivity_TargetDsContainer() {
-		return (EAttribute)transferActivityEClass.getEStructuralFeatures().get(4);
-	}
+    return (EReference)retrieveDataActivityEClass.getEStructuralFeatures().get(0);
+  }
 
 
 	/**
@@ -493,138 +412,122 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	public ModelFactory getModelFactory() {
-		return (ModelFactory)getEFactoryInstance();
-	}
+    return (ModelFactory)getEFactoryInstance();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private boolean isCreated = false;
 
 	/**
-	 * Creates the meta-model objects for the package.  This method is
-	 * guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
+   * Creates the meta-model objects for the package.  This method is
+   * guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public void createPackageContents() {
-		if (isCreated) return;
-		isCreated = true;
+    if (isCreated) return;
+    isCreated = true;
 
-		// Create classes and their features
-		dataManagementActivityEClass = createEClass(DATA_MANAGEMENT_ACTIVITY);
-		createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS);
-		createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_TYPE);
-		createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_KIND);
-		createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT);
-		createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE);
+    // Create classes and their features
+    dataManagementActivityEClass = createEClass(DATA_MANAGEMENT_ACTIVITY);
+    createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER);
+    createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_TYPE);
+    createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_KIND);
+    createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT);
+    createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE);
 
-		queryActivityEClass = createEClass(QUERY_ACTIVITY);
-		createEAttribute(queryActivityEClass, QUERY_ACTIVITY__QUERY_TARGET);
+    queryDataActivityEClass = createEClass(QUERY_DATA_ACTIVITY);
+    createEAttribute(queryDataActivityEClass, QUERY_DATA_ACTIVITY__QUERY_TARGET);
 
-		insertActivityEClass = createEClass(INSERT_ACTIVITY);
+    issueCommandActivityEClass = createEClass(ISSUE_COMMAND_ACTIVITY);
 
-		updateActivityEClass = createEClass(UPDATE_ACTIVITY);
+    retrieveDataActivityEClass = createEClass(RETRIEVE_DATA_ACTIVITY);
+    createEReference(retrieveDataActivityEClass, RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE);
 
-		deleteActivityEClass = createEClass(DELETE_ACTIVITY);
+    writeDataBackActivityEClass = createEClass(WRITE_DATA_BACK_ACTIVITY);
+    createEReference(writeDataBackActivityEClass, WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE);
+    createEAttribute(writeDataBackActivityEClass, WRITE_DATA_BACK_ACTIVITY__WRITE_TARGET);
 
-		createActivityEClass = createEClass(CREATE_ACTIVITY);
-
-		dropActivityEClass = createEClass(DROP_ACTIVITY);
-
-		callActivityEClass = createEClass(CALL_ACTIVITY);
-
-		retrieveDataActivityEClass = createEClass(RETRIEVE_DATA_ACTIVITY);
-		createEReference(retrieveDataActivityEClass, RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE);
-
-		transferActivityEClass = createEClass(TRANSFER_ACTIVITY);
-		createEAttribute(transferActivityEClass, TRANSFER_ACTIVITY__TARGET_DS_ADDRESS);
-		createEAttribute(transferActivityEClass, TRANSFER_ACTIVITY__TARGET_DS_TYPE);
-		createEAttribute(transferActivityEClass, TRANSFER_ACTIVITY__TARGET_DS_KIND);
-		createEAttribute(transferActivityEClass, TRANSFER_ACTIVITY__TARGET_DS_LANGUAGE);
-		createEAttribute(transferActivityEClass, TRANSFER_ACTIVITY__TARGET_DS_CONTAINER);
-	}
+    transferDataActivityEClass = createEClass(TRANSFER_DATA_ACTIVITY);
+    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER);
+    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE);
+    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_KIND);
+    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_LANGUAGE);
+    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_CONTAINER);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private boolean isInitialized = false;
 
 	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
+   * Complete the initialization of the package and its meta-model.  This
+   * method is guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public void initializePackageContents() {
-		if (isInitialized) return;
-		isInitialized = true;
+    if (isInitialized) return;
+    isInitialized = true;
 
-		// Initialize package
-		setName(eNAME);
-		setNsPrefix(eNS_PREFIX);
-		setNsURI(eNS_URI);
+    // Initialize package
+    setName(eNAME);
+    setNsPrefix(eNS_PREFIX);
+    setNsURI(eNS_URI);
 
-		// Obtain other dependent packages
-		BPELPackage theBPELPackage = (BPELPackage)EPackage.Registry.INSTANCE.getEPackage(BPELPackage.eNS_URI);
+    // Obtain other dependent packages
+    BPELPackage theBPELPackage = (BPELPackage)EPackage.Registry.INSTANCE.getEPackage(BPELPackage.eNS_URI);
 
-		// Create type parameters
+    // Create type parameters
 
-		// Set bounds for type parameters
+    // Set bounds for type parameters
 
-		// Add supertypes to classes
-		dataManagementActivityEClass.getESuperTypes().add(theBPELPackage.getExtensionActivity());
-		queryActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
-		insertActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
-		updateActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
-		deleteActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
-		createActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
-		dropActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
-		callActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
-		retrieveDataActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
-		transferActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
+    // Add supertypes to classes
+    dataManagementActivityEClass.getESuperTypes().add(theBPELPackage.getExtensionActivity());
+    queryDataActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
+    issueCommandActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
+    retrieveDataActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
+    writeDataBackActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
+    transferDataActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
 
-		// Initialize classes and features; add operations and parameters
-		initEClass(dataManagementActivityEClass, DataManagementActivity.class, "DataManagementActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDataManagementActivity_DsAddress(), ecorePackage.getEString(), "dsAddress", "address", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataManagementActivity_DsType(), ecorePackage.getEString(), "dsType", "type", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataManagementActivity_DsKind(), ecorePackage.getEString(), "dsKind", "subtype", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataManagementActivity_DsStatement(), ecorePackage.getEString(), "dsStatement", "statement", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataManagementActivity_DsLanguage(), ecorePackage.getEString(), "dsLanguage", "language", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    // Initialize classes and features; add operations and parameters
+    initEClass(dataManagementActivityEClass, DataManagementActivity.class, "DataManagementActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDataManagementActivity_DsIdentifier(), ecorePackage.getEString(), "dsIdentifier", "identifier", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDataManagementActivity_DsType(), ecorePackage.getEString(), "dsType", "type", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDataManagementActivity_DsKind(), ecorePackage.getEString(), "dsKind", "subtype", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDataManagementActivity_DsStatement(), ecorePackage.getEString(), "dsStatement", "statement", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDataManagementActivity_DsLanguage(), ecorePackage.getEString(), "dsLanguage", "language", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(queryActivityEClass, QueryActivity.class, "QueryActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getQueryActivity_QueryTarget(), ecorePackage.getEString(), "queryTarget", "target", 0, 1, QueryActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(queryDataActivityEClass, QueryDataActivity.class, "QueryDataActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getQueryDataActivity_QueryTarget(), ecorePackage.getEString(), "queryTarget", "target", 0, 1, QueryDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(insertActivityEClass, InsertActivity.class, "InsertActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(issueCommandActivityEClass, IssueCommandActivity.class, "IssueCommandActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(updateActivityEClass, UpdateActivity.class, "UpdateActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(retrieveDataActivityEClass, RetrieveDataActivity.class, "RetrieveDataActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRetrieveDataActivity_DataVariable(), theBPELPackage.getVariable(), null, "dataVariable", null, 0, 1, RetrieveDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(deleteActivityEClass, DeleteActivity.class, "DeleteActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(writeDataBackActivityEClass, WriteDataBackActivity.class, "WriteDataBackActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getWriteDataBackActivity_DataVariable(), theBPELPackage.getVariable(), null, "dataVariable", null, 0, 1, WriteDataBackActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWriteDataBackActivity_WriteTarget(), ecorePackage.getEString(), "writeTarget", "target", 0, 1, WriteDataBackActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(createActivityEClass, CreateActivity.class, "CreateActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(transferDataActivityEClass, TransferDataActivity.class, "TransferDataActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTransferDataActivity_TargetDsIdentifier(), ecorePackage.getEString(), "targetDsIdentifier", "identifier", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTransferDataActivity_TargetDsType(), ecorePackage.getEString(), "targetDsType", "type", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTransferDataActivity_TargetDsKind(), ecorePackage.getEString(), "targetDsKind", "kind", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTransferDataActivity_TargetDsLanguage(), ecorePackage.getEString(), "targetDsLanguage", "language", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTransferDataActivity_TargetDsContainer(), ecorePackage.getEString(), "targetDsContainer", "targetDsContainer", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dropActivityEClass, DropActivity.class, "DropActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(callActivityEClass, CallActivity.class, "CallActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(retrieveDataActivityEClass, RetrieveDataActivity.class, "RetrieveDataActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRetrieveDataActivity_DataVariable(), theBPELPackage.getVariable(), null, "dataVariable", null, 0, 1, RetrieveDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(transferActivityEClass, TransferActivity.class, "TransferActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTransferActivity_TargetDsAddress(), ecorePackage.getEString(), "targetDsAddress", "address", 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransferActivity_TargetDsType(), ecorePackage.getEString(), "targetDsType", "type", 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransferActivity_TargetDsKind(), ecorePackage.getEString(), "targetDsKind", "kind", 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransferActivity_TargetDsLanguage(), ecorePackage.getEString(), "targetDsLanguage", "language", 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransferActivity_TargetDsContainer(), ecorePackage.getEString(), "targetDsContainer", "targetDsContainer", 0, 1, TransferActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		// Create resource
-		createResource(eNS_URI);
-	}
+    // Create resource
+    createResource(eNS_URI);
+  }
 
 } //ModelPackageImpl

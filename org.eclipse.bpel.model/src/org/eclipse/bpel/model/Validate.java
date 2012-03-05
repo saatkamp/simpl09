@@ -25,20 +25,20 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Validate extends Activity {
-	/**
-	 * Returns the value of the '<em><b>Variables</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.bpel.model.Variable}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Variables</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Variables</em>' reference list.
-	 * @see org.eclipse.bpel.model.BPELPackage#getValidate_Variables()
-	 * @model
-	 * @generated
-	 */
-	EList<Variable> getVariables();
+  /**
+   * Returns the value of the '<em><b>Variables</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.bpel.model.Variable}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Variables</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Variables</em>' reference list.
+   * @see org.eclipse.bpel.model.BPELPackage#getValidate_Variables()
+   * @model
+   * @generated
+   */
+  EList<Variable> getVariables();
 
 } // Validate

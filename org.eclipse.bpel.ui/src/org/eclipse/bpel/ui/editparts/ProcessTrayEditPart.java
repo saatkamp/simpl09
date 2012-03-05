@@ -17,8 +17,10 @@ import org.eclipse.bpel.common.ui.decorator.EditPartMarkerDecorator;
 import org.eclipse.bpel.common.ui.tray.MainTrayEditPart;
 import org.eclipse.bpel.common.ui.tray.TrayMarkerDecorator;
 import org.eclipse.bpel.model.BPELFactory;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.CorrelationSets;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.MessageExchange;
 import org.eclipse.bpel.model.MessageExchanges;
 import org.eclipse.bpel.model.PartnerLink;
@@ -173,7 +175,17 @@ public class ProcessTrayEditPart extends MainTrayEditPart implements IHoverHelpe
 		if (referenceVariables != null) {
 			list.add(referenceVariables);
 		}
-		
+
+    ContainerReferenceVariables containerReferenceVariables = getContainerReferenceVariables();
+    if (containerReferenceVariables != null) {
+      list.add(containerReferenceVariables);
+    }
+
+    DataSourceReferenceVariables dataSourceReferenceVariables = getDataSourceReferenceVariables();
+    if (dataSourceReferenceVariables != null) {
+      list.add(dataSourceReferenceVariables);
+    }
+    
 		CorrelationSets sets = getCorrelationSets();
 		if (sets != null) {
 			list.add(sets);
@@ -240,6 +252,24 @@ public class ProcessTrayEditPart extends MainTrayEditPart implements IHoverHelpe
 		
 		return process.getReferenceVariables();		
 	}
+
+  protected ContainerReferenceVariables getContainerReferenceVariables() {
+    Process process = getProcess();
+    if (process.getContainerReferenceVariables() == null) {
+      process.setContainerReferenceVariables(BPELFactory.eINSTANCE.createContainerReferenceVariables());
+    }
+
+    return process.getContainerReferenceVariables();
+  }
+
+  protected DataSourceReferenceVariables getDataSourceReferenceVariables() {
+    Process process = getProcess();
+    if (process.getDataSourceReferenceVariables() == null) {
+      process.setDataSourceReferenceVariables(BPELFactory.eINSTANCE.createDataSourceReferenceVariables());
+    }
+
+    return process.getDataSourceReferenceVariables();
+  }
 	
 	/**
 	 * We show scoped correlationSets if a Scope is the current selection,

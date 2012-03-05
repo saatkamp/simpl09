@@ -5,7 +5,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: ModelSwitch.java 1963 2011-10-26 11:22:17Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -18,18 +18,13 @@ import javax.wsdl.extensions.ElementExtensible;
 
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.ExtensionActivity;
-import org.eclipse.bpel.simpl.model.*;
-import org.eclipse.bpel.simpl.model.CallActivity;
-import org.eclipse.bpel.simpl.model.CreateActivity;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.model.DeleteActivity;
-import org.eclipse.bpel.simpl.model.DropActivity;
-import org.eclipse.bpel.simpl.model.InsertActivity;
+import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
-import org.eclipse.bpel.simpl.model.TransferActivity;
-import org.eclipse.bpel.simpl.model.UpdateActivity;
+import org.eclipse.bpel.simpl.model.TransferDataActivity;
+import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.wst.wsdl.ExtensibleElement;
@@ -48,459 +43,350 @@ import org.eclipse.wst.wsdl.WSDLElement;
  */
 public class ModelSwitch<T> {
 	/**
-	 * The cached model package
-	 * <!-- begin-user-doc -->
+   * The cached model package
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected static ModelPackage modelPackage;
 
 	/**
-	 * Creates an instance of the switch.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the switch.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ModelSwitch() {
-		if (modelPackage == null) {
-			modelPackage = ModelPackage.eINSTANCE;
-		}
-	}
+    if (modelPackage == null) {
+      modelPackage = ModelPackage.eINSTANCE;
+    }
+  }
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc --> <!--
+   * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+   * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
+   * @return the first non-null result returned by a <code>caseXXX</code> call.
+   * @generated
+   */
 	public T doSwitch(EObject theEObject) {
-		return doSwitch(theEObject.eClass(), theEObject);
-	}
+    return doSwitch(theEObject.eClass(), theEObject);
+  }
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
+   * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
+   * @return the first non-null result returned by a <code>caseXXX</code> call.
+   * @generated
+   */
 	protected T doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage) {
-			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
-			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch(eSuperTypes.get(0), theEObject);
-		}
-	}
+    if (theEClass.eContainer() == modelPackage) {
+      return doSwitch(theEClass.getClassifierID(), theEObject);
+    }
+    else {
+      List<EClass> eSuperTypes = theEClass.getESuperTypes();
+      return
+        eSuperTypes.isEmpty() ?
+          defaultCase(theEObject) :
+          doSwitch(eSuperTypes.get(0), theEObject);
+    }
+  }
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
+   * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
+   * @return the first non-null result returned by a <code>caseXXX</code> call.
+   * @generated
+   */
 	protected T doSwitch(int classifierID, EObject theEObject) {
-		switch (classifierID) {
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY: {
-				DataManagementActivity dataManagementActivity = (DataManagementActivity)theEObject;
-				T result = caseDataManagementActivity(dataManagementActivity);
-				if (result == null) result = caseExtensionActivity(dataManagementActivity);
-				if (result == null) result = caseActivity(dataManagementActivity);
-				if (result == null) result = caseBPEL_ExtensibleElement(dataManagementActivity);
-				if (result == null) result = caseExtensibleElement(dataManagementActivity);
-				if (result == null) result = caseWSDLElement(dataManagementActivity);
-				if (result == null) result = caseIElementExtensible(dataManagementActivity);
-				if (result == null) result = caseIAttributeExtensible(dataManagementActivity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ModelPackage.QUERY_ACTIVITY: {
-				QueryActivity queryActivity = (QueryActivity)theEObject;
-				T result = caseQueryActivity(queryActivity);
-				if (result == null) result = caseDataManagementActivity(queryActivity);
-				if (result == null) result = caseExtensionActivity(queryActivity);
-				if (result == null) result = caseActivity(queryActivity);
-				if (result == null) result = caseBPEL_ExtensibleElement(queryActivity);
-				if (result == null) result = caseExtensibleElement(queryActivity);
-				if (result == null) result = caseWSDLElement(queryActivity);
-				if (result == null) result = caseIElementExtensible(queryActivity);
-				if (result == null) result = caseIAttributeExtensible(queryActivity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ModelPackage.INSERT_ACTIVITY: {
-				InsertActivity insertActivity = (InsertActivity)theEObject;
-				T result = caseInsertActivity(insertActivity);
-				if (result == null) result = caseDataManagementActivity(insertActivity);
-				if (result == null) result = caseExtensionActivity(insertActivity);
-				if (result == null) result = caseActivity(insertActivity);
-				if (result == null) result = caseBPEL_ExtensibleElement(insertActivity);
-				if (result == null) result = caseExtensibleElement(insertActivity);
-				if (result == null) result = caseWSDLElement(insertActivity);
-				if (result == null) result = caseIElementExtensible(insertActivity);
-				if (result == null) result = caseIAttributeExtensible(insertActivity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ModelPackage.UPDATE_ACTIVITY: {
-				UpdateActivity updateActivity = (UpdateActivity)theEObject;
-				T result = caseUpdateActivity(updateActivity);
-				if (result == null) result = caseDataManagementActivity(updateActivity);
-				if (result == null) result = caseExtensionActivity(updateActivity);
-				if (result == null) result = caseActivity(updateActivity);
-				if (result == null) result = caseBPEL_ExtensibleElement(updateActivity);
-				if (result == null) result = caseExtensibleElement(updateActivity);
-				if (result == null) result = caseWSDLElement(updateActivity);
-				if (result == null) result = caseIElementExtensible(updateActivity);
-				if (result == null) result = caseIAttributeExtensible(updateActivity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ModelPackage.DELETE_ACTIVITY: {
-				DeleteActivity deleteActivity = (DeleteActivity)theEObject;
-				T result = caseDeleteActivity(deleteActivity);
-				if (result == null) result = caseDataManagementActivity(deleteActivity);
-				if (result == null) result = caseExtensionActivity(deleteActivity);
-				if (result == null) result = caseActivity(deleteActivity);
-				if (result == null) result = caseBPEL_ExtensibleElement(deleteActivity);
-				if (result == null) result = caseExtensibleElement(deleteActivity);
-				if (result == null) result = caseWSDLElement(deleteActivity);
-				if (result == null) result = caseIElementExtensible(deleteActivity);
-				if (result == null) result = caseIAttributeExtensible(deleteActivity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ModelPackage.CREATE_ACTIVITY: {
-				CreateActivity createActivity = (CreateActivity)theEObject;
-				T result = caseCreateActivity(createActivity);
-				if (result == null) result = caseDataManagementActivity(createActivity);
-				if (result == null) result = caseExtensionActivity(createActivity);
-				if (result == null) result = caseActivity(createActivity);
-				if (result == null) result = caseBPEL_ExtensibleElement(createActivity);
-				if (result == null) result = caseExtensibleElement(createActivity);
-				if (result == null) result = caseWSDLElement(createActivity);
-				if (result == null) result = caseIElementExtensible(createActivity);
-				if (result == null) result = caseIAttributeExtensible(createActivity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ModelPackage.DROP_ACTIVITY: {
-				DropActivity dropActivity = (DropActivity)theEObject;
-				T result = caseDropActivity(dropActivity);
-				if (result == null) result = caseDataManagementActivity(dropActivity);
-				if (result == null) result = caseExtensionActivity(dropActivity);
-				if (result == null) result = caseActivity(dropActivity);
-				if (result == null) result = caseBPEL_ExtensibleElement(dropActivity);
-				if (result == null) result = caseExtensibleElement(dropActivity);
-				if (result == null) result = caseWSDLElement(dropActivity);
-				if (result == null) result = caseIElementExtensible(dropActivity);
-				if (result == null) result = caseIAttributeExtensible(dropActivity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ModelPackage.CALL_ACTIVITY: {
-				CallActivity callActivity = (CallActivity)theEObject;
-				T result = caseCallActivity(callActivity);
-				if (result == null) result = caseDataManagementActivity(callActivity);
-				if (result == null) result = caseExtensionActivity(callActivity);
-				if (result == null) result = caseActivity(callActivity);
-				if (result == null) result = caseBPEL_ExtensibleElement(callActivity);
-				if (result == null) result = caseExtensibleElement(callActivity);
-				if (result == null) result = caseWSDLElement(callActivity);
-				if (result == null) result = caseIElementExtensible(callActivity);
-				if (result == null) result = caseIAttributeExtensible(callActivity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ModelPackage.RETRIEVE_DATA_ACTIVITY: {
-				RetrieveDataActivity retrieveDataActivity = (RetrieveDataActivity)theEObject;
-				T result = caseRetrieveDataActivity(retrieveDataActivity);
-				if (result == null) result = caseDataManagementActivity(retrieveDataActivity);
-				if (result == null) result = caseExtensionActivity(retrieveDataActivity);
-				if (result == null) result = caseActivity(retrieveDataActivity);
-				if (result == null) result = caseBPEL_ExtensibleElement(retrieveDataActivity);
-				if (result == null) result = caseExtensibleElement(retrieveDataActivity);
-				if (result == null) result = caseWSDLElement(retrieveDataActivity);
-				if (result == null) result = caseIElementExtensible(retrieveDataActivity);
-				if (result == null) result = caseIAttributeExtensible(retrieveDataActivity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ModelPackage.TRANSFER_ACTIVITY: {
-				TransferActivity transferActivity = (TransferActivity)theEObject;
-				T result = caseTransferActivity(transferActivity);
-				if (result == null) result = caseDataManagementActivity(transferActivity);
-				if (result == null) result = caseExtensionActivity(transferActivity);
-				if (result == null) result = caseActivity(transferActivity);
-				if (result == null) result = caseBPEL_ExtensibleElement(transferActivity);
-				if (result == null) result = caseExtensibleElement(transferActivity);
-				if (result == null) result = caseWSDLElement(transferActivity);
-				if (result == null) result = caseIElementExtensible(transferActivity);
-				if (result == null) result = caseIAttributeExtensible(transferActivity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			default: return defaultCase(theEObject);
-		}
-	}
+    switch (classifierID) {
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY: {
+        DataManagementActivity dataManagementActivity = (DataManagementActivity)theEObject;
+        T result = caseDataManagementActivity(dataManagementActivity);
+        if (result == null) result = caseExtensionActivity(dataManagementActivity);
+        if (result == null) result = caseActivity(dataManagementActivity);
+        if (result == null) result = caseBPEL_ExtensibleElement(dataManagementActivity);
+        if (result == null) result = caseExtensibleElement(dataManagementActivity);
+        if (result == null) result = caseWSDLElement(dataManagementActivity);
+        if (result == null) result = caseIElementExtensible(dataManagementActivity);
+        if (result == null) result = caseIAttributeExtensible(dataManagementActivity);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ModelPackage.QUERY_DATA_ACTIVITY: {
+        QueryDataActivity queryDataActivity = (QueryDataActivity)theEObject;
+        T result = caseQueryDataActivity(queryDataActivity);
+        if (result == null) result = caseDataManagementActivity(queryDataActivity);
+        if (result == null) result = caseExtensionActivity(queryDataActivity);
+        if (result == null) result = caseActivity(queryDataActivity);
+        if (result == null) result = caseBPEL_ExtensibleElement(queryDataActivity);
+        if (result == null) result = caseExtensibleElement(queryDataActivity);
+        if (result == null) result = caseWSDLElement(queryDataActivity);
+        if (result == null) result = caseIElementExtensible(queryDataActivity);
+        if (result == null) result = caseIAttributeExtensible(queryDataActivity);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ModelPackage.ISSUE_COMMAND_ACTIVITY: {
+        IssueCommandActivity issueCommandActivity = (IssueCommandActivity)theEObject;
+        T result = caseIssueCommandActivity(issueCommandActivity);
+        if (result == null) result = caseDataManagementActivity(issueCommandActivity);
+        if (result == null) result = caseExtensionActivity(issueCommandActivity);
+        if (result == null) result = caseActivity(issueCommandActivity);
+        if (result == null) result = caseBPEL_ExtensibleElement(issueCommandActivity);
+        if (result == null) result = caseExtensibleElement(issueCommandActivity);
+        if (result == null) result = caseWSDLElement(issueCommandActivity);
+        if (result == null) result = caseIElementExtensible(issueCommandActivity);
+        if (result == null) result = caseIAttributeExtensible(issueCommandActivity);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ModelPackage.RETRIEVE_DATA_ACTIVITY: {
+        RetrieveDataActivity retrieveDataActivity = (RetrieveDataActivity)theEObject;
+        T result = caseRetrieveDataActivity(retrieveDataActivity);
+        if (result == null) result = caseDataManagementActivity(retrieveDataActivity);
+        if (result == null) result = caseExtensionActivity(retrieveDataActivity);
+        if (result == null) result = caseActivity(retrieveDataActivity);
+        if (result == null) result = caseBPEL_ExtensibleElement(retrieveDataActivity);
+        if (result == null) result = caseExtensibleElement(retrieveDataActivity);
+        if (result == null) result = caseWSDLElement(retrieveDataActivity);
+        if (result == null) result = caseIElementExtensible(retrieveDataActivity);
+        if (result == null) result = caseIAttributeExtensible(retrieveDataActivity);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ModelPackage.WRITE_DATA_BACK_ACTIVITY: {
+        WriteDataBackActivity writeDataBackActivity = (WriteDataBackActivity)theEObject;
+        T result = caseWriteDataBackActivity(writeDataBackActivity);
+        if (result == null) result = caseDataManagementActivity(writeDataBackActivity);
+        if (result == null) result = caseExtensionActivity(writeDataBackActivity);
+        if (result == null) result = caseActivity(writeDataBackActivity);
+        if (result == null) result = caseBPEL_ExtensibleElement(writeDataBackActivity);
+        if (result == null) result = caseExtensibleElement(writeDataBackActivity);
+        if (result == null) result = caseWSDLElement(writeDataBackActivity);
+        if (result == null) result = caseIElementExtensible(writeDataBackActivity);
+        if (result == null) result = caseIAttributeExtensible(writeDataBackActivity);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ModelPackage.TRANSFER_DATA_ACTIVITY: {
+        TransferDataActivity transferDataActivity = (TransferDataActivity)theEObject;
+        T result = caseTransferDataActivity(transferDataActivity);
+        if (result == null) result = caseDataManagementActivity(transferDataActivity);
+        if (result == null) result = caseExtensionActivity(transferDataActivity);
+        if (result == null) result = caseActivity(transferDataActivity);
+        if (result == null) result = caseBPEL_ExtensibleElement(transferDataActivity);
+        if (result == null) result = caseExtensibleElement(transferDataActivity);
+        if (result == null) result = caseWSDLElement(transferDataActivity);
+        if (result == null) result = caseIElementExtensible(transferDataActivity);
+        if (result == null) result = caseIAttributeExtensible(transferDataActivity);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      default: return defaultCase(theEObject);
+    }
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Management Activity</em>'.
-	 * <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Data Management Activity</em>'.
+   * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate
 	 * the switch. <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Management Activity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Data Management Activity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseDataManagementActivity(DataManagementActivity object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Query Activity</em>'.
-	 * <!-- begin-user-doc --> This implementation
-	 * returns null; returning a non-null result will terminate the switch. <!--
-	 * end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Query Activity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseQueryActivity(QueryActivity object) {
-		return null;
-	}
+   * Returns the result of interpreting the object as an instance of '<em>Query Data Activity</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Query Data Activity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseQueryDataActivity(QueryDataActivity object) {
+    return null;
+  }
 
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Insert Activity</em>'.
-	 * <!-- begin-user-doc --> This implementation
-	 * returns null; returning a non-null result will terminate the switch. <!--
-	 * end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Insert Activity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseInsertActivity(InsertActivity object) {
-		return null;
-	}
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Issue Command Activity</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Issue Command Activity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIssueCommandActivity(IssueCommandActivity object) {
+    return null;
+  }
 
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Update Activity</em>'.
-	 * <!-- begin-user-doc --> This implementation
-	 * returns null; returning a non-null result will terminate the switch. <!--
-	 * end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Update Activity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseUpdateActivity(UpdateActivity object) {
-		return null;
-	}
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Write Data Back Activity</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Write Data Back Activity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWriteDataBackActivity(WriteDataBackActivity object) {
+    return null;
+  }
 
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Delete Activity</em>'.
-	 * <!-- begin-user-doc --> This implementation
-	 * returns null; returning a non-null result will terminate the switch. <!--
-	 * end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Delete Activity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDeleteActivity(DeleteActivity object) {
-		return null;
-	}
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Transfer Data Activity</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Transfer Data Activity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTransferDataActivity(TransferDataActivity object) {
+    return null;
+  }
 
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Create Activity</em>'.
-	 * <!-- begin-user-doc --> This implementation
-	 * returns null; returning a non-null result will terminate the switch. <!--
-	 * end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Create Activity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCreateActivity(CreateActivity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Drop Activity</em>'.
-	 * <!-- begin-user-doc --> This implementation
-	 * returns null; returning a non-null result will terminate the switch. <!--
-	 * end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Drop Activity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDropActivity(DropActivity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Call Activity</em>'.
-	 * <!-- begin-user-doc --> This implementation
-	 * returns null; returning a non-null result will terminate the switch. <!--
-	 * end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Call Activity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCallActivity(CallActivity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Retrieve Data Activity</em>'.
-	 * <!-- begin-user-doc --> This
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Retrieve Data Activity</em>'.
+   * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate
 	 * the switch. <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Retrieve Data Activity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Retrieve Data Activity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseRetrieveDataActivity(RetrieveDataActivity object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Transfer Activity</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Transfer Activity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTransferActivity(TransferActivity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
-	 * <!-- begin-user-doc --> This implementation returns
+   * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
+   * <!-- begin-user-doc --> This implementation returns
 	 * null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseWSDLElement(WSDLElement object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IElement Extensible</em>'.
-	 * <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>IElement Extensible</em>'.
+   * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate
 	 * the switch. <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IElement Extensible</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>IElement Extensible</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseIElementExtensible(ElementExtensible object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IAttribute Extensible</em>'.
-	 * <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>IAttribute Extensible</em>'.
+   * <!-- begin-user-doc --> This
 	 * implementation returns null; returning a non-null result will terminate
 	 * the switch. <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IAttribute Extensible</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>IAttribute Extensible</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseIAttributeExtensible(AttributeExtensible object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
-	 * <!-- begin-user-doc --> This implementation
+   * Returns the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
+   * <!-- begin-user-doc --> This implementation
 	 * returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseExtensibleElement(ExtensibleElement object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
-	 * <!-- begin-user-doc --> This implementation
+   * Returns the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
+   * <!-- begin-user-doc --> This implementation
 	 * returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Extensible Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseBPEL_ExtensibleElement(org.eclipse.bpel.model.ExtensibleElement object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Activity</em>'.
-	 * <!-- begin-user-doc --> This implementation returns
+   * Returns the result of interpreting the object as an instance of '<em>Activity</em>'.
+   * <!-- begin-user-doc --> This implementation returns
 	 * null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Activity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Activity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseActivity(Activity object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Extension Activity</em>'.
-	 * <!-- begin-user-doc --> This implementation
+   * Returns the result of interpreting the object as an instance of '<em>Extension Activity</em>'.
+   * <!-- begin-user-doc --> This implementation
 	 * returns null; returning a non-null result will terminate the switch. <!--
 	 * end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Extension Activity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Extension Activity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
 	public T caseExtensionActivity(ExtensionActivity object) {
-		return null;
-	}
+    return null;
+  }
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
-	 * <!-- begin-user-doc --> This implementation returns
+   * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+   * <!-- begin-user-doc --> This implementation returns
 	 * null; returning a non-null result will terminate the switch, but this is
 	 * the last case anyway. <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
-	 * @generated
-	 */
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject)
+   * @generated
+   */
 	public T defaultCase(EObject object) {
-		return null;
-	}
+    return null;
+  }
 
 } //ModelSwitch

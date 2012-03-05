@@ -489,7 +489,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProcessType_AttachedUddiAddress() {
+	public EAttribute getProcessType_AttachedRMAddress() {
 		return (EAttribute)processTypeEClass.getEStructuralFeatures().get(16);
 	}
 
@@ -946,7 +946,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		createEAttribute(processTypeEClass, PROCESS_TYPE__AUDITING_ACTIVE);
 		createEReference(processTypeEClass, PROCESS_TYPE__DATASOURCES);
 		createEReference(processTypeEClass, PROCESS_TYPE__ACTIVITY_MAPPINGS);
-		createEAttribute(processTypeEClass, PROCESS_TYPE__ATTACHED_UDDI_ADDRESS);
+		createEAttribute(processTypeEClass, PROCESS_TYPE__ATTACHED_RF_ADDRESS);
 
 		propertyTypeEClass = createEClass(PROPERTY_TYPE);
 		createEAttribute(propertyTypeEClass, PROPERTY_TYPE__ANY);
@@ -1074,7 +1074,7 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 		initEAttribute(getProcessType_AuditingActive(), theXMLTypePackage.getBoolean(), "auditingActive", "false", 0, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessType_Datasources(), this.getTDatasource(), null, "datasources", null, 0, -1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessType_ActivityMappings(), this.getTActivityMapping(), null, "activityMappings", null, 0, -1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProcessType_AttachedUddiAddress(), theXMLTypePackage.getString(), "attachedUddiAddress", null, 0, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcessType_AttachedRMAddress(), theXMLTypePackage.getString(), "attachedRMAddress", null, 0, 1, ProcessType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyTypeEClass, PropertyType.class, "PropertyType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertyType_Any(), ecorePackage.getEFeatureMapEntry(), "any", null, 0, -1, PropertyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1343,11 +1343,11 @@ public class ddPackageImpl extends EPackageImpl implements ddPackage {
 			 "namespace", "##targetNamespace"
 		   });			
 		addAnnotation
-		  (getProcessType_AttachedUddiAddress(), 
+		  (getProcessType_AttachedRMAddress(), 
 		   source, 
 		   new String[] {
 			 "kind", "attribute",
-			 "name", "attachedUddiAddress"
+			 "name", "attachedRMAddress"
 		   });		
 		addAnnotation
 		  (propertyTypeEClass, 

@@ -6,7 +6,7 @@
          id="DataManagementUIObjectFactory"
          name="simpl"
          point="org.eclipse.bpel.ui.uiObjectFactories">
-      <factory
+       <factory
             categoryId="not.used"
             class="org.eclipse.bpel.simpl.ui.factories.DataManagementUIObjectFactory"
             id="org.eclipse.bpel.simpl.ui.factories.DataManagementUIObjectFactory"
@@ -26,54 +26,48 @@
       <propertySections
             contributorId="org.eclipse.bpel.ui.bpeleditor">
          <propertySection
-               class="org.eclipse.bpel.simpl.ui.properties.QueryPropertySection"
-               id="org.eclipse.bpel.simpl.ui.properties.QueryActivityPropertySection"
+               class="org.eclipse.bpel.simpl.ui.properties.QueryDataActivityPropertySection"
+               id="org.eclipse.bpel.simpl.ui.properties.QueryDataActivityPropertySection"
                tab="org.eclipse.bpel.ui.tabs.details">
             <input
-                  type="org.eclipse.bpel.simpl.model.QueryActivity">
+                  type="org.eclipse.bpel.simpl.model.QueryDataActivity">
             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.bpel.simpl.ui.properties.DataManagementActivitySection"
+               class="org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection"
                id="org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection"
                tab="org.eclipse.bpel.ui.tabs.details">
             <input
-                  type="org.eclipse.bpel.simpl.model.InsertActivity">
+                  type="org.eclipse.bpel.simpl.model.IssueCommandActivity">
             </input>
+
             <input
-                  type="org.eclipse.bpel.simpl.model.UpdateActivity">
-            </input>
-            <input
-                  type="org.eclipse.bpel.simpl.model.DeleteActivity">
-            </input>
-            <input
-                  type="org.eclipse.bpel.simpl.model.CreateActivity">
-            </input>
-            <input
-                  type="org.eclipse.bpel.simpl.model.CallActivity">
-            </input>
-            <input
-                  type="org.eclipse.bpel.simpl.model.DropActivity">
-            </input>
-            <input
-                  type="org.eclipse.bpel.simpl.model.TransferActivity">
+                  type="org.eclipse.bpel.simpl.model.TransferDataActivity">
             </input>
          </propertySection>
          <propertySection
-               class="org.eclipse.bpel.simpl.ui.properties.RetrieveDataVariableSection"
-               id="org.eclipse.bpel.simpl.ui.properties.RetrieveDataActivityVariablePropertySection"
+               class="org.eclipse.bpel.simpl.ui.properties.RetrieveDataActivityPropertySection"
+               id="org.eclipse.bpel.simpl.ui.properties.RetrieveDataActivityPropertySection"
                tab="org.eclipse.bpel.ui.tabs.details">
             <input
                   type="org.eclipse.bpel.simpl.model.RetrieveDataActivity">
             </input>
          </propertySection>
          <propertySection
-               afterSection="org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection"
-               class="org.eclipse.bpel.simpl.ui.properties.TransferActivityToPropertySection"
-               id="org.eclipse.bpel.simpl.ui.properties.TransferActivityPropertySection"
+               class="org.eclipse.bpel.simpl.ui.properties.WriteDataBackActivityPropertySection"
+               id="org.eclipse.bpel.simpl.ui.properties.WriteDataBackActivityPropertySection"
                tab="org.eclipse.bpel.ui.tabs.details">
             <input
-                  type="org.eclipse.bpel.simpl.model.TransferActivity">
+                  type="org.eclipse.bpel.simpl.model.WriteDataBackActivity">
+            </input>
+         </propertySection>         
+         <propertySection
+               afterSection="org.eclipse.bpel.simpl.ui.properties.DataManagementActivityPropertySection"
+               class="org.eclipse.bpel.simpl.ui.properties.TransferDataActivityPropertySection"
+               id="org.eclipse.bpel.simpl.ui.properties.TransferDataActivityPropertySection"
+               tab="org.eclipse.bpel.ui.tabs.details">
+            <input
+                  type="org.eclipse.bpel.simpl.model.TransferDataActivity">
             </input>
          </propertySection>
       </propertySections>

@@ -34,36 +34,36 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface EventHandler extends ExtensibleElement {
-	/**
-	 * Returns the value of the '<em><b>Alarm</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.bpel.model.OnAlarm}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Alarm</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Alarm</em>' containment reference list.
-	 * @see org.eclipse.bpel.model.BPELPackage#getEventHandler_Alarm()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<OnAlarm> getAlarm();
+  /**
+   * Returns the value of the '<em><b>Alarm</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.bpel.model.OnAlarm}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Alarm</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Alarm</em>' containment reference list.
+   * @see org.eclipse.bpel.model.BPELPackage#getEventHandler_Alarm()
+   * @model containment="true"
+   * @generated
+   */
+  EList<OnAlarm> getAlarm();
 
-	/**
-	 * Returns the value of the '<em><b>Events</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.bpel.model.OnEvent}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Events</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Events</em>' containment reference list.
-	 * @see org.eclipse.bpel.model.BPELPackage#getEventHandler_Events()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<OnEvent> getEvents();
+  /**
+   * Returns the value of the '<em><b>Events</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.bpel.model.OnEvent}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Events</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Events</em>' containment reference list.
+   * @see org.eclipse.bpel.model.BPELPackage#getEventHandler_Events()
+   * @model containment="true"
+   * @generated
+   */
+  EList<OnEvent> getEvents();
 
 } // EventHandler

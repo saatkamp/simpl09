@@ -3,10 +3,12 @@ package org.eclipse.simpl.core.auditing.ui;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.eclipse.simpl.communication.SIMPLCommunication;
-import org.eclipse.simpl.communication.client.Authentication;
-import org.eclipse.simpl.communication.client.DataSource;
-import org.eclipse.simpl.uddi.model.ModelProvider;
+import org.eclipse.simpl.communication.ResourceManagementCommunication;
+import org.eclipse.simpl.communication.SIMPLCoreCommunication;
+import org.simpl.resource.management.data.Authentication;
+import org.simpl.resource.management.data.Connector;
+import org.simpl.resource.management.data.DataConverter;
+import org.simpl.resource.management.data.DataSource;
 
 /**
  * <b>Purpose:</b> <br>
@@ -23,8 +25,8 @@ public class AuditingDSUtils {
 	
 	private static DataSource localDs = null;
 	
-	public static String[] getUDDIDataSources(){
-		List<String> dataSources = ModelProvider.getInstance().getDataSourceNames();
+	public static String[] getRFDataSources(){
+		List<String> dataSources = ResourceManagementCommunication.getInstance().getDataSourceNames();
 		if (!dataSources.contains(getLocalDataSource().getName())){
 			dataSources.add(0, getLocalDataSource().getName());
 		}
@@ -35,7 +37,7 @@ public class AuditingDSUtils {
 		if (name.equals(getLocalDataSource().getName())){
 			return getLocalDataSource();
 		}else {
-			return ModelProvider.getInstance().findDataSourceByName(name);
+			return ResourceManagementCommunication.getInstance().findDataSourceByName(name);
 		}
 	}
 
@@ -52,10 +54,16 @@ public class AuditingDSUtils {
 		}else {
 			//Load the address and name from DB
 			localDs = new DataSource();
+	    Connector connector = new Connector();
+	    DataConverter dataConverter = new DataConverter();
+	    connector.setDataConverter(dataConverter);
+			localDs.setConnector(connector);
+	    
 			localDs.setName("local");
 			localDs.setType("Database");
 			localDs.setSubType("EmbeddedDerby");
-			localDs.setDataFormat("RDB");
+			localDs.getConnector().getDataConverter().setWorkflowDataFormat("RDBDataFormat");
+			
 			Authentication auth = new Authentication();
 			auth.setUser("");
 			auth.setPassword("");
@@ -65,7 +73,7 @@ public class AuditingDSUtils {
 			LinkedHashMap<String, String> settings = new LinkedHashMap<String, String>();
 
 			// LastSaved-Einstellungen aus SIMPL Core DB laden
-			settings = SIMPLCommunication.getConnection().load("AUDITING", "DEFAULTDATASOURCE",
+			settings = SIMPLCoreCommunication.getInstance().load("AUDITING", "DEFAULTDATASOURCE",
 					"lastSaved");
 
 			if (!settings.isEmpty()) {

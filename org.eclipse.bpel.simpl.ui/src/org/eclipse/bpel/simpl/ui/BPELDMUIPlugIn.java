@@ -5,7 +5,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: BPELDMUIPlugIn.java 1678 2010-10-12 16:08:13Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -161,7 +161,7 @@ public class BPELDMUIPlugIn extends AbstractUIPlugin {
 			status = new Status(severity, PLUGIN_ID, 0,
 					m == null ? "<no message>" : m, e); //$NON-NLS-1$
 		}
-		System.out.println(e.getClass().getName() + ": " + status);
+		//System.out.println(e.getClass().getName() + ": " + status);
 		INSTANCE.getLog().log(status);
 	}
 

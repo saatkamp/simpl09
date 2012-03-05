@@ -13,7 +13,6 @@ package org.eclipse.bpel.simpl.ui.widgets;
 
 import java.util.ArrayList;
 
-import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -25,12 +24,11 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.simpl.resource.management.data.DataSource;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -87,7 +85,8 @@ public class SchemaListPopUp {
 		createSShell(statementText);
 	}
 
-	private void createSShell(final LiveEditStyleText statementText) {
+	@SuppressWarnings("unused")
+  private void createSShell(final LiveEditStyleText statementText) {
 		GridLayout gridLayout = new GridLayout();
 		gridLayout.numColumns = 4;
 		theShell = new Shell(Display.getDefault());

@@ -39,11 +39,15 @@ import org.eclipse.bpel.model.CompensateScope;
 import org.eclipse.bpel.model.CompensationHandler;
 import org.eclipse.bpel.model.CompletionCondition;
 import org.eclipse.bpel.model.Condition;
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.Copy;
 import org.eclipse.bpel.model.Correlation;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.CorrelationSets;
 import org.eclipse.bpel.model.Correlations;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Documentation;
 import org.eclipse.bpel.model.Else;
 import org.eclipse.bpel.model.ElseIf;
@@ -78,7 +82,6 @@ import org.eclipse.bpel.model.Pick;
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.Query;
 import org.eclipse.bpel.model.Receive;
-import org.eclipse.bpel.model.ReferenceType;
 import org.eclipse.bpel.model.ReferenceVariable;
 import org.eclipse.bpel.model.ReferenceVariables;
 import org.eclipse.bpel.model.RepeatUntil;
@@ -537,6 +540,14 @@ public class BPELWriter {
 				&& !process.getReferenceVariables().getChildren().isEmpty())
 			processElement.appendChild(referenceVariables2XML(process.getReferenceVariables()));
 
+    if (process.getContainerReferenceVariables() != null
+        && !process.getContainerReferenceVariables().getChildren().isEmpty())
+      processElement.appendChild(containerReferenceVariables2XML(process.getContainerReferenceVariables()));
+    
+    if (process.getDataSourceReferenceVariables() != null
+        && !process.getDataSourceReferenceVariables().getChildren().isEmpty())
+      processElement.appendChild(dataSourceReferenceVariables2XML(process.getDataSourceReferenceVariables()));
+		
 		if (process.getCorrelationSets() != null
 				&& !process.getCorrelationSets().getChildren().isEmpty())
 			processElement.appendChild(correlationSets2XML(process
@@ -2537,4 +2548,134 @@ public class BPELWriter {
 
 		return variableElement;
 	}
+	
+	 protected Element containerReferenceVariables2XML(ContainerReferenceVariables variables) {
+	    // If there are no variables then skip creating Element
+	    if (variables.getChildren().isEmpty())
+	      return null;
+
+	    Element variablesElement = createBPELElement("containerReferenceVariables");
+
+	    for (Object next : variables.getChildren()) {
+	      ContainerReferenceVariable variable = (ContainerReferenceVariable) next;
+	      variablesElement.appendChild(containerReferenceVariable2XML(variable));
+	    }
+
+	    extensibleElement2XML(variables, variablesElement);
+
+	    // serialize local namespace prefixes to XML
+	    serializePrefixes(variables, variablesElement);
+	    extensibleElement2XML(variables, variablesElement);
+
+	    return variablesElement;
+
+	  }
+
+	  protected Element containerReferenceVariable2XML(ContainerReferenceVariable variable) {
+	    Element variableElement = createBPELElement("containerReferenceVariable");
+
+	    if (variable.getName() != null) {
+	      variableElement.setAttribute("name", variable.getName());
+	    }
+
+	    Message msg = variable.getMessageType();
+	    if (msg != null) {
+	      variableElement.setAttribute("messageType", qNameToString(variable,
+	          msg.getQName()));
+	    }
+
+	    if (variable.getType() != null) {
+	      XSDTypeDefinition type = variable.getType();
+	      QName qname = new QName(type.getTargetNamespace(), type.getName());
+	      variableElement
+	          .setAttribute("type", qNameToString(variable, qname));
+	    }
+
+	    if (variable.getXSDElement() != null) {
+	      XSDElementDeclaration element = variable.getXSDElement();
+	      QName qname = new QName(element.getTargetNamespace(), element
+	          .getName());
+	      variableElement.setAttribute("element", qNameToString(variable,
+	          qname));
+	    }
+
+	    // from-spec
+	    From from = variable.getFrom();
+	    if (from != null) {
+	      Element fromElement = createBPELElement("from");
+	      from2XML(from, fromElement);
+	      variableElement.appendChild(fromElement);
+	    }
+
+	    // serialize local namespace prefixes to XML
+	    serializePrefixes(variable, variableElement);
+	    extensibleElement2XML(variable, variableElement);
+
+	    return variableElement;
+	  }
+	  
+	  protected Element dataSourceReferenceVariables2XML(DataSourceReferenceVariables variables) {
+	    // If there are no variables then skip creating Element
+	    if (variables.getChildren().isEmpty())
+	      return null;
+
+	    Element variablesElement = createBPELElement("dataSourceReferenceVariables");
+
+	    for (Object next : variables.getChildren()) {
+	      DataSourceReferenceVariable variable = (DataSourceReferenceVariable) next;
+	      variablesElement.appendChild(dataSourceReferenceVariable2XML(variable));
+	    }
+
+	    extensibleElement2XML(variables, variablesElement);
+
+	    // serialize local namespace prefixes to XML
+	    serializePrefixes(variables, variablesElement);
+	    extensibleElement2XML(variables, variablesElement);
+
+	    return variablesElement;
+
+	  }
+
+	  protected Element dataSourceReferenceVariable2XML(DataSourceReferenceVariable variable) {
+	    Element variableElement = createBPELElement("dataSourceReferenceVariable");
+
+	    if (variable.getName() != null) {
+	      variableElement.setAttribute("name", variable.getName());
+	    }
+
+	    Message msg = variable.getMessageType();
+	    if (msg != null) {
+	      variableElement.setAttribute("messageType", qNameToString(variable,
+	          msg.getQName()));
+	    }
+
+	    if (variable.getType() != null) {
+	      XSDTypeDefinition type = variable.getType();
+	      QName qname = new QName(type.getTargetNamespace(), type.getName());
+	      variableElement
+	          .setAttribute("type", qNameToString(variable, qname));
+	    }
+
+	    if (variable.getXSDElement() != null) {
+	      XSDElementDeclaration element = variable.getXSDElement();
+	      QName qname = new QName(element.getTargetNamespace(), element
+	          .getName());
+	      variableElement.setAttribute("element", qNameToString(variable,
+	          qname));
+	    }
+
+	    // from-spec
+	    From from = variable.getFrom();
+	    if (from != null) {
+	      Element fromElement = createBPELElement("from");
+	      from2XML(from, fromElement);
+	      variableElement.appendChild(fromElement);
+	    }
+
+	    // serialize local namespace prefixes to XML
+	    serializePrefixes(variable, variableElement);
+	    extensibleElement2XML(variable, variableElement);
+
+	    return variableElement;
+	  }
 }

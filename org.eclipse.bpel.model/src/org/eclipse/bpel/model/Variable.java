@@ -39,130 +39,130 @@ import org.eclipse.xsd.XSDTypeDefinition;
  * @generated
  */
 public interface Variable extends ExtensibleElement {
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.eclipse.bpel.model.BPELPackage#getVariable_Name()
-	 * @model
-	 * @generated
-	 */
-	String getName();
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.eclipse.bpel.model.BPELPackage#getVariable_Name()
+   * @model
+   * @generated
+   */
+  String getName();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Variable#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 */
-	void setName(String value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Variable#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   */
+  void setName(String value);
 
-	/**
-	 * Returns the value of the '<em><b>Message Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Message Type</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Message Type</em>' reference.
-	 * @see #setMessageType(Message)
-	 * @see org.eclipse.bpel.model.BPELPackage#getVariable_MessageType()
-	 * @model
-	 * @generated
-	 */
-	Message getMessageType();
+  /**
+   * Returns the value of the '<em><b>Message Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Message Type</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Message Type</em>' reference.
+   * @see #setMessageType(Message)
+   * @see org.eclipse.bpel.model.BPELPackage#getVariable_MessageType()
+   * @model
+   * @generated
+   */
+  Message getMessageType();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Variable#getMessageType <em>Message Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Message Type</em>' reference.
-	 * @see #getMessageType()
-	 */
-	void setMessageType(Message value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Variable#getMessageType <em>Message Type</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Message Type</em>' reference.
+   * @see #getMessageType()
+   */
+  void setMessageType(Message value);
 
-	/**
-	 * Returns the value of the '<em><b>XSD Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>XSD Element</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>XSD Element</em>' reference.
-	 * @see #setXSDElement(XSDElementDeclaration)
-	 * @see org.eclipse.bpel.model.BPELPackage#getVariable_XSDElement()
-	 * @model
-	 * @generated
-	 */
-	XSDElementDeclaration getXSDElement();
+  /**
+   * Returns the value of the '<em><b>XSD Element</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>XSD Element</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>XSD Element</em>' reference.
+   * @see #setXSDElement(XSDElementDeclaration)
+   * @see org.eclipse.bpel.model.BPELPackage#getVariable_XSDElement()
+   * @model
+   * @generated
+   */
+  XSDElementDeclaration getXSDElement();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Variable#getXSDElement <em>XSD Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>XSD Element</em>' reference.
-	 * @see #getXSDElement()
-	 */
-	void setXSDElement(XSDElementDeclaration value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Variable#getXSDElement <em>XSD Element</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>XSD Element</em>' reference.
+   * @see #getXSDElement()
+   */
+  void setXSDElement(XSDElementDeclaration value);
 
-	/**
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Type</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' reference.
-	 * @see #setType(XSDTypeDefinition)
-	 * @see org.eclipse.bpel.model.BPELPackage#getVariable_Type()
-	 * @model
-	 * @generated
-	 */
-	XSDTypeDefinition getType();
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Type</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' reference.
+   * @see #setType(XSDTypeDefinition)
+   * @see org.eclipse.bpel.model.BPELPackage#getVariable_Type()
+   * @model
+   * @generated
+   */
+  XSDTypeDefinition getType();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Variable#getType <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' reference.
-	 * @see #getType()
-	 */
-	void setType(XSDTypeDefinition value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Variable#getType <em>Type</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' reference.
+   * @see #getType()
+   */
+  void setType(XSDTypeDefinition value);
 
-	/**
-	 * Returns the value of the '<em><b>From</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>From</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>From</em>' containment reference.
-	 * @see #setFrom(From)
-	 * @see org.eclipse.bpel.model.BPELPackage#getVariable_From()
-	 * @model containment="true"
-	 * @generated
-	 */
-	From getFrom();
+  /**
+   * Returns the value of the '<em><b>From</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>From</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>From</em>' containment reference.
+   * @see #setFrom(From)
+   * @see org.eclipse.bpel.model.BPELPackage#getVariable_From()
+   * @model containment="true"
+   * @generated
+   */
+  From getFrom();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Variable#getFrom <em>From</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>From</em>' containment reference.
-	 * @see #getFrom()
-	 * @generated
-	 */
-	void setFrom(From value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Variable#getFrom <em>From</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>From</em>' containment reference.
+   * @see #getFrom()
+   * @generated
+   */
+  void setFrom(From value);
 
 } // Variable

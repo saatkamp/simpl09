@@ -39,65 +39,65 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Link extends ExtensibleElement {
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.eclipse.bpel.model.BPELPackage#getLink_Name()
-	 * @model
-	 * @generated
-	 */
-	String getName();
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.eclipse.bpel.model.BPELPackage#getLink_Name()
+   * @model
+   * @generated
+   */
+  String getName();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Link#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 */
-	void setName(String value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Link#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   */
+  void setName(String value);
 
-	/**
-	 * Returns the value of the '<em><b>Sources</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.bpel.model.Source}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.bpel.model.Source#getLink <em>Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sources</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sources</em>' reference list.
-	 * @see org.eclipse.bpel.model.BPELPackage#getLink_Sources()
-	 * @see org.eclipse.bpel.model.Source#getLink
-	 * @model opposite="Link"
-	 * @generated
-	 */
-	EList<Source> getSources();
+  /**
+   * Returns the value of the '<em><b>Sources</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.bpel.model.Source}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.bpel.model.Source#getLink <em>Link</em>}'.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Sources</em>' reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sources</em>' reference list.
+   * @see org.eclipse.bpel.model.BPELPackage#getLink_Sources()
+   * @see org.eclipse.bpel.model.Source#getLink
+   * @model opposite="Link"
+   * @generated
+   */
+  EList<Source> getSources();
 
-	/**
-	 * Returns the value of the '<em><b>Targets</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.bpel.model.Target}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.bpel.model.Target#getLink <em>Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Targets</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Targets</em>' reference list.
-	 * @see org.eclipse.bpel.model.BPELPackage#getLink_Targets()
-	 * @see org.eclipse.bpel.model.Target#getLink
-	 * @model opposite="Link"
-	 * @generated
-	 */
-	EList<Target> getTargets();
+  /**
+   * Returns the value of the '<em><b>Targets</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.bpel.model.Target}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.bpel.model.Target#getLink <em>Link</em>}'.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Targets</em>' reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Targets</em>' reference list.
+   * @see org.eclipse.bpel.model.BPELPackage#getLink_Targets()
+   * @see org.eclipse.bpel.model.Target#getLink
+   * @model opposite="Link"
+   * @generated
+   */
+  EList<Target> getTargets();
 
 } // Link

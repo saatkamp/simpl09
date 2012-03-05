@@ -5,7 +5,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: ModelFactory.java 1755 2011-01-17 16:16:42Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -24,11 +24,11 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface ModelFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+   * The singleton instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	ModelFactory eINSTANCE = org.eclipse.bpel.simpl.model.impl.ModelFactoryImpl.init();
 
 	/**
@@ -41,69 +41,42 @@ public interface ModelFactory extends EFactory {
 	DataManagementActivity createDataManagementActivity();
 
 	/**
-	 * Returns a new object of class '<em>Query Activity</em>'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return a new object of class ''.
-	 * @generated
-	 */
-	QueryActivity createQueryActivity();
+   * Returns a new object of class '<em>Query Data Activity</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Query Data Activity</em>'.
+   * @generated
+   */
+  QueryDataActivity createQueryDataActivity();
 
-	/**
-	 * Returns a new object of class '<em>Insert Activity</em>'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return a new object of class ''.
-	 * @generated
-	 */
-	InsertActivity createInsertActivity();
+  /**
+   * Returns a new object of class '<em>Issue Command Activity</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Issue Command Activity</em>'.
+   * @generated
+   */
+  IssueCommandActivity createIssueCommandActivity();
 
-	/**
-	 * Returns a new object of class '<em>Update Activity</em>'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return a new object of class ''.
-	 * @generated
-	 */
-	UpdateActivity createUpdateActivity();
+  /**
+   * Returns a new object of class '<em>Write Data Back Activity</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Write Data Back Activity</em>'.
+   * @generated
+   */
+  WriteDataBackActivity createWriteDataBackActivity();
 
-	/**
-	 * Returns a new object of class '<em>Delete Activity</em>'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return a new object of class ''.
-	 * @generated
-	 */
-	DeleteActivity createDeleteActivity();
+  /**
+   * Returns a new object of class '<em>Transfer Data Activity</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Transfer Data Activity</em>'.
+   * @generated
+   */
+  TransferDataActivity createTransferDataActivity();
 
-	/**
-	 * Returns a new object of class '<em>Create Activity</em>'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return a new object of class ''.
-	 * @generated
-	 */
-	CreateActivity createCreateActivity();
-
-	/**
-	 * Returns a new object of class '<em>Drop Activity</em>'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return a new object of class ''.
-	 * @generated
-	 */
-	DropActivity createDropActivity();
-
-	/**
-	 * Returns a new object of class '<em>Call Activity</em>'. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return a new object of class ''.
-	 * @generated
-	 */
-	CallActivity createCallActivity();
-
-	/**
+  /**
 	 * Returns a new object of class '<em>Retrieve Data Activity</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -113,21 +86,12 @@ public interface ModelFactory extends EFactory {
 	RetrieveDataActivity createRetrieveDataActivity();
 
 	/**
-	 * Returns a new object of class '<em>Transfer Activity</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns the package supported by this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Transfer Activity</em>'.
-	 * @generated
-	 */
-	TransferActivity createTransferActivity();
-
-	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+   * @return the package supported by this factory.
+   * @generated
+   */
 	ModelPackage getModelPackage();
 
 } //ModelFactory

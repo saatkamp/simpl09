@@ -14,11 +14,12 @@
  */
 package org.eclipse.bpel.model.partnerlinktype.impl;
 
-import org.eclipse.bpel.model.partnerlinktype.*;
-
+import org.eclipse.bpel.model.partnerlinktype.PartnerLinkType;
+import org.eclipse.bpel.model.partnerlinktype.PartnerlinktypeFactory;
+import org.eclipse.bpel.model.partnerlinktype.PartnerlinktypePackage;
+import org.eclipse.bpel.model.partnerlinktype.Role;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
@@ -30,92 +31,92 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @generated
  */
 public class PartnerlinktypeFactoryImpl extends EFactoryImpl implements
-		PartnerlinktypeFactory {
-	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static PartnerlinktypeFactory init() {
-		try {
-			PartnerlinktypeFactory thePartnerlinktypeFactory = (PartnerlinktypeFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://docs.oasis-open.org/wsbpel/2.0/plnktype"); //$NON-NLS-1$ 
-			if (thePartnerlinktypeFactory != null) {
-				return thePartnerlinktypeFactory;
-			}
-		} catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new PartnerlinktypeFactoryImpl();
-	}
+    PartnerlinktypeFactory {
+  /**
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public static PartnerlinktypeFactory init() {
+    try {
+      PartnerlinktypeFactory thePartnerlinktypeFactory = (PartnerlinktypeFactory) EPackage.Registry.INSTANCE
+          .getEFactory("http://docs.oasis-open.org/wsbpel/2.0/plnktype"); //$NON-NLS-1$ 
+      if (thePartnerlinktypeFactory != null) {
+        return thePartnerlinktypeFactory;
+      }
+    } catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new PartnerlinktypeFactoryImpl();
+  }
 
-	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PartnerlinktypeFactoryImpl() {
-		super();
-	}
+  /**
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PartnerlinktypeFactoryImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case PartnerlinktypePackage.PARTNER_LINK_TYPE:
-				return createPartnerLinkType();
-			case PartnerlinktypePackage.ROLE:
-				return createRole();
-			default:
-				throw new IllegalArgumentException(
-						"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EObject create(EClass eClass) {
+    switch (eClass.getClassifierID()) {
+    case PartnerlinktypePackage.PARTNER_LINK_TYPE:
+      return createPartnerLinkType();
+    case PartnerlinktypePackage.ROLE:
+      return createRole();
+    default:
+      throw new IllegalArgumentException(
+          "The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PartnerLinkType createPartnerLinkType() {
-		PartnerLinkTypeImpl partnerLinkType = new PartnerLinkTypeImpl();
-		return partnerLinkType;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PartnerLinkType createPartnerLinkType() {
+    PartnerLinkTypeImpl partnerLinkType = new PartnerLinkTypeImpl();
+    return partnerLinkType;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Role createRole() {
-		RoleImpl role = new RoleImpl();
-		return role;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Role createRole() {
+    RoleImpl role = new RoleImpl();
+    return role;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PartnerlinktypePackage getPartnerlinktypePackage() {
-		return (PartnerlinktypePackage) getEPackage();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PartnerlinktypePackage getPartnerlinktypePackage() {
+    return (PartnerlinktypePackage) getEPackage();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
-	@Deprecated
-	public static PartnerlinktypePackage getPackage() {
-		return PartnerlinktypePackage.eINSTANCE;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @deprecated
+   * @generated
+   */
+  @Deprecated
+  public static PartnerlinktypePackage getPackage() {
+    return PartnerlinktypePackage.eINSTANCE;
+  }
 
 } //PartnerlinktypeFactoryImpl

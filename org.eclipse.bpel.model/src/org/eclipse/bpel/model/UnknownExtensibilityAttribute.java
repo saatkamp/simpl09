@@ -26,6 +26,5 @@ import org.eclipse.wst.wsdl.UnknownExtensibilityElement;
  * @model
  * @generated
  */
-public interface UnknownExtensibilityAttribute extends
-		UnknownExtensibilityElement {
+public interface UnknownExtensibilityAttribute extends UnknownExtensibilityElement {
 } // UnknownExtensibilityAttribute

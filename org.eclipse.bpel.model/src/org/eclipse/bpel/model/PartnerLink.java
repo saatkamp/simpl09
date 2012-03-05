@@ -53,155 +53,155 @@ import org.eclipse.bpel.model.partnerlinktype.Role;
  * @generated
  */
 public interface PartnerLink extends ExtensibleElement {
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.eclipse.bpel.model.BPELPackage#getPartnerLink_Name()
-	 * @model
-	 * @generated
-	 */
-	String getName();
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.eclipse.bpel.model.BPELPackage#getPartnerLink_Name()
+   * @model
+   * @generated
+   */
+  String getName();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.PartnerLink#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 */
-	void setName(String value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.PartnerLink#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   */
+  void setName(String value);
 
-	/**
-	 * Returns the value of the '<em><b>My Role</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>My Role</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>My Role</em>' reference.
-	 * @see #setMyRole(Role)
-	 * @see org.eclipse.bpel.model.BPELPackage#getPartnerLink_MyRole()
-	 * @model
-	 * @generated
-	 */
-	Role getMyRole();
+  /**
+   * Returns the value of the '<em><b>My Role</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>My Role</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>My Role</em>' reference.
+   * @see #setMyRole(Role)
+   * @see org.eclipse.bpel.model.BPELPackage#getPartnerLink_MyRole()
+   * @model
+   * @generated
+   */
+  Role getMyRole();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.PartnerLink#getMyRole <em>My Role</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>My Role</em>' reference.
-	 * @see #getMyRole()
-	 */
-	void setMyRole(Role value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.PartnerLink#getMyRole <em>My Role</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>My Role</em>' reference.
+   * @see #getMyRole()
+   */
+  void setMyRole(Role value);
 
-	/**
-	 * Returns the value of the '<em><b>Partner Role</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Partner Role</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Partner Role</em>' reference.
-	 * @see #setPartnerRole(Role)
-	 * @see org.eclipse.bpel.model.BPELPackage#getPartnerLink_PartnerRole()
-	 * @model
-	 * @generated
-	 */
-	Role getPartnerRole();
+  /**
+   * Returns the value of the '<em><b>Partner Role</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Partner Role</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Partner Role</em>' reference.
+   * @see #setPartnerRole(Role)
+   * @see org.eclipse.bpel.model.BPELPackage#getPartnerLink_PartnerRole()
+   * @model
+   * @generated
+   */
+  Role getPartnerRole();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.PartnerLink#getPartnerRole <em>Partner Role</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Partner Role</em>' reference.
-	 * @see #getPartnerRole()
-	 */
-	void setPartnerRole(Role value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.PartnerLink#getPartnerRole <em>Partner Role</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Partner Role</em>' reference.
+   * @see #getPartnerRole()
+   */
+  void setPartnerRole(Role value);
 
-	/**
-	 * Returns the value of the '<em><b>Partner Link Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Partner Link Type</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Partner Link Type</em>' reference.
-	 * @see #setPartnerLinkType(PartnerLinkType)
-	 * @see org.eclipse.bpel.model.BPELPackage#getPartnerLink_PartnerLinkType()
-	 * @model
-	 * @generated
-	 */
-	PartnerLinkType getPartnerLinkType();
+  /**
+   * Returns the value of the '<em><b>Partner Link Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Partner Link Type</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Partner Link Type</em>' reference.
+   * @see #setPartnerLinkType(PartnerLinkType)
+   * @see org.eclipse.bpel.model.BPELPackage#getPartnerLink_PartnerLinkType()
+   * @model
+   * @generated
+   */
+  PartnerLinkType getPartnerLinkType();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.PartnerLink#getPartnerLinkType <em>Partner Link Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Partner Link Type</em>' reference.
-	 * @see #getPartnerLinkType()
-	 */
-	void setPartnerLinkType(PartnerLinkType value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.PartnerLink#getPartnerLinkType <em>Partner Link Type</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Partner Link Type</em>' reference.
+   * @see #getPartnerLinkType()
+   */
+  void setPartnerLinkType(PartnerLinkType value);
 
-	/**
-	 * Returns the value of the '<em><b>Initialize Partner Role</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Initialize Partner Role</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Initialize Partner Role</em>' attribute.
-	 * @see #isSetInitializePartnerRole()
-	 * @see #unsetInitializePartnerRole()
-	 * @see #setInitializePartnerRole(Boolean)
-	 * @see org.eclipse.bpel.model.BPELPackage#getPartnerLink_InitializePartnerRole()
-	 * @model unsettable="true"
-	 * @generated
-	 */
-	Boolean getInitializePartnerRole();
+  /**
+   * Returns the value of the '<em><b>Initialize Partner Role</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Initialize Partner Role</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Initialize Partner Role</em>' attribute.
+   * @see #isSetInitializePartnerRole()
+   * @see #unsetInitializePartnerRole()
+   * @see #setInitializePartnerRole(Boolean)
+   * @see org.eclipse.bpel.model.BPELPackage#getPartnerLink_InitializePartnerRole()
+   * @model unsettable="true"
+   * @generated
+   */
+  Boolean getInitializePartnerRole();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.PartnerLink#getInitializePartnerRole <em>Initialize Partner Role</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Initialize Partner Role</em>' attribute.
-	 * @see #isSetInitializePartnerRole()
-	 * @see #unsetInitializePartnerRole()
-	 * @see #getInitializePartnerRole()
-	 */
-	void setInitializePartnerRole(Boolean value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.PartnerLink#getInitializePartnerRole <em>Initialize Partner Role</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Initialize Partner Role</em>' attribute.
+   * @see #isSetInitializePartnerRole()
+   * @see #unsetInitializePartnerRole()
+   * @see #getInitializePartnerRole()
+   */
+  void setInitializePartnerRole(Boolean value);
 
-	/**
-	 * Unsets the value of the '{@link org.eclipse.bpel.model.PartnerLink#getInitializePartnerRole <em>Initialize Partner Role</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetInitializePartnerRole()
-	 * @see #getInitializePartnerRole()
-	 * @see #setInitializePartnerRole(Boolean)
-	 */
-	void unsetInitializePartnerRole();
+  /**
+   * Unsets the value of the '{@link org.eclipse.bpel.model.PartnerLink#getInitializePartnerRole <em>Initialize Partner Role</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isSetInitializePartnerRole()
+   * @see #getInitializePartnerRole()
+   * @see #setInitializePartnerRole(Boolean)
+   */
+  void unsetInitializePartnerRole();
 
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.bpel.model.PartnerLink#getInitializePartnerRole <em>Initialize Partner Role</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Initialize Partner Role</em>' attribute is set.
-	 * @see #unsetInitializePartnerRole()
-	 * @see #getInitializePartnerRole()
-	 * @see #setInitializePartnerRole(Boolean)
-	 * @generated
-	 */
-	boolean isSetInitializePartnerRole();
+  /**
+   * Returns whether the value of the '{@link org.eclipse.bpel.model.PartnerLink#getInitializePartnerRole <em>Initialize Partner Role</em>}' attribute is set.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return whether the value of the '<em>Initialize Partner Role</em>' attribute is set.
+   * @see #unsetInitializePartnerRole()
+   * @see #getInitializePartnerRole()
+   * @see #setInitializePartnerRole(Boolean)
+   * @generated
+   */
+  boolean isSetInitializePartnerRole();
 
 } // PartnerLink

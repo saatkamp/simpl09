@@ -15,9 +15,7 @@
 package org.eclipse.bpel.model;
 
 import org.eclipse.bpel.model.messageproperties.Property;
-
 import org.eclipse.wst.wsdl.Part;
-
 import org.eclipse.xsd.XSDTypeDefinition;
 
 /**
@@ -48,388 +46,388 @@ import org.eclipse.xsd.XSDTypeDefinition;
  * @generated
  */
 public interface From extends ExtensibleElement {
-	/**
-	 * Returns the value of the '<em><b>Opaque</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Signifies that an opaque value is to be assigned to a container property based on a non-deterministic choice. Must be used in abstract processes only. The XSD type of the To container property must be derived from xsd:string restricted by enumeration or any restricted XSD integral numeric type.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Opaque</em>' attribute.
-	 * @see #isSetOpaque()
-	 * @see #unsetOpaque()
-	 * @see #setOpaque(Boolean)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_Opaque()
-	 * @model unsettable="true"
-	 * @generated
-	 */
-	Boolean getOpaque();
+  /**
+   * Returns the value of the '<em><b>Opaque</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Signifies that an opaque value is to be assigned to a container property based on a non-deterministic choice. Must be used in abstract processes only. The XSD type of the To container property must be derived from xsd:string restricted by enumeration or any restricted XSD integral numeric type.
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Opaque</em>' attribute.
+   * @see #isSetOpaque()
+   * @see #unsetOpaque()
+   * @see #setOpaque(Boolean)
+   * @see org.eclipse.bpel.model.BPELPackage#getFrom_Opaque()
+   * @model unsettable="true"
+   * @generated
+   */
+  Boolean getOpaque();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getOpaque <em>Opaque</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Opaque</em>' attribute.
-	 * @see #isSetOpaque()
-	 * @see #unsetOpaque()
-	 * @see #getOpaque()
-	 */
-	void setOpaque(Boolean value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.From#getOpaque <em>Opaque</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Opaque</em>' attribute.
+   * @see #isSetOpaque()
+   * @see #unsetOpaque()
+   * @see #getOpaque()
+   */
+  void setOpaque(Boolean value);
 
-	/**
-	 * Unsets the value of the '{@link org.eclipse.bpel.model.From#getOpaque <em>Opaque</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetOpaque()
-	 * @see #getOpaque()
-	 * @see #setOpaque(Boolean)
-	 */
-	void unsetOpaque();
+  /**
+   * Unsets the value of the '{@link org.eclipse.bpel.model.From#getOpaque <em>Opaque</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isSetOpaque()
+   * @see #getOpaque()
+   * @see #setOpaque(Boolean)
+   */
+  void unsetOpaque();
 
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.bpel.model.From#getOpaque <em>Opaque</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Opaque</em>' attribute is set.
-	 * @see #unsetOpaque()
-	 * @see #getOpaque()
-	 * @see #setOpaque(Boolean)
-	 * @generated
-	 */
-	boolean isSetOpaque();
+  /**
+   * Returns whether the value of the '{@link org.eclipse.bpel.model.From#getOpaque <em>Opaque</em>}' attribute is set.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return whether the value of the '<em>Opaque</em>' attribute is set.
+   * @see #unsetOpaque()
+   * @see #getOpaque()
+   * @see #setOpaque(Boolean)
+   * @generated
+   */
+  boolean isSetOpaque();
 
-	/**
-	 * Returns the value of the '<em><b>Endpoint Reference</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.eclipse.bpel.model.EndpointReferenceRole}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Endpoint Reference</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Endpoint Reference</em>' attribute.
-	 * @see org.eclipse.bpel.model.EndpointReferenceRole
-	 * @see #isSetEndpointReference()
-	 * @see #unsetEndpointReference()
-	 * @see #setEndpointReference(EndpointReferenceRole)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_EndpointReference()
-	 * @model unsettable="true"
-	 * @generated
-	 */
-	EndpointReferenceRole getEndpointReference();
+  /**
+   * Returns the value of the '<em><b>Endpoint Reference</b></em>' attribute.
+   * The literals are from the enumeration {@link org.eclipse.bpel.model.EndpointReferenceRole}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Endpoint Reference</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Endpoint Reference</em>' attribute.
+   * @see org.eclipse.bpel.model.EndpointReferenceRole
+   * @see #isSetEndpointReference()
+   * @see #unsetEndpointReference()
+   * @see #setEndpointReference(EndpointReferenceRole)
+   * @see org.eclipse.bpel.model.BPELPackage#getFrom_EndpointReference()
+   * @model unsettable="true"
+   * @generated
+   */
+  EndpointReferenceRole getEndpointReference();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getEndpointReference <em>Endpoint Reference</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Endpoint Reference</em>' attribute.
-	 * @see org.eclipse.bpel.model.EndpointReferenceRole
-	 * @see #isSetEndpointReference()
-	 * @see #unsetEndpointReference()
-	 * @see #getEndpointReference()
-	 */
-	void setEndpointReference(EndpointReferenceRole value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.From#getEndpointReference <em>Endpoint Reference</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Endpoint Reference</em>' attribute.
+   * @see org.eclipse.bpel.model.EndpointReferenceRole
+   * @see #isSetEndpointReference()
+   * @see #unsetEndpointReference()
+   * @see #getEndpointReference()
+   */
+  void setEndpointReference(EndpointReferenceRole value);
 
-	/**
-	 * Unsets the value of the '{@link org.eclipse.bpel.model.From#getEndpointReference <em>Endpoint Reference</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetEndpointReference()
-	 * @see #getEndpointReference()
-	 * @see #setEndpointReference(EndpointReferenceRole)
-	 */
-	void unsetEndpointReference();
+  /**
+   * Unsets the value of the '{@link org.eclipse.bpel.model.From#getEndpointReference <em>Endpoint Reference</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isSetEndpointReference()
+   * @see #getEndpointReference()
+   * @see #setEndpointReference(EndpointReferenceRole)
+   */
+  void unsetEndpointReference();
 
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.bpel.model.From#getEndpointReference <em>Endpoint Reference</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Endpoint Reference</em>' attribute is set.
-	 * @see #unsetEndpointReference()
-	 * @see #getEndpointReference()
-	 * @see #setEndpointReference(EndpointReferenceRole)
-	 * @generated
-	 */
-	boolean isSetEndpointReference();
+  /**
+   * Returns whether the value of the '{@link org.eclipse.bpel.model.From#getEndpointReference <em>Endpoint Reference</em>}' attribute is set.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return whether the value of the '<em>Endpoint Reference</em>' attribute is set.
+   * @see #unsetEndpointReference()
+   * @see #getEndpointReference()
+   * @see #setEndpointReference(EndpointReferenceRole)
+   * @generated
+   */
+  boolean isSetEndpointReference();
 
-	/**
-	 * Returns the value of the '<em><b>Literal</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Literal</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Literal</em>' attribute.
-	 * @see #isSetLiteral()
-	 * @see #unsetLiteral()
-	 * @see #setLiteral(String)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_Literal()
-	 * @model unsettable="true"
-	 * @generated
-	 */
-	String getLiteral();
+  /**
+   * Returns the value of the '<em><b>Literal</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Literal</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Literal</em>' attribute.
+   * @see #isSetLiteral()
+   * @see #unsetLiteral()
+   * @see #setLiteral(String)
+   * @see org.eclipse.bpel.model.BPELPackage#getFrom_Literal()
+   * @model unsettable="true"
+   * @generated
+   */
+  String getLiteral();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getLiteral <em>Literal</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Literal</em>' attribute.
-	 * @see #isSetLiteral()
-	 * @see #unsetLiteral()
-	 * @see #getLiteral()
-	 */
-	void setLiteral(String value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.From#getLiteral <em>Literal</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Literal</em>' attribute.
+   * @see #isSetLiteral()
+   * @see #unsetLiteral()
+   * @see #getLiteral()
+   */
+  void setLiteral(String value);
 
-	/**
-	 * Unsets the value of the '{@link org.eclipse.bpel.model.From#getLiteral <em>Literal</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetLiteral()
-	 * @see #getLiteral()
-	 * @see #setLiteral(String)
-	 */
-	void unsetLiteral();
+  /**
+   * Unsets the value of the '{@link org.eclipse.bpel.model.From#getLiteral <em>Literal</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isSetLiteral()
+   * @see #getLiteral()
+   * @see #setLiteral(String)
+   */
+  void unsetLiteral();
 
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.bpel.model.From#getLiteral <em>Literal</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Literal</em>' attribute is set.
-	 * @see #unsetLiteral()
-	 * @see #getLiteral()
-	 * @see #setLiteral(String)
-	 * @generated
-	 */
-	boolean isSetLiteral();
+  /**
+   * Returns whether the value of the '{@link org.eclipse.bpel.model.From#getLiteral <em>Literal</em>}' attribute is set.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return whether the value of the '<em>Literal</em>' attribute is set.
+   * @see #unsetLiteral()
+   * @see #getLiteral()
+   * @see #setLiteral(String)
+   * @generated
+   */
+  boolean isSetLiteral();
 
-	/**
-	 * Returns the value of the '<em><b>Unsafe Literal</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Unsafe Literal</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unsafe Literal</em>' attribute.
-	 * @see #setUnsafeLiteral(Boolean)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_UnsafeLiteral()
-	 * @model
-	 * @generated
-	 */
-	Boolean getUnsafeLiteral();
+  /**
+   * Returns the value of the '<em><b>Unsafe Literal</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Unsafe Literal</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Unsafe Literal</em>' attribute.
+   * @see #setUnsafeLiteral(Boolean)
+   * @see org.eclipse.bpel.model.BPELPackage#getFrom_UnsafeLiteral()
+   * @model
+   * @generated
+   */
+  Boolean getUnsafeLiteral();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getUnsafeLiteral <em>Unsafe Literal</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unsafe Literal</em>' attribute.
-	 * @see #getUnsafeLiteral()
-	 * @generated
-	 */
-	void setUnsafeLiteral(Boolean value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.From#getUnsafeLiteral <em>Unsafe Literal</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Unsafe Literal</em>' attribute.
+   * @see #getUnsafeLiteral()
+   * @generated
+   */
+  void setUnsafeLiteral(Boolean value);
 
-	/**
-	 * Returns the value of the '<em><b>Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Expression</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Expression</em>' containment reference.
-	 * @see #setExpression(Expression)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_Expression()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Expression getExpression();
+  /**
+   * Returns the value of the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Expression</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Expression</em>' containment reference.
+   * @see #setExpression(Expression)
+   * @see org.eclipse.bpel.model.BPELPackage#getFrom_Expression()
+   * @model containment="true"
+   * @generated
+   */
+  Expression getExpression();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getExpression <em>Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Expression</em>' containment reference.
-	 * @see #getExpression()
-	 * @generated
-	 */
-	void setExpression(Expression value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.From#getExpression <em>Expression</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Expression</em>' containment reference.
+   * @see #getExpression()
+   * @generated
+   */
+  void setExpression(Expression value);
 
-	/**
-	 * Returns the value of the '<em><b>Service Ref</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Service Ref</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Service Ref</em>' containment reference.
-	 * @see #setServiceRef(ServiceRef)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_ServiceRef()
-	 * @model containment="true"
-	 * @generated
-	 */
-	ServiceRef getServiceRef();
+  /**
+   * Returns the value of the '<em><b>Service Ref</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Service Ref</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Service Ref</em>' containment reference.
+   * @see #setServiceRef(ServiceRef)
+   * @see org.eclipse.bpel.model.BPELPackage#getFrom_ServiceRef()
+   * @model containment="true"
+   * @generated
+   */
+  ServiceRef getServiceRef();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getServiceRef <em>Service Ref</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Service Ref</em>' containment reference.
-	 * @see #getServiceRef()
-	 * @generated
-	 */
-	void setServiceRef(ServiceRef value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.From#getServiceRef <em>Service Ref</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Service Ref</em>' containment reference.
+   * @see #getServiceRef()
+   * @generated
+   */
+  void setServiceRef(ServiceRef value);
 
-	/**
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Type</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' reference.
-	 * @see #setType(XSDTypeDefinition)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_Type()
-	 * @model
-	 * @generated
-	 */
-	XSDTypeDefinition getType();
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Type</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' reference.
+   * @see #setType(XSDTypeDefinition)
+   * @see org.eclipse.bpel.model.BPELPackage#getFrom_Type()
+   * @model
+   * @generated
+   */
+  XSDTypeDefinition getType();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getType <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' reference.
-	 * @see #getType()
-	 */
-	void setType(XSDTypeDefinition value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.From#getType <em>Type</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' reference.
+   * @see #getType()
+   */
+  void setType(XSDTypeDefinition value);
 
-	/**
-	 * Returns the value of the '<em><b>Variable</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Variable</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Variable</em>' reference.
-	 * @see #setVariable(Variable)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_Variable()
-	 * @model
-	 * @generated
-	 */
-	Variable getVariable();
+  /**
+   * Returns the value of the '<em><b>Variable</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Variable</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Variable</em>' reference.
+   * @see #setVariable(Variable)
+   * @see org.eclipse.bpel.model.BPELPackage#getFrom_Variable()
+   * @model
+   * @generated
+   */
+  Variable getVariable();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getVariable <em>Variable</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Variable</em>' reference.
-	 * @see #getVariable()
-	 */
-	void setVariable(Variable value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.From#getVariable <em>Variable</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Variable</em>' reference.
+   * @see #getVariable()
+   */
+  void setVariable(Variable value);
 
-	/**
-	 * Returns the value of the '<em><b>Part</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Part</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Part</em>' reference.
-	 * @see #setPart(Part)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_Part()
-	 * @model
-	 * @generated
-	 */
-	Part getPart();
+  /**
+   * Returns the value of the '<em><b>Part</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Part</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Part</em>' reference.
+   * @see #setPart(Part)
+   * @see org.eclipse.bpel.model.BPELPackage#getFrom_Part()
+   * @model
+   * @generated
+   */
+  Part getPart();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getPart <em>Part</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Part</em>' reference.
-	 * @see #getPart()
-	 */
-	void setPart(Part value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.From#getPart <em>Part</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Part</em>' reference.
+   * @see #getPart()
+   */
+  void setPart(Part value);
 
-	/**
-	 * Returns the value of the '<em><b>Partner Link</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Partner Link</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Partner Link</em>' reference.
-	 * @see #setPartnerLink(PartnerLink)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_PartnerLink()
-	 * @model
-	 * @generated
-	 */
-	PartnerLink getPartnerLink();
+  /**
+   * Returns the value of the '<em><b>Partner Link</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Partner Link</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Partner Link</em>' reference.
+   * @see #setPartnerLink(PartnerLink)
+   * @see org.eclipse.bpel.model.BPELPackage#getFrom_PartnerLink()
+   * @model
+   * @generated
+   */
+  PartnerLink getPartnerLink();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getPartnerLink <em>Partner Link</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Partner Link</em>' reference.
-	 * @see #getPartnerLink()
-	 */
-	void setPartnerLink(PartnerLink value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.From#getPartnerLink <em>Partner Link</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Partner Link</em>' reference.
+   * @see #getPartnerLink()
+   */
+  void setPartnerLink(PartnerLink value);
 
-	/**
-	 * Returns the value of the '<em><b>Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Property</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Property</em>' reference.
-	 * @see #setProperty(Property)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_Property()
-	 * @model
-	 * @generated
-	 */
-	Property getProperty();
+  /**
+   * Returns the value of the '<em><b>Property</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Property</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Property</em>' reference.
+   * @see #setProperty(Property)
+   * @see org.eclipse.bpel.model.BPELPackage#getFrom_Property()
+   * @model
+   * @generated
+   */
+  Property getProperty();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getProperty <em>Property</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Property</em>' reference.
-	 * @see #getProperty()
-	 */
-	void setProperty(Property value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.From#getProperty <em>Property</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Property</em>' reference.
+   * @see #getProperty()
+   */
+  void setProperty(Property value);
 
-	/**
-	 * Returns the value of the '<em><b>Query</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Query</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Query</em>' containment reference.
-	 * @see #setQuery(Query)
-	 * @see org.eclipse.bpel.model.BPELPackage#getFrom_Query()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Query getQuery();
+  /**
+   * Returns the value of the '<em><b>Query</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Query</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Query</em>' containment reference.
+   * @see #setQuery(Query)
+   * @see org.eclipse.bpel.model.BPELPackage#getFrom_Query()
+   * @model containment="true"
+   * @generated
+   */
+  Query getQuery();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.From#getQuery <em>Query</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Query</em>' containment reference.
-	 * @see #getQuery()
-	 * @generated
-	 */
-	void setQuery(Query value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.From#getQuery <em>Query</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Query</em>' containment reference.
+   * @see #getQuery()
+   * @generated
+   */
+  void setQuery(Query value);
 
 } // From

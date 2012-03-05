@@ -28,26 +28,25 @@ import org.eclipse.wst.wsdl.internal.impl.UnknownExtensibilityElementImpl;
  *
  * @generated
  */
-public class UnknownExtensibilityAttributeImpl extends
-		UnknownExtensibilityElementImpl implements
-		UnknownExtensibilityAttribute {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected UnknownExtensibilityAttributeImpl() {
-		super();
-	}
+public class UnknownExtensibilityAttributeImpl extends UnknownExtensibilityElementImpl
+    implements UnknownExtensibilityAttribute {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected UnknownExtensibilityAttributeImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return BPELPackage.Literals.UNKNOWN_EXTENSIBILITY_ATTRIBUTE;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return BPELPackage.Literals.UNKNOWN_EXTENSIBILITY_ATTRIBUTE;
+  }
 
 } //UnknownExtensibilityAttributeImpl

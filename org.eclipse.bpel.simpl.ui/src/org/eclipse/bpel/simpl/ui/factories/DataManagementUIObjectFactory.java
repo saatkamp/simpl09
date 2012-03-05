@@ -5,16 +5,16 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: DataManagementUIObjectFactory.java 1755 2011-01-17 16:16:42Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
 package org.eclipse.bpel.simpl.ui.factories;
 
 
+import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.ui.BPELDMUIPlugIn;
-import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.ui.factories.AbstractUIObjectFactory;
 import org.eclipse.bpel.ui.factories.IExtensionUIObjectFactory;
 import org.eclipse.emf.ecore.EClass;
@@ -33,18 +33,14 @@ public class DataManagementUIObjectFactory extends AbstractUIObjectFactory
 	private EClass modelType;
 	
 	private EClass[] classArray = {  
-			ModelPackage.eINSTANCE.getQueryActivity(),
-			ModelPackage.eINSTANCE.getInsertActivity(),
-			ModelPackage.eINSTANCE.getUpdateActivity(),
-			ModelPackage.eINSTANCE.getDeleteActivity(),
-			ModelPackage.eINSTANCE.getCreateActivity(),
-			ModelPackage.eINSTANCE.getDropActivity(),
-			ModelPackage.eINSTANCE.getCallActivity(),
+			ModelPackage.eINSTANCE.getQueryDataActivity(),
+			ModelPackage.eINSTANCE.getIssueCommandActivity(),
 			ModelPackage.eINSTANCE.getRetrieveDataActivity(),
-			ModelPackage.eINSTANCE.getTransferActivity()};
+			ModelPackage.eINSTANCE.getWriteDataBackActivity(),
+			ModelPackage.eINSTANCE.getTransferDataActivity()};
 
 	/**
-	 * Instantiates a new data management ui object factory.
+	 * Instantiates a new data management UI object factory.
 	 * 
 	 * @param modelType
 	 *            the model type

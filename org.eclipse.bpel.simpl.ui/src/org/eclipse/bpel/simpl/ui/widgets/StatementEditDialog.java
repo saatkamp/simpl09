@@ -1,6 +1,6 @@
 package org.eclipse.bpel.simpl.ui.widgets;
 
-import org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection;
+import org.eclipse.bpel.simpl.ui.properties.ADataManagementActivityPropertySection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -24,17 +24,18 @@ import org.eclipse.swt.widgets.Shell;
 public class StatementEditDialog {
 	
 	private Shell theShell = null;  //  @jve:decl-index=0:visual-constraint="140,-28"
-	private Display display = null;
+	//private Display display = null;
 	
 	private Label labelDialogMassege = null;
 	private Button buttonSave = null;
-	private Button buttonSaveWithoutChanges;
+	//private Button buttonSaveWithoutChanges;
 	
 	LiveEditStyleText styleTextEditor;	
 	
-	//private DMActivityPropertySection parentClass = null;
+	//private DataManagementActivityPropertySection parentClass = null;
 	
-	public StatementEditDialog(final String statement, final DMActivityPropertySection parentClass){
+	@SuppressWarnings("unused")
+  public StatementEditDialog(final String statement, final ADataManagementActivityPropertySection parentClass){
 		GridData gridData1 = new GridData();
 		gridData1.grabExcessHorizontalSpace = true;
 		gridData1.grabExcessVerticalSpace = false;

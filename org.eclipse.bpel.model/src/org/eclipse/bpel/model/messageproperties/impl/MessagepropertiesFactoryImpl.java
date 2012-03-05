@@ -14,11 +14,13 @@
  */
 package org.eclipse.bpel.model.messageproperties.impl;
 
-import org.eclipse.bpel.model.messageproperties.*;
-
+import org.eclipse.bpel.model.messageproperties.MessagepropertiesFactory;
+import org.eclipse.bpel.model.messageproperties.MessagepropertiesPackage;
+import org.eclipse.bpel.model.messageproperties.Property;
+import org.eclipse.bpel.model.messageproperties.PropertyAlias;
+import org.eclipse.bpel.model.messageproperties.Query;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
@@ -30,104 +32,104 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @generated
  */
 public class MessagepropertiesFactoryImpl extends EFactoryImpl implements
-		MessagepropertiesFactory {
-	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static MessagepropertiesFactory init() {
-		try {
-			MessagepropertiesFactory theMessagepropertiesFactory = (MessagepropertiesFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://docs.oasis-open.org/wsbpel/2.0/varprop"); //$NON-NLS-1$ 
-			if (theMessagepropertiesFactory != null) {
-				return theMessagepropertiesFactory;
-			}
-		} catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new MessagepropertiesFactoryImpl();
-	}
+    MessagepropertiesFactory {
+  /**
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public static MessagepropertiesFactory init() {
+    try {
+      MessagepropertiesFactory theMessagepropertiesFactory = (MessagepropertiesFactory) EPackage.Registry.INSTANCE
+          .getEFactory("http://docs.oasis-open.org/wsbpel/2.0/varprop"); //$NON-NLS-1$ 
+      if (theMessagepropertiesFactory != null) {
+        return theMessagepropertiesFactory;
+      }
+    } catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new MessagepropertiesFactoryImpl();
+  }
 
-	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public MessagepropertiesFactoryImpl() {
-		super();
-	}
+  /**
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MessagepropertiesFactoryImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case MessagepropertiesPackage.PROPERTY:
-				return createProperty();
-			case MessagepropertiesPackage.PROPERTY_ALIAS:
-				return createPropertyAlias();
-			case MessagepropertiesPackage.QUERY:
-				return createQuery();
-			default:
-				throw new IllegalArgumentException(
-						"The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EObject create(EClass eClass) {
+    switch (eClass.getClassifierID()) {
+    case MessagepropertiesPackage.PROPERTY:
+      return createProperty();
+    case MessagepropertiesPackage.PROPERTY_ALIAS:
+      return createPropertyAlias();
+    case MessagepropertiesPackage.QUERY:
+      return createQuery();
+    default:
+      throw new IllegalArgumentException(
+          "The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Property createProperty() {
-		PropertyImpl property = new PropertyImpl();
-		return property;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Property createProperty() {
+    PropertyImpl property = new PropertyImpl();
+    return property;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PropertyAlias createPropertyAlias() {
-		PropertyAliasImpl propertyAlias = new PropertyAliasImpl();
-		return propertyAlias;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PropertyAlias createPropertyAlias() {
+    PropertyAliasImpl propertyAlias = new PropertyAliasImpl();
+    return propertyAlias;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Query createQuery() {
-		QueryImpl query = new QueryImpl();
-		return query;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Query createQuery() {
+    QueryImpl query = new QueryImpl();
+    return query;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public MessagepropertiesPackage getMessagepropertiesPackage() {
-		return (MessagepropertiesPackage) getEPackage();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MessagepropertiesPackage getMessagepropertiesPackage() {
+    return (MessagepropertiesPackage) getEPackage();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
-	@Deprecated
-	public static MessagepropertiesPackage getPackage() {
-		return MessagepropertiesPackage.eINSTANCE;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @deprecated
+   * @generated
+   */
+  @Deprecated
+  public static MessagepropertiesPackage getPackage() {
+    return MessagepropertiesPackage.eINSTANCE;
+  }
 
 } //MessagepropertiesFactoryImpl

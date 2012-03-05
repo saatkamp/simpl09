@@ -15,7 +15,7 @@ import java.io.ByteArrayOutputStream;
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id$<br>
+ * @version $Id: Parameter.java 1815 2011-07-05 12:33:12Z michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class Parameter {
@@ -47,7 +47,7 @@ public class Parameter {
   public static Object deserialize(String data) {
     ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(data.getBytes());
     Object deserialized = null;
-
+    
     XMLDecoder decoder = new XMLDecoder(byteArrayInputStream);
     deserialized = decoder.readObject();
     decoder.close();

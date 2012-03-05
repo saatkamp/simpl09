@@ -37,20 +37,20 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Sequence extends Activity {
-	/**
-	 * Returns the value of the '<em><b>Activities</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.bpel.model.Activity}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Activities</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Activities</em>' containment reference list.
-	 * @see org.eclipse.bpel.model.BPELPackage#getSequence_Activities()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	EList<Activity> getActivities();
+  /**
+   * Returns the value of the '<em><b>Activities</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.bpel.model.Activity}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Activities</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Activities</em>' containment reference list.
+   * @see org.eclipse.bpel.model.BPELPackage#getSequence_Activities()
+   * @model containment="true" required="true"
+   * @generated
+   */
+  EList<Activity> getActivities();
 
 } // Sequence

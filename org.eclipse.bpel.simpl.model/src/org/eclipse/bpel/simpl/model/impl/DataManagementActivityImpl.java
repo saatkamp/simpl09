@@ -5,7 +5,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: DataManagementActivityImpl.java 1850 2011-10-05 16:32:55Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpel.simpl.model.impl.DataManagementActivityImpl#getDsAddress <em>Ds Address</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.impl.DataManagementActivityImpl#getDsIdentifier <em>Ds Identifier</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.impl.DataManagementActivityImpl#getDsType <em>Ds Type</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.impl.DataManagementActivityImpl#getDsKind <em>Ds Kind</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.impl.DataManagementActivityImpl#getDsStatement <em>Ds Statement</em>}</li>
@@ -40,24 +40,34 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 @SuppressWarnings("restriction")
 public class DataManagementActivityImpl extends ExtensionActivityImpl implements DataManagementActivity {
 	/**
-	 * The default value of the '{@link #getDsAddress() <em>Ds Address</em>}' attribute.
+   * The default value of the '{@link #getDsIdentifier() <em>Ds Identifier</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDsIdentifier()
+   * @generated
+   * @ordered
+   */
+  protected static final String DS_IDENTIFIER_EDEFAULT = "identifier";
+
+  /**
+   * The cached value of the '{@link #getDsIdentifier() <em>Ds Identifier</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDsIdentifier()
+   * @generated
+   * @ordered
+   */
+  protected String dsIdentifier = DS_IDENTIFIER_EDEFAULT;
+
+  /**
+	 * The default value of the '{@link #getDsIdentifier() <em>Ds Identifier</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDsAddress()
+	 * @see #getDsIdentifier()
 	 * @customized
 	 * @ordered
 	 */
-	protected static final String DS_ADDRESS_EDEFAULT = "";
-
-	/**
-	 * The cached value of the '{@link #getDsAddress() <em>Ds Address</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDsAddress()
-	 * @generated
-	 * @ordered
-	 */
-	protected String dsAddress = DS_ADDRESS_EDEFAULT;
+	protected static final String DS_IDENTIFIER_DEFAULT = "";
 
 	/**
 	 * The default value of the '{@link #getDsType() <em>Ds Type</em>}' attribute.
@@ -70,13 +80,13 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	protected static final String DS_TYPE_EDEFAULT = "";
 
 	/**
-	 * The cached value of the '{@link #getDsType() <em>Ds Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDsType() <em>Ds Type</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDsType()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDsType()
+   * @generated
+   * @ordered
+   */
 	protected String dsType = DS_TYPE_EDEFAULT;
 
 	/**
@@ -90,13 +100,13 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	protected static final String DS_KIND_EDEFAULT = "";
 
 	/**
-	 * The cached value of the '{@link #getDsKind() <em>Ds Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDsKind() <em>Ds Kind</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDsKind()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDsKind()
+   * @generated
+   * @ordered
+   */
 	protected String dsKind = DS_KIND_EDEFAULT;
 
 	/**
@@ -110,13 +120,13 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	protected static final String DS_STATEMENT_EDEFAULT = "";
 
 	/**
-	 * The cached value of the '{@link #getDsStatement() <em>Ds Statement</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDsStatement() <em>Ds Statement</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDsStatement()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDsStatement()
+   * @generated
+   * @ordered
+   */
 	protected String dsStatement = DS_STATEMENT_EDEFAULT;
 
 	/**
@@ -130,43 +140,68 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	protected static final String DS_LANGUAGE_EDEFAULT = "";
 
 	/**
-	 * The cached value of the '{@link #getDsLanguage() <em>Ds Language</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDsLanguage() <em>Ds Language</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDsLanguage()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDsLanguage()
+   * @generated
+   * @ordered
+   */
 	protected String dsLanguage = DS_LANGUAGE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected DataManagementActivityImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ModelPackage.Literals.DATA_MANAGEMENT_ACTIVITY;
-	}
+    return ModelPackage.Literals.DATA_MANAGEMENT_ACTIVITY;
+  }
 
 	/**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getDsIdentifier() {
+    return dsIdentifier;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   */
+  public void setDsIdentifier(String newDsIdentifier) {
+    String oldDsIdentifier = dsIdentifier;
+    if (!isReconciling) {
+      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+          .getDataManagementActivity_DsIdentifier().getName(),
+          newDsIdentifier);
+    }
+    dsIdentifier = newDsIdentifier;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER, oldDsIdentifier, dsIdentifier));
+  }
+
+  /**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 * 
 	 * @return the ds statement
 	 * @generated
 	 */
 	public String getDsStatement() {
-		return dsStatement;
-	}
+    return dsStatement;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -194,8 +229,8 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	 * @generated
 	 */
 	public String getDsLanguage() {
-		return dsLanguage;
-	}
+    return dsLanguage;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -223,8 +258,8 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	 * @generated
 	 */
 	public String getDsKind() {
-		return dsKind;
-	}
+    return dsKind;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -252,8 +287,8 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	 * @generated
 	 */
 	public String getDsType() {
-		return dsType;
-	}
+    return dsType;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -277,35 +312,6 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 * 
-	 * @return the ds address
-	 * @generated
-	 */
-	public String getDsAddress() {
-		return dsAddress;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @param newDsAddress
-	 *            the new ds address
-	 * @customized
-	 */
-	public void setDsAddress(String newDsAddress) {
-		String oldDsAddress = dsAddress;
-		if (!isReconciling) {
-			ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
-					.getDataManagementActivity_DsAddress().getName(),
-					newDsAddress);
-		}
-		dsAddress = newDsAddress;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS, oldDsAddress, dsAddress));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
 	 * @param featureID
 	 *            the feature id
 	 * @param resolve
@@ -317,20 +323,20 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS:
-				return getDsAddress();
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_TYPE:
-				return getDsType();
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_KIND:
-				return getDsKind();
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT:
-				return getDsStatement();
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE:
-				return getDsLanguage();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER:
+        return getDsIdentifier();
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_TYPE:
+        return getDsType();
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_KIND:
+        return getDsKind();
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT:
+        return getDsStatement();
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE:
+        return getDsLanguage();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -343,25 +349,25 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS:
-				setDsAddress((String)newValue);
-				return;
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_TYPE:
-				setDsType((String)newValue);
-				return;
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_KIND:
-				setDsKind((String)newValue);
-				return;
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT:
-				setDsStatement((String)newValue);
-				return;
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE:
-				setDsLanguage((String)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER:
+        setDsIdentifier((String)newValue);
+        return;
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_TYPE:
+        setDsType((String)newValue);
+        return;
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_KIND:
+        setDsKind((String)newValue);
+        return;
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT:
+        setDsStatement((String)newValue);
+        return;
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE:
+        setDsLanguage((String)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -372,25 +378,25 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS:
-				setDsAddress(DS_ADDRESS_EDEFAULT);
-				return;
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_TYPE:
-				setDsType(DS_TYPE_EDEFAULT);
-				return;
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_KIND:
-				setDsKind(DS_KIND_EDEFAULT);
-				return;
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT:
-				setDsStatement(DS_STATEMENT_EDEFAULT);
-				return;
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE:
-				setDsLanguage(DS_LANGUAGE_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER:
+        setDsIdentifier(DS_IDENTIFIER_EDEFAULT);
+        return;
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_TYPE:
+        setDsType(DS_TYPE_EDEFAULT);
+        return;
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_KIND:
+        setDsKind(DS_KIND_EDEFAULT);
+        return;
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT:
+        setDsStatement(DS_STATEMENT_EDEFAULT);
+        return;
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE:
+        setDsLanguage(DS_LANGUAGE_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -402,20 +408,20 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_ADDRESS:
-				return DS_ADDRESS_EDEFAULT == null ? dsAddress != null : !DS_ADDRESS_EDEFAULT.equals(dsAddress);
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_TYPE:
-				return DS_TYPE_EDEFAULT == null ? dsType != null : !DS_TYPE_EDEFAULT.equals(dsType);
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_KIND:
-				return DS_KIND_EDEFAULT == null ? dsKind != null : !DS_KIND_EDEFAULT.equals(dsKind);
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT:
-				return DS_STATEMENT_EDEFAULT == null ? dsStatement != null : !DS_STATEMENT_EDEFAULT.equals(dsStatement);
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE:
-				return DS_LANGUAGE_EDEFAULT == null ? dsLanguage != null : !DS_LANGUAGE_EDEFAULT.equals(dsLanguage);
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER:
+        return DS_IDENTIFIER_EDEFAULT == null ? dsIdentifier != null : !DS_IDENTIFIER_EDEFAULT.equals(dsIdentifier);
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_TYPE:
+        return DS_TYPE_EDEFAULT == null ? dsType != null : !DS_TYPE_EDEFAULT.equals(dsType);
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_KIND:
+        return DS_KIND_EDEFAULT == null ? dsKind != null : !DS_KIND_EDEFAULT.equals(dsKind);
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT:
+        return DS_STATEMENT_EDEFAULT == null ? dsStatement != null : !DS_STATEMENT_EDEFAULT.equals(dsStatement);
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE:
+        return DS_LANGUAGE_EDEFAULT == null ? dsLanguage != null : !DS_LANGUAGE_EDEFAULT.equals(dsLanguage);
+    }
+    return super.eIsSet(featureID);
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -425,21 +431,21 @@ public class DataManagementActivityImpl extends ExtensionActivityImpl implements
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (dsAddress: ");
-		result.append(dsAddress);
-		result.append(", dsType: ");
-		result.append(dsType);
-		result.append(", dsKind: ");
-		result.append(dsKind);
-		result.append(", dsStatement: ");
-		result.append(dsStatement);
-		result.append(", dsLanguage: ");
-		result.append(dsLanguage);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (dsIdentifier: ");
+    result.append(dsIdentifier);
+    result.append(", dsType: ");
+    result.append(dsType);
+    result.append(", dsKind: ");
+    result.append(dsKind);
+    result.append(", dsStatement: ");
+    result.append(dsStatement);
+    result.append(", dsLanguage: ");
+    result.append(dsLanguage);
+    result.append(')');
+    return result.toString();
+  }
 
 } //DataManagementActivityImpl

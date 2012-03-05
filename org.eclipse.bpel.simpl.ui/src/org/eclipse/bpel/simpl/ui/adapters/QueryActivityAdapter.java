@@ -5,13 +5,11 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: QueryActivityAdapter.java 1656 2010-08-18 15:43:55Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
 package org.eclipse.bpel.simpl.ui.adapters;
-
-import org.eclipse.bpel.ui.adapters.ActivityAdapter;
 
 
 /**
@@ -19,6 +17,6 @@ import org.eclipse.bpel.ui.adapters.ActivityAdapter;
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
  */
-public class QueryActivityAdapter extends ActivityAdapter {
+public class QueryActivityAdapter extends DMActivityAdapter {
 
 }

@@ -20,8 +20,8 @@ import javax.xml.namespace.QName;
 
 import org.eclipse.bpel.model.BPELFactory;
 import org.eclipse.bpel.model.Process;
-import org.eclipse.bpel.model.resource.BPELReader;
 import org.eclipse.bpel.model.UnknownExtensibilityAttribute;
+import org.eclipse.bpel.model.resource.BPELReader;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.wst.wsdl.UnknownExtensibilityElement;
 import org.eclipse.wst.wsdl.WSDLFactory;

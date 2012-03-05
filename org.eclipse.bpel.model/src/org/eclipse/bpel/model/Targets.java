@@ -34,46 +34,46 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Targets extends ExtensibleElement {
-	/**
-	 * Returns the value of the '<em><b>Children</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.bpel.model.Target}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Children</em>' containment reference list.
-	 * @see org.eclipse.bpel.model.BPELPackage#getTargets_Children()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Target> getChildren();
+  /**
+   * Returns the value of the '<em><b>Children</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.bpel.model.Target}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Children</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Children</em>' containment reference list.
+   * @see org.eclipse.bpel.model.BPELPackage#getTargets_Children()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Target> getChildren();
 
-	/**
-	 * Returns the value of the '<em><b>Join Condition</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Join Condition</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Join Condition</em>' containment reference.
-	 * @see #setJoinCondition(Condition)
-	 * @see org.eclipse.bpel.model.BPELPackage#getTargets_JoinCondition()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Condition getJoinCondition();
+  /**
+   * Returns the value of the '<em><b>Join Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Join Condition</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Join Condition</em>' containment reference.
+   * @see #setJoinCondition(Condition)
+   * @see org.eclipse.bpel.model.BPELPackage#getTargets_JoinCondition()
+   * @model containment="true"
+   * @generated
+   */
+  Condition getJoinCondition();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Targets#getJoinCondition <em>Join Condition</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Join Condition</em>' containment reference.
-	 * @see #getJoinCondition()
-	 * @generated
-	 */
-	void setJoinCondition(Condition value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Targets#getJoinCondition <em>Join Condition</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Join Condition</em>' containment reference.
+   * @see #getJoinCondition()
+   * @generated
+   */
+  void setJoinCondition(Condition value);
 
 } // Targets

@@ -16,7 +16,7 @@ import commonj.sdo.helper.XMLHelper;
  * <b>Company:</b>SIMPL<br>
  * 
  * @author schneimi<br>
- * @version $Id$<br>
+ * @version $Id: Printer.java 1680 2010-10-15 14:40:50Z michael.schneidt@arcor.de $<br>
  * @link http://code.google.com/p/simpl09/
  */
 public class Printer {
@@ -40,7 +40,7 @@ public class Printer {
     }
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings("rawtypes")
   private static void printDataObjectWithIndent(DataObject dataObject, int indent) {
     // For each Property
     List properties = dataObject.getInstanceProperties();

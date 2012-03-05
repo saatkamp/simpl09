@@ -39,89 +39,89 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Pick extends Activity {
-	/**
-	 * Returns the value of the '<em><b>Create Instance</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Create Instance</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Create Instance</em>' attribute.
-	 * @see #isSetCreateInstance()
-	 * @see #unsetCreateInstance()
-	 * @see #setCreateInstance(Boolean)
-	 * @see org.eclipse.bpel.model.BPELPackage#getPick_CreateInstance()
-	 * @model default="false" unsettable="true"
-	 * @generated
-	 */
-	Boolean getCreateInstance();
+  /**
+   * Returns the value of the '<em><b>Create Instance</b></em>' attribute.
+   * The default value is <code>"false"</code>.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Create Instance</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Create Instance</em>' attribute.
+   * @see #isSetCreateInstance()
+   * @see #unsetCreateInstance()
+   * @see #setCreateInstance(Boolean)
+   * @see org.eclipse.bpel.model.BPELPackage#getPick_CreateInstance()
+   * @model default="false" unsettable="true"
+   * @generated
+   */
+  Boolean getCreateInstance();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Pick#getCreateInstance <em>Create Instance</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Create Instance</em>' attribute.
-	 * @see #isSetCreateInstance()
-	 * @see #unsetCreateInstance()
-	 * @see #getCreateInstance()
-	 * @generated
-	 */
-	void setCreateInstance(Boolean value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Pick#getCreateInstance <em>Create Instance</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Create Instance</em>' attribute.
+   * @see #isSetCreateInstance()
+   * @see #unsetCreateInstance()
+   * @see #getCreateInstance()
+   * @generated
+   */
+  void setCreateInstance(Boolean value);
 
-	/**
-	 * Unsets the value of the '{@link org.eclipse.bpel.model.Pick#getCreateInstance <em>Create Instance</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetCreateInstance()
-	 * @see #getCreateInstance()
-	 * @see #setCreateInstance(Boolean)
-	 */
-	void unsetCreateInstance();
+  /**
+   * Unsets the value of the '{@link org.eclipse.bpel.model.Pick#getCreateInstance <em>Create Instance</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isSetCreateInstance()
+   * @see #getCreateInstance()
+   * @see #setCreateInstance(Boolean)
+   */
+  void unsetCreateInstance();
 
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.bpel.model.Pick#getCreateInstance <em>Create Instance</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Create Instance</em>' attribute is set.
-	 * @see #unsetCreateInstance()
-	 * @see #getCreateInstance()
-	 * @see #setCreateInstance(Boolean)
-	 * @generated
-	 */
-	boolean isSetCreateInstance();
+  /**
+   * Returns whether the value of the '{@link org.eclipse.bpel.model.Pick#getCreateInstance <em>Create Instance</em>}' attribute is set.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return whether the value of the '<em>Create Instance</em>' attribute is set.
+   * @see #unsetCreateInstance()
+   * @see #getCreateInstance()
+   * @see #setCreateInstance(Boolean)
+   * @generated
+   */
+  boolean isSetCreateInstance();
 
-	/**
-	 * Returns the value of the '<em><b>Messages</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.bpel.model.OnMessage}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Messages</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Messages</em>' containment reference list.
-	 * @see org.eclipse.bpel.model.BPELPackage#getPick_Messages()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	EList<OnMessage> getMessages();
+  /**
+   * Returns the value of the '<em><b>Messages</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.bpel.model.OnMessage}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Messages</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Messages</em>' containment reference list.
+   * @see org.eclipse.bpel.model.BPELPackage#getPick_Messages()
+   * @model containment="true" required="true"
+   * @generated
+   */
+  EList<OnMessage> getMessages();
 
-	/**
-	 * Returns the value of the '<em><b>Alarm</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.bpel.model.OnAlarm}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Alarm</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Alarm</em>' containment reference list.
-	 * @see org.eclipse.bpel.model.BPELPackage#getPick_Alarm()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<OnAlarm> getAlarm();
+  /**
+   * Returns the value of the '<em><b>Alarm</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.bpel.model.OnAlarm}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Alarm</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Alarm</em>' containment reference list.
+   * @see org.eclipse.bpel.model.BPELPackage#getPick_Alarm()
+   * @model containment="true"
+   * @generated
+   */
+  EList<OnAlarm> getAlarm();
 
 } // Pick

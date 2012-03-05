@@ -38,131 +38,131 @@ package org.eclipse.bpel.model;
  * @generated
  */
 public interface Activity extends ExtensibleElement {
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.eclipse.bpel.model.BPELPackage#getActivity_Name()
-	 * @model
-	 * @generated
-	 */
-	String getName();
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.eclipse.bpel.model.BPELPackage#getActivity_Name()
+   * @model
+   * @generated
+   */
+  String getName();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Activity#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 */
-	void setName(String value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Activity#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   */
+  void setName(String value);
 
-	/**
-	 * Returns the value of the '<em><b>Suppress Join Failure</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Suppresses the join failure for this activity and all nested activities (unless overridden by some nested activity).
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Suppress Join Failure</em>' attribute.
-	 * @see #isSetSuppressJoinFailure()
-	 * @see #unsetSuppressJoinFailure()
-	 * @see #setSuppressJoinFailure(Boolean)
-	 * @see org.eclipse.bpel.model.BPELPackage#getActivity_SuppressJoinFailure()
-	 * @model unsettable="true"
-	 * @generated
-	 */
-	Boolean getSuppressJoinFailure();
+  /**
+   * Returns the value of the '<em><b>Suppress Join Failure</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * <!-- begin-model-doc -->
+   * Suppresses the join failure for this activity and all nested activities (unless overridden by some nested activity).
+   * <!-- end-model-doc -->
+   * @return the value of the '<em>Suppress Join Failure</em>' attribute.
+   * @see #isSetSuppressJoinFailure()
+   * @see #unsetSuppressJoinFailure()
+   * @see #setSuppressJoinFailure(Boolean)
+   * @see org.eclipse.bpel.model.BPELPackage#getActivity_SuppressJoinFailure()
+   * @model unsettable="true"
+   * @generated
+   */
+  Boolean getSuppressJoinFailure();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Activity#getSuppressJoinFailure <em>Suppress Join Failure</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Suppress Join Failure</em>' attribute.
-	 * @see #isSetSuppressJoinFailure()
-	 * @see #unsetSuppressJoinFailure()
-	 * @see #getSuppressJoinFailure()
-	 */
-	void setSuppressJoinFailure(Boolean value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Activity#getSuppressJoinFailure <em>Suppress Join Failure</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Suppress Join Failure</em>' attribute.
+   * @see #isSetSuppressJoinFailure()
+   * @see #unsetSuppressJoinFailure()
+   * @see #getSuppressJoinFailure()
+   */
+  void setSuppressJoinFailure(Boolean value);
 
-	/**
-	 * Unsets the value of the '{@link org.eclipse.bpel.model.Activity#getSuppressJoinFailure <em>Suppress Join Failure</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetSuppressJoinFailure()
-	 * @see #getSuppressJoinFailure()
-	 * @see #setSuppressJoinFailure(Boolean)
-	 */
-	void unsetSuppressJoinFailure();
+  /**
+   * Unsets the value of the '{@link org.eclipse.bpel.model.Activity#getSuppressJoinFailure <em>Suppress Join Failure</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isSetSuppressJoinFailure()
+   * @see #getSuppressJoinFailure()
+   * @see #setSuppressJoinFailure(Boolean)
+   */
+  void unsetSuppressJoinFailure();
 
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.bpel.model.Activity#getSuppressJoinFailure <em>Suppress Join Failure</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Suppress Join Failure</em>' attribute is set.
-	 * @see #unsetSuppressJoinFailure()
-	 * @see #getSuppressJoinFailure()
-	 * @see #setSuppressJoinFailure(Boolean)
-	 * @generated
-	 */
-	boolean isSetSuppressJoinFailure();
+  /**
+   * Returns whether the value of the '{@link org.eclipse.bpel.model.Activity#getSuppressJoinFailure <em>Suppress Join Failure</em>}' attribute is set.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return whether the value of the '<em>Suppress Join Failure</em>' attribute is set.
+   * @see #unsetSuppressJoinFailure()
+   * @see #getSuppressJoinFailure()
+   * @see #setSuppressJoinFailure(Boolean)
+   * @generated
+   */
+  boolean isSetSuppressJoinFailure();
 
-	/**
-	 * Returns the value of the '<em><b>Targets</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Targets</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Targets</em>' containment reference.
-	 * @see #setTargets(Targets)
-	 * @see org.eclipse.bpel.model.BPELPackage#getActivity_Targets()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Targets getTargets();
+  /**
+   * Returns the value of the '<em><b>Targets</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Targets</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Targets</em>' containment reference.
+   * @see #setTargets(Targets)
+   * @see org.eclipse.bpel.model.BPELPackage#getActivity_Targets()
+   * @model containment="true"
+   * @generated
+   */
+  Targets getTargets();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Activity#getTargets <em>Targets</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Targets</em>' containment reference.
-	 * @see #getTargets()
-	 * @generated
-	 */
-	void setTargets(Targets value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Activity#getTargets <em>Targets</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Targets</em>' containment reference.
+   * @see #getTargets()
+   * @generated
+   */
+  void setTargets(Targets value);
 
-	/**
-	 * Returns the value of the '<em><b>Sources</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sources</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sources</em>' containment reference.
-	 * @see #setSources(Sources)
-	 * @see org.eclipse.bpel.model.BPELPackage#getActivity_Sources()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Sources getSources();
+  /**
+   * Returns the value of the '<em><b>Sources</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Sources</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sources</em>' containment reference.
+   * @see #setSources(Sources)
+   * @see org.eclipse.bpel.model.BPELPackage#getActivity_Sources()
+   * @model containment="true"
+   * @generated
+   */
+  Sources getSources();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Activity#getSources <em>Sources</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Sources</em>' containment reference.
-	 * @see #getSources()
-	 * @generated
-	 */
-	void setSources(Sources value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Activity#getSources <em>Sources</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Sources</em>' containment reference.
+   * @see #getSources()
+   * @generated
+   */
+  void setSources(Sources value);
 
 } // Activity

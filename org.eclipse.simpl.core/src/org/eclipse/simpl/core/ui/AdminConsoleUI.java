@@ -68,10 +68,11 @@ public class AdminConsoleUI {
 		if (oldComposite != null) {
 			oldComposite.dispose();
 		}
-
-		if (Application.getInstance().getCompositeClass(treeItem.getText()) != null) {
-			compositeClass = Application.getInstance().getCompositeClass(
+		
+		if (Application.getInstance().getCompositeClass(treeItem.getParentItem().getText() + treeItem.getText()) != null) {
+			compositeClass = Application.getInstance().getCompositeClass(treeItem.getParentItem().getText() + 
 					treeItem.getText());
+			
 			compositeClass.createComposite(composite);
 			oldComposite = compositeClass.getComposite();
 
@@ -270,8 +271,8 @@ public class AdminConsoleUI {
 				TreeItem parentItem = sItem.getParentItem();
 
 				if (parentItem != null && sItem != null) {
-					System.out.println(parentItem.getText() + " -> "
-							+ sItem.getText() + " was selected");
+					//System.out.println(parentItem.getText() + " -> "
+					//		+ sItem.getText() + " was selected");
 
 					selectedTreeItem = sItem;
 					showComposite(sItem);

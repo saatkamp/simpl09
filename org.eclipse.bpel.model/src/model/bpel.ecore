@@ -51,6 +51,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstractProcessProfile"
         eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
         unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containerReferenceVariables"
+        eType="#//ContainerReferenceVariables" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataSourceReferenceVariables"
+        eType="#//DataSourceReferenceVariables" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PartnerLink" eSuperTypes="#//ExtensibleElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -383,7 +387,7 @@
   <eClassifiers xsi:type="ecore:EEnum" name="CorrelationPattern">
     <eLiterals name="request"/>
     <eLiterals name="response" value="1"/>
-    <eLiterals name="requestresponse" value="2"/>
+    <eLiterals name="requestresponse" value="2" literal="requestresponse"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EndpointReferenceRole">
     <eLiterals name="myRole"/>
@@ -575,7 +579,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="documentation" eType="#//Documentation"
         unsettable="true" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Documentation">
+  <eClassifiers xsi:type="ecore:EClass" name="Documentation" eSuperTypes="platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//ExtensibleElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lang" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
@@ -603,5 +607,27 @@
   <eClassifiers xsi:type="ecore:EEnum" name="ReferenceType">
     <eLiterals name="onInstantiation"/>
     <eLiterals name="fresh" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContainerReferenceVariables" eSuperTypes="#//ExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//ContainerReferenceVariable" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataSourceReferenceVariables" eSuperTypes="#//ExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//DataSourceReferenceVariable" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContainerReferenceVariable" eSuperTypes="#//ExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messageType" eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//Message"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="XSDElement" eType="ecore:EClass platform:/plugin/org.eclipse.xsd/model/XSD.ecore#//XSDElementDeclaration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/plugin/org.eclipse.xsd/model/XSD.ecore#//XSDTypeDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" eType="#//From" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataSourceReferenceVariable" eSuperTypes="#//ExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messageType" eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//Message"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="XSDElement" eType="ecore:EClass platform:/plugin/org.eclipse.xsd/model/XSD.ecore#//XSDElementDeclaration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/plugin/org.eclipse.xsd/model/XSD.ecore#//XSDTypeDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" eType="#//From" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

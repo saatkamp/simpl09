@@ -25,40 +25,40 @@ import org.eclipse.emf.ecore.EFactory;
  * @generated
  */
 public interface PartnerlinktypeFactory extends EFactory {
-	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	PartnerlinktypeFactory eINSTANCE = org.eclipse.bpel.model.partnerlinktype.impl.PartnerlinktypeFactoryImpl
-			.init();
+  /**
+   * The singleton instance of the factory.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  PartnerlinktypeFactory eINSTANCE = org.eclipse.bpel.model.partnerlinktype.impl.PartnerlinktypeFactoryImpl
+      .init();
 
-	/**
-	 * Returns a new object of class '<em>Partner Link Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Partner Link Type</em>'.
-	 * @generated
-	 */
-	PartnerLinkType createPartnerLinkType();
+  /**
+   * Returns a new object of class '<em>Partner Link Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Partner Link Type</em>'.
+   * @generated
+   */
+  PartnerLinkType createPartnerLinkType();
 
-	/**
-	 * Returns a new object of class '<em>Role</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Role</em>'.
-	 * @generated
-	 */
-	Role createRole();
+  /**
+   * Returns a new object of class '<em>Role</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Role</em>'.
+   * @generated
+   */
+  Role createRole();
 
-	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
-	PartnerlinktypePackage getPartnerlinktypePackage();
+  /**
+   * Returns the package supported by this factory.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the package supported by this factory.
+   * @generated
+   */
+  PartnerlinktypePackage getPartnerlinktypePackage();
 
 } //PartnerlinktypeFactory

@@ -15,12 +15,11 @@ import java.util.Map;
 import javax.wsdl.extensions.ExtensionRegistry;
 import javax.xml.namespace.QName;
 
-import org.eclipse.emf.common.util.URI;
-import org.w3c.dom.Node;
-
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.resource.BPELReader;
+import org.eclipse.emf.common.util.URI;
+import org.w3c.dom.Node;
 
 /**
  * This interface should be implemented by classes which deserialize

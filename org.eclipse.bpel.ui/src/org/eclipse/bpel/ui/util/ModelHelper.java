@@ -33,8 +33,10 @@ import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.Catch;
 import org.eclipse.bpel.model.CatchAll;
 import org.eclipse.bpel.model.CompensationHandler;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.Correlations;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Else;
 import org.eclipse.bpel.model.ElseIf;
 import org.eclipse.bpel.model.EventHandler;
@@ -1720,4 +1722,14 @@ public class ModelHelper {
 		if (context instanceof Process) return ((Process)context).getReferenceVariables();
 		throw new IllegalArgumentException();
 	}
+
+  public static ContainerReferenceVariables getContainerReferenceVariables(Object context)  {
+    if (context instanceof Process) return ((Process)context).getContainerReferenceVariables();
+    throw new IllegalArgumentException();
+  }
+  
+  public static DataSourceReferenceVariables getDataSourceReferenceVariables(Object context)  {
+    if (context instanceof Process) return ((Process)context).getDataSourceReferenceVariables();
+    throw new IllegalArgumentException();
+  }
 }

@@ -19,25 +19,24 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class ExtensionActivityImpl extends ActivityImpl implements
-		ExtensionActivity {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ExtensionActivityImpl() {
-		super();
-	}
+public class ExtensionActivityImpl extends ActivityImpl implements ExtensionActivity {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ExtensionActivityImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return BPELPackage.Literals.EXTENSION_ACTIVITY;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return BPELPackage.Literals.EXTENSION_ACTIVITY;
+  }
 
 } //ExtensionActivityImpl

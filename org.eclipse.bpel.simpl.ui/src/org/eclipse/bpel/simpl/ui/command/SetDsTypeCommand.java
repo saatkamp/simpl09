@@ -5,21 +5,17 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: SetDsTypeCommand.java 1755 2011-01-17 16:16:42Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
 package org.eclipse.bpel.simpl.ui.command;
 
-import org.eclipse.bpel.simpl.model.CallActivity;
-import org.eclipse.bpel.simpl.model.CreateActivity;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.model.DeleteActivity;
-import org.eclipse.bpel.simpl.model.DropActivity;
-import org.eclipse.bpel.simpl.model.InsertActivity;
-import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.IssueCommandActivity;
+import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
-import org.eclipse.bpel.simpl.model.UpdateActivity;
+import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.bpel.ui.commands.SetCommand;
 import org.eclipse.emf.ecore.EObject;
 
@@ -48,38 +44,22 @@ public class SetDsTypeCommand extends SetCommand {
 	 */
 	@Override
 	public Object get() {
-		if (fTarget instanceof QueryActivity) {
-			return ((QueryActivity) fTarget).getDsType();
+		if (fTarget instanceof QueryDataActivity) {
+			return ((QueryDataActivity) fTarget).getDsType();
 		}
 
-		if (fTarget instanceof InsertActivity) {
-			return ((InsertActivity) fTarget).getDsType();
-		}
-
-		if (fTarget instanceof UpdateActivity) {
-			return ((UpdateActivity) fTarget).getDsType();
-		}
-
-		if (fTarget instanceof DeleteActivity) {
-			return ((DeleteActivity) fTarget).getDsType();
-		}
-
-		if (fTarget instanceof CreateActivity) {
-			return ((CreateActivity) fTarget).getDsType();
-		}
-
-		if (fTarget instanceof DropActivity) {
-			return ((DropActivity) fTarget).getDsType();
-		}
-
-		if (fTarget instanceof CallActivity) {
-			return ((CallActivity) fTarget).getDsType();
+		if (fTarget instanceof IssueCommandActivity) {
+			return ((IssueCommandActivity) fTarget).getDsType();
 		}
 
 		if (fTarget instanceof RetrieveDataActivity) {
 			return ((RetrieveDataActivity) fTarget).getDsType();
 		}
 
+    if (fTarget instanceof WriteDataBackActivity) {
+      return ((WriteDataBackActivity) fTarget).getDsType();
+    }
+		
 		if (fTarget instanceof DataManagementActivity) {
 			return ((DataManagementActivity) fTarget).getDsType();
 		}
@@ -95,33 +75,17 @@ public class SetDsTypeCommand extends SetCommand {
 	 */
 	@Override
 	public void set(Object o) {
-		if (fTarget instanceof QueryActivity) {
-			((QueryActivity) fTarget).setDsType((String) o);
+		if (fTarget instanceof QueryDataActivity) {
+			((QueryDataActivity) fTarget).setDsType((String) o);
 
-		} else if (fTarget instanceof InsertActivity) {
-			((InsertActivity) fTarget).setDsType((String) o);
-
-		} else if (fTarget instanceof UpdateActivity) {
-			((UpdateActivity) fTarget).setDsType((String) o);
-
-		} else if (fTarget instanceof DeleteActivity) {
-			((DeleteActivity) fTarget).setDsType((String) o);
-
-		} else if (fTarget instanceof CreateActivity) {
-			((CreateActivity) fTarget).setDsType((String) o);
-
-		} else if (fTarget instanceof DropActivity) {
-			((DropActivity) fTarget).setDsType((String) o);
-
-		} else if (fTarget instanceof CallActivity) {
-			((CallActivity) fTarget).setDsType((String) o);
-
+		} else if (fTarget instanceof IssueCommandActivity) {
+			((IssueCommandActivity) fTarget).setDsType((String) o);
 		} else if (fTarget instanceof RetrieveDataActivity) {
 			((RetrieveDataActivity) fTarget).setDsType((String) o);
-			
-		} else if (fTarget instanceof DataManagementActivity) {
+		} else if (fTarget instanceof WriteDataBackActivity) {
+      ((WriteDataBackActivity) fTarget).setDsType((String) o);
+    }  else if (fTarget instanceof DataManagementActivity) {
 			((DataManagementActivity) fTarget).setDsType((String) o);
-			
 		} else {
 			throw new IllegalArgumentException(
 					"This model object has no type to set");

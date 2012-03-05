@@ -63,10 +63,10 @@
                   commandId="org.eclipse.ui.window.preferences"
                   id="org.eclipse.ui.window.preferences"
                   label="Settings"
-                  style="push">
+                  style="pull">
                <parameter
                      name="preferencePageId"
-                     value="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage">
+                     value="org.eclipse.simpl.communication.preferences.SIMPLCommunicationPreferencePage">
                </parameter>
             </command>
             <command
@@ -94,9 +94,9 @@
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            class="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
-            id="org.eclipse.simpl.core.ui.preferences.SIMPLHomePreferencePage"
-            name="SIMPL">
+            class="org.eclipse.simpl.core.ui.preferences.SimTechHomePreferencePage"
+            id="org.eclipse.simpl.core.ui.preferences.SimTechHomePreferencePage"
+            name="SimTech">
       </page>
    </extension>
    <extension
@@ -104,6 +104,30 @@
       <initializer
             class="org.eclipse.simpl.core.ui.preferences.PreferenceInitializer">
       </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.simpl.core.adminConsoleItem">
+      <adminConsoleItem
+            label="ResourceManagement">
+         <adminConsoleItem
+               composite="org.eclipse.simpl.core.adminconsole.ResourceManagementSettingsComposite"
+               label="Settings">
+         </adminConsoleItem>
+      </adminConsoleItem>
+      <adminConsoleItem
+            label="ResourceDiscovery">
+         <adminConsoleItem
+               composite="org.eclipse.simpl.core.adminconsole.ResourceDiscoverySettingsComposite"
+               label="Settings">
+         </adminConsoleItem>
+      </adminConsoleItem>
+      <adminConsoleItem
+            label="DataTransformationService">
+         <adminConsoleItem
+               composite="org.eclipse.simpl.core.adminconsole.DataTransformationServiceSettingsComposite"
+               label="Settings">
+         </adminConsoleItem>
+      </adminConsoleItem>
    </extension>
 
 </plugin>

@@ -68,6 +68,8 @@ public class BPELUIObjectFactory extends AbstractUIObjectFactory {
 			BPELPackage.eINSTANCE.getOpaqueActivity(),
 			BPELPackage.eINSTANCE.getVariable(),
 			BPELPackage.eINSTANCE.getReferenceVariable(),
+			BPELPackage.eINSTANCE.getContainerReferenceVariable(),
+			BPELPackage.eINSTANCE.getDataSourceReferenceVariable(),
 			BPELPackage.eINSTANCE.getCorrelationSet(),
 			BPELPackage.eINSTANCE.getPartnerLink(),
 			BPELPackage.eINSTANCE.getSequence(),

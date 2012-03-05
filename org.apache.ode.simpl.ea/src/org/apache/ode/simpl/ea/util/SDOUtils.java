@@ -26,8 +26,8 @@ public class SDOUtils {
 
 	static Logger logger = Logger.getLogger(SDOUtils.class);
 	
-	public static Node createNodeOfSDO(DataObject data, String namespaceURI){
-		String doc = XMLHelper.INSTANCE.save(data, namespaceURI, "data");
+	public static Node createNodeOfSDO(DataObject data){
+		String doc = XMLHelper.INSTANCE.save(data, "commonj.sdo", "dataObject");
 		
 		if (logger.isDebugEnabled()) {
 			logger.debug("DataObject XML: " + doc);

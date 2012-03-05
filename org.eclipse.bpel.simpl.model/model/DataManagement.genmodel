@@ -9,40 +9,30 @@
   <foreignModel>DataManagement.ecore</foreignModel>
   <genPackages prefix="Model" basePackage="org.eclipse.bpel.simpl" disposableProviderFactory="true"
       ecorePackage="DataManagement.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DataManagement.ecore#//ReferenceType">
-      <genEnumLiterals ecoreEnumLiteral="DataManagement.ecore#//ReferenceType/onInstantiation"/>
-      <genEnumLiterals ecoreEnumLiteral="DataManagement.ecore#//ReferenceType/fresh"/>
-    </genEnums>
     <genClasses image="false" ecoreClass="DataManagement.ecore#//DataManagementActivity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//DataManagementActivity/dsAddress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//DataManagementActivity/dsIdentifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//DataManagementActivity/dsType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//DataManagementActivity/dsKind"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//DataManagementActivity/dsStatement"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//DataManagementActivity/dsLanguage"/>
     </genClasses>
-    <genClasses ecoreClass="DataManagement.ecore#//QueryActivity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//QueryActivity/queryTarget"/>
+    <genClasses ecoreClass="DataManagement.ecore#//QueryDataActivity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//QueryDataActivity/queryTarget"/>
     </genClasses>
-    <genClasses ecoreClass="DataManagement.ecore#//InsertActivity"/>
-    <genClasses ecoreClass="DataManagement.ecore#//UpdateActivity"/>
-    <genClasses ecoreClass="DataManagement.ecore#//DeleteActivity"/>
-    <genClasses ecoreClass="DataManagement.ecore#//CreateActivity"/>
-    <genClasses ecoreClass="DataManagement.ecore#//DropActivity"/>
-    <genClasses ecoreClass="DataManagement.ecore#//CallActivity"/>
+    <genClasses ecoreClass="DataManagement.ecore#//IssueCommandActivity"/>
     <genClasses ecoreClass="DataManagement.ecore#//RetrieveDataActivity">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DataManagement.ecore#//RetrieveDataActivity/dataVariable"/>
     </genClasses>
-    <genClasses ecoreClass="DataManagement.ecore#//ReferenceVariable">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DataManagement.ecore#//ReferenceVariable/valueType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//ReferenceVariable/referenceType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//ReferenceVariable/period"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DataManagement.ecore#//ReferenceVariable/external"/>
+    <genClasses ecoreClass="DataManagement.ecore#//WriteDataBackActivity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DataManagement.ecore#//WriteDataBackActivity/dataVariable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//WriteDataBackActivity/writeTarget"/>
     </genClasses>
-    <genClasses ecoreClass="DataManagement.ecore#//TransferActivity">
-      <genFeatures property="None" children="true" createChild="true" propertyCategory=""
-          propertyDescription="" ecoreFeature="ecore:EReference DataManagement.ecore#//TransferActivity/fromSource"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DataManagement.ecore#//TransferActivity/toSource"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferActivity/target"/>
+    <genClasses ecoreClass="DataManagement.ecore#//TransferDataActivity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferDataActivity/targetDsIdentifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferDataActivity/targetDsType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferDataActivity/targetDsKind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferDataActivity/targetDsLanguage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DataManagement.ecore#//TransferDataActivity/targetDsContainer"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

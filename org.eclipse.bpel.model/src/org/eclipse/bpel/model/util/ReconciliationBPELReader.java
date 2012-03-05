@@ -27,12 +27,16 @@ import org.eclipse.bpel.model.CompensateScope;
 import org.eclipse.bpel.model.CompensationHandler;
 import org.eclipse.bpel.model.CompletionCondition;
 import org.eclipse.bpel.model.Condition;
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.Copy;
 import org.eclipse.bpel.model.Correlation;
 import org.eclipse.bpel.model.CorrelationPattern;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.CorrelationSets;
 import org.eclipse.bpel.model.Correlations;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Documentation;
 import org.eclipse.bpel.model.Else;
 import org.eclipse.bpel.model.ElseIf;
@@ -4290,4 +4294,196 @@ public class ReconciliationBPELReader extends BPELReader implements
 
 		return variables;
 	}
+	
+	 /**
+   * Converts an XML ContainerReferenceVariable element to a BPEL ContainerReferenceVariable
+   * object.
+   */
+  protected ContainerReferenceVariable xml2ContainerReferenceVariable(ContainerReferenceVariable variable, Element variableElement) {
+    if (!variableElement.getLocalName().equals("variable"))
+      return null;
+
+    if (variable == null) {
+      variable = BPELFactory.eINSTANCE.createContainerReferenceVariable();
+      variable.setElement(variableElement);
+    }
+
+    // Save all the references to external namespaces
+    saveNamespacePrefix(variable, variableElement);
+
+    // Set name
+    if (variableElement.hasAttribute("name")) {
+      variable.setName(variableElement.getAttribute("name"));
+    } else {
+      variable.setName(null);
+    }
+
+    if (variableElement.hasAttribute("messageType")) {
+      QName qName = BPELUtils.createAttributeValue(variableElement,
+          "messageType");
+      Message messageType = new MessageProxy(getResource().getURI(),
+          qName);
+      variable.setMessageType(messageType);
+    } else {
+      variable.setMessageType(null);
+    }
+
+    // Set xsd type
+    if (variableElement.hasAttribute("type")) {
+      QName qName = BPELUtils.createAttributeValue(variableElement,
+          "type");
+      XSDTypeDefinition type = new XSDTypeDefinitionProxy(getResource()
+          .getURI(), qName);
+      variable.setType(type);
+    } else {
+      variable.setType(null);
+    }
+
+    // Set xsd element
+    if (variableElement.hasAttribute("element")) {
+      QName qName = BPELUtils.createAttributeValue(variableElement,
+          "element");
+      XSDElementDeclaration element = new XSDElementDeclarationProxy(
+          getResource().getURI(), qName);
+      variable.setXSDElement(element);
+    } else {
+      variable.setXSDElement(null);
+    }
+
+    // from-spec
+    Element fromElement = ReconciliationHelper
+        .getBPELChildElementByLocalName(variableElement, "from");
+    if (fromElement != null && variable.getFrom() == null) {
+      variable.setFrom(xml2From(variable.getFrom(), fromElement));
+    } else if (fromElement == null) {
+      variable.setFrom(null);
+    }
+
+    xml2ExtensibleElement(variable, variableElement);
+
+    return variable;
+  }
+
+  protected ContainerReferenceVariables xml2ContainerReferenceVariables(ContainerReferenceVariables variables,
+      Element variablesElement) {
+    if (!variablesElement.getLocalName().equals("containerReferenceVariables"))
+      return null;
+
+    if (variables == null) {
+      variables = BPELFactory.eINSTANCE.createContainerReferenceVariables();
+      variables.setElement(variablesElement);
+    }
+
+    // Save all the references to external namespaces
+    saveNamespacePrefix(variables, variablesElement);
+
+    List<Element> childElements = ReconciliationHelper
+        .getBPELChildElementsByLocalName(variablesElement, "containerReferenceVariable");
+    EList<ContainerReferenceVariable> childrenList = variables.getChildren();
+    syncLists(variablesElement, childElements, childrenList, new Creator() {
+      public WSDLElement create(Element element) {
+        return xml2ContainerReferenceVariable(null, element);
+      }
+    });
+
+    xml2ExtensibleElement(variables, variablesElement);
+
+    return variables;
+  }
+  
+  /**
+   * Converts an XML DataSourceReferenceVariable element to a BPEL DataSourceReferenceVariable
+   * object.
+   */
+  protected DataSourceReferenceVariable xml2DataSourceReferenceVariable(DataSourceReferenceVariable variable, Element variableElement) {
+    if (!variableElement.getLocalName().equals("variable"))
+      return null;
+
+    if (variable == null) {
+      variable = BPELFactory.eINSTANCE.createDataSourceReferenceVariable();
+      variable.setElement(variableElement);
+    }
+
+    // Save all the references to external namespaces
+    saveNamespacePrefix(variable, variableElement);
+
+    // Set name
+    if (variableElement.hasAttribute("name")) {
+      variable.setName(variableElement.getAttribute("name"));
+    } else {
+      variable.setName(null);
+    }
+
+    if (variableElement.hasAttribute("messageType")) {
+      QName qName = BPELUtils.createAttributeValue(variableElement,
+          "messageType");
+      Message messageType = new MessageProxy(getResource().getURI(),
+          qName);
+      variable.setMessageType(messageType);
+    } else {
+      variable.setMessageType(null);
+    }
+
+    // Set xsd type
+    if (variableElement.hasAttribute("type")) {
+      QName qName = BPELUtils.createAttributeValue(variableElement,
+          "type");
+      XSDTypeDefinition type = new XSDTypeDefinitionProxy(getResource()
+          .getURI(), qName);
+      variable.setType(type);
+    } else {
+      variable.setType(null);
+    }
+
+    // Set xsd element
+    if (variableElement.hasAttribute("element")) {
+      QName qName = BPELUtils.createAttributeValue(variableElement,
+          "element");
+      XSDElementDeclaration element = new XSDElementDeclarationProxy(
+          getResource().getURI(), qName);
+      variable.setXSDElement(element);
+    } else {
+      variable.setXSDElement(null);
+    }
+
+    // from-spec
+    Element fromElement = ReconciliationHelper
+        .getBPELChildElementByLocalName(variableElement, "from");
+    if (fromElement != null && variable.getFrom() == null) {
+      variable.setFrom(xml2From(variable.getFrom(), fromElement));
+    } else if (fromElement == null) {
+      variable.setFrom(null);
+    }
+
+    xml2ExtensibleElement(variable, variableElement);
+
+    return variable;
+  }
+
+  protected DataSourceReferenceVariables xml2DataSourceReferenceVariables(DataSourceReferenceVariables variables,
+      Element variablesElement) {
+    if (!variablesElement.getLocalName().equals("dataSourceReferenceVariables"))
+      return null;
+
+    if (variables == null) {
+      variables = BPELFactory.eINSTANCE.createDataSourceReferenceVariables();
+      variables.setElement(variablesElement);
+    }
+
+    // Save all the references to external namespaces
+    saveNamespacePrefix(variables, variablesElement);
+
+    List<Element> childElements = ReconciliationHelper
+        .getBPELChildElementsByLocalName(variablesElement, "dataSourceReferenceVariable");
+    EList<DataSourceReferenceVariable> childrenList = variables.getChildren();
+    syncLists(variablesElement, childElements, childrenList, new Creator() {
+      public WSDLElement create(Element element) {
+        return xml2DataSourceReferenceVariable(null, element);
+      }
+    });
+
+    xml2ExtensibleElement(variables, variablesElement);
+
+    return variables;
+  }
 }

@@ -24,11 +24,15 @@ import org.eclipse.bpel.model.CatchAll;
 import org.eclipse.bpel.model.CompensationHandler;
 import org.eclipse.bpel.model.CompletionCondition;
 import org.eclipse.bpel.model.Condition;
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.Copy;
 import org.eclipse.bpel.model.Correlation;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.CorrelationSets;
 import org.eclipse.bpel.model.Correlations;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Documentation;
 import org.eclipse.bpel.model.Else;
 import org.eclipse.bpel.model.ElseIf;
@@ -116,6 +120,26 @@ public class ElementFactory {
 			return super.referenceVariables2XML(variables);
 		}
 
+    @Override
+    protected Element containerReferenceVariable2XML(ContainerReferenceVariable variable) {
+      return super.containerReferenceVariable2XML(variable);
+    }
+
+    @Override
+    protected Element containerReferenceVariables2XML(ContainerReferenceVariables variables) {
+      return super.containerReferenceVariables2XML(variables);
+    }
+
+    @Override
+    protected Element dataSourceReferenceVariable2XML(DataSourceReferenceVariable variable) {
+      return super.dataSourceReferenceVariable2XML(variable);
+    }
+
+    @Override
+    protected Element dataSourceReferenceVariables2XML(DataSourceReferenceVariables variables) {
+      return super.dataSourceReferenceVariables2XML(variables);
+    }
+    
 		@Override
 		protected Element completionCondition2XML(
 				CompletionCondition completionCondition) {
@@ -383,6 +407,18 @@ public class ElementFactory {
 		if (element instanceof ReferenceVariables) {
 			return writer.referenceVariables2XML((ReferenceVariables) element);
 		}
+    if (element instanceof ContainerReferenceVariable) {
+      return writer.containerReferenceVariable2XML((ContainerReferenceVariable) element);
+    }
+		if (element instanceof ContainerReferenceVariables) {
+      return writer.containerReferenceVariables2XML((ContainerReferenceVariables) element);
+    }
+    if (element instanceof DataSourceReferenceVariable) {
+      return writer.dataSourceReferenceVariable2XML((DataSourceReferenceVariable) element);
+    }
+    if (element instanceof DataSourceReferenceVariables) {
+      return writer.dataSourceReferenceVariables2XML((DataSourceReferenceVariables) element);
+    }
 		if (element instanceof CompletionCondition) {
 			return writer
 					.completionCondition2XML((CompletionCondition) element);

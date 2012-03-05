@@ -32,81 +32,81 @@ package org.eclipse.bpel.model;
  * @generated
  */
 public interface Extension extends ExtensibleElement {
-	/**
-	 * Returns the value of the '<em><b>Namespace</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Namespace</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Namespace</em>' attribute.
-	 * @see #setNamespace(String)
-	 * @see org.eclipse.bpel.model.BPELPackage#getExtension_Namespace()
-	 * @model
-	 * @generated
-	 */
-	String getNamespace();
+  /**
+   * Returns the value of the '<em><b>Namespace</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Namespace</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Namespace</em>' attribute.
+   * @see #setNamespace(String)
+   * @see org.eclipse.bpel.model.BPELPackage#getExtension_Namespace()
+   * @model
+   * @generated
+   */
+  String getNamespace();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Extension#getNamespace <em>Namespace</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Namespace</em>' attribute.
-	 * @see #getNamespace()
-	 */
-	void setNamespace(String value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Extension#getNamespace <em>Namespace</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Namespace</em>' attribute.
+   * @see #getNamespace()
+   */
+  void setNamespace(String value);
 
-	/**
-	 * Returns the value of the '<em><b>Must Understand</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Must Understand</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Must Understand</em>' attribute.
-	 * @see #isSetMustUnderstand()
-	 * @see #unsetMustUnderstand()
-	 * @see #setMustUnderstand(Boolean)
-	 * @see org.eclipse.bpel.model.BPELPackage#getExtension_MustUnderstand()
-	 * @model default="false" unsettable="true"
-	 * @generated
-	 */
-	Boolean getMustUnderstand();
+  /**
+   * Returns the value of the '<em><b>Must Understand</b></em>' attribute.
+   * The default value is <code>"false"</code>.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Must Understand</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Must Understand</em>' attribute.
+   * @see #isSetMustUnderstand()
+   * @see #unsetMustUnderstand()
+   * @see #setMustUnderstand(Boolean)
+   * @see org.eclipse.bpel.model.BPELPackage#getExtension_MustUnderstand()
+   * @model default="false" unsettable="true"
+   * @generated
+   */
+  Boolean getMustUnderstand();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Extension#getMustUnderstand <em>Must Understand</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Must Understand</em>' attribute.
-	 * @see #isSetMustUnderstand()
-	 * @see #unsetMustUnderstand()
-	 * @see #getMustUnderstand()
-	 */
-	void setMustUnderstand(Boolean value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Extension#getMustUnderstand <em>Must Understand</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Must Understand</em>' attribute.
+   * @see #isSetMustUnderstand()
+   * @see #unsetMustUnderstand()
+   * @see #getMustUnderstand()
+   */
+  void setMustUnderstand(Boolean value);
 
-	/**
-	 * Unsets the value of the '{@link org.eclipse.bpel.model.Extension#getMustUnderstand <em>Must Understand</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetMustUnderstand()
-	 * @see #getMustUnderstand()
-	 * @see #setMustUnderstand(Boolean)
-	 */
-	void unsetMustUnderstand();
+  /**
+   * Unsets the value of the '{@link org.eclipse.bpel.model.Extension#getMustUnderstand <em>Must Understand</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isSetMustUnderstand()
+   * @see #getMustUnderstand()
+   * @see #setMustUnderstand(Boolean)
+   */
+  void unsetMustUnderstand();
 
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.bpel.model.Extension#getMustUnderstand <em>Must Understand</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Must Understand</em>' attribute is set.
-	 * @see #unsetMustUnderstand()
-	 * @see #getMustUnderstand()
-	 * @see #setMustUnderstand(Boolean)
-	 * @generated
-	 */
-	boolean isSetMustUnderstand();
+  /**
+   * Returns whether the value of the '{@link org.eclipse.bpel.model.Extension#getMustUnderstand <em>Must Understand</em>}' attribute is set.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return whether the value of the '<em>Must Understand</em>' attribute is set.
+   * @see #unsetMustUnderstand()
+   * @see #getMustUnderstand()
+   * @see #setMustUnderstand(Boolean)
+   * @generated
+   */
+  boolean isSetMustUnderstand();
 
 } // Extension

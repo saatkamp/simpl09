@@ -27,11 +27,15 @@ import org.eclipse.bpel.model.CatchAll;
 import org.eclipse.bpel.model.CompensationHandler;
 import org.eclipse.bpel.model.CompletionCondition;
 import org.eclipse.bpel.model.Condition;
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
 import org.eclipse.bpel.model.Copy;
 import org.eclipse.bpel.model.Correlation;
 import org.eclipse.bpel.model.CorrelationSet;
 import org.eclipse.bpel.model.CorrelationSets;
 import org.eclipse.bpel.model.Correlations;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Documentation;
 import org.eclipse.bpel.model.Else;
 import org.eclipse.bpel.model.ElseIf;
@@ -147,6 +151,14 @@ public class ReconciliationHelper {
 			reader.xml2ReferenceVariable((ReferenceVariable)element, changedElement);
 		} else if (element instanceof ReferenceVariables) {
 			reader.xml2ReferenceVariables((ReferenceVariables)element, changedElement);
+    } else if (element instanceof ContainerReferenceVariable) {
+      reader.xml2ContainerReferenceVariable((ContainerReferenceVariable)element, changedElement);
+    } else if (element instanceof ContainerReferenceVariables) {
+      reader.xml2ContainerReferenceVariables((ContainerReferenceVariables)element, changedElement);
+    } else if (element instanceof DataSourceReferenceVariable) {
+      reader.xml2DataSourceReferenceVariable((DataSourceReferenceVariable)element, changedElement);
+    } else if (element instanceof DataSourceReferenceVariables) {
+      reader.xml2DataSourceReferenceVariables((DataSourceReferenceVariables)element, changedElement);
 		} else if (element instanceof From) {
 			reader.xml2From((From)element, changedElement);
 		} else if (element instanceof FromPart) {

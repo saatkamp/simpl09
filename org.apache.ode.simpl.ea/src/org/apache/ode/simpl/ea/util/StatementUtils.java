@@ -1,15 +1,24 @@
 package org.apache.ode.simpl.ea.util;
 
+import java.io.StringWriter;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.apache.log4j.Logger;
 import org.apache.ode.bpel.common.FaultException;
 import org.apache.ode.bpel.rtrep.common.extension.ExtensionContext;
 import org.apache.ode.bpel.rtrep.v2.OScope.Variable;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 /**
  * <b>Purpose:</b> <br>
@@ -41,7 +50,7 @@ public class StatementUtils {
 		if (statement.contains("[") || statement.contains("#")) {
 			resultStatement = parseStatement(context, statement);
 			if (logger.isDebugEnabled()) {
-				logger.debug("Incomming statement: " + statement);
+				logger.debug("Incoming statement: " + statement);
 			}
 		} else {
 			resultStatement = statement;
@@ -77,7 +86,6 @@ public class StatementUtils {
 			Matcher matcher = pattern.matcher(statement);
 			while (matcher.find()) {
 				String match = matcher.group();
-
 				resultStatement = resultStatement.replace(match,
 						resolveVariable(context, variables, match));
 			}
@@ -103,78 +111,74 @@ public class StatementUtils {
 	 * @param match
 	 * @return
 	 */
-	public static CharSequence resolveVariable(ExtensionContext context,
-			Map<String, Variable> variables, String match) {
-		String varName = "";
-		if (match.contains("[")) {
-			// Statement contains complex type
-			// (simpl:ContainerReferenceType)
-			// BPEL variables
-			/*
-			 * <?xml version="1.0" encoding="UTF-8"?> <containerReference
-			 * xmlns="http://www.example.org/simpl"> <simpl:schema
-			 * xmlns:simpl="http://www.example.org/simpl">test</simpl:schema>
-			 * <simpl:table
-			 * xmlns:simpl="http://www.example.org/simpl">projects</simpl:table>
-			 * </containerReference>
-			 */
-			varName = match.replaceAll("[\\[\\]]", "");
-			Variable var = variables.get(varName);
-			if (var != null) {
-				try {
-					Node varContent = context.readVariable(var);
-					String schemaTable = "";
-					if (varContent.hasChildNodes()) {
-						NodeList nodes = varContent.getChildNodes();
+  public static CharSequence resolveVariable(ExtensionContext context,
+      Map<String, Variable> variables, String match) {
+    String varName = "";
+    if (match.contains("[")) {
+      // Statement contains complex type
+      // (simpl:DataContainerReferenceType)
+      // BPEL variables
+      /*
+       * <?xml version="1.0" encoding="UTF-8"?> <containerReference
+       * xmlns="http://www.example.org/simpl"> <simpl:schema
+       * xmlns:simpl="http://www.example.org/simpl">test</simpl:schema>
+       * <simpl:table
+       * xmlns:simpl="http://www.example.org/simpl">projects</simpl:table>
+       * </containerReference>
+       */
+      varName = match.replaceAll("[\\[\\]]", "");
+      Variable var = variables.get(varName);
+      if (var != null) {
+        // replaces the data container name by the belonging xml fragment
+        // the SIMPL Core resolves these references
+        try {
+          Node varContent = context.readVariable(var);
+          String identifier = "";
+          Source source = new DOMSource(varContent);
+          StringWriter stringWriter = new StringWriter();
+          Result result = new StreamResult(stringWriter);
+          TransformerFactory factory = TransformerFactory.newInstance();
+          Transformer transformer;
+          try {
+            transformer = factory.newTransformer();
+            transformer.transform(source, result);
+            identifier = "[" + stringWriter.getBuffer().toString() + "]";
+          } catch (TransformerConfigurationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          } catch (TransformerException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
+          return identifier;
+        } catch (FaultException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+      }
+    } else {
+      if (match.contains("#")) {
+        // Statement contains simple type BPEL variables
+        /*
+         * <?xml version="1.0" encoding="UTF-8"?> <temporary-simple-type-
+         * wrapper>HALLO</temporary-simple-type-wrapper>
+         */
+        varName = match.replaceAll("#", "");
+        Variable var = variables.get(varName);
 
-						for (int i = 0; i < nodes.getLength(); i++) {
-							Node current = nodes.item(i);
+        if (var != null) {
 
-							if (current.getLocalName() != null) {
-								// If a schema is specified, a table has to be
-								// set
-								if (current.getLocalName().equals("schema")) {
-									schemaTable = schemaTable.concat(current
-											.getTextContent()
-											+ ".");
-								}
-								if (current.getLocalName().equals("table")) {
-									schemaTable = schemaTable.concat(current
-											.getTextContent());
-								}
-							}
-						}
-					}
-					return schemaTable;
-				} catch (FaultException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		} else {
-			if (match.contains("#")) {
-				// Statement contains simple type BPEL variables
-				/*
-				 * <?xml version="1.0" encoding="UTF-8"?>
-				 * <temporary-simple-type-
-				 * wrapper>HALLO</temporary-simple-type-wrapper>
-				 */
-				varName = match.replaceAll("#", "");
-				Variable var = variables.get(varName);
+          try {
+            Node varContent = context.readVariable(var);
+            return varContent.getFirstChild().getTextContent();
+          } catch (FaultException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
+        }
+      }
+    }
 
-				if (var != null) {
-
-					try {
-						Node varContent = context.readVariable(var);
-						return varContent.getFirstChild().getTextContent();
-					} catch (FaultException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			}
-		}
-
-		return "";
-	}
+    return "";
+  }
 }

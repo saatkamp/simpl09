@@ -1,7 +1,5 @@
 package org.eclipse.simpl.core.ui;
 
-import java.net.URLDecoder;
-
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.TrayDialog;

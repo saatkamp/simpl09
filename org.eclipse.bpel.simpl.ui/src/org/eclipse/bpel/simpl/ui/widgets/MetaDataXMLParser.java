@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.eclipse.simpl.communication.SIMPLCommunication;
-import org.eclipse.simpl.communication.SIMPLCore;
-import org.eclipse.simpl.communication.client.DataSource;
+import org.eclipse.simpl.communication.SIMPLCoreCommunication;
+import org.eclipse.simpl.communication.SIMPLCoreWebService;
+import org.simpl.resource.management.data.DataSource;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -59,7 +59,7 @@ public class MetaDataXMLParser {
 	public ArrayList<DBTable> loadTablesFromDB(DataSource dataSource) {
 
 		// ++++++++++++++++++++++++SDO Parsing++++++++++++++++++++++++
-		SIMPLCore simplCore = SIMPLCommunication.getConnection();
+		SIMPLCoreWebService simplCore = SIMPLCoreCommunication.getInstance();
 		try {
 
 			String metaDataString = simplCore.getMetaData(dataSource, "");
@@ -108,9 +108,9 @@ public class MetaDataXMLParser {
 								for (int j = 0; j < columsNodesList.getLength(); j++) {
 									// get the child element
 									if (columsNodesList.item(j).getNodeName() == "column") {
-										System.out.print(columsNodesList
-												.item(j).getNodeName()
-												+ "\r");
+//										System.out.print(columsNodesList
+//												.item(j).getNodeName()
+//												+ "\r");
 										columXMLElement = (Element) columsNodesList
 												.item(j);
 										listOfColumnsNames.add(columXMLElement
@@ -146,7 +146,7 @@ public class MetaDataXMLParser {
 	public void loadFileSystemElementsFromDB(DataSource dataSource) {
 
 		// ++++++++++++++++++++++++DSO Parsing++++++++++++++++++++++++
-		SIMPLCore simplCore = SIMPLCommunication.getConnection();
+		SIMPLCoreWebService simplCore = SIMPLCoreCommunication.getInstance();
 		try {
 
 			String metaDataString = simplCore.getMetaData(dataSource, "");
@@ -269,7 +269,7 @@ public class MetaDataXMLParser {
 	 */
 	public ArrayList<DBSchema> loadSchemasFromDB(DataSource dataSource) {
 		// ++++++++++++++++++++++++SDO Parsing++++++++++++++++++++++++
-		SIMPLCore simplCore = SIMPLCommunication.getConnection();
+		SIMPLCoreWebService simplCore = SIMPLCoreCommunication.getInstance();
 		try {
 
 			String metaDataString = simplCore.getMetaData(dataSource, "");

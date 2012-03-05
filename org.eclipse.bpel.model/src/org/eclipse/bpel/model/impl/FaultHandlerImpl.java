@@ -47,298 +47,287 @@ import org.eclipse.wst.wsdl.WSDLElement;
  *
  * @generated
  */
-public class FaultHandlerImpl extends ExtensibleElementImpl implements
-		FaultHandler {
-	/**
-	 * The cached value of the '{@link #getCatch() <em>Catch</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCatch()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Catch> catch_;
+public class FaultHandlerImpl extends ExtensibleElementImpl implements FaultHandler {
+  /**
+   * The cached value of the '{@link #getCatch() <em>Catch</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCatch()
+   * @generated
+   * @ordered
+   */
+  protected EList<Catch> catch_;
 
-	/**
-	 * The cached value of the '{@link #getCatchAll() <em>Catch All</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCatchAll()
-	 * @generated
-	 * @ordered
-	 */
-	protected CatchAll catchAll;
+  /**
+   * The cached value of the '{@link #getCatchAll() <em>Catch All</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCatchAll()
+   * @generated
+   * @ordered
+   */
+  protected CatchAll catchAll;
 
-	/**
-	 * This is true if the Catch All containment reference has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean catchAllESet;
+  /**
+   * This is true if the Catch All containment reference has been set.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  protected boolean catchAllESet;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FaultHandlerImpl() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected FaultHandlerImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return BPELPackage.Literals.FAULT_HANDLER;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return BPELPackage.Literals.FAULT_HANDLER;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Catch> getCatch() {
-		if (catch_ == null) {
-			catch_ = new EObjectContainmentEList<Catch>(Catch.class, this,
-					BPELPackage.FAULT_HANDLER__CATCH);
-		}
-		return catch_;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Catch> getCatch() {
+    if (catch_ == null) {
+      catch_ = new EObjectContainmentEList<Catch>(Catch.class, this,
+          BPELPackage.FAULT_HANDLER__CATCH);
+    }
+    return catch_;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CatchAll getCatchAll() {
-		return catchAll;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CatchAll getCatchAll() {
+    return catchAll;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 */
-	public NotificationChain basicSetCatchAll(CatchAll newCatchAll,
-			NotificationChain msgs) {
-		CatchAll oldCatchAll = catchAll;
-		if (!isReconciling) {
-			ReconciliationHelper.replaceChild(
-					element == null ? (WSDLElement) eContainer() : this,
-					oldCatchAll, newCatchAll);
-		}
-		catchAll = newCatchAll;
-		boolean oldCatchAllESet = catchAllESet;
-		catchAllESet = true;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, BPELPackage.FAULT_HANDLER__CATCH_ALL,
-					oldCatchAll, newCatchAll, !oldCatchAllESet);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   */
+  public NotificationChain basicSetCatchAll(CatchAll newCatchAll, NotificationChain msgs) {
+    CatchAll oldCatchAll = catchAll;
+    if (!isReconciling) {
+      ReconciliationHelper.replaceChild(element == null ? (WSDLElement) eContainer()
+          : this, oldCatchAll, newCatchAll);
+    }
+    catchAll = newCatchAll;
+    boolean oldCatchAllESet = catchAllESet;
+    catchAllESet = true;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+          BPELPackage.FAULT_HANDLER__CATCH_ALL, oldCatchAll, newCatchAll,
+          !oldCatchAllESet);
+      if (msgs == null)
+        msgs = notification;
+      else
+        msgs.add(notification);
+    }
+    return msgs;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCatchAll(CatchAll newCatchAll) {
-		if (newCatchAll != catchAll) {
-			NotificationChain msgs = null;
-			if (catchAll != null)
-				msgs = ((InternalEObject) catchAll).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE
-								- BPELPackage.FAULT_HANDLER__CATCH_ALL, null,
-						msgs);
-			if (newCatchAll != null)
-				msgs = ((InternalEObject) newCatchAll).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-								- BPELPackage.FAULT_HANDLER__CATCH_ALL, null,
-						msgs);
-			msgs = basicSetCatchAll(newCatchAll, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else {
-			boolean oldCatchAllESet = catchAllESet;
-			catchAllESet = true;
-			if (eNotificationRequired())
-				eNotify(new ENotificationImpl(this, Notification.SET,
-						BPELPackage.FAULT_HANDLER__CATCH_ALL, newCatchAll,
-						newCatchAll, !oldCatchAllESet));
-		}
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCatchAll(CatchAll newCatchAll) {
+    if (newCatchAll != catchAll) {
+      NotificationChain msgs = null;
+      if (catchAll != null)
+        msgs = ((InternalEObject) catchAll).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+            - BPELPackage.FAULT_HANDLER__CATCH_ALL, null, msgs);
+      if (newCatchAll != null)
+        msgs = ((InternalEObject) newCatchAll).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+            - BPELPackage.FAULT_HANDLER__CATCH_ALL, null, msgs);
+      msgs = basicSetCatchAll(newCatchAll, msgs);
+      if (msgs != null)
+        msgs.dispatch();
+    } else {
+      boolean oldCatchAllESet = catchAllESet;
+      catchAllESet = true;
+      if (eNotificationRequired())
+        eNotify(new ENotificationImpl(this, Notification.SET,
+            BPELPackage.FAULT_HANDLER__CATCH_ALL, newCatchAll, newCatchAll,
+            !oldCatchAllESet));
+    }
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 */
-	public NotificationChain basicUnsetCatchAll(NotificationChain msgs) {
-		CatchAll oldCatchAll = catchAll;
-		if (!isReconciling) {
-			ReconciliationHelper.replaceChild(this, oldCatchAll, null);
-		}
-		catchAll = null;
-		boolean oldCatchAllESet = catchAllESet;
-		catchAllESet = false;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.UNSET, BPELPackage.FAULT_HANDLER__CATCH_ALL,
-					oldCatchAll, null, oldCatchAllESet);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   */
+  public NotificationChain basicUnsetCatchAll(NotificationChain msgs) {
+    CatchAll oldCatchAll = catchAll;
+    if (!isReconciling) {
+      ReconciliationHelper.replaceChild(this, oldCatchAll, null);
+    }
+    catchAll = null;
+    boolean oldCatchAllESet = catchAllESet;
+    catchAllESet = false;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.UNSET,
+          BPELPackage.FAULT_HANDLER__CATCH_ALL, oldCatchAll, null, oldCatchAllESet);
+      if (msgs == null)
+        msgs = notification;
+      else
+        msgs.add(notification);
+    }
+    return msgs;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetCatchAll() {
-		if (catchAll != null) {
-			NotificationChain msgs = null;
-			msgs = ((InternalEObject) catchAll).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-							- BPELPackage.FAULT_HANDLER__CATCH_ALL, null, msgs);
-			msgs = basicUnsetCatchAll(msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else {
-			boolean oldCatchAllESet = catchAllESet;
-			catchAllESet = false;
-			if (eNotificationRequired())
-				eNotify(new ENotificationImpl(this, Notification.UNSET,
-						BPELPackage.FAULT_HANDLER__CATCH_ALL, null, null,
-						oldCatchAllESet));
-		}
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void unsetCatchAll() {
+    if (catchAll != null) {
+      NotificationChain msgs = null;
+      msgs = ((InternalEObject) catchAll).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+          - BPELPackage.FAULT_HANDLER__CATCH_ALL, null, msgs);
+      msgs = basicUnsetCatchAll(msgs);
+      if (msgs != null)
+        msgs.dispatch();
+    } else {
+      boolean oldCatchAllESet = catchAllESet;
+      catchAllESet = false;
+      if (eNotificationRequired())
+        eNotify(new ENotificationImpl(this, Notification.UNSET,
+            BPELPackage.FAULT_HANDLER__CATCH_ALL, null, null, oldCatchAllESet));
+    }
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetCatchAll() {
-		return catchAllESet;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isSetCatchAll() {
+    return catchAllESet;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case BPELPackage.FAULT_HANDLER__CATCH:
-			return ((InternalEList<?>) getCatch()).basicRemove(otherEnd, msgs);
-		case BPELPackage.FAULT_HANDLER__CATCH_ALL:
-			return basicUnsetCatchAll(msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+      NotificationChain msgs) {
+    switch (featureID) {
+    case BPELPackage.FAULT_HANDLER__CATCH:
+      return ((InternalEList<?>) getCatch()).basicRemove(otherEnd, msgs);
+    case BPELPackage.FAULT_HANDLER__CATCH_ALL:
+      return basicUnsetCatchAll(msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-		case BPELPackage.FAULT_HANDLER__CATCH:
-			return getCatch();
-		case BPELPackage.FAULT_HANDLER__CATCH_ALL:
-			return getCatchAll();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
+    case BPELPackage.FAULT_HANDLER__CATCH:
+      return getCatch();
+    case BPELPackage.FAULT_HANDLER__CATCH_ALL:
+      return getCatchAll();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-		case BPELPackage.FAULT_HANDLER__CATCH:
-			getCatch().clear();
-			getCatch().addAll((Collection<? extends Catch>) newValue);
-			return;
-		case BPELPackage.FAULT_HANDLER__CATCH_ALL:
-			setCatchAll((CatchAll) newValue);
-			return;
-		}
-		super.eSet(featureID, newValue);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
+    case BPELPackage.FAULT_HANDLER__CATCH:
+      getCatch().clear();
+      getCatch().addAll((Collection<? extends Catch>) newValue);
+      return;
+    case BPELPackage.FAULT_HANDLER__CATCH_ALL:
+      setCatchAll((CatchAll) newValue);
+      return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-		case BPELPackage.FAULT_HANDLER__CATCH:
-			getCatch().clear();
-			return;
-		case BPELPackage.FAULT_HANDLER__CATCH_ALL:
-			unsetCatchAll();
-			return;
-		}
-		super.eUnset(featureID);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID) {
+    switch (featureID) {
+    case BPELPackage.FAULT_HANDLER__CATCH:
+      getCatch().clear();
+      return;
+    case BPELPackage.FAULT_HANDLER__CATCH_ALL:
+      unsetCatchAll();
+      return;
+    }
+    super.eUnset(featureID);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-		case BPELPackage.FAULT_HANDLER__CATCH:
-			return catch_ != null && !catch_.isEmpty();
-		case BPELPackage.FAULT_HANDLER__CATCH_ALL:
-			return isSetCatchAll();
-		}
-		return super.eIsSet(featureID);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
+    case BPELPackage.FAULT_HANDLER__CATCH:
+      return catch_ != null && !catch_.isEmpty();
+    case BPELPackage.FAULT_HANDLER__CATCH_ALL:
+      return isSetCatchAll();
+    }
+    return super.eIsSet(featureID);
+  }
 
-	@Override
-	protected void adoptContent(EReference reference, Object object) {
-		if (object instanceof Catch) {
-			ReconciliationHelper.adoptChild(
-					element == null ? (WSDLElement) eContainer() : this,
-					catch_, (Catch) object, BPELConstants.ND_CATCH);
-		}
-		super.adoptContent(reference, object);
-	}
+  @Override
+  protected void adoptContent(EReference reference, Object object) {
+    if (object instanceof Catch) {
+      ReconciliationHelper.adoptChild(
+          element == null ? (WSDLElement) eContainer() : this, catch_, (Catch) object,
+          BPELConstants.ND_CATCH);
+    }
+    super.adoptContent(reference, object);
+  }
 
-	@Override
-	protected void orphanContent(EReference reference, Object obj) {
-		if (obj instanceof Catch) {
-			ReconciliationHelper.orphanChild(
-					element == null ? (WSDLElement) eContainer() : this,
-					(Catch) obj);
-		}
-		super.orphanContent(reference, obj);
-	}
+  @Override
+  protected void orphanContent(EReference reference, Object obj) {
+    if (obj instanceof Catch) {
+      ReconciliationHelper.orphanChild(element == null ? (WSDLElement) eContainer()
+          : this, (Catch) obj);
+    }
+    super.orphanContent(reference, obj);
+  }
 
 } //FaultHandlerImpl

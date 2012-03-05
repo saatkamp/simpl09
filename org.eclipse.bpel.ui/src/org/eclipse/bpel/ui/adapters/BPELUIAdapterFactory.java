@@ -143,7 +143,17 @@ public class BPELUIAdapterFactory extends BPELAdapterFactory {
 	public Adapter createReferenceVariableAdapter() {
 		return fProvider.getAdapter(ReferenceVariableAdapter.class);		
 	}
-	
+
+  @Override
+  public Adapter createContainerReferenceVariableAdapter() {
+    return fProvider.getAdapter(ContainerReferenceVariableAdapter.class);    
+  }
+
+  @Override
+  public Adapter createDataSourceReferenceVariableAdapter() {
+    return fProvider.getAdapter(DataSourceReferenceVariableAdapter.class);    
+  }
+  
 	/**
 	 * @see org.eclipse.bpel.model.util.BPELAdapterFactory#createEmptyAdapter()
 	 */
@@ -348,7 +358,17 @@ public class BPELUIAdapterFactory extends BPELAdapterFactory {
 	public Adapter createReferenceVariablesAdapter() {
 		return fProvider.getAdapter(ReferenceVariablesAdapter.class);
 	}
-	
+
+  @Override
+  public Adapter createContainerReferenceVariablesAdapter() {
+    return fProvider.getAdapter(ContainerReferenceVariablesAdapter.class);
+  }
+
+  @Override
+  public Adapter createDataSourceReferenceVariablesAdapter() {
+    return fProvider.getAdapter(DataSourceReferenceVariablesAdapter.class);
+  }
+	 
 	/**
 	 * @see org.eclipse.bpel.model.util.BPELAdapterFactory#createCatchAllAdapter()
 	 */

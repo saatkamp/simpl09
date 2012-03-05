@@ -15,7 +15,6 @@
 package org.eclipse.bpel.model.partnerlinktype;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.wst.wsdl.ExtensibilityElement;
 
 /**
@@ -37,61 +36,61 @@ import org.eclipse.wst.wsdl.ExtensibilityElement;
  * @generated
  */
 public interface PartnerLinkType extends ExtensibilityElement {
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.eclipse.bpel.model.partnerlinktype.PartnerlinktypePackage#getPartnerLinkType_Name()
-	 * @model
-	 * @generated
-	 */
-	String getName();
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.eclipse.bpel.model.partnerlinktype.PartnerlinktypePackage#getPartnerLinkType_Name()
+   * @model
+   * @generated
+   */
+  String getName();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.partnerlinktype.PartnerLinkType#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.partnerlinktype.PartnerLinkType#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
 
-	/**
-	 * Returns the value of the '<em><b>ID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>ID</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>ID</em>' attribute.
-	 * @see org.eclipse.bpel.model.partnerlinktype.PartnerlinktypePackage#getPartnerLinkType_ID()
-	 * @model id="true" transient="true" changeable="false" volatile="true" derived="true"
-	 * @generated
-	 */
-	String getID();
+  /**
+   * Returns the value of the '<em><b>ID</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>ID</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>ID</em>' attribute.
+   * @see org.eclipse.bpel.model.partnerlinktype.PartnerlinktypePackage#getPartnerLinkType_ID()
+   * @model id="true" transient="true" changeable="false" volatile="true" derived="true"
+   * @generated
+   */
+  String getID();
 
-	/**
-	 * Returns the value of the '<em><b>Role</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.bpel.model.partnerlinktype.Role}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Role</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Role</em>' containment reference list.
-	 * @see org.eclipse.bpel.model.partnerlinktype.PartnerlinktypePackage#getPartnerLinkType_Role()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Role> getRole();
+  /**
+   * Returns the value of the '<em><b>Role</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.bpel.model.partnerlinktype.Role}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Role</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Role</em>' containment reference list.
+   * @see org.eclipse.bpel.model.partnerlinktype.PartnerlinktypePackage#getPartnerLinkType_Role()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Role> getRole();
 
 } // PartnerLinkType

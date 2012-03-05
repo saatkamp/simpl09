@@ -57,7 +57,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#isAuditingActive <em>Auditing Active</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getDatasources <em>Datasources</em>}</li>
  *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getActivityMappings <em>Activity Mappings</em>}</li>
- *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getAttachedUddiAddress <em>Attached Uddi Address</em>}</li>
+ *   <li>{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.ProcessTypeImpl#getAttachedRMAddress <em>Attached RF Address</em>}</li>
  * </ul>
  * </p>
  *
@@ -341,24 +341,24 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 	protected EList<TActivityMapping> activityMappings;
 
 	/**
-	 * The default value of the '{@link #getAttachedUddiAddress() <em>Attached Uddi Address</em>}' attribute.
+	 * The default value of the '{@link #getAttachedRMAddress() <em>Attached RF Address</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAttachedUddiAddress()
+	 * @see #getAttachedRMAddress()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ATTACHED_UDDI_ADDRESS_EDEFAULT = null;
+	protected static final String ATTACHED_RM_ADDRESS_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getAttachedUddiAddress() <em>Attached Uddi Address</em>}' attribute.
+	 * The cached value of the '{@link #getAttachedRMAddress() <em>Attached RF Address</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAttachedUddiAddress()
+	 * @see #getAttachedRMAddress()
 	 * @generated
 	 * @ordered
 	 */
-	protected String attachedUddiAddress = ATTACHED_UDDI_ADDRESS_EDEFAULT;
+	protected String attachedRMAddress = ATTACHED_RM_ADDRESS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -836,8 +836,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getAttachedUddiAddress() {
-		return attachedUddiAddress;
+	public String getAttachedRMAddress() {
+		return attachedRMAddress;
 	}
 
 	/**
@@ -845,11 +845,11 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAttachedUddiAddress(String newAttachedUddiAddress) {
-		String oldAttachedUddiAddress = attachedUddiAddress;
-		attachedUddiAddress = newAttachedUddiAddress;
+	public void setAttachedRMAddress(String newAttachedRMAddress) {
+		String oldAttachedRMAddress = attachedRMAddress;
+		attachedRMAddress = newAttachedRMAddress;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.PROCESS_TYPE__ATTACHED_UDDI_ADDRESS, oldAttachedUddiAddress, attachedUddiAddress));
+			eNotify(new ENotificationImpl(this, Notification.SET, ddPackage.PROCESS_TYPE__ATTACHED_RF_ADDRESS, oldAttachedRMAddress, attachedRMAddress));
 	}
 
 	/**
@@ -919,8 +919,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				return getDatasources();
 			case ddPackage.PROCESS_TYPE__ACTIVITY_MAPPINGS:
 				return getActivityMappings();
-			case ddPackage.PROCESS_TYPE__ATTACHED_UDDI_ADDRESS:
-				return getAttachedUddiAddress();
+			case ddPackage.PROCESS_TYPE__ATTACHED_RF_ADDRESS:
+				return getAttachedRMAddress();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -987,8 +987,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				getActivityMappings().clear();
 				getActivityMappings().addAll((Collection<? extends TActivityMapping>)newValue);
 				return;
-			case ddPackage.PROCESS_TYPE__ATTACHED_UDDI_ADDRESS:
-				setAttachedUddiAddress((String)newValue);
+			case ddPackage.PROCESS_TYPE__ATTACHED_RF_ADDRESS:
+				setAttachedRMAddress((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1050,8 +1050,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 			case ddPackage.PROCESS_TYPE__ACTIVITY_MAPPINGS:
 				getActivityMappings().clear();
 				return;
-			case ddPackage.PROCESS_TYPE__ATTACHED_UDDI_ADDRESS:
-				setAttachedUddiAddress(ATTACHED_UDDI_ADDRESS_EDEFAULT);
+			case ddPackage.PROCESS_TYPE__ATTACHED_RF_ADDRESS:
+				setAttachedRMAddress(ATTACHED_RM_ADDRESS_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1097,8 +1097,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 				return datasources != null && !datasources.isEmpty();
 			case ddPackage.PROCESS_TYPE__ACTIVITY_MAPPINGS:
 				return activityMappings != null && !activityMappings.isEmpty();
-			case ddPackage.PROCESS_TYPE__ATTACHED_UDDI_ADDRESS:
-				return ATTACHED_UDDI_ADDRESS_EDEFAULT == null ? attachedUddiAddress != null : !ATTACHED_UDDI_ADDRESS_EDEFAULT.equals(attachedUddiAddress);
+			case ddPackage.PROCESS_TYPE__ATTACHED_RF_ADDRESS:
+				return ATTACHED_RM_ADDRESS_EDEFAULT == null ? attachedRMAddress != null : !ATTACHED_RM_ADDRESS_EDEFAULT.equals(attachedRMAddress);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1129,8 +1129,8 @@ public class ProcessTypeImpl extends EObjectImpl implements ProcessType {
 		result.append(name);
 		result.append(", auditingActive: ");
 		if (auditingActiveESet) result.append(auditingActive); else result.append("<unset>");
-		result.append(", attachedUddiAddress: ");
-		result.append(attachedUddiAddress);
+		result.append(", attachedRMAddress: ");
+		result.append(attachedRMAddress);
 		result.append(')');
 		return result.toString();
 	}

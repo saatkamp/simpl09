@@ -445,5 +445,9 @@ public interface IBPELUIConstants {
 
 	// SIMPL Icon paths
 	public final String ICON_REFERENCE_VARIABLE_16 = "obj16/reference.png";
-	public final String CMD_ADD_REFERENCE_VARIABLE = "Add ReferenceVariable"; 
+	public final String CMD_ADD_REFERENCE_VARIABLE = "Add ReferenceVariable";
+	public final String ICON_CONTAINER_REFERENCE_VARIABLE_16 = "obj16/target.png";
+  public final String CMD_ADD_CONTAINER_REFERENCE_VARIABLE = "Add ContainerReferenceVariable"; 
+  public final String ICON_DATA_SOURCE_REFERENCE_VARIABLE_16 = "obj16/database.png";;
+  public final String CMD_ADD_DATA_SOURCE_REFERENCE_VARIABLE = "Add DataSourceReferenceVariable"; 
 }

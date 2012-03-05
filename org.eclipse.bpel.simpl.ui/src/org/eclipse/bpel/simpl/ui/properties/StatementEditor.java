@@ -5,7 +5,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: StatementEditor.java 1742 2010-12-19 13:20:21Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -40,7 +40,7 @@ public class StatementEditor {
 	private Button okButton = null;
 	private Button closeButton = null;
 	private AStatementEditor compositeClass = null;
-	private DMActivityPropertySection parentClass = null;
+	private ADataManagementActivityPropertySection parentClass = null;
 	ArrayList<DBTable> listOfDBTables=null;
 	ArrayList<DBTable> listOfTablesBTables;
 	private StatementEditDialog statementEditDialogObjekt;
@@ -55,7 +55,7 @@ public class StatementEditor {
 	 * @param activity
 	 *            the activity, on which the statement editor relies
 	 */
-	public StatementEditor(DMActivityPropertySection parent, String language,
+	public StatementEditor(ADataManagementActivityPropertySection parent, String language,
 			String activity, String activityName) {
 		createSShell(activityName);
 		//compositeClass = Application.getInstance().getEditorClass(language,
@@ -67,10 +67,10 @@ public class StatementEditor {
 			if (compositeClass != null) {
 				compositeClass.setStatement(parentClass.getStatement());
 				compositeClass.setDataSource(parentClass.getDataSource());
-				System.out.println("DMProperty-Statement: "
-						+ parentClass.getStatement());
-				System.out.println("DMCompos-Statement: "
-						+ compositeClass.getStatement());
+//				System.out.println("DMProperty-Statement: "
+//						+ parentClass.getStatement());
+//				System.out.println("DMCompos-Statement: "
+//						+ compositeClass.getStatement());
 				compositeClass.createComposite(composite);
 			}
 		}
@@ -100,7 +100,8 @@ public class StatementEditor {
 	/**
 	 * This method initializes the shell
 	 */
-	private void createSShell(String activityName) {
+	@SuppressWarnings("unused")
+  private void createSShell(String activityName) {
 		GridData gridData2 = new GridData();
 		gridData2.horizontalAlignment = GridData.END;
 		gridData2.grabExcessHorizontalSpace = true;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
 <jardesc>
-    <jar path="C:/Tomcat 6.0/webapps/ode/WEB-INF/lib/simpl-core.jar"/>
+    <jar path="C:/Tomcat6.0/webapps/ode/WEB-INF/lib/simpl-core.jar"/>
     <options buildIfNeeded="true" compress="true" descriptionLocation="/org.simpl.core/simpl-core.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
@@ -11,7 +11,6 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <file path="/org.simpl.core/log4j.properties"/>
         <javaElement handleIdentifier="=org.simpl.core/src"/>
     </selectedElements>
 </jardesc>

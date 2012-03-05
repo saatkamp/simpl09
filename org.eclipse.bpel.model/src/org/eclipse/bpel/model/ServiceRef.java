@@ -34,53 +34,53 @@ import org.eclipse.wst.wsdl.ExtensibleElement;
  * @generated
  */
 public interface ServiceRef extends ExtensibleElement {
-	/**
-	 * Returns the value of the '<em><b>Reference Scheme</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Reference Scheme</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Reference Scheme</em>' attribute.
-	 * @see #setReferenceScheme(String)
-	 * @see org.eclipse.bpel.model.BPELPackage#getServiceRef_ReferenceScheme()
-	 * @model
-	 * @generated
-	 */
-	String getReferenceScheme();
+  /**
+   * Returns the value of the '<em><b>Reference Scheme</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Reference Scheme</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Reference Scheme</em>' attribute.
+   * @see #setReferenceScheme(String)
+   * @see org.eclipse.bpel.model.BPELPackage#getServiceRef_ReferenceScheme()
+   * @model
+   * @generated
+   */
+  String getReferenceScheme();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.ServiceRef#getReferenceScheme <em>Reference Scheme</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reference Scheme</em>' attribute.
-	 * @see #getReferenceScheme()
-	 */
-	void setReferenceScheme(String value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.ServiceRef#getReferenceScheme <em>Reference Scheme</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Reference Scheme</em>' attribute.
+   * @see #getReferenceScheme()
+   */
+  void setReferenceScheme(String value);
 
-	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(Object)
-	 * @see org.eclipse.bpel.model.BPELPackage#getServiceRef_Value()
-	 * @model
-	 */
-	Object getValue();
+  /**
+   * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Value</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Value</em>' attribute.
+   * @see #setValue(Object)
+   * @see org.eclipse.bpel.model.BPELPackage#getServiceRef_Value()
+   * @model
+   */
+  Object getValue();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.ServiceRef#getValue <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #getValue()
-	 */
-	void setValue(Object value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.ServiceRef#getValue <em>Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Value</em>' attribute.
+   * @see #getValue()
+   */
+  void setValue(Object value);
 
 } // ServiceRef

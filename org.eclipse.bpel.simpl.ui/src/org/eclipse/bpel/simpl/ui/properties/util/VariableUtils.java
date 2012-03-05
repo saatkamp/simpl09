@@ -1,14 +1,18 @@
 package org.eclipse.bpel.simpl.ui.properties.util;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import org.eclipse.bpel.model.ContainerReferenceVariable;
+import org.eclipse.bpel.model.ContainerReferenceVariables;
+import org.eclipse.bpel.model.DataSourceReferenceVariable;
+import org.eclipse.bpel.model.DataSourceReferenceVariables;
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.ui.util.ModelHelper;
 import org.eclipse.bpel.ui.util.XSDUtils;
-import org.eclipse.xsd.XSDSchema;
 import org.eclipse.xsd.XSDTypeDefinition;
 
 /**
@@ -24,97 +28,99 @@ import org.eclipse.xsd.XSDTypeDefinition;
  * 
  */
 public class VariableUtils {
+  public static final int PARAMETER_VAR = 0;
+  public static final int CONTAINER_VAR = 1;
+  public static final int DESCRIPTOR_VAR = 2;
 
-	private static final Object SIMPL_NAMESPACE = "http://www.example.org/simpl";
-	public static final int CONTAINER_VAR = 1;
-	public static final int PARAMETER_VAR = 0;
+  public static List<String> getUseableVariables(Process process, int varType) {
+    List<XSDTypeDefinition> primitives = XSDUtils.getAdvancedPrimitives();
+    List<String> variableNames = new ArrayList<String>();
 
-	@SuppressWarnings("unchecked")
-	public static List<String> getUseableVariables(Process process, int varType) {
-		List<XSDTypeDefinition> primitives = XSDUtils.getAdvancedPrimitives();
-		List<String> variableNames = new ArrayList<String>();
+    if (varType == PARAMETER_VAR) {
+      // Query all variables with a primitive type
+      for (XSDTypeDefinition type : primitives) {
+        Variable[] vars = ModelHelper.getVariablesOfType(process, type.getName());
+        for (Variable var : vars) {
+          variableNames.add("#" + var.getName() + "#");
+        }
+      }
+    }
 
-		if (varType == PARAMETER_VAR) {
+    if (varType == CONTAINER_VAR) {
+      ContainerReferenceVariables vars = ModelHelper.getContainerReferenceVariables(process);
+      
+      if (vars != null) {
+        for (ContainerReferenceVariable var : vars.getChildren()) {
+          variableNames.add("[" + var.getName() + "]");
+        }
+      }
+    }
 
-			// Query all variables with a primitive type
-			for (XSDTypeDefinition type : primitives) {
-				Variable[] vars = ModelHelper.getVariablesOfType(process, type
-						.getName());
-				for (Variable var : vars) {
-					variableNames.add("#" + var.getName() + "#");
-				}
-			}
-		}
+    if (varType == DESCRIPTOR_VAR) {
+      DataSourceReferenceVariables vars = ModelHelper.getDataSourceReferenceVariables(process);
 
-		if (varType == CONTAINER_VAR) {
+      if (vars != null) {
+        for (DataSourceReferenceVariable var : vars.getChildren()) {
+          variableNames.add(var.getName());
+        }
+      }
+    }
 
-			// Query all variables with the simpl:ContainerReferenceType
-			// xmlns:simpl "http://www.example.org/simpl"
-			List<XSDSchema> schemas = ModelHelper.getSchemas(process, false);
-			Iterator<XSDSchema> iterator = schemas.iterator();
-			XSDSchema schema = null;
-			boolean found = false;
+    return variableNames;
+  }
 
-			while (iterator.hasNext() && !found) {
-				schema = iterator.next();
-				if (schema.getTargetNamespace().equals(SIMPL_NAMESPACE)) {
-					found = true;
-				}
-			}
+  public static List<String> getUseableVariables(Process process) {
+    List<XSDTypeDefinition> primitives = XSDUtils.getAdvancedPrimitives();
+    List<String> variableNames = new ArrayList<String>();
 
-			if (found) {
-				XSDTypeDefinition contType = XSDUtils.getDataType(schema,
-						"ContainerReferenceType");
-				// Query all variables with ContainerReferenceType
-				Variable[] vars = ModelHelper.getVariablesOfType(process,
-						contType.getName());
-				for (Variable var : vars) {
-					variableNames.add("[" + var.getName() + "]");
-				}
-			}
-		}
-		return variableNames;
-	}
+    // Query all variables with a primitive type
+    for (XSDTypeDefinition type : primitives) {
+      Variable[] vars = ModelHelper.getVariablesOfType(process, type.getName());
+      for (Variable var : vars) {
+        variableNames.add("#" + var.getName() + "#");
+      }
+    }
 
-	@SuppressWarnings("unchecked")
-	public static List<String> getUseableVariables(Process process) {
-		List<XSDTypeDefinition> primitives = XSDUtils.getAdvancedPrimitives();
-		List<String> variableNames = new ArrayList<String>();
+    ContainerReferenceVariables vars = ModelHelper.getContainerReferenceVariables(process);
+    
+    if (vars != null) {
+      for (ContainerReferenceVariable var : vars.getChildren()) {
+        variableNames.add("[" + var.getName() + "]");
+      }
+    }
 
-		// Query all variables with a primitive type
-		for (XSDTypeDefinition type : primitives) {
-			Variable[] vars = ModelHelper.getVariablesOfType(process, type
-					.getName());
-			for (Variable var : vars) {
-				variableNames.add("#" + var.getName() + "#");
-			}
-		}
+    return variableNames;
+  }
 
-		// Query all variables with the simpl:ContainerReferenceType
-		// xmlns:simpl "http://www.example.org/simpl"
-		List<XSDSchema> schemas = ModelHelper.getSchemas(process, false);
-		Iterator<XSDSchema> iterator = schemas.iterator();
-		XSDSchema schema = null;
-		boolean found = false;
+  /**
+   * Returns the value of a data source reference variable element.
+   * 
+   * @param process
+   * @param variableName
+   * @param variableElement
+   * @return
+   */
+  public static String getDataSourceReferenceElementValue(Process process, String variableName,
+      String variableElement) {
+    String value = null;
 
-		while (iterator.hasNext() && !found) {
-			schema = iterator.next();
-			if (schema.getTargetNamespace().equals(SIMPL_NAMESPACE)) {
-				found = true;
-			}
-		}
+    DataSourceReferenceVariables vars = ModelHelper.getDataSourceReferenceVariables(process);
 
-		if (found) {
-			XSDTypeDefinition contType = XSDUtils.getDataType(schema,
-					"ContainerReferenceType");
-			// Query all variables with ContainerReferenceType
-			Variable[] vars = ModelHelper.getVariablesOfType(process, contType
-					.getName());
-			for (Variable var : vars) {
-				variableNames.add("[" + var.getName() + "]");
-			}
-		}
+    if (vars != null) {
+      for (DataSourceReferenceVariable var : vars.getChildren()) {
+        if (var.getName().equals(variableName) && var.getFrom() != null) {
+          String literal = var.getFrom().getLiteral();
+          Pattern pattern = Pattern.compile("\\<.*?" + variableElement + "\\>(.*?)</.*?"
+              + variableElement + ">");
+          Matcher matcher = pattern.matcher(literal);
 
-		return variableNames;
-	}
+          if (matcher.find()) {
+            value = matcher.group(1);
+          }
+        }
+      }
+    }
+
+    return value;
+  }
 }

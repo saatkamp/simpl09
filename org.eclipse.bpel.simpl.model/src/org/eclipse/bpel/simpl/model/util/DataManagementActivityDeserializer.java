@@ -6,7 +6,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: DataManagementActivityDeserializer.java 1807 2011-05-12 09:27:15Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -21,22 +21,17 @@ import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.extensions.BPELActivityDeserializer;
 import org.eclipse.bpel.model.resource.BPELReader;
-import org.eclipse.bpel.simpl.model.CallActivity;
-import org.eclipse.bpel.simpl.model.CreateActivity;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.model.DeleteActivity;
-import org.eclipse.bpel.simpl.model.DropActivity;
-import org.eclipse.bpel.simpl.model.InsertActivity;
+import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelFactory;
 import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
-import org.eclipse.bpel.simpl.model.TransferActivity;
-import org.eclipse.bpel.simpl.model.UpdateActivity;
+import org.eclipse.bpel.simpl.model.TransferDataActivity;
+import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.emf.common.util.URI;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -44,396 +39,220 @@ import org.w3c.dom.NodeList;
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
  */
-public class DataManagementActivityDeserializer implements
-		BPELActivityDeserializer {
+public class DataManagementActivityDeserializer implements BPELActivityDeserializer {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.eclipse.bpel.model.extensions.BPELActivityDeserializer#unmarshall
-	 * (javax.xml.namespace.QName, org.w3c.dom.Node,
-	 * org.eclipse.bpel.model.Process, java.util.Map,
-	 * javax.wsdl.extensions.ExtensionRegistry, org.eclipse.emf.common.util.URI,
-	 * org.eclipse.bpel.model.resource.BPELReader)
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public Activity unmarshall(QName elementType, Node node, Process process,
-			Map nsMap, ExtensionRegistry extReg, URI uri, BPELReader bpelReader) {
+  /*
+   * (non-Javadoc)
+   * @see org.eclipse.bpel.model.extensions.BPELActivityDeserializer#unmarshall
+   * (javax.xml.namespace.QName, org.w3c.dom.Node, org.eclipse.bpel.model.Process,
+   * java.util.Map, javax.wsdl.extensions.ExtensionRegistry,
+   * org.eclipse.emf.common.util.URI, org.eclipse.bpel.model.resource.BPELReader)
+   */
+  @SuppressWarnings("rawtypes")
+  @Override
+  public Activity unmarshall(QName elementType, Node node, Process process, Map nsMap,
+      ExtensionRegistry extReg, URI uri, BPELReader bpelReader) {
 
-		String attStatement = ModelPackage.eINSTANCE
-				.getDataManagementActivity_DsStatement().getName();
-		String attKind = ModelPackage.eINSTANCE
-				.getDataManagementActivity_DsKind().getName();
-		String attType = ModelPackage.eINSTANCE
-				.getDataManagementActivity_DsType().getName();
-		String attAddress = ModelPackage.eINSTANCE
-				.getDataManagementActivity_DsAddress().getName();
-		String attLanguage = ModelPackage.eINSTANCE
-				.getDataManagementActivity_DsLanguage().getName();
+    /*
+     * QueryDataActivity
+     */
+    if (DataManagementConstants.ND_QUERY_DATA_ACTIVITY.equals(elementType.getLocalPart())) {
+      Element querydataActivityElement = (Element) node;
 
-		/*
-		 * QueryActivity
-		 */
-		if (DataManagementConstants.ND_QUERY_ACTIVITY.equals(elementType
-				.getLocalPart())) {
+      // create a QueryDataActivity model object
+      QueryDataActivity activity = ModelFactory.eINSTANCE.createQueryDataActivity();
 
-			Element queryActivityElement = (Element) node;
-			// create a QueryActivity model object
-			QueryActivity activity = ModelFactory.eINSTANCE
-					.createQueryActivity();
-			// attach the DOM node to our new activity
-			activity.setElement(queryActivityElement);
+      // attach the DOM node to our new activity
+      activity.setElement(querydataActivityElement);
 
-			// handle the QueryActivity attributes
-			String attQueryTarget = ModelPackage.eINSTANCE
-					.getQueryActivity_QueryTarget().getName();
+      // handle the DataManagementActivity attributes
+      this.setCommonAttributes(activity, node);
 
-			if (((Element) node).getAttribute(attStatement) != null) {
-				activity.setDsStatement(((Element) node)
-						.getAttribute(attStatement));
-			}
-			if (((Element) node).getAttribute(attKind) != null) {
-				activity.setDsKind(((Element) node).getAttribute(attKind));
-			}
-			if (((Element) node).getAttribute(attType) != null) {
-				activity.setDsType(((Element) node).getAttribute(attType));
-			}
-			if (((Element) node).getAttribute(attAddress) != null) {
-				activity
-						.setDsAddress(((Element) node).getAttribute(attAddress));
-			}
-			if (((Element) node).getAttribute(attLanguage) != null) {
-				activity.setDsLanguage(((Element) node)
-						.getAttribute(attLanguage));
-			}
-			if (((Element) node).getAttribute(attQueryTarget) != null) {
-				activity.setQueryTarget(((Element) node)
-						.getAttribute(attQueryTarget));
-			}
+      // handle the QueryDataActivity attributes
+      String attQueryTarget = ModelPackage.eINSTANCE.getQueryDataActivity_QueryTarget()
+          .getName();
 
-			return activity;
-		}
+      if (((Element) node).getAttribute(attQueryTarget) != null) {
+        activity.setQueryTarget(((Element) node).getAttribute(attQueryTarget));
+      }
 
-		/*
-		 * InsertActivity
-		 */
-		if (DataManagementConstants.ND_INSERT_ACTIVITY.equals(elementType
-				.getLocalPart())) {
+      return activity;
+    }
 
-			Element insertActivityElement = (Element) node;
-			// create a InsertActivity model object
-			InsertActivity activity = ModelFactory.eINSTANCE
-					.createInsertActivity();
-			// attach the DOM node to our new activity
-			activity.setElement(insertActivityElement);
+    /*
+     * IssueCommandActivity
+     */
+    if (DataManagementConstants.ND_ISSUE_COMMAND_ACTIVITY.equals(elementType.getLocalPart())) {
+      Element issueActivityElement = (Element) node;
 
-			// handle the InsertActivity attributes
-			if (((Element) node).getAttribute(attStatement) != null) {
-				activity.setDsStatement(((Element) node)
-						.getAttribute(attStatement));
-			}
-			if (((Element) node).getAttribute(attKind) != null) {
-				activity.setDsKind(((Element) node).getAttribute(attKind));
-			}
-			if (((Element) node).getAttribute(attType) != null) {
-				activity.setDsType(((Element) node).getAttribute(attType));
-			}
-			if (((Element) node).getAttribute(attAddress) != null) {
-				activity
-						.setDsAddress(((Element) node).getAttribute(attAddress));
-			}
-			if (((Element) node).getAttribute(attLanguage) != null) {
-				activity.setDsLanguage(((Element) node)
-						.getAttribute(attLanguage));
-			}
+      // create a InsertActivity model object
+      IssueCommandActivity activity = ModelFactory.eINSTANCE.createIssueCommandActivity();
 
-			return activity;
-		}
+      // attach the DOM node to our new activity
+      activity.setElement(issueActivityElement);
 
-		/*
-		 * UpdateActivity
-		 */
-		if (DataManagementConstants.ND_UPDATE_ACTIVITY.equals(elementType
-				.getLocalPart())) {
+      // handle the DataManagementActivity attributes
+      this.setCommonAttributes(activity, node);
 
-			Element updateActivityElement = (Element) node;
-			// create a UpdateActivity model object
-			UpdateActivity activity = ModelFactory.eINSTANCE
-					.createUpdateActivity();
-			// attach the DOM node to our new activity
-			activity.setElement(updateActivityElement);
+      return activity;
+    }
 
-			// handle the UpdateActivity attributes
-			if (((Element) node).getAttribute(attStatement) != null) {
-				activity.setDsStatement(((Element) node)
-						.getAttribute(attStatement));
-			}
-			if (((Element) node).getAttribute(attKind) != null) {
-				activity.setDsKind(((Element) node).getAttribute(attKind));
-			}
-			if (((Element) node).getAttribute(attType) != null) {
-				activity.setDsType(((Element) node).getAttribute(attType));
-			}
-			if (((Element) node).getAttribute(attAddress) != null) {
-				activity
-						.setDsAddress(((Element) node).getAttribute(attAddress));
-			}
-			if (((Element) node).getAttribute(attLanguage) != null) {
-				activity.setDsLanguage(((Element) node)
-						.getAttribute(attLanguage));
-			}
+    /*
+     * RetrieveDataActivity
+     */
+    if (DataManagementConstants.ND_RETRIEVE_DATA_ACTIVITY.equals(elementType
+        .getLocalPart())) {
+      Element retrieveDataActivityElement = (Element) node;
 
-			return activity;
-		}
+      // create a RetrieveDataActivity model object
+      RetrieveDataActivity activity = ModelFactory.eINSTANCE.createRetrieveDataActivity();
 
-		/*
-		 * DeleteActivity
-		 */
-		if (DataManagementConstants.ND_DELETE_ACTIVITY.equals(elementType
-				.getLocalPart())) {
+      // attach the DOM node to our new activity
+      activity.setElement(retrieveDataActivityElement);
 
-			Element deleteActivityElement = (Element) node;
-			// create a DeleteActivity model object
-			DeleteActivity activity = ModelFactory.eINSTANCE
-					.createDeleteActivity();
-			// attach the DOM node to our new activity
-			activity.setElement(deleteActivityElement);
+      // handle the DataManagementActivity attributes
+      this.setCommonAttributes(activity, node);
 
-			// handle the DeleteActivity attributes
-			if (((Element) node).getAttribute(attStatement) != null) {
-				activity.setDsStatement(((Element) node)
-						.getAttribute(attStatement));
-			}
-			if (((Element) node).getAttribute(attKind) != null) {
-				activity.setDsKind(((Element) node).getAttribute(attKind));
-			}
-			if (((Element) node).getAttribute(attType) != null) {
-				activity.setDsType(((Element) node).getAttribute(attType));
-			}
-			if (((Element) node).getAttribute(attAddress) != null) {
-				activity
-						.setDsAddress(((Element) node).getAttribute(attAddress));
-			}
-			if (((Element) node).getAttribute(attLanguage) != null) {
-				activity.setDsLanguage(((Element) node)
-						.getAttribute(attLanguage));
-			}
+      // handle the RetrieveDataActivity attributes
+      String attDataVariable = ModelPackage.eINSTANCE
+          .getRetrieveDataActivity_DataVariable().getName();
+      String dataVariableName = ((Element) node).getAttribute(attDataVariable);
 
-			return activity;
-		}
+      if (dataVariableName != null) {
+        activity.setDataVariable(BPELReader.getVariable(process.getVariables(),
+            dataVariableName));
+      }
 
-		/*
-		 * CreateActivity
-		 */
-		if (DataManagementConstants.ND_CREATE_ACTIVITY.equals(elementType
-				.getLocalPart())) {
+      return activity;
+    }
 
-			Element createActivityElement = (Element) node;
-			// create a CreateActivity model object
-			CreateActivity activity = ModelFactory.eINSTANCE
-					.createCreateActivity();
-			// attach the DOM node to our new activity
-			activity.setElement(createActivityElement);
+    /*
+     * WriteDataBackDataActivity
+     */
+    if (DataManagementConstants.ND_WRITE_DATA_BACK_ACTIVITY.equals(elementType
+        .getLocalPart())) {
+      Element writeDataBackActivityElement = (Element) node;
 
-			// handle the CreateActivity attributes
-			if (((Element) node).getAttribute(attStatement) != null) {
-				activity.setDsStatement(((Element) node)
-						.getAttribute(attStatement));
-			}
-			if (((Element) node).getAttribute(attKind) != null) {
-				activity.setDsKind(((Element) node).getAttribute(attKind));
-			}
-			if (((Element) node).getAttribute(attType) != null) {
-				activity.setDsType(((Element) node).getAttribute(attType));
-			}
-			if (((Element) node).getAttribute(attAddress) != null) {
-				activity
-						.setDsAddress(((Element) node).getAttribute(attAddress));
-			}
-			if (((Element) node).getAttribute(attLanguage) != null) {
-				activity.setDsLanguage(((Element) node)
-						.getAttribute(attLanguage));
-			}
+      // create a WriteDataBackActivity model object
+      WriteDataBackActivity activity = ModelFactory.eINSTANCE
+          .createWriteDataBackActivity();
 
-			return activity;
-		}
+      // attach the DOM node to our new activity
+      activity.setElement(writeDataBackActivityElement);
 
-		/*
-		 * DropActivity
-		 */
-		if (DataManagementConstants.ND_DROP_ACTIVITY.equals(elementType
-				.getLocalPart())) {
+      // handle the DataManagementActivity attributes
+      this.setCommonAttributes(activity, node);
 
-			Element dropActivityElement = (Element) node;
-			// create a DropActivity model object
-			DropActivity activity = ModelFactory.eINSTANCE.createDropActivity();
-			// attach the DOM node to our new activity
-			activity.setElement(dropActivityElement);
+      // handle the WriteDataBackDataActivity attributes
+      String attDataVariable = ModelPackage.eINSTANCE.getWriteDataBackActivity_DataVariable().getName();
+      String dataVariableName = ((Element) node).getAttribute(attDataVariable);
 
-			// handle the DropActivity attributes
-			if (((Element) node).getAttribute(attStatement) != null) {
-				activity.setDsStatement(((Element) node)
-						.getAttribute(attStatement));
-			}
-			if (((Element) node).getAttribute(attKind) != null) {
-				activity.setDsKind(((Element) node).getAttribute(attKind));
-			}
-			if (((Element) node).getAttribute(attType) != null) {
-				activity.setDsType(((Element) node).getAttribute(attType));
-			}
-			if (((Element) node).getAttribute(attAddress) != null) {
-				activity
-						.setDsAddress(((Element) node).getAttribute(attAddress));
-			}
-			if (((Element) node).getAttribute(attLanguage) != null) {
-				activity.setDsLanguage(((Element) node)
-						.getAttribute(attLanguage));
-			}
+      if (dataVariableName != null) {
+        activity.setDataVariable(BPELReader.getVariable(process.getVariables(),
+            dataVariableName));
+      }
+      
+      String attWriteTarget = ModelPackage.eINSTANCE.getWriteDataBackActivity_WriteTarget().getName();
 
-			return activity;
-		}
+      if (((Element) node).getAttribute(attWriteTarget) != null) {
+        activity.setWriteTarget(((Element) node).getAttribute(attWriteTarget));
+      }
 
-		/*
-		 * CallActivity
-		 */
-		if (DataManagementConstants.ND_CALL_ACTIVITY.equals(elementType
-				.getLocalPart())) {
+      return activity;
+    }
 
-			Element callActivityElement = (Element) node;
-			// create a CallActivity model object
-			CallActivity activity = ModelFactory.eINSTANCE.createCallActivity();
-			// attach the DOM node to our new activity
-			activity.setElement(callActivityElement);
+    /*
+     * TransferDataActivity
+     */
+    if (DataManagementConstants.ND_TRANSFER_DATA_ACTIVITY.equals(elementType.getLocalPart())) {
+      Element transferDataActivityElement = (Element) node;
 
-			// handle the CallActivity attributes
-			if (((Element) node).getAttribute(attStatement) != null) {
-				activity.setDsStatement(((Element) node)
-						.getAttribute(attStatement));
-			}
-			if (((Element) node).getAttribute(attKind) != null) {
-				activity.setDsKind(((Element) node).getAttribute(attKind));
-			}
-			if (((Element) node).getAttribute(attType) != null) {
-				activity.setDsType(((Element) node).getAttribute(attType));
-			}
-			if (((Element) node).getAttribute(attAddress) != null) {
-				activity
-						.setDsAddress(((Element) node).getAttribute(attAddress));
-			}
-			if (((Element) node).getAttribute(attLanguage) != null) {
-				activity.setDsLanguage(((Element) node)
-						.getAttribute(attLanguage));
-			}
+      // create a TransferDataActivity model object
+      TransferDataActivity activity = ModelFactory.eINSTANCE.createTransferDataActivity();
 
-			return activity;
-		}
+      // attach the DOM node to our new activity
+      activity.setElement(transferDataActivityElement);
 
-		/*
-		 * RetrieveDataActivity
-		 */
-		if (DataManagementConstants.ND_RETRIEVE_DATA_ACTIVITY
-				.equals(elementType.getLocalPart())) {
+      // handle the DataManagementActivity attributes
+      this.setCommonAttributes(activity, node);
 
-			Element retrieveDataActivityElement = (Element) node;
-			// create a RetrieveDataActivity model object
-			RetrieveDataActivity activity = ModelFactory.eINSTANCE
-					.createRetrieveDataActivity();
-			// attach the DOM node to our new activity
-			activity.setElement(retrieveDataActivityElement);
+      // handle the TransferDataActivity attributes
+      String attTargetContainer = ModelPackage.eINSTANCE
+          .getTransferDataActivity_TargetDsContainer().getName();
+      String attTargetKind = ModelPackage.eINSTANCE.getTransferDataActivity_TargetDsKind()
+          .getName();
+      String attTargetType = ModelPackage.eINSTANCE.getTransferDataActivity_TargetDsType()
+          .getName();
+      String attTargetIdentifier = ModelPackage.eINSTANCE
+          .getTransferDataActivity_TargetDsIdentifier().getName();
+      String attTargetLanguage = ModelPackage.eINSTANCE
+          .getTransferDataActivity_TargetDsLanguage().getName();
 
-			// handle the RetrieveDataActivity attributes
-			String attDataVariable = ModelPackage.eINSTANCE
-					.getRetrieveDataActivity_DataVariable().getName();
+      if (transferDataActivityElement.getAttribute(attTargetContainer) != null) {
+        activity.setTargetDsContainer(transferDataActivityElement
+            .getAttribute(attTargetContainer));
+      }
 
-			if (((Element) node).getAttribute(attStatement) != null) {
-				activity.setDsStatement(((Element) node)
-						.getAttribute(attStatement));
-			}
-			if (((Element) node).getAttribute(attKind) != null) {
-				activity.setDsKind(((Element) node).getAttribute(attKind));
-			}
-			if (((Element) node).getAttribute(attType) != null) {
-				activity.setDsType(((Element) node).getAttribute(attType));
-			}
-			if (((Element) node).getAttribute(attAddress) != null) {
-				activity
-						.setDsAddress(((Element) node).getAttribute(attAddress));
-			}
-			if (((Element) node).getAttribute(attLanguage) != null) {
-				activity.setDsLanguage(((Element) node)
-						.getAttribute(attLanguage));
-			}
-			if (((Element) node).getAttribute(attDataVariable) != null) {
-				activity.setDataVariable(BPELReader.getVariable(activity,
-						attDataVariable));
-			}
+      if (transferDataActivityElement.getAttribute(attTargetKind) != null) {
+        activity.setTargetDsKind(transferDataActivityElement.getAttribute(attTargetKind));
+      }
 
-			return activity;
-		}
+      if (transferDataActivityElement.getAttribute(attTargetType) != null) {
+        activity.setTargetDsType(transferDataActivityElement.getAttribute(attTargetType));
+      }
 
-		/*
-		 * TransferActivity
-		 */
-		if (DataManagementConstants.ND_TRANSFER_ACTIVITY.equals(elementType
-				.getLocalPart())) {
+      if (transferDataActivityElement.getAttribute(attTargetIdentifier) != null) {
+        activity.setTargetDsIdentifier(transferDataActivityElement
+            .getAttribute(attTargetIdentifier));
+      }
 
-			String attTargetContainer = ModelPackage.eINSTANCE
-					.getTransferActivity_TargetDsContainer().getName();
-			String attTargetKind = ModelPackage.eINSTANCE
-					.getTransferActivity_TargetDsKind().getName();
-			String attTargetType = ModelPackage.eINSTANCE
-					.getTransferActivity_TargetDsType().getName();
-			String attTargetAddress = ModelPackage.eINSTANCE
-					.getTransferActivity_TargetDsAddress().getName();
-			String attTargetLanguage = ModelPackage.eINSTANCE
-					.getTransferActivity_TargetDsLanguage().getName();
+      if (transferDataActivityElement.getAttribute(attTargetLanguage) != null) {
+        activity.setTargetDsLanguage(transferDataActivityElement
+            .getAttribute(attTargetLanguage));
+      }
 
-			Element transferActivityElement = (Element) node;
+      return activity;
+    }
 
-			// create a TransferActivity model object
-			TransferActivity activity = ModelFactory.eINSTANCE
-					.createTransferActivity();
-			// attach the DOM node to our new activity
-			activity.setElement(transferActivityElement);
+    System.out.println("Cannot handle this kind of element");
+    return null;
+  }
 
-			// handle the TransferActivity attributes
-			if (transferActivityElement.getAttribute(attStatement) != null) {
-				activity.setDsStatement(transferActivityElement.getAttribute(attStatement));
-			}
-			if (transferActivityElement.getAttribute(attKind) != null) {
-				activity.setDsKind(transferActivityElement.getAttribute(attKind));
-			}
-			if (transferActivityElement.getAttribute(attType) != null) {
-				activity.setDsType(transferActivityElement.getAttribute(attType));
-			}
-			if (transferActivityElement.getAttribute(attAddress) != null) {
-				activity.setDsAddress(transferActivityElement.getAttribute(attAddress));
-			}
-			if (transferActivityElement.getAttribute(attLanguage) != null) {
-				activity.setDsLanguage(transferActivityElement.getAttribute(attLanguage));
-			}
-			if (transferActivityElement.getAttribute(attTargetContainer) != null) {
-				activity.setTargetDsContainer(transferActivityElement.getAttribute(attTargetContainer));
-			}
-			if (transferActivityElement.getAttribute(attTargetKind) != null) {
-				activity.setTargetDsKind(transferActivityElement.getAttribute(attTargetKind));
-			}
-			if (transferActivityElement.getAttribute(attTargetType) != null) {
-				activity.setTargetDsType(transferActivityElement.getAttribute(attTargetType));
-			}
-			if (transferActivityElement.getAttribute(attTargetAddress) != null) {
-				activity.setTargetDsAddress(transferActivityElement.getAttribute(attTargetAddress));
-			}
-			if (transferActivityElement.getAttribute(attTargetLanguage) != null) {
-				activity.setTargetDsLanguage(transferActivityElement.getAttribute(attTargetLanguage));
-			}
-			
-			return activity;
-		}
+  /**
+   * Sets the common data management activity attributes from the DOM node on an activity
+   * object.
+   * 
+   * @param activity
+   * @param node
+   */
+  private void setCommonAttributes(DataManagementActivity activity, Node node) {
+    String attStatement = ModelPackage.eINSTANCE.getDataManagementActivity_DsStatement()
+        .getName();
+    String attKind = ModelPackage.eINSTANCE.getDataManagementActivity_DsKind().getName();
+    String attType = ModelPackage.eINSTANCE.getDataManagementActivity_DsType().getName();
+    String attIdentifier = ModelPackage.eINSTANCE.getDataManagementActivity_DsIdentifier()
+        .getName();
+    String attLanguage = ModelPackage.eINSTANCE.getDataManagementActivity_DsLanguage()
+        .getName();
 
-		System.out.println("Cannot handle this kind of element");
-		return null;
-	}
+    if (((Element) node).getAttribute(attStatement) != null) {
+      activity.setDsStatement(((Element) node).getAttribute(attStatement));
+    }
+
+    if (((Element) node).getAttribute(attKind) != null) {
+      activity.setDsKind(((Element) node).getAttribute(attKind));
+    }
+
+    if (((Element) node).getAttribute(attType) != null) {
+      activity.setDsType(((Element) node).getAttribute(attType));
+    }
+
+    if (((Element) node).getAttribute(attIdentifier) != null) {
+      activity.setDsIdentifier(((Element) node).getAttribute(attIdentifier));
+    }
+
+    if (((Element) node).getAttribute(attLanguage) != null) {
+      activity.setDsLanguage(((Element) node).getAttribute(attLanguage));
+    }
+  }
 }

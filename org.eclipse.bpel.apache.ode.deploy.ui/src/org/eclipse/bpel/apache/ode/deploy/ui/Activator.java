@@ -11,11 +11,8 @@
 
 package org.eclipse.bpel.apache.ode.deploy.ui;
 
-import org.eclipse.bpel.apache.ode.deploy.ui.util.SIMPLCoreMetaData;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -54,17 +51,6 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		try {
-			SIMPLCoreMetaData.init();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			MessageDialog
-					.openError(
-							Display.getCurrent().getActiveShell(),
-							"SIMPL Core Connection Exception",
-					"The SIMPL Core isn't available. Please check if your Apache Tomcat Server is running and reload Plug-In data.");
-		}
 	}
 
 	/*

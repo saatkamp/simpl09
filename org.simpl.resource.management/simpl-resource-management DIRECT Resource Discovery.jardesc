@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="C:/Tomcat6.0/webapps/axis2/WEB-INF/lib/simpl-resource-management.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/org.simpl.resource.management/simpl-resource-management DIRECT Resource Discovery.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="/org.simpl.core/SIMPL-CORE.MF" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=org.simpl.resource.management/src&lt;org.simpl.resource.management.db{RDBDataFormat.java"/>
+        <folder path="/org.simpl.resource.management/sql"/>
+        <javaElement handleIdentifier="=org.simpl.resource.management/src&lt;org.simpl.resource.management.data"/>
+        <javaElement handleIdentifier="=org.simpl.resource.management/src&lt;org.simpl.resource.management.db{PostgreSQLRDBDataSourceService.java"/>
+        <javaElement handleIdentifier="=org.simpl.resource.management/src&lt;org.simpl.resource.management"/>
+        <javaElement handleIdentifier="=org.simpl.resource.management/src&lt;org.simpl.resource.management.db{RDBResult.java"/>
+        <javaElement handleIdentifier="=org.simpl.resource.management/src&lt;org.simpl.resource.management.db{DataFormatPlugin.java"/>
+        <javaElement handleIdentifier="=org.simpl.resource.management/src&lt;org.simpl.resource.management.db{DataSourceService.java"/>
+        <file path="/org.simpl.resource.management/src/org/simpl/resource/management/db/RelationalDataFormat.xsd"/>
+        <folder path="/org.simpl.resource.management/schemas"/>
+    </selectedElements>
+</jardesc>

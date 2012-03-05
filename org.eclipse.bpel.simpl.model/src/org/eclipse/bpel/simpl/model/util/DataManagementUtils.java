@@ -5,7 +5,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: DataManagementUtils.java 1026 2010-03-30 13:40:15Z hahnml@t-online.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */

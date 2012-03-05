@@ -5,7 +5,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Firas Zoabi <zoabifs@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: LiveEditStyleText.java 1693 2010-10-27 17:56:41Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -13,7 +13,6 @@ package org.eclipse.bpel.simpl.ui.widgets;
 
 import java.util.LinkedList;
 
-import org.eclipse.bpel.simpl.ui.properties.DMActivityPropertySection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.LineStyleEvent;
 import org.eclipse.swt.custom.LineStyleListener;
@@ -159,7 +158,8 @@ public class LiveEditStyleText extends StyledText{
         	}
 
       
-	private String RemoveExtraSpaces(String text) {
+	@SuppressWarnings("unused")
+  private String RemoveExtraSpaces(String text) {
 		for(int i=0;i<text.length();i++)
 		{
 			//if(text.contains("  ")) 

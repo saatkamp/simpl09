@@ -5,14 +5,15 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: IStatementEditor.java 1786 2011-04-05 11:24:45Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
 package org.eclipse.bpel.simpl.ui.extensions;
 
-import org.eclipse.simpl.communication.client.DataSource;
 import org.eclipse.swt.widgets.Composite;
+import org.simpl.resource.management.data.DataSource;
+
 
 // TODO: Auto-generated Javadoc
 /**

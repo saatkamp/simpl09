@@ -66,7 +66,7 @@
       <command
             categoryId="org.eclipse.simpl.core.category"
             defaultHandler="org.eclipse.bpel.apache.ode.deploy.ui.util.ReloadPlugInDataHandler"
-            id="org.eclipse.bpel.apache.ode.deployl.ui.reloadSIMPLDataCommand"
+            id="org.eclipse.bpel.apache.ode.deploy.ui.reloadSIMPLDataCommand"
             name="Reload Plug-In Data">
       </command>
    </extension>

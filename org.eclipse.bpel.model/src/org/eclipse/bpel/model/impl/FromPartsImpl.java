@@ -35,138 +35,137 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class FromPartsImpl extends ExtensibleElementImpl implements FromParts {
-	/**
-	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getChildren()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<FromPart> children;
+  /**
+   * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getChildren()
+   * @generated
+   * @ordered
+   */
+  protected EList<FromPart> children;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FromPartsImpl() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected FromPartsImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return BPELPackage.Literals.FROM_PARTS;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return BPELPackage.Literals.FROM_PARTS;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<FromPart> getChildren() {
-		if (children == null) {
-			children = new EObjectContainmentEList<FromPart>(FromPart.class,
-					this, BPELPackage.FROM_PARTS__CHILDREN);
-		}
-		return children;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<FromPart> getChildren() {
+    if (children == null) {
+      children = new EObjectContainmentEList<FromPart>(FromPart.class, this,
+          BPELPackage.FROM_PARTS__CHILDREN);
+    }
+    return children;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case BPELPackage.FROM_PARTS__CHILDREN:
-			return ((InternalEList<?>) getChildren()).basicRemove(otherEnd,
-					msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+      NotificationChain msgs) {
+    switch (featureID) {
+    case BPELPackage.FROM_PARTS__CHILDREN:
+      return ((InternalEList<?>) getChildren()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-		case BPELPackage.FROM_PARTS__CHILDREN:
-			return getChildren();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
+    case BPELPackage.FROM_PARTS__CHILDREN:
+      return getChildren();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-		case BPELPackage.FROM_PARTS__CHILDREN:
-			getChildren().clear();
-			getChildren().addAll((Collection<? extends FromPart>) newValue);
-			return;
-		}
-		super.eSet(featureID, newValue);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
+    case BPELPackage.FROM_PARTS__CHILDREN:
+      getChildren().clear();
+      getChildren().addAll((Collection<? extends FromPart>) newValue);
+      return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-		case BPELPackage.FROM_PARTS__CHILDREN:
-			getChildren().clear();
-			return;
-		}
-		super.eUnset(featureID);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID) {
+    switch (featureID) {
+    case BPELPackage.FROM_PARTS__CHILDREN:
+      getChildren().clear();
+      return;
+    }
+    super.eUnset(featureID);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-		case BPELPackage.FROM_PARTS__CHILDREN:
-			return children != null && !children.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
+    case BPELPackage.FROM_PARTS__CHILDREN:
+      return children != null && !children.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
-	@Override
-	protected void adoptContent(EReference reference, Object object) {
-		if (object instanceof FromPart) {
-			ReconciliationHelper.adoptChild(this, children, (FromPart) object,
-					BPELConstants.ND_FROM_PART);
-		}
-		super.adoptContent(reference, object);
-	}
+  @Override
+  protected void adoptContent(EReference reference, Object object) {
+    if (object instanceof FromPart) {
+      ReconciliationHelper.adoptChild(this, children, (FromPart) object,
+          BPELConstants.ND_FROM_PART);
+    }
+    super.adoptContent(reference, object);
+  }
 
-	@Override
-	protected void orphanContent(EReference reference, Object obj) {
-		if (obj instanceof FromPart) {
-			ReconciliationHelper.orphanChild(this, (FromPart) obj);
-		}
-		super.orphanContent(reference, obj);
-	}
+  @Override
+  protected void orphanContent(EReference reference, Object obj) {
+    if (obj instanceof FromPart) {
+      ReconciliationHelper.orphanChild(this, (FromPart) obj);
+    }
+    super.orphanContent(reference, obj);
+  }
 } //FromPartsImpl

@@ -332,13 +332,13 @@ public interface ddPackage extends EPackage {
 	int PROCESS_TYPE__ACTIVITY_MAPPINGS = 15;
 
 	/**
-	 * The feature id for the '<em><b>Attached Uddi Address</b></em>' attribute.
+	 * The feature id for the '<em><b>Attached RF Address</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_TYPE__ATTACHED_UDDI_ADDRESS = 16;
+	int PROCESS_TYPE__ATTACHED_RF_ADDRESS = 16;
 
 	/**
 	 * The number of structural features of the '<em>Process Type</em>' class.
@@ -1170,15 +1170,15 @@ public interface ddPackage extends EPackage {
 	EReference getProcessType_ActivityMappings();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getAttachedUddiAddress <em>Attached Uddi Address</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getAttachedRMAddress <em>Attached RF Address</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Attached Uddi Address</em>'.
-	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getAttachedUddiAddress()
+	 * @return the meta object for the attribute '<em>Attached RF Address</em>'.
+	 * @see org.eclipse.bpel.apache.ode.deploy.model.dd.ProcessType#getAttachedRMAddress()
 	 * @see #getProcessType()
 	 * @generated
 	 */
-	EAttribute getProcessType_AttachedUddiAddress();
+	EAttribute getProcessType_AttachedRMAddress();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.PropertyType <em>Property Type</em>}'.
@@ -1890,12 +1890,12 @@ public interface ddPackage extends EPackage {
 		EReference PROCESS_TYPE__ACTIVITY_MAPPINGS = eINSTANCE.getProcessType_ActivityMappings();
 
 		/**
-		 * The meta object literal for the '<em><b>Attached Uddi Address</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Attached RF Address</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROCESS_TYPE__ATTACHED_UDDI_ADDRESS = eINSTANCE.getProcessType_AttachedUddiAddress();
+		EAttribute PROCESS_TYPE__ATTACHED_RF_ADDRESS = eINSTANCE.getProcessType_AttachedRMAddress();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.bpel.apache.ode.deploy.model.dd.impl.PropertyTypeImpl <em>Property Type</em>}' class.

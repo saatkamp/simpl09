@@ -6,7 +6,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: Application.java 1678 2010-10-12 16:08:13Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -60,7 +60,7 @@ public class Application {
 				.getConfigurationElementsFor(QUERY_LANGUAGE_ID);
 		for (IConfigurationElement e : config) {
 			languageExtensions.add(e);
-			System.out.println("Element: " + e.getName());
+			//System.out.println("Element: " + e.getName());
 		}
 	}
 
@@ -92,7 +92,7 @@ public class Application {
 			final Object o = element.createExecutableExtension("class");
 			if (o instanceof AStatementEditor) {
 				editorClass = (((AStatementEditor) o));
-				System.out.println("Target: " + element.getAttribute("class"));
+				//System.out.println("Target: " + element.getAttribute("class"));
 				;
 			}
 		} catch (Exception ex) {

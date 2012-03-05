@@ -44,106 +44,106 @@ import javax.xml.namespace.QName;
  * @generated
  */
 public interface Reply extends PartnerActivity, Activity {
-	/**
-	 * Returns the value of the '<em><b>Fault Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Fault Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Fault Name</em>' attribute.
-	 * @see #setFaultName(QName)
-	 * @see org.eclipse.bpel.model.BPELPackage#getReply_FaultName()
-	 * @model dataType="org.eclipse.wst.wsdl.QName"
-	 * @generated
-	 */
-	QName getFaultName();
+  /**
+   * Returns the value of the '<em><b>Fault Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Fault Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Fault Name</em>' attribute.
+   * @see #setFaultName(QName)
+   * @see org.eclipse.bpel.model.BPELPackage#getReply_FaultName()
+   * @model dataType="org.eclipse.wst.wsdl.QName"
+   * @generated
+   */
+  QName getFaultName();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Reply#getFaultName <em>Fault Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Fault Name</em>' attribute.
-	 * @see #getFaultName()
-	 */
-	void setFaultName(QName value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Reply#getFaultName <em>Fault Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Fault Name</em>' attribute.
+   * @see #getFaultName()
+   */
+  void setFaultName(QName value);
 
-	/**
-	 * Returns the value of the '<em><b>Variable</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Variable</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Variable</em>' reference.
-	 * @see #setVariable(Variable)
-	 * @see org.eclipse.bpel.model.BPELPackage#getReply_Variable()
-	 * @model
-	 * @generated
-	 */
-	Variable getVariable();
+  /**
+   * Returns the value of the '<em><b>Variable</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Variable</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Variable</em>' reference.
+   * @see #setVariable(Variable)
+   * @see org.eclipse.bpel.model.BPELPackage#getReply_Variable()
+   * @model
+   * @generated
+   */
+  Variable getVariable();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Reply#getVariable <em>Variable</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Variable</em>' reference.
-	 * @see #getVariable()
-	 */
-	void setVariable(Variable value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Reply#getVariable <em>Variable</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Variable</em>' reference.
+   * @see #getVariable()
+   */
+  void setVariable(Variable value);
 
-	/**
-	 * Returns the value of the '<em><b>To Parts</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>To Parts</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>To Parts</em>' containment reference.
-	 * @see #setToParts(ToParts)
-	 * @see org.eclipse.bpel.model.BPELPackage#getReply_ToParts()
-	 * @model containment="true"
-	 * @generated
-	 */
-	ToParts getToParts();
+  /**
+   * Returns the value of the '<em><b>To Parts</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>To Parts</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>To Parts</em>' containment reference.
+   * @see #setToParts(ToParts)
+   * @see org.eclipse.bpel.model.BPELPackage#getReply_ToParts()
+   * @model containment="true"
+   * @generated
+   */
+  ToParts getToParts();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Reply#getToParts <em>To Parts</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>To Parts</em>' containment reference.
-	 * @see #getToParts()
-	 * @generated
-	 */
-	void setToParts(ToParts value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Reply#getToParts <em>To Parts</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>To Parts</em>' containment reference.
+   * @see #getToParts()
+   * @generated
+   */
+  void setToParts(ToParts value);
 
-	/**
-	 * Returns the value of the '<em><b>Message Exchange</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Message Exchange</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Message Exchange</em>' reference.
-	 * @see #setMessageExchange(MessageExchange)
-	 * @see org.eclipse.bpel.model.BPELPackage#getReply_MessageExchange()
-	 * @model required="true"
-	 * @generated
-	 */
-	MessageExchange getMessageExchange();
+  /**
+   * Returns the value of the '<em><b>Message Exchange</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Message Exchange</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Message Exchange</em>' reference.
+   * @see #setMessageExchange(MessageExchange)
+   * @see org.eclipse.bpel.model.BPELPackage#getReply_MessageExchange()
+   * @model required="true"
+   * @generated
+   */
+  MessageExchange getMessageExchange();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Reply#getMessageExchange <em>Message Exchange</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Message Exchange</em>' reference.
-	 * @see #getMessageExchange()
-	 * @generated
-	 */
-	void setMessageExchange(MessageExchange value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Reply#getMessageExchange <em>Message Exchange</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Message Exchange</em>' reference.
+   * @see #getMessageExchange()
+   * @generated
+   */
+  void setMessageExchange(MessageExchange value);
 
 } // Reply

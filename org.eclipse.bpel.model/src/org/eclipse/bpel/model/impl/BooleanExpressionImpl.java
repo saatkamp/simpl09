@@ -27,25 +27,24 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class BooleanExpressionImpl extends ExpressionImpl implements
-		BooleanExpression {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected BooleanExpressionImpl() {
-		super();
-	}
+public class BooleanExpressionImpl extends ExpressionImpl implements BooleanExpression {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected BooleanExpressionImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return BPELPackage.Literals.BOOLEAN_EXPRESSION;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return BPELPackage.Literals.BOOLEAN_EXPRESSION;
+  }
 
 } //BooleanExpressionImpl

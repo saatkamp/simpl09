@@ -5,18 +5,16 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: RetrieveDataActivityAdapter.java 1656 2010-08-18 15:43:55Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
 package org.eclipse.bpel.simpl.ui.adapters;
 
-import org.eclipse.bpel.ui.adapters.ActivityAdapter;
-
 
 /**
  * The Class RetrieveDataActivityAdapter.
  */
-public class RetrieveDataActivityAdapter extends ActivityAdapter {
+public class RetrieveDataActivityAdapter extends DMActivityAdapter {
 
 }

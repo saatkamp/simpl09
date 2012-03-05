@@ -237,6 +237,12 @@
             <input
                   type="org.eclipse.bpel.model.ReferenceVariable">
             </input>
+            <input
+                  type="org.eclipse.bpel.model.ContainerReferenceVariable">
+            </input>
+            <input
+                  type="org.eclipse.bpel.model.DataSourceReferenceVariable">
+            </input>
         </propertySection>
         <propertySection
                afterSection="org.eclipse.bpel.ui.sections.Name"
@@ -501,6 +507,38 @@
               tab="org.eclipse.bpel.ui.tabs.details">
            <input
                  type="org.eclipse.bpel.model.ReferenceVariable">
+           </input>
+        </propertySection>
+        <propertySection
+              class="org.eclipse.bpel.ui.properties.ContainerReferenceVariableInitSection"
+              id="org.eclipse.bpel.ui.sections.ContainerReferenceVariableInitSection"
+              tab="org.eclipse.bpel.ui.tabs.initialization">
+           <input
+                 type="org.eclipse.bpel.model.ContainerReferenceVariable">
+           </input>
+        </propertySection>
+        <propertySection
+              class="org.eclipse.bpel.ui.properties.ContainerReferenceVariableTypeSection"
+              id="org.eclipse.bpel.ui.sections.ContainerReferenceVariableImpl"
+              tab="org.eclipse.bpel.ui.tabs.details">
+           <input
+                 type="org.eclipse.bpel.model.ContainerReferenceVariable">
+           </input>
+        </propertySection>
+        <propertySection
+              class="org.eclipse.bpel.ui.properties.DataSourceReferenceVariableTypeSection"
+              id="org.eclipse.bpel.ui.sections.DataSourceReferenceVariableImpl"
+              tab="org.eclipse.bpel.ui.tabs.details">
+           <input
+                 type="org.eclipse.bpel.model.DataSourceReferenceVariable">
+           </input>
+        </propertySection>
+        <propertySection
+              class="org.eclipse.bpel.ui.properties.DataSourceReferenceVariableInitSection"
+              id="org.eclipse.bpel.ui.sections.DataSourceReferenceVariableInitSection"
+              tab="org.eclipse.bpel.ui.tabs.initialization">
+           <input
+                 type="org.eclipse.bpel.model.DataSourceReferenceVariable">
            </input>
         </propertySection>
      </propertySections>

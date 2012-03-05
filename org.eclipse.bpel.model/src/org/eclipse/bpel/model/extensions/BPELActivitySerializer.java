@@ -12,11 +12,10 @@ package org.eclipse.bpel.model.extensions;
 
 import javax.xml.namespace.QName;
 
-import org.w3c.dom.Node;
-
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.Process;
 import org.eclipse.bpel.model.resource.BPELWriter;
+import org.w3c.dom.Node;
 
 /**
  * This interface should be implemented by classes which serialize

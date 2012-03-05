@@ -5,7 +5,7 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: RetrieveDataActivity.java 1734 2010-12-10 17:05:18Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
@@ -55,12 +55,12 @@ public interface RetrieveDataActivity extends DataManagementActivity {
 	Variable getDataVariable();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.simpl.model.RetrieveDataActivity#getDataVariable <em>Data Variable</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.RetrieveDataActivity#getDataVariable <em>Data Variable</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Data Variable</em>' reference.
-	 * @see #getDataVariable()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Data Variable</em>' reference.
+   * @see #getDataVariable()
+   * @generated
+   */
 	void setDataVariable(Variable value);
 } // RetrieveDataActivity

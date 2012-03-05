@@ -42,150 +42,144 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class CorrelationSetsImpl extends ExtensibleElementImpl implements
-		CorrelationSets {
-	/**
-	 * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getChildren()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<CorrelationSet> children;
+public class CorrelationSetsImpl extends ExtensibleElementImpl implements CorrelationSets {
+  /**
+   * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getChildren()
+   * @generated
+   * @ordered
+   */
+  protected EList<CorrelationSet> children;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CorrelationSetsImpl() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected CorrelationSetsImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return BPELPackage.Literals.CORRELATION_SETS;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return BPELPackage.Literals.CORRELATION_SETS;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<CorrelationSet> getChildren() {
-		if (children == null) {
-			children = new EObjectContainmentEList<CorrelationSet>(
-					CorrelationSet.class, this,
-					BPELPackage.CORRELATION_SETS__CHILDREN);
-		}
-		return children;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<CorrelationSet> getChildren() {
+    if (children == null) {
+      children = new EObjectContainmentEList<CorrelationSet>(CorrelationSet.class, this,
+          BPELPackage.CORRELATION_SETS__CHILDREN);
+    }
+    return children;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case BPELPackage.CORRELATION_SETS__CHILDREN:
-			return ((InternalEList<?>) getChildren()).basicRemove(otherEnd,
-					msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+      NotificationChain msgs) {
+    switch (featureID) {
+    case BPELPackage.CORRELATION_SETS__CHILDREN:
+      return ((InternalEList<?>) getChildren()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-		case BPELPackage.CORRELATION_SETS__CHILDREN:
-			return getChildren();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
+    case BPELPackage.CORRELATION_SETS__CHILDREN:
+      return getChildren();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-		case BPELPackage.CORRELATION_SETS__CHILDREN:
-			getChildren().clear();
-			getChildren().addAll(
-					(Collection<? extends CorrelationSet>) newValue);
-			return;
-		}
-		super.eSet(featureID, newValue);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
+    case BPELPackage.CORRELATION_SETS__CHILDREN:
+      getChildren().clear();
+      getChildren().addAll((Collection<? extends CorrelationSet>) newValue);
+      return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-		case BPELPackage.CORRELATION_SETS__CHILDREN:
-			getChildren().clear();
-			return;
-		}
-		super.eUnset(featureID);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID) {
+    switch (featureID) {
+    case BPELPackage.CORRELATION_SETS__CHILDREN:
+      getChildren().clear();
+      return;
+    }
+    super.eUnset(featureID);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-		case BPELPackage.CORRELATION_SETS__CHILDREN:
-			return children != null && !children.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
+    case BPELPackage.CORRELATION_SETS__CHILDREN:
+      return children != null && !children.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
-	@Override
-	protected void adoptContent(EReference reference, Object object) {
-		if (object instanceof CorrelationSet) {
-			if (getElement() == null) {
-				ReconciliationHelper.getInstance().patchParentElement(
-						(CorrelationSet) object, this, null,
-						BPELConstants.ND_CORRELATION_SETS,
-						BPELConstants.ND_CORRELATION_SET);
-			} else {
-				ReconciliationHelper.adoptChild(this, children,
-						(CorrelationSet) object,
-						BPELConstants.ND_CORRELATION_SET);
-			}
-		}
-		super.adoptContent(reference, object);
-	}
+  @Override
+  protected void adoptContent(EReference reference, Object object) {
+    if (object instanceof CorrelationSet) {
+      if (getElement() == null) {
+        ReconciliationHelper.getInstance().patchParentElement((CorrelationSet) object,
+            this, null, BPELConstants.ND_CORRELATION_SETS,
+            BPELConstants.ND_CORRELATION_SET);
+      } else {
+        ReconciliationHelper.adoptChild(this, children, (CorrelationSet) object,
+            BPELConstants.ND_CORRELATION_SET);
+      }
+    }
+    super.adoptContent(reference, object);
+  }
 
-	@Override
-	protected void orphanContent(EReference reference, Object obj) {
-		if (obj instanceof CorrelationSet) {
-			ReconciliationHelper.orphanChild(this, (CorrelationSet) obj);
-		}
-		super.orphanContent(reference, obj);
-	}
+  @Override
+  protected void orphanContent(EReference reference, Object obj) {
+    if (obj instanceof CorrelationSet) {
+      ReconciliationHelper.orphanChild(this, (CorrelationSet) obj);
+    }
+    super.orphanContent(reference, obj);
+  }
 } //CorrelationSetsImpl

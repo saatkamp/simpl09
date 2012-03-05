@@ -5,25 +5,20 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: ModelFactoryImpl.java 1963 2011-10-26 11:22:17Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
 package org.eclipse.bpel.simpl.model.impl;
 
-import org.eclipse.bpel.simpl.model.*;
-import org.eclipse.bpel.simpl.model.CallActivity;
-import org.eclipse.bpel.simpl.model.CreateActivity;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
-import org.eclipse.bpel.simpl.model.DeleteActivity;
-import org.eclipse.bpel.simpl.model.DropActivity;
-import org.eclipse.bpel.simpl.model.InsertActivity;
+import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelFactory;
 import org.eclipse.bpel.simpl.model.ModelPackage;
-import org.eclipse.bpel.simpl.model.QueryActivity;
+import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
-import org.eclipse.bpel.simpl.model.TransferActivity;
-import org.eclipse.bpel.simpl.model.UpdateActivity;
+import org.eclipse.bpel.simpl.model.TransferDataActivity;
+import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -40,33 +35,33 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc --> <!--
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static ModelFactory init() {
-		try {
-			ModelFactory theModelFactory = (ModelFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.example.org/simpl"); 
-			if (theModelFactory != null) {
-				return theModelFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new ModelFactoryImpl();
-	}
+    try {
+      ModelFactory theModelFactory = (ModelFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.example.org/simpl"); 
+      if (theModelFactory != null) {
+        return theModelFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new ModelFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ModelFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -78,21 +73,17 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case ModelPackage.DATA_MANAGEMENT_ACTIVITY: return createDataManagementActivity();
-			case ModelPackage.QUERY_ACTIVITY: return createQueryActivity();
-			case ModelPackage.INSERT_ACTIVITY: return createInsertActivity();
-			case ModelPackage.UPDATE_ACTIVITY: return createUpdateActivity();
-			case ModelPackage.DELETE_ACTIVITY: return createDeleteActivity();
-			case ModelPackage.CREATE_ACTIVITY: return createCreateActivity();
-			case ModelPackage.DROP_ACTIVITY: return createDropActivity();
-			case ModelPackage.CALL_ACTIVITY: return createCallActivity();
-			case ModelPackage.RETRIEVE_DATA_ACTIVITY: return createRetrieveDataActivity();
-			case ModelPackage.TRANSFER_ACTIVITY: return createTransferActivity();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case ModelPackage.DATA_MANAGEMENT_ACTIVITY: return createDataManagementActivity();
+      case ModelPackage.QUERY_DATA_ACTIVITY: return createQueryDataActivity();
+      case ModelPackage.ISSUE_COMMAND_ACTIVITY: return createIssueCommandActivity();
+      case ModelPackage.RETRIEVE_DATA_ACTIVITY: return createRetrieveDataActivity();
+      case ModelPackage.WRITE_DATA_BACK_ACTIVITY: return createWriteDataBackActivity();
+      case ModelPackage.TRANSFER_DATA_ACTIVITY: return createTransferDataActivity();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -101,107 +92,60 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public DataManagementActivity createDataManagementActivity() {
-		DataManagementActivityImpl dataManagementActivity = new DataManagementActivityImpl();
-		return dataManagementActivity;
-	}
+    DataManagementActivityImpl dataManagementActivity = new DataManagementActivityImpl();
+    return dataManagementActivity;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the query activity
-	 * @generated
-	 */
-	public QueryActivity createQueryActivity() {
-		QueryActivityImpl queryActivity = new QueryActivityImpl();
-		return queryActivity;
-	}
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public QueryDataActivity createQueryDataActivity() {
+    QueryDataActivityImpl queryDataActivity = new QueryDataActivityImpl();
+    return queryDataActivity;
+  }
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the insert activity
-	 * @generated
-	 */
-	public InsertActivity createInsertActivity() {
-		InsertActivityImpl insertActivity = new InsertActivityImpl();
-		return insertActivity;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IssueCommandActivity createIssueCommandActivity() {
+    IssueCommandActivityImpl issueCommandActivity = new IssueCommandActivityImpl();
+    return issueCommandActivity;
+  }
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the update activity
-	 * @generated
-	 */
-	public UpdateActivity createUpdateActivity() {
-		UpdateActivityImpl updateActivity = new UpdateActivityImpl();
-		return updateActivity;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WriteDataBackActivity createWriteDataBackActivity() {
+    WriteDataBackActivityImpl writeDataBackActivity = new WriteDataBackActivityImpl();
+    return writeDataBackActivity;
+  }
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the delete activity
-	 * @generated
-	 */
-	public DeleteActivity createDeleteActivity() {
-		DeleteActivityImpl deleteActivity = new DeleteActivityImpl();
-		return deleteActivity;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TransferDataActivity createTransferDataActivity() {
+    TransferDataActivityImpl transferDataActivity = new TransferDataActivityImpl();
+    return transferDataActivity;
+  }
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the creates the activity
-	 * @generated
-	 */
-	public CreateActivity createCreateActivity() {
-		CreateActivityImpl createActivity = new CreateActivityImpl();
-		return createActivity;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the drop activity
-	 * @generated
-	 */
-	public DropActivity createDropActivity() {
-		DropActivityImpl dropActivity = new DropActivityImpl();
-		return dropActivity;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the call activity
-	 * @generated
-	 */
-	public CallActivity createCallActivity() {
-		CallActivityImpl callActivity = new CallActivityImpl();
-		return callActivity;
-	}
-
-	/**
+  /**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 * 
 	 * @return the retrieve data activity
 	 * @generated
 	 */
 	public RetrieveDataActivity createRetrieveDataActivity() {
-		RetrieveDataActivityImpl retrieveDataActivity = new RetrieveDataActivityImpl();
-		return retrieveDataActivity;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TransferActivity createTransferActivity() {
-		TransferActivityImpl transferActivity = new TransferActivityImpl();
-		return transferActivity;
-	}
+    RetrieveDataActivityImpl retrieveDataActivity = new RetrieveDataActivityImpl();
+    return retrieveDataActivity;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -210,8 +154,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public ModelPackage getModelPackage() {
-		return (ModelPackage)getEPackage();
-	}
+    return (ModelPackage)getEPackage();
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
@@ -222,7 +166,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 */
 	@Deprecated
 	public static ModelPackage getPackage() {
-		return ModelPackage.eINSTANCE;
-	}
+    return ModelPackage.eINSTANCE;
+  }
 
 } //ModelFactoryImpl

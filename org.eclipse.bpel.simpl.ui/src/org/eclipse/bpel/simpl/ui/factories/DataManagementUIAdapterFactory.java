@@ -5,37 +5,27 @@
  * <b>Company:</b> SIMPL<br>
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id$ <br>
+ * @version $Id: DataManagementUIAdapterFactory.java 1755 2011-01-17 16:16:42Z michael.schneidt@arcor.de $ <br>
  * @link http://code.google.com/p/simpl09/
  *
  */
 package org.eclipse.bpel.simpl.ui.factories;
 
-import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.util.ModelAdapterFactory;
-import org.eclipse.bpel.simpl.ui.adapters.CallActivityAdapter;
-import org.eclipse.bpel.simpl.ui.adapters.CreateActivityAdapter;
-import org.eclipse.bpel.simpl.ui.adapters.DeleteActivityAdapter;
-import org.eclipse.bpel.simpl.ui.adapters.DropActivityAdapter;
-import org.eclipse.bpel.simpl.ui.adapters.InsertActivityAdapter;
+import org.eclipse.bpel.simpl.ui.adapters.IssueCommandActivityAdapter;
 import org.eclipse.bpel.simpl.ui.adapters.QueryActivityAdapter;
 import org.eclipse.bpel.simpl.ui.adapters.RetrieveDataActivityAdapter;
-import org.eclipse.bpel.simpl.ui.adapters.TransferActivityAdapter;
-import org.eclipse.bpel.simpl.ui.adapters.UpdateActivityAdapter;
-import org.eclipse.bpel.ui.adapters.ActivityAdapter;
+import org.eclipse.bpel.simpl.ui.adapters.TransferDataActivityAdapter;
+import org.eclipse.bpel.simpl.ui.adapters.WriteDataBackActivityAdapter;
 import org.eclipse.emf.common.notify.Adapter;
 
 public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 
-	private QueryActivityAdapter queryActivityAdapter;
-	private InsertActivityAdapter insertActivityAdapter;
-	private UpdateActivityAdapter updateActivityAdapter;
-	private DeleteActivityAdapter deleteActivityAdapter;
-	private CreateActivityAdapter createActivityAdapter;
-	private DropActivityAdapter dropActivityAdapter;
-	private CallActivityAdapter callActivityAdapter;
+	private QueryActivityAdapter queryDataActivityAdapter;
+	private IssueCommandActivityAdapter issueCommandActivityAdapter;
 	private RetrieveDataActivityAdapter retrieveDataActivityAdapter;
-	private TransferActivityAdapter transferActivityAdapter;
+	private WriteDataBackActivityAdapter writeDataBackActivityAdapter;
+	private TransferDataActivityAdapter transferDataActivityAdapter;
 	
 	static private DataManagementUIAdapterFactory instance;
 	
@@ -56,79 +46,24 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createQueryActivityAdapter()
 	 */
 	@Override
-	public Adapter createQueryActivityAdapter() {
-		if (this.queryActivityAdapter == null) {
-			this.queryActivityAdapter = new QueryActivityAdapter();
+	public Adapter createQueryDataActivityAdapter() {
+		if (this.queryDataActivityAdapter == null) {
+			this.queryDataActivityAdapter = new QueryActivityAdapter();
 		}
-		return this.queryActivityAdapter;
+		return this.queryDataActivityAdapter;
 	}
 	
 	/* (non-Javadoc)
-	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createInsertActivityAdapter()
+	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createissueActivityAdapter()
 	 */
 	@Override
-	public Adapter createInsertActivityAdapter() {
-		if (this.insertActivityAdapter == null) {
-			this.insertActivityAdapter = new InsertActivityAdapter();
+	public Adapter createIssueCommandActivityAdapter() {
+		if (this.issueCommandActivityAdapter == null) {
+			this.issueCommandActivityAdapter = new IssueCommandActivityAdapter();
 		}
-		return this.insertActivityAdapter;
+		return this.issueCommandActivityAdapter;
 	}
-	
-	/* (non-Javadoc)
-	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createUpdateActivityAdapter()
-	 */
-	@Override
-	public Adapter createUpdateActivityAdapter() {
-		if (this.updateActivityAdapter == null) {
-			this.updateActivityAdapter = new UpdateActivityAdapter();
-		}
-		return this.updateActivityAdapter;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createDeleteActivityAdapter()
-	 */
-	@Override
-	public Adapter createDeleteActivityAdapter() {
-		if (this.deleteActivityAdapter == null) {
-			this.deleteActivityAdapter = new DeleteActivityAdapter();
-		}
-		return this.deleteActivityAdapter;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createCreateActivityAdapter()
-	 */
-	@Override
-	public Adapter createCreateActivityAdapter() {
-		if (this.createActivityAdapter == null) {
-			this.createActivityAdapter = new CreateActivityAdapter();
-		}
-		return this.createActivityAdapter;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createDropActivityAdapter()
-	 */
-	@Override
-	public Adapter createDropActivityAdapter() {
-		if (this.dropActivityAdapter == null) {
-			this.dropActivityAdapter = new DropActivityAdapter();
-		}
-		return this.dropActivityAdapter;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createCallActivityAdapter()
-	 */
-	@Override
-	public Adapter createCallActivityAdapter() {
-		if (this.callActivityAdapter == null) {
-			this.callActivityAdapter = new CallActivityAdapter();
-		}
-		return this.callActivityAdapter;
-	}
-	
+		
 	/* (non-Javadoc)
 	 * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createRetrieveDataActivityAdapter()
 	 */
@@ -139,12 +74,23 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 		}
 		return this.retrieveDataActivityAdapter;
 	}
+
+  /* (non-Javadoc)
+   * @see org.eclipse.bpel.simpl.model.util.ModelAdapterFactory#createWriteDataBackActivityAdapter()
+   */
+  @Override
+  public Adapter createWriteDataBackActivityAdapter() {
+    if (this.writeDataBackActivityAdapter == null) {
+      this.writeDataBackActivityAdapter = new WriteDataBackActivityAdapter();
+    }
+    return this.writeDataBackActivityAdapter;
+  }
 	
 	@Override
-	public Adapter createTransferActivityAdapter() {
-		if (this.transferActivityAdapter == null) {
-			this.transferActivityAdapter = new TransferActivityAdapter();
+	public Adapter createTransferDataActivityAdapter() {
+		if (this.transferDataActivityAdapter == null) {
+			this.transferDataActivityAdapter = new TransferDataActivityAdapter();
 		}
-		return this.transferActivityAdapter;
+		return this.transferDataActivityAdapter;
 	}
 }

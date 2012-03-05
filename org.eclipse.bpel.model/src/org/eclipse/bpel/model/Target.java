@@ -32,58 +32,58 @@ package org.eclipse.bpel.model;
  * @generated
  */
 public interface Target extends ExtensibleElement {
-	/**
-	 * Returns the value of the '<em><b>Link</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.bpel.model.Link#getTargets <em>Targets</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Link</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Link</em>' reference.
-	 * @see #setLink(Link)
-	 * @see org.eclipse.bpel.model.BPELPackage#getTarget_Link()
-	 * @see org.eclipse.bpel.model.Link#getTargets
-	 * @model opposite="targets" required="true"
-	 * @generated
-	 */
-	Link getLink();
+  /**
+   * Returns the value of the '<em><b>Link</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.bpel.model.Link#getTargets <em>Targets</em>}'.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Link</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Link</em>' reference.
+   * @see #setLink(Link)
+   * @see org.eclipse.bpel.model.BPELPackage#getTarget_Link()
+   * @see org.eclipse.bpel.model.Link#getTargets
+   * @model opposite="targets" required="true"
+   * @generated
+   */
+  Link getLink();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Target#getLink <em>Link</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Link</em>' reference.
-	 * @see #getLink()
-	 * @generated
-	 */
-	void setLink(Link value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Target#getLink <em>Link</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Link</em>' reference.
+   * @see #getLink()
+   * @generated
+   */
+  void setLink(Link value);
 
-	/**
-	 * Returns the value of the '<em><b>Activity</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Activity</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Activity</em>' reference.
-	 * @see #setActivity(Activity)
-	 * @see org.eclipse.bpel.model.BPELPackage#getTarget_Activity()
-	 * @model required="true"
-	 * @generated
-	 */
-	Activity getActivity();
+  /**
+   * Returns the value of the '<em><b>Activity</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Activity</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Activity</em>' reference.
+   * @see #setActivity(Activity)
+   * @see org.eclipse.bpel.model.BPELPackage#getTarget_Activity()
+   * @model required="true"
+   * @generated
+   */
+  Activity getActivity();
 
-	/**
-	 * Sets the value of the '{@link org.eclipse.bpel.model.Target#getActivity <em>Activity</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Activity</em>' reference.
-	 * @see #getActivity()
-	 * @generated
-	 */
-	void setActivity(Activity value);
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.model.Target#getActivity <em>Activity</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Activity</em>' reference.
+   * @see #getActivity()
+   * @generated
+   */
+  void setActivity(Activity value);
 
 } // Target

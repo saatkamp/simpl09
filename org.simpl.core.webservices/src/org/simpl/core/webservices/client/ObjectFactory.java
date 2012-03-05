@@ -6,6 +6,12 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
+import org.simpl.resource.management.data.Authentication;
+import org.simpl.resource.management.data.Connector;
+import org.simpl.resource.management.data.DataConverter;
+import org.simpl.resource.management.data.DataSource;
+import org.simpl.resource.management.data.LateBinding;
+
 
 /**
  * This object contains factory methods for each 
@@ -24,22 +30,13 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _ConnectionException_QNAME = new QName("http://webservices.core.simpl.org/", "ConnectionException");
-    private final static QName _DataSource_QNAME = new QName("http://webservices.core.simpl.org/", "DataSource");
+    private final static QName _Exception_QNAME = new QName("http://webservices.core.simpl.org/", "Exception");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.simpl.core.webservices.client
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link DataSource }
-     * 
-     */
-    public DataSource createDataSource() {
-        return new DataSource();
     }
 
     /**
@@ -51,11 +48,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConnectionException }
+     * Create an instance of {@link DataConverter }
      * 
      */
-    public ConnectionException createConnectionException() {
-        return new ConnectionException();
+    public DataConverter createDataConverter() {
+        return new DataConverter();
     }
 
     /**
@@ -67,21 +64,36 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ConnectionException }{@code >}}
+     * Create an instance of {@link Connector }
      * 
      */
-    @XmlElementDecl(namespace = "http://webservices.core.simpl.org/", name = "ConnectionException")
-    public JAXBElement<ConnectionException> createConnectionException(ConnectionException value) {
-        return new JAXBElement<ConnectionException>(_ConnectionException_QNAME, ConnectionException.class, null, value);
+    public Connector createConnector() {
+        return new Connector();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DataSource }{@code >}}
+     * Create an instance of {@link Exception }
      * 
      */
-    @XmlElementDecl(namespace = "http://webservices.core.simpl.org/", name = "DataSource")
-    public JAXBElement<DataSource> createDataSource(DataSource value) {
-        return new JAXBElement<DataSource>(_DataSource_QNAME, DataSource.class, null, value);
+    public Exception createException() {
+        return new Exception();
+    }
+
+    /**
+     * Create an instance of {@link DataSource }
+     * 
+     */
+    public DataSource createDataSource() {
+        return new DataSource();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Exception }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservices.core.simpl.org/", name = "Exception")
+    public JAXBElement<Exception> createException(Exception value) {
+        return new JAXBElement<Exception>(_Exception_QNAME, Exception.class, null, value);
     }
 
 }

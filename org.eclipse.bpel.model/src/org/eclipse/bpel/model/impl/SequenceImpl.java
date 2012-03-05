@@ -41,139 +41,137 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class SequenceImpl extends ActivityImpl implements Sequence {
-	/**
-	 * The cached value of the '{@link #getActivities() <em>Activities</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getActivities()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Activity> activities;
+  /**
+   * The cached value of the '{@link #getActivities() <em>Activities</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getActivities()
+   * @generated
+   * @ordered
+   */
+  protected EList<Activity> activities;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SequenceImpl() {
-		super();
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected SequenceImpl() {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return BPELPackage.Literals.SEQUENCE;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass() {
+    return BPELPackage.Literals.SEQUENCE;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Activity> getActivities() {
-		if (activities == null) {
-			activities = new EObjectContainmentEList<Activity>(Activity.class,
-					this, BPELPackage.SEQUENCE__ACTIVITIES);
-		}
-		return activities;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Activity> getActivities() {
+    if (activities == null) {
+      activities = new EObjectContainmentEList<Activity>(Activity.class, this,
+          BPELPackage.SEQUENCE__ACTIVITIES);
+    }
+    return activities;
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case BPELPackage.SEQUENCE__ACTIVITIES:
-			return ((InternalEList<?>) getActivities()).basicRemove(otherEnd,
-					msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID,
+      NotificationChain msgs) {
+    switch (featureID) {
+    case BPELPackage.SEQUENCE__ACTIVITIES:
+      return ((InternalEList<?>) getActivities()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-		case BPELPackage.SEQUENCE__ACTIVITIES:
-			return getActivities();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
+    case BPELPackage.SEQUENCE__ACTIVITIES:
+      return getActivities();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-		case BPELPackage.SEQUENCE__ACTIVITIES:
-			getActivities().clear();
-			getActivities().addAll((Collection<? extends Activity>) newValue);
-			return;
-		}
-		super.eSet(featureID, newValue);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
+    case BPELPackage.SEQUENCE__ACTIVITIES:
+      getActivities().clear();
+      getActivities().addAll((Collection<? extends Activity>) newValue);
+      return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-		case BPELPackage.SEQUENCE__ACTIVITIES:
-			getActivities().clear();
-			return;
-		}
-		super.eUnset(featureID);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID) {
+    switch (featureID) {
+    case BPELPackage.SEQUENCE__ACTIVITIES:
+      getActivities().clear();
+      return;
+    }
+    super.eUnset(featureID);
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-		case BPELPackage.SEQUENCE__ACTIVITIES:
-			return activities != null && !activities.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
+    case BPELPackage.SEQUENCE__ACTIVITIES:
+      return activities != null && !activities.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
-	@Override
-	protected void adoptContent(EReference reference, Object object) {
-		if (object instanceof Activity) {
-			ReconciliationHelper.adoptChild(this, activities,
-					(Activity) object, "ACTIVITY");
-		}
-		super.adoptContent(reference, object);
+  @Override
+  protected void adoptContent(EReference reference, Object object) {
+    if (object instanceof Activity) {
+      ReconciliationHelper.adoptChild(this, activities, (Activity) object, "ACTIVITY");
+    }
+    super.adoptContent(reference, object);
 
-	}
+  }
 
-	@Override
-	protected void orphanContent(EReference reference, Object obj) {
-		if (obj instanceof Activity) {
-			ReconciliationHelper.orphanChild(this, (Activity) obj);
-		}
-		super.orphanContent(reference, obj);
-	}
+  @Override
+  protected void orphanContent(EReference reference, Object obj) {
+    if (obj instanceof Activity) {
+      ReconciliationHelper.orphanChild(this, (Activity) obj);
+    }
+    super.orphanContent(reference, obj);
+  }
 } //SequenceImpl

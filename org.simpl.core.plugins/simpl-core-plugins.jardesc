@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
 <jardesc>
-    <jar path="C:/Tomcat 6.0/webapps/ode/WEB-INF/lib/simpl-core-plugins.jar"/>
+    <jar path="C:/Tomcat6.0/webapps/ode/WEB-INF/lib/simpl-core-plugins.jar"/>
     <options buildIfNeeded="true" compress="true" descriptionLocation="/org.simpl.core.plugins/simpl-core-plugins.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
@@ -11,11 +11,16 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataformat.rdb"/>
-        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.datasource.fs"/>
-        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataformat.fs"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataconverter.xml"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataconverter.file"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.connector.ssh"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.connector.fs"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.connector.rdb{EmbDerbyRDBConnector.java"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.connector.rdb{RelationalJDBCbasedDatabaseConnector.java"/>
         <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;au.com.bytecode.opencsv"/>
-        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataformat.converter"/>
-        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.datasource.rdb"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataconverter.sensor.network"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.connector.xml"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.dataconverter.relational"/>
+        <javaElement handleIdentifier="=org.simpl.core.plugins/src&lt;org.simpl.core.plugins.connector.sensor.network"/>
     </selectedElements>
 </jardesc>

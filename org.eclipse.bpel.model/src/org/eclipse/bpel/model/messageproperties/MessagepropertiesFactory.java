@@ -25,49 +25,49 @@ import org.eclipse.emf.ecore.EFactory;
  * @generated
  */
 public interface MessagepropertiesFactory extends EFactory {
-	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	MessagepropertiesFactory eINSTANCE = org.eclipse.bpel.model.messageproperties.impl.MessagepropertiesFactoryImpl
-			.init();
+  /**
+   * The singleton instance of the factory.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  MessagepropertiesFactory eINSTANCE = org.eclipse.bpel.model.messageproperties.impl.MessagepropertiesFactoryImpl
+      .init();
 
-	/**
-	 * Returns a new object of class '<em>Property</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Property</em>'.
-	 * @generated
-	 */
-	Property createProperty();
+  /**
+   * Returns a new object of class '<em>Property</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property</em>'.
+   * @generated
+   */
+  Property createProperty();
 
-	/**
-	 * Returns a new object of class '<em>Property Alias</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Property Alias</em>'.
-	 * @generated
-	 */
-	PropertyAlias createPropertyAlias();
+  /**
+   * Returns a new object of class '<em>Property Alias</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property Alias</em>'.
+   * @generated
+   */
+  PropertyAlias createPropertyAlias();
 
-	/**
-	 * Returns a new object of class '<em>Query</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Query</em>'.
-	 * @generated
-	 */
-	Query createQuery();
+  /**
+   * Returns a new object of class '<em>Query</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Query</em>'.
+   * @generated
+   */
+  Query createQuery();
 
-	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
-	MessagepropertiesPackage getMessagepropertiesPackage();
+  /**
+   * Returns the package supported by this factory.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the package supported by this factory.
+   * @generated
+   */
+  MessagepropertiesPackage getMessagepropertiesPackage();
 
 } //MessagepropertiesFactory
