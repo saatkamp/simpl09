@@ -104,7 +104,7 @@ CREATE TABLE simpl_resources.datatransformationservices (
 CREATE TABLE simpl_resources.datacontainers (
    id SERIAL PRIMARY KEY,
    datasource_id INTEGER,
-   logical_name varchar(255) NOT NULL,
+   logical_name varchar(255) UNIQUE NOT NULL,
    local_identifier xml NOT NULL
 );
 
@@ -310,7 +310,8 @@ VALUES
   <xsd:complexContent>
     <xsd:extension base="simpl:DataContainerReferenceType">
       <xsd:sequence>
-        <xsd:element name="dataSourceReferenceVariable" type="xsd:string"></xsd:element>
+        <xsd:element name="dataSourceReferenceVariable" type="xsd:string" maxOccurs="1"
+            minOccurs="0"></xsd:element>
       </xsd:sequence>
     </xsd:extension>
   </xsd:complexContent>
