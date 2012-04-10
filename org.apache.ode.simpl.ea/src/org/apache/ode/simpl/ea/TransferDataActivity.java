@@ -14,8 +14,6 @@ import org.simpl.core.services.SIMPLCoreService;
 import org.simpl.resource.management.data.LateBinding;
 import org.w3c.dom.Element;
 
-import commonj.sdo.DataObject;
-
 /**
  * <b>Purpose:</b> <br>
  * <b>Description:</b> <br>
@@ -64,20 +62,25 @@ public class TransferDataActivity extends DataManagementActivity {
 
     String dsFrom = VariableUtils.getDataSourceReferenceValue(context, getDsIdentifier(), "name");
     String dsTo = VariableUtils.getDataSourceReferenceValue(context, targetDsIdentifier, "name");
-    LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
+    LateBinding lbSource = DataSourceUtils.getLateBinding(context, getDsIdentifier());
+    LateBinding lbSink = DataSourceUtils.getLateBinding(context, targetDsIdentifier);
+    
 
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 
     try {
       if (!targetDsIdentifier.equals("") || !targetDsContainer.equals("")) {
-        DataObject dataObject = simplCoreService.retrieveData(dsFrom,
-            getDsStatement(context), lb);
-        if (dataObject == null) {
-          this.successfulExecution = false;
-        } else {
-          this.successfulExecution = simplCoreService.writeDataBack(dsTo, dataObject,
-              targetDsContainer, null);
-        }
+        this.successfulExecution = simplCoreService.transferData(dsFrom, dsTo,
+            getDsStatement(context), targetDsContainer, lbSource, lbSink);
+        // DataObject dataObject = simplCoreService.retrieveData(dsFrom,
+        // getDsStatement(context), lb);
+        // if (dataObject == null) {
+        // this.successfulExecution = false;
+        // } else {
+        // this.successfulExecution = simplCoreService.writeDataBack(dsTo,
+        // dataObject,
+        // targetDsContainer, null);
+        // }
       }
 
       if (!this.successfulExecution) {

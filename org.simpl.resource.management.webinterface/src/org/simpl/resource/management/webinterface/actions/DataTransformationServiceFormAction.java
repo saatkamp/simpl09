@@ -116,10 +116,10 @@ public class DataTransformationServiceFormAction extends HttpServlet {
     // initialize data transformation service
     datatransformationservice.setId(parameters.get("id"));
     datatransformationservice.setName(parameters.get("name"));
-    datatransformationservice.setConnectorDataFormat(parameters.get("connectorDataFormat"));
-    datatransformationservice.setWorkflowDataFormat(parameters.get("workflowDataFormat"));
-    datatransformationservice.setDirectionConnectorWorkflow(parameters.get("directionConnectorWorkflow") != null ? "true" : "false");
-    datatransformationservice.setDirectionWorkflowConnector(parameters.get("directionWorkflowConnector") != null ? "true" : "false");
+    datatransformationservice.setInputDataFormat(parameters.get("inputDataFormat"));
+    datatransformationservice.setOutputDataFormat(parameters.get("outputDataFormat"));
+    datatransformationservice.setDirectionInputOutput(parameters.get("directionInputOutput") != null ? "true" : "false");
+    datatransformationservice.setDirectionOutputInput(parameters.get("directionOutputInput") != null ? "true" : "false");
     datatransformationservice.setImplementation(parameters.get("implementation"));
     
     return datatransformationservice;

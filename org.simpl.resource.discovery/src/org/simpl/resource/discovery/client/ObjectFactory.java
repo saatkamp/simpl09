@@ -36,14 +36,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LateBinding }
-     * 
-     */
-    public LateBinding createLateBinding() {
-        return new LateBinding();
-    }
-
-    /**
      * Create an instance of {@link Authentication }
      * 
      */
@@ -52,11 +44,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Connector }
+     * Create an instance of {@link LateBinding }
      * 
      */
-    public Connector createConnector() {
-        return new Connector();
+    public LateBinding createLateBinding() {
+        return new LateBinding();
     }
 
     /**
@@ -73,6 +65,14 @@ public class ObjectFactory {
      */
     public DataConverter createDataConverter() {
         return new DataConverter();
+    }
+
+    /**
+     * Create an instance of {@link Connector }
+     * 
+     */
+    public Connector createConnector() {
+        return new Connector();
     }
 
 }

@@ -225,6 +225,66 @@ public interface SIMPLCoreService {
 
     /**
      * 
+     * @param statement
+     * @param dataSource
+     * @param target
+     * @param lateBindingDataSource
+     * @param dataSink
+     * @param lateBindingDataSink
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(operationName = "TransferDataByDataSource", action = "TransferDataByDataSource")
+    @WebResult(partName = "return")
+    public boolean transferDataByDataSource(
+        @WebParam(name = "dataSource", partName = "dataSource")
+        DataSource dataSource,
+        @WebParam(name = "dataSink", partName = "dataSink")
+        DataSource dataSink,
+        @WebParam(name = "statement", partName = "statement")
+        String statement,
+        @WebParam(name = "target", partName = "target")
+        String target,
+        @WebParam(name = "lateBindingDataSource", partName = "lateBindingDataSource")
+        LateBinding lateBindingDataSource,
+        @WebParam(name = "lateBindingDataSink", partName = "lateBindingDataSink")
+        LateBinding lateBindingDataSink)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param statement
+     * @param target
+     * @param dataSinkName
+     * @param lateBindingDataSource
+     * @param dataSourceName
+     * @param lateBindingDataSink
+     * @return
+     *     returns boolean
+     * @throws Exception_Exception
+     */
+    @WebMethod(operationName = "TranferDataByDataSourceName", action = "TransferDataByDataSourceName")
+    @WebResult(partName = "return")
+    public boolean tranferDataByDataSourceName(
+        @WebParam(name = "dataSourceName", partName = "dataSourceName")
+        String dataSourceName,
+        @WebParam(name = "dataSinkName", partName = "dataSinkName")
+        String dataSinkName,
+        @WebParam(name = "statement", partName = "statement")
+        String statement,
+        @WebParam(name = "target", partName = "target")
+        String target,
+        @WebParam(name = "lateBindingDataSource", partName = "lateBindingDataSource")
+        LateBinding lateBindingDataSource,
+        @WebParam(name = "lateBindingDataSink", partName = "lateBindingDataSink")
+        LateBinding lateBindingDataSink)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
      * @param dataSource
      * @return
      *     returns java.lang.String

@@ -110,6 +110,13 @@ public class TinyDBConnector extends
     // not supported
     return false;
   }
+  
+  @Override
+  public boolean transferData(DataSource dataSource, DataSource dataSink,
+      String statement, String target) throws ConnectionException {
+    // not supported
+    return false;
+  }
 
   @Override
   public DataObject getMetaData(DataSource dataSource, String filter)

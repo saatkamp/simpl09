@@ -85,7 +85,7 @@ public class ResourceManagement {
   DataSource rmDataSource = ResourceManagementConfig.getInstance().getDataSource();
 
   // dataconverters relation fields
-  String[] dataconvertersFields = { "id", "name", "input_datatype", "output_datatype",
+  String[] dataconvertersFields = { "id", "name", "connector_input_datatype", "connector_output_datatype",
       "workflow_dataformat", "direction_output_workflow", "direction_workflow_input",
       "implementation"};
 
@@ -1429,10 +1429,10 @@ public class ResourceManagement {
 //    }
 
     // build SQL insert statement
-    statement = "INSERT INTO simpl_resources.dataconverters (name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation) VALUES (";
+    statement = "INSERT INTO simpl_resources.dataconverters (name, connector_input_datatype, connector_output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation) VALUES (";
     statement += "'" + dataConverter.getName() + "', ";
-    statement += "'" + dataConverter.getInputDataType() + "', ";
-    statement += "'" + dataConverter.getOutputDataType() + "', ";
+    statement += "'" + dataConverter.getConnectorInputDataType() + "', ";
+    statement += "'" + dataConverter.getConnectorOutputDataType() + "', ";
     statement += "'" + dataConverter.getWorkflowDataFormat() + "', ";
     statement += "'" + dataConverter.getDirectionOutputWorkflow() + "', ";
     statement += "'" + dataConverter.getDirectionWorkflowInput() + "', ";
@@ -1459,12 +1459,12 @@ public class ResourceManagement {
     String statement = null;
 
     // build SQL insert statement
-    statement = "INSERT INTO simpl_resources.datatransformationservices (name, connector_dataformat, workflow_dataformat, direction_connector_workflow, direction_workflow_connector, implementation) VALUES (";
+    statement = "INSERT INTO simpl_resources.datatransformationservices (name, input_dataformat, output_dataformat, direction_input_output, direction_output_input, implementation) VALUES (";
     statement += "'" + dataTransformationService.getName() + "', ";
-    statement += "'" + dataTransformationService.getConnectorDataFormat() + "', ";
-    statement += "'" + dataTransformationService.getWorkflowDataFormat() + "', ";
-    statement += "'" + dataTransformationService.getDirectionConnectorWorkflow() + "', ";
-    statement += "'" + dataTransformationService.getDirectionWorkflowConnector() + "', ";
+    statement += "'" + dataTransformationService.getInputDataFormat() + "', ";
+    statement += "'" + dataTransformationService.getOutputDataFormat() + "', ";
+    statement += "'" + dataTransformationService.getDirectionInputOutput() + "', ";
+    statement += "'" + dataTransformationService.getDirectionOutputInput() + "', ";
     statement += "'" + dataTransformationService.getImplementation() + "' ";
     statement += ")";
 
@@ -1718,8 +1718,8 @@ public class ResourceManagement {
     // build SQL update statement
     statement += "UPDATE simpl_resources.dataconverters SET ";
     statement += "name='" + dataConverter.getName() + "', ";
-    statement += "input_datatype='" + dataConverter.getInputDataType() + "', ";
-    statement += "output_datatype='" + dataConverter.getOutputDataType() + "', ";
+    statement += "connector_input_datatype='" + dataConverter.getConnectorInputDataType() + "', ";
+    statement += "connector_output_datatype='" + dataConverter.getConnectorOutputDataType() + "', ";
     statement += "workflow_dataformat='" + dataConverter.getWorkflowDataFormat() + "', ";
     statement += "direction_output_workflow='"
         + dataConverter.getDirectionOutputWorkflow() + "', ";
@@ -1751,14 +1751,14 @@ public class ResourceManagement {
     // build SQL update statement
     statement += "UPDATE simpl_resources.datatransformationservices SET ";
     statement += "name='" + dataTransformationService.getName() + "', ";
-    statement += "connector_dataformat='"
-        + dataTransformationService.getConnectorDataFormat() + "', ";
-    statement += "workflow_dataformat='"
-        + dataTransformationService.getWorkflowDataFormat() + "', ";
-    statement += "direction_connector_workflow='"
-        + dataTransformationService.getDirectionConnectorWorkflow() + "', ";
-    statement += "direction_workflow_connector='"
-        + dataTransformationService.getDirectionWorkflowConnector() + "', ";
+    statement += "input_dataformat='"
+        + dataTransformationService.getInputDataFormat() + "', ";
+    statement += "output_dataformat='"
+        + dataTransformationService.getOutputDataFormat() + "', ";
+    statement += "direction_input_output='"
+        + dataTransformationService.getDirectionInputOutput() + "', ";
+    statement += "direction_output_input='"
+        + dataTransformationService.getDirectionOutputInput() + "', ";
     statement += "implementation='" + dataTransformationService.getImplementation() + "'";
     statement += " WHERE id=" + dataTransformationService.getId();
 
@@ -2387,11 +2387,11 @@ public class ResourceManagement {
         } else if (column.getAttribute("name").getValue().equals(prefix + "name")) {
           dataConverter.setName(column.getValue());
         } else if (column.getAttribute("name").getValue()
-            .equals(prefix + "input_datatype")) {
-          dataConverter.setInputDataType(column.getValue());
+            .equals(prefix + "connector_input_datatype")) {
+          dataConverter.setConnectorInputDataType(column.getValue());
         } else if (column.getAttribute("name").getValue()
-            .equals(prefix + "output_datatype")) {
-          dataConverter.setOutputDataType(column.getValue());
+            .equals(prefix + "connector_output_datatype")) {
+          dataConverter.setConnectorOutputDataType(column.getValue());
         } else if (column.getAttribute("name").getValue()
             .equals(prefix + "workflow_dataformat")) {
           dataConverter.setWorkflowDataFormat(column.getValue());
@@ -2446,17 +2446,17 @@ public class ResourceManagement {
           dataTransformationService.setId(column.getValue());
         } else if (column.getAttribute("name").getValue().equals("name")) {
           dataTransformationService.setName(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("connector_dataformat")) {
-          dataTransformationService.setConnectorDataFormat(column.getValue());
-        } else if (column.getAttribute("name").getValue().equals("workflow_dataformat")) {
-          dataTransformationService.setWorkflowDataFormat(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("input_dataformat")) {
+          dataTransformationService.setInputDataFormat(column.getValue());
+        } else if (column.getAttribute("name").getValue().equals("output_dataformat")) {
+          dataTransformationService.setOutputDataFormat(column.getValue());
         } else if (column.getAttribute("name").getValue()
-            .equals("direction_connector_workflow")) {
-          dataTransformationService.setDirectionConnectorWorkflow(column.getValue()
+            .equals("direction_input_output")) {
+          dataTransformationService.setDirectionInputOutput(column.getValue()
               .trim());
         } else if (column.getAttribute("name").getValue()
-            .equals("direction_workflow_connector")) {
-          dataTransformationService.setDirectionWorkflowConnector(column.getValue()
+            .equals("direction_output_input")) {
+          dataTransformationService.setDirectionOutputInput(column.getValue()
               .trim());
         } else if (column.getAttribute("name").getValue().equals("implementation")) {
           dataTransformationService.setImplementation(column.getValue());

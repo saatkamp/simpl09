@@ -191,6 +191,41 @@ public class SIMPLCore {
 
     return success;
   }
+  
+  @WebMethod(action = "TransferDataByDataSource")
+  public boolean TransferDataByDataSource(
+      @WebParam(name = "dataSource") DataSource dataSource,
+      @WebParam(name = "dataSink") DataSource dataSink,
+      @WebParam(name = "statement") String statement,
+      @WebParam(name = "target") String target,
+      @WebParam(name = "lateBindingDataSource") LateBinding lateBindingDataSource,
+      @WebParam(name = "lateBindingDataSink") LateBinding lateBindingDataSink) throws Exception {
+    boolean success = false;
+
+    success = SIMPLCoreService.getInstance().getService()
+        .transferData(dataSource, dataSink, statement, target, lateBindingDataSource, lateBindingDataSink);
+
+    return success;
+  }
+  
+  @WebMethod(action = "TransferDataByDataSourceName")
+  public boolean TranferDataByDataSourceName(
+      @WebParam(name = "dataSourceName") String dataSourceName,
+      @WebParam(name = "dataSinkName") String dataSinkName,
+      @WebParam(name = "statement") String statement,
+      @WebParam(name = "target") String target,
+      @WebParam(name = "lateBindingDataSource") LateBinding lateBindingDataSource,
+      @WebParam(name = "lateBindingDataSink") LateBinding lateBindingDataSink) throws Exception {
+    boolean success = false;
+    
+    DataSource dataSource = RMClient.getInstance().getDataSourceByName(dataSourceName);
+    DataSource dataSink = RMClient.getInstance().getDataSourceByName(dataSinkName);
+
+    success = SIMPLCoreService.getInstance().getService()
+    .transferData(dataSource, dataSink, statement, target, lateBindingDataSource, lateBindingDataSink);
+
+    return success;
+  }
 
   @WebMethod(action = "getMetaData")
   public String getMetaData(@WebParam(name = "dataSource") DataSource dataSource,

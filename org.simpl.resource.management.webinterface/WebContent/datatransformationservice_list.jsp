@@ -29,10 +29,10 @@
       <tr>
         <td></td>
         <td>Name</td>
-        <td>Connector Data Format</td>
-        <td>Workflow Data Format</td>
-        <td>Connector -&gt; Workflow</td>
-        <td>Workflow -&gt; Connector</td>
+        <td>Input Data Format</td>
+        <td>Output Data Format</td>
+        <td>Input -&gt; Output</td>
+        <td>Output -&gt; Input</td>
         <td>Implementation</td>
       </tr>
       
@@ -40,10 +40,10 @@
         <tr>
           <td><input type="radio" name="id" value="<%=dataTransformationService.getId()%>"></input></td>
           <td><%=!Check.empty(dataTransformationService.getName()) ? dataTransformationService.getName() : ""%></td>
-          <td><%=!Check.empty(dataTransformationService.getConnectorDataFormat()) ? dataTransformationService.getConnectorDataFormat() : ""%></td>
-          <td><%=!Check.empty(dataTransformationService.getWorkflowDataFormat()) ? dataTransformationService.getWorkflowDataFormat() : ""%></td>
-          <td><%=!Check.empty(dataTransformationService.getDirectionConnectorWorkflow()) ? dataTransformationService.getDirectionConnectorWorkflow() : ""%></td>
-          <td><%=!Check.empty(dataTransformationService.getDirectionWorkflowConnector()) ? dataTransformationService.getDirectionWorkflowConnector() : ""%></td>
+          <td><%=!Check.empty(dataTransformationService.getInputDataFormat()) ? dataTransformationService.getInputDataFormat() : ""%></td>
+          <td><%=!Check.empty(dataTransformationService.getOutputDataFormat()) ? dataTransformationService.getOutputDataFormat() : ""%></td>
+          <td><%=!Check.empty(dataTransformationService.getDirectionInputOutput()) ? dataTransformationService.getDirectionInputOutput() : ""%></td>
+          <td><%=!Check.empty(dataTransformationService.getDirectionOutputInput()) ? dataTransformationService.getDirectionOutputInput() : ""%></td>
           <td><%=!Check.empty(dataTransformationService.getImplementation()) ? dataTransformationService.getImplementation() : ""%></td>
         </tr>
       <% } %>

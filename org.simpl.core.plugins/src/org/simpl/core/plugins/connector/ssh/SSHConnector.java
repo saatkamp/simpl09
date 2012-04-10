@@ -197,6 +197,47 @@ public class SSHConnector extends ConnectorPlugin<File, RandomFiles> {
     // query is successful if no error occurs
     return true;
   }
+  
+  @Override
+  public boolean transferData(DataSource dataSource, DataSource dataSink,
+      String file, String target) throws ConnectionException {
+
+    if (SSHConnector.logger.isDebugEnabled()) {
+      SSHConnector.logger.debug("boolean transferData("
+          + dataSource.getAddress() + ", " + dataSink.getAddress() + ", "
+          + file + ", " + target + ") executed.");
+    }
+
+    String dir = "";
+    String fullPath = "";
+    if (!dataSource.getAddress().equals("")) {
+      dir = dataSource.getAddress() + File.separator;
+    }
+
+    // if the user input in incorrect -> replace
+    fullPath = dir + file;
+    // Linux
+    fullPath = fullPath.replace("//", "/");
+    // Windows
+    fullPath = fullPath.replace("\\\\", "\\");
+
+    File f = new File(fullPath);
+    File[] files = null;
+
+    if (f.isDirectory()) {
+      files = f.listFiles(new FileFilter() {
+        @Override
+        public boolean accept(File f) {
+          return f.isFile();
+        }
+      });
+    } else {
+      files = new File[1];
+      files[0] = f;
+    }
+    
+    return this.writeDataBack(dataSink, f, target);
+  }
 
   @Override
   public DataObject getMetaData(DataSource dataSource, String filter)
@@ -349,4 +390,5 @@ public class SSHConnector extends ConnectorPlugin<File, RandomFiles> {
 
     return authed;
   }
+  
 }

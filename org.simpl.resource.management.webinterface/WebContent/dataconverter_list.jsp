@@ -30,8 +30,8 @@
       <tr>
         <td></td>
         <td>Name</td>
-        <td>Input Data Type</td>
-        <td>Output Data Type</td>
+        <td>Connector Input Data Type</td>
+        <td>Connector Output Data Type</td>
         <td>Workflow Data Format</td>
         <td>Workflow -&gt; Input</td>
         <td>Output -&gt; Workflow</td>
@@ -42,8 +42,8 @@
         <tr>
           <td><input type="radio" name="id" value="<%=dataConverter.getId()%>"></input></td>
           <td><%=!Check.empty(dataConverter.getName()) ? dataConverter.getName() : ""%></td>
-          <td><%=!Check.empty(dataConverter.getInputDataType()) ? StringEscapeUtils.escapeHtml(dataConverter.getInputDataType()) : ""%></td>
-          <td><%=!Check.empty(dataConverter.getOutputDataType()) ? StringEscapeUtils.escapeHtml(dataConverter.getOutputDataType()) : ""%></td>
+          <td><%=!Check.empty(dataConverter.getConnectorInputDataType()) ? StringEscapeUtils.escapeHtml(dataConverter.getConnectorInputDataType()) : ""%></td>
+          <td><%=!Check.empty(dataConverter.getConnectorOutputDataType()) ? StringEscapeUtils.escapeHtml(dataConverter.getConnectorOutputDataType()) : ""%></td>
           <td><%=!Check.empty(dataConverter.getWorkflowDataFormat()) ? dataConverter.getWorkflowDataFormat() : ""%></td>
           <td><%=!Check.empty(dataConverter.getDirectionWorkflowInput()) ? dataConverter.getDirectionWorkflowInput() : "false"%></td>
           <td><%=!Check.empty(dataConverter.getDirectionOutputWorkflow()) ? dataConverter.getDirectionOutputWorkflow() : "false"%></td>

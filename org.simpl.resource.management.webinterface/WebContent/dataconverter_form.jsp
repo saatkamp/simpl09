@@ -21,8 +21,8 @@
 <%
   String id = "";
   String name = "";
-  String inputDataType = "";
-  String outputDataType = "";
+  String connectorInputDataType = "";
+  String connectorOutputDataType = "";
   String workflowDataFormat = "";
   String directionOutputWorkflow = "";
   String directionWorkflowInput = "";
@@ -51,8 +51,8 @@
     if (dataConverter != null) {
       id = dataConverter.getId();
       name = dataConverter.getName();
-      inputDataType = dataConverter.getInputDataType();
-      outputDataType = dataConverter.getOutputDataType();
+      connectorInputDataType = dataConverter.getConnectorInputDataType();
+      connectorOutputDataType = dataConverter.getConnectorOutputDataType();
       workflowDataFormat = dataConverter.getWorkflowDataFormat();
       directionOutputWorkflow = dataConverter.getDirectionOutputWorkflow();
       directionWorkflowInput = dataConverter.getDirectionWorkflowInput();
@@ -71,13 +71,13 @@
   </tr>
 
   <tr>
-    <td><label>Input Data Type</label></td>
-    <td><input name="inputDataType" type="text" value="<%=inputDataType%>" size="100" /></td>
+    <td><label>Connector Input Data Type</label></td>
+    <td><input name="connectorInputDataType" type="text" value="<%=connectorInputDataType%>" size="100" /></td>
   </tr>
   
   <tr>
-    <td><label>Output Data Type</label></td>
-    <td><input name="outputDataType" type="text" value="<%=outputDataType%>" size="100" /></td>
+    <td><label>Connector Output Data Type</label></td>
+    <td><input name="connectorOutputDataType" type="text" value="<%=connectorOutputDataType%>" size="100" /></td>
   </tr>
   
   <tr>

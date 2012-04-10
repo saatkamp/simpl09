@@ -42,8 +42,8 @@ CREATE TABLE simpl_definitions.languages (
 CREATE TABLE simpl_resources.dataconverters (
    id SERIAL PRIMARY KEY,
    name varchar(255) UNIQUE NOT NULL,
-   input_datatype varchar(255) NOT NULL,
-   output_datatype varchar(255) NOT NULL,
+   connector_input_datatype varchar(255) NOT NULL,
+   connector_output_datatype varchar(255) NOT NULL,
    workflow_dataformat varchar(255) NOT NULL,
    direction_output_workflow char(5) DEFAULT 'true',
    direction_workflow_input char(5) DEFAULT 'true',
@@ -94,10 +94,10 @@ CREATE TABLE simpl_resources.datasources (
 CREATE TABLE simpl_resources.datatransformationservices (
    id SERIAL PRIMARY KEY,
    name varchar(255) UNIQUE NOT NULL,
-   connector_dataformat varchar(255) NOT NULL,
-   workflow_dataformat varchar(255) NOT NULL,
-   direction_connector_workflow char(5) DEFAULT 'true',
-   direction_workflow_connector char(5) DEFAULT 'true',
+   input_dataformat varchar(255) NOT NULL,
+   output_dataformat varchar(255) NOT NULL,
+   direction_input_output char(5) DEFAULT 'true',
+   direction_output_input char(5) DEFAULT 'true',
    implementation varchar(255) UNIQUE NOT NULL
 );
 
@@ -207,8 +207,8 @@ CREATE OR REPLACE FUNCTION setConnectorDataConverter() RETURNS trigger AS '
       RAISE NOTICE ''[Trigger] dataFormat: %'', getconnectorXMLProperty(''dataFormat'', NEW.properties_description);
       SELECT INTO matching_dataconverter_id id 
         FROM simpl_resources.dataconverters 
-        WHERE input_datatype = NEW.input_datatype 
-          AND output_datatype = NEW.output_datatype 
+        WHERE connector_input_datatype = NEW.input_datatype 
+          AND connector_output_datatype = NEW.output_datatype 
           AND workflow_dataformat = getConnectorXMLProperty(''dataFormat'', NEW.properties_description)  
         LIMIT 1;
       IF matching_dataconverter_id IS NOT NULL THEN
@@ -241,12 +241,12 @@ CREATE OR REPLACE FUNCTION updateConnectorDataConverters() RETURNS trigger AS '
     connector_workflow_dataformat VARCHAR;
   BEGIN
     RAISE NOTICE ''[Trigger] update_connector_data_converters activated'';
-    RAISE NOTICE ''[Trigger] input_datatype: %'', NEW.input_datatype;
-    RAISE NOTICE ''[Trigger] output_datatype: %'', NEW.output_datatype;
+    RAISE NOTICE ''[Trigger] input_datatype: %'', NEW.connector_input_datatype;
+    RAISE NOTICE ''[Trigger] output_datatype: %'', NEW.connector_output_datatype;
     RAISE NOTICE ''[Trigger] workflow_dataformat: %'', NEW.workflow_dataformat;
-    IF NEW.input_datatype IS NOT NULL AND NEW.output_datatype IS NOT NULL AND NEW.workflow_dataformat IS NOT NULL THEN
-      dataconverter_input_datatype := NEW.input_datatype;
-      dataconverter_output_datatype := NEW.output_datatype;
+    IF NEW.connector_input_datatype IS NOT NULL AND NEW.connector_output_datatype IS NOT NULL AND NEW.workflow_dataformat IS NOT NULL THEN
+      dataconverter_input_datatype := NEW.connector_input_datatype;
+      dataconverter_output_datatype := NEW.connector_output_datatype;
       dataconverter_workflow_dataformat := NEW.workflow_dataformat;
       RAISE NOTICE ''[Trigger] new or updated dataconverter: %, %, %'',dataconverter_input_datatype, dataconverter_output_datatype, dataconverter_workflow_dataformat;
       FOR connector_record IN SELECT * FROM simpl_resources.connectors ORDER BY id LOOP
@@ -370,6 +370,46 @@ VALUES
           </xsd:element>
         </xsd:sequence>
         <xsd:attribute name="stringPattern" type="xsd:string" use="required" fixed="collectionName/documentName">
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>');
+  
+INSERT INTO simpl_definitions.datacontainer_reference_types
+(name, xsd_type)
+VALUES
+('WindowsLocalDataContainerReferenceType', '<xsd:complexType name="WindowsLocalDataContainerReferenceType">
+    <xsd:complexContent>
+      <xsd:extension base="simpl:LocalDataContainerReferenceType">
+        <xsd:sequence>
+          <xsd:element name="directory" type="xsd:string" maxOccurs="1"
+            minOccurs="0">
+          </xsd:element>
+          <xsd:element name="file" type="xsd:string" maxOccurs="1"
+            minOccurs="0">
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="stringPattern" type="xsd:string" use="required" fixed="directory\\file">
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>');
+  
+INSERT INTO simpl_definitions.datacontainer_reference_types
+(name, xsd_type)
+VALUES
+('UnixLocalDataContainerReferenceType', '<xsd:complexType name="UnixLocalDataContainerReferenceType">
+    <xsd:complexContent>
+      <xsd:extension base="simpl:LocalDataContainerReferenceType">
+        <xsd:sequence>
+          <xsd:element name="directory" type="xsd:string" maxOccurs="1"
+            minOccurs="0">
+          </xsd:element>
+          <xsd:element name="file" type="xsd:string" maxOccurs="1"
+            minOccurs="0">
+          </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="stringPattern" type="xsd:string" use="required" fixed="directory/file">
         </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
@@ -641,27 +681,27 @@ VALUES
 
 
 INSERT INTO simpl_resources.dataconverters
-(name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
+(name, connector_input_datatype, connector_output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
 VALUES
 ('RDBDataConverter', 'List<String>', 'RDBResult', 'RDBDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.relational.RDBDataConverter');
 
 INSERT INTO simpl_resources.dataconverters
-(name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
+(name, connector_input_datatype, connector_output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
 VALUES
 ('CSVDataConverter', 'File', 'RandomFiles', 'CSVDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.relational.CSVDataConverter');
 
 INSERT INTO simpl_resources.dataconverters
-(name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
+(name, connector_input_datatype, connector_output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
 VALUES
 ('RandomFilesDataConverter', 'File', 'RandomFiles', 'RandomFilesDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.file.RandomFilesDataConverter');
 
 INSERT INTO simpl_resources.dataconverters
-(name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
+(name, connector_input_datatype, connector_output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
 VALUES
 ('XMLDataConverter', 'File', 'XMLResult', 'XMLDataFormat', 'true', 'true', 'org.simpl.core.plugins.dataconverter.xml.XMLResultDataConverter');
 
 INSERT INTO simpl_resources.dataconverters
-(name, input_datatype, output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
+(name, connector_input_datatype, connector_output_datatype, workflow_dataformat, direction_output_workflow, direction_workflow_input, implementation)
 VALUES
 ('TinyDBDataConverter', 'String', 'TinyDBResult', 'TinyDBDataFormat', 'false', 'true', 'org.simpl.core.plugins.dataconverter.sensor.network.TinyDBResultConverter');
 
@@ -707,7 +747,19 @@ VALUES
   <type>Filesystem</type>
   <subType>Windows Local</subType>
   <language>Shell</language>
-  <apiType>CommandLine</apiType>
+  <apiType>Windows Shell</apiType>
+  <dataFormat>RandomFilesDataFormat</dataFormat>
+</properties_description>');
+
+INSERT INTO simpl_resources.connectors
+(dataconverter_id, name, input_datatype, output_datatype, implementation, properties_description)
+VALUES
+(3, 'UnixLocalFSConnector', 'File', 'RandomFiles', 'org.simpl.core.plugins.connector.fs.UnixLocalFSConnector', '<?xml version="1.0" encoding="UTF-8"?>
+<properties_description xmlns="http://org.simpl.resource.management/connectors/properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/connectors/properties_description connectors.xsd ">
+  <type>Filesystem</type>
+  <subType>Unix Local</subType>
+  <language>Shell</language>
+  <apiType>Unix Shell</apiType>
   <dataFormat>RandomFilesDataFormat</dataFormat>
 </properties_description>');
 
@@ -810,12 +862,33 @@ VALUES
   , ''
   , ''
   , NULL
-  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Filesystem</type><subType>Windows Local</subType><language>Shell</language><apiType>CommandLine</apiType><driverName></driverName><addressPrefix></addressPrefix><dataFormat>RandomFilesDataFormat</dataFormat></connector_properties_description>'
-  , NULL
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Filesystem</type><subType>Windows Local</subType><language>Shell</language><apiType>Windows Shell</apiType><driverName></driverName><addressPrefix></addressPrefix><dataFormat>RandomFilesDataFormat</dataFormat></connector_properties_description>'
+  , 'WindowsLocalDataContainerReferenceType'
 );
 
 /* Workaround: the DUMMY database gets deleted after one datasource is insert. */
 DELETE FROM simpl_resources.datasources WHERE logical_name = 'DUMMY';
+
+INSERT INTO simpl_resources.datasources
+(
+  logical_name
+  , security_username
+  , security_password
+  , interface_description
+  , properties_description
+  , connector_properties_description
+  , datacontainer_reference_type
+)
+VALUES
+(
+  'Unix Local'
+  , ''
+  , ''
+  , ''
+  , NULL
+  , '<connector_properties_description xmlns="http://org.simpl.resource.management/datasources/connector_properties_description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://org.simpl.resource.management/datasources/connector_properties_description datasources.xsd "><type>Filesystem</type><subType>Unix Local</subType><language>Shell</language><apiType>Unix Shell</apiType><driverName></driverName><addressPrefix></addressPrefix><dataFormat>RandomFilesDataFormat</dataFormat></connector_properties_description>'
+  , 'UnixLocalDataContainerReferenceType'
+);
 
 INSERT INTO simpl_resources.datasources
 (
@@ -1008,12 +1081,12 @@ VALUES
   );
 
 INSERT INTO simpl_resources.datatransformationservices
-(name, connector_dataformat, workflow_dataformat, direction_connector_workflow, direction_workflow_connector, implementation)
+(name, input_dataformat, output_dataformat, direction_input_output, direction_output_input, implementation)
 VALUES
 ('CSVToRDBDataTransformationService', 'CSVDataFormat', 'RDBDataFormat', 'true', 'true', 'org.simpl.data.transformation.services.CSVToRDBDataTransformationService');
 
 INSERT INTO simpl_resources.datatransformationservices
-(name, connector_dataformat, workflow_dataformat, direction_connector_workflow, direction_workflow_connector, implementation)
+(name, input_dataformat, output_dataformat, direction_input_output, direction_output_input, implementation)
 VALUES
 ('RandomFilesToRDBDataTransformationService', 'RandomFilesDataFormat', 'RDBDataFormat', 'true', 'true', 'org.simpl.data.transformation.services.RandomFilesToRDBDataTransformationService');
 
