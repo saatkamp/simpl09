@@ -21,10 +21,10 @@
 <%
   String id = "";
   String name = "";
-  String connectorDataFormat = "";
-  String workflowDataFormat = "";
-  String directionConnectorWorkflow = "";
-  String directionWorkflowConnector = "";
+  String inputDataFormat = "";
+  String outputDataFormat = "";
+  String directionInputOutput = "";
+  String directionOutputInput = "";
   String implementation = "";
   
   DataTransformationService dataTransformationService = null;
@@ -50,10 +50,10 @@
     if (dataTransformationService != null) {
       id = dataTransformationService.getId();
       name = dataTransformationService.getName();
-      connectorDataFormat = dataTransformationService.getConnectorDataFormat();
-      workflowDataFormat = dataTransformationService.getWorkflowDataFormat();
-      directionConnectorWorkflow = dataTransformationService.getDirectionConnectorWorkflow();
-      directionWorkflowConnector = dataTransformationService.getDirectionWorkflowConnector();
+      inputDataFormat = dataTransformationService.getInputDataFormat();
+      outputDataFormat = dataTransformationService.getOutputDataFormat();
+      directionInputOutput = dataTransformationService.getDirectionInputOutput();
+      directionOutputInput = dataTransformationService.getDirectionOutputInput();
       implementation = dataTransformationService.getImplementation();
     }
   }
@@ -74,23 +74,23 @@
   </tr>
 
   <tr>
-    <td><label>Connector Data Format</label></td>
-    <td><%=FormMetaData.getInstance().getDataFormatSelect("connectorDataFormat", connectorDataFormat)%></td>
+    <td><label>Input Data Format</label></td>
+    <td><%=FormMetaData.getInstance().getDataFormatSelect("inputDataFormat", inputDataFormat)%></td>
   </tr>
 
   <tr>
-    <td><label>Workflow Data Format</label></td>
-    <td><%=FormMetaData.getInstance().getDataFormatSelect("workflowDataFormat", workflowDataFormat)%></td>
+    <td><label>Output Data Format</label></td>
+    <td><%=FormMetaData.getInstance().getDataFormatSelect("outputDataFormat", outputDataFormat)%></td>
   </tr>
   
   <tr>
-    <td><label>Connector -&gt; Workflow</label></td>
-    <td><input name="directionConnectorWorkflow" type="checkbox" size="100" <%=directionConnectorWorkflow.equals("true") ? "checked" : ""%>/></td>
+    <td><label>Input -&gt; Output</label></td>
+    <td><input name="directionInputOutput" type="checkbox" size="100" <%=directionInputOutput.equals("true") ? "checked" : ""%>/></td>
   </tr>
 
   <tr>
-    <td><label>Workflow -&gt; Connector</label></td>
-    <td><input name="directionWorkflowConnector" type="checkbox" size="100" <%=directionWorkflowConnector.equals("true") ? "checked" : ""%>/></td>
+    <td><label>Output -&gt; Input</label></td>
+    <td><input name="directionOutputInput" type="checkbox" size="100" <%=directionOutputInput.equals("true") ? "checked" : ""%>/></td>
   </tr>
 </table>
 

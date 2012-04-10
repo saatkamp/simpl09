@@ -132,6 +132,40 @@ public class SIMPLCoreInterface {
 
     return this.writeDataBack(dataSource, data, target, lateBinding);
   }
+  
+  public boolean transferData(DataSource dataSource, DataSource dataSink, String statement, String target,
+      LateBinding lateBindingDataSource, LateBinding lateBindingDataSink) throws ConnectionException {
+    boolean success = false;
+
+    // late binding data source
+    if (this.lateBindingIsValid(lateBindingDataSource)) {
+      DataSource lateBoundDataSource = this.resourceDiscovery.findDataSource(lateBindingDataSource);
+      
+      if (lateBoundDataSource.getName() != null) {
+        dataSource = lateBoundDataSource;
+      }
+    }
+    // late binding data sink
+    if (this.lateBindingIsValid(lateBindingDataSink)) {
+      DataSource lateBoundDataSink = this.resourceDiscovery.findDataSource(lateBindingDataSink);
+      
+      if (lateBoundDataSink.getName() != null) {
+        dataSink = lateBoundDataSink;
+      }
+    }
+
+    success = simplCore.transferData(dataSource, dataSink, statement, target);
+
+    return success;
+  }
+
+  public boolean transferData(String dataSourceName, String dataSinkName, String statement,
+      String target, LateBinding lateBindingDataSource, LateBinding lateBindingDataSink) throws ConnectionException {
+    DataSource dataSource = resolveDataSource(dataSourceName);
+    DataSource dataSink = resolveDataSource(dataSinkName);
+
+    return this.transferData(dataSource, dataSink, statement, target, lateBindingDataSource, lateBindingDataSink);
+  }
 
   public DataObject getMetaData(DataSource dataSource, String filter)
       throws ConnectionException {

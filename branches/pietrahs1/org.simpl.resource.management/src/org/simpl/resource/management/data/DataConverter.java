@@ -17,14 +17,14 @@ import javax.xml.bind.annotation.XmlType;
  * @link http://code.google.com/p/simpl09/
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "dataConverter", propOrder = { "id", "name", "inputDataType",
-    "outputDataType", "workflowDataFormat", "directionOutputWorkflow",
+@XmlType(name = "dataConverter", propOrder = { "id", "name", "connectorInputDataType",
+    "connectorOutputDataType", "workflowDataFormat", "directionOutputWorkflow",
     "directionWorkflowInput", "implementation"})
 public class DataConverter {
   private String id;
   private String name;
-  private String inputDataType;
-  private String outputDataType;
+  private String connectorInputDataType;
+  private String connectorOutputDataType;
   private String workflowDataFormat;
   private String directionOutputWorkflow;
   private String directionWorkflowInput;
@@ -67,31 +67,31 @@ public class DataConverter {
   /**
    * @return the inputDataType
    */
-  public String getInputDataType() {
-    return inputDataType;
+  public String getConnectorInputDataType() {
+    return connectorInputDataType;
   }
 
   /**
    * @param inputDataType
    *          the inputDataType to set
    */
-  public void setInputDataType(String inputDataType) {
-    this.inputDataType = inputDataType;
+  public void setConnectorInputDataType(String connectorInputDataType) {
+    this.connectorInputDataType = connectorInputDataType;
   }
 
   /**
    * @return the outputDataType
    */
-  public String getOutputDataType() {
-    return outputDataType;
+  public String getConnectorOutputDataType() {
+    return connectorOutputDataType;
   }
 
   /**
    * @param outputDataType
    *          the outputDataType to set
    */
-  public void setOutputDataType(String outputDataType) {
-    this.outputDataType = outputDataType;
+  public void setConnectorOutputDataType(String connectorOutputDataType) {
+    this.connectorOutputDataType = connectorOutputDataType;
   }
 
   /**
@@ -161,8 +161,8 @@ public class DataConverter {
     string += "\r\nDataConverter {\r\n";
     string += "\tid: " + this.id + ",\r\n";
     string += "\tname: " + this.name + ",\r\n";
-    string += "\tinputDataType: " + this.inputDataType + ",\r\n";
-    string += "\toutputDataType: " + this.outputDataType + ",\r\n";
+    string += "\tconnectorInputDataType: " + this.connectorInputDataType + ",\r\n";
+    string += "\tconnectorOutputDataType: " + this.connectorOutputDataType + ",\r\n";
     string += "\tworkflowDataFormat: " + this.workflowDataFormat + ",\r\n";
     string += "\tdirectionOutputWorkflow: " + this.directionOutputWorkflow + ",\r\n";
     string += "\tdirectionWorkflowInput: " + this.directionWorkflowInput + ",\r\n";

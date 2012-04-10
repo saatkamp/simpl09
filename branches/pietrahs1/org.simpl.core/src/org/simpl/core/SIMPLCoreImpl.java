@@ -184,6 +184,66 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
 
   /*
    * (non-Javadoc)
+   * 
+   * @see
+   * org.simpl.core.connector.Connector#transferData(org.simpl.resource.management
+   * .client .DataSource, org.simpl.resource.management.client .DataSource,
+   * java.lang.String, java.lang.String)
+   */
+  @Override
+  public boolean transferData(DataSource dataSource, DataSource dataSink,
+      String statement, String target) throws ConnectionException {
+    boolean success = true;
+    DataObject retrievedData = null;
+    Connector<Object, Object> connector = null;
+    try {
+      if (this.isDataSourceComplete(dataSource)
+          && this.isDataSourceComplete(dataSink)) {
+        if (dataSink.getAPIType().equals("SSH")) {
+          // SSH server -> use TransferData operation
+          // get connector instance
+          connector = ConnectorProvider.getInstance(dataSink.getType(),
+              dataSink.getSubType());
+          if (statement.contains("[")) {
+            DataContainerReferencesResolver resolver = new DataContainerReferencesResolver(
+                RMClient.getInstance()
+                    .getDataContainerReferenceTypeByDataSourceId(
+                        dataSource.getId(), false));
+            statement = resolver.parseStatement(statement);
+          }
+          if (target.contains("[")) {
+            DataContainerReferencesResolver resolver = new DataContainerReferencesResolver(
+                RMClient.getInstance()
+                    .getDataContainerReferenceTypeByDataSourceId(
+                        dataSink.getId(), false));
+            target = resolver.parseStatement(target);
+          }
+
+          success = connector.transferData(dataSource, dataSink, statement,
+              target);
+        } else {
+          // NO SSH server -> use RetrieveData and WriteDataBack operation
+          // instead
+          retrievedData = this.retrieveData(dataSource, statement);
+
+          if (retrievedData != null) {
+            success = this.writeDataBack(dataSink, retrievedData, target);
+          } else {
+            // no data retrieved
+            success = false;
+          }
+        }
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+      throw new ConnectionException(e.getCause());
+    }
+
+    return success;
+  }
+  
+  /*
+   * (non-Javadoc)
    * @see
    * org.simpl.core.connector.Connector#getMetaData(org.simpl.resource.management.client
    * .DataSource, java.lang.String)
@@ -369,4 +429,5 @@ public class SIMPLCoreImpl implements Connector<DataObject, DataObject> {
 
     return complete;
   }
+
 }

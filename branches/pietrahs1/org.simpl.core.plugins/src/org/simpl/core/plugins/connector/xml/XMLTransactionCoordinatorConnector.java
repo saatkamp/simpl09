@@ -177,6 +177,14 @@ public class XMLTransactionCoordinatorConnector extends
 
     return success;
   }
+  
+  @Override
+  public boolean transferData(DataSource dataSource, DataSource dataSink,
+      String statement, String target) throws ConnectionException {
+    // currently not used
+    // instead retrieveData and writeDataBack are used
+    return false;
+  }
 
   @SuppressWarnings("unchecked")
   @Override
@@ -468,4 +476,5 @@ public class XMLTransactionCoordinatorConnector extends
 
     return success;
   }
+
 }

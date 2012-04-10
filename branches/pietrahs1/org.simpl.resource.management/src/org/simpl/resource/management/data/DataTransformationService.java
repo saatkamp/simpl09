@@ -19,15 +19,15 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dataTransformationService", propOrder = { "id", "name",
-    "connectorDataFormat", "workflowDataFormat", "directionConnectorWorkflow",
-    "directionWorkflowConnector", "implementation" })
+    "inputDataFormat", "outputDataFormat", "directionInputOutput",
+    "directionOutputInput", "implementation" })
 public class DataTransformationService {
   private String id;
   private String name;
-  private String connectorDataFormat;
-  private String workflowDataFormat;
-  private String directionConnectorWorkflow;
-  private String directionWorkflowConnector;
+  private String inputDataFormat;
+  private String outputDataFormat;
+  private String directionInputOutput;
+  private String directionOutputInput;
   private String implementation;
 
   public DataTransformationService() {
@@ -65,63 +65,63 @@ public class DataTransformationService {
   }
 
   /**
-   * @return the connectorDataFormat
+   * @return the inputDataFormat
    */
-  public String getConnectorDataFormat() {
-    return connectorDataFormat;
+  public String getInputDataFormat() {
+    return inputDataFormat;
   }
 
   /**
-   * @param connectorDataFormat
-   *          the connectorDataFormat to set
+   * @param inputDataFormat
+   *          the inputDataFormat to set
    */
-  public void setConnectorDataFormat(String connectorDataFormat) {
-    this.connectorDataFormat = connectorDataFormat;
+  public void setInputDataFormat(String inputDataFormat) {
+    this.inputDataFormat = inputDataFormat;
   }
 
   /**
-   * @return the workflowDataFormat
+   * @return the outputDataFormat
    */
-  public String getWorkflowDataFormat() {
-    return workflowDataFormat;
+  public String getOutputDataFormat() {
+    return outputDataFormat;
   }
 
   /**
-   * @param workflowDataFormat
-   *          the workflowDataFormat to set
+   * @param outputDataFormat
+   *          the outputDataFormat to set
    */
-  public void setWorkflowDataFormat(String workflowDataFormat) {
-    this.workflowDataFormat = workflowDataFormat;
+  public void setOutputDataFormat(String outputDataFormat) {
+    this.outputDataFormat = outputDataFormat;
   }
 
   /**
-   * @return the directionConnectorWorkflow
+   * @return the directionInputOutput
    */
-  public String getDirectionConnectorWorkflow() {
-    return directionConnectorWorkflow;
+  public String getDirectionInputOutput() {
+    return directionInputOutput;
   }
 
   /**
-   * @param directionConnectorWorkflow
-   *          the directionConnectorWorkflow to set
+   * @param directionInputOutput
+   *          the directionInputOutput to set
    */
-  public void setDirectionConnectorWorkflow(String directionConnectorWorkflow) {
-    this.directionConnectorWorkflow = directionConnectorWorkflow;
+  public void setDirectionInputOutput(String directionInputOutput) {
+    this.directionInputOutput = directionInputOutput;
   }
 
   /**
-   * @return the directionWorkflowConnector
+   * @return the directionOutputInput
    */
-  public String getDirectionWorkflowConnector() {
-    return directionWorkflowConnector;
+  public String getDirectionOutputInput() {
+    return directionOutputInput;
   }
 
   /**
-   * @param directionWorkflowConnector
-   *          the directionWorkflowConnector to set
+   * @param directionOutputInput
+   *          the directionOutputInput to set
    */
-  public void setDirectionWorkflowConnector(String directionWorkflowConnector) {
-    this.directionWorkflowConnector = directionWorkflowConnector;
+  public void setDirectionOutputInput(String directionOutputInput) {
+    this.directionOutputInput = directionOutputInput;
   }
 
   /**
@@ -145,11 +145,11 @@ public class DataTransformationService {
     string += "\r\nData Transformation Service {\r\n";
     string += "\tid: " + this.id + ",\r\n";
     string += "\tname: " + this.name + ",\r\n";
-    string += "\tconnectorDataFormat: " + this.connectorDataFormat + ",\r\n";
-    string += "\tworkflowDataFormat: " + this.workflowDataFormat + ",\r\n";
-    string += "\tdirectionConnectorWorkflow: " + this.directionConnectorWorkflow
+    string += "\tinputDataFormat: " + this.inputDataFormat + ",\r\n";
+    string += "\toutputDataFormat: " + this.outputDataFormat + ",\r\n";
+    string += "\tdirectionInputOutput: " + this.directionInputOutput
         + ",\r\n";
-    string += "\tdirectionWorkflowConnector: " + this.directionWorkflowConnector
+    string += "\tdirectionOutputInput: " + this.directionOutputInput
         + ",\r\n";
     string += "\timplementation: " + this.name + ",\r\n";
     string += "}";

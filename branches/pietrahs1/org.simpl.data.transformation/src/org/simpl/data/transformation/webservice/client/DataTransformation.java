@@ -27,9 +27,9 @@ public interface DataTransformation {
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(action = "convert")
+    @WebMethod(action = "convertFrom")
     @WebResult(partName = "return")
-    public String convert(
+    public String convertFrom(
         @WebParam(name = "serviceImpl", partName = "serviceImpl")
         String serviceImpl,
         @WebParam(name = "data", partName = "data")
@@ -63,9 +63,9 @@ public interface DataTransformation {
      * @return
      *     returns java.lang.String
      */
-    @WebMethod(action = "convertFrom")
+    @WebMethod(action = "convert")
     @WebResult(partName = "return")
-    public String convertFrom(
+    public String convert(
         @WebParam(name = "serviceImpl", partName = "serviceImpl")
         String serviceImpl,
         @WebParam(name = "data", partName = "data")

@@ -302,8 +302,8 @@ public class RMWebClient {
 
         // retrieve data transformation service mapping
         for (Connector connector : connectors.getConnectors()) {
-          if (connector.getDataConverter().getWorkflowDataFormat().equals(dataTransformationService.getConnectorDataFormat()) && dataTransformationService.getDirectionWorkflowConnector().equals("true")
-              || connector.getDataConverter().getWorkflowDataFormat().equals(dataTransformationService.getWorkflowDataFormat()) && dataTransformationService.getDirectionConnectorWorkflow().equals("true")) {
+          if (connector.getDataConverter().getWorkflowDataFormat().equals(dataTransformationService.getInputDataFormat()) && dataTransformationService.getDirectionOutputInput().equals("true")
+              || connector.getDataConverter().getWorkflowDataFormat().equals(dataTransformationService.getOutputDataFormat()) && dataTransformationService.getDirectionInputOutput().equals("true")) {
             if (this.dataTransformationServiceMapping.containsKey(dataTransformationService.getImplementation())) {
               this.dataTransformationServiceMapping.get(dataTransformationService.getImplementation()).add(
                   connector.getImplementation());

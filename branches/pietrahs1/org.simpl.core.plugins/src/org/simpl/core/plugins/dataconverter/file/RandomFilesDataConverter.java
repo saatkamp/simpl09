@@ -58,7 +58,15 @@ public class RandomFilesDataConverter extends DataConverterPlugin<RandomFiles, F
       // extract folder location from first file
       if (files.length > 0) {
         File file1 = files[0];
-        sdo.setString("folder", file1.getAbsolutePath().replace("\\" + file1.getName(), ""));
+        // Windows
+        if (file1.getAbsolutePath().lastIndexOf("\\" + file1.getName()) != -1) {
+          sdo.setString("folder", file1.getAbsolutePath().substring(0, file1.getAbsolutePath().lastIndexOf("\\" + file1.getName())));
+        }
+        // Linux
+        else if (file1.getAbsolutePath().lastIndexOf("/" + file1.getName()) != -1){
+          sdo.setString("folder", file1.getAbsolutePath().substring(0, file1.getAbsolutePath().lastIndexOf("/" + file1.getName())));
+          
+        }
       }
       
       for (File current : files) {

@@ -116,8 +116,8 @@ public class DataConverterFormAction extends HttpServlet {
     // initialize data converter
     dataConverter.setId(parameters.get("id"));
     dataConverter.setName(parameters.get("name"));
-    dataConverter.setInputDataType(parameters.get("inputDataType"));
-    dataConverter.setOutputDataType(parameters.get("outputDataType"));
+    dataConverter.setConnectorInputDataType(parameters.get("connectorInputDataType"));
+    dataConverter.setConnectorOutputDataType(parameters.get("connectorOutputDataType"));
     dataConverter.setWorkflowDataFormat(parameters.get("workflowDataFormat"));
     dataConverter.setDirectionOutputWorkflow(parameters.get("directionOutputWorkflow") != null ? "true" : "false");
     dataConverter.setDirectionWorkflowInput(parameters.get("directionWorkflowInput") != null ? "true" : "false");

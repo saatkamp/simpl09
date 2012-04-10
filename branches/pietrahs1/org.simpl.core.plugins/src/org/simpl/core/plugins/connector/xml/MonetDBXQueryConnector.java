@@ -227,6 +227,14 @@ public class MonetDBXQueryConnector extends ConnectorPlugin<File, XMLResult> {
     return success;
   }
 
+  @Override
+  public boolean transferData(DataSource dataSource, DataSource dataSink,
+      String statement, String target) throws ConnectionException {
+    // currently not used
+    // instead retrieveData and writeDataBack are used
+    return false;
+  }
+
   @SuppressWarnings("unchecked")
   @Override
   public DataObject getMetaData(DataSource dataSource, String filter)
@@ -494,4 +502,5 @@ public class MonetDBXQueryConnector extends ConnectorPlugin<File, XMLResult> {
 
     return success;
   }
+
 }

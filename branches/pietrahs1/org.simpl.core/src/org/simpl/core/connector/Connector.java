@@ -71,6 +71,18 @@ public interface Connector<S, T> {
       throws ConnectionException;
 
   /**
+   * 
+   * @param dataSource
+   * @param dataSink
+   * @param statement
+   * @param target
+   * @return <i>true</i> if the data was successfully deposit, <i>false</i> otherwise
+   * @throws ConnectionException
+   */
+  public boolean transferData(DataSource dataSource, DataSource dataSink,
+      String statement, String target) throws ConnectionException;
+
+  /**
    * Returns meta data information about the data source and offers the possibility to
    * filter the data by a XPath expression.
    * 

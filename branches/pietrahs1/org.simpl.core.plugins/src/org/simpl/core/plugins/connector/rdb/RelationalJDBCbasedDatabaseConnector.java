@@ -263,6 +263,14 @@ public class RelationalJDBCbasedDatabaseConnector extends
 
     return success;
   }
+  
+  @Override
+  public boolean transferData(DataSource dataSource, DataSource dataSink,
+      String statement, String target) throws ConnectionException {
+    // currently not used
+    // instead retrieveData and writeDataBack are used
+    return false;
+  }
 
   @Override
   public DataObject getMetaData(DataSource dataSource, String filter)

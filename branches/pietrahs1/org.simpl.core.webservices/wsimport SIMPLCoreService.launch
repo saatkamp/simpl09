@@ -3,7 +3,7 @@
 <listAttribute key="org.eclipse.debug.ui.favoriteGroups">
 <listEntry value="org.eclipse.ui.externaltools.launchGroup"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="C:\Programme\Java\jdk1.6.0_31\bin\wsimport.exe"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="C:\Program Files (x86)\Java\jdk1.6.0_31\bin\wsimport.exe"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="-keep -s ${project_loc}\src -d ${project_loc}\bin -p org.simpl.core.webservices.client -B-XautoNameResolution http://localhost:8080/ode/processes/SIMPLCoreService.SIMPLCoreServicePort?wsdl"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${project_loc}"/>
 </launchConfiguration>
