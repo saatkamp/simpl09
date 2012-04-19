@@ -27,16 +27,16 @@ public class RetrieveDataActivity extends DataManagementActivity {
     loadSIMPLAttributes(context, element);
 
     // Load all specific attribute values from the RetrieveDataActivity.
-    Attr dataVarAttr = element.getAttributeNode("dataVariable");
-    String dataVariableName = dataVarAttr.getValue();
+    Attr targetVarAttr = element.getAttributeNode("targetVariable");
+    String targetVariableName = targetVarAttr.getValue();
 
-    String ds = VariableUtils.getDataSourceReferenceValue(context, getDsIdentifier(), "name");
-    LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
+    String ds = VariableUtils.getDataSourceReferenceValue(context, getDataResource(), "name");
+    LateBinding lb = DataSourceUtils.getLateBinding(context, getDataResource());
 
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 
     try {
-      DataObject dataObject = simplCoreService.retrieveData(ds, getDsStatement(context),
+      DataObject dataObject = simplCoreService.retrieveData(ds, getDmCommand(context),
           lb);
 
       if (dataObject == null) {
@@ -45,7 +45,7 @@ public class RetrieveDataActivity extends DataManagementActivity {
         // context.getInternalInstance().sendEvent(DMFailure);
       } else {
         Node value = SDOUtils.createNodeOfSDO(dataObject);
-        Variable variable = context.getVisibleVariables().get(dataVariableName);
+        Variable variable = context.getVisibleVariables().get(targetVariableName);
         
         if (variable != null) {
           context.writeVariable(variable, value);

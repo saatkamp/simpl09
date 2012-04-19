@@ -246,23 +246,28 @@ public class BPELUtils {
 	 * @param eObject
 	 * @return the namespace map for the given object.
 	 */
+  @SuppressWarnings("unchecked")
+  static public INamespaceMap<String, String> getNamespaceMap(EObject eObject) {
+    INamespaceMap<String, String> nsMap = null;
+    
+    if (eObject == null) {
+      throw new NullPointerException(
+          "eObject cannot be null in getNamespaceMap()");
+    }
 
-	static public INamespaceMap<String, String> getNamespaceMap(EObject eObject) {
+    while (nsMap == null && eObject != null) {
+      nsMap = AdapterRegistry.INSTANCE.adapt(eObject, INamespaceMap.class);
+      if (nsMap == null)
+        eObject = eObject.eContainer();
+    }
+    
+    if (nsMap == null) {
+      throw new IllegalStateException(
+          "INamespaceMap cannot be attached to an eObject");
+    }
 
-		if (eObject == null) {
-			throw new NullPointerException(
-					"eObject cannot be null in getNamespaceMap()");
-		}
-
-		INamespaceMap<String, String> nsMap = AdapterRegistry.INSTANCE.adapt(
-				eObject, INamespaceMap.class);
-		if (nsMap == null) {
-			throw new IllegalStateException(
-					"INamespaceMap cannot be attached to an eObject");
-		}
-
-		return nsMap;
-	}
+    return nsMap;
+  }
 
 	/**
 	 * Return the process object, the root of the EMF BPEL model, from the

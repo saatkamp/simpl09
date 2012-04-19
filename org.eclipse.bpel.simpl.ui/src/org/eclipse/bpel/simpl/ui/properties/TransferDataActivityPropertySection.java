@@ -49,6 +49,7 @@ public class TransferDataActivityPropertySection extends
 	private CCombo writeTargetCombo = null;
 
 	private TransferDataActivity transferDataActivity;
+	private DataSource dataSink = null;
 
 	/**
 	 * Make this section use all the vertical space it can get.
@@ -68,12 +69,8 @@ public class TransferDataActivityPropertySection extends
 		this.transferDataActivity = (TransferDataActivity) getModel();
 
 		createWidgets(parent);
-
-		// Setzen die Datenquellenadresse
-		dataSourceIdentifierCombo.setText(transferDataActivity.getTargetDsIdentifier());
-		writeTargetCombo.setText(transferDataActivity.getTargetDsContainer());
-		// Setzen die Sprache
-		languageText.setText(transferDataActivity.getTargetDsLanguage());
+		
+		setValues();
 	}
 
 	/**
@@ -130,7 +127,7 @@ public class TransferDataActivityPropertySection extends
 				SWT.COLOR_WHITE));
 		parentComposite.setSize(new Point(582, 294));
 		typeLabel = new Label(composite, SWT.NONE);
-		typeLabel.setText("Type of data source:");
+		typeLabel.setText("Type of data sink:");
 		typeLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		typeLabel.setLayoutData(gridData51);
@@ -138,7 +135,7 @@ public class TransferDataActivityPropertySection extends
 		Label filler2 = new Label(composite, SWT.NONE);
 		Label filler5 = new Label(composite, SWT.NONE);
 		kindLabel = new Label(composite, SWT.NONE);
-		kindLabel.setText("Subtype of data source:");
+		kindLabel.setText("Subtype of data sink:");
 		kindLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		createKindCombo();
@@ -152,32 +149,20 @@ public class TransferDataActivityPropertySection extends
 				widgetSelected(e);
 			}
 
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				getCommandFramework().execute(
-						new SetCommand(transferDataActivity, dataSourceIdentifierCombo
-								.getText(), ModelPackage.eINSTANCE
-								.getTransferDataActivity_TargetDsIdentifier()));
+      @Override
+      public void widgetSelected(SelectionEvent e) {
+        getCommandFramework().execute(
+            new SetCommand(transferDataActivity, dataSourceIdentifierCombo
+                .getText(), ModelPackage.eINSTANCE
+                .getTransferDataActivity_DataSink()));
 
-				DataSource dataSource = PropertySectionUtils
-						.findDataSourceByIdentifier(getProcess(),
-								dataSourceIdentifierCombo.getText());
-				
-				if (dataSource != null) {
-					typeText.setText(dataSource.getType());
-					kindText.setText(dataSource.getSubType());
-					languageText.setText(dataSource.getLanguage());
-				} else {
-          typeText.setText("");
-          kindText.setText("");
-          languageText.setText("");				  
-				}
-			}
-		});
+        setValues();
+      }
+    });
 		dataSourceIdentifierCombo.setItems(PropertySectionUtils
 				.getAllDataSourceIdentifiers(getProcess()));
 
-		dataSourceIdentifierLabel.setText("Data source:");
+		dataSourceIdentifierLabel.setText("Data sink:");
 		dataSourceIdentifierCombo.setEditable(false);
 		dataSourceIdentifierCombo.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
@@ -190,26 +175,13 @@ public class TransferDataActivityPropertySection extends
 				SWT.COLOR_WHITE));
 		languageText.setEditable(false);
 		languageText.setLayoutData(gridData4);
-		languageText.addModifyListener(new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-				// Auswahl im Modell speichern
-				getCommandFramework()
-						.execute(
-								new SetCommand(transferDataActivity, languageText
-										.getText(), ModelPackage.eINSTANCE
-										.getTransferDataActivity_TargetDsLanguage()));
-				
-			}
-		});
 
 		writeTargetLabel = new Label(composite, SWT.NONE);
-		writeTargetLabel.setText("Target to insert the data:");
+		writeTargetLabel.setText("Target container to insert the data:");
 		writeTargetLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 
-		languageLabel.setText("Query language:");
+		languageLabel.setText("Query language of data sink:");
 		languageLabel.setVisible(true);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
@@ -227,7 +199,7 @@ public class TransferDataActivityPropertySection extends
 										transferDataActivity,
 										writeTargetCombo.getText(),
 										ModelPackage.eINSTANCE
-												.getTransferDataActivity_TargetDsContainer()));
+												.getTransferDataActivity_DataSinkContainer()));
 			}
 		});
 
@@ -245,27 +217,11 @@ public class TransferDataActivityPropertySection extends
 		gridData2.horizontalAlignment = GridData.FILL;
 		gridData2.verticalAlignment = GridData.CENTER;
 		typeText = new Text(parentComposite, SWT.BORDER);
-		typeText.setToolTipText("Choose the type of data source");
+		typeText.setToolTipText("Choose the type of data sink");
 		typeText.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		typeText.setLayoutData(gridData2);
-
-		// Aktualisieren der KindCombo-Daten
-		typeText.addModifyListener(new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-				// Speichern Auswahl in Modell
-				getCommandFramework().execute(
-						new SetCommand(transferDataActivity, typeText.getText(),
-								ModelPackage.eINSTANCE
-										.getTransferDataActivity_TargetDsType()));
-			}
-		});
 		typeText.setEditable(false);
-
-		// Wert aus Modell setzen
-		typeText.setText(this.transferDataActivity.getTargetDsType());
 	}
 
 	/**
@@ -279,24 +235,9 @@ public class TransferDataActivityPropertySection extends
 		kindText = new Text(parentComposite, SWT.BORDER);
 		kindText.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		kindText.setToolTipText("Choose the subtype of data source");
+		kindText.setToolTipText("Choose the subtype of data sink");
 		kindText.setEditable(false);
 		kindText.setLayoutData(gridData6);
-
-		kindText.addModifyListener(new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-				// Speichern Auswahl in Modell
-				getCommandFramework().execute(
-						new SetCommand(transferDataActivity, kindText.getText(),
-								ModelPackage.eINSTANCE
-										.getTransferDataActivity_TargetDsKind()));
-			}
-		});
-
-		// Wert aus Modell setzen
-		kindText.setText(this.transferDataActivity.getTargetDsKind());
 	}
 
 	/*
@@ -349,4 +290,21 @@ public class TransferDataActivityPropertySection extends
 		return PropertySectionUtils.findDataSourceByIdentifier(getProcess(),
 				dataSourceIdentifierCombo.getText());
 	}
+	
+  private void setValues() {
+    dataSourceIdentifierCombo.setText(transferDataActivity.getDataSink());
+    writeTargetCombo.setText(transferDataActivity.getDataSinkContainer());
+    
+    dataSink = getDataSource();
+    
+    if (dataSink != null) {
+      typeText.setText(dataSink.getType());
+      kindText.setText(dataSink.getSubType());
+      languageText.setText(dataSink.getLanguage());
+    } else {
+      typeText.setText("");
+      kindText.setText("");
+      languageText.setText("");
+    }
+  }
 }

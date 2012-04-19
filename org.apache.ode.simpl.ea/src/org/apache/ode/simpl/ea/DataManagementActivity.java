@@ -14,11 +14,8 @@ import commonj.sdo.Type;
 public abstract class DataManagementActivity extends
 		AbstractSyncExtensionOperation {
 
-	private String dsStatement;
-	private String dsIdentifier;
-	private String dsType;
-	private String dsSubType;
-	private String dsLanguage;
+	private String dmCommand;
+	private String dataResource;
 	private String activityName;
 	public boolean successfulExecution;
 	
@@ -31,11 +28,8 @@ public abstract class DataManagementActivity extends
 	 * @param element which represents an DataManagementActivity.
 	 */
 	protected void loadSIMPLAttributes(ExtensionContext context, Element element) {
-		this.dsStatement = element.getAttribute("dsStatement").toString();
-		this.dsIdentifier = element.getAttribute("dsIdentifier").toString();
-		this.dsType = element.getAttribute("dsType").toString();
-		this.dsSubType = element.getAttribute("dsKind").toString();
-		this.dsLanguage = element.getAttribute("dsLanguage").toString();
+		this.dmCommand = element.getAttribute("dmCommand").toString();
+		this.dataResource = element.getAttribute("dataResource").toString();
 		this.activityName = element.getAttribute("name").toString();
 		
 		DataManagementActivity.setProcessName(context.getOActivity().getOwner().getName());
@@ -50,8 +44,8 @@ public abstract class DataManagementActivity extends
 		return activityName;
 	}
 
-	public String getDsStatement(ExtensionContext context) {
-		return StatementUtils.processStatement(context, dsStatement);
+	public String getDmCommand(ExtensionContext context) {
+		return StatementUtils.processStatement(context, dmCommand);
 	}
 
 	/**
@@ -59,35 +53,8 @@ public abstract class DataManagementActivity extends
 	 * 
 	 * @return id of the activity data source.
 	 */
-	public String getDsIdentifier() {
-		return dsIdentifier;
-	}
-
-	/**
-	 * Getter for the activity data source type attribute.
-	 * 
-	 * @return type of the activity data source.
-	 */
-	public String getDsType() {
-		return dsType;
-	}
-
-	/**
-	 * Getter for the activity data source subtype attribute.
-	 * 
-	 * @return subtype of the activity data source.
-	 */
-	public String getDsSubType() {
-		return dsSubType;
-	}
-
-	/**
-	 * Getter for the activity data source language attribute.
-	 * 
-	 * @return language of the activity data source.
-	 */
-	public String getDsLanguage() {
-		return dsLanguage;
+	public String getDataResource() {
+		return dataResource;
 	}
 
 	/**

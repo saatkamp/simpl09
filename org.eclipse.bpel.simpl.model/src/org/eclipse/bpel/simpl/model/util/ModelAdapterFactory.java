@@ -16,6 +16,7 @@ import javax.wsdl.extensions.ElementExtensible;
 
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.ExtensionActivity;
+import org.eclipse.bpel.simpl.model.*;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
@@ -110,6 +111,22 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
       @Override
       public Adapter caseTransferDataActivity(TransferDataActivity object) {
         return createTransferDataActivityAdapter();
+      }
+      @Override
+      public Adapter caseDataManagementPattern(DataManagementPattern object) {
+        return createDataManagementPatternAdapter();
+      }
+      @Override
+      public Adapter caseContainerToContainerPattern(ContainerToContainerPattern object) {
+        return createContainerToContainerPatternAdapter();
+      }
+      @Override
+      public Adapter caseDataIterationPattern(DataIterationPattern object) {
+        return createDataIterationPatternAdapter();
+      }
+      @Override
+      public Adapter caseDataFormatConversionPattern(DataFormatConversionPattern object) {
+        return createDataFormatConversionPatternAdapter();
       }
       @Override
       public Adapter caseWSDLElement(WSDLElement object) {
@@ -226,6 +243,62 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
    * @generated
    */
   public Adapter createTransferDataActivityAdapter() {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.simpl.model.DataManagementPattern <em>Data Management Pattern</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.bpel.simpl.model.DataManagementPattern
+   * @generated
+   */
+  public Adapter createDataManagementPatternAdapter() {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.simpl.model.ContainerToContainerPattern <em>Container To Container Pattern</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.bpel.simpl.model.ContainerToContainerPattern
+   * @generated
+   */
+  public Adapter createContainerToContainerPatternAdapter() {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.simpl.model.DataIterationPattern <em>Data Iteration Pattern</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.bpel.simpl.model.DataIterationPattern
+   * @generated
+   */
+  public Adapter createDataIterationPatternAdapter() {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.bpel.simpl.model.DataFormatConversionPattern <em>Data Format Conversion Pattern</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.bpel.simpl.model.DataFormatConversionPattern
+   * @generated
+   */
+  public Adapter createDataFormatConversionPatternAdapter() {
     return null;
   }
 

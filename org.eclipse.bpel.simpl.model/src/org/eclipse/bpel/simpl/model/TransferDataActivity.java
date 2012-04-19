@@ -19,11 +19,10 @@ package org.eclipse.bpel.simpl.model;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsIdentifier <em>Target Ds Identifier</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsType <em>Target Ds Type</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsKind <em>Target Ds Kind</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsLanguage <em>Target Ds Language</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsContainer <em>Target Ds Container</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSource <em>Data Source</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSourceCommand <em>Data Source Command</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSink <em>Data Sink</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSinkContainer <em>Data Sink Container</em>}</li>
  * </ul>
  * </p>
  *
@@ -33,138 +32,111 @@ package org.eclipse.bpel.simpl.model;
  */
 public interface TransferDataActivity extends DataManagementActivity {
   /**
-   * Returns the value of the '<em><b>Target Ds Identifier</b></em>' attribute.
-   * The default value is <code>"identifier"</code>.
+   * Returns the value of the '<em><b>Data Source</b></em>' attribute.
+   * The default value is <code>""</code>.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Target Ds Identifier</em>' attribute isn't clear,
+   * If the meaning of the '<em>Data Source</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Target Ds Identifier</em>' attribute.
-   * @see #setTargetDsIdentifier(String)
-   * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferDataActivity_TargetDsIdentifier()
-   * @model default="identifier"
+   * @return the value of the '<em>Data Source</em>' attribute.
+   * @see #setDataSource(String)
+   * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferDataActivity_DataSource()
+   * @model default="" required="true"
    * @generated
    */
-  String getTargetDsIdentifier();
+  String getDataSource();
 
   /**
-   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsIdentifier <em>Target Ds Identifier</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSource <em>Data Source</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Target Ds Identifier</em>' attribute.
-   * @see #getTargetDsIdentifier()
+   * @param value the new value of the '<em>Data Source</em>' attribute.
+   * @see #getDataSource()
    * @generated
    */
-  void setTargetDsIdentifier(String value);
+  void setDataSource(String value);
 
   /**
-   * Returns the value of the '<em><b>Target Ds Type</b></em>' attribute.
-   * The default value is <code>"type"</code>.
+   * Returns the value of the '<em><b>Data Source Command</b></em>' attribute.
+   * The default value is <code>""</code>.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Target Ds Type</em>' attribute isn't clear,
+   * If the meaning of the '<em>Data Source Command</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Target Ds Type</em>' attribute.
-   * @see #setTargetDsType(String)
-   * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferDataActivity_TargetDsType()
-   * @model default="type"
+   * @return the value of the '<em>Data Source Command</em>' attribute.
+   * @see #setDataSourceCommand(String)
+   * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferDataActivity_DataSourceCommand()
+   * @model default="" required="true"
    * @generated
    */
-  String getTargetDsType();
+  String getDataSourceCommand();
 
   /**
-   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsType <em>Target Ds Type</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSourceCommand <em>Data Source Command</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Target Ds Type</em>' attribute.
-   * @see #getTargetDsType()
+   * @param value the new value of the '<em>Data Source Command</em>' attribute.
+   * @see #getDataSourceCommand()
    * @generated
    */
-  void setTargetDsType(String value);
+  void setDataSourceCommand(String value);
 
   /**
-   * Returns the value of the '<em><b>Target Ds Kind</b></em>' attribute.
-   * The default value is <code>"kind"</code>.
+   * Returns the value of the '<em><b>Data Sink</b></em>' attribute.
+   * The default value is <code>""</code>.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Target Ds Kind</em>' attribute isn't clear,
+   * If the meaning of the '<em>Data Sink</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Target Ds Kind</em>' attribute.
-   * @see #setTargetDsKind(String)
-   * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferDataActivity_TargetDsKind()
-   * @model default="kind"
+   * @return the value of the '<em>Data Sink</em>' attribute.
+   * @see #setDataSink(String)
+   * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferDataActivity_DataSink()
+   * @model default="" required="true"
    * @generated
    */
-  String getTargetDsKind();
+  String getDataSink();
 
   /**
-   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsKind <em>Target Ds Kind</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSink <em>Data Sink</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Target Ds Kind</em>' attribute.
-   * @see #getTargetDsKind()
+   * @param value the new value of the '<em>Data Sink</em>' attribute.
+   * @see #getDataSink()
    * @generated
    */
-  void setTargetDsKind(String value);
+  void setDataSink(String value);
 
   /**
-   * Returns the value of the '<em><b>Target Ds Language</b></em>' attribute.
-   * The default value is <code>"language"</code>.
+   * Returns the value of the '<em><b>Data Sink Container</b></em>' attribute.
+   * The default value is <code>""</code>.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Target Ds Language</em>' attribute isn't clear,
+   * If the meaning of the '<em>Data Sink Container</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Target Ds Language</em>' attribute.
-   * @see #setTargetDsLanguage(String)
-   * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferDataActivity_TargetDsLanguage()
-   * @model default="language"
+   * @return the value of the '<em>Data Sink Container</em>' attribute.
+   * @see #setDataSinkContainer(String)
+   * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferDataActivity_DataSinkContainer()
+   * @model default="" required="true"
    * @generated
    */
-  String getTargetDsLanguage();
+  String getDataSinkContainer();
 
   /**
-   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsLanguage <em>Target Ds Language</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSinkContainer <em>Data Sink Container</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Target Ds Language</em>' attribute.
-   * @see #getTargetDsLanguage()
+   * @param value the new value of the '<em>Data Sink Container</em>' attribute.
+   * @see #getDataSinkContainer()
    * @generated
    */
-  void setTargetDsLanguage(String value);
-
-  /**
-   * Returns the value of the '<em><b>Target Ds Container</b></em>' attribute.
-   * The default value is <code>"targetDsContainer"</code>.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Target Ds Container</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Target Ds Container</em>' attribute.
-   * @see #setTargetDsContainer(String)
-   * @see org.eclipse.bpel.simpl.model.ModelPackage#getTransferDataActivity_TargetDsContainer()
-   * @model default="targetDsContainer"
-   * @generated
-   */
-  String getTargetDsContainer();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsContainer <em>Target Ds Container</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Target Ds Container</em>' attribute.
-   * @see #getTargetDsContainer()
-   * @generated
-   */
-  void setTargetDsContainer(String value);
+  void setDataSinkContainer(String value);
 
 } // TransferDataActivity

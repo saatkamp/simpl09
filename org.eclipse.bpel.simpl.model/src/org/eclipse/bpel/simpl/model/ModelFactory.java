@@ -77,6 +77,42 @@ public interface ModelFactory extends EFactory {
   TransferDataActivity createTransferDataActivity();
 
   /**
+   * Returns a new object of class '<em>Data Management Pattern</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Data Management Pattern</em>'.
+   * @generated
+   */
+  DataManagementPattern createDataManagementPattern();
+
+  /**
+   * Returns a new object of class '<em>Container To Container Pattern</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Container To Container Pattern</em>'.
+   * @generated
+   */
+  ContainerToContainerPattern createContainerToContainerPattern();
+
+  /**
+   * Returns a new object of class '<em>Data Iteration Pattern</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Data Iteration Pattern</em>'.
+   * @generated
+   */
+  DataIterationPattern createDataIterationPattern();
+
+  /**
+   * Returns a new object of class '<em>Data Format Conversion Pattern</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Data Format Conversion Pattern</em>'.
+   * @generated
+   */
+  DataFormatConversionPattern createDataFormatConversionPattern();
+
+  /**
 	 * Returns a new object of class '<em>Retrieve Data Activity</em>'. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 

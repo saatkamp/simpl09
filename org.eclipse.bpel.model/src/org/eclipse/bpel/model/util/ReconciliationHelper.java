@@ -91,6 +91,7 @@ import org.eclipse.bpel.model.impl.PartnerLinksImpl;
 import org.eclipse.bpel.model.impl.VariablesImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.wst.wsdl.WSDLElement;
 import org.w3c.dom.CDATASection;
 import org.w3c.dom.Document;
@@ -555,9 +556,13 @@ public class ReconciliationHelper {
         // If the parent object is an ExtensionActivity, then we need to set the
         // new child as child of the <extensionActivity> element child and not the <extensionActivity> itself. 
         // This code snippet changes the parentElement to the correct subelement
-        if (parent instanceof ExtensionActivity) {
-            parentElement = getExtensionActivityChildElement((Element) parentElement);
-        }
+    if (parent instanceof ExtensionActivity) {
+      // to avoid a NullPointerException
+      Node newParent = ReconciliationHelper
+          .getExtensionActivityChildElement((Element) parentElement);
+      if (newParent != null)
+        parentElement = newParent;
+    }
 		
 		if (child instanceof Variable) {
 			parentElement = patchParentElement(child, parent, parentElement, BPELConstants.ND_VARIABLES, BPELConstants.ND_VARIABLE);
@@ -991,6 +996,14 @@ public class ReconciliationHelper {
         if (context instanceof CompensationHandler)  return ((CompensationHandler)context).getActivity();
         if (context instanceof TerminationHandler)  return ((TerminationHandler)context).getActivity();
         if (context instanceof If) return ((If) context).getActivity();
+        if (context instanceof ExtensionActivity) {
+          ExtensionActivity extensionActivity = (ExtensionActivity) context;
+          for (EStructuralFeature structuralFeature : extensionActivity.eClass()
+              .getEAllStructuralFeatures()) {
+            if (structuralFeature.getName().equals("activity"))
+              return (Activity) extensionActivity.eGet(structuralFeature);
+          }
+        }
         System.err.println("Missing getActivity():" + context.getClass());
         throw new IllegalArgumentException();
     }

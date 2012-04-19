@@ -18,6 +18,7 @@ import javax.wsdl.extensions.ElementExtensible;
 
 import org.eclipse.bpel.model.Activity;
 import org.eclipse.bpel.model.ExtensionActivity;
+import org.eclipse.bpel.simpl.model.*;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
@@ -185,6 +186,61 @@ public class ModelSwitch<T> {
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ModelPackage.DATA_MANAGEMENT_PATTERN: {
+        DataManagementPattern dataManagementPattern = (DataManagementPattern)theEObject;
+        T result = caseDataManagementPattern(dataManagementPattern);
+        if (result == null) result = caseExtensionActivity(dataManagementPattern);
+        if (result == null) result = caseActivity(dataManagementPattern);
+        if (result == null) result = caseBPEL_ExtensibleElement(dataManagementPattern);
+        if (result == null) result = caseExtensibleElement(dataManagementPattern);
+        if (result == null) result = caseWSDLElement(dataManagementPattern);
+        if (result == null) result = caseIElementExtensible(dataManagementPattern);
+        if (result == null) result = caseIAttributeExtensible(dataManagementPattern);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ModelPackage.CONTAINER_TO_CONTAINER_PATTERN: {
+        ContainerToContainerPattern containerToContainerPattern = (ContainerToContainerPattern)theEObject;
+        T result = caseContainerToContainerPattern(containerToContainerPattern);
+        if (result == null) result = caseDataManagementPattern(containerToContainerPattern);
+        if (result == null) result = caseExtensionActivity(containerToContainerPattern);
+        if (result == null) result = caseActivity(containerToContainerPattern);
+        if (result == null) result = caseBPEL_ExtensibleElement(containerToContainerPattern);
+        if (result == null) result = caseExtensibleElement(containerToContainerPattern);
+        if (result == null) result = caseWSDLElement(containerToContainerPattern);
+        if (result == null) result = caseIElementExtensible(containerToContainerPattern);
+        if (result == null) result = caseIAttributeExtensible(containerToContainerPattern);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ModelPackage.DATA_ITERATION_PATTERN: {
+        DataIterationPattern dataIterationPattern = (DataIterationPattern)theEObject;
+        T result = caseDataIterationPattern(dataIterationPattern);
+        if (result == null) result = caseDataManagementPattern(dataIterationPattern);
+        if (result == null) result = caseExtensionActivity(dataIterationPattern);
+        if (result == null) result = caseActivity(dataIterationPattern);
+        if (result == null) result = caseBPEL_ExtensibleElement(dataIterationPattern);
+        if (result == null) result = caseExtensibleElement(dataIterationPattern);
+        if (result == null) result = caseWSDLElement(dataIterationPattern);
+        if (result == null) result = caseIElementExtensible(dataIterationPattern);
+        if (result == null) result = caseIAttributeExtensible(dataIterationPattern);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ModelPackage.DATA_FORMAT_CONVERSION_PATTERN: {
+        DataFormatConversionPattern dataFormatConversionPattern = (DataFormatConversionPattern)theEObject;
+        T result = caseDataFormatConversionPattern(dataFormatConversionPattern);
+        if (result == null) result = caseDataManagementPattern(dataFormatConversionPattern);
+        if (result == null) result = caseExtensionActivity(dataFormatConversionPattern);
+        if (result == null) result = caseActivity(dataFormatConversionPattern);
+        if (result == null) result = caseBPEL_ExtensibleElement(dataFormatConversionPattern);
+        if (result == null) result = caseExtensibleElement(dataFormatConversionPattern);
+        if (result == null) result = caseWSDLElement(dataFormatConversionPattern);
+        if (result == null) result = caseIElementExtensible(dataFormatConversionPattern);
+        if (result == null) result = caseIAttributeExtensible(dataFormatConversionPattern);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -260,6 +316,66 @@ public class ModelSwitch<T> {
    * @generated
    */
   public T caseTransferDataActivity(TransferDataActivity object) {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Data Management Pattern</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Data Management Pattern</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDataManagementPattern(DataManagementPattern object) {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Container To Container Pattern</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Container To Container Pattern</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseContainerToContainerPattern(ContainerToContainerPattern object) {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Data Iteration Pattern</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Data Iteration Pattern</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDataIterationPattern(DataIterationPattern object) {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Data Format Conversion Pattern</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Data Format Conversion Pattern</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDataFormatConversionPattern(DataFormatConversionPattern object) {
     return null;
   }
 

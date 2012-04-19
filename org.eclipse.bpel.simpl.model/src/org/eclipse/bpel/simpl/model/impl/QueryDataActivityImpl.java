@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpel.simpl.model.impl.QueryDataActivityImpl#getQueryTarget <em>Query Target</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.impl.QueryDataActivityImpl#getTargetContainer <em>Target Container</em>}</li>
  * </ul>
  * </p>
  *
@@ -32,24 +32,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 @SuppressWarnings("restriction")
 public class QueryDataActivityImpl extends DataManagementActivityImpl implements QueryDataActivity {
   /**
-   * The default value of the '{@link #getQueryTarget() <em>Query Target</em>}' attribute.
+   * The default value of the '{@link #getTargetContainer() <em>Target Container</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getQueryTarget()
+   * @see #getTargetContainer()
    * @generated
    * @ordered
    */
-  protected static final String QUERY_TARGET_EDEFAULT = "target";
+  protected static final String TARGET_CONTAINER_EDEFAULT = "";
 
   /**
-   * The cached value of the '{@link #getQueryTarget() <em>Query Target</em>}' attribute.
+   * The cached value of the '{@link #getTargetContainer() <em>Target Container</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getQueryTarget()
+   * @see #getTargetContainer()
    * @generated
    * @ordered
    */
-  protected String queryTarget = QUERY_TARGET_EDEFAULT;
+  protected String targetContainer = TARGET_CONTAINER_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -75,24 +75,25 @@ public class QueryDataActivityImpl extends DataManagementActivityImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getQueryTarget() {
-    return queryTarget;
+  public String getTargetContainer() {
+    return targetContainer;
   }
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @generated
    */
-  public void setQueryTarget(String newQueryTarget) {
-    String oldQueryTarget = queryTarget;
+  public void setTargetContainer(String newTargetContainer) {
+    String oldTargetContainer = targetContainer;
     if (!isReconciling) {
       ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
-          .getQueryDataActivity_QueryTarget().getName(),
-          newQueryTarget == null ? null : newQueryTarget);
+          .getQueryDataActivity_TargetContainer().getName(),
+          newTargetContainer);
     }
-    queryTarget = newQueryTarget;
+    targetContainer = newTargetContainer;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.QUERY_DATA_ACTIVITY__QUERY_TARGET, oldQueryTarget, queryTarget));
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.QUERY_DATA_ACTIVITY__TARGET_CONTAINER, oldTargetContainer, targetContainer));
   }
 
   /**
@@ -103,8 +104,8 @@ public class QueryDataActivityImpl extends DataManagementActivityImpl implements
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-      case ModelPackage.QUERY_DATA_ACTIVITY__QUERY_TARGET:
-        return getQueryTarget();
+      case ModelPackage.QUERY_DATA_ACTIVITY__TARGET_CONTAINER:
+        return getTargetContainer();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -117,8 +118,8 @@ public class QueryDataActivityImpl extends DataManagementActivityImpl implements
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-      case ModelPackage.QUERY_DATA_ACTIVITY__QUERY_TARGET:
-        setQueryTarget((String)newValue);
+      case ModelPackage.QUERY_DATA_ACTIVITY__TARGET_CONTAINER:
+        setTargetContainer((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -132,8 +133,8 @@ public class QueryDataActivityImpl extends DataManagementActivityImpl implements
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
-      case ModelPackage.QUERY_DATA_ACTIVITY__QUERY_TARGET:
-        setQueryTarget(QUERY_TARGET_EDEFAULT);
+      case ModelPackage.QUERY_DATA_ACTIVITY__TARGET_CONTAINER:
+        setTargetContainer(TARGET_CONTAINER_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -147,8 +148,8 @@ public class QueryDataActivityImpl extends DataManagementActivityImpl implements
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
-      case ModelPackage.QUERY_DATA_ACTIVITY__QUERY_TARGET:
-        return QUERY_TARGET_EDEFAULT == null ? queryTarget != null : !QUERY_TARGET_EDEFAULT.equals(queryTarget);
+      case ModelPackage.QUERY_DATA_ACTIVITY__TARGET_CONTAINER:
+        return TARGET_CONTAINER_EDEFAULT == null ? targetContainer != null : !TARGET_CONTAINER_EDEFAULT.equals(targetContainer);
     }
     return super.eIsSet(featureID);
   }
@@ -163,8 +164,8 @@ public class QueryDataActivityImpl extends DataManagementActivityImpl implements
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (queryTarget: ");
-    result.append(queryTarget);
+    result.append(" (targetContainer: ");
+    result.append(targetContainer);
     result.append(')');
     return result.toString();
   }

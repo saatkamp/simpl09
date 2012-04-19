@@ -28,7 +28,7 @@ public class DataManagementPaletteProvider implements IPaletteProvider {
    */
   @Override
   public void contributeItems(PaletteRoot paletteRoot) {
-    PaletteCategory category = new PaletteCategory("DataManagement");
+    PaletteCategory category = new PaletteCategory("DataManagementActivity");
     category.setCategoryId("dataManagement");
     category.setOrder(40);
 
@@ -50,6 +50,21 @@ public class DataManagementPaletteProvider implements IPaletteProvider {
         new DataManagementUIObjectFactory(ModelPackage.eINSTANCE.getTransferDataActivity())));
 
     paletteRoot.add(category);
+    
+    PaletteCategory patternCategory = new PaletteCategory("DataManagementPatterns");
+    patternCategory.setCategoryId("dataManagementPatterns");
+    patternCategory.setOrder(40);
+
+    patternCategory.add(new BPELCreationToolEntry("ContainerToContainer", "Creates a new ContainerToContainer Pattern",
+        new DataManagementUIObjectFactory(ModelPackage.eINSTANCE.getContainerToContainerPattern())));
+
+    patternCategory.add(new BPELCreationToolEntry("DataFormatConversion", "Creates a new DataFormatConversion Pattern",
+        new DataManagementUIObjectFactory(ModelPackage.eINSTANCE.getDataFormatConversionPattern())));
+
+    patternCategory.add(new BPELCreationToolEntry("DataIteration", "Creates a new DataIteration Pattern", 
+        new DataManagementUIObjectFactory(ModelPackage.eINSTANCE.getDataIterationPattern())));
+
+    paletteRoot.add(patternCategory);
   }
 
 }

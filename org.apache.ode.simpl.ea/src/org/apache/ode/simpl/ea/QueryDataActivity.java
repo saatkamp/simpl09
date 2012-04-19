@@ -25,9 +25,9 @@ public class QueryDataActivity extends DataManagementActivity {
     loadSIMPLAttributes(context, element);
 
     // Load all specific attribute values from the QueryActivity.
-    String queryTarget = element.getAttribute("queryTarget").toString();
+    String targetContainer = element.getAttribute("targetContainer").toString();
 
-    if (queryTarget.contains("[") || queryTarget.contains("#")) {
+    if (targetContainer.contains("[") || targetContainer.contains("#")) {
       // queryTarget enthält eine BPEL-Variable als Referenz
       Map<String, Variable> variables = null;
       try {
@@ -44,19 +44,19 @@ public class QueryDataActivity extends DataManagementActivity {
         context.getInternalInstance().sendEvent(event);
       }
 
-      queryTarget = String.valueOf(StatementUtils.resolveVariable(context, variables,
-          queryTarget));
+      targetContainer = String.valueOf(StatementUtils.resolveVariable(context, variables,
+          targetContainer));
     }
 
-    String ds = VariableUtils.getDataSourceReferenceValue(context, getDsIdentifier(), "name");
-    LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
+    String ds = VariableUtils.getDataSourceReferenceValue(context, getDataResource(), "name");
+    LateBinding lb = DataSourceUtils.getLateBinding(context, getDataResource());
 
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 
     try {
-      if (!queryTarget.equals("")) {
+      if (!targetContainer.equals("")) {
         this.successfulExecution = simplCoreService.queryData(ds,
-            getDsStatement(context), queryTarget, lb);
+            getDmCommand(context), targetContainer, lb);
       }
 
       if (!this.successfulExecution) {

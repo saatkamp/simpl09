@@ -2,17 +2,21 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WriteDataBackActivityImpl.java 1850 2011-10-05 16:32:55Z michael.schneidt@arcor.de $
+ * $Id$
  */
 package org.eclipse.bpel.simpl.model.impl;
 
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.model.util.ReconciliationHelper;
+
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
+
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -22,8 +26,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.bpel.simpl.model.impl.WriteDataBackActivityImpl#getTargetContainer <em>Target Container</em>}</li>
  *   <li>{@link org.eclipse.bpel.simpl.model.impl.WriteDataBackActivityImpl#getDataVariable <em>Data Variable</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.impl.WriteDataBackActivityImpl#getWriteTarget <em>Write Target</em>}</li>
  * </ul>
  * </p>
  *
@@ -31,6 +35,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 @SuppressWarnings("restriction")
 public class WriteDataBackActivityImpl extends DataManagementActivityImpl implements WriteDataBackActivity {
+  /**
+   * The default value of the '{@link #getTargetContainer() <em>Target Container</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTargetContainer()
+   * @generated
+   * @ordered
+   */
+  protected static final String TARGET_CONTAINER_EDEFAULT = "";
+
+  /**
+   * The cached value of the '{@link #getTargetContainer() <em>Target Container</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTargetContainer()
+   * @generated
+   * @ordered
+   */
+  protected String targetContainer = TARGET_CONTAINER_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getDataVariable() <em>Data Variable</em>}' reference.
    * <!-- begin-user-doc -->
@@ -40,26 +64,6 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
    * @ordered
    */
   protected Variable dataVariable;
-
-  /**
-   * The default value of the '{@link #getWriteTarget() <em>Write Target</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getWriteTarget()
-   * @generated
-   * @ordered
-   */
-  protected static final String WRITE_TARGET_EDEFAULT = "target";
-
-  /**
-   * The cached value of the '{@link #getWriteTarget() <em>Write Target</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getWriteTarget()
-   * @generated
-   * @ordered
-   */
-  protected String writeTarget = WRITE_TARGET_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -78,6 +82,32 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
   @Override
   protected EClass eStaticClass() {
     return ModelPackage.Literals.WRITE_DATA_BACK_ACTIVITY;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getTargetContainer() {
+    return targetContainer;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTargetContainer(String newTargetContainer) {
+    String oldTargetContainer = targetContainer;
+    if (!isReconciling) {
+      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+          .getWriteDataBackActivity_TargetContainer().getName(),
+          newTargetContainer);
+    }
+    targetContainer = newTargetContainer;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.WRITE_DATA_BACK_ACTIVITY__TARGET_CONTAINER, oldTargetContainer, targetContainer));
   }
 
   /**
@@ -109,12 +139,13 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @generated
    */
   public void setDataVariable(Variable newDataVariable) {
     Variable oldDataVariable = dataVariable;
     if (!isReconciling) {
       ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
-          .getRetrieveDataActivity_DataVariable().getName(),
+          .getWriteDataBackActivity_DataVariable().getName(),
           newDataVariable == null ? null : newDataVariable
               .getName());
     }
@@ -128,39 +159,14 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getWriteTarget() {
-    return writeTarget;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   */
-  public void setWriteTarget(String newWriteTarget) {
-    String oldWriteTarget = writeTarget;
-    if (!isReconciling) {
-      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
-          .getWriteDataBackActivity_WriteTarget().getName(),
-          newWriteTarget == null ? null : newWriteTarget);
-    }
-    writeTarget = newWriteTarget;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.WRITE_DATA_BACK_ACTIVITY__WRITE_TARGET, oldWriteTarget, writeTarget));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
+      case ModelPackage.WRITE_DATA_BACK_ACTIVITY__TARGET_CONTAINER:
+        return getTargetContainer();
       case ModelPackage.WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE:
         if (resolve) return getDataVariable();
         return basicGetDataVariable();
-      case ModelPackage.WRITE_DATA_BACK_ACTIVITY__WRITE_TARGET:
-        return getWriteTarget();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -173,11 +179,11 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
+      case ModelPackage.WRITE_DATA_BACK_ACTIVITY__TARGET_CONTAINER:
+        setTargetContainer((String)newValue);
+        return;
       case ModelPackage.WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE:
         setDataVariable((Variable)newValue);
-        return;
-      case ModelPackage.WRITE_DATA_BACK_ACTIVITY__WRITE_TARGET:
-        setWriteTarget((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -191,11 +197,11 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
+      case ModelPackage.WRITE_DATA_BACK_ACTIVITY__TARGET_CONTAINER:
+        setTargetContainer(TARGET_CONTAINER_EDEFAULT);
+        return;
       case ModelPackage.WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE:
         setDataVariable((Variable)null);
-        return;
-      case ModelPackage.WRITE_DATA_BACK_ACTIVITY__WRITE_TARGET:
-        setWriteTarget(WRITE_TARGET_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -209,10 +215,10 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
+      case ModelPackage.WRITE_DATA_BACK_ACTIVITY__TARGET_CONTAINER:
+        return TARGET_CONTAINER_EDEFAULT == null ? targetContainer != null : !TARGET_CONTAINER_EDEFAULT.equals(targetContainer);
       case ModelPackage.WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE:
         return dataVariable != null;
-      case ModelPackage.WRITE_DATA_BACK_ACTIVITY__WRITE_TARGET:
-        return WRITE_TARGET_EDEFAULT == null ? writeTarget != null : !WRITE_TARGET_EDEFAULT.equals(writeTarget);
     }
     return super.eIsSet(featureID);
   }
@@ -227,8 +233,8 @@ public class WriteDataBackActivityImpl extends DataManagementActivityImpl implem
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (writeTarget: ");
-    result.append(writeTarget);
+    result.append(" (targetContainer: ");
+    result.append(targetContainer);
     result.append(')');
     return result.toString();
   }

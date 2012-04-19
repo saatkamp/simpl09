@@ -25,11 +25,8 @@ import org.eclipse.bpel.model.ExtensionActivity;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsIdentifier <em>Ds Identifier</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsType <em>Ds Type</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsKind <em>Ds Kind</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsStatement <em>Ds Statement</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsLanguage <em>Ds Language</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDataResource <em>Data Resource</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDmCommand <em>Dm Command</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,144 +37,57 @@ import org.eclipse.bpel.model.ExtensionActivity;
 public interface DataManagementActivity extends ExtensionActivity {
 
 	/**
-   * Returns the value of the '<em><b>Ds Identifier</b></em>' attribute.
-   * The default value is <code>"identifier"</code>.
+   * Returns the value of the '<em><b>Data Resource</b></em>' attribute.
+   * The default value is <code>""</code>.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Ds Identifier</em>' attribute isn't clear,
+   * If the meaning of the '<em>Data Resource</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ds Identifier</em>' attribute.
-   * @see #setDsIdentifier(String)
-   * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsIdentifier()
-   * @model default="identifier"
+   * @return the value of the '<em>Data Resource</em>' attribute.
+   * @see #setDataResource(String)
+   * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DataResource()
+   * @model default=""
    * @generated
    */
-  String getDsIdentifier();
+  String getDataResource();
 
   /**
-   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsIdentifier <em>Ds Identifier</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDataResource <em>Data Resource</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ds Identifier</em>' attribute.
-   * @see #getDsIdentifier()
+   * @param value the new value of the '<em>Data Resource</em>' attribute.
+   * @see #getDataResource()
    * @generated
    */
-  void setDsIdentifier(String value);
+  void setDataResource(String value);
 
   /**
-   * Returns the value of the '<em><b>Ds Statement</b></em>' attribute.
-   * The default value is <code>"statement"</code>.
+   * Returns the value of the '<em><b>Dm Command</b></em>' attribute.
+   * The default value is <code>""</code>.
    * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Ds Statement</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Ds Statement</em>' attribute.
-   * @see #setDsStatement(String)
-   * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsStatement()
-   * @model default="statement"
+   * <p>
+   * If the meaning of the '<em>Dm Command</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Dm Command</em>' attribute.
+   * @see #setDmCommand(String)
+   * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DmCommand()
+   * @model default=""
    * @generated
    */
-	String getDsStatement();
+  String getDmCommand();
 
-	/**
-   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsStatement <em>Ds Statement</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-   * @param value the new value of the '<em>Ds Statement</em>' attribute.
-   * @see #getDsStatement()
-   * @generated
-   */
-	void setDsStatement(String value);
-
-	/**
-   * Returns the value of the '<em><b>Ds Language</b></em>' attribute.
-   * The default value is <code>"language"</code>.
+  /**
+   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDmCommand <em>Dm Command</em>}' attribute.
    * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Ds Language</em>' attribute isn't clear, there
-	 * really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Ds Language</em>' attribute.
-   * @see #setDsLanguage(String)
-   * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsLanguage()
-   * @model default="language"
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Dm Command</em>' attribute.
+   * @see #getDmCommand()
    * @generated
    */
-	String getDsLanguage();
-
-	/**
-   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsLanguage <em>Ds Language</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-   * @param value the new value of the '<em>Ds Language</em>' attribute.
-   * @see #getDsLanguage()
-   * @generated
-   */
-	void setDsLanguage(String value);
-
-	/**
-   * Returns the value of the '<em><b>Ds Kind</b></em>' attribute.
-   * The default value is <code>"subtype"</code>.
-   * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Ds Kind</em>' attribute isn't clear, there
-	 * really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Ds Kind</em>' attribute.
-   * @see #setDsKind(String)
-   * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsKind()
-   * @model default="subtype"
-   * @generated
-   */
-	String getDsKind();
-
-	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsKind
-	 * <em>Ds Kind</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Ds Kind</em>' attribute.
-	 * @see #getDsKind()
-	 * @generated
-	 */
-	void setDsKind(String value);
-
-	/**
-   * Returns the value of the '<em><b>Ds Type</b></em>' attribute.
-   * The default value is <code>"type"</code>.
-   * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Ds Type</em>' attribute isn't clear, there
-	 * really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Ds Type</em>' attribute.
-   * @see #setDsType(String)
-   * @see org.eclipse.bpel.simpl.model.ModelPackage#getDataManagementActivity_DsType()
-   * @model default="type"
-   * @generated
-   */
-	String getDsType();
-
-	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsType
-	 * <em>Ds Type</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Ds Type</em>' attribute.
-	 * @see #getDsType()
-	 * @generated
-	 */
-	void setDsType(String value);
+  void setDmCommand(String value);
 
 } // DataManagementActivity

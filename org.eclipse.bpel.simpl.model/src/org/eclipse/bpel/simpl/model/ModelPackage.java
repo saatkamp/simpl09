@@ -149,58 +149,31 @@ public interface ModelPackage extends EPackage {
 	int DATA_MANAGEMENT_ACTIVITY__SOURCES = BPELPackage.EXTENSION_ACTIVITY__SOURCES;
 
 	/**
-   * The feature id for the '<em><b>Ds Identifier</b></em>' attribute.
+   * The feature id for the '<em><b>Data Resource</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 0;
+  int DATA_MANAGEMENT_ACTIVITY__DATA_RESOURCE = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Ds Type</b></em>' attribute.
+   * The feature id for the '<em><b>Dm Command</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int DATA_MANAGEMENT_ACTIVITY__DS_TYPE = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 1;
+  int DATA_MANAGEMENT_ACTIVITY__DM_COMMAND = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 1;
 
-	/**
-   * The feature id for the '<em><b>Ds Kind</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DATA_MANAGEMENT_ACTIVITY__DS_KIND = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 2;
-
-	/**
-   * The feature id for the '<em><b>Ds Statement</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 3;
-
-	/**
-   * The feature id for the '<em><b>Ds Language</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 4;
-
-	/**
+  /**
    * The number of structural features of the '<em>Data Management Activity</em>' class.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 5;
+	int DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 2;
 
 	/**
    * The meta object id for the '{@link org.eclipse.bpel.simpl.model.impl.QueryDataActivityImpl <em>Query Data Activity</em>}' class.
@@ -285,58 +258,31 @@ public interface ModelPackage extends EPackage {
   int QUERY_DATA_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
 
   /**
-   * The feature id for the '<em><b>Ds Identifier</b></em>' attribute.
+   * The feature id for the '<em><b>Data Resource</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int QUERY_DATA_ACTIVITY__DS_IDENTIFIER = DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER;
+  int QUERY_DATA_ACTIVITY__DATA_RESOURCE = DATA_MANAGEMENT_ACTIVITY__DATA_RESOURCE;
 
   /**
-   * The feature id for the '<em><b>Ds Type</b></em>' attribute.
+   * The feature id for the '<em><b>Dm Command</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int QUERY_DATA_ACTIVITY__DS_TYPE = DATA_MANAGEMENT_ACTIVITY__DS_TYPE;
+  int QUERY_DATA_ACTIVITY__DM_COMMAND = DATA_MANAGEMENT_ACTIVITY__DM_COMMAND;
 
   /**
-   * The feature id for the '<em><b>Ds Kind</b></em>' attribute.
+   * The feature id for the '<em><b>Target Container</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int QUERY_DATA_ACTIVITY__DS_KIND = DATA_MANAGEMENT_ACTIVITY__DS_KIND;
-
-  /**
-   * The feature id for the '<em><b>Ds Statement</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int QUERY_DATA_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
-
-  /**
-   * The feature id for the '<em><b>Ds Language</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int QUERY_DATA_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
-
-  /**
-   * The feature id for the '<em><b>Query Target</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int QUERY_DATA_ACTIVITY__QUERY_TARGET = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
+  int QUERY_DATA_ACTIVITY__TARGET_CONTAINER = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Query Data Activity</em>' class.
@@ -430,49 +376,22 @@ public interface ModelPackage extends EPackage {
   int ISSUE_COMMAND_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
 
   /**
-   * The feature id for the '<em><b>Ds Identifier</b></em>' attribute.
+   * The feature id for the '<em><b>Data Resource</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ISSUE_COMMAND_ACTIVITY__DS_IDENTIFIER = DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER;
+  int ISSUE_COMMAND_ACTIVITY__DATA_RESOURCE = DATA_MANAGEMENT_ACTIVITY__DATA_RESOURCE;
 
   /**
-   * The feature id for the '<em><b>Ds Type</b></em>' attribute.
+   * The feature id for the '<em><b>Dm Command</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ISSUE_COMMAND_ACTIVITY__DS_TYPE = DATA_MANAGEMENT_ACTIVITY__DS_TYPE;
-
-  /**
-   * The feature id for the '<em><b>Ds Kind</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ISSUE_COMMAND_ACTIVITY__DS_KIND = DATA_MANAGEMENT_ACTIVITY__DS_KIND;
-
-  /**
-   * The feature id for the '<em><b>Ds Statement</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ISSUE_COMMAND_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
-
-  /**
-   * The feature id for the '<em><b>Ds Language</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ISSUE_COMMAND_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
+  int ISSUE_COMMAND_ACTIVITY__DM_COMMAND = DATA_MANAGEMENT_ACTIVITY__DM_COMMAND;
 
   /**
    * The number of structural features of the '<em>Issue Command Activity</em>' class.
@@ -576,60 +495,33 @@ public interface ModelPackage extends EPackage {
 	int RETRIEVE_DATA_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
 
 	/**
-   * The feature id for the '<em><b>Ds Identifier</b></em>' attribute.
+   * The feature id for the '<em><b>Data Resource</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RETRIEVE_DATA_ACTIVITY__DS_IDENTIFIER = DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER;
+  int RETRIEVE_DATA_ACTIVITY__DATA_RESOURCE = DATA_MANAGEMENT_ACTIVITY__DATA_RESOURCE;
 
   /**
-   * The feature id for the '<em><b>Ds Type</b></em>' attribute.
+   * The feature id for the '<em><b>Dm Command</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int RETRIEVE_DATA_ACTIVITY__DS_TYPE = DATA_MANAGEMENT_ACTIVITY__DS_TYPE;
+  int RETRIEVE_DATA_ACTIVITY__DM_COMMAND = DATA_MANAGEMENT_ACTIVITY__DM_COMMAND;
 
-	/**
-   * The feature id for the '<em><b>Ds Kind</b></em>' attribute.
+  /**
+   * The feature id for the '<em><b>Target Variable</b></em>' reference.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int RETRIEVE_DATA_ACTIVITY__DS_KIND = DATA_MANAGEMENT_ACTIVITY__DS_KIND;
+  int RETRIEVE_DATA_ACTIVITY__TARGET_VARIABLE = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
 
-	/**
-   * The feature id for the '<em><b>Ds Statement</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int RETRIEVE_DATA_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
-
-	/**
-   * The feature id for the '<em><b>Ds Language</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int RETRIEVE_DATA_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
-
-	/**
-   * The feature id for the '<em><b>Data Variable</b></em>' reference.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
-
-	/**
+  /**
    * The number of structural features of the '<em>Retrieve Data Activity</em>' class.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -711,49 +603,31 @@ public interface ModelPackage extends EPackage {
   int WRITE_DATA_BACK_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
 
   /**
-   * The feature id for the '<em><b>Ds Identifier</b></em>' attribute.
+   * The feature id for the '<em><b>Data Resource</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WRITE_DATA_BACK_ACTIVITY__DS_IDENTIFIER = DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER;
+  int WRITE_DATA_BACK_ACTIVITY__DATA_RESOURCE = DATA_MANAGEMENT_ACTIVITY__DATA_RESOURCE;
 
   /**
-   * The feature id for the '<em><b>Ds Type</b></em>' attribute.
+   * The feature id for the '<em><b>Dm Command</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WRITE_DATA_BACK_ACTIVITY__DS_TYPE = DATA_MANAGEMENT_ACTIVITY__DS_TYPE;
+  int WRITE_DATA_BACK_ACTIVITY__DM_COMMAND = DATA_MANAGEMENT_ACTIVITY__DM_COMMAND;
 
   /**
-   * The feature id for the '<em><b>Ds Kind</b></em>' attribute.
+   * The feature id for the '<em><b>Target Container</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WRITE_DATA_BACK_ACTIVITY__DS_KIND = DATA_MANAGEMENT_ACTIVITY__DS_KIND;
-
-  /**
-   * The feature id for the '<em><b>Ds Statement</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WRITE_DATA_BACK_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
-
-  /**
-   * The feature id for the '<em><b>Ds Language</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WRITE_DATA_BACK_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
+  int WRITE_DATA_BACK_ACTIVITY__TARGET_CONTAINER = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Data Variable</b></em>' reference.
@@ -762,16 +636,7 @@ public interface ModelPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Write Target</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WRITE_DATA_BACK_ACTIVITY__WRITE_TARGET = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 1;
+  int WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Write Data Back Activity</em>' class.
@@ -866,94 +731,58 @@ public interface ModelPackage extends EPackage {
   int TRANSFER_DATA_ACTIVITY__SOURCES = DATA_MANAGEMENT_ACTIVITY__SOURCES;
 
   /**
-   * The feature id for the '<em><b>Ds Identifier</b></em>' attribute.
+   * The feature id for the '<em><b>Data Resource</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRANSFER_DATA_ACTIVITY__DS_IDENTIFIER = DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER;
+  int TRANSFER_DATA_ACTIVITY__DATA_RESOURCE = DATA_MANAGEMENT_ACTIVITY__DATA_RESOURCE;
 
   /**
-   * The feature id for the '<em><b>Ds Type</b></em>' attribute.
+   * The feature id for the '<em><b>Dm Command</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRANSFER_DATA_ACTIVITY__DS_TYPE = DATA_MANAGEMENT_ACTIVITY__DS_TYPE;
+  int TRANSFER_DATA_ACTIVITY__DM_COMMAND = DATA_MANAGEMENT_ACTIVITY__DM_COMMAND;
 
   /**
-   * The feature id for the '<em><b>Ds Kind</b></em>' attribute.
+   * The feature id for the '<em><b>Data Source</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRANSFER_DATA_ACTIVITY__DS_KIND = DATA_MANAGEMENT_ACTIVITY__DS_KIND;
+  int TRANSFER_DATA_ACTIVITY__DATA_SOURCE = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Ds Statement</b></em>' attribute.
+   * The feature id for the '<em><b>Data Source Command</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRANSFER_DATA_ACTIVITY__DS_STATEMENT = DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT;
+  int TRANSFER_DATA_ACTIVITY__DATA_SOURCE_COMMAND = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Ds Language</b></em>' attribute.
+   * The feature id for the '<em><b>Data Sink</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRANSFER_DATA_ACTIVITY__DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE;
+  int TRANSFER_DATA_ACTIVITY__DATA_SINK = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Target Ds Identifier</b></em>' attribute.
+   * The feature id for the '<em><b>Data Sink Container</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Target Ds Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Target Ds Kind</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRANSFER_DATA_ACTIVITY__TARGET_DS_KIND = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Target Ds Language</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRANSFER_DATA_ACTIVITY__TARGET_DS_LANGUAGE = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 3;
-
-  /**
-   * The feature id for the '<em><b>Target Ds Container</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRANSFER_DATA_ACTIVITY__TARGET_DS_CONTAINER = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 4;
+  int TRANSFER_DATA_ACTIVITY__DATA_SINK_CONTAINER = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Transfer Data Activity</em>' class.
@@ -962,7 +791,434 @@ public interface ModelPackage extends EPackage {
    * @generated
    * @ordered
    */
-  int TRANSFER_DATA_ACTIVITY_FEATURE_COUNT = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 5;
+  int TRANSFER_DATA_ACTIVITY_FEATURE_COUNT = DATA_MANAGEMENT_ACTIVITY_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.bpel.simpl.model.impl.DataManagementPatternImpl <em>Data Management Pattern</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.bpel.simpl.model.impl.DataManagementPatternImpl
+   * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getDataManagementPattern()
+   * @generated
+   */
+  int DATA_MANAGEMENT_PATTERN = 6;
+
+  /**
+   * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_MANAGEMENT_PATTERN__DOCUMENTATION_ELEMENT = BPELPackage.EXTENSION_ACTIVITY__DOCUMENTATION_ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>Element</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_MANAGEMENT_PATTERN__ELEMENT = BPELPackage.EXTENSION_ACTIVITY__ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_MANAGEMENT_PATTERN__EEXTENSIBILITY_ELEMENTS = BPELPackage.EXTENSION_ACTIVITY__EEXTENSIBILITY_ELEMENTS;
+
+  /**
+   * The feature id for the '<em><b>Documentation</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_MANAGEMENT_PATTERN__DOCUMENTATION = BPELPackage.EXTENSION_ACTIVITY__DOCUMENTATION;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_MANAGEMENT_PATTERN__NAME = BPELPackage.EXTENSION_ACTIVITY__NAME;
+
+  /**
+   * The feature id for the '<em><b>Suppress Join Failure</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_MANAGEMENT_PATTERN__SUPPRESS_JOIN_FAILURE = BPELPackage.EXTENSION_ACTIVITY__SUPPRESS_JOIN_FAILURE;
+
+  /**
+   * The feature id for the '<em><b>Targets</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_MANAGEMENT_PATTERN__TARGETS = BPELPackage.EXTENSION_ACTIVITY__TARGETS;
+
+  /**
+   * The feature id for the '<em><b>Sources</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_MANAGEMENT_PATTERN__SOURCES = BPELPackage.EXTENSION_ACTIVITY__SOURCES;
+
+  /**
+   * The number of structural features of the '<em>Data Management Pattern</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_MANAGEMENT_PATTERN_FEATURE_COUNT = BPELPackage.EXTENSION_ACTIVITY_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.bpel.simpl.model.impl.ContainerToContainerPatternImpl <em>Container To Container Pattern</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.bpel.simpl.model.impl.ContainerToContainerPatternImpl
+   * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getContainerToContainerPattern()
+   * @generated
+   */
+  int CONTAINER_TO_CONTAINER_PATTERN = 7;
+
+  /**
+   * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINER_TO_CONTAINER_PATTERN__DOCUMENTATION_ELEMENT = DATA_MANAGEMENT_PATTERN__DOCUMENTATION_ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>Element</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINER_TO_CONTAINER_PATTERN__ELEMENT = DATA_MANAGEMENT_PATTERN__ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINER_TO_CONTAINER_PATTERN__EEXTENSIBILITY_ELEMENTS = DATA_MANAGEMENT_PATTERN__EEXTENSIBILITY_ELEMENTS;
+
+  /**
+   * The feature id for the '<em><b>Documentation</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINER_TO_CONTAINER_PATTERN__DOCUMENTATION = DATA_MANAGEMENT_PATTERN__DOCUMENTATION;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINER_TO_CONTAINER_PATTERN__NAME = DATA_MANAGEMENT_PATTERN__NAME;
+
+  /**
+   * The feature id for the '<em><b>Suppress Join Failure</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINER_TO_CONTAINER_PATTERN__SUPPRESS_JOIN_FAILURE = DATA_MANAGEMENT_PATTERN__SUPPRESS_JOIN_FAILURE;
+
+  /**
+   * The feature id for the '<em><b>Targets</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINER_TO_CONTAINER_PATTERN__TARGETS = DATA_MANAGEMENT_PATTERN__TARGETS;
+
+  /**
+   * The feature id for the '<em><b>Sources</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINER_TO_CONTAINER_PATTERN__SOURCES = DATA_MANAGEMENT_PATTERN__SOURCES;
+
+  /**
+   * The feature id for the '<em><b>Source Container</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINER_TO_CONTAINER_PATTERN__SOURCE_CONTAINER = DATA_MANAGEMENT_PATTERN_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Target Container</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINER_TO_CONTAINER_PATTERN__TARGET_CONTAINER = DATA_MANAGEMENT_PATTERN_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Container To Container Pattern</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONTAINER_TO_CONTAINER_PATTERN_FEATURE_COUNT = DATA_MANAGEMENT_PATTERN_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.bpel.simpl.model.impl.DataIterationPatternImpl <em>Data Iteration Pattern</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.bpel.simpl.model.impl.DataIterationPatternImpl
+   * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getDataIterationPattern()
+   * @generated
+   */
+  int DATA_ITERATION_PATTERN = 8;
+
+  /**
+   * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_ITERATION_PATTERN__DOCUMENTATION_ELEMENT = DATA_MANAGEMENT_PATTERN__DOCUMENTATION_ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>Element</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_ITERATION_PATTERN__ELEMENT = DATA_MANAGEMENT_PATTERN__ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_ITERATION_PATTERN__EEXTENSIBILITY_ELEMENTS = DATA_MANAGEMENT_PATTERN__EEXTENSIBILITY_ELEMENTS;
+
+  /**
+   * The feature id for the '<em><b>Documentation</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_ITERATION_PATTERN__DOCUMENTATION = DATA_MANAGEMENT_PATTERN__DOCUMENTATION;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_ITERATION_PATTERN__NAME = DATA_MANAGEMENT_PATTERN__NAME;
+
+  /**
+   * The feature id for the '<em><b>Suppress Join Failure</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_ITERATION_PATTERN__SUPPRESS_JOIN_FAILURE = DATA_MANAGEMENT_PATTERN__SUPPRESS_JOIN_FAILURE;
+
+  /**
+   * The feature id for the '<em><b>Targets</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_ITERATION_PATTERN__TARGETS = DATA_MANAGEMENT_PATTERN__TARGETS;
+
+  /**
+   * The feature id for the '<em><b>Sources</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_ITERATION_PATTERN__SOURCES = DATA_MANAGEMENT_PATTERN__SOURCES;
+
+  /**
+   * The feature id for the '<em><b>Container Reference List</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_ITERATION_PATTERN__CONTAINER_REFERENCE_LIST = DATA_MANAGEMENT_PATTERN_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Current Container</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_ITERATION_PATTERN__CURRENT_CONTAINER = DATA_MANAGEMENT_PATTERN_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Activity</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_ITERATION_PATTERN__ACTIVITY = DATA_MANAGEMENT_PATTERN_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Data Iteration Pattern</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_ITERATION_PATTERN_FEATURE_COUNT = DATA_MANAGEMENT_PATTERN_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.bpel.simpl.model.impl.DataFormatConversionPatternImpl <em>Data Format Conversion Pattern</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.bpel.simpl.model.impl.DataFormatConversionPatternImpl
+   * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getDataFormatConversionPattern()
+   * @generated
+   */
+  int DATA_FORMAT_CONVERSION_PATTERN = 9;
+
+  /**
+   * The feature id for the '<em><b>Documentation Element</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_FORMAT_CONVERSION_PATTERN__DOCUMENTATION_ELEMENT = DATA_MANAGEMENT_PATTERN__DOCUMENTATION_ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>Element</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_FORMAT_CONVERSION_PATTERN__ELEMENT = DATA_MANAGEMENT_PATTERN__ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>EExtensibility Elements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_FORMAT_CONVERSION_PATTERN__EEXTENSIBILITY_ELEMENTS = DATA_MANAGEMENT_PATTERN__EEXTENSIBILITY_ELEMENTS;
+
+  /**
+   * The feature id for the '<em><b>Documentation</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_FORMAT_CONVERSION_PATTERN__DOCUMENTATION = DATA_MANAGEMENT_PATTERN__DOCUMENTATION;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_FORMAT_CONVERSION_PATTERN__NAME = DATA_MANAGEMENT_PATTERN__NAME;
+
+  /**
+   * The feature id for the '<em><b>Suppress Join Failure</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_FORMAT_CONVERSION_PATTERN__SUPPRESS_JOIN_FAILURE = DATA_MANAGEMENT_PATTERN__SUPPRESS_JOIN_FAILURE;
+
+  /**
+   * The feature id for the '<em><b>Targets</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_FORMAT_CONVERSION_PATTERN__TARGETS = DATA_MANAGEMENT_PATTERN__TARGETS;
+
+  /**
+   * The feature id for the '<em><b>Sources</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_FORMAT_CONVERSION_PATTERN__SOURCES = DATA_MANAGEMENT_PATTERN__SOURCES;
+
+  /**
+   * The feature id for the '<em><b>Source Container</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_FORMAT_CONVERSION_PATTERN__SOURCE_CONTAINER = DATA_MANAGEMENT_PATTERN_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Target Container</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_FORMAT_CONVERSION_PATTERN__TARGET_CONTAINER = DATA_MANAGEMENT_PATTERN_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Data Format Conversion Pattern</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DATA_FORMAT_CONVERSION_PATTERN_FEATURE_COUNT = DATA_MANAGEMENT_PATTERN_FEATURE_COUNT + 2;
 
   /**
    * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.DataManagementActivity <em>Data Management Activity</em>}'.
@@ -975,37 +1231,28 @@ public interface ModelPackage extends EPackage {
 	EClass getDataManagementActivity();
 
 	/**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsIdentifier <em>Ds Identifier</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDataResource <em>Data Resource</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Ds Identifier</em>'.
-   * @see org.eclipse.bpel.simpl.model.DataManagementActivity#getDsIdentifier()
+   * @return the meta object for the attribute '<em>Data Resource</em>'.
+   * @see org.eclipse.bpel.simpl.model.DataManagementActivity#getDataResource()
    * @see #getDataManagementActivity()
    * @generated
    */
-  EAttribute getDataManagementActivity_DsIdentifier();
+  EAttribute getDataManagementActivity_DataResource();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsStatement <em>Ds Statement</em>}'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Ds Statement</em>'.
-   * @see org.eclipse.bpel.simpl.model.DataManagementActivity#getDsStatement()
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDmCommand <em>Dm Command</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Dm Command</em>'.
+   * @see org.eclipse.bpel.simpl.model.DataManagementActivity#getDmCommand()
    * @see #getDataManagementActivity()
    * @generated
    */
-	EAttribute getDataManagementActivity_DsStatement();
+  EAttribute getDataManagementActivity_DmCommand();
 
-	/**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsLanguage <em>Ds Language</em>}'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Ds Language</em>'.
-   * @see org.eclipse.bpel.simpl.model.DataManagementActivity#getDsLanguage()
-   * @see #getDataManagementActivity()
-   * @generated
-   */
-	EAttribute getDataManagementActivity_DsLanguage();
-
-	/**
+  /**
    * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.QueryDataActivity <em>Query Data Activity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1016,37 +1263,17 @@ public interface ModelPackage extends EPackage {
   EClass getQueryDataActivity();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.QueryDataActivity#getQueryTarget <em>Query Target</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.QueryDataActivity#getTargetContainer <em>Target Container</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Query Target</em>'.
-   * @see org.eclipse.bpel.simpl.model.QueryDataActivity#getQueryTarget()
+   * @return the meta object for the attribute '<em>Target Container</em>'.
+   * @see org.eclipse.bpel.simpl.model.QueryDataActivity#getTargetContainer()
    * @see #getQueryDataActivity()
    * @generated
    */
-  EAttribute getQueryDataActivity_QueryTarget();
+  EAttribute getQueryDataActivity_TargetContainer();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsKind <em>Ds Kind</em>}'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Ds Kind</em>'.
-   * @see org.eclipse.bpel.simpl.model.DataManagementActivity#getDsKind()
-   * @see #getDataManagementActivity()
-   * @generated
-   */
-	EAttribute getDataManagementActivity_DsKind();
-
-	/**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataManagementActivity#getDsType <em>Ds Type</em>}'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Ds Type</em>'.
-   * @see org.eclipse.bpel.simpl.model.DataManagementActivity#getDsType()
-   * @see #getDataManagementActivity()
-   * @generated
-   */
-	EAttribute getDataManagementActivity_DsType();
-
-	/**
    * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.IssueCommandActivity <em>Issue Command Activity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1067,6 +1294,17 @@ public interface ModelPackage extends EPackage {
   EClass getWriteDataBackActivity();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.WriteDataBackActivity#getTargetContainer <em>Target Container</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Target Container</em>'.
+   * @see org.eclipse.bpel.simpl.model.WriteDataBackActivity#getTargetContainer()
+   * @see #getWriteDataBackActivity()
+   * @generated
+   */
+  EAttribute getWriteDataBackActivity_TargetContainer();
+
+  /**
    * Returns the meta object for the reference '{@link org.eclipse.bpel.simpl.model.WriteDataBackActivity#getDataVariable <em>Data Variable</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1076,17 +1314,6 @@ public interface ModelPackage extends EPackage {
    * @generated
    */
   EReference getWriteDataBackActivity_DataVariable();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.WriteDataBackActivity#getWriteTarget <em>Write Target</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Write Target</em>'.
-   * @see org.eclipse.bpel.simpl.model.WriteDataBackActivity#getWriteTarget()
-   * @see #getWriteDataBackActivity()
-   * @generated
-   */
-  EAttribute getWriteDataBackActivity_WriteTarget();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.TransferDataActivity <em>Transfer Data Activity</em>}'.
@@ -1099,59 +1326,165 @@ public interface ModelPackage extends EPackage {
   EClass getTransferDataActivity();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsIdentifier <em>Target Ds Identifier</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSource <em>Data Source</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Target Ds Identifier</em>'.
-   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsIdentifier()
+   * @return the meta object for the attribute '<em>Data Source</em>'.
+   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSource()
    * @see #getTransferDataActivity()
    * @generated
    */
-  EAttribute getTransferDataActivity_TargetDsIdentifier();
+  EAttribute getTransferDataActivity_DataSource();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsType <em>Target Ds Type</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSourceCommand <em>Data Source Command</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Target Ds Type</em>'.
-   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsType()
+   * @return the meta object for the attribute '<em>Data Source Command</em>'.
+   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSourceCommand()
    * @see #getTransferDataActivity()
    * @generated
    */
-  EAttribute getTransferDataActivity_TargetDsType();
+  EAttribute getTransferDataActivity_DataSourceCommand();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsKind <em>Target Ds Kind</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSink <em>Data Sink</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Target Ds Kind</em>'.
-   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsKind()
+   * @return the meta object for the attribute '<em>Data Sink</em>'.
+   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSink()
    * @see #getTransferDataActivity()
    * @generated
    */
-  EAttribute getTransferDataActivity_TargetDsKind();
+  EAttribute getTransferDataActivity_DataSink();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsLanguage <em>Target Ds Language</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSinkContainer <em>Data Sink Container</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Target Ds Language</em>'.
-   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsLanguage()
+   * @return the meta object for the attribute '<em>Data Sink Container</em>'.
+   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getDataSinkContainer()
    * @see #getTransferDataActivity()
    * @generated
    */
-  EAttribute getTransferDataActivity_TargetDsLanguage();
+  EAttribute getTransferDataActivity_DataSinkContainer();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsContainer <em>Target Ds Container</em>}'.
+   * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.DataManagementPattern <em>Data Management Pattern</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Target Ds Container</em>'.
-   * @see org.eclipse.bpel.simpl.model.TransferDataActivity#getTargetDsContainer()
-   * @see #getTransferDataActivity()
+   * @return the meta object for class '<em>Data Management Pattern</em>'.
+   * @see org.eclipse.bpel.simpl.model.DataManagementPattern
    * @generated
    */
-  EAttribute getTransferDataActivity_TargetDsContainer();
+  EClass getDataManagementPattern();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.ContainerToContainerPattern <em>Container To Container Pattern</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Container To Container Pattern</em>'.
+   * @see org.eclipse.bpel.simpl.model.ContainerToContainerPattern
+   * @generated
+   */
+  EClass getContainerToContainerPattern();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.ContainerToContainerPattern#getSourceContainer <em>Source Container</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Source Container</em>'.
+   * @see org.eclipse.bpel.simpl.model.ContainerToContainerPattern#getSourceContainer()
+   * @see #getContainerToContainerPattern()
+   * @generated
+   */
+  EAttribute getContainerToContainerPattern_SourceContainer();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.ContainerToContainerPattern#getTargetContainer <em>Target Container</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Target Container</em>'.
+   * @see org.eclipse.bpel.simpl.model.ContainerToContainerPattern#getTargetContainer()
+   * @see #getContainerToContainerPattern()
+   * @generated
+   */
+  EAttribute getContainerToContainerPattern_TargetContainer();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.DataIterationPattern <em>Data Iteration Pattern</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Data Iteration Pattern</em>'.
+   * @see org.eclipse.bpel.simpl.model.DataIterationPattern
+   * @generated
+   */
+  EClass getDataIterationPattern();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataIterationPattern#getContainerReferenceList <em>Container Reference List</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Container Reference List</em>'.
+   * @see org.eclipse.bpel.simpl.model.DataIterationPattern#getContainerReferenceList()
+   * @see #getDataIterationPattern()
+   * @generated
+   */
+  EAttribute getDataIterationPattern_ContainerReferenceList();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataIterationPattern#getCurrentContainer <em>Current Container</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Current Container</em>'.
+   * @see org.eclipse.bpel.simpl.model.DataIterationPattern#getCurrentContainer()
+   * @see #getDataIterationPattern()
+   * @generated
+   */
+  EAttribute getDataIterationPattern_CurrentContainer();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.bpel.simpl.model.DataIterationPattern#getActivity <em>Activity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Activity</em>'.
+   * @see org.eclipse.bpel.simpl.model.DataIterationPattern#getActivity()
+   * @see #getDataIterationPattern()
+   * @generated
+   */
+  EReference getDataIterationPattern_Activity();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.DataFormatConversionPattern <em>Data Format Conversion Pattern</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Data Format Conversion Pattern</em>'.
+   * @see org.eclipse.bpel.simpl.model.DataFormatConversionPattern
+   * @generated
+   */
+  EClass getDataFormatConversionPattern();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataFormatConversionPattern#getSourceContainer <em>Source Container</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Source Container</em>'.
+   * @see org.eclipse.bpel.simpl.model.DataFormatConversionPattern#getSourceContainer()
+   * @see #getDataFormatConversionPattern()
+   * @generated
+   */
+  EAttribute getDataFormatConversionPattern_SourceContainer();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.bpel.simpl.model.DataFormatConversionPattern#getTargetContainer <em>Target Container</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Target Container</em>'.
+   * @see org.eclipse.bpel.simpl.model.DataFormatConversionPattern#getTargetContainer()
+   * @see #getDataFormatConversionPattern()
+   * @generated
+   */
+  EAttribute getDataFormatConversionPattern_TargetContainer();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.bpel.simpl.model.RetrieveDataActivity <em>Retrieve Data Activity</em>}'.
@@ -1164,16 +1497,17 @@ public interface ModelPackage extends EPackage {
 	EClass getRetrieveDataActivity();
 
 	/**
-   * Returns the meta object for the reference '{@link org.eclipse.bpel.simpl.model.RetrieveDataActivity#getDataVariable <em>Data Variable</em>}'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Data Variable</em>'.
-   * @see org.eclipse.bpel.simpl.model.RetrieveDataActivity#getDataVariable()
+   * Returns the meta object for the reference '{@link org.eclipse.bpel.simpl.model.RetrieveDataActivity#getTargetVariable <em>Target Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Target Variable</em>'.
+   * @see org.eclipse.bpel.simpl.model.RetrieveDataActivity#getTargetVariable()
    * @see #getRetrieveDataActivity()
    * @generated
    */
-	EReference getRetrieveDataActivity_DataVariable();
+  EReference getRetrieveDataActivity_TargetVariable();
 
-	/**
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1207,30 +1541,22 @@ public interface ModelPackage extends EPackage {
 		EClass DATA_MANAGEMENT_ACTIVITY = eINSTANCE.getDataManagementActivity();
 
 		/**
-     * The meta object literal for the '<em><b>Ds Identifier</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Data Resource</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER = eINSTANCE.getDataManagementActivity_DsIdentifier();
+    EAttribute DATA_MANAGEMENT_ACTIVITY__DATA_RESOURCE = eINSTANCE.getDataManagementActivity_DataResource();
 
     /**
-     * The meta object literal for the '<em><b>Ds Statement</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Dm Command</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EAttribute DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT = eINSTANCE.getDataManagementActivity_DsStatement();
+    EAttribute DATA_MANAGEMENT_ACTIVITY__DM_COMMAND = eINSTANCE.getDataManagementActivity_DmCommand();
 
-		/**
-     * The meta object literal for the '<em><b>Ds Language</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE = eINSTANCE.getDataManagementActivity_DsLanguage();
-
-		/**
+    /**
      * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.QueryDataActivityImpl <em>Query Data Activity</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1241,30 +1567,14 @@ public interface ModelPackage extends EPackage {
     EClass QUERY_DATA_ACTIVITY = eINSTANCE.getQueryDataActivity();
 
     /**
-     * The meta object literal for the '<em><b>Query Target</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Target Container</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute QUERY_DATA_ACTIVITY__QUERY_TARGET = eINSTANCE.getQueryDataActivity_QueryTarget();
+    EAttribute QUERY_DATA_ACTIVITY__TARGET_CONTAINER = eINSTANCE.getQueryDataActivity_TargetContainer();
 
     /**
-     * The meta object literal for the '<em><b>Ds Kind</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute DATA_MANAGEMENT_ACTIVITY__DS_KIND = eINSTANCE.getDataManagementActivity_DsKind();
-
-		/**
-     * The meta object literal for the '<em><b>Ds Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute DATA_MANAGEMENT_ACTIVITY__DS_TYPE = eINSTANCE.getDataManagementActivity_DsType();
-
-		/**
      * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.IssueCommandActivityImpl <em>Issue Command Activity</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1285,20 +1595,20 @@ public interface ModelPackage extends EPackage {
     EClass WRITE_DATA_BACK_ACTIVITY = eINSTANCE.getWriteDataBackActivity();
 
     /**
+     * The meta object literal for the '<em><b>Target Container</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WRITE_DATA_BACK_ACTIVITY__TARGET_CONTAINER = eINSTANCE.getWriteDataBackActivity_TargetContainer();
+
+    /**
      * The meta object literal for the '<em><b>Data Variable</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE = eINSTANCE.getWriteDataBackActivity_DataVariable();
-
-    /**
-     * The meta object literal for the '<em><b>Write Target</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute WRITE_DATA_BACK_ACTIVITY__WRITE_TARGET = eINSTANCE.getWriteDataBackActivity_WriteTarget();
 
     /**
      * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl <em>Transfer Data Activity</em>}' class.
@@ -1311,44 +1621,132 @@ public interface ModelPackage extends EPackage {
     EClass TRANSFER_DATA_ACTIVITY = eINSTANCE.getTransferDataActivity();
 
     /**
-     * The meta object literal for the '<em><b>Target Ds Identifier</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Data Source</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER = eINSTANCE.getTransferDataActivity_TargetDsIdentifier();
+    EAttribute TRANSFER_DATA_ACTIVITY__DATA_SOURCE = eINSTANCE.getTransferDataActivity_DataSource();
 
     /**
-     * The meta object literal for the '<em><b>Target Ds Type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Data Source Command</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE = eINSTANCE.getTransferDataActivity_TargetDsType();
+    EAttribute TRANSFER_DATA_ACTIVITY__DATA_SOURCE_COMMAND = eINSTANCE.getTransferDataActivity_DataSourceCommand();
 
     /**
-     * The meta object literal for the '<em><b>Target Ds Kind</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Data Sink</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRANSFER_DATA_ACTIVITY__TARGET_DS_KIND = eINSTANCE.getTransferDataActivity_TargetDsKind();
+    EAttribute TRANSFER_DATA_ACTIVITY__DATA_SINK = eINSTANCE.getTransferDataActivity_DataSink();
 
     /**
-     * The meta object literal for the '<em><b>Target Ds Language</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Data Sink Container</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRANSFER_DATA_ACTIVITY__TARGET_DS_LANGUAGE = eINSTANCE.getTransferDataActivity_TargetDsLanguage();
+    EAttribute TRANSFER_DATA_ACTIVITY__DATA_SINK_CONTAINER = eINSTANCE.getTransferDataActivity_DataSinkContainer();
 
     /**
-     * The meta object literal for the '<em><b>Target Ds Container</b></em>' attribute feature.
+     * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.DataManagementPatternImpl <em>Data Management Pattern</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.bpel.simpl.model.impl.DataManagementPatternImpl
+     * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getDataManagementPattern()
+     * @generated
+     */
+    EClass DATA_MANAGEMENT_PATTERN = eINSTANCE.getDataManagementPattern();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.ContainerToContainerPatternImpl <em>Container To Container Pattern</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.bpel.simpl.model.impl.ContainerToContainerPatternImpl
+     * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getContainerToContainerPattern()
+     * @generated
+     */
+    EClass CONTAINER_TO_CONTAINER_PATTERN = eINSTANCE.getContainerToContainerPattern();
+
+    /**
+     * The meta object literal for the '<em><b>Source Container</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TRANSFER_DATA_ACTIVITY__TARGET_DS_CONTAINER = eINSTANCE.getTransferDataActivity_TargetDsContainer();
+    EAttribute CONTAINER_TO_CONTAINER_PATTERN__SOURCE_CONTAINER = eINSTANCE.getContainerToContainerPattern_SourceContainer();
+
+    /**
+     * The meta object literal for the '<em><b>Target Container</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONTAINER_TO_CONTAINER_PATTERN__TARGET_CONTAINER = eINSTANCE.getContainerToContainerPattern_TargetContainer();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.DataIterationPatternImpl <em>Data Iteration Pattern</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.bpel.simpl.model.impl.DataIterationPatternImpl
+     * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getDataIterationPattern()
+     * @generated
+     */
+    EClass DATA_ITERATION_PATTERN = eINSTANCE.getDataIterationPattern();
+
+    /**
+     * The meta object literal for the '<em><b>Container Reference List</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DATA_ITERATION_PATTERN__CONTAINER_REFERENCE_LIST = eINSTANCE.getDataIterationPattern_ContainerReferenceList();
+
+    /**
+     * The meta object literal for the '<em><b>Current Container</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DATA_ITERATION_PATTERN__CURRENT_CONTAINER = eINSTANCE.getDataIterationPattern_CurrentContainer();
+
+    /**
+     * The meta object literal for the '<em><b>Activity</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DATA_ITERATION_PATTERN__ACTIVITY = eINSTANCE.getDataIterationPattern_Activity();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.DataFormatConversionPatternImpl <em>Data Format Conversion Pattern</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.bpel.simpl.model.impl.DataFormatConversionPatternImpl
+     * @see org.eclipse.bpel.simpl.model.impl.ModelPackageImpl#getDataFormatConversionPattern()
+     * @generated
+     */
+    EClass DATA_FORMAT_CONVERSION_PATTERN = eINSTANCE.getDataFormatConversionPattern();
+
+    /**
+     * The meta object literal for the '<em><b>Source Container</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DATA_FORMAT_CONVERSION_PATTERN__SOURCE_CONTAINER = eINSTANCE.getDataFormatConversionPattern_SourceContainer();
+
+    /**
+     * The meta object literal for the '<em><b>Target Container</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DATA_FORMAT_CONVERSION_PATTERN__TARGET_CONTAINER = eINSTANCE.getDataFormatConversionPattern_TargetContainer();
 
     /**
      * The meta object literal for the '{@link org.eclipse.bpel.simpl.model.impl.RetrieveDataActivityImpl <em>Retrieve Data Activity</em>}' class.
@@ -1361,12 +1759,12 @@ public interface ModelPackage extends EPackage {
 		EClass RETRIEVE_DATA_ACTIVITY = eINSTANCE.getRetrieveDataActivity();
 
 		/**
-     * The meta object literal for the '<em><b>Data Variable</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Target Variable</b></em>' reference feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EReference RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE = eINSTANCE.getRetrieveDataActivity_DataVariable();
+    EReference RETRIEVE_DATA_ACTIVITY__TARGET_VARIABLE = eINSTANCE.getRetrieveDataActivity_TargetVariable();
 
 	}
 

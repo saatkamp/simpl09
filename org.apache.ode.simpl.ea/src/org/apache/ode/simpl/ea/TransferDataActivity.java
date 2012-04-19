@@ -32,14 +32,15 @@ public class TransferDataActivity extends DataManagementActivity {
     // ScopeEvent DMStarted = new DMStarted();
     // context.getInternalInstance().sendEvent(DMStarted);
 
-    // Load all attribute values from the activity.
-    loadSIMPLAttributes(context, element);
 
     // Load all specific attribute values from the TransferActivity.
-    String targetDsIdentifier = element.getAttribute("targetDsIdentifier");
-    String targetDsContainer = element.getAttribute("targetDsContainer");
+    String dataSource = element.getAttribute("dataSource");
+    String dataSourceCommand = element.getAttribute("dataSourceCommand");
+    String dataSink = element.getAttribute("dataSink");
+    String dataSinkContainer = element.getAttribute("dataSinkContainer");
+    
 
-    if (targetDsContainer.contains("[") || targetDsContainer.contains("#")) {
+    if (dataSinkContainer.contains("[") || dataSinkContainer.contains("#")) {
       // targetDsContainer enthält eine BPEL-Variable als Referenz
       Map<String, Variable> variables = null;
       try {
@@ -56,22 +57,25 @@ public class TransferDataActivity extends DataManagementActivity {
         context.getInternalInstance().sendEvent(event);
       }
 
-      targetDsContainer = String.valueOf(StatementUtils.resolveVariable(context,
-          variables, targetDsContainer));
+      dataSinkContainer = String.valueOf(StatementUtils.resolveVariable(context,
+          variables, dataSinkContainer));
     }
 
-    String dsFrom = VariableUtils.getDataSourceReferenceValue(context, getDsIdentifier(), "name");
-    String dsTo = VariableUtils.getDataSourceReferenceValue(context, targetDsIdentifier, "name");
-    LateBinding lbSource = DataSourceUtils.getLateBinding(context, getDsIdentifier());
-    LateBinding lbSink = DataSourceUtils.getLateBinding(context, targetDsIdentifier);
+    String dsFrom = VariableUtils.getDataSourceReferenceValue(context, dataSource, "name");
+    String dsTo = VariableUtils.getDataSourceReferenceValue(context, dataSink, "name");
+    LateBinding lbSource = DataSourceUtils.getLateBinding(context, dataSource);
+    LateBinding lbSink = DataSourceUtils.getLateBinding(context, dataSink);
+    
+    
     
 
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 
     try {
-      if (!targetDsIdentifier.equals("") || !targetDsContainer.equals("")) {
+      if (!dataSink.equals("") || !dataSinkContainer.equals("")) {
+        
         this.successfulExecution = simplCoreService.transferData(dsFrom, dsTo,
-            getDsStatement(context), targetDsContainer, lbSource, lbSink);
+            StatementUtils.processStatement(context, dataSourceCommand), dataSinkContainer, lbSource, lbSink);
         // DataObject dataObject = simplCoreService.retrieveData(dsFrom,
         // getDsStatement(context), lb);
         // if (dataObject == null) {

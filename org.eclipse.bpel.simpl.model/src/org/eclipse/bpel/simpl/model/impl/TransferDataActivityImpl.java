@@ -23,11 +23,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl#getTargetDsIdentifier <em>Target Ds Identifier</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl#getTargetDsType <em>Target Ds Type</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl#getTargetDsKind <em>Target Ds Kind</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl#getTargetDsLanguage <em>Target Ds Language</em>}</li>
- *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl#getTargetDsContainer <em>Target Ds Container</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl#getDataSource <em>Data Source</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl#getDataSourceCommand <em>Data Source Command</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl#getDataSink <em>Data Sink</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.impl.TransferDataActivityImpl#getDataSinkContainer <em>Data Sink Container</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,104 +35,84 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 @SuppressWarnings("restriction")
 public class TransferDataActivityImpl extends DataManagementActivityImpl implements TransferDataActivity {
   /**
-   * The default value of the '{@link #getTargetDsIdentifier() <em>Target Ds Identifier</em>}' attribute.
+   * The default value of the '{@link #getDataSource() <em>Data Source</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTargetDsIdentifier()
+   * @see #getDataSource()
    * @generated
    * @ordered
    */
-  protected static final String TARGET_DS_IDENTIFIER_EDEFAULT = "identifier";
+  protected static final String DATA_SOURCE_EDEFAULT = "";
 
   /**
-   * The cached value of the '{@link #getTargetDsIdentifier() <em>Target Ds Identifier</em>}' attribute.
+   * The cached value of the '{@link #getDataSource() <em>Data Source</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTargetDsIdentifier()
+   * @see #getDataSource()
    * @generated
    * @ordered
    */
-  protected String targetDsIdentifier = TARGET_DS_IDENTIFIER_EDEFAULT;
+  protected String dataSource = DATA_SOURCE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getTargetDsType() <em>Target Ds Type</em>}' attribute.
+   * The default value of the '{@link #getDataSourceCommand() <em>Data Source Command</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTargetDsType()
+   * @see #getDataSourceCommand()
    * @generated
    * @ordered
    */
-  protected static final String TARGET_DS_TYPE_EDEFAULT = "type";
+  protected static final String DATA_SOURCE_COMMAND_EDEFAULT = "";
 
   /**
-   * The cached value of the '{@link #getTargetDsType() <em>Target Ds Type</em>}' attribute.
+   * The cached value of the '{@link #getDataSourceCommand() <em>Data Source Command</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTargetDsType()
+   * @see #getDataSourceCommand()
    * @generated
    * @ordered
    */
-  protected String targetDsType = TARGET_DS_TYPE_EDEFAULT;
+  protected String dataSourceCommand = DATA_SOURCE_COMMAND_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getTargetDsKind() <em>Target Ds Kind</em>}' attribute.
+   * The default value of the '{@link #getDataSink() <em>Data Sink</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTargetDsKind()
+   * @see #getDataSink()
    * @generated
    * @ordered
    */
-  protected static final String TARGET_DS_KIND_EDEFAULT = "kind";
+  protected static final String DATA_SINK_EDEFAULT = "";
 
   /**
-   * The cached value of the '{@link #getTargetDsKind() <em>Target Ds Kind</em>}' attribute.
+   * The cached value of the '{@link #getDataSink() <em>Data Sink</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTargetDsKind()
+   * @see #getDataSink()
    * @generated
    * @ordered
    */
-  protected String targetDsKind = TARGET_DS_KIND_EDEFAULT;
+  protected String dataSink = DATA_SINK_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getTargetDsLanguage() <em>Target Ds Language</em>}' attribute.
+   * The default value of the '{@link #getDataSinkContainer() <em>Data Sink Container</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTargetDsLanguage()
+   * @see #getDataSinkContainer()
    * @generated
    * @ordered
    */
-  protected static final String TARGET_DS_LANGUAGE_EDEFAULT = "language";
+  protected static final String DATA_SINK_CONTAINER_EDEFAULT = "";
 
   /**
-   * The cached value of the '{@link #getTargetDsLanguage() <em>Target Ds Language</em>}' attribute.
+   * The cached value of the '{@link #getDataSinkContainer() <em>Data Sink Container</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTargetDsLanguage()
+   * @see #getDataSinkContainer()
    * @generated
    * @ordered
    */
-  protected String targetDsLanguage = TARGET_DS_LANGUAGE_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getTargetDsContainer() <em>Target Ds Container</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTargetDsContainer()
-   * @generated
-   * @ordered
-   */
-  protected static final String TARGET_DS_CONTAINER_EDEFAULT = "targetDsContainer";
-
-  /**
-   * The cached value of the '{@link #getTargetDsContainer() <em>Target Ds Container</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTargetDsContainer()
-   * @generated
-   * @ordered
-   */
-  protected String targetDsContainer = TARGET_DS_CONTAINER_EDEFAULT;
+  protected String dataSinkContainer = DATA_SINK_CONTAINER_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -159,24 +138,8 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTargetDsIdentifier() {
-    return targetDsIdentifier;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   */
-  public void setTargetDsIdentifier(String newTargetDsIdentifier) {
-    String oldTargetDsIdentifier = targetDsIdentifier;
-    if (!isReconciling) {
-      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
-          .getTransferDataActivity_TargetDsIdentifier().getName(),
-          newTargetDsIdentifier == null ? null : newTargetDsIdentifier);
-    }
-    targetDsIdentifier = newTargetDsIdentifier;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER, oldTargetDsIdentifier, targetDsIdentifier));
+  public String getDataSource() {
+    return dataSource;
   }
 
   /**
@@ -184,24 +147,16 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTargetDsType() {
-    return targetDsType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   */
-  public void setTargetDsType(String newTargetDsType) {
-    String oldTargetDsType = targetDsType;
+  public void setDataSource(String newDataSource) {
+    String oldDataSource = dataSource;
     if (!isReconciling) {
       ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
-          .getTransferDataActivity_TargetDsType().getName(),
-          newTargetDsType == null ? null : newTargetDsType);
+          .getTransferDataActivity_DataSource().getName(),
+          newDataSource);
     }
-    targetDsType = newTargetDsType;
+    dataSource = newDataSource;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE, oldTargetDsType, targetDsType));
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SOURCE, oldDataSource, dataSource));
   }
 
   /**
@@ -209,24 +164,8 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTargetDsKind() {
-    return targetDsKind;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   */
-  public void setTargetDsKind(String newTargetDsKind) {
-    String oldTargetDsKind = targetDsKind;
-    if (!isReconciling) {
-      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
-          .getTransferDataActivity_TargetDsKind().getName(),
-          newTargetDsKind == null ? null : newTargetDsKind);
-    }
-    targetDsKind = newTargetDsKind;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_KIND, oldTargetDsKind, targetDsKind));
+  public String getDataSourceCommand() {
+    return dataSourceCommand;
   }
 
   /**
@@ -234,24 +173,26 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTargetDsLanguage() {
-    return targetDsLanguage;
+  public void setDataSourceCommand(String newDataSourceCommand) {
+    String oldDataSourceCommand = dataSourceCommand;
+    if (!isReconciling) {
+      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+          .getTransferDataActivity_DataSourceCommand().getName(),
+          newDataSourceCommand);
+    }
+    dataSourceCommand = newDataSourceCommand;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SOURCE_COMMAND, oldDataSourceCommand, dataSourceCommand));
   }
+
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @generated
    */
-  public void setTargetDsLanguage(String newTargetDsLanguage) {
-    String oldTargetDsLanguage = targetDsLanguage;
-    if (!isReconciling) {
-      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
-          .getTransferDataActivity_TargetDsLanguage().getName(),
-          newTargetDsLanguage == null ? null : newTargetDsLanguage);
-    }
-    targetDsLanguage = newTargetDsLanguage;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_LANGUAGE, oldTargetDsLanguage, targetDsLanguage));
+  public String getDataSink() {
+    return dataSink;
   }
 
   /**
@@ -259,25 +200,44 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTargetDsContainer() {
-    return targetDsContainer;
+  public void setDataSink(String newDataSink) {
+    String oldDataSink = dataSink;
+    if (!isReconciling) {
+      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+          .getTransferDataActivity_DataSink().getName(),
+          newDataSink);
+    }
+    dataSink = newDataSink;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SINK, oldDataSink, dataSink));
   }
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @generated
    */
-  public void setTargetDsContainer(String newTargetDsContainer) {
-    String oldTargetDsContainer = targetDsContainer;
+  public String getDataSinkContainer() {
+    return dataSinkContainer;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDataSinkContainer(String newDataSinkContainer) {
+    String oldDataSinkContainer = dataSinkContainer;
     if (!isReconciling) {
       ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
-          .getTransferDataActivity_TargetDsContainer().getName(),
-          newTargetDsContainer == null ? null : newTargetDsContainer);
+          .getTransferDataActivity_DataSinkContainer().getName(),
+          newDataSinkContainer);
     }
-    targetDsContainer = newTargetDsContainer;
+    dataSinkContainer = newDataSinkContainer;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_CONTAINER, oldTargetDsContainer, targetDsContainer));
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SINK_CONTAINER, oldDataSinkContainer, dataSinkContainer));
   }
+
 
   /**
    * <!-- begin-user-doc -->
@@ -287,16 +247,14 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER:
-        return getTargetDsIdentifier();
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE:
-        return getTargetDsType();
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_KIND:
-        return getTargetDsKind();
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_LANGUAGE:
-        return getTargetDsLanguage();
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_CONTAINER:
-        return getTargetDsContainer();
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SOURCE:
+        return getDataSource();
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SOURCE_COMMAND:
+        return getDataSourceCommand();
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SINK:
+        return getDataSink();
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SINK_CONTAINER:
+        return getDataSinkContainer();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -309,20 +267,17 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER:
-        setTargetDsIdentifier((String)newValue);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SOURCE:
+        setDataSource((String)newValue);
         return;
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE:
-        setTargetDsType((String)newValue);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SOURCE_COMMAND:
+        setDataSourceCommand((String)newValue);
         return;
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_KIND:
-        setTargetDsKind((String)newValue);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SINK:
+        setDataSink((String)newValue);
         return;
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_LANGUAGE:
-        setTargetDsLanguage((String)newValue);
-        return;
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_CONTAINER:
-        setTargetDsContainer((String)newValue);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SINK_CONTAINER:
+        setDataSinkContainer((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -336,20 +291,17 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER:
-        setTargetDsIdentifier(TARGET_DS_IDENTIFIER_EDEFAULT);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SOURCE:
+        setDataSource(DATA_SOURCE_EDEFAULT);
         return;
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE:
-        setTargetDsType(TARGET_DS_TYPE_EDEFAULT);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SOURCE_COMMAND:
+        setDataSourceCommand(DATA_SOURCE_COMMAND_EDEFAULT);
         return;
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_KIND:
-        setTargetDsKind(TARGET_DS_KIND_EDEFAULT);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SINK:
+        setDataSink(DATA_SINK_EDEFAULT);
         return;
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_LANGUAGE:
-        setTargetDsLanguage(TARGET_DS_LANGUAGE_EDEFAULT);
-        return;
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_CONTAINER:
-        setTargetDsContainer(TARGET_DS_CONTAINER_EDEFAULT);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SINK_CONTAINER:
+        setDataSinkContainer(DATA_SINK_CONTAINER_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -363,16 +315,14 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER:
-        return TARGET_DS_IDENTIFIER_EDEFAULT == null ? targetDsIdentifier != null : !TARGET_DS_IDENTIFIER_EDEFAULT.equals(targetDsIdentifier);
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE:
-        return TARGET_DS_TYPE_EDEFAULT == null ? targetDsType != null : !TARGET_DS_TYPE_EDEFAULT.equals(targetDsType);
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_KIND:
-        return TARGET_DS_KIND_EDEFAULT == null ? targetDsKind != null : !TARGET_DS_KIND_EDEFAULT.equals(targetDsKind);
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_LANGUAGE:
-        return TARGET_DS_LANGUAGE_EDEFAULT == null ? targetDsLanguage != null : !TARGET_DS_LANGUAGE_EDEFAULT.equals(targetDsLanguage);
-      case ModelPackage.TRANSFER_DATA_ACTIVITY__TARGET_DS_CONTAINER:
-        return TARGET_DS_CONTAINER_EDEFAULT == null ? targetDsContainer != null : !TARGET_DS_CONTAINER_EDEFAULT.equals(targetDsContainer);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SOURCE:
+        return DATA_SOURCE_EDEFAULT == null ? dataSource != null : !DATA_SOURCE_EDEFAULT.equals(dataSource);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SOURCE_COMMAND:
+        return DATA_SOURCE_COMMAND_EDEFAULT == null ? dataSourceCommand != null : !DATA_SOURCE_COMMAND_EDEFAULT.equals(dataSourceCommand);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SINK:
+        return DATA_SINK_EDEFAULT == null ? dataSink != null : !DATA_SINK_EDEFAULT.equals(dataSink);
+      case ModelPackage.TRANSFER_DATA_ACTIVITY__DATA_SINK_CONTAINER:
+        return DATA_SINK_CONTAINER_EDEFAULT == null ? dataSinkContainer != null : !DATA_SINK_CONTAINER_EDEFAULT.equals(dataSinkContainer);
     }
     return super.eIsSet(featureID);
   }
@@ -387,16 +337,14 @@ public class TransferDataActivityImpl extends DataManagementActivityImpl impleme
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (targetDsIdentifier: ");
-    result.append(targetDsIdentifier);
-    result.append(", targetDsType: ");
-    result.append(targetDsType);
-    result.append(", targetDsKind: ");
-    result.append(targetDsKind);
-    result.append(", targetDsLanguage: ");
-    result.append(targetDsLanguage);
-    result.append(", targetDsContainer: ");
-    result.append(targetDsContainer);
+    result.append(" (dataSource: ");
+    result.append(dataSource);
+    result.append(", dataSourceCommand: ");
+    result.append(dataSourceCommand);
+    result.append(", dataSink: ");
+    result.append(dataSink);
+    result.append(", dataSinkContainer: ");
+    result.append(dataSinkContainer);
     result.append(')');
     return result.toString();
   }

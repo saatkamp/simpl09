@@ -4,6 +4,7 @@ import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.QueryDataActivity;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
+import org.eclipse.bpel.simpl.model.TransferDataActivity;
 import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.bpel.ui.IHoverHelper;
 import org.eclipse.bpel.ui.adapters.IAnnotatedElement;
@@ -21,7 +22,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
-
 
 /**
  * <b>Purpose:</b> <br>
@@ -48,183 +48,188 @@ import org.eclipse.swt.graphics.FontData;
  */
 public class SIMPLHoverHelper implements IHoverHelper {
 
-	public IFigure getHoverFigure(EObject modelObject) {
+  public IFigure getHoverFigure(EObject modelObject) {
 
-		Figure panel = new Figure();
-		panel.setLayoutManager(new GridLayout(2, false));
+    Figure panel = new Figure();
+    panel.setLayoutManager(new GridLayout(2, false));
 
-		if (modelObject instanceof DataManagementActivity) {
-			DataManagementActivity dm = (DataManagementActivity) modelObject;
-			String name = dm.getName();
-			String type = getUIObjectFactory(modelObject).getTypeLabel();
+    if (modelObject instanceof DataManagementActivity) {
+      DataManagementActivity dm = (DataManagementActivity) modelObject;
+      String name = dm.getName();
+      String type = getUIObjectFactory(modelObject).getTypeLabel();
 
-			if (name == null || type == null) {
-				return null;
-			}
+      if (name == null || type == null) {
+        return null;
+      }
 
-			Label title = new BoldLabel();
-			title.setIcon(getUIObjectFactory(modelObject).getSmallImage());
-			title.setIconAlignment(PositionConstants.TOP);
-			title.setText(type);
+      Label title = new BoldLabel();
+      title.setIcon(getUIObjectFactory(modelObject).getSmallImage());
+      title.setIconAlignment(PositionConstants.TOP);
+      title.setText(type);
 
-			panel.add(title);
+      panel.add(title);
 
-			Label label = new Label();
-			if (!name.equals(type)) {
-				label.setText(name);
-			}
-			panel.add(label);
-			String annotation[] = {
-					ModelPackage.eINSTANCE
-							.getDataManagementActivity_DsIdentifier().getName(),
-					dm.getDsIdentifier(),
-					ModelPackage.eINSTANCE.getDataManagementActivity_DsType()
-							.getName(),
-					dm.getDsType(),
-					ModelPackage.eINSTANCE.getDataManagementActivity_DsKind()
-							.getName(),
-					dm.getDsKind(),
-					ModelPackage.eINSTANCE
-							.getDataManagementActivity_DsLanguage().getName(),
-					dm.getDsLanguage(),
-					ModelPackage.eINSTANCE
-							.getDataManagementActivity_DsStatement().getName(),
-					dm.getDsStatement() };
+      Label label = new Label();
+      if (!name.equals(type)) {
+        label.setText(name);
+      }
+      panel.add(label);
+      
+      if (modelObject instanceof DataManagementActivity) {
+        if (((DataManagementActivity) modelObject).getDataResource() != null) {
+          panel.add(new Label(ModelPackage.eINSTANCE
+              .getDataManagementActivity_DataResource().getName() + " :"));
+          panel.add(new Label(((DataManagementActivity) modelObject)
+              .getDataResource()));
+        }
+        if (((DataManagementActivity) modelObject).getDmCommand() != null) {
+          panel.add(new Label(ModelPackage.eINSTANCE
+              .getDataManagementActivity_DmCommand().getName() + " :"));
+          panel.add(new Label(((DataManagementActivity) modelObject)
+              .getDmCommand()));
+        }
+      }
+      if (modelObject instanceof QueryDataActivity) {
+        if (!((QueryDataActivity) modelObject).getTargetContainer().isEmpty()) {
+          panel.add(new Label(ModelPackage.eINSTANCE
+              .getQueryDataActivity_TargetContainer().getName() + " :"));
+          panel.add(new Label(((QueryDataActivity) modelObject)
+              .getTargetContainer()));
+        }
+      }
+      if (modelObject instanceof RetrieveDataActivity) {
+        if (((RetrieveDataActivity) modelObject).getTargetVariable() != null
+            && !((RetrieveDataActivity) modelObject).getTargetVariable()
+                .getName().isEmpty()) {
+          panel.add(new Label(ModelPackage.eINSTANCE
+              .getRetrieveDataActivity_TargetVariable().getName() + " :"));
+          panel.add(new Label(((RetrieveDataActivity) modelObject)
+              .getTargetVariable().getName()));
+        }
+      }
+      if (modelObject instanceof WriteDataBackActivity) {
+        if (((WriteDataBackActivity) modelObject).getDataVariable() != null
+            && !((WriteDataBackActivity) modelObject).getDataVariable()
+                .getName().isEmpty()) {
+          panel.add(new Label(ModelPackage.eINSTANCE
+              .getWriteDataBackActivity_DataVariable().getName() + " :"));
+          panel.add(new Label(((WriteDataBackActivity) modelObject)
+              .getDataVariable().getName()));
+          panel.add(new Label(ModelPackage.eINSTANCE
+              .getWriteDataBackActivity_TargetContainer().getName() + " :"));
+          panel.add(new Label(((WriteDataBackActivity) modelObject)
+              .getTargetContainer()));
+        }
+      }
+      if (modelObject instanceof TransferDataActivity) {
+        if (!((TransferDataActivity) modelObject).getDataSource().isEmpty()) {
+          panel.add(new Label(ModelPackage.eINSTANCE
+              .getTransferDataActivity_DataSource().getName() + " :"));
+          panel.add(new Label(((TransferDataActivity) modelObject)
+              .getDataSource()));
+        }
+        if (!((TransferDataActivity) modelObject).getDataSourceCommand()
+            .isEmpty()) {
+          panel.add(new Label(ModelPackage.eINSTANCE
+              .getTransferDataActivity_DataSourceCommand().getName() + " :"));
+          panel.add(new Label(((TransferDataActivity) modelObject)
+              .getDataSourceCommand()));
+        }
+        if (!((TransferDataActivity) modelObject).getDataSink().isEmpty()) {
+          panel.add(new Label(ModelPackage.eINSTANCE
+              .getTransferDataActivity_DataSink().getName() + " :"));
+          panel.add(new Label(((TransferDataActivity) modelObject)
+              .getDataSink()));
+        }
+        if (!((TransferDataActivity) modelObject).getDataSinkContainer()
+            .isEmpty()) {
+          panel.add(new Label(ModelPackage.eINSTANCE
+              .getTransferDataActivity_DataSinkContainer().getName() + " :"));
+          panel.add(new Label(((TransferDataActivity) modelObject)
+              .getDataSinkContainer()));
+        }
+      }
+    } else {
+      ILabeledElement e = getLabeledElement(modelObject);
+      if (e == null) {
+        return null;
+      }
+      String name = e.getLabel(modelObject);
+      String type = e.getTypeLabel(modelObject);
 
-			if (annotation != null) {
-				for (int i = 0; i < annotation.length; i += 2) {
-					if (annotation[i + 1] != null
-							&& annotation[i + 1].length() > 0) {
-						panel.add(new Label(annotation[i] + " :"));
-						panel.add(new Label(annotation[i + 1]));
-					}
-				}
-				if (modelObject instanceof QueryDataActivity) {
-					if (!((QueryDataActivity) modelObject).getQueryTarget()
-							.isEmpty()) {
-						panel.add(new Label(ModelPackage.eINSTANCE
-								.getQueryDataActivity_QueryTarget().getName()
-								+ " :"));
-						panel.add(new Label(((QueryDataActivity) modelObject)
-								.getQueryTarget()));
-					}
-				}
-				if (modelObject instanceof RetrieveDataActivity) {
-					if (((RetrieveDataActivity) modelObject).getDataVariable() != null
-							&& !((RetrieveDataActivity) modelObject)
-									.getDataVariable().getName().isEmpty()) {
-						panel.add(new Label(ModelPackage.eINSTANCE
-								.getRetrieveDataActivity_DataVariable()
-								.getName()
-								+ " :"));
-						panel.add(new Label(
-								((RetrieveDataActivity) modelObject)
-										.getDataVariable().getName()));
-					}
-				}
-				
-        if (modelObject instanceof WriteDataBackActivity) {
-          if (((WriteDataBackActivity) modelObject).getDataVariable() != null
-              && !((WriteDataBackActivity) modelObject)
-                  .getDataVariable().getName().isEmpty()) {
-            panel.add(new Label(ModelPackage.eINSTANCE
-                .getWriteDataBackActivity_DataVariable()
-                .getName()
-                + " :"));
-            panel.add(new Label(
-                ((WriteDataBackActivity) modelObject)
-                    .getDataVariable().getName()));
-            panel.add(new Label(ModelPackage.eINSTANCE
-                .getWriteDataBackActivity_WriteTarget().getName()
-                + " :"));
-            panel.add(new Label(((WriteDataBackActivity) modelObject)
-                .getWriteTarget()));
+      Label title = new BoldLabel();
+      title.setIcon(e.getSmallImage(modelObject));
+      title.setIconAlignment(PositionConstants.TOP);
+      title.setText(type);
+
+      panel.add(title);
+
+      Label label = new Label();
+      if (!name.equals(type)) {
+        label.setText(name);
+      }
+      panel.add(label);
+
+      if (e instanceof IAnnotatedElement) {
+        String annotation[] = ((IAnnotatedElement) e)
+            .getAnnotation(modelObject);
+        if (annotation != null) {
+          for (int i = 0; i < annotation.length; i += 2) {
+            if (annotation[i + 1] != null && annotation[i + 1].length() > 0) {
+              panel.add(new Label(annotation[i] + " :"));
+              panel.add(new Label(annotation[i + 1]));
+            }
           }
         }
-			}
+      }
+    }
 
-		} else {
-			ILabeledElement e = getLabeledElement(modelObject);
-			if (e == null) {
-				return null;
-			}
-			String name = e.getLabel(modelObject);
-			String type = e.getTypeLabel(modelObject);
+    return panel;
+  }
 
-			Label title = new BoldLabel();
-			title.setIcon(e.getSmallImage(modelObject));
-			title.setIconAlignment(PositionConstants.TOP);
-			title.setText(type);
+  public String getHoverHelp(IMarker marker) {
+    return null;
+    // return BPELUtil.getObjectFromMarker(marker, ref) marker.toString();
+  }
 
-			panel.add(title);
+  protected ILabeledElement getLabeledElement(EObject modelObject) {
+    if (modelObject == null) {
+      return null;
+    }
+    for (Adapter adapter : modelObject.eAdapters()) {
+      if (adapter instanceof ILabeledElement) {
+        return (ILabeledElement) adapter;
+      }
+    }
+    return null;
+  }
 
-			Label label = new Label();
-			if (!name.equals(type)) {
-				label.setText(name);
-			}
-			panel.add(label);
+  private static class BoldLabel extends Label {
+    @Override
+    public void addNotify() {
+      super.addNotify();
 
-			if (e instanceof IAnnotatedElement) {
-				String annotation[] = ((IAnnotatedElement) e)
-						.getAnnotation(modelObject);
-				if (annotation != null) {
-					for (int i = 0; i < annotation.length; i += 2) {
-						if (annotation[i + 1] != null
-								&& annotation[i + 1].length() > 0) {
-							panel.add(new Label(annotation[i] + " :"));
-							panel.add(new Label(annotation[i + 1]));
-						}
-					}
-				}
-			}
-		}
+      Font font = getFont();
+      if (font == null) {
+        return;
+      }
+      FontData[] fontData = font.getFontData();
+      for (FontData fd : fontData) {
+        fd.setStyle(fd.getStyle() | SWT.BOLD);
+      }
+      Font bold = new Font(font.getDevice(), fontData);
+      setFont(bold);
+    }
+  }
 
-		return panel;
-	}
-
-	public String getHoverHelp(IMarker marker) {
-		return null;
-		// return BPELUtil.getObjectFromMarker(marker, ref) marker.toString();
-	}
-
-	protected ILabeledElement getLabeledElement(EObject modelObject) {
-		if (modelObject == null) {
-			return null;
-		}
-		for (Adapter adapter : modelObject.eAdapters()) {
-			if (adapter instanceof ILabeledElement) {
-				return (ILabeledElement) adapter;
-			}
-		}
-		return null;
-	}
-
-	private static class BoldLabel extends Label {
-		@Override
-		public void addNotify() {
-			super.addNotify();
-
-			Font font = getFont();
-			if (font == null) {
-				return;
-			}
-			FontData[] fontData = font.getFontData();
-			for (FontData fd : fontData) {
-				fd.setStyle(fd.getStyle() | SWT.BOLD);
-			}
-			Font bold = new Font(font.getDevice(), fontData);
-			setFont(bold);
-		}
-	}
-
-	/**
-	 * Helper method for getting an AbstractUIObjectFactory from a model object.
-	 */
-	protected AbstractUIObjectFactory getUIObjectFactory(Object modelObject) {
-		if (modelObject instanceof EObject) {
-			return UIObjectFactoryProvider.getInstance().getFactoryFor(
-					((EObject) modelObject).eClass());
-		}
-		return null;
-	}
+  /**
+   * Helper method for getting an AbstractUIObjectFactory from a model object.
+   */
+  protected AbstractUIObjectFactory getUIObjectFactory(Object modelObject) {
+    if (modelObject instanceof EObject) {
+      return UIObjectFactoryProvider.getInstance().getFactoryFor(
+          ((EObject) modelObject).eClass());
+    }
+    return null;
+  }
 }
