@@ -20,14 +20,14 @@ public class IssueCommandActivity extends DataManagementActivity {
     // Load all attribute values from the activity.
     loadSIMPLAttributes(context, element);
 
-    String ds = VariableUtils.getDataSourceReferenceValue(context, getDsIdentifier(), "name");
-    LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
+    String ds = VariableUtils.getDataSourceReferenceValue(context, getDataResource(), "name");
+    LateBinding lb = DataSourceUtils.getLateBinding(context, getDataResource());
     
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 
     try {
       this.successfulExecution = simplCoreService.issueCommand(ds,
-          getDsStatement(context), lb);
+          getDmCommand(context), lb);
 
       if (!this.successfulExecution) {
         ActivityFailureEvent event = new ActivityFailureEvent();

@@ -21,12 +21,10 @@ import org.eclipse.bpel.model.util.BPELUtils;
 import org.eclipse.bpel.model.util.XSDImportResolver;
 import org.eclipse.bpel.model.util.XSDUtil;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
-import org.eclipse.bpel.simpl.ui.command.SetDataVariableCommand;
-import org.eclipse.bpel.simpl.ui.command.SetDsIdentifierCommand;
-import org.eclipse.bpel.simpl.ui.command.SetDsKindCommand;
-import org.eclipse.bpel.simpl.ui.command.SetDsLanguageCommand;
-import org.eclipse.bpel.simpl.ui.command.SetDsStatementCommand;
-import org.eclipse.bpel.simpl.ui.command.SetDsTypeCommand;
+import org.eclipse.bpel.simpl.model.TransferDataActivity;
+import org.eclipse.bpel.simpl.ui.command.SetDMCommandCommand;
+import org.eclipse.bpel.simpl.ui.command.SetDataResourceCommand;
+import org.eclipse.bpel.simpl.ui.command.SetVariableCommand;
 import org.eclipse.bpel.simpl.ui.properties.util.PropertySectionUtils;
 import org.eclipse.bpel.simpl.ui.properties.util.VariableUtils;
 import org.eclipse.bpel.simpl.ui.widgets.FileSysListPopUp;
@@ -55,8 +53,6 @@ import org.eclipse.jface.fieldassist.TextContentAdapter;
 import org.eclipse.simpl.statementtest.ui.wizards.WizardLauncher;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
@@ -120,6 +116,7 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 	private Button command = null, file = null; //, folder = null, driver = null;
 
 	private RetrieveDataActivity activity;
+	private DataSource dataSource = null;
 
 	/**
 	 * Make this section use all the vertical space it can get.
@@ -138,20 +135,19 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 		// Laden der Aktivität
 		this.activity = getModel();
 
+		setDataSource();
+		
 		createWidgets(parent);
 
-		if (activity.getDsStatement() == null) {
+		if (activity.getDmCommand() == null) {
 			// Setzen das Statement
 			setStatement("");
 		} else {
 			// Setzen das Statement
-			setStatement(activity.getDsStatement());
+			setStatement(activity.getDmCommand());
 		}
-
-		// Setzen die Datenquellenadresse
-		dataSourceIdentifierCombo.setText(activity.getDsIdentifier());
-		// Setzen die Sprache
-		languageText.setText(activity.getDsLanguage());
+		
+		setValues();
 	}
 
 	/**
@@ -208,7 +204,7 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 				SWT.COLOR_WHITE));
 		parentComposite.setSize(new Point(582, 350));
 		typeLabel = new Label(composite, SWT.NONE);
-		typeLabel.setText("Type of data source:");
+		typeLabel.setText("Type of data resource:");
 		typeLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		typeLabel.setLayoutData(gridData51);
@@ -216,7 +212,7 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 		Label filler2 = new Label(composite, SWT.NONE);
 		Label filler5 = new Label(composite, SWT.NONE);
 		kindLabel = new Label(composite, SWT.NONE);
-		kindLabel.setText("Subtype of data source:");
+		kindLabel.setText("Subtype of data resource:");
 		kindLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		createKindCombo();
@@ -233,28 +229,17 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				getCommandFramework().execute(
-						new SetDsIdentifierCommand(getModel(),
+						new SetDataResourceCommand(getModel(),
 								dataSourceIdentifierCombo.getText()));
 
-				DataSource dataSource = getDataSource();
-				if (dataSource != null) {
-					typeText.setText(dataSource.getType());
-					kindText.setText(dataSource.getSubType());
-					languageText.setText(dataSource.getLanguage());
-					
-					// download the data source data format XSD schema from the Resource Management
-					PropertySectionUtils.downloadSchema(dataSource, getProcess());
-				} else {
-          typeText.setText("");
-          kindText.setText("");
-          languageText.setText("");         
-        }
+				setDataSource();
+				setValues();
 			}
 		});
 		dataSourceIdentifierCombo.setItems(PropertySectionUtils
 				.getAllDataSourceIdentifiers(getProcess()));
 
-		dataSourceIdentifierLabel.setText("Data source:");
+		dataSourceIdentifierLabel.setText("Data resource:");
 		dataSourceIdentifierCombo.setEditable(false);
 		dataSourceIdentifierCombo.setBackground(Display.getCurrent()
 				.getSystemColor(SWT.COLOR_WHITE));
@@ -267,24 +252,7 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 				SWT.COLOR_WHITE));
 		languageText.setEditable(false);
 		languageText.setLayoutData(gridData4);
-		languageText.addModifyListener(new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-				// Auswahl im Modell speichern
-				getCommandFramework().execute(
-						new SetDsLanguageCommand(getModel(), languageText
-								.getText()));
-				/* TODO: uncomment if editor is ready to use
-				if (languageText.getText().isEmpty()) {
-					openEditorButton.setEnabled(false);
-				} else {
-					openEditorButton.setEnabled(true);
-				}*/
-			}
-		});
-
-		languageLabel.setText("Query language:");
+		languageLabel.setText("Query language of data resource:");
 		languageLabel.setVisible(true);
 		languageLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
@@ -344,15 +312,10 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 		gridData14.grabExcessVerticalSpace = true;
 		gridData14.grabExcessHorizontalSpace = true;
 
-		if (activity.getDsType() != null) {
-			if (activity.getDsType().equals("Filesystem")) {
-				//System.out.print("\r Filesystem");
-
+		if (dataSource != null) {
+			if (dataSource.getType().equals("Filesystem")) {
 				createFileSystemWidgets();
-
-			} else if (activity.getDsType().equals("Database")) {
-				//System.out.print("\r Database");
-
+			} else if (dataSource.getType().equals("Database")) {
 				createDBWidgets();
 			}
 		}
@@ -468,7 +431,7 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 		Label filler1 = new Label(composite, SWT.NONE);
 
 		Label statementLabel = new Label(composite, SWT.NONE);
-		statementLabel.setText("Data management operation:");
+		statementLabel.setText("Data management command:");
 		statementLabel.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		statementText = new LiveEditStyleText(composite);
@@ -679,26 +642,11 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 		gridData2.horizontalAlignment = GridData.FILL;
 		gridData2.verticalAlignment = GridData.CENTER;
 		typeText = new Text(parentComposite, SWT.BORDER);
-		typeText.setToolTipText("Choose the type of data source");
+		typeText.setToolTipText("Choose the type of data resource");
 		typeText.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
 		typeText.setLayoutData(gridData2);
-
-		// Aktualisieren der KindCombo-Daten
-		typeText.addModifyListener(new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-				// TODO Auto-generated method stub
-				// Speichern Auswahl in Modell
-				getCommandFramework().execute(
-						new SetDsTypeCommand(getModel(), typeText.getText()));
-			}
-		});
 		typeText.setEditable(false);
-
-		// Wert aus Modell setzen
-		typeText.setText(this.activity.getDsType());
 	}
 
 	/**
@@ -712,23 +660,9 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 		kindText = new Text(parentComposite, SWT.BORDER);
 		kindText.setBackground(Display.getCurrent().getSystemColor(
 				SWT.COLOR_WHITE));
-		kindText.setToolTipText("Choose the subtype of data source");
+		kindText.setToolTipText("Choose the subtype of redata source");
 		kindText.setEditable(false);
 		kindText.setLayoutData(gridData6);
-
-		kindText.addModifyListener(new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-				// TODO Auto-generated method stub
-				// Speichern Auswahl in Modell
-				getCommandFramework().execute(
-						new SetDsKindCommand(getModel(), kindText.getText()));
-			}
-		});
-
-		// Wert aus Modell setzen
-		kindText.setText(this.activity.getDsKind());
 	}
 
 	/*
@@ -768,7 +702,7 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 	@Override
 	public void saveStatementToModel() {
 		getCommandFramework().execute(
-				new SetDsStatementCommand(getModel(), this.statement));
+				new SetDMCommandCommand(getModel(), this.statement));
 	}
 
 	/*
@@ -852,7 +786,7 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 		gridData6.grabExcessHorizontalSpace = true;
 
 		inputVariableLabel = fWidgetFactory.createLabel(inputVariableComp,
-				"Data variable:");
+				"Target variable to insert the query result:");
 		inputVariableText = fWidgetFactory.createText(inputVariableComp,
 				EMPTY_STRING);
 		inputVariableButton = fWidgetFactory.createButton(inputVariableComp,
@@ -891,7 +825,7 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 						} catch (Throwable t) {
 							return;
 						}
-						SetDataVariableCommand cmd = new SetDataVariableCommand(
+						SetVariableCommand cmd = new SetVariableCommand(
 								getInput(), variable);
 						getCommandFramework().execute(cmd);
 					}
@@ -919,7 +853,7 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 		text = text.trim();
 		EObject model = getInput();
 
-		SetDataVariableCommand cmd = new SetDataVariableCommand(getInput(),
+		SetVariableCommand cmd = new SetVariableCommand(getInput(),
 				null);
 		if (text.length() > 0) {
 			Variable variable = (Variable) ModelHelper
@@ -948,7 +882,7 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
 	}
 
   private void updateInputVariableWidgets() {
-    Variable inputVar = activity.getDataVariable();
+    Variable inputVar = activity.getTargetVariable();
     if (inputVar != null) {
       inputVariableText.setText(inputVar.getName());
     } else {
@@ -982,6 +916,30 @@ public class RetrieveDataActivityPropertySection extends ADataManagementActivity
         fInputVariableFilter.clear();
         fInputVariableFilter.setType(newType);
       }
+    }
+  }
+  
+  private void setDataSource() {
+    if (activity instanceof TransferDataActivity) {
+      dataSource = PropertySectionUtils.findDataSourceByIdentifier(
+          getProcess(), (((TransferDataActivity) activity).getDataSource()));
+    } else if (activity.getDataResource() != null) {
+      dataSource = PropertySectionUtils.findDataSourceByIdentifier(
+          getProcess(), activity.getDataResource());
+    }
+  }
+  
+  private void setValues() {
+    dataSourceIdentifierCombo.setText(activity.getDataResource() != null ? activity.getDataResource() : "");
+    
+    if (dataSource != null) {
+      typeText.setText(dataSource.getType());
+      kindText.setText(dataSource.getSubType());
+      languageText.setText(dataSource.getLanguage());
+    } else {
+      typeText.setText("");
+      kindText.setText("");
+      languageText.setText("");
     }
   }
 }

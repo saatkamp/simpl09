@@ -974,7 +974,11 @@ public class ModelHelper {
 								return ListMap.IGNORE;
 							}else {
 								//Query all variables with elements of the given type
-								return (v.getXSDElement().getType().getName().equals(typeName) ? v : ListMap.IGNORE);
+							  if (v.getXSDElement().getType() != null && v.getXSDElement().getType().getName() != null){
+							    return (v.getXSDElement().getType().getName().equals(typeName) ? v : ListMap.IGNORE);
+							  } else {
+							    return ListMap.IGNORE;
+							  }								
 							}
 						}else {
 							//Query all variables with the given type

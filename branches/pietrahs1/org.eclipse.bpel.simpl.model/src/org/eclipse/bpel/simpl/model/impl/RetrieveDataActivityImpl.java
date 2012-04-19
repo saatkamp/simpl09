@@ -1,26 +1,24 @@
 /**
- * <b>Purpose:</b> <br>
- * <b>Description:</b> <br>
- * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
- * <b>Company:</b> SIMPL<br>
- * 
- * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de> <br>
- * @version $Id: RetrieveDataActivityImpl.java 1734 2010-12-10 17:05:18Z michael.schneidt@arcor.de $ <br>
- * @link http://code.google.com/p/simpl09/
+ * <copyright>
+ * </copyright>
  *
+ * $Id$
  */
 package org.eclipse.bpel.simpl.model.impl;
 
 import org.eclipse.bpel.model.Variable;
 import org.eclipse.bpel.model.util.ReconciliationHelper;
+
 import org.eclipse.bpel.simpl.model.ModelPackage;
 import org.eclipse.bpel.simpl.model.RetrieveDataActivity;
+
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-// TODO: Auto-generated Javadoc
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Retrieve Data Activity</b></em>'.
@@ -28,7 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.bpel.simpl.model.impl.RetrieveDataActivityImpl#getDataVariable <em>Data Variable</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.impl.RetrieveDataActivityImpl#getTargetVariable <em>Target Variable</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,154 +34,135 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 @SuppressWarnings("restriction")
 public class RetrieveDataActivityImpl extends DataManagementActivityImpl implements RetrieveDataActivity {
-	/**
-   * The cached value of the '{@link #getDataVariable() <em>Data Variable</em>}' reference.
+  /**
+   * The cached value of the '{@link #getTargetVariable() <em>Target Variable</em>}' reference.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @see #getDataVariable()
+   * <!-- end-user-doc -->
+   * @see #getTargetVariable()
    * @generated
    * @ordered
    */
-	protected Variable dataVariable;
+  protected Variable targetVariable;
 
-	/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	protected RetrieveDataActivityImpl() {
+  protected RetrieveDataActivityImpl() {
     super();
   }
 
-	/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	@Override
-	protected EClass eStaticClass() {
+  @Override
+  protected EClass eStaticClass() {
     return ModelPackage.Literals.RETRIEVE_DATA_ACTIVITY;
   }
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the data variable
-	 * @generated
-	 */
-	public Variable getDataVariable() {
-    if (dataVariable != null && dataVariable.eIsProxy()) {
-      InternalEObject oldDataVariable = (InternalEObject)dataVariable;
-      dataVariable = (Variable)eResolveProxy(oldDataVariable);
-      if (dataVariable != oldDataVariable) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Variable getTargetVariable() {
+    if (targetVariable != null && targetVariable.eIsProxy()) {
+      InternalEObject oldTargetVariable = (InternalEObject)targetVariable;
+      targetVariable = (Variable)eResolveProxy(oldTargetVariable);
+      if (targetVariable != oldTargetVariable) {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE, oldDataVariable, dataVariable));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModelPackage.RETRIEVE_DATA_ACTIVITY__TARGET_VARIABLE, oldTargetVariable, targetVariable));
       }
     }
-    return dataVariable;
+    return targetVariable;
+  }
+  
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Variable basicGetTargetVariable() {
+    return targetVariable;
   }
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the variable
-	 * @generated
-	 */
-	public Variable basicGetDataVariable() {
-    return dataVariable;
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTargetVariable(Variable newTargetVariable) {
+    Variable oldTargetVariable = targetVariable;
+    if (!isReconciling) {
+      ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
+          .getRetrieveDataActivity_TargetVariable().getName(),
+          newTargetVariable == null ? null : newTargetVariable
+              .getName());
+    }
+    targetVariable = newTargetVariable;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.RETRIEVE_DATA_ACTIVITY__TARGET_VARIABLE, oldTargetVariable, targetVariable));
   }
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @param newDataVariable
-	 *            the new data variable
-	 * @customized
-	 */
-	public void setDataVariable(Variable newDataVariable) {
-		Variable oldDataVariable = dataVariable;
-		if (!isReconciling) {
-			ReconciliationHelper.replaceAttribute(this, ModelPackage.eINSTANCE
-					.getRetrieveDataActivity_DataVariable().getName(),
-					newDataVariable == null ? null : newDataVariable
-							.getName());
-		}
-		dataVariable = newDataVariable;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE, oldDataVariable, dataVariable));
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @param featureID
-	 *            the feature id
-	 * @param resolve
-	 *            the resolve
-	 * @param coreType
-	 *            the core type
-	 * @return the object
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-      case ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE:
-        if (resolve) return getDataVariable();
-        return basicGetDataVariable();
+      case ModelPackage.RETRIEVE_DATA_ACTIVITY__TARGET_VARIABLE:
+        if (resolve) return getTargetVariable();
+        return basicGetTargetVariable();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @param featureID
-	 *            the feature id
-	 * @param newValue
-	 *            the new value
-	 * @generated
-	 */
-	@Override
-	public void eSet(int featureID, Object newValue) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-      case ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE:
-        setDataVariable((Variable)newValue);
+      case ModelPackage.RETRIEVE_DATA_ACTIVITY__TARGET_VARIABLE:
+        setTargetVariable((Variable)newValue);
         return;
     }
     super.eSet(featureID, newValue);
   }
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @param featureID
-	 *            the feature id
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID) {
     switch (featureID) {
-      case ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE:
-        setDataVariable((Variable)null);
+      case ModelPackage.RETRIEVE_DATA_ACTIVITY__TARGET_VARIABLE:
+        setTargetVariable((Variable)null);
         return;
     }
     super.eUnset(featureID);
   }
 
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @param featureID
-	 *            the feature id
-	 * @return true, if successful
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID) {
     switch (featureID) {
-      case ModelPackage.RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE:
-        return dataVariable != null;
+      case ModelPackage.RETRIEVE_DATA_ACTIVITY__TARGET_VARIABLE:
+        return targetVariable != null;
     }
     return super.eIsSet(featureID);
   }

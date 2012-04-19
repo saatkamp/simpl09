@@ -11,6 +11,7 @@
  */
 package org.eclipse.bpel.simpl.model.impl;
 
+import org.eclipse.bpel.simpl.model.*;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
 import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelFactory;
@@ -80,6 +81,10 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
       case ModelPackage.RETRIEVE_DATA_ACTIVITY: return createRetrieveDataActivity();
       case ModelPackage.WRITE_DATA_BACK_ACTIVITY: return createWriteDataBackActivity();
       case ModelPackage.TRANSFER_DATA_ACTIVITY: return createTransferDataActivity();
+      case ModelPackage.DATA_MANAGEMENT_PATTERN: return createDataManagementPattern();
+      case ModelPackage.CONTAINER_TO_CONTAINER_PATTERN: return createContainerToContainerPattern();
+      case ModelPackage.DATA_ITERATION_PATTERN: return createDataIterationPattern();
+      case ModelPackage.DATA_FORMAT_CONVERSION_PATTERN: return createDataFormatConversionPattern();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -134,6 +139,46 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
   public TransferDataActivity createTransferDataActivity() {
     TransferDataActivityImpl transferDataActivity = new TransferDataActivityImpl();
     return transferDataActivity;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DataManagementPattern createDataManagementPattern() {
+    DataManagementPatternImpl dataManagementPattern = new DataManagementPatternImpl();
+    return dataManagementPattern;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ContainerToContainerPattern createContainerToContainerPattern() {
+    ContainerToContainerPatternImpl containerToContainerPattern = new ContainerToContainerPatternImpl();
+    return containerToContainerPattern;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DataIterationPattern createDataIterationPattern() {
+    DataIterationPatternImpl dataIterationPattern = new DataIterationPatternImpl();
+    return dataIterationPattern;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DataFormatConversionPattern createDataFormatConversionPattern() {
+    DataFormatConversionPatternImpl dataFormatConversionPattern = new DataFormatConversionPatternImpl();
+    return dataFormatConversionPattern;
   }
 
   /**

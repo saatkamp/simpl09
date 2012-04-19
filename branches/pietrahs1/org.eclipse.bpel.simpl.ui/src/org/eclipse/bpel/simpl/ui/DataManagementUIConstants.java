@@ -55,4 +55,13 @@ public class DataManagementUIConstants {
 	
 	/** The Constant ICON_TRANSFER_VARIABLE_32. */
 	public static final String ICON_TRANSFER_20 = "obj20/transferdataactivity.png";
+	
+	 /** The Constant ICON_TRANSFER_VARIABLE_16. */
+  public static final String ICON_CONTAINER_TO_CONTAINER_16 = "obj16/containertocontainerpattern.png";
+  
+  /** The Constant ICON_TRANSFER_VARIABLE_16. */
+  public static final String ICON_DATA_FORMAT_CONVERSION_16 = "obj16/dataformatconversionpattern.png";
+  
+  /** The Constant ICON_TRANSFER_VARIABLE_16. */
+  public static final String ICON_DATA_ITERATION_16 = "obj16/dataiterationpattern.png";
 }

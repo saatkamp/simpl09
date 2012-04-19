@@ -32,7 +32,19 @@ public class DataManagementConstants {
 	
 	/** The Constant ND_TRANSFER_DATA_ACTIVITY. */
 	public static final String ND_TRANSFER_DATA_ACTIVITY = "transferDataActivity";
+	
+  /** The Constant ND_DATA_MANAGEMENT_ACTIVITY. */
+  public static final String ND_DATA_MANAGEMENT_ACTIVITY = "dataManagementActivity";
 
-	/** The Constant ND_DATA_MANAGEMENT_ACTIVITY. */
-	public static final String ND_DATA_MANAGEMENT_ACTIVITY = "dataManagementActivity";
+	/** The Constant ND_CONTAINER_TO_CONTAINER_PATTERN. */
+	public static final String ND_CONTAINER_TO_CONTAINER_PATTERN = "containerToContainerPattern";
+	
+	 /** The Constant ND_DATA_ITERATION_PATTERN. */
+  public static final String ND_DATA_ITERATION_PATTERN = "dataIterationPattern";
+  
+  /** The Constant ND_DATA_FORMAT_CONVERSION_PATTERN. */
+  public static final String ND_DATA_FORMAT_CONVERSION_PATTERN = "dataFormatConversionPattern";
+  
+  /** The Constant ND_DATA_MANAGEMENT_PATTERN. */
+  public static final String ND_DATA_MANAGEMENT_PATTERN = "dataManagementPattern";
 }

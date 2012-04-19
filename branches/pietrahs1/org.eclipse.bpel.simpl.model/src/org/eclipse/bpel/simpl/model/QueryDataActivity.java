@@ -19,7 +19,7 @@ package org.eclipse.bpel.simpl.model;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.bpel.simpl.model.QueryDataActivity#getQueryTarget <em>Query Target</em>}</li>
+ *   <li>{@link org.eclipse.bpel.simpl.model.QueryDataActivity#getTargetContainer <em>Target Container</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,30 +29,30 @@ package org.eclipse.bpel.simpl.model;
  */
 public interface QueryDataActivity extends DataManagementActivity {
   /**
-   * Returns the value of the '<em><b>Query Target</b></em>' attribute.
-   * The default value is <code>"target"</code>.
+   * Returns the value of the '<em><b>Target Container</b></em>' attribute.
+   * The default value is <code>""</code>.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Query Target</em>' attribute isn't clear,
+   * If the meaning of the '<em>Target Container</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Query Target</em>' attribute.
-   * @see #setQueryTarget(String)
-   * @see org.eclipse.bpel.simpl.model.ModelPackage#getQueryDataActivity_QueryTarget()
-   * @model default="target"
+   * @return the value of the '<em>Target Container</em>' attribute.
+   * @see #setTargetContainer(String)
+   * @see org.eclipse.bpel.simpl.model.ModelPackage#getQueryDataActivity_TargetContainer()
+   * @model default="" required="true"
    * @generated
    */
-  String getQueryTarget();
+  String getTargetContainer();
 
   /**
-   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.QueryDataActivity#getQueryTarget <em>Query Target</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.bpel.simpl.model.QueryDataActivity#getTargetContainer <em>Target Container</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Query Target</em>' attribute.
-   * @see #getQueryTarget()
+   * @param value the new value of the '<em>Target Container</em>' attribute.
+   * @see #getTargetContainer()
    * @generated
    */
-  void setQueryTarget(String value);
+  void setTargetContainer(String value);
 
 } // QueryDataActivity

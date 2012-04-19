@@ -1,0 +1,391 @@
+/**
+ * <b>Purpose:</b> This class implements the {@link BPELActivitySerializer} interface for the
+ * serialization of all SIMPL Patterns.<br>
+ * <b>Description:</b> <br>
+ * <b>Copyright:</b>  Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0<br>
+ * <b>Company:</b> SIMPL<br>
+ *
+ */
+package org.eclipse.bpel.simpl.model.util;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
+
+import javax.xml.namespace.QName;
+
+import org.eclipse.bpel.model.Activity;
+import org.eclipse.bpel.model.BPELFactory;
+import org.eclipse.bpel.model.Extension;
+import org.eclipse.bpel.model.Extensions;
+import org.eclipse.bpel.model.Import;
+import org.eclipse.bpel.model.Process;
+import org.eclipse.bpel.model.adapters.INamespaceMap;
+import org.eclipse.bpel.model.extensions.BPELActivitySerializer;
+import org.eclipse.bpel.model.resource.BPELWriter;
+import org.eclipse.bpel.model.util.BPELUtils;
+import org.eclipse.bpel.simpl.model.ContainerToContainerPattern;
+import org.eclipse.bpel.simpl.model.DataFormatConversionPattern;
+import org.eclipse.bpel.simpl.model.DataIterationPattern;
+import org.eclipse.bpel.simpl.model.DataManagementPattern;
+import org.eclipse.bpel.simpl.model.ModelPackage;
+import org.eclipse.bpel.ui.IBPELUIConstants;
+import org.eclipse.bpel.ui.util.BPELUtil;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.simpl.communication.ResourceManagementCommunication;
+import org.eclipse.wst.wsdl.util.WSDLConstants;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
+/**
+ * The Class DataManagementPatternSerializer.
+ * 
+ */
+public class DataManagementPatternSerializer implements BPELActivitySerializer {
+  final static HashMap<File, String> SIMPL_SCHEMA_FILES = new HashMap<File, String>();
+  
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * org.eclipse.bpel.model.extensions.BPELActivitySerializer#marshall(javax
+   * .xml.namespace.QName, org.eclipse.bpel.model.Activity, org.w3c.dom.Node,
+   * org.eclipse.bpel.model.Process,
+   * org.eclipse.bpel.model.resource.BPELWriter)
+   */
+  @Override
+  public void marshall(QName elementType, Activity pattern, Node parentNode,
+      Process process, BPELWriter bpelWriter) {
+
+    Document document = parentNode.getOwnerDocument();
+
+    if (pattern instanceof DataManagementPattern) {
+
+      /**
+       * @see: Vukojevic, Karolina: "Architektur eines Workflow-Frameworks
+       *       zur graphischen Erstellung und Ausführung von
+       *       Simulationsexperimenten". 01.09.2009
+       * 
+       *       Zuerst wird überprüft, ob alle notwendigen XSD-Dateien im
+       *       Projektordner des Benutzers vorliegen. Wenn nicht, dann
+       *       werden diese erzeugt.
+       */
+      createFilesForImports(process);
+
+      setExtensionImports(process);
+      
+      setPrefixForImports(process);
+    }
+
+    /*
+     * ContainerToContainerPattern
+     */
+    if (pattern instanceof ContainerToContainerPattern) {
+
+      // create a new DOM element for our pattern
+      Element patternElement = document.createElementNS(
+          elementType.getNamespaceURI(),
+          DataManagementConstants.ND_CONTAINER_TO_CONTAINER_PATTERN);
+      patternElement.setPrefix(DataManagementUtils.addNamespace(process));
+
+      // handle the ContainerToContainerPattern Attributes
+      if (((ContainerToContainerPattern) pattern).getSourceContainer() != null) {
+        String attSourceContainer = ModelPackage.eINSTANCE
+            .getContainerToContainerPattern_SourceContainer().getName();
+        patternElement.setAttribute(attSourceContainer,
+            ((ContainerToContainerPattern) pattern).getSourceContainer());
+      }
+
+      if (((ContainerToContainerPattern) pattern).getTargetContainer() != null) {
+        String attTargetContainer = ModelPackage.eINSTANCE
+            .getContainerToContainerPattern_TargetContainer().getName();
+        patternElement.setAttribute(attTargetContainer,
+            ((ContainerToContainerPattern) pattern).getTargetContainer());
+      }
+
+      // insert the DOM element into the DOM tree
+      parentNode.appendChild(patternElement);
+    }
+    /*
+     * DataFormatConversionPattern
+     */
+    if (pattern instanceof DataFormatConversionPattern) {
+
+      // create a new DOM element for our pattern
+      Element patternElement = document.createElementNS(
+          elementType.getNamespaceURI(),
+          DataManagementConstants.ND_DATA_FORMAT_CONVERSION_PATTERN);
+      patternElement.setPrefix(DataManagementUtils.addNamespace(process));
+
+      // handle the ContainerToContainerPattern Attributes
+      if (((DataFormatConversionPattern) pattern).getSourceContainer() != null) {
+        String attSourceContainer = ModelPackage.eINSTANCE
+            .getDataFormatConversionPattern_SourceContainer().getName();
+        patternElement.setAttribute(attSourceContainer,
+            ((DataFormatConversionPattern) pattern).getSourceContainer());
+      }
+
+      if (((DataFormatConversionPattern) pattern).getTargetContainer() != null) {
+        String attTargetContainer = ModelPackage.eINSTANCE
+            .getDataFormatConversionPattern_TargetContainer().getName();
+        patternElement.setAttribute(attTargetContainer,
+            ((DataFormatConversionPattern) pattern).getTargetContainer());
+      }
+
+      // insert the DOM element into the DOM tree
+      parentNode.appendChild(patternElement);
+    }
+    /*
+     * DataIterationPattern
+     */
+    if (pattern instanceof DataIterationPattern) {
+
+      // create a new DOM element for our pattern
+      Element patternElement = document.createElementNS(
+          elementType.getNamespaceURI(),
+          DataManagementConstants.ND_DATA_ITERATION_PATTERN);
+      patternElement.setPrefix(DataManagementUtils.addNamespace(process));
+
+      // handle the ContainerToContainerPattern Attributes
+      if (((DataIterationPattern) pattern).getContainerReferenceList() != null) {
+        String attContainerReferenceList = ModelPackage.eINSTANCE
+            .getDataIterationPattern_ContainerReferenceList().getName();
+        patternElement.setAttribute(attContainerReferenceList,
+            ((DataIterationPattern) pattern).getContainerReferenceList());
+      }
+      
+      if (((DataIterationPattern) pattern).getCurrentContainer() != null) {
+        String attCurrentContainer = ModelPackage.eINSTANCE
+            .getDataIterationPattern_CurrentContainer().getName();
+        patternElement.setAttribute(attCurrentContainer,
+            ((DataIterationPattern) pattern).getCurrentContainer());
+      }
+
+      
+      if (((DataIterationPattern) pattern).getActivity() != null) {
+        patternElement.appendChild(bpelWriter.activity2XML(((DataIterationPattern) pattern).getActivity()));
+      }
+      // insert the DOM element into the DOM tree
+      parentNode.appendChild(patternElement);
+    }
+  }
+
+  /**
+   * 
+   * @see: Vukojevic, Karolina: "Architektur eines Workflow-Frameworks zur
+   *       graphischen Erstellung und Ausführung von Simulationsexperimenten".
+   *       01.09.2009
+   * 
+   *       Die Methode createFilesForImport(Process process) überprüft, ob
+   *       alle von den SIMPL-Aktivitäten benötigten XSD-Dateien im
+   *       Projektordner des Benutzers vorhanden sind. Wenn nicht, dann werden
+   *       diese mit Hilfe von JET (Java Emitter Templates) erzeugt.
+   *       SIMPL-Aktivitäten benötigen folgende Dateien: simpl.xsd
+   * 
+   * @param process
+   *            : aktueller Prozess
+   */
+  private void createFilesForImports(Process process) {
+    /**
+     * Die BPEL Datei des Prozesses
+     */
+    IFile bpelFile = BPELUtil.getBPELFile(process);
+
+    /**
+     * Der Pfad zur BPEL Datei des Prozesses
+     */
+    IPath bpelPath = bpelFile.getFullPath();
+
+    /**
+     * Pfad zum Projektordner = Pfad zur BPEL Datei ohne BPEL Dateinamen und
+     * Dateiendung
+     */
+    IPath projectPath = bpelPath.removeFileExtension()
+        .removeLastSegments(1);
+
+    /**
+     * Absoluter Workspace-Pfad. Pfad in Format "OSString" umwandeln, so
+     * dass man mit java.io arbeiten kann.
+     */
+    String absolutWorkspacePath = ResourcesPlugin.getWorkspace().getRoot()
+        .getLocation().toOSString();
+
+    /******************************************************************
+     * simpl schema files
+     ******************************************************************/
+
+    /**
+     * Get all SIMPL schemas from the Resource Management and merge them to a WSDL with
+     * type definitions. (simpl.wsdl)
+     */
+//    List<String> dataFormats = null;
+//    List<Connector> connectors = null;
+//    String dataFormatSchemaString = null;
+
+    // retrieve XML schema from Resource Management 
+    try {
+//      the workflow data format types are now stored in the simpl.xsd
+//
+//
+//      dataFormats = new ArrayList<String>();
+//      connectors = ResourceManagementCommunication.getInstance().getAllConnectors();
+//
+//      // get the existing workflow data formats from the connectors
+//      for (Connector connector : connectors) {
+//        if (connector.getDataConverter() != null) {
+//          String dataFormat = connector.getDataConverter().getWorkflowDataFormat();
+//          
+//          if (!dataFormats.contains(dataFormat)) {
+//            dataFormats.add(dataFormat);
+//          }
+//        }
+//      }
+//
+//      // get the workflow data format XSD schemas from the Resource Management and parse
+//      // them into XSD schema objects.
+//      for (String dataFormat : dataFormats) {
+//        dataFormatSchemaString = ResourceManagementCommunication.getInstance().getDataFormatSchema(
+//            dataFormat);
+//        
+//        // write file
+//        File file = new File(absolutWorkspacePath + projectPath.append(dataFormat).addFileExtension(
+//            IBPELUIConstants.EXTENSION_XSD));
+//        FileWriter fstream = new FileWriter(file);
+//        BufferedWriter out = new BufferedWriter(fstream);
+//        out.write(dataFormatSchemaString);
+//        out.close();
+//        
+//        SIMPL_SCHEMA_FILES.put(file, dataFormatSchemaString);
+//      }
+
+      // retrieve definitions schema from Resource Management
+      String schema = ResourceManagementCommunication.getInstance().getAllTypeDefinitionsSchema();
+
+      // write file
+      File file = new File(absolutWorkspacePath + projectPath.append("simpl").addFileExtension(
+          IBPELUIConstants.EXTENSION_XSD));
+      FileWriter fstream = new FileWriter(file);
+      BufferedWriter out = new BufferedWriter(fstream);
+      out.write(schema);
+      out.close();
+      
+      SIMPL_SCHEMA_FILES.put(file, schema);
+      
+      // refresh the workspace to update the files
+      ResourcesPlugin.getWorkspace().getRoot()
+          .refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor()); 
+    } catch (FileNotFoundException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } catch (CoreException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+  } // END createFilesForImport
+
+  /**
+   * @see: Vukojevic, Karolina: "Architektur eines Workflow-Frameworks zur
+   *       graphischen Erstellung und Ausführung von Simulationsexperimenten".
+   *       01.09.2009
+   * 
+   *       Fügt eine WSDL-Datei als Import in den BPEL-Prozess ein, falls sie
+   *       noch nicht importiert wurde und macht sie als Extension bekannt.
+   * 
+   * @param process
+   */
+  private void setExtensionImports(Process process) {
+    boolean exist = false;
+    
+    for (File schemaFile : SIMPL_SCHEMA_FILES.keySet()) {
+      // Prüfen ob Import schon existiert
+      for (Import imp : process.getImports()) {
+        if (imp.getLocation().equals(schemaFile.getName())) {
+          exist = true;
+        }
+      }
+      
+      // Neuen Import erstellen
+      if (!exist) {
+        Import bpelImport = BPELFactory.eINSTANCE.createImport();
+        String schema = SIMPL_SCHEMA_FILES.get(schemaFile);
+        String namespace = schema.substring(schema.indexOf("targetNamespace=\"") + 17, schema.indexOf("\"", schema.indexOf("targetNamespace=\"") + 17));
+
+        bpelImport.setImportType(WSDLConstants.XSD_NAMESPACE_URI);
+        bpelImport.setLocation(schemaFile.getName());
+        bpelImport.setNamespace(namespace);
+        process.getImports().add(bpelImport);
+      }
+    }
+    
+    /**
+     * Nun überprüfen, ob der durch die WSDL-Datei definierte Namespace schon
+     * im Prozess als Extension eingefügt wurde.
+     */
+    boolean extensionExist = false;
+
+    // Lesen die Prozess-Extensions aus
+    Extensions processExtensions = process.getExtensions();
+
+    // Überprüfung, ob die SIMPL Extension schon eingetragen ist
+    if (process.getExtensions() != null) {
+      for (Extension e : processExtensions.getChildren()) {
+        if (e.getNamespace().equals("http://www.example.org/simpl")) {
+          extensionExist = true;
+        }
+      }
+    }
+
+    if (!extensionExist) {
+      // Erstellen die SIMPL Extension
+      Extension simplExtension = BPELFactory.eINSTANCE.createExtension();
+      simplExtension.setNamespace("http://www.example.org/simpl");
+      simplExtension.setMustUnderstand(true);
+
+      // Falls der Prozess keine Extensions hat, erstellen wir ein
+      // neues Extensions-Objekt.
+      if (processExtensions == null) {
+        processExtensions = BPELFactory.eINSTANCE.createExtensions();
+      }
+
+      // Die SIMPL-Extension zu den Extensions hinzufügen
+      processExtensions.getChildren().add(simplExtension);
+
+      // Das erweiterte Extensions-Objekt im Prozess setzen
+      process.setExtensions(processExtensions);
+    }
+  }
+  
+  /**
+   * Setz einen Prefix für die Namespaces der Imports.
+   * 
+   * @param process
+   */
+  private void setPrefixForImports(Process process) {
+    int i = 0;
+    
+    for (File schemaFile : SIMPL_SCHEMA_FILES.keySet()) {
+      String schema = SIMPL_SCHEMA_FILES.get(schemaFile);
+      String nsURI = schema.substring(schema.indexOf("targetNamespace=\"") + 17, schema.indexOf("\"", schema.indexOf("targetNamespace=\"") + 17));
+      String nsPrefix = "simpldf" + i++;
+      INamespaceMap<String, String> nsMap = BPELUtils.getNamespaceMap(process);
+
+      // Der Prefix für den Namespace http://www.example.org/simpl ist bereits durch den
+      // Namespace des Ecore-Model gegeben
+      if (!nsURI.equals(ModelPackage.eINSTANCE.getNsURI())) {
+        nsMap.put(nsPrefix, nsURI);
+      }
+    }
+  }
+}

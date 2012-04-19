@@ -17,7 +17,11 @@ import org.eclipse.bpel.model.BPELPackage;
 import org.eclipse.bpel.model.extensions.BPELExtensionRegistry;
 import org.eclipse.bpel.model.messageproperties.MessagepropertiesPackage;
 import org.eclipse.bpel.model.partnerlinktype.PartnerlinktypePackage;
+import org.eclipse.bpel.simpl.model.ContainerToContainerPattern;
+import org.eclipse.bpel.simpl.model.DataFormatConversionPattern;
+import org.eclipse.bpel.simpl.model.DataIterationPattern;
 import org.eclipse.bpel.simpl.model.DataManagementActivity;
+import org.eclipse.bpel.simpl.model.DataManagementPattern;
 import org.eclipse.bpel.simpl.model.IssueCommandActivity;
 import org.eclipse.bpel.simpl.model.ModelFactory;
 import org.eclipse.bpel.simpl.model.ModelPackage;
@@ -28,6 +32,8 @@ import org.eclipse.bpel.simpl.model.WriteDataBackActivity;
 import org.eclipse.bpel.simpl.model.util.DataManagementActivityDeserializer;
 import org.eclipse.bpel.simpl.model.util.DataManagementActivitySerializer;
 import org.eclipse.bpel.simpl.model.util.DataManagementConstants;
+import org.eclipse.bpel.simpl.model.util.DataManagementPatternDeserializer;
+import org.eclipse.bpel.simpl.model.util.DataManagementPatternSerializer;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -76,6 +82,34 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
    * @generated
    */
   private EClass transferDataActivityEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass dataManagementPatternEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass containerToContainerPatternEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass dataIterationPatternEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass dataFormatConversionPatternEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -166,6 +200,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		// Initialize our own serializers and deserializers
 		DataManagementActivityDeserializer deserializer = new DataManagementActivityDeserializer();
 		DataManagementActivitySerializer serializer = new DataManagementActivitySerializer();
+		
+		DataManagementPatternDeserializer patternDeserializer = new DataManagementPatternDeserializer();
+		DataManagementPatternSerializer patternSerializer = new DataManagementPatternSerializer();
 
 		// QueryDataActivity
 		String name = QueryDataActivity.class.getSimpleName();
@@ -201,6 +238,27 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 				DataManagementConstants.ND_TRANSFER_DATA_ACTIVITY), deserializer);
 		extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
 				serializer);
+		
+    // ContainerToContainer
+    name = ContainerToContainerPattern.class.getSimpleName();
+    extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
+        DataManagementConstants.ND_CONTAINER_TO_CONTAINER_PATTERN), patternDeserializer);
+    extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
+        patternSerializer);
+    
+    // DataFormatConversionPattern
+    name = DataFormatConversionPattern.class.getSimpleName();
+    extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
+        DataManagementConstants.ND_DATA_FORMAT_CONVERSION_PATTERN), patternDeserializer);
+    extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
+        patternSerializer);
+    
+    // DataIterationPatterm
+    name = DataIterationPattern.class.getSimpleName();
+    extensionRegistry.registerActivityDeserializer(new QName(ModelPackage.eNS_URI,
+        DataManagementConstants.ND_DATA_ITERATION_PATTERN), patternDeserializer);
+    extensionRegistry.registerActivitySerializer(new QName(ModelPackage.eNS_URI, name),
+        patternSerializer);
 	}
 	
 	/**
@@ -218,33 +276,22 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDataManagementActivity_DsIdentifier() {
+  public EAttribute getDataManagementActivity_DataResource() {
     return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(0);
   }
 
 
   /**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the data management activity_ ds statement
-	 * @generated
-	 */
-	public EAttribute getDataManagementActivity_DsStatement() {
-    return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(3);
-  }
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the data management activity_ ds language
-	 * @generated
-	 */
-	public EAttribute getDataManagementActivity_DsLanguage() {
-    return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(4);
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDataManagementActivity_DmCommand() {
+    return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(1);
   }
 
 
-	/**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -259,32 +306,12 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getQueryDataActivity_QueryTarget() {
+  public EAttribute getQueryDataActivity_TargetContainer() {
     return (EAttribute)queryDataActivityEClass.getEStructuralFeatures().get(0);
   }
 
 
   /**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the data management activity_ ds kind
-	 * @generated
-	 */
-	public EAttribute getDataManagementActivity_DsKind() {
-    return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(2);
-  }
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the data management activity_ ds type
-	 * @generated
-	 */
-	public EAttribute getDataManagementActivity_DsType() {
-    return (EAttribute)dataManagementActivityEClass.getEStructuralFeatures().get(1);
-  }
-
-	/**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -309,8 +336,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getWriteDataBackActivity_DataVariable() {
-    return (EReference)writeDataBackActivityEClass.getEStructuralFeatures().get(0);
+  public EAttribute getWriteDataBackActivity_TargetContainer() {
+    return (EAttribute)writeDataBackActivityEClass.getEStructuralFeatures().get(0);
   }
 
 
@@ -319,8 +346,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getWriteDataBackActivity_WriteTarget() {
-    return (EAttribute)writeDataBackActivityEClass.getEStructuralFeatures().get(1);
+  public EReference getWriteDataBackActivity_DataVariable() {
+    return (EReference)writeDataBackActivityEClass.getEStructuralFeatures().get(1);
   }
 
 
@@ -339,7 +366,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTransferDataActivity_TargetDsIdentifier() {
+  public EAttribute getTransferDataActivity_DataSource() {
     return (EAttribute)transferDataActivityEClass.getEStructuralFeatures().get(0);
   }
 
@@ -349,7 +376,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTransferDataActivity_TargetDsType() {
+  public EAttribute getTransferDataActivity_DataSourceCommand() {
     return (EAttribute)transferDataActivityEClass.getEStructuralFeatures().get(1);
   }
 
@@ -359,7 +386,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTransferDataActivity_TargetDsKind() {
+  public EAttribute getTransferDataActivity_DataSink() {
     return (EAttribute)transferDataActivityEClass.getEStructuralFeatures().get(2);
   }
 
@@ -369,7 +396,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTransferDataActivity_TargetDsLanguage() {
+  public EAttribute getTransferDataActivity_DataSinkContainer() {
     return (EAttribute)transferDataActivityEClass.getEStructuralFeatures().get(3);
   }
 
@@ -379,8 +406,108 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTransferDataActivity_TargetDsContainer() {
-    return (EAttribute)transferDataActivityEClass.getEStructuralFeatures().get(4);
+  public EClass getDataManagementPattern() {
+    return dataManagementPatternEClass;
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getContainerToContainerPattern() {
+    return containerToContainerPatternEClass;
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getContainerToContainerPattern_SourceContainer() {
+    return (EAttribute)containerToContainerPatternEClass.getEStructuralFeatures().get(0);
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getContainerToContainerPattern_TargetContainer() {
+    return (EAttribute)containerToContainerPatternEClass.getEStructuralFeatures().get(1);
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDataIterationPattern() {
+    return dataIterationPatternEClass;
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDataIterationPattern_ContainerReferenceList() {
+    return (EAttribute)dataIterationPatternEClass.getEStructuralFeatures().get(0);
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDataIterationPattern_CurrentContainer() {
+    return (EAttribute)dataIterationPatternEClass.getEStructuralFeatures().get(1);
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDataIterationPattern_Activity() {
+    return (EReference)dataIterationPatternEClass.getEStructuralFeatures().get(2);
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDataFormatConversionPattern() {
+    return dataFormatConversionPatternEClass;
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDataFormatConversionPattern_SourceContainer() {
+    return (EAttribute)dataFormatConversionPatternEClass.getEStructuralFeatures().get(0);
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDataFormatConversionPattern_TargetContainer() {
+    return (EAttribute)dataFormatConversionPatternEClass.getEStructuralFeatures().get(1);
   }
 
 
@@ -395,17 +522,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
   }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
-	 * 
-	 * @return the retrieve data activity_ data variable
-	 * @generated
-	 */
-	public EReference getRetrieveDataActivity_DataVariable() {
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRetrieveDataActivity_TargetVariable() {
     return (EReference)retrieveDataActivityEClass.getEStructuralFeatures().get(0);
   }
 
 
-	/**
+  /**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->.
 	 * 
 	 * @return the model factory
@@ -435,30 +561,41 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
     // Create classes and their features
     dataManagementActivityEClass = createEClass(DATA_MANAGEMENT_ACTIVITY);
-    createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_IDENTIFIER);
-    createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_TYPE);
-    createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_KIND);
-    createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_STATEMENT);
-    createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DS_LANGUAGE);
+    createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DATA_RESOURCE);
+    createEAttribute(dataManagementActivityEClass, DATA_MANAGEMENT_ACTIVITY__DM_COMMAND);
 
     queryDataActivityEClass = createEClass(QUERY_DATA_ACTIVITY);
-    createEAttribute(queryDataActivityEClass, QUERY_DATA_ACTIVITY__QUERY_TARGET);
+    createEAttribute(queryDataActivityEClass, QUERY_DATA_ACTIVITY__TARGET_CONTAINER);
 
     issueCommandActivityEClass = createEClass(ISSUE_COMMAND_ACTIVITY);
 
     retrieveDataActivityEClass = createEClass(RETRIEVE_DATA_ACTIVITY);
-    createEReference(retrieveDataActivityEClass, RETRIEVE_DATA_ACTIVITY__DATA_VARIABLE);
+    createEReference(retrieveDataActivityEClass, RETRIEVE_DATA_ACTIVITY__TARGET_VARIABLE);
 
     writeDataBackActivityEClass = createEClass(WRITE_DATA_BACK_ACTIVITY);
+    createEAttribute(writeDataBackActivityEClass, WRITE_DATA_BACK_ACTIVITY__TARGET_CONTAINER);
     createEReference(writeDataBackActivityEClass, WRITE_DATA_BACK_ACTIVITY__DATA_VARIABLE);
-    createEAttribute(writeDataBackActivityEClass, WRITE_DATA_BACK_ACTIVITY__WRITE_TARGET);
 
     transferDataActivityEClass = createEClass(TRANSFER_DATA_ACTIVITY);
-    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_IDENTIFIER);
-    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_TYPE);
-    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_KIND);
-    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_LANGUAGE);
-    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__TARGET_DS_CONTAINER);
+    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__DATA_SOURCE);
+    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__DATA_SOURCE_COMMAND);
+    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__DATA_SINK);
+    createEAttribute(transferDataActivityEClass, TRANSFER_DATA_ACTIVITY__DATA_SINK_CONTAINER);
+
+    dataManagementPatternEClass = createEClass(DATA_MANAGEMENT_PATTERN);
+
+    containerToContainerPatternEClass = createEClass(CONTAINER_TO_CONTAINER_PATTERN);
+    createEAttribute(containerToContainerPatternEClass, CONTAINER_TO_CONTAINER_PATTERN__SOURCE_CONTAINER);
+    createEAttribute(containerToContainerPatternEClass, CONTAINER_TO_CONTAINER_PATTERN__TARGET_CONTAINER);
+
+    dataIterationPatternEClass = createEClass(DATA_ITERATION_PATTERN);
+    createEAttribute(dataIterationPatternEClass, DATA_ITERATION_PATTERN__CONTAINER_REFERENCE_LIST);
+    createEAttribute(dataIterationPatternEClass, DATA_ITERATION_PATTERN__CURRENT_CONTAINER);
+    createEReference(dataIterationPatternEClass, DATA_ITERATION_PATTERN__ACTIVITY);
+
+    dataFormatConversionPatternEClass = createEClass(DATA_FORMAT_CONVERSION_PATTERN);
+    createEAttribute(dataFormatConversionPatternEClass, DATA_FORMAT_CONVERSION_PATTERN__SOURCE_CONTAINER);
+    createEAttribute(dataFormatConversionPatternEClass, DATA_FORMAT_CONVERSION_PATTERN__TARGET_CONTAINER);
   }
 
 	/**
@@ -498,33 +635,48 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
     retrieveDataActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
     writeDataBackActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
     transferDataActivityEClass.getESuperTypes().add(this.getDataManagementActivity());
+    dataManagementPatternEClass.getESuperTypes().add(theBPELPackage.getExtensionActivity());
+    containerToContainerPatternEClass.getESuperTypes().add(this.getDataManagementPattern());
+    dataIterationPatternEClass.getESuperTypes().add(this.getDataManagementPattern());
+    dataFormatConversionPatternEClass.getESuperTypes().add(this.getDataManagementPattern());
 
     // Initialize classes and features; add operations and parameters
     initEClass(dataManagementActivityEClass, DataManagementActivity.class, "DataManagementActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDataManagementActivity_DsIdentifier(), ecorePackage.getEString(), "dsIdentifier", "identifier", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getDataManagementActivity_DsType(), ecorePackage.getEString(), "dsType", "type", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getDataManagementActivity_DsKind(), ecorePackage.getEString(), "dsKind", "subtype", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getDataManagementActivity_DsStatement(), ecorePackage.getEString(), "dsStatement", "statement", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getDataManagementActivity_DsLanguage(), ecorePackage.getEString(), "dsLanguage", "language", 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDataManagementActivity_DataResource(), ecorePackage.getEString(), "dataResource", null, 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDataManagementActivity_DmCommand(), ecorePackage.getEString(), "dmCommand", null, 0, 1, DataManagementActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(queryDataActivityEClass, QueryDataActivity.class, "QueryDataActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getQueryDataActivity_QueryTarget(), ecorePackage.getEString(), "queryTarget", "target", 0, 1, QueryDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getQueryDataActivity_TargetContainer(), ecorePackage.getEString(), "targetContainer", "", 1, 1, QueryDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(issueCommandActivityEClass, IssueCommandActivity.class, "IssueCommandActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(retrieveDataActivityEClass, RetrieveDataActivity.class, "RetrieveDataActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getRetrieveDataActivity_DataVariable(), theBPELPackage.getVariable(), null, "dataVariable", null, 0, 1, RetrieveDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRetrieveDataActivity_TargetVariable(), theBPELPackage.getVariable(), null, "targetVariable", null, 1, 1, RetrieveDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(writeDataBackActivityEClass, WriteDataBackActivity.class, "WriteDataBackActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getWriteDataBackActivity_DataVariable(), theBPELPackage.getVariable(), null, "dataVariable", null, 0, 1, WriteDataBackActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getWriteDataBackActivity_WriteTarget(), ecorePackage.getEString(), "writeTarget", "target", 0, 1, WriteDataBackActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWriteDataBackActivity_TargetContainer(), ecorePackage.getEString(), "targetContainer", "", 1, 1, WriteDataBackActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWriteDataBackActivity_DataVariable(), theBPELPackage.getVariable(), null, "dataVariable", null, 1, 1, WriteDataBackActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(transferDataActivityEClass, TransferDataActivity.class, "TransferDataActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTransferDataActivity_TargetDsIdentifier(), ecorePackage.getEString(), "targetDsIdentifier", "identifier", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTransferDataActivity_TargetDsType(), ecorePackage.getEString(), "targetDsType", "type", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTransferDataActivity_TargetDsKind(), ecorePackage.getEString(), "targetDsKind", "kind", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTransferDataActivity_TargetDsLanguage(), ecorePackage.getEString(), "targetDsLanguage", "language", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTransferDataActivity_TargetDsContainer(), ecorePackage.getEString(), "targetDsContainer", "targetDsContainer", 0, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTransferDataActivity_DataSource(), ecorePackage.getEString(), "dataSource", "", 1, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTransferDataActivity_DataSourceCommand(), ecorePackage.getEString(), "dataSourceCommand", "", 1, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTransferDataActivity_DataSink(), ecorePackage.getEString(), "dataSink", "", 1, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTransferDataActivity_DataSinkContainer(), ecorePackage.getEString(), "dataSinkContainer", "", 1, 1, TransferDataActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(dataManagementPatternEClass, DataManagementPattern.class, "DataManagementPattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(containerToContainerPatternEClass, ContainerToContainerPattern.class, "ContainerToContainerPattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getContainerToContainerPattern_SourceContainer(), ecorePackage.getEString(), "sourceContainer", "", 1, 1, ContainerToContainerPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getContainerToContainerPattern_TargetContainer(), ecorePackage.getEString(), "targetContainer", "", 1, 1, ContainerToContainerPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(dataIterationPatternEClass, DataIterationPattern.class, "DataIterationPattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDataIterationPattern_ContainerReferenceList(), ecorePackage.getEString(), "containerReferenceList", "", 1, 1, DataIterationPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDataIterationPattern_CurrentContainer(), ecorePackage.getEString(), "currentContainer", "", 1, 1, DataIterationPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDataIterationPattern_Activity(), theBPELPackage.getActivity(), null, "activity", null, 1, 1, DataIterationPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(dataFormatConversionPatternEClass, DataFormatConversionPattern.class, "DataFormatConversionPattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDataFormatConversionPattern_SourceContainer(), ecorePackage.getEString(), "sourceContainer", "", 1, 1, DataFormatConversionPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDataFormatConversionPattern_TargetContainer(), ecorePackage.getEString(), "targetContainer", "", 1, 1, DataFormatConversionPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

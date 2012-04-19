@@ -41,12 +41,12 @@ public class WriteDataBackActivity extends DataManagementActivity {
     loadSIMPLAttributes(context, element);
 
     // Load all specific attribute values from the WriteDataBackActivity.
-    String writeTarget = StatementUtils.processStatement(context, element.getAttribute("writeTarget"));
+    String targetContainer = StatementUtils.processStatement(context, element.getAttribute("targetContainer"));
     Attr dataVarAttr = element.getAttributeNode("dataVariable");
     String dataVariableName = dataVarAttr.getValue();
 
-    DataSource ds = DataSourceUtils.getDataSource(context, getDsIdentifier());
-    LateBinding lb = DataSourceUtils.getLateBinding(context, getDsIdentifier());
+    DataSource ds = DataSourceUtils.getDataSource(context, getDataResource());
+    LateBinding lb = DataSourceUtils.getLateBinding(context, getDataResource());
 
     SIMPLCoreInterface simplCoreService = SIMPLCoreService.getInstance().getService();
 
@@ -81,7 +81,7 @@ public class WriteDataBackActivity extends DataManagementActivity {
       DataObject sdo = xmlDoc.getRootObject();
 
       // write data back
-      this.successfulExecution = simplCoreService.writeDataBack(ds, sdo, writeTarget, lb);
+      this.successfulExecution = simplCoreService.writeDataBack(ds, sdo, targetContainer, lb);
 
       if (!this.successfulExecution) {
         ActivityFailureEvent event = new ActivityFailureEvent();

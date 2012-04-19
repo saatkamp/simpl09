@@ -39,28 +39,33 @@ import org.w3c.dom.Node;
  * 
  * @author Michael Hahn <hahnml@studi.informatik.uni-stuttgart.de>
  */
-public class DataManagementActivityDeserializer implements BPELActivityDeserializer {
+public class DataManagementActivityDeserializer implements
+    BPELActivityDeserializer {
 
   /*
    * (non-Javadoc)
+   * 
    * @see org.eclipse.bpel.model.extensions.BPELActivityDeserializer#unmarshall
-   * (javax.xml.namespace.QName, org.w3c.dom.Node, org.eclipse.bpel.model.Process,
-   * java.util.Map, javax.wsdl.extensions.ExtensionRegistry,
-   * org.eclipse.emf.common.util.URI, org.eclipse.bpel.model.resource.BPELReader)
+   * (javax.xml.namespace.QName, org.w3c.dom.Node,
+   * org.eclipse.bpel.model.Process, java.util.Map,
+   * javax.wsdl.extensions.ExtensionRegistry, org.eclipse.emf.common.util.URI,
+   * org.eclipse.bpel.model.resource.BPELReader)
    */
   @SuppressWarnings("rawtypes")
   @Override
-  public Activity unmarshall(QName elementType, Node node, Process process, Map nsMap,
-      ExtensionRegistry extReg, URI uri, BPELReader bpelReader) {
+  public Activity unmarshall(QName elementType, Node node, Process process,
+      Map nsMap, ExtensionRegistry extReg, URI uri, BPELReader bpelReader) {
 
     /*
      * QueryDataActivity
      */
-    if (DataManagementConstants.ND_QUERY_DATA_ACTIVITY.equals(elementType.getLocalPart())) {
+    if (DataManagementConstants.ND_QUERY_DATA_ACTIVITY.equals(elementType
+        .getLocalPart())) {
       Element querydataActivityElement = (Element) node;
 
       // create a QueryDataActivity model object
-      QueryDataActivity activity = ModelFactory.eINSTANCE.createQueryDataActivity();
+      QueryDataActivity activity = ModelFactory.eINSTANCE
+          .createQueryDataActivity();
 
       // attach the DOM node to our new activity
       activity.setElement(querydataActivityElement);
@@ -69,11 +74,12 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
       this.setCommonAttributes(activity, node);
 
       // handle the QueryDataActivity attributes
-      String attQueryTarget = ModelPackage.eINSTANCE.getQueryDataActivity_QueryTarget()
-          .getName();
+      String attTargetContainer = ModelPackage.eINSTANCE
+          .getQueryDataActivity_TargetContainer().getName();
 
-      if (((Element) node).getAttribute(attQueryTarget) != null) {
-        activity.setQueryTarget(((Element) node).getAttribute(attQueryTarget));
+      if (((Element) node).getAttribute(attTargetContainer) != null) {
+        activity.setTargetContainer(((Element) node)
+            .getAttribute(attTargetContainer));
       }
 
       return activity;
@@ -82,11 +88,13 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
     /*
      * IssueCommandActivity
      */
-    if (DataManagementConstants.ND_ISSUE_COMMAND_ACTIVITY.equals(elementType.getLocalPart())) {
+    if (DataManagementConstants.ND_ISSUE_COMMAND_ACTIVITY.equals(elementType
+        .getLocalPart())) {
       Element issueActivityElement = (Element) node;
 
       // create a InsertActivity model object
-      IssueCommandActivity activity = ModelFactory.eINSTANCE.createIssueCommandActivity();
+      IssueCommandActivity activity = ModelFactory.eINSTANCE
+          .createIssueCommandActivity();
 
       // attach the DOM node to our new activity
       activity.setElement(issueActivityElement);
@@ -105,7 +113,8 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
       Element retrieveDataActivityElement = (Element) node;
 
       // create a RetrieveDataActivity model object
-      RetrieveDataActivity activity = ModelFactory.eINSTANCE.createRetrieveDataActivity();
+      RetrieveDataActivity activity = ModelFactory.eINSTANCE
+          .createRetrieveDataActivity();
 
       // attach the DOM node to our new activity
       activity.setElement(retrieveDataActivityElement);
@@ -114,13 +123,14 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
       this.setCommonAttributes(activity, node);
 
       // handle the RetrieveDataActivity attributes
-      String attDataVariable = ModelPackage.eINSTANCE
-          .getRetrieveDataActivity_DataVariable().getName();
-      String dataVariableName = ((Element) node).getAttribute(attDataVariable);
+      String attTargetVariable = ModelPackage.eINSTANCE
+          .getRetrieveDataActivity_TargetVariable().getName();
+      String targetVariableName = ((Element) node)
+          .getAttribute(attTargetVariable);
 
-      if (dataVariableName != null) {
-        activity.setDataVariable(BPELReader.getVariable(process.getVariables(),
-            dataVariableName));
+      if (targetVariableName != null) {
+        activity.setTargetVariable(BPELReader.getVariable(
+            process.getVariables(), targetVariableName));
       }
 
       return activity;
@@ -144,18 +154,21 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
       this.setCommonAttributes(activity, node);
 
       // handle the WriteDataBackDataActivity attributes
-      String attDataVariable = ModelPackage.eINSTANCE.getWriteDataBackActivity_DataVariable().getName();
+      String attDataVariable = ModelPackage.eINSTANCE
+          .getWriteDataBackActivity_DataVariable().getName();
       String dataVariableName = ((Element) node).getAttribute(attDataVariable);
 
       if (dataVariableName != null) {
         activity.setDataVariable(BPELReader.getVariable(process.getVariables(),
             dataVariableName));
       }
-      
-      String attWriteTarget = ModelPackage.eINSTANCE.getWriteDataBackActivity_WriteTarget().getName();
 
-      if (((Element) node).getAttribute(attWriteTarget) != null) {
-        activity.setWriteTarget(((Element) node).getAttribute(attWriteTarget));
+      String attTargetContainer = ModelPackage.eINSTANCE
+          .getWriteDataBackActivity_TargetContainer().getName();
+
+      if (((Element) node).getAttribute(attTargetContainer) != null) {
+        activity.setTargetContainer(((Element) node)
+            .getAttribute(attTargetContainer));
       }
 
       return activity;
@@ -164,11 +177,13 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
     /*
      * TransferDataActivity
      */
-    if (DataManagementConstants.ND_TRANSFER_DATA_ACTIVITY.equals(elementType.getLocalPart())) {
+    if (DataManagementConstants.ND_TRANSFER_DATA_ACTIVITY.equals(elementType
+        .getLocalPart())) {
       Element transferDataActivityElement = (Element) node;
 
       // create a TransferDataActivity model object
-      TransferDataActivity activity = ModelFactory.eINSTANCE.createTransferDataActivity();
+      TransferDataActivity activity = ModelFactory.eINSTANCE
+          .createTransferDataActivity();
 
       // attach the DOM node to our new activity
       activity.setElement(transferDataActivityElement);
@@ -177,38 +192,37 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
       this.setCommonAttributes(activity, node);
 
       // handle the TransferDataActivity attributes
-      String attTargetContainer = ModelPackage.eINSTANCE
-          .getTransferDataActivity_TargetDsContainer().getName();
-      String attTargetKind = ModelPackage.eINSTANCE.getTransferDataActivity_TargetDsKind()
-          .getName();
-      String attTargetType = ModelPackage.eINSTANCE.getTransferDataActivity_TargetDsType()
-          .getName();
-      String attTargetIdentifier = ModelPackage.eINSTANCE
-          .getTransferDataActivity_TargetDsIdentifier().getName();
-      String attTargetLanguage = ModelPackage.eINSTANCE
-          .getTransferDataActivity_TargetDsLanguage().getName();
+      String attDataSource = ModelPackage.eINSTANCE
+          .getTransferDataActivity_DataSource().getName();
+      String attDataSourceCommand = ModelPackage.eINSTANCE
+          .getTransferDataActivity_DataSourceCommand().getName();
+      String attDataSink = ModelPackage.eINSTANCE
+          .getTransferDataActivity_DataSink().getName();
+      String attDataSinkContainer = ModelPackage.eINSTANCE
+          .getTransferDataActivity_DataSinkContainer().getName();
 
-      if (transferDataActivityElement.getAttribute(attTargetContainer) != null) {
-        activity.setTargetDsContainer(transferDataActivityElement
-            .getAttribute(attTargetContainer));
+      if (transferDataActivityElement.getAttribute(attDataSource) != null) {
+        activity.setDataSource(transferDataActivityElement
+            .getAttribute(attDataSource));
       }
 
-      if (transferDataActivityElement.getAttribute(attTargetKind) != null) {
-        activity.setTargetDsKind(transferDataActivityElement.getAttribute(attTargetKind));
+      if (transferDataActivityElement.getAttribute(attDataSourceCommand) != null) {
+        activity.setDataSourceCommand(transferDataActivityElement
+            .getAttribute(attDataSourceCommand));
+        // therefore you must not differ between TransferDataActivity and other
+        // (DataManagement)Activites
+        activity.setDmCommand(transferDataActivityElement
+            .getAttribute(attDataSourceCommand));
       }
 
-      if (transferDataActivityElement.getAttribute(attTargetType) != null) {
-        activity.setTargetDsType(transferDataActivityElement.getAttribute(attTargetType));
+      if (transferDataActivityElement.getAttribute(attDataSink) != null) {
+        activity.setDataSink(transferDataActivityElement
+            .getAttribute(attDataSink));
       }
 
-      if (transferDataActivityElement.getAttribute(attTargetIdentifier) != null) {
-        activity.setTargetDsIdentifier(transferDataActivityElement
-            .getAttribute(attTargetIdentifier));
-      }
-
-      if (transferDataActivityElement.getAttribute(attTargetLanguage) != null) {
-        activity.setTargetDsLanguage(transferDataActivityElement
-            .getAttribute(attTargetLanguage));
+      if (transferDataActivityElement.getAttribute(attDataSinkContainer) != null) {
+        activity.setDataSinkContainer(transferDataActivityElement
+            .getAttribute(attDataSinkContainer));
       }
 
       return activity;
@@ -219,40 +233,24 @@ public class DataManagementActivityDeserializer implements BPELActivityDeseriali
   }
 
   /**
-   * Sets the common data management activity attributes from the DOM node on an activity
-   * object.
+   * Sets the common data management activity attributes from the DOM node on an
+   * activity object.
    * 
    * @param activity
    * @param node
    */
   private void setCommonAttributes(DataManagementActivity activity, Node node) {
-    String attStatement = ModelPackage.eINSTANCE.getDataManagementActivity_DsStatement()
-        .getName();
-    String attKind = ModelPackage.eINSTANCE.getDataManagementActivity_DsKind().getName();
-    String attType = ModelPackage.eINSTANCE.getDataManagementActivity_DsType().getName();
-    String attIdentifier = ModelPackage.eINSTANCE.getDataManagementActivity_DsIdentifier()
-        .getName();
-    String attLanguage = ModelPackage.eINSTANCE.getDataManagementActivity_DsLanguage()
-        .getName();
+    String attDataResource = ModelPackage.eINSTANCE
+        .getDataManagementActivity_DataResource().getName();
+    String attDMCommand = ModelPackage.eINSTANCE
+        .getDataManagementActivity_DmCommand().getName();
 
-    if (((Element) node).getAttribute(attStatement) != null) {
-      activity.setDsStatement(((Element) node).getAttribute(attStatement));
+    if (((Element) node).getAttribute(attDataResource) != null) {
+      activity.setDataResource(((Element) node).getAttribute(attDataResource));
     }
 
-    if (((Element) node).getAttribute(attKind) != null) {
-      activity.setDsKind(((Element) node).getAttribute(attKind));
-    }
-
-    if (((Element) node).getAttribute(attType) != null) {
-      activity.setDsType(((Element) node).getAttribute(attType));
-    }
-
-    if (((Element) node).getAttribute(attIdentifier) != null) {
-      activity.setDsIdentifier(((Element) node).getAttribute(attIdentifier));
-    }
-
-    if (((Element) node).getAttribute(attLanguage) != null) {
-      activity.setDsLanguage(((Element) node).getAttribute(attLanguage));
+    if (((Element) node).getAttribute(attDMCommand) != null) {
+      activity.setDmCommand(((Element) node).getAttribute(attDMCommand));
     }
   }
 }

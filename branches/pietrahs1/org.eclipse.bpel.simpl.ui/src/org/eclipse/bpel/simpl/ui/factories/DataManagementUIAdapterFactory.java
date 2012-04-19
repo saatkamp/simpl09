@@ -12,6 +12,9 @@
 package org.eclipse.bpel.simpl.ui.factories;
 
 import org.eclipse.bpel.simpl.model.util.ModelAdapterFactory;
+import org.eclipse.bpel.simpl.ui.adapters.ContainerToContainerPatternAdapter;
+import org.eclipse.bpel.simpl.ui.adapters.DataFormatConversionPatternAdapter;
+import org.eclipse.bpel.simpl.ui.adapters.DataIterationPatternAdapter;
 import org.eclipse.bpel.simpl.ui.adapters.IssueCommandActivityAdapter;
 import org.eclipse.bpel.simpl.ui.adapters.QueryActivityAdapter;
 import org.eclipse.bpel.simpl.ui.adapters.RetrieveDataActivityAdapter;
@@ -26,6 +29,10 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 	private RetrieveDataActivityAdapter retrieveDataActivityAdapter;
 	private WriteDataBackActivityAdapter writeDataBackActivityAdapter;
 	private TransferDataActivityAdapter transferDataActivityAdapter;
+	
+	private ContainerToContainerPatternAdapter containerToContainerPatternAdapter;
+	private DataFormatConversionPatternAdapter dataFormatConversionPatternAdapter;
+	private DataIterationPatternAdapter dataIterationPatternAdapter;
 	
 	static private DataManagementUIAdapterFactory instance;
 	
@@ -93,4 +100,28 @@ public class DataManagementUIAdapterFactory extends ModelAdapterFactory{
 		}
 		return this.transferDataActivityAdapter;
 	}
+	
+  @Override
+  public Adapter createContainerToContainerPatternAdapter() {
+    if (this.containerToContainerPatternAdapter == null) {
+      this.containerToContainerPatternAdapter = new ContainerToContainerPatternAdapter();
+    }
+    return this.containerToContainerPatternAdapter;
+  }
+
+  @Override
+  public Adapter createDataFormatConversionPatternAdapter() {
+    if (this.dataFormatConversionPatternAdapter == null) {
+      this.dataFormatConversionPatternAdapter = new DataFormatConversionPatternAdapter();
+    }
+    return this.dataFormatConversionPatternAdapter;
+  }
+
+  @Override
+  public Adapter createDataIterationPatternAdapter() {
+    if (this.dataIterationPatternAdapter == null) {
+      this.dataIterationPatternAdapter = new DataIterationPatternAdapter();
+    }
+    return this.dataIterationPatternAdapter;
+  }
 }

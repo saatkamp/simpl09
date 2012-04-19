@@ -1,5 +1,6 @@
 package org.eclipse.simpl.statementtest.ui.wizards.pages;
 
+import org.eclipse.bpel.simpl.model.TransferDataActivity;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.simpl.statementtest.model.StatementTest;
 import org.eclipse.simpl.statementtest.ui.wizards.StatementTestWizard;
@@ -190,7 +191,14 @@ public class DataSourceSelectionPage extends StatementTestWizardPage {
 
     // select the data source of the activity
     for (int i = 0; i < dataSources.length; i++) {
-      if (dataSources[i].equals(this.statementTest.getActivity().getDsIdentifier())) {
+      String name;
+      if (this.statementTest.getActivity() instanceof TransferDataActivity) {
+        name = ((TransferDataActivity) this.statementTest.getActivity())
+            .getDataSource();
+      } else {
+        name = this.statementTest.getActivity().getDataResource();
+      }
+      if (dataSources[i].equals(name)) {
         combo.select(i);
 
         // fire combo selection event to initialize the table

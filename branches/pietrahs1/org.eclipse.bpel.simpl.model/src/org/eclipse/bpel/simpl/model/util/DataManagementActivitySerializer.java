@@ -17,9 +17,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.xml.namespace.QName;
 
@@ -50,7 +48,6 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.simpl.communication.ResourceManagementCommunication;
 import org.eclipse.wst.wsdl.util.WSDLConstants;
-import org.simpl.resource.management.data.Connector;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -104,46 +101,25 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 					.setPrefix(DataManagementUtils.addNamespace(process));
 
 			// handle the QueryDataActivity Attributes
-			if (((QueryDataActivity) activity).getDsStatement() != null) {
+			if (((QueryDataActivity) activity).getDataResource() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsStatement().getName();
+						.getDataManagementActivity_DataResource().getName();
 				activityElement.setAttribute(attName,
-						((QueryDataActivity) activity).getDsStatement());
+						((QueryDataActivity) activity).getDataResource());
 			}
 
-			if (((QueryDataActivity) activity).getDsKind() != null) {
+			if (((QueryDataActivity) activity).getDmCommand() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsKind().getName();
+						.getDataManagementActivity_DmCommand().getName();
 				activityElement.setAttribute(attName,
-						((QueryDataActivity) activity).getDsKind());
+						((QueryDataActivity) activity).getDmCommand());
 			}
 
-			if (((QueryDataActivity) activity).getDsType() != null) {
+			if (((QueryDataActivity) activity).getTargetContainer() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsType().getName();
+						.getQueryDataActivity_TargetContainer().getName();
 				activityElement.setAttribute(attName,
-						((QueryDataActivity) activity).getDsType());
-			}
-
-			if (((QueryDataActivity) activity).getDsIdentifier() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsIdentifier().getName();
-				activityElement.setAttribute(attName,
-						((QueryDataActivity) activity).getDsIdentifier());
-			}
-
-			if (((QueryDataActivity) activity).getDsLanguage() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsLanguage().getName();
-				activityElement.setAttribute(attName,
-						((QueryDataActivity) activity).getDsLanguage());
-			}
-
-			if (((QueryDataActivity) activity).getQueryTarget() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getQueryDataActivity_QueryTarget().getName();
-				activityElement.setAttribute(attName,
-						((QueryDataActivity) activity).getQueryTarget());
+						((QueryDataActivity) activity).getTargetContainer());
 			}
 
 			// insert the DOM element into the DOM tree
@@ -163,39 +139,18 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 					.setPrefix(DataManagementUtils.addNamespace(process));
 
 			// handle the IssueCommandActivity Attributes
-			if (((IssueCommandActivity) activity).getDsStatement() != null) {
+			if (((IssueCommandActivity) activity).getDataResource() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsStatement().getName();
+						.getDataManagementActivity_DataResource().getName();
 				activityElement.setAttribute(attName,
-						((IssueCommandActivity) activity).getDsStatement());
+						((IssueCommandActivity) activity).getDataResource());
 			}
 
-			if (((IssueCommandActivity) activity).getDsKind() != null) {
+			if (((IssueCommandActivity) activity).getDmCommand() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsKind().getName();
+						.getDataManagementActivity_DmCommand().getName();
 				activityElement.setAttribute(attName,
-						((IssueCommandActivity) activity).getDsKind());
-			}
-
-			if (((IssueCommandActivity) activity).getDsType() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsType().getName();
-				activityElement.setAttribute(attName,
-						((IssueCommandActivity) activity).getDsType());
-			}
-
-			if (((IssueCommandActivity) activity).getDsIdentifier() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsIdentifier().getName();
-				activityElement.setAttribute(attName,
-						((IssueCommandActivity) activity).getDsIdentifier());
-			}
-
-			if (((IssueCommandActivity) activity).getDsLanguage() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsLanguage().getName();
-				activityElement.setAttribute(attName,
-						((IssueCommandActivity) activity).getDsLanguage());
+						((IssueCommandActivity) activity).getDmCommand());
 			}
 
 			// insert the DOM element into the DOM tree
@@ -215,46 +170,25 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 					.setPrefix(DataManagementUtils.addNamespace(process));
 
 			// handle the RetrieveDataActivity Attributes
-			if (((RetrieveDataActivity) activity).getDsStatement() != null) {
+			if (((RetrieveDataActivity) activity).getDataResource() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsStatement().getName();
+						.getDataManagementActivity_DataResource().getName();
 				activityElement.setAttribute(attName,
-						((RetrieveDataActivity) activity).getDsStatement());
+						((RetrieveDataActivity) activity).getDataResource());
 			}
 
-			if (((RetrieveDataActivity) activity).getDsKind() != null) {
+			if (((RetrieveDataActivity) activity).getDmCommand() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsKind().getName();
+						.getDataManagementActivity_DmCommand().getName();
 				activityElement.setAttribute(attName,
-						((RetrieveDataActivity) activity).getDsKind());
+						((RetrieveDataActivity) activity).getDmCommand());
 			}
 
-			if (((RetrieveDataActivity) activity).getDsType() != null) {
+			if (((RetrieveDataActivity) activity).getTargetVariable() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsType().getName();
+						.getRetrieveDataActivity_TargetVariable().getName();
 				activityElement.setAttribute(attName,
-						((RetrieveDataActivity) activity).getDsType());
-			}
-
-			if (((RetrieveDataActivity) activity).getDsIdentifier() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsIdentifier().getName();
-				activityElement.setAttribute(attName,
-						((RetrieveDataActivity) activity).getDsIdentifier());
-			}
-
-			if (((RetrieveDataActivity) activity).getDsLanguage() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsLanguage().getName();
-				activityElement.setAttribute(attName,
-						((RetrieveDataActivity) activity).getDsLanguage());
-			}
-
-			if (((RetrieveDataActivity) activity).getDataVariable() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getRetrieveDataActivity_DataVariable().getName();
-				activityElement.setAttribute(attName,
-						((RetrieveDataActivity) activity).getDataVariable()
+						((RetrieveDataActivity) activity).getTargetVariable()
 								.getName());
 			}
 
@@ -275,39 +209,18 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
           .setPrefix(DataManagementUtils.addNamespace(process));
 
       // handle the WriteDataBackActivity Attributes
-      if (((WriteDataBackActivity) activity).getDsStatement() != null) {
+      if (((WriteDataBackActivity) activity).getDataResource() != null) {
         String attName = ModelPackage.eINSTANCE
-            .getDataManagementActivity_DsStatement().getName();
+            .getDataManagementActivity_DataResource().getName();
         activityElement.setAttribute(attName,
-            ((WriteDataBackActivity) activity).getDsStatement());
+            ((WriteDataBackActivity) activity).getDataResource());
       }
-
-      if (((WriteDataBackActivity) activity).getDsKind() != null) {
+      
+      if (((WriteDataBackActivity) activity).getTargetContainer() != null) {
         String attName = ModelPackage.eINSTANCE
-            .getDataManagementActivity_DsKind().getName();
+            .getWriteDataBackActivity_TargetContainer().getName();
         activityElement.setAttribute(attName,
-            ((WriteDataBackActivity) activity).getDsKind());
-      }
-
-      if (((WriteDataBackActivity) activity).getDsType() != null) {
-        String attName = ModelPackage.eINSTANCE
-            .getDataManagementActivity_DsType().getName();
-        activityElement.setAttribute(attName,
-            ((WriteDataBackActivity) activity).getDsType());
-      }
-
-      if (((WriteDataBackActivity) activity).getDsIdentifier() != null) {
-        String attName = ModelPackage.eINSTANCE
-            .getDataManagementActivity_DsIdentifier().getName();
-        activityElement.setAttribute(attName,
-            ((WriteDataBackActivity) activity).getDsIdentifier());
-      }
-
-      if (((WriteDataBackActivity) activity).getDsLanguage() != null) {
-        String attName = ModelPackage.eINSTANCE
-            .getDataManagementActivity_DsLanguage().getName();
-        activityElement.setAttribute(attName,
-            ((WriteDataBackActivity) activity).getDsLanguage());
+            ((WriteDataBackActivity) activity).getTargetContainer());
       }
       
       if (((WriteDataBackActivity) activity).getDataVariable() != null) {
@@ -316,13 +229,6 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
         activityElement.setAttribute(attName,
             ((WriteDataBackActivity) activity).getDataVariable()
                 .getName());
-      }
-
-      if (((WriteDataBackActivity) activity).getWriteTarget() != null) {
-        String attName = ModelPackage.eINSTANCE
-            .getWriteDataBackActivity_WriteTarget().getName();
-        activityElement.setAttribute(attName,
-            ((WriteDataBackActivity) activity).getWriteTarget());
       }
       
       // insert the DOM element into the DOM tree
@@ -343,74 +249,33 @@ public class DataManagementActivitySerializer implements BPELActivitySerializer 
 					.setPrefix(DataManagementUtils.addNamespace(process));
 
 			// handle the TransferDataActivity attributes
-			if (((TransferDataActivity) activity).getDsStatement() != null) {
+			
+			if (((TransferDataActivity) activity).getDataSource() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsStatement().getName();
+						.getTransferDataActivity_DataSource().getName();
 				activityElement.setAttribute(attName,
-						((TransferDataActivity) activity).getDsStatement());
-			}
-
-			if (((TransferDataActivity) activity).getDsKind() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsKind().getName();
-				activityElement.setAttribute(attName,
-						((TransferDataActivity) activity).getDsKind());
-			}
-
-			if (((TransferDataActivity) activity).getDsType() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsType().getName();
-				activityElement.setAttribute(attName,
-						((TransferDataActivity) activity).getDsType());
-			}
-
-			if (((TransferDataActivity) activity).getDsIdentifier() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsIdentifier().getName();
-				activityElement.setAttribute(attName,
-						((TransferDataActivity) activity).getDsIdentifier());
-			}
-
-			if (((TransferDataActivity) activity).getDsLanguage() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getDataManagementActivity_DsLanguage().getName();
-				activityElement.setAttribute(attName,
-						((TransferDataActivity) activity).getDsLanguage());
-			}
-
-			if (((TransferDataActivity) activity).getTargetDsType() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getTransferDataActivity_TargetDsType().getName();
-				activityElement.setAttribute(attName,
-						((TransferDataActivity) activity).getTargetDsType());
+						((TransferDataActivity) activity).getDataSource());
 			}
 			
-			if (((TransferDataActivity) activity).getTargetDsKind() != null) {
+			if (((TransferDataActivity) activity).getDataSourceCommand() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getTransferDataActivity_TargetDsKind().getName();
+						.getTransferDataActivity_DataSourceCommand().getName();
 				activityElement.setAttribute(attName,
-						((TransferDataActivity) activity).getTargetDsKind());
+						((TransferDataActivity) activity).getDataSourceCommand());
 			}
 			
-			if (((TransferDataActivity) activity).getTargetDsIdentifier() != null) {
+			if (((TransferDataActivity) activity).getDataSink() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getTransferDataActivity_TargetDsIdentifier().getName();
+						.getTransferDataActivity_DataSink().getName();
 				activityElement.setAttribute(attName,
-						((TransferDataActivity) activity).getTargetDsIdentifier());
+						((TransferDataActivity) activity).getDataSink());
 			}
 			
-			if (((TransferDataActivity) activity).getTargetDsLanguage() != null) {
+			if (((TransferDataActivity) activity).getDataSinkContainer() != null) {
 				String attName = ModelPackage.eINSTANCE
-						.getTransferDataActivity_TargetDsLanguage().getName();
+						.getTransferDataActivity_DataSinkContainer().getName();
 				activityElement.setAttribute(attName,
-						((TransferDataActivity) activity).getTargetDsLanguage());
-			}
-
-			if (((TransferDataActivity) activity).getTargetDsContainer() != null) {
-				String attName = ModelPackage.eINSTANCE
-						.getTransferDataActivity_TargetDsContainer().getName();
-				activityElement.setAttribute(attName,
-						((TransferDataActivity) activity).getTargetDsContainer());
+						((TransferDataActivity) activity).getDataSinkContainer());
 			}
 
 			// insert the DOM element into the DOM tree

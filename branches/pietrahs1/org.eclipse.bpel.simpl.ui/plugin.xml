@@ -70,6 +70,30 @@
                   type="org.eclipse.bpel.simpl.model.TransferDataActivity">
             </input>
          </propertySection>
+         <propertySection
+               class="org.eclipse.bpel.simpl.ui.properties.ContainerToContainerPatternPropertySection"
+               id="org.eclipse.bpel.simpl.ui.properties.ContainerToContainerPatternPropertySection"
+               tab="org.eclipse.bpel.ui.tabs.details">
+            <input
+                  type="org.eclipse.bpel.simpl.model.ContainerToContainerPattern">
+            </input>
+         </propertySection>   
+         <propertySection
+               class="org.eclipse.bpel.simpl.ui.properties.DataFormatConversionPatternPropertySection"
+               id="org.eclipse.bpel.simpl.ui.properties.DataFormatConversionPatternPropertySection"
+               tab="org.eclipse.bpel.ui.tabs.details">
+            <input
+                  type="org.eclipse.bpel.simpl.model.DataFormatConversionPattern">
+            </input>
+         </propertySection>   
+         <propertySection
+               class="org.eclipse.bpel.simpl.ui.properties.DataIterationPatternPropertySection"
+               id="org.eclipse.bpel.simpl.ui.properties.DataIterationPatternPropertySection"
+               tab="org.eclipse.bpel.ui.tabs.details">
+            <input
+                  type="org.eclipse.bpel.simpl.model.DataIterationPattern">
+            </input>
+         </propertySection>   
       </propertySections>
    </extension>
    <extension
@@ -78,6 +102,46 @@
             class="org.eclipse.bpel.simpl.ui.hovers.SIMPLHoverHelper">
       </hoverHelper>
    </extension>
-
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.eclipse.bpel.simpl.ui.handler.PatternTransformationHandler"
+            id="org.eclipse.bpel.simpl.ui.commands.patternTransformationCommand"
+            name="PatternTransformation">
+      </command>
+   </extension>
+	<extension point="org.eclipse.ui.menus">
+	    <menuContribution
+	        locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+	        <toolbar id="org.eclipse.bpel.ui.main.toolbar">
+	            <command
+	                commandId="org.eclipse.bpel.simpl.ui.commands.patternTransformationCommand"
+	                icon="icons/patterntransformation.png"
+	                tooltip="Pattern Transformation"
+	                style="push">
+	            </command>
+	        </toolbar>
+	    </menuContribution>
+	</extension>
+	   <extension
+	         point="org.eclipse.ui.menus">
+	      <menuContribution
+	            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+	         <menu
+	               id="org.eclipse.simpl.core.simplMenu"
+	               label="SIMPL"
+	               mnemonic="M">
+	            <command
+	                  commandId="org.eclipse.bpel.simpl.ui.commands.patternTransformationCommand"
+	                  icon="icons/patterntransformation.png"
+	                  label="Pattern Transformation">
+	            </command>
+	            <separator
+                      name="org.eclipse.simpl.core.separator2"
+                      visible="true">
+                </separator>
+	         </menu>
+	      </menuContribution>
+	   </extension>
 </plugin>
 

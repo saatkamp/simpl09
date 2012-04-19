@@ -34,8 +34,6 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PartInitException;
 import org.simpl.core.webservices.client.SIMPLCoreService;
 import org.simpl.core.webservices.client.SIMPLCoreServiceClient;
-import org.simpl.resource.management.data.Connector;
-import org.simpl.resource.management.data.DataConverter;
 import org.simpl.resource.management.data.DataSource;
 
 /**
@@ -80,34 +78,22 @@ public class StatementTestWizard extends Wizard {
    * @param activity
    * @param process
    */
-  public StatementTestWizard(DataManagementActivity activity, Process process) {
+  public StatementTestWizard(DataManagementActivity activity, Process process, DataSource activityDataSource, String dmCommand) {
     this.setHelpAvailable(false);
     this.setNeedsProgressMonitor(false);
     this.setWindowTitle(WIZARD_TITLE + " for \"" + activity.getName() + "\"");
     this.setDefaultPageImageDescriptor(StatementTestPlugin
         .getImageDescriptor(WIZARD_ICON));
-
-    // create a data source object from the activity data source properties
-    DataSource activityDataSource = new DataSource();
-    Connector connector = new Connector();
-    DataConverter dataConverter = new DataConverter();
     
-    connector.setDataConverter(dataConverter);
-    activityDataSource.setConnector(connector);
-    activityDataSource.setAddress(activity.getDsIdentifier());
-    activityDataSource.setType(activity.getDsType());
-    activityDataSource.setSubType(activity.getDsKind());
-    activityDataSource.setLanguage(activity.getDsLanguage());
-
     this.statementTest = new StatementTest(activity, process);
-    this.statementTest.setStatement(activity.getDsStatement());
+    this.statementTest.setStatement(dmCommand);
     this.statementTest.setDataSource(activityDataSource);
 
     // set variables
     List<String> parameterVariableNames = VariableUtils
-        .getParameterVariablesFromStatement(activity.getDsStatement(), process);
+        .getParameterVariablesFromStatement(dmCommand, process);
     List<String> containerVariableNames = VariableUtils
-        .getContainerVariablesFromStatement(activity.getDsStatement(), process);
+        .getContainerVariablesFromStatement(dmCommand, process);
 
     for (String variableName : parameterVariableNames) {
       Variable variable = VariableUtils.getVariableByName(variableName, process);
@@ -206,7 +192,7 @@ public class StatementTestWizard extends Wizard {
 
   @Override
   public IWizardPage getNextPage(IWizardPage page) {
-    String statement = this.statementTest.getActivity().getDsStatement();
+    String statement = this.statementTest.getStatement();
     Process process = this.statementTest.getProcess();
 
     // generate the statement on the statement screening page before showing or
