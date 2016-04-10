@@ -1,0 +1,1 @@
+Extensible framework to access different kinds of data sources from a BPEL process.
